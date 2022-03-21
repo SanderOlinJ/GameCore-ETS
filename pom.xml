@@ -97,7 +97,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                edu.ntnu.idatt1002.sysdev_k1_05_ets/edu.ntnu.idatt1002.sysdev_k1_05_ets.HelloApplication
+                                edu.ntnu.idatt1002.sysdev_k1_05_ets/edu.ntnu.idatt1002.sysdev_k1_05_ets.MainApplication
                             </mainClass>
                         </configuration>
                     </execution>
