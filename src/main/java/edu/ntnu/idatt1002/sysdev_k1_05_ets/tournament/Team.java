@@ -1,4 +1,4 @@
-package edu.ntnu.idatt1002.sysdev_k1_05_ets;
+package edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament;
 
 import java.util.ArrayList;
 
@@ -26,6 +26,10 @@ public class Team {
 
     public ArrayList<String> getMembers() {
         return members;
+    }
+
+    public void setMembers(ArrayList<String> members) {
+        this.members = members;
     }
 
     public void addMembers(ArrayList<String> members) {

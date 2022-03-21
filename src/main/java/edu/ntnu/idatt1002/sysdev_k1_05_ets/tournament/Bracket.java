@@ -1,4 +1,4 @@
-package edu.ntnu.idatt1002.sysdev_k1_05_ets;
+package edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament;
 
 import java.util.ArrayList;
 
@@ -6,15 +6,26 @@ public class Bracket {
 
     ArrayList<Team> teams;
     String nameOfTournament;
-    String game;
+    String gameName;
     int numberOfTeams;
     int bracketSize;
 
+    /**
+     * Constructor that creates a bracket and sets tournament name
+     * @param nameOfTournament
+     */
     public Bracket(String nameOfTournament) {
         this.nameOfTournament = nameOfTournament;
     }
 
-    public Bracket(ArrayList<Team> teams, String name, String game, int numberOfTeams) {
+    /**
+     * Constructor that creates a bracket by passing in teams, name, game name and number of teams participating
+     * @param teams
+     * @param name
+     * @param gameName
+     * @param numberOfTeams
+     */
+    public Bracket(ArrayList<Team> teams, String name, String gameName, int numberOfTeams) {
         if (numberOfTeams > 32) {
             throw new IllegalArgumentException("Max number of teams = 32");
         }
@@ -23,7 +34,7 @@ public class Bracket {
         }
         this.teams = new ArrayList<>();
         this.nameOfTournament = name;
-        this.game = game;
+        this.gameName = gameName;
         this.bracketSize = getNextPowerOf2(numberOfTeams);
         for(int i = 0; i <= bracketSize/2; i++){
             teams.add(new Team("TBD"));
@@ -56,6 +67,7 @@ public class Bracket {
         int teamPosition = bracketSize/2;
 
     }
+
 
     public void advanceTeam(Team team){
         int position = teams.indexOf(team);
