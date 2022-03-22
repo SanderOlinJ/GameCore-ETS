@@ -13,8 +13,12 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class MainPageController {
-    Bracket newBracket;
 
+    /**
+     * Redirects to add team scene from MainPage
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void onCreateNewTournamentClick(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(MainApplication.class.getResource("add-team-scene.fxml"));

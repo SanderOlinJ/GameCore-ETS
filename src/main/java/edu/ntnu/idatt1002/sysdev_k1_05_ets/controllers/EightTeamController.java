@@ -76,10 +76,6 @@ public class EightTeamController {
         team14.setText(bracket.getTeam(14).getNameOfTeam());
         team14.setText(bracket.getTeam(15).getNameOfTeam());
     }
-    @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
-    }
 
     @FXML
     private void switchToMain(ActionEvent event) throws IOException {
