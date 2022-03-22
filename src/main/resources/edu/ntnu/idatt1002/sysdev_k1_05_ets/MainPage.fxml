@@ -34,9 +34,9 @@
       </AnchorPane>
    </center>
    <left>
-      <Region prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <Region prefHeight="200.0" prefWidth="30.0" style="-fx-background-color: #000;" BorderPane.alignment="CENTER" />
    </left>
    <right>
-      <Region prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <Region prefHeight="200.0" prefWidth="30.0" style="-fx-background-color: #000;" BorderPane.alignment="CENTER" />
    </right>
 </BorderPane>
