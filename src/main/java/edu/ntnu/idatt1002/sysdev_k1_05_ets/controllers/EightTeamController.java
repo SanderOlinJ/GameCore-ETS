@@ -2,6 +2,7 @@ package edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
 
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.MainApplication;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Bracket;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,9 +10,12 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class EightTeamController {
 
@@ -50,6 +54,9 @@ public class EightTeamController {
     @FXML
     private Label welcomeText;
 
+    @FXML
+    private ScrollPane scrollPane;
+
 
     public void initialize(){
         System.out.println(team1.getText());
@@ -85,8 +92,13 @@ public class EightTeamController {
     }
 
     @FXML
-    private void addTeam(ActionEvent event) throws IOException {
-
+    private void addTeams(ActionEvent event, ArrayList<Team> teams) throws IOException {
+        VBox root = new VBox();
+        for (Team team : teams) {
+            root.getChildren().add(new Label(team.getNameOfTeam()));
+        }
+        root.setSpacing(10);
+        scrollPane.setContent(root);
     }
 
 }

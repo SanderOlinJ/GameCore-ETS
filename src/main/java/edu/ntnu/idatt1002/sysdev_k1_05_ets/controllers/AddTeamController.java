@@ -75,4 +75,8 @@ public class AddTeamController {
     public void openMainScene(ActionEvent actionEvent) {
         Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
     }
+
+    public ArrayList<Team> getAllTeams() {
+        return allTeams;
+    }
 }
