@@ -16,8 +16,8 @@ public class MainPageController {
     Bracket newBracket;
 
     @FXML
-    public void OnCreateNewTournamentClick(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(MainApplication.class.getResource("eight_team_bracket.fxml"));
+    public void onCreateNewTournamentClick(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(MainApplication.class.getResource("add-team-scene.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
