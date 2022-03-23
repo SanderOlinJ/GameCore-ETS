@@ -33,7 +33,7 @@
                                 <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                             </VBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" prefHeight="34.0" prefWidth="150.0" text="Finish tournament setup">
+                        <Button mnemonicParsing="false" onAction="#addTeamScene" prefHeight="34.0" prefWidth="150.0" text="Finish tournament setup">
                             <VBox.margin>
                                 <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                             </VBox.margin>
