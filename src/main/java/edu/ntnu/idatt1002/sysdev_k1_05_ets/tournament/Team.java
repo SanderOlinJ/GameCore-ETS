@@ -26,6 +26,10 @@ public class Team {
         return members;
     }
 
+    public String getMembersAsText(){
+        return members.toString().replaceAll("\\[|\\]", "").replaceAll(", ",", ");
+    }
+
     public void setMembers(ArrayList<String> members) {
         this.members = members;
     }

@@ -28,12 +28,12 @@
                                 <Insets bottom="20.0" left="20.0" right="20.0" top="5.0" />
                             </VBox.margin>
                         </TextArea>
-                        <Button mnemonicParsing="false" onAction="#addTeam" prefHeight="25.0" prefWidth="155.0" text="Load tournament">
+                        <Button mnemonicParsing="false" onAction="#onLoadTournamentClick" prefHeight="25.0" prefWidth="155.0" text="Load tournament">
                             <VBox.margin>
                                 <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                             </VBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" onAction="#setBracketScene" prefHeight="34.0" prefWidth="150.0" text="Finish tournament setup">
+                        <Button mnemonicParsing="false" prefHeight="34.0" prefWidth="150.0" text="Finish tournament setup">
                             <VBox.margin>
                                 <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                             </VBox.margin>
@@ -43,7 +43,7 @@
                                 <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                             </VBox.margin>
                         </Label>
-                        <Button mnemonicParsing="false" onAction="#setMainScene" text="Return to main scene" />
+                        <Button mnemonicParsing="false" text="Return to main scene" />
                     </children>
                     <padding>
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

@@ -21,7 +21,7 @@ public class MainPageController {
      */
     @FXML
     public void onCreateNewTournamentClick(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(MainApplication.class.getResource("scenes/add-team-scene.fxml"));
+        Parent root = FXMLLoader.load(MainApplication.class.getResource("scenes/create_tournament_scene.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
