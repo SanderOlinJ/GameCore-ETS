@@ -36,7 +36,7 @@ public class AddTeamController {
 
     @FXML
     public void setMainScene(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(MainApplication.class.getResource("MainPage.fxml"));
+        Parent root = FXMLLoader.load(MainApplication.class.getResource("scenes/MainPage.fxml"));
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -44,7 +44,7 @@ public class AddTeamController {
     }
     @FXML
     public void setBracketScene(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(MainApplication.class.getResource("eight_team_bracket.fxml"));
+        Parent root = FXMLLoader.load(MainApplication.class.getResource("brackets/eight_team_bracket.fxml"));
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

@@ -79,7 +79,7 @@ public class EightTeamController {
 
     @FXML
     private void switchToMain(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(MainApplication.class.getResource("MainPage.fxml"));
+        Parent root = FXMLLoader.load(MainApplication.class.getResource("scenes/MainPage.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);

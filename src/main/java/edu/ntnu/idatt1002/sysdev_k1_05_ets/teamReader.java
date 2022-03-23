@@ -11,13 +11,23 @@ public class teamReader{
 
     public teamReader(){}
 
-    /**
     public ArrayList<Team> readFile() throws IOException{
         ArrayList<Team> returnList = null;
-        try (Scanner scanner = new Scanner()){
-
+        try (Scanner scanner = new Scanner("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
+                "teamFiles/8_team_file.csv")){
+            if (!scanner.hasNext()){
+                throw new IOException("File is empty");
+            }
+            while (scanner.hasNext()){
+                String line = scanner.nextLine();
+                String[] values = line.split(DELIMITER);
+                Team team = new Team(values[0]);
+                for (int i = 1; i < values.length; i++){
+                    team.addMember(values[i]);
+                }
+                returnList.add(team);
+            }
         }
+        return returnList;
     }
-
-     */
 }
