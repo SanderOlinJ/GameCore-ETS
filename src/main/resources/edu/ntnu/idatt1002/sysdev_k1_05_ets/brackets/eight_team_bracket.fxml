@@ -6,7 +6,9 @@
 <?import javafx.scene.shape.Line?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="523.0"
-      prefWidth="745.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+      prefWidth="745.0" xmlns="http://javafx.com/javafx/17"
+      fx:controller="edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.EightTeamController"
+      xmlns:fx="http://javafx.com/fxml/1">
     <AnchorPane prefHeight="523.0" prefWidth="745.0">
         <Pane layoutX="51.0" layoutY="265.0" prefHeight="42.0" prefWidth="84.0"
               style="-fx-background-color: black;">
