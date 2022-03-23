@@ -17,9 +17,15 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import static java.lang.Integer.parseInt;
+
 public class EightTeamController {
 
     private static Bracket bracket = new Bracket("Bracket");
+
+
+    @FXML
+    ArrayList<Label> labels = new ArrayList<Label>();
 
     @FXML
     private Label team1;
@@ -52,8 +58,28 @@ public class EightTeamController {
     @FXML
     private Label team15;
 
+    @FXML
+    public void initialize(){
+        labels.add(team1);
+        labels.add(team2);
+        labels.add(team3);
+        labels.add(team4);
+        labels.add(team5);
+        labels.add(team6);
+        labels.add(team7);
+        labels.add(team8);
+        labels.add(team9);
+        labels.add(team10);
+        labels.add(team11);
+        labels.add(team12);
+        labels.add(team13);
+        labels.add(team14);
+        labels.add(team15);
 
-
+        for (Label label : labels) {
+            label.setOnMouseClicked(mouseEvent -> {advanceTeam(label);});
+        }
+    }
 
     public void randomize(){
 
@@ -62,22 +88,28 @@ public class EightTeamController {
             deepCopy.addTeam(new Team(team.getMembers(), team.getNameOfTeam()));
         }
 
-        System.out.println(team1.getText());
-        team1.setText("TBD");
-        team2.setText("TBD");
-        team3.setText("TBD");
-        team4.setText("TBD");
-        team5.setText("TBD");
-        team6.setText("TBD");
-        team7.setText("TBD");
-        team8.setText(deepCopy.randomlyRemoveTeam().getNameOfTeam());
-        team9.setText(deepCopy.randomlyRemoveTeam().getNameOfTeam());
-        team10.setText(deepCopy.randomlyRemoveTeam().getNameOfTeam());
-        team11.setText(deepCopy.randomlyRemoveTeam().getNameOfTeam());
-        team12.setText(deepCopy.randomlyRemoveTeam().getNameOfTeam());
-        team13.setText(deepCopy.randomlyRemoveTeam().getNameOfTeam());
-        team14.setText(deepCopy.randomlyRemoveTeam().getNameOfTeam());
-        team15.setText(deepCopy.getTeam(0).getNameOfTeam());
+        for (int i = 0; i < 7; i++){
+            labels.get(i).setText("TBD");
+        }
+        for (int i = 7; i < 15; i++) {
+            labels.get(i).setText(deepCopy.randomlyRemoveTeam().getNameOfTeam());
+        }
+
+//        team1.setText("TBD");
+//        team2.setText("TBD");
+//        team3.setText("TBD");
+//        team4.setText("TBD");
+//        team5.setText("TBD");
+//        team6.setText("TBD");
+//        team7.setText("TBD");
+//        team8.setText(deepCopy.randomlyRemoveTeam().getNameOfTeam());
+//        team9.setText(deepCopy.randomlyRemoveTeam().getNameOfTeam());
+//        team10.setText(deepCopy.randomlyRemoveTeam().getNameOfTeam());
+//        team11.setText(deepCopy.randomlyRemoveTeam().getNameOfTeam());
+//        team12.setText(deepCopy.randomlyRemoveTeam().getNameOfTeam());
+//        team13.setText(deepCopy.randomlyRemoveTeam().getNameOfTeam());
+//        team14.setText(deepCopy.randomlyRemoveTeam().getNameOfTeam());
+//        team15.setText(deepCopy.getTeam(0).getNameOfTeam());
     }
 
     @FXML
@@ -91,7 +123,10 @@ public class EightTeamController {
     }
 
     @FXML
-    private void advanceTeam(ActionEvent event) {
+    private void advanceTeam(Label label) {
+        String teamName = label.getText();
+        int id = getLabelInt(label);
+        labels.get((id/2)-1).setText(teamName);
 
     }
 
@@ -99,8 +134,9 @@ public class EightTeamController {
         return bracket;
     }
 
-
-
+    public int getLabelInt(Label label){
+        return Integer.parseInt(label.getId().substring(4));
+    }
 
 
 

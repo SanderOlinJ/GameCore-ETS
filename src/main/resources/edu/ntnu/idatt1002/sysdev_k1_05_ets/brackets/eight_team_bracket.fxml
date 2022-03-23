@@ -1,128 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Line?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="523.0"
-      prefWidth="745.0" xmlns="http://javafx.com/javafx/17"
-      fx:controller="edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.EightTeamController"
-      xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="523.0" prefWidth="745.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.EightTeamController">
     <AnchorPane prefHeight="523.0" prefWidth="745.0">
-        <Pane layoutX="51.0" layoutY="265.0" prefHeight="42.0" prefWidth="84.0"
-              style="-fx-background-color: black;">
-            <Label fx:id="team12" layoutX="21.0" layoutY="13.0" text="Team12" textFill="#fcfbfb"/>
+        <Pane layoutX="51.0" layoutY="265.0" prefHeight="42.0" prefWidth="84.0" style="-fx-background-color: black;">
+            <Label fx:id="team12" layoutX="21.0" layoutY="13.0" text="Team12" textFill="#fcfbfb" />
         </Pane>
         <Pane layoutX="51.0" layoutY="15.0" prefHeight="42.0" prefWidth="84.0" style="-fx-background-color: black;">
-            <Label fx:id="team8" layoutX="24.0" layoutY="13.0" text="Team8" textFill="#fcfbfb"/>
+            <Label fx:id="team8" layoutX="24.0" layoutY="13.0" text="Team8" textFill="#fcfbfb" />
         </Pane>
         <Pane layoutX="51.0" layoutY="70.0" prefHeight="42.0" prefWidth="84.0" style="-fx-background-color: black;">
-            <Label fx:id="team9" layoutX="25.0" layoutY="13.0" text="Team9" textFill="#fcfbfb"/>
+            <Label fx:id="team9" layoutX="25.0" layoutY="13.0" text="Team9" textFill="#fcfbfb" />
         </Pane>
-        <Pane layoutX="51.0" layoutY="140.0" prefHeight="42.0" prefWidth="84.0"
-              style="-fx-background-color: black;">
-            <Label fx:id="team10" layoutX="21.0" layoutY="13.0" text="Team10" textFill="#fcfbfb"/>
+        <Pane layoutX="51.0" layoutY="140.0" prefHeight="42.0" prefWidth="84.0" style="-fx-background-color: black;">
+            <Label fx:id="team10" layoutX="21.0" layoutY="13.0" text="Team10" textFill="#fcfbfb" />
         </Pane>
-        <Pane layoutX="51.0" layoutY="195.0" prefHeight="42.0" prefWidth="84.0"
-              style="-fx-background-color: black;">
-            <Label fx:id="team11" layoutX="21.0" layoutY="13.0" text="Team11" textFill="#fcfbfb"/>
+        <Pane layoutX="51.0" layoutY="195.0" prefHeight="42.0" prefWidth="84.0" style="-fx-background-color: black;">
+            <Label fx:id="team11" layoutX="21.0" layoutY="13.0" text="Team11" textFill="#fcfbfb" />
         </Pane>
-        <Pane layoutX="51.0" layoutY="320.0" prefHeight="42.0" prefWidth="84.0"
-              style="-fx-background-color: black;">
-            <Label fx:id="team13" layoutX="21.0" layoutY="13.0" text="Team13" textFill="#fcfbfb"/>
+        <Pane layoutX="51.0" layoutY="320.0" prefHeight="42.0" prefWidth="84.0" style="-fx-background-color: black;">
+            <Label fx:id="team13" layoutX="21.0" layoutY="13.0" text="Team13" textFill="#fcfbfb" />
         </Pane>
-        <Pane layoutX="51.0" layoutY="390.0" prefHeight="42.0" prefWidth="84.0"
-              style="-fx-background-color: black;">
-            <Label fx:id="team14" layoutX="21.0" layoutY="13.0" text="Team14" textFill="#fcfbfb"/>
+        <Pane layoutX="51.0" layoutY="390.0" prefHeight="42.0" prefWidth="84.0" style="-fx-background-color: black;">
+            <Label fx:id="team14" layoutX="21.0" layoutY="13.0" text="Team14" textFill="#fcfbfb" />
         </Pane>
-        <Pane layoutX="51.0" layoutY="445.0" prefHeight="42.0" prefWidth="84.0"
-              style="-fx-background-color: black;">
-            <Label fx:id="team15" layoutX="21.0" layoutY="13.0" text="Team15" textFill="#fcfbfb"/>
+        <Pane layoutX="51.0" layoutY="445.0" prefHeight="42.0" prefWidth="84.0" style="-fx-background-color: black;">
+            <Label fx:id="team15" layoutX="21.0" layoutY="13.0" text="Team15" textFill="#fcfbfb" />
         </Pane>
-        <Pane layoutX="210.0" layoutY="43.0" prefHeight="42.0" prefWidth="84.0"
-              style="-fx-background-color: black;">
-            <Label fx:id="team4" layoutX="24.0" layoutY="13.0" text="Team4" textFill="#fcfbfb"/>
+        <Pane layoutX="210.0" layoutY="43.0" prefHeight="42.0" prefWidth="84.0" style="-fx-background-color: black;">
+            <Label fx:id="team4" layoutX="24.0" layoutY="13.0" text="Team4" textFill="#fcfbfb" />
         </Pane>
-        <Pane layoutX="210.0" layoutY="167.0" prefHeight="42.0" prefWidth="84.0"
-              style="-fx-background-color: black;">
-            <Label fx:id="team5" layoutX="21.0" layoutY="11.0" text="Team5" textFill="#fcfbfb"/>
+        <Pane layoutX="210.0" layoutY="167.0" prefHeight="42.0" prefWidth="84.0" style="-fx-background-color: black;">
+            <Label fx:id="team5" layoutX="21.0" layoutY="11.0" text="Team5" textFill="#fcfbfb" />
         </Pane>
-        <Pane layoutX="210.0" layoutY="294.0" prefHeight="42.0" prefWidth="84.0"
-              style="-fx-background-color: black;">
-            <Label fx:id="team6" layoutX="24.0" layoutY="13.0" text="Team6" textFill="#fcfbfb"/>
+        <Pane layoutX="210.0" layoutY="294.0" prefHeight="42.0" prefWidth="84.0" style="-fx-background-color: black;">
+            <Label fx:id="team6" layoutX="24.0" layoutY="13.0" text="Team6" textFill="#fcfbfb" />
         </Pane>
-        <Pane layoutX="211.0" layoutY="421.0" prefHeight="42.0" prefWidth="84.0"
-              style="-fx-background-color: black;">
-            <Label fx:id="team7" layoutX="24.0" layoutY="13.0" text="Team7" textFill="#fcfbfb"/>
+        <Pane layoutX="211.0" layoutY="421.0" prefHeight="42.0" prefWidth="84.0" style="-fx-background-color: black;">
+            <Label fx:id="team7" layoutX="24.0" layoutY="13.0" text="Team7" textFill="#fcfbfb" />
         </Pane>
-        <Pane layoutX="370.0" layoutY="105.0" prefHeight="42.0" prefWidth="84.0"
-              style="-fx-background-color: black;">
-            <Label fx:id="team2" layoutX="24.0" layoutY="13.0" text="Team2" textFill="#fcfbfb"/>
+        <Pane layoutX="370.0" layoutY="105.0" prefHeight="42.0" prefWidth="84.0" style="-fx-background-color: black;">
+            <Label fx:id="team2" layoutX="24.0" layoutY="13.0" text="Team2" textFill="#fcfbfb" />
         </Pane>
-        <Pane layoutX="370.0" layoutY="360.0" prefHeight="42.0" prefWidth="84.0"
-              style="-fx-background-color: black;">
-            <Label fx:id="team3" layoutX="24.0" layoutY="13.0" text="Team3" textFill="#fcfbfb"/>
+        <Pane layoutX="370.0" layoutY="360.0" prefHeight="42.0" prefWidth="84.0" style="-fx-background-color: black;">
+            <Label fx:id="team3" layoutX="24.0" layoutY="13.0" text="Team3" textFill="#fcfbfb" />
         </Pane>
-        <Pane layoutX="552.0" layoutY="233.0" prefHeight="42.0" prefWidth="84.0"
-              style="-fx-background-color: black;">
-            <Label fx:id="team1" layoutX="24.0" layoutY="13.0" text="Team1" textFill="#fcfbfb"/>
+        <Pane layoutX="552.0" layoutY="233.0" prefHeight="42.0" prefWidth="84.0" style="-fx-background-color: black;">
+            <Label fx:id="team1" layoutX="24.0" layoutY="13.0" text="Team1" textFill="#fcfbfb" />
         </Pane>
-        <Line endX="-7.399993896484375" endY="0.19999313354492188" layoutX="177.0" layoutY="36.0"
-              startX="-42.000030517578125" startY="0.19999313354492188"/>
-        <Line endX="-7.399993896484375" endY="0.19999313354492188" layoutX="176.0" layoutY="91.0"
-              startX="-42.000030517578125" startY="0.19999313354492188"/>
-        <Line endX="-7.399993896484375" endY="0.19999313354492188" layoutX="178.0" layoutY="160.0"
-              startX="-42.000030517578125" startY="0.19999313354492188"/>
-        <Line endX="-7.399993896484375" endY="0.19999313354492188" layoutX="178.0" layoutY="216.0"
-              startX="-42.000030517578125" startY="0.19999313354492188"/>
-        <Line endX="-7.399993896484375" endY="0.19999313354492188" layoutX="177.0" layoutY="286.0"
-              startX="-42.000030517578125" startY="0.19999313354492188"/>
-        <Line endX="-7.399993896484375" endY="0.19999313354492188" layoutX="177.0" layoutY="340.0"
-              startX="-42.000030517578125" startY="0.19999313354492188"/>
-        <Line endX="-7.399993896484375" endY="0.19999313354492188" layoutX="177.0" layoutY="411.0"
-              startX="-42.000030517578125" startY="0.19999313354492188"/>
-        <Line endX="-7.399993896484375" endY="0.19999313354492188" layoutX="177.0" layoutY="466.0"
-              startX="-42.000030517578125" startY="0.19999313354492188"/>
-        <Line endX="-30.899993896484375" endY="45.19999694824219" layoutX="202.0" layoutY="170.0"
-              startX="-30.899993896484375" startY="-9.300006866455078"/>
-        <Line endX="-30.899993896484375" endY="45.19999694824219" layoutX="201.0" layoutY="295.0"
-              startX="-30.899993896484375" startY="-9.300006866455078"/>
-        <Line endX="-30.899993896484375" endY="45.19999694824219" layoutX="201.0" layoutY="46.0"
-              startX="-30.899993896484375" startY="-9.300006866455078"/>
-        <Line endX="-30.899993896484375" endY="45.19999694824219" layoutX="201.0" layoutY="421.0"
-              startX="-30.899993896484375" startY="-9.300006866455078"/>
-        <Line endX="15.999969482421875" endY="0.1999969482421875" layoutX="194.0" layoutY="64.0"
-              startX="-24.399993896484375" startY="-0.050006866455078125"/>
-        <Line endX="15.999969482421875" endY="0.1999969482421875" layoutX="195.0" layoutY="188.0"
-              startX="-24.399993896484375" startY="-0.050006866455078125"/>
-        <Line endX="15.999969482421875" endY="0.1999969482421875" layoutX="195.0" layoutY="315.0"
-              startX="-24.399993896484375" startY="-0.050006866455078125"/>
-        <Line endX="15.999969482421875" endY="0.1999969482421875" layoutX="196.0" layoutY="442.0"
-              startX="-24.399993896484375" startY="-0.050006866455078125"/>
-        <Line endX="-7.399993896484375" endY="0.19999313354492188" layoutX="338.0" layoutY="64.0" startX="-44.0"
-              startY="0.1999969482421875"/>
-        <Line endX="-7.399993896484375" endY="0.19999313354492188" layoutX="337.0" layoutY="188.0"
-              startX="-42.000030517578125" startY="0.19999313354492188"/>
-        <Line endX="-31.9000244140625" endY="114.69999694824219" layoutX="362.0" layoutY="74.0"
-              startX="-30.899993896484375" startY="-9.300006866455078"/>
-        <Line endX="15.999969482421875" endY="0.1999969482421875" layoutX="356.0" layoutY="126.0"
-              startX="-24.399993896484375" startY="-0.050006866455078125"/>
-        <Line endX="-7.399993896484375" endY="0.19999313354492188" layoutX="339.0" layoutY="318.0" startX="-44.0"
-              startY="0.1999969482421875"/>
-        <Line endX="-7.399993896484375" endY="0.19999313354492188" layoutX="338.0" layoutY="442.0"
-              startX="-42.000030517578125" startY="0.19999313354492188"/>
-        <Line endX="-31.9000244140625" endY="114.69999694824219" layoutX="363.0" layoutY="328.0"
-              startX="-30.899993896484375" startY="-9.300006866455078"/>
-        <Line endX="15.999969482421875" endY="0.1999969482421875" layoutX="357.0" layoutY="380.0"
-              startX="-24.399993896484375" startY="-0.050006866455078125"/>
-        <Line endX="9.0" endY="0.1999969482421875" layoutX="499.0" layoutY="126.0" startX="-44.0"
-              startY="0.1999969482421875"/>
-        <Line endX="13.20001220703125" endY="0.199951171875" layoutX="494.0" layoutY="380.0"
-              startX="-42.000030517578125" startY="0.19999313354492188"/>
-        <Line endX="-31.0928955078125" endY="161.199951171875" layoutX="539.0" layoutY="219.0" startX="-30.5"
-              startY="-92.30000305175781"/>
-        <Line endX="20.0" endY="0.1999969482421875" layoutX="532.0" layoutY="254.0" startX="-24.399993896484375"
-              startY="-0.050006866455078125"/>
+        <Line endX="-7.399993896484375" endY="0.19999313354492188" layoutX="177.0" layoutY="36.0" startX="-42.000030517578125" startY="0.19999313354492188" />
+        <Line endX="-7.399993896484375" endY="0.19999313354492188" layoutX="176.0" layoutY="91.0" startX="-42.000030517578125" startY="0.19999313354492188" />
+        <Line endX="-7.399993896484375" endY="0.19999313354492188" layoutX="178.0" layoutY="160.0" startX="-42.000030517578125" startY="0.19999313354492188" />
+        <Line endX="-7.399993896484375" endY="0.19999313354492188" layoutX="178.0" layoutY="216.0" startX="-42.000030517578125" startY="0.19999313354492188" />
+        <Line endX="-7.399993896484375" endY="0.19999313354492188" layoutX="177.0" layoutY="286.0" startX="-42.000030517578125" startY="0.19999313354492188" />
+        <Line endX="-7.399993896484375" endY="0.19999313354492188" layoutX="177.0" layoutY="340.0" startX="-42.000030517578125" startY="0.19999313354492188" />
+        <Line endX="-7.399993896484375" endY="0.19999313354492188" layoutX="177.0" layoutY="411.0" startX="-42.000030517578125" startY="0.19999313354492188" />
+        <Line endX="-7.399993896484375" endY="0.19999313354492188" layoutX="177.0" layoutY="466.0" startX="-42.000030517578125" startY="0.19999313354492188" />
+        <Line endX="-30.899993896484375" endY="45.19999694824219" layoutX="202.0" layoutY="170.0" startX="-30.899993896484375" startY="-9.300006866455078" />
+        <Line endX="-30.899993896484375" endY="45.19999694824219" layoutX="201.0" layoutY="295.0" startX="-30.899993896484375" startY="-9.300006866455078" />
+        <Line endX="-30.899993896484375" endY="45.19999694824219" layoutX="201.0" layoutY="46.0" startX="-30.899993896484375" startY="-9.300006866455078" />
+        <Line endX="-30.899993896484375" endY="45.19999694824219" layoutX="201.0" layoutY="421.0" startX="-30.899993896484375" startY="-9.300006866455078" />
+        <Line endX="15.999969482421875" endY="0.1999969482421875" layoutX="194.0" layoutY="64.0" startX="-24.399993896484375" startY="-0.050006866455078125" />
+        <Line endX="15.999969482421875" endY="0.1999969482421875" layoutX="195.0" layoutY="188.0" startX="-24.399993896484375" startY="-0.050006866455078125" />
+        <Line endX="15.999969482421875" endY="0.1999969482421875" layoutX="195.0" layoutY="315.0" startX="-24.399993896484375" startY="-0.050006866455078125" />
+        <Line endX="15.999969482421875" endY="0.1999969482421875" layoutX="196.0" layoutY="442.0" startX="-24.399993896484375" startY="-0.050006866455078125" />
+        <Line endX="-7.399993896484375" endY="0.19999313354492188" layoutX="338.0" layoutY="64.0" startX="-44.0" startY="0.1999969482421875" />
+        <Line endX="-7.399993896484375" endY="0.19999313354492188" layoutX="337.0" layoutY="188.0" startX="-42.000030517578125" startY="0.19999313354492188" />
+        <Line endX="-31.9000244140625" endY="114.69999694824219" layoutX="362.0" layoutY="74.0" startX="-30.899993896484375" startY="-9.300006866455078" />
+        <Line endX="15.999969482421875" endY="0.1999969482421875" layoutX="356.0" layoutY="126.0" startX="-24.399993896484375" startY="-0.050006866455078125" />
+        <Line endX="-7.399993896484375" endY="0.19999313354492188" layoutX="339.0" layoutY="318.0" startX="-44.0" startY="0.1999969482421875" />
+        <Line endX="-7.399993896484375" endY="0.19999313354492188" layoutX="338.0" layoutY="442.0" startX="-42.000030517578125" startY="0.19999313354492188" />
+        <Line endX="-31.9000244140625" endY="114.69999694824219" layoutX="363.0" layoutY="328.0" startX="-30.899993896484375" startY="-9.300006866455078" />
+        <Line endX="15.999969482421875" endY="0.1999969482421875" layoutX="357.0" layoutY="380.0" startX="-24.399993896484375" startY="-0.050006866455078125" />
+        <Line endX="9.0" endY="0.1999969482421875" layoutX="499.0" layoutY="126.0" startX="-44.0" startY="0.1999969482421875" />
+        <Line endX="13.20001220703125" endY="0.199951171875" layoutX="494.0" layoutY="380.0" startX="-42.000030517578125" startY="0.19999313354492188" />
+        <Line endX="-31.0928955078125" endY="161.199951171875" layoutX="539.0" layoutY="219.0" startX="-30.5" startY="-92.30000305175781" />
+        <Line endX="20.0" endY="0.1999969482421875" layoutX="532.0" layoutY="254.0" startX="-24.399993896484375" startY="-0.050006866455078125" />
+      <Button layoutX="598.0" layoutY="450.0" mnemonicParsing="false" onAction="#randomize" text="Randomize" />
     </AnchorPane>
 </Pane>

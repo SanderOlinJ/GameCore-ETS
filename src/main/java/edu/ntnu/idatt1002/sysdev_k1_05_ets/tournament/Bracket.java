@@ -70,12 +70,6 @@ public class Bracket {
 
     }
 
-
-    public void advanceTeam(Team team){
-        int position = teams.indexOf(team);
-        teams.set(position/2, team);
-    }
-
     public Team getTeamByName(String teamName){
         for (Team team : teams){
             if (team.getNameOfTeam().equals(teamName)){
@@ -95,7 +89,7 @@ public class Bracket {
 
     public Team randomlyRemoveTeam() {
         Random random = new Random();
-        Team returnTeam = this.getTeam(random.nextInt(0,getNumberOfTeams()-1));
+        Team returnTeam = this.getTeam(random.nextInt(0,getNumberOfTeams()));
         removeTeam(returnTeam);
         return returnTeam;
     }
