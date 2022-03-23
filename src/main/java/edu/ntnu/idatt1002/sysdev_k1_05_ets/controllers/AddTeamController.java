@@ -18,7 +18,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class AddTeamController {
-    ArrayList<Team> allTeams = new ArrayList<>();
 
     private Scene scene;
     private Parent root;
@@ -59,14 +58,14 @@ public class AddTeamController {
         else {
             warningLabel.setText("");
             if (playersNameField.getText().isBlank()){
-                allTeams.add(new Team(teamNameField.getText()));
+                EightTeamController.getBracket().addTeam(new Team(teamNameField.getText()));
                 teamNameField.setText("");
             } else {
                 String[] players = playersNameField.getText().split("\n");
                 List<String> returnList = Arrays.asList(players);
                 ArrayList<String> returnListFinal = new ArrayList<String>();
                 returnListFinal.addAll(returnList);
-                allTeams.add(new Team(returnListFinal, teamNameField.getText()));
+                EightTeamController.getBracket().addTeam(new Team(returnListFinal, teamNameField.getText()));
                 System.out.println(teamNameField.getText());
                 for (String string : players){
                     System.out.println(string);
@@ -80,7 +79,4 @@ public class AddTeamController {
 
     }
 
-    public ArrayList<Team> getAllTeams() {
-        return allTeams;
-    }
 }

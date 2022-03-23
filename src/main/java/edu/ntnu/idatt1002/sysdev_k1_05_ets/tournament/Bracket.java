@@ -1,6 +1,7 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Bracket {
 
@@ -16,6 +17,7 @@ public class Bracket {
      */
     public Bracket(String nameOfTournament) {
         this.nameOfTournament = nameOfTournament;
+        this.teams = new ArrayList<>();
     }
 
     /**
@@ -81,5 +83,20 @@ public class Bracket {
             }
         }
         return null;
+    }
+
+    public ArrayList<Team> getTeams() {
+        return teams;
+    }
+
+    public void removeTeam(Team team) {
+        this.teams.remove(team);
+    }
+
+    public Team randomlyRemoveTeam() {
+        Random random = new Random();
+        Team returnTeam = this.getTeam(random.nextInt(0,getNumberOfTeams()-1));
+        removeTeam(returnTeam);
+        return returnTeam;
     }
 }

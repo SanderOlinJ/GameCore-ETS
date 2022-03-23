@@ -7,9 +7,7 @@ public class Team {
     private String nameOfTeam;
 
     public Team(ArrayList<String> members, String nameOfTeam) {
-        if (members == null || members.isEmpty()) {
-            throw new IllegalArgumentException("Team members are required to register a team!");
-        } if (nameOfTeam == null || nameOfTeam.isEmpty()) {
+        if (nameOfTeam == null || nameOfTeam.isEmpty()) {
             throw new IllegalArgumentException("Team name is required!");
         }
         this.members = members;

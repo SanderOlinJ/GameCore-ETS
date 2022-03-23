@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 public class EightTeamController {
 
-    private Bracket bracket;
+    private static Bracket bracket = new Bracket("Bracket");
 
     @FXML
     private Label team1;
@@ -51,14 +51,17 @@ public class EightTeamController {
     private Label team14;
     @FXML
     private Label team15;
-    @FXML
-    private Label welcomeText;
-
-    @FXML
-    private ScrollPane scrollPane;
 
 
-    public void initialize(){
+
+
+    public void randomize(){
+
+        Bracket deepCopy = new Bracket("Deep Copy");
+        for (Team team : bracket.getTeams()) {
+            deepCopy.addTeam(new Team(team.getMembers(), team.getNameOfTeam()));
+        }
+
         System.out.println(team1.getText());
         team1.setText("TBD");
         team2.setText("TBD");
@@ -67,14 +70,14 @@ public class EightTeamController {
         team5.setText("TBD");
         team6.setText("TBD");
         team7.setText("TBD");
-        team8.setText(bracket.getTeam(8).getNameOfTeam());
-        team9.setText(bracket.getTeam(9).getNameOfTeam());
-        team10.setText(bracket.getTeam(10).getNameOfTeam());
-        team11.setText(bracket.getTeam(11).getNameOfTeam());
-        team12.setText(bracket.getTeam(12).getNameOfTeam());
-        team13.setText(bracket.getTeam(13).getNameOfTeam());
-        team14.setText(bracket.getTeam(14).getNameOfTeam());
-        team14.setText(bracket.getTeam(15).getNameOfTeam());
+        team8.setText(deepCopy.randomlyRemoveTeam().getNameOfTeam());
+        team9.setText(deepCopy.randomlyRemoveTeam().getNameOfTeam());
+        team10.setText(deepCopy.randomlyRemoveTeam().getNameOfTeam());
+        team11.setText(deepCopy.randomlyRemoveTeam().getNameOfTeam());
+        team12.setText(deepCopy.randomlyRemoveTeam().getNameOfTeam());
+        team13.setText(deepCopy.randomlyRemoveTeam().getNameOfTeam());
+        team14.setText(deepCopy.randomlyRemoveTeam().getNameOfTeam());
+        team15.setText(deepCopy.getTeam(0).getNameOfTeam());
     }
 
     @FXML
@@ -88,13 +91,14 @@ public class EightTeamController {
     }
 
     @FXML
-    private void addTeams(ActionEvent event, ArrayList<Team> teams) throws IOException {
-        VBox root = new VBox();
-        for (Team team : teams) {
-            root.getChildren().add(new Label(team.getNameOfTeam()));
-        }
-        root.setSpacing(10);
-        scrollPane.setContent(root);
+    private void advanceTeam(ActionEvent event) {
+        
     }
+
+    public static Bracket getBracket(){
+        return bracket;
+    }
+
+
 
 }
