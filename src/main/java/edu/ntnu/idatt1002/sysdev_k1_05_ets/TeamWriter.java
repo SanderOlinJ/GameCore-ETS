@@ -24,10 +24,11 @@ public class TeamWriter {
             for (Team team : listOfTeams){
                 try {
                     StringBuilder stringBuilder = new StringBuilder();
-                    stringBuilder.append(team.getNameOfTeam());
+                    stringBuilder.append(team.getNameOfTeam() + DELIMITER);
                     for (int i = 0; i < team.getMembers().size(); i++){
                         stringBuilder.append(team.getMembers().get(i) + DELIMITER);
                     }
+                    stringBuilder.deleteCharAt(stringBuilder.length()-1);
                     stringBuilder.append(NEWLINE);
                     fileWriter.write(stringBuilder.toString());
                 }catch (IOException e){
