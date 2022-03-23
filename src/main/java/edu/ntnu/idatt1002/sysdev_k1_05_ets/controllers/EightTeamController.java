@@ -92,12 +92,15 @@ public class EightTeamController {
 
     @FXML
     private void advanceTeam(ActionEvent event) {
-        
+
     }
 
     public static Bracket getBracket(){
         return bracket;
     }
+
+
+
 
 
 
