@@ -22,7 +22,6 @@ public class AddTeamController {
     private Scene scene;
     private Parent root;
     private Stage stage;
-    private ArrayList<Team> addedTeams;
 
     @FXML
     TextField teamNameField;
