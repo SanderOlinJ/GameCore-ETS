@@ -63,6 +63,9 @@ public class EightTeamController {
     private Button randomizeButton;
 
     @FXML
+    private Button finishButton;
+
+    @FXML
     public void initialize(){
         labels.add(team1);
         labels.add(team2);
@@ -83,6 +86,7 @@ public class EightTeamController {
         for (Label label : labels) {
             label.setOnMouseClicked(mouseEvent -> {advanceTeam(label);});
         }
+        finishButton.setDisable(true);
     }
 
     public void randomize(){
@@ -131,6 +135,9 @@ public class EightTeamController {
         String teamName = label.getText();
         int id = getLabelInt(label);
         labels.get((id/2)-1).setText(teamName);
+        if (!(team1.getText() =="TBD")){
+            finishButton.setDisable(false);
+        }
         randomizeButton.setDisable(true);
     }
 
