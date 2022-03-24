@@ -9,11 +9,11 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="412.0" prefWidth="673.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.MainPageController">
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.MainPageController">
    <center>
-      <AnchorPane prefHeight="352.0" prefWidth="646.0" BorderPane.alignment="CENTER">
+      <AnchorPane>
          <children>
-            <VBox layoutX="271.0" layoutY="97.0" prefHeight="312.0" prefWidth="240.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="100.0">
+            <VBox alignment="CENTER" layoutY="8.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="20.0">
                <children>
                   <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0.0 , 0 );;">
                      <image>
@@ -23,20 +23,24 @@
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                      </VBox.margin>
                   </ImageView>
-                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#onCreateNewTournamentClick" text="Create new tournament">
+                  <Button mnemonicParsing="false" onAction="#onCreateNewTournamentClick" text="Create new tournament">
                      <VBox.margin>
-                        <Insets bottom="20.0" left="50.0" right="20.0" top="20.0" />
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                      </VBox.margin>
                   </Button>
                </children>
+               <padding>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </padding>
             </VBox>
+
          </children>
       </AnchorPane>
    </center>
    <left>
-      <Region prefHeight="200.0" prefWidth="30.0" BorderPane.alignment="CENTER" />
+      <Region prefHeight="665.0" prefWidth="30.0" />
    </left>
    <right>
-      <Region prefHeight="200.0" prefWidth="30.0" BorderPane.alignment="CENTER" />
+      <Region prefHeight="665.0" prefWidth="30.0" />
    </right>
 </BorderPane>
