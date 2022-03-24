@@ -27,7 +27,7 @@ public class Bracket {
      * @param gameName
      * @param numberOfTeams
      */
-    public Bracket(ArrayList<Team> teams, String name, String gameName, int numberOfTeams) {
+    public Bracket(ArrayList<Team> teams, String nameOfTeam, String gameName, int numberOfTeams) {
         if (numberOfTeams > 32) {
             throw new IllegalArgumentException("Max number of teams = 32");
         }
@@ -35,7 +35,7 @@ public class Bracket {
             throw new IllegalArgumentException("Minimum number of teams = 2");
         }
         this.teams = new ArrayList<>();
-        this.nameOfTournament = name;
+        this.nameOfTournament = nameOfTeam;
         this.gameName = gameName;
         this.bracketSize = getNextPowerOf2(numberOfTeams);
         for(int i = 0; i <= bracketSize/2; i++){
