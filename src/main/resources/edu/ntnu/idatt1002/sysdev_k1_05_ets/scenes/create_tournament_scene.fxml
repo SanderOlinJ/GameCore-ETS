@@ -17,33 +17,31 @@
                 <VBox alignment="CENTER" layoutY="8.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="20.0">
                     <children>
                         <Label text="Tournament Name" />
-                        <TextField fx:id="tournamentNameField" prefHeight="25.0" prefWidth="141.0" promptText="tournament name">
+                        <TextField fx:id="tournamentNameField" prefHeight="25.0" prefWidth="141.0" promptText="Tournament name">
                             <VBox.margin>
                                 <Insets bottom="20.0" left="50.0" right="50.0" top="5.0" />
                             </VBox.margin>
                         </TextField>
-                        <Label prefHeight="17.0" prefWidth="112.0" text="teams on each line" />
-                        <TextArea fx:id="teamsNameFieldWithPlayerNames" prefHeight="200.0" prefWidth="200.0" promptText="teams with players on each line">
+                        <Label prefHeight="17.0" prefWidth="112.0" text="Teams on each line" />
+                        <TextArea fx:id="teamsNameFieldWithPlayerNames" prefHeight="200.0" prefWidth="200.0" promptText="Teams with players on each line">
                             <VBox.margin>
                                 <Insets bottom="20.0" left="20.0" right="20.0" top="5.0" />
                             </VBox.margin>
                         </TextArea>
-                        <Button mnemonicParsing="false" onAction="#onLoadTournamentClick" prefHeight="25.0" prefWidth="155.0" text="Load tournament">
+                        <Button mnemonicParsing="false" onAction="#onLoadTournamentClick" prefHeight="26.0" prefWidth="160.0" text="Load previous tournament">
                             <VBox.margin>
                                 <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                             </VBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" onAction="#addTeamScene" prefHeight="34.0" prefWidth="150.0" text="Finish tournament setup">
+                        <Button mnemonicParsing="false" onAction="#addTeamScene" prefHeight="17.0" prefWidth="150.0" text="Finish tournament setup">
                             <VBox.margin>
                                 <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                             </VBox.margin>
                         </Button>
-                        <Label fx:id="warningLabel" textFill="RED">
-                            <VBox.margin>
-                                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                            </VBox.margin>
-                        </Label>
-                        <Button mnemonicParsing="false" text="Return to main scene" />
+                        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="138.0" text="Return to main scene" onAction="#switchToMain">
+                     <VBox.margin>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </VBox.margin></Button>
                     </children>
                     <padding>
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
@@ -54,9 +52,9 @@
         </AnchorPane>
     </center>
     <left>
-        <Region prefHeight="665.0" prefWidth="30.0" style="-fx-background-color: #000;" />
+        <Region prefHeight="665.0" prefWidth="30.0" />
     </left>
     <right>
-        <Region prefHeight="665.0" prefWidth="30.0" style="-fx-background-color: #000;" />
+        <Region prefHeight="665.0" prefWidth="30.0" />
     </right>
 </BorderPane>

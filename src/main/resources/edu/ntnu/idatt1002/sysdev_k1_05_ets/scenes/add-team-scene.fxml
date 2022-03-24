@@ -54,9 +54,9 @@
       </AnchorPane>
    </center>
    <left>
-      <Region prefHeight="665.0" prefWidth="30.0" style="-fx-background-color: #000;" />
+      <Region prefHeight="665.0" prefWidth="30.0" />
    </left>
    <right>
-      <Region prefHeight="665.0" prefWidth="30.0" style="-fx-background-color: #000;" />
+      <Region prefHeight="665.0" prefWidth="30.0" />
    </right>
 </BorderPane>
