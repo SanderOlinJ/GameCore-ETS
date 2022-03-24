@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
@@ -57,6 +58,9 @@ public class EightTeamController {
     private Label team14;
     @FXML
     private Label team15;
+
+    @FXML
+    private Button randomizeButton;
 
     @FXML
     public void initialize(){
@@ -127,7 +131,7 @@ public class EightTeamController {
         String teamName = label.getText();
         int id = getLabelInt(label);
         labels.get((id/2)-1).setText(teamName);
-
+        randomizeButton.setDisable(true);
     }
 
     public static Bracket getBracket(){
