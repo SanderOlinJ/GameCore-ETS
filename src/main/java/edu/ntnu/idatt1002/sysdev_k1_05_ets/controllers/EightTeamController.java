@@ -134,7 +134,7 @@ public class EightTeamController {
         String teamName = label.getText();
         int id = getLabelInt(label);
         labels.get((id/2)-1).setText(teamName);
-        if (!(team1.getText() =="TBD")){
+        if (!(team1.getText().equals("TBD"))){
             finishButton.setDisable(false);
         }
         randomizeButton.setDisable(true);
