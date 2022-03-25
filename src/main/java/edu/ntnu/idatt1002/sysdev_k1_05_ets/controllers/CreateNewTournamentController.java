@@ -62,6 +62,7 @@ public class CreateNewTournamentController implements Initializable {
 
         Parent root = FXMLLoader.load(MainApplication.class.getResource("scenes/add-team-scene.fxml"));
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        stage.setResizable(false);
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
