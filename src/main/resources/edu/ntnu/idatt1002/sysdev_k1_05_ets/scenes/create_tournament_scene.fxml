@@ -2,13 +2,14 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.CreateNewTournamentController">
     <center>
@@ -16,32 +17,25 @@
             <children>
                 <VBox alignment="CENTER" layoutY="8.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="20.0">
                     <children>
-                        <Label text="Tournament Name" />
-                        <TextField fx:id="tournamentNameField" prefHeight="25.0" prefWidth="141.0" promptText="Tournament name">
+                        <Label text="Tournament Creation">
+                            <font>
+                                <Font size="19.0" />
+                            </font></Label>
+                        <TextField fx:id="tournamentNameField" maxWidth="300.0" prefHeight="25.0" prefWidth="141.0" promptText="Tournament name">
                             <VBox.margin>
                                 <Insets bottom="20.0" left="50.0" right="50.0" top="5.0" />
                             </VBox.margin>
                         </TextField>
-                        <Label prefHeight="17.0" prefWidth="112.0" text="Teams on each line" />
-                        <TextArea fx:id="teamsNameFieldWithPlayerNames" prefHeight="200.0" prefWidth="200.0" promptText="Teams with players on each line">
+                        <ComboBox fx:id="bracketFormat" prefHeight="27.0" prefWidth="136.0" promptText="Bracket format" />
+                        <Button mnemonicParsing="false" onAction="#addTeamScene" prefHeight="32.0" prefWidth="160.0" text="Create tournament">
                             <VBox.margin>
-                                <Insets bottom="20.0" left="20.0" right="20.0" top="5.0" />
-                            </VBox.margin>
-                        </TextArea>
-                        <Button mnemonicParsing="false" onAction="#onLoadTournamentClick" prefHeight="26.0" prefWidth="160.0" text="Load previous tournament">
-                            <VBox.margin>
-                                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                <Insets bottom="10.0" left="20.0" right="20.0" top="40.0" />
                             </VBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" onAction="#addTeamScene" prefHeight="17.0" prefWidth="150.0" text="Finish tournament setup">
+                        <Button mnemonicParsing="false" onAction="#switchToMain" prefHeight="31.0" prefWidth="160.0" text="Return to main scene">
                             <VBox.margin>
                                 <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                            </VBox.margin>
-                        </Button>
-                        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="138.0" text="Return to main scene" onAction="#switchToMain">
-                     <VBox.margin>
-                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                     </VBox.margin></Button>
+                            </VBox.margin></Button>
                     </children>
                     <padding>
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
