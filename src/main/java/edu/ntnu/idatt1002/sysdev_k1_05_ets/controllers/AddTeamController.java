@@ -20,8 +20,10 @@ import java.util.List;
 public class AddTeamController {
 
     private Scene scene;
-    private Parent root;
     private Stage stage;
+
+
+    private static int maxTeams;
 
     @FXML
     TextField teamNameField;
@@ -54,6 +56,12 @@ public class AddTeamController {
         if (teamNameField.getText().strip().equals("")){
             warningLabel.setText("Invalid team name.");
         }
+        //check if max amount of teams has been exceeded
+        if(EightTeamController.getBracket().getTeams().size() > maxTeams){
+            warningLabel.setText("You have reached the maximum number of teams for this tournament. \n"
+            + "max teams: "+maxTeams);
+            return;
+        }
 
         else {
             warningLabel.setText("");
@@ -74,9 +82,12 @@ public class AddTeamController {
                 teamNameField.setText("");
 
             }
-
         }
+    }
 
+
+    public static void setMaxTeams(int maxNrOfTeams) {
+        maxTeams = maxNrOfTeams;
     }
 
 }

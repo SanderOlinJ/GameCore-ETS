@@ -11,6 +11,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -31,6 +32,8 @@ public class CreateNewTournamentController implements Initializable {
     TextArea teamsNameFieldWithPlayerNames;
     @FXML
     ComboBox bracketFormat;
+    @FXML
+    Label warningLabel;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -45,6 +48,18 @@ public class CreateNewTournamentController implements Initializable {
 
     @FXML
     public void addTeamScene(ActionEvent event) throws IOException {
+        //------ parse the current information of combobox to addTeamScene -----
+        String bracketChoice = String.valueOf(bracketFormat.getValue());
+
+        try {
+           int formatNr = Integer.parseInt(bracketChoice);
+        } catch (NumberFormatException nfe) {
+            warningLabel.setText("You have to choose a tournament format");
+            return;
+        }
+
+        AddTeamController.setMaxTeams(Integer.parseInt(bracketChoice));
+
         Parent root = FXMLLoader.load(MainApplication.class.getResource("scenes/add-team-scene.fxml"));
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
