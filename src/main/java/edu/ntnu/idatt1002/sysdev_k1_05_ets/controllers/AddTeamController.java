@@ -57,7 +57,7 @@ public class AddTeamController {
             warningLabel.setText("Invalid team name.");
         }
         //check if max amount of teams has been exceeded
-        if(EightTeamController.getBracket().getTeams().size() > maxTeams){
+        if(EightTeamController.getBracket().getTeams().size() >= maxTeams){
             warningLabel.setText("You have reached the maximum number of teams for this tournament. \n"
             + "max teams: "+maxTeams);
             return;
