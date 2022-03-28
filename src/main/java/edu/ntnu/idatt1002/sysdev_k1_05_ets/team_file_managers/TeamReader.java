@@ -16,10 +16,10 @@ public class TeamReader {
 
     public TeamReader(){}
 
-    public static ArrayList<Team> readFile(String tournamentName) throws IOException{
+    public ArrayList<Team> readFile(String fileName) throws IOException{
         ArrayList<Team> returnList = new ArrayList<>();
         try (Scanner scanner = new Scanner("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
-                "teamFiles/"+tournamentName+".csv")){
+                "teamFiles/" + fileName + ".csv")){
             if (!scanner.hasNext()){
                 throw new IOException("File is empty");
             }

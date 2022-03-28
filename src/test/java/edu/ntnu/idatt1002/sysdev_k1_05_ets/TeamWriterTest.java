@@ -20,6 +20,6 @@ public class TeamWriterTest {
         ArrayList<Team> listOfTeams = new ArrayList<>();
         listOfTeams.add(team1);
         listOfTeams.add(team2);
-        TeamWriter.writeFile(listOfTeams);
+        TeamWriter.writeFile(listOfTeams,"8_team_file");
     }
 }

@@ -1,5 +1,6 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.MainApplication;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.team_file_managers.TeamWriter;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,6 +22,7 @@ public class AddTeamController {
 
     private Scene scene;
     private Stage stage;
+    private TeamWriter teamWriter;
 
 
     private static int maxTeams;
@@ -52,7 +54,7 @@ public class AddTeamController {
         stage.show();
     }
 
-    public void addTeam(ActionEvent actionEvent){
+    public void addTeam(ActionEvent actionEvent) throws IOException {
         if (teamNameField.getText().strip().equals("")){
             warningLabel.setText("Invalid team name.");
         }
@@ -73,7 +75,11 @@ public class AddTeamController {
                 List<String> returnList = Arrays.asList(players);
                 ArrayList<String> returnListFinal = new ArrayList<String>();
                 returnListFinal.addAll(returnList);
-                EightTeamController.getBracket().addTeam(new Team(returnListFinal, teamNameField.getText()));
+                Team addedTeam = new Team(returnListFinal, teamNameField.getText());
+                EightTeamController.getBracket().addTeam(addedTeam);
+                ArrayList<Team> writeTeamList = new ArrayList<>();
+                writeTeamList.add(addedTeam);
+                TeamWriter.writeFile(writeTeamList,"all_Teams");
                 System.out.println(teamNameField.getText());
                 for (String string : players){
                     System.out.println(string);

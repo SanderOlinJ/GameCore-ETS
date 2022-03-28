@@ -4,9 +4,7 @@ package edu.ntnu.idatt1002.sysdev_k1_05_ets.team_file_managers;
 
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
 public class TeamWriter {
@@ -15,18 +13,18 @@ public class TeamWriter {
 
     public TeamWriter(){}
 
-    public static void writeFile(ArrayList<Team> listOfTeams) throws IOException {
+    public static void writeFile(ArrayList<Team> listOfTeams, String fileName) throws IOException {
         if (listOfTeams == null || listOfTeams.isEmpty()){
             throw new IOException("List of teams cannot be empty");
         }
         try (FileWriter fileWriter = new FileWriter("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
-                "teamFiles/8_team_file.csv")){
+                "teamFiles/" + fileName + ".csv",true)){
             for (Team team : listOfTeams){
                 try {
                     StringBuilder stringBuilder = new StringBuilder();
-                    stringBuilder.append(team.getNameOfTeam() + DELIMITER);
+                    stringBuilder.append(team.getNameOfTeam()).append(DELIMITER);
                     for (int i = 0; i < team.getMembers().size(); i++){
-                        stringBuilder.append(team.getMembers().get(i) + DELIMITER);
+                        stringBuilder.append(team.getMembers().get(i)).append(DELIMITER);
                     }
                     stringBuilder.deleteCharAt(stringBuilder.length()-1);
                     stringBuilder.append(NEWLINE);
