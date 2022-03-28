@@ -16,6 +16,9 @@ public class Bracket {
      * @param nameOfTournament
      */
     public Bracket(String nameOfTournament) {
+        if (nameOfTournament == null || nameOfTournament.isEmpty()) {
+            throw new IllegalArgumentException("Tournament name cannot be empty!");
+        }
         this.nameOfTournament = nameOfTournament;
         this.teams = new ArrayList<>();
     }
