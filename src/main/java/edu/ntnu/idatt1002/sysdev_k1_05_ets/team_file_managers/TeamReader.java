@@ -16,10 +16,9 @@ public class TeamReader {
 
     public TeamReader(){}
 
-    public ArrayList<Team> readFile(String fileName) throws IOException{
+    public ArrayList<Team> readFile(File file) throws IOException{
         ArrayList<Team> returnList = new ArrayList<>();
-        try (Scanner scanner = new Scanner("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
-                "teamFiles/" + fileName + ".csv")){
+        try (Scanner scanner = new Scanner(file)){
             if (!scanner.hasNext()){
                 throw new IOException("File is empty");
             }

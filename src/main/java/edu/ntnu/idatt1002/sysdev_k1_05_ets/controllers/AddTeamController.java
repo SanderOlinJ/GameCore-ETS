@@ -1,5 +1,6 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.MainApplication;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.team_file_managers.TeamReader;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.team_file_managers.TeamWriter;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
 import javafx.event.ActionEvent;
@@ -9,10 +10,14 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -22,7 +27,7 @@ public class AddTeamController {
 
     private Scene scene;
     private Stage stage;
-    private TeamWriter teamWriter;
+
 
 
     private static int maxTeams;
@@ -35,6 +40,13 @@ public class AddTeamController {
 
     @FXML
     Label warningLabel;
+
+    @FXML
+    AnchorPane paneOfTeams;
+
+    @FXML
+    ScrollPane scrollPane;
+
 
 
     @FXML
@@ -54,6 +66,18 @@ public class AddTeamController {
         stage.show();
     }
 
+    @FXML
+    public void initialize() throws IOException {
+        TeamReader readExistingTeams = new TeamReader();
+        ArrayList<Team> existingTeams = new ArrayList<>();
+        existingTeams.addAll(readExistingTeams.readFile(new File("src/main/resources/edu/ntnu/idatt1002" +
+                "/sysdev_k1_05_ets/" + "teamFiles/all_Teams.csv")));
+
+        for (Team team : existingTeams){
+
+        }
+    }
+
     public void addTeam(ActionEvent actionEvent) throws IOException {
         if (teamNameField.getText().strip().equals("")){
             warningLabel.setText("Invalid team name.");
@@ -62,7 +86,6 @@ public class AddTeamController {
         if(EightTeamController.getBracket().getTeams().size() >= maxTeams){
             warningLabel.setText("You have reached the maximum number of teams for this tournament. \n"
             + "max teams: "+maxTeams);
-            return;
         }
 
         else {
@@ -89,6 +112,10 @@ public class AddTeamController {
 
             }
         }
+    }
+
+    public void addTeamExisting(){
+
     }
 
 

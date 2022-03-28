@@ -35,7 +35,7 @@ public class CreateNewTournamentController implements Initializable {
     @FXML
     Label warningLabel;
 
-    @Override
+    @FXML
     public void initialize(URL url, ResourceBundle resourceBundle) {
     bracketFormat.getItems().addAll("4","8","16");
     }
