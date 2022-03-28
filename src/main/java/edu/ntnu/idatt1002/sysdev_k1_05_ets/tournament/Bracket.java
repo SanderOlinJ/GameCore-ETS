@@ -26,7 +26,6 @@ public class Bracket {
     /**
      * Constructor that creates a bracket by passing in teams, name, game name and number of teams participating
      * @param teams
-     * @param name
      * @param gameName
      * @param numberOfTeams
      */
@@ -92,7 +91,7 @@ public class Bracket {
 
     public Team randomlyRemoveTeam() {
         Random random = new Random();
-        Team returnTeam = this.getTeam(random.nextInt(0,getNumberOfTeams()));
+        Team returnTeam = this.getTeam(random.nextInt(getNumberOfTeams()));
         removeTeam(returnTeam);
         return returnTeam;
     }

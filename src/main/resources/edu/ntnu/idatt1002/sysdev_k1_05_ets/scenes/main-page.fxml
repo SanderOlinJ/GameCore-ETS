@@ -6,18 +6,22 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.MainPageController">
+<BorderPane prefHeight="784.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.MainPageController">
     <top>
-        <VBox prefHeight="27.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+        <VBox prefHeight="24.0" prefWidth="900.0" BorderPane.alignment="CENTER">
             <children>
-                <MenuBar>
+                <MenuBar prefHeight="30.0" prefWidth="900.0" style="-fx-background-color: white;">
                     <menus>
                         <Menu fx:id="homeButton" disable="true" mnemonicParsing="false" onAction="#onHomeButtonPressed" text="Home" />
                         <Menu fx:id="tournamentsButton" mnemonicParsing="false" text="Tournaments">
@@ -44,22 +48,20 @@
     <center>
         <VBox BorderPane.alignment="CENTER">
             <children>
-                <HBox prefWidth="900.0" style="-fx-background-color: #30343c;">
+                <HBox maxHeight="250.0" minHeight="100.0" minWidth="900.0" prefHeight="200.0" prefWidth="900.0" style="-fx-background-color: #30343c;">
                     <children>
-                        <Pane prefHeight="0.0" prefWidth="426.0" HBox.hgrow="ALWAYS">
-                            <children>
-                                <Text fill="WHITE" layoutX="14.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ets" wrappingWidth="192.21465301513672">
-                                    <font>
-                                        <Font size="92.0" />
-                                    </font>
-                                </Text>
-                            </children>
-                        </Pane>
-                        <Button fx:id="createNewTournamentButton" alignment="CENTER_RIGHT"
-                                mnemonicParsing="false" onAction="#onCreateNewTournamentButtonPressed"
-                                style="-fx-background-color: orange;" text="Create new tournament">
+                  <ImageView fx:id="gameCoreLogo" fitHeight="86.0" fitWidth="587.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
+                     <image>
+                        <Image url="@../Images/GameCoreETSLogo2.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="10.0" top="15.0" />
+                     </HBox.margin>
+                  </ImageView>
+                        <Pane maxHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="730.0" HBox.hgrow="ALWAYS" />
+                        <Button fx:id="createNewTournamentButton" alignment="CENTER" maxHeight="40.0" maxWidth="230.0" minHeight="40.0" minWidth="230.0" mnemonicParsing="false" onAction="#onCreateNewTournamentButtonPressed" prefHeight="40.0" prefWidth="230.0" style="-fx-background-color: ff8c00;" text="Create new tournament" textFill="WHITE" HBox.hgrow="ALWAYS">
                             <font>
-                                <Font name="Arial Bold" size="12.0" />
+                                <Font name="Arial Bold" size="18.0" />
                             </font>
                             <HBox.margin>
                                 <Insets right="20.0" top="30.0" />
@@ -76,41 +78,43 @@
                         <Insets bottom="40.0" />
                     </padding>
                 </HBox>
-                <VBox prefHeight="128.0" prefWidth="600.0" style="-fx-background-color: #282c34;" VBox.vgrow="ALWAYS">
+                <VBox minWidth="900.0" prefHeight="128.0" prefWidth="900.0" style="-fx-background-color: #282c34;" VBox.vgrow="ALWAYS">
                     <children>
-                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Ongoing tournaments" wrappingWidth="260.0107421875">
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Ongoing tournaments" wrappingWidth="260.0107421875" VBox.vgrow="ALWAYS">
                             <font>
-                                <Font name="HoloLens MDL2 Assets" size="16.0" />
+                                <Font name="HoloLens MDL2 Assets" size="22.0" />
                             </font>
                             <VBox.margin>
-                                <Insets bottom="20.0" left="30.0" top="30.0" />
+                                <Insets bottom="20.0" left="100.0" top="30.0" />
                             </VBox.margin>
                         </Text>
-                        <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #30343c;">
+                        <HBox minHeight="150.0" minWidth="200.0" prefWidth="840.0" style="-fx-background-color: #30343c;" VBox.vgrow="ALWAYS">
                             <VBox.margin>
-                                <Insets left="30.0" right="30.0" />
+                                <Insets left="70.0" right="70.0" top="10.0" />
                             </VBox.margin>
                         </HBox>
-                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Previous tournaments" wrappingWidth="260.0107421875">
+                  <Region maxHeight="100.0" minHeight="50.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Previous tournaments" wrappingWidth="260.0107421875" VBox.vgrow="ALWAYS">
                             <font>
-                                <Font name="HoloLens MDL2 Assets" size="16.0" />
+                                <Font name="HoloLens MDL2 Assets" size="22.0" />
                             </font>
                             <VBox.margin>
-                                <Insets bottom="20.0" left="30.0" top="30.0" />
+                                <Insets bottom="20.0" left="100.0" top="30.0" />
                             </VBox.margin>
                         </Text>
-                        <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #30343c;">
+                        <HBox minHeight="150.0" minWidth="200.0" prefWidth="840.0" style="-fx-background-color: #30343c;" VBox.vgrow="ALWAYS">
                             <VBox.margin>
-                                <Insets left="30.0" right="30.0" />
+                                <Insets left="70.0" right="70.0" top="10.0" />
                             </VBox.margin>
                         </HBox>
+                  <AnchorPane minHeight="50.0" minWidth="900.0" prefHeight="50.0" prefWidth="900.0" VBox.vgrow="NEVER" />
+                  <AnchorPane maxHeight="57.0" minHeight="55.0" minWidth="900.0" prefHeight="195.0" prefWidth="1000.0" style="-fx-background-color: #30343c;">
+                     <VBox.margin>
+                        <Insets top="40.0" />
+                     </VBox.margin>
+                  </AnchorPane>
                     </children>
                 </VBox>
-                <HBox prefHeight="52.0" prefWidth="900.0" style="-fx-background-color: #30343c;">
-                    <VBox.margin>
-                        <Insets />
-                    </VBox.margin>
-                </HBox>
             </children>
         </VBox>
     </center>

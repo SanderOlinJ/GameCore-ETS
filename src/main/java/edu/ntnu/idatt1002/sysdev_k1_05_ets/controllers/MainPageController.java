@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -35,6 +36,9 @@ public class MainPageController {
 
     @FXML
     private Menu tournamentsButton;
+
+    @FXML
+    private ImageView gameCoreLogo;
 
     @FXML
     void onAboutButtonPressed(ActionEvent event) {

@@ -21,10 +21,12 @@ public class StartScreenController {
      */
     @FXML
     public void onCreateNewTournamentClick(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(MainApplication.class.getResource("scenes/main-page.fxml"));
+        Parent root = FXMLLoader.load(MainApplication.class.getResource("scenes/main-page-test.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
+        stage.setMinWidth(1000);
+        stage.setMinHeight(784);
         stage.show();
     }
 }
