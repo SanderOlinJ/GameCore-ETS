@@ -10,39 +10,20 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
-import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class MainPageController {
-    @FXML
-    private Menu aboutButton;
-
-    @FXML
-    private Button createNewTournamentButton;
-
-    @FXML
-    private Menu homeButton;
-
-    @FXML
-    private MenuItem ongoingTournamentsButton;
-
-    @FXML
-    private MenuItem previousTournamentsButton;
-
-    @FXML
-    private Menu profileButton;
-
-    @FXML
-    private Menu tournamentsButton;
-
-    @FXML
-    private ImageView gameCoreLogo;
+    @FXML private Menu aboutButton;
+    @FXML private Button createNewTournamentButton;
+    @FXML private Menu homeButton;
+    @FXML private MenuItem ongoingTournamentsButton;
+    @FXML private MenuItem previousTournamentButton;
+    @FXML private Menu tournamentButton;
 
     @FXML
     void onAboutButtonPressed(ActionEvent event) {
-
     }
 
     @FXML
@@ -56,21 +37,13 @@ public class MainPageController {
 
     @FXML
     void onHomeButtonPressed(ActionEvent event) {
-
     }
 
     @FXML
     void onOngoingTournamentsButtonPressed(ActionEvent event) {
-
     }
 
     @FXML
     void onPreviousTournamentsButtonPressed(ActionEvent event) {
-
-    }
-
-    @FXML
-    void onProfileButtonPressed(ActionEvent event) {
-
     }
 }
