@@ -27,8 +27,9 @@ public class AddTeamController {
 
     private Scene scene;
     private Stage stage;
+    private ArrayList<Team> existingTeams;
 
-
+    AddTeamController(){}
 
     private static int maxTeams;
 
@@ -67,15 +68,33 @@ public class AddTeamController {
     }
 
     @FXML
+    public void addTeamExisting(String teamName){
+        for (Team team : existingTeams) {
+            if (team.getNameOfTeam().equals(teamName)) {
+                EightTeamController.getBracket().addTeam(team);
+            }
+        }
+    }
+
+    @FXML
     public void initialize() throws IOException {
         TeamReader readExistingTeams = new TeamReader();
-        ArrayList<Team> existingTeams = new ArrayList<>();
-        existingTeams.addAll(readExistingTeams.readFile(new File("src/main/resources/edu/ntnu/idatt1002" +
+        ArrayList<Team> existingTeams = new ArrayList<>(readExistingTeams.readFile(
+                new File("src/main/resources/edu/ntnu/idatt1002" +
                 "/sysdev_k1_05_ets/" + "teamFiles/all_Teams.csv")));
-
-        for (Team team : existingTeams){
-
+        Pane p = new Pane();
+        for (int i = 0; i < existingTeams.size(); i++){
+            Label teamLabel = new Label();
+            teamLabel.setText(existingTeams.get(i).getNameOfTeam());
+            p.getChildren().add(teamLabel);
+            int finalI = i;
+            p.getChildren().get(i).setOnMouseClicked
+                    (mouseEvent -> addTeamExisting(p.getChildren().get(finalI).getAccessibleText()));
+            if (i > 0) {
+                p.getChildren().get(i).setLayoutY(20 * i);
+            }
         }
+        scrollPane.setContent(p);
     }
 
     public void addTeam(ActionEvent actionEvent) throws IOException {
@@ -112,10 +131,6 @@ public class AddTeamController {
 
             }
         }
-    }
-
-    public void addTeamExisting(){
-
     }
 
 
