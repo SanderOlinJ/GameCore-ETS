@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane prefHeight="367.0" prefWidth="1066.0" style="-fx-background-color: #282c34;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.AddTeamController">
+    <top>
+      <VBox BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <children>
+              <MenuBar maxHeight="49.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="8.0" prefWidth="1200.0" VBox.vgrow="ALWAYS">
+                  <menus>
+                      <Menu fx:id="homeButton" disable="true" mnemonicParsing="false" text="Home" />
+                      <Menu fx:id="tournamentButton" mnemonicParsing="false" text="Tournaments">
+                          <items>
+                              <MenuItem fx:id="ongoingTournamentsButton" mnemonicParsing="false" text="Ongoing tournaments" />
+                              <MenuItem fx:id="previousTournamentButton" mnemonicParsing="false" text="Previous tournaments" />
+                          </items>
+                      </Menu>
+                      <Menu fx:id="aboutButton" mnemonicParsing="false" text="About" />
+                  </menus>
+              </MenuBar>
+                  <HBox style="-fx-background-color: #2e3e4e;" VBox.vgrow="ALWAYS">
+                      <children>
+                          <ImageView fitHeight="93.0" fitWidth="515.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
+                              <image>
+                                  <Image url="@../Images/GameCoreETSLogo2.png" />
+                              </image>
+                              <HBox.margin>
+                                  <Insets left="20.0" top="30.0" />
+                              </HBox.margin>
+                          </ImageView>
+                          <Pane HBox.hgrow="ALWAYS" />
+                      </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+                  </HBox>
+         </children>
+      </VBox>
+    </top>
+    <center>
+        <VBox alignment="CENTER" prefHeight="149.0" prefWidth="412.0" style="-fx-background-color: #13161d;" BorderPane.alignment="CENTER">
+            <children>
+                    <Text fill="#fa8f31" strokeType="OUTSIDE" strokeWidth="0.0" text="Team name">
+                        <font>
+                            <Font name="Yu Gothic Medium" size="20.0" />
+                        </font>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+                    </Text>
+            <TextField fx:id="teamNameField" maxWidth="200.0" prefHeight="29.0" prefWidth="476.0" promptText="Team name">
+               <VBox.margin>
+                  <Insets left="300.0" right="300.0" />
+               </VBox.margin>
+            </TextField>
+            <Label text="Players on each line" textFill="#fa8f31">
+               <font>
+                  <Font size="19.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </Label>
+            <TextArea fx:id="playersNameField" maxWidth="300.0" prefHeight="213.0" prefWidth="220.0" promptText="Player names on each line">
+               <VBox.margin>
+                  <Insets left="200.0" right="200.0" top="20.0" />
+               </VBox.margin>
+            </TextArea>
+            <Label fx:id="warningLabel" />
+            <Button mnemonicParsing="false" onAction="#addTeam" prefHeight="34.0" prefWidth="88.0" text="Add team">
+               <VBox.margin>
+                  <Insets bottom="20.0" top="20.0" />
+               </VBox.margin>
+            </Button>
+                    <Text fill="#fa8f31" strokeType="OUTSIDE" strokeWidth="0.0" text="Teams registered">
+                        <font>
+                            <Font name="Yu Gothic Medium" size="29.0" />
+                        </font>
+               <VBox.margin>
+                  <Insets top="50.0" />
+               </VBox.margin>
+                    </Text>
+                <VBox alignment="CENTER" prefHeight="307.0" prefWidth="1200.0" style="-fx-background-color: #13161d;" VBox.vgrow="ALWAYS">
+               <children>
+                  <ScrollPane fx:id="currentTeams" maxWidth="300.0" minWidth="200.0" prefHeight="104.0" prefWidth="200.0">
+                     <VBox.margin>
+                        <Insets left="400.0" right="400.0" top="20.0" />
+                     </VBox.margin>
+                  </ScrollPane>
+               </children>
+                </VBox>
+            </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+        </VBox>
+    </center>
+    <bottom>
+        <VBox prefHeight="8.0" prefWidth="1076.0" style="-fx-background-color: #282c34;" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets top="70.0" />
+            </padding>
+        </VBox>
+    </bottom>
+   <left>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </left>
+   <right>
+      <VBox prefHeight="410.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text fill="#fa8f31" strokeType="OUTSIDE" strokeWidth="0.0" text="Existing teams">
+               <font>
+                  <Font name="Yu Gothic Medium" size="29.0" />
+               </font>
+            </Text>
+            <ScrollPane fx:id="scrollPane" VBox.vgrow="ALWAYS">
+               <content>
+                  <AnchorPane fx:id="paneOfTeams" prefHeight="200.0" prefWidth="200.0" />
+               </content></ScrollPane>
+            <Label fx:id="existingTeamsAdd" text="Click on existing teams to add them to the registered list" textFill="#fa8f31" />
+         </children>
+      </VBox>
+   </right>
+</BorderPane>

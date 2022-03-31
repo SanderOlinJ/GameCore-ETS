@@ -29,10 +29,12 @@ public class StartScreenController {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
-        stage.setHeight(startScreenPane.getHeight());
-        stage.setWidth(startScreenPane.getWidth());
+        stage.setMaximized(true);
+        //stage.setHeight(startScreenPane.getHeight());
+        //stage.setWidth(startScreenPane.getWidth());
         stage.setMinWidth(780);
         stage.setMinHeight(600);
+
         stage.show();
     }
 

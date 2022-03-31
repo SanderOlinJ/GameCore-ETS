@@ -60,11 +60,13 @@ public class CreateNewTournamentController implements Initializable {
 
         AddTeamController.setMaxTeams(Integer.parseInt(bracketChoice));
 
-        Parent root = FXMLLoader.load(MainApplication.class.getResource("scenes/add-team-scene.fxml"));
+        Parent root = FXMLLoader.load(MainApplication.class.getResource("scenes/add-team.fxml"));
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        stage.setResizable(false);
         scene = new Scene(root);
         stage.setScene(scene);
+        stage.setMinWidth(780);
+        stage.setMinHeight(600);
+        stage.setMaximized(true);
         stage.show();
     }
 

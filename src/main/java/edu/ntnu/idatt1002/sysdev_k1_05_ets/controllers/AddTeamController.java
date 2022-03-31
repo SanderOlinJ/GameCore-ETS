@@ -13,8 +13,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.effect.InnerShadow;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -147,8 +150,19 @@ public class AddTeamController {
     }
 
     public void setCurrentTeams(){
+        DropShadow ds = new DropShadow();
+        ds.setOffsetY(2.0f);
+        ds.setColor(Color.color(0.1f, 0.1f, 0.1f));
         for (int i = 0; i < pC.getChildren().size(); i++) {
             pC.getChildren().get(i).setLayoutY(20 * i);
+            pC.getChildren().get(i).setEffect(ds);
+            pC.getChildren().get(i).setCache(true);
+
+            //scaling
+            pC.getChildren().get(i).setScaleY(1);
+            pC.getChildren().get(i).setScaleX(1);
+            pC.getChildren().get(i).setEffect();
+
         }
         currentTeams.setContent(pC);
     }
