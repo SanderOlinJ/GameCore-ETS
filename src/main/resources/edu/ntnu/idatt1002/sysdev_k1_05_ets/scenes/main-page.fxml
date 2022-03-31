@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.MainPageController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.MainPageController">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
@@ -33,12 +33,12 @@
    <center>
       <VBox prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #282c34;" BorderPane.alignment="CENTER">
          <children>
-            <VBox prefHeight="131.0" prefWidth="1200.0" style="-fx-background-color: #282c34;" VBox.vgrow="ALWAYS">
+            <VBox maxHeight="200.0" prefHeight="131.0" prefWidth="1200.0" style="-fx-background-color: #2e3e4e;" VBox.vgrow="ALWAYS">
                <children>
-                  <VBox prefHeight="130.0" prefWidth="119.0" style="-fx-background-color: #282c34;" VBox.vgrow="SOMETIMES" />
-                  <HBox maxHeight="200.0" prefHeight="120.0" prefWidth="1200.0" VBox.vgrow="ALWAYS">
+                  <VBox prefHeight="130.0" prefWidth="119.0" style="-fx-background-color: #2e3e4e;" VBox.vgrow="NEVER" />
+                  <HBox prefHeight="120.0" prefWidth="1200.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <ImageView fitHeight="93.0" fitWidth="515.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
+                        <ImageView fitHeight="96.0" fitWidth="611.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
                            <image>
                               <Image url="@../Images/GameCoreETSLogo2.png" />
                            </image>
@@ -64,6 +64,7 @@
             </VBox>
             <VBox prefHeight="290.0" prefWidth="1200.0" style="-fx-background-color: #13161d;" VBox.vgrow="ALWAYS">
                <children>
+                  <VBox maxHeight="50.0" prefHeight="200.0" prefWidth="100.0" />
                   <HBox prefHeight="79.0" prefWidth="1200.0" style="-fx-background-color: #13161d;" VBox.vgrow="ALWAYS">
                      <children>
                         <Text fill="#fa8f31" strokeType="OUTSIDE" strokeWidth="0.0" text="Ongoing tournaments" HBox.hgrow="ALWAYS">
@@ -76,7 +77,7 @@
                         </Text>
                      </children>
                   </HBox>
-                  <HBox maxHeight="300.0" minHeight="170.0" prefHeight="300.0" prefWidth="1100.0" style="-fx-background-color: #282c34;" VBox.vgrow="ALWAYS">
+                  <HBox minHeight="170.0" prefHeight="300.0" prefWidth="1100.0" style="-fx-background-color: #282c34;" VBox.vgrow="ALWAYS">
                      <VBox.margin>
                         <Insets bottom="15.0" left="50.0" right="50.0" />
                      </VBox.margin>
@@ -85,6 +86,7 @@
             </VBox>
             <VBox prefHeight="307.0" prefWidth="1200.0" style="-fx-background-color: #13161d;" VBox.vgrow="ALWAYS">
                <children>
+                  <VBox maxHeight="40.0" prefHeight="200.0" prefWidth="100.0" />
                   <HBox prefHeight="44.0" prefWidth="1200.0" VBox.vgrow="ALWAYS">
                      <children>
                         <Text fill="#fa8f31" strokeType="OUTSIDE" strokeWidth="0.0" text="Previous tournaments" HBox.hgrow="ALWAYS">
@@ -92,12 +94,12 @@
                               <Font name="Yu Gothic Medium" size="29.0" />
                            </font>
                            <HBox.margin>
-                              <Insets bottom="20.0" left="50.0" top="40.0" />
+                              <Insets bottom="10.0" left="50.0" top="40.0" />
                            </HBox.margin>
                         </Text>
                      </children>
                   </HBox>
-                  <HBox maxHeight="300.0" minHeight="170.0" prefHeight="300.0" prefWidth="1100.0" style="-fx-background-color: #282c34;" VBox.vgrow="ALWAYS">
+                  <HBox minHeight="170.0" prefHeight="300.0" prefWidth="1100.0" style="-fx-background-color: #282c34;" VBox.vgrow="ALWAYS">
                      <VBox.margin>
                         <Insets bottom="50.0" left="50.0" right="50.0" />
                      </VBox.margin>
