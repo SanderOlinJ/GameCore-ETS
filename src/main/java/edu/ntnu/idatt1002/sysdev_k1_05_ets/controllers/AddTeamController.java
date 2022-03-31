@@ -75,15 +75,20 @@ public class AddTeamController {
 
     @FXML
     public void addTeamExisting(String teamName){
-        for (Team team : existingTeams) {
-            if (team.getNameOfTeam().equals(teamName)) {
-                EightTeamController.getBracket().addTeam(team);
-                Label newTeam = new Label(teamName);
-                pC.getChildren().add(newTeam);
+        if(EightTeamController.getBracket().getTeams().size() >= maxTeams){
+            warningLabel.setText("You have reached the maximum number of teams for this tournament. \n"
+                    + "max teams: "+maxTeams);
+        }else {
+            for (Team team : existingTeams) {
+                if (team.getNameOfTeam().equals(teamName)) {
+                    EightTeamController.getBracket().addTeam(team);
+                    Label newTeam = new Label(teamName);
+                    pC.getChildren().add(newTeam);
+                }
             }
+            existingTeamsAdd.setText(teamName + " has been added to your tournament");
+            setCurrentTeams();
         }
-        existingTeamsAdd.setText(teamName + " has been added to your tournament");
-        setCurrentTeams();
     }
 
 
@@ -93,7 +98,7 @@ public class AddTeamController {
         TeamReader readExistingTeams = new TeamReader();
         existingTeams = new ArrayList<>(readExistingTeams.readFile(
                 new File("src/main/resources/edu/ntnu/idatt1002" +
-                        "/sysdev_k1_05_ets/" + "teamFiles/all_Teams.csv")));
+                        "/sysdev_k1_05_ets/teamFiles/all_Teams.csv")));
         for (int i = 0; i < existingTeams.size(); i++){
             Label teamLabel = new Label();
             teamLabel.setText(existingTeams.get(i).getNameOfTeam());

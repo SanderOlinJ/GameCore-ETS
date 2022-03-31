@@ -3,7 +3,7 @@ package edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Bracket {
+public class Tournament {
 
     ArrayList<Team> teams;
     String nameOfTournament;
@@ -15,7 +15,7 @@ public class Bracket {
      * Constructor that creates a bracket and sets tournament name
      * @param nameOfTournament
      */
-    public Bracket(String nameOfTournament) {
+    public Tournament(String nameOfTournament) {
         if (nameOfTournament == null || nameOfTournament.isEmpty()) {
             throw new IllegalArgumentException("Tournament name cannot be empty!");
         }
@@ -29,7 +29,7 @@ public class Bracket {
      * @param gameName
      * @param numberOfTeams
      */
-    public Bracket(ArrayList<Team> teams, String nameOfTeam, String gameName, int numberOfTeams) {
+    public Tournament(ArrayList<Team> teams, String tournamentName, String gameName, int numberOfTeams) {
         if (numberOfTeams > 32) {
             throw new IllegalArgumentException("Max number of teams = 32");
         }
@@ -37,13 +37,12 @@ public class Bracket {
             throw new IllegalArgumentException("Minimum number of teams = 2");
         }
         this.teams = new ArrayList<>();
-        this.nameOfTournament = nameOfTeam;
+        this.nameOfTournament = tournamentName;
         this.gameName = gameName;
         this.bracketSize = getNextPowerOf2(numberOfTeams);
         for(int i = 0; i <= bracketSize/2; i++){
             teams.add(new Team("TBD"));
         }
-
     }
 
     public Team getTeam(int teamNumber){
@@ -85,6 +84,10 @@ public class Bracket {
             }
         }
         return null;
+    }
+
+    public void setNameOfTournament(String nameOfTournament) {
+        this.nameOfTournament = nameOfTournament;
     }
 
     public ArrayList<Team> getTeams() {

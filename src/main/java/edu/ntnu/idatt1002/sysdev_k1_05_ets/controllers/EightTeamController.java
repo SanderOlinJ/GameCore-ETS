@@ -1,7 +1,7 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
 
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.MainApplication;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Bracket;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Tournament;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament_file_managers.TournamentWriter;
 import javafx.event.ActionEvent;
@@ -12,8 +12,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -23,7 +21,8 @@ import static java.lang.Integer.parseInt;
 
 public class EightTeamController {
 
-    private static Bracket bracket = new Bracket("Bracket");
+    private static String tournamentName;
+    private static Tournament tournament = new Tournament("tournamentName");
 
 
     @FXML
@@ -92,8 +91,8 @@ public class EightTeamController {
 
     public void randomize(){
 
-        Bracket deepCopy = new Bracket("Deep Copy");
-        for (Team team : bracket.getTeams()) {
+        Tournament deepCopy = new Tournament("Deep Copy");
+        for (Team team : tournament.getTeams()) {
             deepCopy.addTeam(new Team(team.getMembers(), team.getNameOfTeam()));
         }
 
@@ -128,10 +127,11 @@ public class EightTeamController {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-        if (bracket.isDone()) {
-            TournamentWriter.writeFile(bracket.getTeams(), bracket.getNameOfTournament(),"previousTournaments");
+        tournament.setNameOfTournament(tournamentName);
+        if (tournament.isDone()) {
+            TournamentWriter.writeFile(labels, tournament.getNameOfTournament(),"previousTournaments");
         }else {
-            TournamentWriter.writeFile(bracket.getTeams(),bracket.getNameOfTournament(),"ongoingTournaments");
+            TournamentWriter.writeFile(labels, tournament.getNameOfTournament(),"ongoingTournaments");
         }
     }
 
@@ -146,14 +146,15 @@ public class EightTeamController {
         randomizeButton.setDisable(true);
     }
 
-    public static Bracket getBracket(){
-        return bracket;
+    public static Tournament getBracket(){
+        return tournament;
     }
 
     public int getLabelInt(Label label){
         return Integer.parseInt(label.getId().substring(4));
     }
 
-
-
+    public static void setTournamentName(String name){
+        tournamentName = name;
+    }
 }
