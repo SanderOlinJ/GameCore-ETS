@@ -36,6 +36,8 @@ public class MainPageController {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
+        stage.setMinWidth(1200);
+        stage.setMinHeight(800);
         stage.show();
     }
 
