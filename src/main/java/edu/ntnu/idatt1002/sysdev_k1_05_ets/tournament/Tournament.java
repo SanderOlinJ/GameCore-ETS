@@ -8,7 +8,6 @@ public class Tournament {
     ArrayList<Team> teams;
     String nameOfTournament;
     String gameName;
-    int numberOfTeams;
     int bracketSize;
 
     /**
