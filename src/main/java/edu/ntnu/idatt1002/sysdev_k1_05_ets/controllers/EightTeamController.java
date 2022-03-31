@@ -3,6 +3,7 @@ package edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.MainApplication;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Bracket;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament_file_managers.TournamentWriter;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -127,6 +128,11 @@ public class EightTeamController {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+        if (bracket.isDone()) {
+            TournamentWriter.writeFile(bracket.getTeams(), bracket.getNameOfTournament(),"previousTournaments");
+        }else {
+            TournamentWriter.writeFile(bracket.getTeams(),bracket.getNameOfTournament(),"ongoingTournaments");
+        }
     }
 
     @FXML

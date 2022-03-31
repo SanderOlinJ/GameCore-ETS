@@ -58,6 +58,12 @@ public class Bracket {
         return teams.size();
     }
 
+    public String getNameOfTournament(){return nameOfTournament;}
+
+    public boolean isDone(){
+        return !(teams.get(0).getNameOfTeam().equals("TBD"));
+    }
+
     public int getNextPowerOf2(int value){
         int highestOneBit = Integer.highestOneBit(value);
         if (value == highestOneBit) {
