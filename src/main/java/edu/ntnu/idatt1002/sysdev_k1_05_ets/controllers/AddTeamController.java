@@ -161,8 +161,6 @@ public class AddTeamController {
             //scaling
             pC.getChildren().get(i).setScaleY(1);
             pC.getChildren().get(i).setScaleX(1);
-            pC.getChildren().get(i).setEffect();
-
         }
         currentTeams.setContent(pC);
     }

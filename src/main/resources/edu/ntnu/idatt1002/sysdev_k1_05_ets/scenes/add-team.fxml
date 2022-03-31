@@ -104,7 +104,7 @@
                <children>
                   <ScrollPane fx:id="currentTeams" maxWidth="300.0" minWidth="200.0" prefHeight="104.0" prefWidth="200.0">
                      <VBox.margin>
-                        <Insets left="400.0" right="400.0" top="20.0" />
+                        <Insets bottom="20.0" left="400.0" right="400.0" top="20.0" />
                      </VBox.margin>
                   </ScrollPane>
                </children>
@@ -136,7 +136,10 @@
             <ScrollPane fx:id="scrollPane" VBox.vgrow="ALWAYS">
                <content>
                   <AnchorPane fx:id="paneOfTeams" prefHeight="200.0" prefWidth="200.0" />
-               </content></ScrollPane>
+               </content>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin></ScrollPane>
             <Label fx:id="existingTeamsAdd" text="Click on existing teams to add them to the registered list" textFill="#fa8f31" />
          </children>
       </VBox>
