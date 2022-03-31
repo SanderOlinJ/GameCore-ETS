@@ -28,8 +28,9 @@ public class AddTeamController {
     private Scene scene;
     private Stage stage;
     private ArrayList<Team> existingTeams;
+    private Pane p = new Pane();
+    private Pane pC = new Pane();
 
-    AddTeamController(){}
 
     private static int maxTeams;
 
@@ -43,11 +44,13 @@ public class AddTeamController {
     Label warningLabel;
 
     @FXML
-    AnchorPane paneOfTeams;
+    Label existingTeamsAdd;
 
     @FXML
     ScrollPane scrollPane;
 
+    @FXML
+    ScrollPane currentTeams;
 
 
     @FXML
@@ -72,30 +75,35 @@ public class AddTeamController {
         for (Team team : existingTeams) {
             if (team.getNameOfTeam().equals(teamName)) {
                 EightTeamController.getBracket().addTeam(team);
+                Label newTeam = new Label(teamName);
+                pC.getChildren().add(newTeam);
             }
         }
+        existingTeamsAdd.setText(teamName + " has been added to your tournament");
+        setCurrentTeams();
     }
 
+
     @FXML
-    public void initialize() throws IOException {
+    public void initialize () throws IOException {
+        scrollPane.setContent(null);
         TeamReader readExistingTeams = new TeamReader();
-        ArrayList<Team> existingTeams = new ArrayList<>(readExistingTeams.readFile(
+        existingTeams = new ArrayList<>(readExistingTeams.readFile(
                 new File("src/main/resources/edu/ntnu/idatt1002" +
-                "/sysdev_k1_05_ets/" + "teamFiles/all_Teams.csv")));
-        Pane p = new Pane();
+                        "/sysdev_k1_05_ets/" + "teamFiles/all_Teams.csv")));
         for (int i = 0; i < existingTeams.size(); i++){
             Label teamLabel = new Label();
             teamLabel.setText(existingTeams.get(i).getNameOfTeam());
             p.getChildren().add(teamLabel);
-            int finalI = i;
             p.getChildren().get(i).setOnMouseClicked
-                    (mouseEvent -> addTeamExisting(p.getChildren().get(finalI).getAccessibleText()));
-            if (i > 0) {
-                p.getChildren().get(i).setLayoutY(20 * i);
-            }
+                    (mouseEvent -> addTeamExisting(teamLabel.getText()));
+            p.getChildren().get(i).setLayoutY(20 * i);
+
         }
         scrollPane.setContent(p);
     }
+
+
 
     public void addTeam(ActionEvent actionEvent) throws IOException {
         if (teamNameField.getText().strip().equals("")){
@@ -112,12 +120,16 @@ public class AddTeamController {
             if (playersNameField.getText().isBlank()){
                 EightTeamController.getBracket().addTeam(new Team(teamNameField.getText()));
                 teamNameField.setText("");
+                Label newTeam = new Label(teamNameField.getText());
+                pC.getChildren().add(newTeam);
             } else {
                 String[] players = playersNameField.getText().split("\n");
                 List<String> returnList = Arrays.asList(players);
                 ArrayList<String> returnListFinal = new ArrayList<String>();
                 returnListFinal.addAll(returnList);
                 Team addedTeam = new Team(returnListFinal, teamNameField.getText());
+                Label newTeam = new Label(teamNameField.getText());
+                pC.getChildren().add(newTeam);
                 EightTeamController.getBracket().addTeam(addedTeam);
                 ArrayList<Team> writeTeamList = new ArrayList<>();
                 writeTeamList.add(addedTeam);
@@ -126,11 +138,19 @@ public class AddTeamController {
                 for (String string : players){
                     System.out.println(string);
                 }
+                setCurrentTeams();
                 playersNameField.setText("");
                 teamNameField.setText("");
 
             }
         }
+    }
+
+    public void setCurrentTeams(){
+        for (int i = 0; i < pC.getChildren().size(); i++) {
+            pC.getChildren().get(i).setLayoutY(20 * i);
+        }
+        currentTeams.setContent(pC);
     }
 
 
