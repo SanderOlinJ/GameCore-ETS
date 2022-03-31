@@ -59,6 +59,7 @@ public class CreateNewTournamentController implements Initializable {
         }
 
         AddTeamController.setMaxTeams(Integer.parseInt(bracketChoice));
+        EightTeamController.setTournamentName(tournamentNameField.getText());
 
         Parent root = FXMLLoader.load(MainApplication.class.getResource("scenes/add-team-scene.fxml"));
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
