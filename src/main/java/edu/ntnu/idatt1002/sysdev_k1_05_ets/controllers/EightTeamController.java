@@ -24,7 +24,6 @@ public class EightTeamController {
     private static String tournamentName;
     private static Tournament tournament = new Tournament("tournamentName");
 
-
     @FXML
     ArrayList<Label> labels = new ArrayList<Label>();
 
