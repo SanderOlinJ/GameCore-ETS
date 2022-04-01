@@ -2,6 +2,7 @@ module edu.ntnu.idatt1002.sysdev_k1_05_ets {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.web;
+    requires javafx.media;
 
     requires org.controlsfx.controls;
     requires com.dlsc.formsfx;
