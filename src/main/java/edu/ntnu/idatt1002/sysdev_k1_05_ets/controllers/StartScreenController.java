@@ -33,8 +33,7 @@ public class StartScreenController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            mediaPlayer = new MediaPlayer(new Media(new File("C:\\Users\\SanderOlin\\Desktop\\DATAING\\Systemutvikling\\sysdevprog\\" +
-                    "sysdev_k1_05_ets\\src\\main\\resources\\edu\\ntnu\\idatt1002\\sysdev_k1_05_ets\\mp4andgifs\\Fortnite.mp4")
+            mediaPlayer = new MediaPlayer(new Media(new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/mp4andgifs/Fortnite.mp4")
                     .toURI().toURL().toString()));
         } catch (MalformedURLException e) {
             e.printStackTrace();
