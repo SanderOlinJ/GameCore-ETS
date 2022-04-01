@@ -65,9 +65,8 @@ public class CreateNewTournamentController implements Initializable {
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
-        stage.setMinWidth(780);
-        stage.setMinHeight(600);
-        stage.setMaximized(true);
+        stage.setMinWidth(1200);
+        stage.setMinHeight(800);
         stage.show();
     }
 

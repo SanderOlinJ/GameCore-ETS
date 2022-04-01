@@ -23,3 +23,28 @@
     -fx-background-color: white;
     -fx-background-radius: 5em;
 }
+
+/**
+styling for combobox prompt text and text field
+ */
+.jfx-combo-box {
+    -fx-text-inner-color: orange;
+
+    -fx-prompt-text-fill: #13161d;
+    -fx-font: 16px "Arial";
+}
+
+.jfx-combo-box .cell {
+    -fx-text-fill: white;
+    -fx-border-radius: 10;
+    -fx-alignment: center;
+}
+
+.my-list-cell {
+    -fx-text-fill: white;
+    -fx-font: 16px "Arial";
+    /* No alternate highlighting */
+    -fx-background-color:  #282c34;
+
+
+}
