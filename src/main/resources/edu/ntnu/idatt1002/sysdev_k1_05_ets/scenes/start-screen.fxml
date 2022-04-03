@@ -10,9 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.media.MediaView?>
 <?import javafx.scene.text.Font?>
-
 
 <StackPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.StartScreenController">
    <children>
@@ -56,13 +54,5 @@
             </AnchorPane>
          </center>
       </BorderPane>
-      <AnchorPane>
-         <children>
-            <MediaView fx:id="startScreenMediaView1" fitHeight="200.0" fitWidth="200.0" />
-            <MediaView fx:id="startScreenMediaView2" fitHeight="200.0" fitWidth="200.0" layoutX="661.0" layoutY="61.0" />
-            <MediaView fx:id="startScreenMediaView3" fitHeight="200.0" fitWidth="200.0" layoutX="156.0" layoutY="482.0" />
-            <MediaView fx:id="startScreenMediaView4" fitHeight="200.0" fitWidth="200.0" layoutX="729.0" layoutY="382.0" />
-         </children>
-      </AnchorPane>
    </children>
 </StackPane>
