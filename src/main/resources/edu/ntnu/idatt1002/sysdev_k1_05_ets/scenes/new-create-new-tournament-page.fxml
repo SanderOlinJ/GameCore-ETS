@@ -20,7 +20,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.NewCreateNewTournamentPageController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.CreateNewTournamentPageController">
     <top>
         <MenuBar BorderPane.alignment="CENTER">
             <menus>
@@ -128,7 +128,7 @@
                                                             <Insets left="30.0" top="35.0" />
                                                          </HBox.margin>
                                                       </Text>
-                                                      <ComboBox fx:id="tournamentHostBox" prefHeight="40.0" prefWidth="735.0" style="-fx-background-color: #282c34;">
+                                                      <ComboBox fx:id="tournamentHostBox" prefHeight="40.0" prefWidth="735.0" style="-fx-background-color: #282c34;" styleClass="jfx-combo-box" stylesheets="@../css/style.css">
                                                          <HBox.margin>
                                                             <Insets left="60.0" top="30.0" />
                                                          </HBox.margin>
@@ -203,9 +203,9 @@
                                                             <Font name="Arial Bold" size="18.0" />
                                                          </font>
                                                       </TextField>
-                                                      <ImageView fitHeight="204.0" fitWidth="296.0" pickOnBounds="true" preserveRatio="true">
+                                                      <ImageView fx:id="gameImageView" fitHeight="204.0" fitWidth="296.0" pickOnBounds="true" preserveRatio="true">
                                                          <HBox.margin>
-                                                            <Insets left="70.0" />
+                                                            <Insets left="70.0" top="20.0" />
                                                          </HBox.margin>
                                                          <image>
                                                             <Image url="@../Images/placeholder-image.png" />
@@ -223,11 +223,14 @@
                                                             <Insets left="30.0" top="35.0" />
                                                          </HBox.margin>
                                                       </Text>
-                                                      <ComboBox fx:id="platformBox" prefHeight="36.0" prefWidth="438.0" style="-fx-background-color: #282c34;">
+                                                      <TextField fx:id="platformBox" prefHeight="39.0" prefWidth="434.0">
                                                          <HBox.margin>
                                                             <Insets left="133.0" top="25.0" />
                                                          </HBox.margin>
-                                                      </ComboBox>
+                                                         <font>
+                                                            <Font name="Arial" size="18.0" />
+                                                         </font>
+                                                      </TextField>
                                                    </children>
                                                 </HBox>
                                              </children>
@@ -281,14 +284,6 @@
                                                             <Insets left="60.0" top="30.0" />
                                                          </HBox.margin>
                                                       </ComboBox>
-                                                      <ImageView fitHeight="204.0" fitWidth="296.0" pickOnBounds="true" preserveRatio="true">
-                                                         <HBox.margin>
-                                                            <Insets left="70.0" />
-                                                         </HBox.margin>
-                                                         <image>
-                                                            <Image url="@../Images/placeholder-image.png" />
-                                                         </image>
-                                                      </ImageView>
                                                    </children>
                                                 </HBox>
                                                 <HBox prefHeight="142.0" prefWidth="1257.0" style="-fx-background-color: #2e3e4e;">
@@ -306,6 +301,14 @@
                                                             <Insets left="74.0" top="35.0" />
                                                          </HBox.margin>
                                                       </ComboBox>
+                                                      <ImageView fx:id="bracketFormatImageView" fitHeight="204.0" fitWidth="296.0" pickOnBounds="true" preserveRatio="true">
+                                                         <HBox.margin>
+                                                            <Insets bottom="20.0" left="70.0" />
+                                                         </HBox.margin>
+                                                         <image>
+                                                            <Image url="@../Images/placeholder-image.png" />
+                                                         </image>
+                                                      </ImageView>
                                                    </children>
                                                 </HBox>
                                              </children>

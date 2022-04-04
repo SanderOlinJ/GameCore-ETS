@@ -1,7 +1,7 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
 
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.GameCoreETSApplication;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.ReadersAndWriters.GameReader;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.ReadersAndWriters.GameAndPlatFormReader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,6 +10,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -25,7 +27,7 @@ import java.io.IOException;
 
 
 
-public class NewCreateNewTournamentPageController implements Initializable {
+public class CreateNewTournamentPageController implements Initializable {
 
     private Scene scene;
     private Stage stage;
@@ -34,22 +36,28 @@ public class NewCreateNewTournamentPageController implements Initializable {
     @FXML ComboBox tournamentHostBox;
     @FXML TextField descriptionBox;
     @FXML TextField gameBox;
-    @FXML ComboBox platformBox;
+    @FXML TextField platformBox;
     @FXML ComboBox tournamentTypeBox;
     @FXML ComboBox totalNumberOfTeamsBox;
     @FXML Label warningLabel;
-
+    @FXML ImageView gameImageView;
+    @FXML ImageView bracketFormatImageView;
 
 
     @FXML
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        String[] strings = {"yo","homie"};
         try {
-            TextFields.bindAutoCompletion(gameBox, GameReader.readFile
-                    (new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/gameFiles/games.txt")));
+            TextFields.bindAutoCompletion(gameBox, GameAndPlatFormReader.readFile
+                    (new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/games.txt")));
+            TextFields.bindAutoCompletion(platformBox, GameAndPlatFormReader.readFile
+                    (new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/platforms.txt")));
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        gameBox.textProperty().addListener(((observableValue, oldValue , newValue) -> {
+            gameImageView.setImage(new Image(getPathToImageFile(newValue)));
+        }));
 
         tournamentTypeBox.getItems().addAll("Bracket");
         tournamentTypeBox.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
@@ -114,19 +122,19 @@ public class NewCreateNewTournamentPageController implements Initializable {
     }
 
 
+
     @FXML
     public void addTeamScene(ActionEvent event) throws IOException {
         //------ parse the current information of combobox to addTeamScene -----
         String tournamentName = String.valueOf(tournamentNameBox.getText());
         String tournamentHost = String.valueOf(tournamentHostBox.getValue());
-        String description = String.valueOf(descriptionBox.getText());
         String game = String.valueOf(gameBox.getText());
-        String platform = String.valueOf(platformBox.getValue());
+        String platform = String.valueOf(platformBox.getText());
         String tournamentType = String.valueOf(tournamentTypeBox.getValue());
         String totalNumberOfTeams = String.valueOf(totalNumberOfTeamsBox.getValue());
 
-        if (tournamentName.isEmpty() ||
-                tournamentType.isEmpty() || totalNumberOfTeams.isEmpty()){
+        if (tournamentName.isEmpty() || tournamentHost.isEmpty() || game.isEmpty() ||
+                platform.isEmpty() || tournamentType.isEmpty() || totalNumberOfTeams.isEmpty()){
             warningLabel.setText("You have to fill out all crucial fields (*)");
             throw new IllegalArgumentException("You have to fill out all crucial fields (*)");
         }
@@ -143,5 +151,10 @@ public class NewCreateNewTournamentPageController implements Initializable {
         stage.setMinWidth(1200);
         stage.setMinHeight(800);
         stage.show();
+    }
+
+    private String getPathToImageFile(String gameAsString){
+        return String.format("file:src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/Images/gameImages/%s",
+                gameAsString) + ".png";
     }
 }

@@ -16,7 +16,7 @@ public class GameReaderTest {
     @Test
     void testOne() throws IOException {
         ArrayList<String> games = new ArrayList<>();
-        games = GameReader.readFile(new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/gameFiles/games.txt"));
+        games = GameAndPlatFormReader.readFile(new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/gameFiles/games.txt"));
         assertEquals(25 ,games.size());
     }
 }
