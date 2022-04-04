@@ -19,10 +19,14 @@ import java.util.ArrayList;
 
 import static java.lang.Integer.parseInt;
 
-public class EightTeamController {
+public class BracketController {
 
     private static String tournamentName;
     private static Tournament tournament = new Tournament("tournamentName");
+    int bracketSize = 8;
+    int numberOfTeams;
+
+
 
     @FXML
     ArrayList<Label> labels = new ArrayList<Label>();
@@ -57,6 +61,39 @@ public class EightTeamController {
     private Label team14;
     @FXML
     private Label team15;
+    @FXML
+    private Label team16;
+    @FXML
+    private Label team17;
+    @FXML
+    private Label team18;
+    @FXML
+    private Label team19;
+    @FXML
+    private Label team20;
+    @FXML
+    private Label team21;
+    @FXML
+    private Label team22;
+    @FXML
+    private Label team23;
+    @FXML
+    private Label team24;
+    @FXML
+    private Label team25;
+    @FXML
+    private Label team26;
+    @FXML
+    private Label team27;
+    @FXML
+    private Label team28;
+    @FXML
+    private Label team29;
+    @FXML
+    private Label team30;
+    @FXML
+    private Label team31;
+
 
     @FXML
     private Button randomizeButton;
@@ -66,21 +103,43 @@ public class EightTeamController {
 
     @FXML
     public void initialize(){
-        labels.add(team1);
-        labels.add(team2);
-        labels.add(team3);
-        labels.add(team4);
-        labels.add(team5);
-        labels.add(team6);
-        labels.add(team7);
-        labels.add(team8);
-        labels.add(team9);
-        labels.add(team10);
-        labels.add(team11);
-        labels.add(team12);
-        labels.add(team13);
-        labels.add(team14);
-        labels.add(team15);
+        if (bracketSize >= 4) {
+            labels.add(team1);
+            labels.add(team2);
+            labels.add(team3);
+            labels.add(team4);
+            labels.add(team5);
+            labels.add(team6);
+            labels.add(team7);
+        }
+        if (bracketSize >= 8) {
+            labels.add(team8);
+            labels.add(team9);
+            labels.add(team10);
+            labels.add(team11);
+            labels.add(team12);
+            labels.add(team13);
+            labels.add(team14);
+            labels.add(team15);
+        }
+        if (bracketSize >= 16) {
+            labels.add(team16);
+            labels.add(team17);
+            labels.add(team18);
+            labels.add(team19);
+            labels.add(team20);
+            labels.add(team21);
+            labels.add(team22);
+            labels.add(team23);
+            labels.add(team24);
+            labels.add(team25);
+            labels.add(team26);
+            labels.add(team27);
+            labels.add(team28);
+            labels.add(team29);
+            labels.add(team30);
+            labels.add(team31);
+        }
 
         for (Label label : labels) {
             label.setOnMouseClicked(mouseEvent -> {advanceTeam(label);});
@@ -95,10 +154,10 @@ public class EightTeamController {
             deepCopy.addTeam(new Team(team.getMembers(), team.getNameOfTeam(), team.getTeamNameAbbreviation()));
         }
 
-        for (int i = 0; i < 7; i++){
+        for (int i = 0; i < bracketSize - 1; i++){
             labels.get(i).setText("TBD");
         }
-        for (int i = 7; i < 15; i++) {
+        for (int i = bracketSize-1; i < 2*bracketSize - 1; i++) {
             labels.get(i).setText(deepCopy.randomlyRemoveTeam().getNameOfTeam());
         }
 

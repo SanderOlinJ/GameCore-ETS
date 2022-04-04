@@ -73,13 +73,13 @@ public class AddTeamController {
 
     @FXML
     public void addTeamExisting(String teamName){
-        if(EightTeamController.getBracket().getTeams().size() >= maxTeams){
+        if(BracketController.getBracket().getTeams().size() >= maxTeams){
             warningLabel.setText("You have reached the maximum number of teams for this tournament. \n"
                     + "max teams: "+maxTeams);
         }else {
             for (Team team : existingTeams) {
                 if (team.getNameOfTeam().equals(teamName)) {
-                    EightTeamController.getBracket().addTeam(team);
+                    BracketController.getBracket().addTeam(team);
                     Label newTeam = new Label(teamName);
                     pC.getChildren().add(newTeam);
                 }
@@ -116,7 +116,7 @@ public class AddTeamController {
             warningLabel.setText("Invalid team name.");
         }
         //check if max amount of teams has been exceeded
-        if(EightTeamController.getBracket().getTeams().size() >= maxTeams){
+        if(BracketController.getBracket().getTeams().size() >= maxTeams){
             warningLabel.setText("You have reached the maximum number of teams for this tournament. \n"
             + "max teams: "+maxTeams);
         }
@@ -124,7 +124,7 @@ public class AddTeamController {
         else {
             warningLabel.setText("");
             if (playersNameField.getText().isBlank()){
-                EightTeamController.getBracket().addTeam(new Team(teamNameField.getText()));
+                BracketController.getBracket().addTeam(new Team(teamNameField.getText(), teamNameField.getText().substring(0,3)));
                 teamNameField.setText("");
                 Label newTeam = new Label(teamNameField.getText());
                 pC.getChildren().add(newTeam);
@@ -133,10 +133,10 @@ public class AddTeamController {
                 List<String> returnList = Arrays.asList(players);
                 ArrayList<String> returnListFinal = new ArrayList<>();
                 returnListFinal.addAll(returnList);
-                Team addedTeam = new Team(returnListFinal, teamNameField.getText());
+                Team addedTeam = new Team(returnListFinal, teamNameField.getText(), teamNameField.getText().substring(0,3));
                 Label newTeam = new Label(teamNameField.getText());
                 pC.getChildren().add(newTeam);
-                EightTeamController.getBracket().addTeam(addedTeam);
+                BracketController.getBracket().addTeam(addedTeam);
                 ArrayList<Team> writeTeamList = new ArrayList<>();
                 writeTeamList.add(addedTeam);
                 TeamWriter.writeFile(writeTeamList,"all_Teams");

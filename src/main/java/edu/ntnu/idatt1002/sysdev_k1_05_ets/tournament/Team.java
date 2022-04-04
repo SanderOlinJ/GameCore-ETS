@@ -16,7 +16,7 @@ public class Team {
         }
         this.members = members;
         this.nameOfTeam = nameOfTeam;
-        this.teamNameAbbreviation = teamNameAbbreviation
+        this.teamNameAbbreviation = teamNameAbbreviation;
     }
 
     public Team(String nameOfTeam, String teamNameAbbreviation) {

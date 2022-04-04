@@ -25,7 +25,7 @@ public class TeamReader {
             while (scanner.hasNext()){
                 String line = scanner.nextLine();
                 String[] values = line.split(DELIMITER);
-                Team team = new Team(values[0]);
+                Team team = new Team(values[0], values[0].substring(0,3));
                 for (int i = 1; i < values.length; i++){
                     team.addMember(values[i]);
                 }
@@ -62,7 +62,7 @@ public class TeamReader {
         for(int i = 1; i<strArr.length;i++){
             members.add(strArr[i]);
         }
-        return new Team(members, teamName);
+        return new Team(members, teamName, teamName.substring(0,3));
     }
 
 

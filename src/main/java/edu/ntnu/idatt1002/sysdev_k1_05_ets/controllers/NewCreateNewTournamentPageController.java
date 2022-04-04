@@ -74,7 +74,7 @@ public class NewCreateNewTournamentPageController implements Initializable {
         }
 
         AddTeamController.setMaxTeams(Integer.parseInt(bracketChoice));
-        EightTeamController.setTournamentName(tournamentNameField.getText());
+        BracketController.setTournamentName(tournamentNameField.getText());
 
         Parent root = FXMLLoader.load(GameCoreETSApplication.class.getResource("scenes/add-team.fxml"));
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
