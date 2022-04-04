@@ -1,6 +1,6 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
 
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.MainApplication;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.GameCoreETSApplication;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -76,7 +76,7 @@ public class NewCreateNewTournamentPageController implements Initializable {
         AddTeamController.setMaxTeams(Integer.parseInt(bracketChoice));
         EightTeamController.setTournamentName(tournamentNameField.getText());
 
-        Parent root = FXMLLoader.load(MainApplication.class.getResource("scenes/add-team.fxml"));
+        Parent root = FXMLLoader.load(GameCoreETSApplication.class.getResource("scenes/add-team.fxml"));
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
