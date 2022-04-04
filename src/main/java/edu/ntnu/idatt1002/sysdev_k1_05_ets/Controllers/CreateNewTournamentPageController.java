@@ -2,6 +2,7 @@ package edu.ntnu.idatt1002.sysdev_k1_05_ets.Controllers;
 
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.GameCoreETSApplication;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.ReadersAndWriters.GameAndPlatFormReader;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.ReadersAndWriters.NewTournamentWriter;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -56,10 +57,21 @@ public class CreateNewTournamentPageController implements Initializable {
         }
 
         gameBox.textProperty().addListener(((observableValue, oldValue , newValue) -> {
-            gameImageView.setImage(new Image(getPathToImageFile(newValue)));
+            gameImageView.setImage(new Image(getPathToGameImageFile(newValue)));
         }));
 
-        tournamentTypeBox.getItems().addAll("Bracket");
+        tournamentTypeBox.getSelectionModel().selectedItemProperty().addListener(
+                ((observableValue, oldValue, newValue) -> {
+                    totalNumberOfTeamsBox.setDisable(false);
+                })
+        );
+
+        totalNumberOfTeamsBox.getSelectionModel().selectedItemProperty().addListener
+                ((observableValue, oldValue, newValue) -> {
+                    bracketFormatImageView.setImage(new Image(getPathToBracketImageFile(newValue.toString())));
+        });
+
+        tournamentTypeBox.getItems().addAll("Brackets");
         tournamentTypeBox.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
             @Override public ListCell<String> call(ListView<String> p) {
                 return new ListCell<String>() {
@@ -128,6 +140,7 @@ public class CreateNewTournamentPageController implements Initializable {
         //------ parse the current information of combobox to addTeamScene -----
         String tournamentName = String.valueOf(tournamentNameBox.getText());
         String tournamentHost = String.valueOf(tournamentHostBox.getValue());
+        String description = String.valueOf(descriptionBox.getText());
         String game = String.valueOf(gameBox.getText());
         String platform = String.valueOf(platformBox.getText());
         String tournamentType = String.valueOf(tournamentTypeBox.getValue());
@@ -144,6 +157,9 @@ public class CreateNewTournamentPageController implements Initializable {
         AddTeamController.setMaxTeams(formatNr);
         EightTeamController.setTournamentName(tournamentNameBox.getText());
 
+        NewTournamentWriter.writeTournamentToFileWithoutTeams(tournamentName, tournamentHost, description,
+                game, platform, tournamentType, totalNumberOfTeams);
+
         Parent root = FXMLLoader.load(GameCoreETSApplication.class.getResource("scenes/add-team.fxml"));
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -153,10 +169,15 @@ public class CreateNewTournamentPageController implements Initializable {
         stage.show();
     }
 
-    public static String getPathToImageFile(String gameAsString){
+    public static String getPathToGameImageFile(String gameAsString){
         String str = gameAsString.replaceAll("\\s","");
         String str2 = str.replaceAll(":","");
         return String.format("file:src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/Images/gameImages/%s",
                 str2) + ".png";
+    }
+
+    public static String getPathToBracketImageFile(String bracketFormatAsString){
+        return String.format("file:src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/Images/bracketFormats/%s",
+                bracketFormatAsString) + ".png";
     }
 }

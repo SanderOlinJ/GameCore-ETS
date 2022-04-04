@@ -293,15 +293,16 @@
                                                             <Font name="Arial Bold" size="18.0" />
                                                          </font>
                                                          <HBox.margin>
-                                                            <Insets left="30.0" top="35.0" />
+                                                            <Insets left="30.0" top="60.0" />
                                                          </HBox.margin>
                                                       </Text>
-                                                      <ComboBox fx:id="totalNumberOfTeamsBox" prefHeight="36.0" prefWidth="438.0" style="-fx-background-color: #282c34;" styleClass="jfx-combo-box" stylesheets="@../css/style.css">
+                                                      <ComboBox fx:id="totalNumberOfTeamsBox" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="36.0" minWidth="228.0" prefHeight="36.0" prefWidth="228.0" style="-fx-background-color: #282c34;" styleClass="jfx-combo-box" stylesheets="@../css/style.css">
                                                          <HBox.margin>
-                                                            <Insets left="74.0" top="35.0" />
+                                                            <Insets left="74.0" top="55.0" />
                                                          </HBox.margin>
                                                       </ComboBox>
-                                                      <ImageView fx:id="bracketFormatImageView" fitHeight="204.0" fitWidth="296.0" pickOnBounds="true" preserveRatio="true">
+                                                      <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="200.0" prefWidth="200.0" />
+                                                      <ImageView fx:id="bracketFormatImageView" fitHeight="238.0" fitWidth="350.0" pickOnBounds="true" HBox.hgrow="NEVER">
                                                          <HBox.margin>
                                                             <Insets bottom="20.0" left="70.0" />
                                                          </HBox.margin>
