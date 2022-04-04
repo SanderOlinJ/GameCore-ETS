@@ -40,7 +40,7 @@ public class Tournament {
         this.gameName = gameName;
         this.bracketSize = getNextPowerOf2(numberOfTeams);
         for(int i = 0; i <= bracketSize/2; i++){
-            teams.add(new Team("TBD"));
+            teams.add(new Team("TBD", ""));
         }
     }
 

@@ -4,21 +4,31 @@ import java.util.ArrayList;
 
 public class Team {
     private ArrayList<String> members = new ArrayList<>();
-    private String nameOfTeam;
+    private String nameOfTeam, teamNameAbbreviation;
 
-    public Team(ArrayList<String> members, String nameOfTeam) {
+    public Team(ArrayList<String> members, String nameOfTeam, String teamNameAbbreviation) {
         if (nameOfTeam == null || nameOfTeam.isEmpty()) {
             throw new IllegalArgumentException("Team name is required!");
+        } if (teamNameAbbreviation == null || teamNameAbbreviation.isEmpty()) {
+            throw new IllegalArgumentException("Team name abbreviation is required!");
+        } if (teamNameAbbreviation.length() > 6) {
+            throw new IllegalArgumentException("Max length for abbreviation is 6 characters!");
         }
         this.members = members;
         this.nameOfTeam = nameOfTeam;
+        this.teamNameAbbreviation = teamNameAbbreviation
     }
 
-    public Team(String nameOfTeam) {
+    public Team(String nameOfTeam, String teamNameAbbreviation) {
         if (nameOfTeam == null || nameOfTeam.isEmpty()) {
             throw new IllegalArgumentException("Team name is required!");
+        } if (teamNameAbbreviation == null || teamNameAbbreviation.isEmpty()) {
+            throw new IllegalArgumentException("Team name abbreviation is required!");
+        } if (teamNameAbbreviation.length() > 6) {
+            throw new IllegalArgumentException("Max length for abbreviation is 6 characters!");
         }
         this.nameOfTeam = nameOfTeam;
+        this.teamNameAbbreviation = teamNameAbbreviation;
     }
 
 
@@ -46,8 +56,16 @@ public class Team {
         return nameOfTeam;
     }
 
+    public String getTeamNameAbbreviation() {
+        return teamNameAbbreviation;
+    }
+
     public void setNameOfTeam(String nameOfTeam) {
         this.nameOfTeam = nameOfTeam;
+    }
+
+    public void setTeamNameAbbreviation(String teamNameAbbreviation) {
+        this.teamNameAbbreviation = teamNameAbbreviation;
     }
 
 }
