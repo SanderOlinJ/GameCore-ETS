@@ -3,7 +3,7 @@ package edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.GameCoreETSApplication;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Tournament;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament_file_managers.TournamentWriter;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.ReadersAndWriters.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,74 +25,41 @@ public class BracketController {
     private static Tournament tournament = new Tournament("tournamentName");
     int bracketSize = 8;
     int numberOfTeams;
-
-
-
-    @FXML
-    ArrayList<Label> labels = new ArrayList<Label>();
+    
 
     @FXML
-    private Label team1;
-    @FXML
-    private Label team2;
-    @FXML
-    private Label team3;
-    @FXML
-    private Label team4;
-    @FXML
-    private Label team5;
-    @FXML
-    private Label team6;
-    @FXML
-    private Label team7;
-    @FXML
-    private Label team8;
-    @FXML
-    private Label team9;
-    @FXML
-    private Label team10;
-    @FXML
-    private Label team11;
-    @FXML
-    private Label team12;
-    @FXML
-    private Label team13;
-    @FXML
-    private Label team14;
-    @FXML
-    private Label team15;
-    @FXML
-    private Label team16;
-    @FXML
-    private Label team17;
-    @FXML
-    private Label team18;
-    @FXML
-    private Label team19;
-    @FXML
-    private Label team20;
-    @FXML
-    private Label team21;
-    @FXML
-    private Label team22;
-    @FXML
-    private Label team23;
-    @FXML
-    private Label team24;
-    @FXML
-    private Label team25;
-    @FXML
-    private Label team26;
-    @FXML
-    private Label team27;
-    @FXML
-    private Label team28;
-    @FXML
-    private Label team29;
-    @FXML
-    private Label team30;
-    @FXML
-    private Label team31;
+    ArrayList<Label> labels = new ArrayList<>();
+    @FXML private Label team1;
+    @FXML private Label team2;
+    @FXML private Label team3;
+    @FXML private Label team4;
+    @FXML private Label team5;
+    @FXML private Label team6;
+    @FXML private Label team7;
+    @FXML private Label team8;
+    @FXML private Label team9;
+    @FXML private Label team10;
+    @FXML private Label team11;
+    @FXML private Label team12;
+    @FXML private Label team13;
+    @FXML private Label team14;
+    @FXML private Label team15;
+    @FXML private Label team16;
+    @FXML private Label team17;
+    @FXML private Label team18;
+    @FXML private Label team19;
+    @FXML private Label team20;
+    @FXML private Label team21;
+    @FXML private Label team22;
+    @FXML private Label team23;
+    @FXML private Label team24;
+    @FXML private Label team25;
+    @FXML private Label team26;
+    @FXML private Label team27;
+    @FXML private Label team28;
+    @FXML private Label team29;
+    @FXML private Label team30;
+    @FXML private Label team31;
 
 
     @FXML
@@ -142,7 +109,7 @@ public class BracketController {
         }
 
         for (Label label : labels) {
-            label.setOnMouseClicked(mouseEvent -> {advanceTeam(label);});
+            label.setOnMouseClicked(mouseEvent -> advanceTeam(label));
         }
         finishButton.setDisable(true);
     }
@@ -151,7 +118,7 @@ public class BracketController {
 
         Tournament deepCopy = new Tournament("Deep Copy");
         for (Team team : tournament.getTeams()) {
-            deepCopy.addTeam(new Team(team.getMembers(), team.getNameOfTeam(), team.getTeamNameAbbreviation()));
+            deepCopy.addTeam(new Team(team.getMembers(), team.getNameOfTeam()));
         }
 
         for (int i = 0; i < bracketSize - 1; i++){
