@@ -1,6 +1,5 @@
-package edu.ntnu.idatt1002.sysdev_k1_05_ets;
+package edu.ntnu.idatt1002.sysdev_k1_05_ets.ReadersAndWriters;
 
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.team_file_managers.TeamWriter;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
 import org.junit.jupiter.api.Test;
 

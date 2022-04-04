@@ -20,7 +20,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="862.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.NewCreateNewTournamentPageController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.NewCreateNewTournamentPageController">
     <top>
         <MenuBar BorderPane.alignment="CENTER">
             <menus>
@@ -108,7 +108,7 @@
                                                             <Insets left="30.0" top="35.0" />
                                                          </HBox.margin>
                                                       </Text>
-                                                      <TextField fx:id="tournamentNameField" prefHeight="36.0" prefWidth="735.0" style="-fx-background-color: #282c34; -fx-text-fill: #fff;">
+                                                      <TextField fx:id="tournamentNameBox" prefHeight="36.0" prefWidth="735.0" style="-fx-background-color: #282c34; -fx-text-fill: #fff;">
                                                          <HBox.margin>
                                                             <Insets left="50.0" top="30.0" />
                                                          </HBox.margin>
@@ -128,7 +128,7 @@
                                                             <Insets left="30.0" top="35.0" />
                                                          </HBox.margin>
                                                       </Text>
-                                                      <ComboBox prefHeight="40.0" prefWidth="735.0" style="-fx-background-color: #282c34;">
+                                                      <ComboBox fx:id="tournamentHostBox" prefHeight="40.0" prefWidth="735.0" style="-fx-background-color: #282c34;">
                                                          <HBox.margin>
                                                             <Insets left="60.0" top="30.0" />
                                                          </HBox.margin>
@@ -145,7 +145,7 @@
                                                             <Insets left="30.0" />
                                                          </HBox.margin>
                                                       </Text>
-                                                      <TextField prefHeight="132.0" prefWidth="735.0" style="-fx-background-color: #282c34; -fx-text-fill: #fff;">
+                                                      <TextField fx:id="descriptionBox" prefHeight="132.0" prefWidth="735.0" style="-fx-background-color: #282c34; -fx-text-fill: #fff;">
                                                          <font>
                                                             <Font name="Arial Bold" size="18.0" />
                                                          </font>
@@ -195,11 +195,14 @@
                                                             <Insets left="30.0" top="35.0" />
                                                          </HBox.margin>
                                                       </Text>
-                                                      <ComboBox prefHeight="38.0" prefWidth="438.0" style="-fx-background-color: #282c34;">
+                                                      <TextField fx:id="gameBox" prefHeight="25.0" prefWidth="437.0" stylesheets="@../css/style.css">
                                                          <HBox.margin>
                                                             <Insets left="156.0" top="30.0" />
                                                          </HBox.margin>
-                                                      </ComboBox>
+                                                         <font>
+                                                            <Font name="Arial Bold" size="18.0" />
+                                                         </font>
+                                                      </TextField>
                                                       <ImageView fitHeight="204.0" fitWidth="296.0" pickOnBounds="true" preserveRatio="true">
                                                          <HBox.margin>
                                                             <Insets left="70.0" />
@@ -220,9 +223,9 @@
                                                             <Insets left="30.0" top="35.0" />
                                                          </HBox.margin>
                                                       </Text>
-                                                      <ComboBox prefHeight="36.0" prefWidth="438.0" style="-fx-background-color: #282c34;">
+                                                      <ComboBox fx:id="platformBox" prefHeight="36.0" prefWidth="438.0" style="-fx-background-color: #282c34;">
                                                          <HBox.margin>
-                                                            <Insets left="133.0" top="35.0" />
+                                                            <Insets left="133.0" top="25.0" />
                                                          </HBox.margin>
                                                       </ComboBox>
                                                    </children>
@@ -273,7 +276,7 @@
                                                             <Insets left="30.0" top="35.0" />
                                                          </HBox.margin>
                                                       </Text>
-                                                      <ComboBox fx:id="bracketFormat" prefHeight="38.0" prefWidth="438.0" promptText="Bracket format" style="-fx-background-color: #282c34;" styleClass="jfx-combo-box" stylesheets="@../css/style.css">
+                                                      <ComboBox fx:id="tournamentTypeBox" prefHeight="38.0" prefWidth="438.0" style="-fx-background-color: #282c34;" styleClass="jfx-combo-box" stylesheets="@../css/style.css">
                                                          <HBox.margin>
                                                             <Insets left="60.0" top="30.0" />
                                                          </HBox.margin>
@@ -298,7 +301,7 @@
                                                             <Insets left="30.0" top="35.0" />
                                                          </HBox.margin>
                                                       </Text>
-                                                      <ComboBox prefHeight="36.0" prefWidth="438.0" style="-fx-background-color: #282c34;">
+                                                      <ComboBox fx:id="totalNumberOfTeamsBox" prefHeight="36.0" prefWidth="438.0" style="-fx-background-color: #282c34;" styleClass="jfx-combo-box" stylesheets="@../css/style.css">
                                                          <HBox.margin>
                                                             <Insets left="74.0" top="35.0" />
                                                          </HBox.margin>

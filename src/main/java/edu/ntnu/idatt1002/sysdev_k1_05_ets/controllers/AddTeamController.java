@@ -1,7 +1,7 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.GameCoreETSApplication;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.team_file_managers.TeamReader;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.team_file_managers.TeamWriter;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.ReadersAndWriters.TeamReader;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.ReadersAndWriters.TeamWriter;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class AddTeamController {
 
@@ -56,7 +57,7 @@ public class AddTeamController {
 
     @FXML
     public void setMainScene(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(GameCoreETSApplication.class.getResource("scenes/start-screen.fxml"));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource("scenes/start-screen.fxml")));
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -64,7 +65,7 @@ public class AddTeamController {
     }
     @FXML
     public void setBracketScene(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(GameCoreETSApplication.class.getResource("brackets/eight_team_bracket.fxml"));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource("brackets/eight_team_bracket.fxml")));
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -131,8 +132,7 @@ public class AddTeamController {
             } else {
                 String[] players = playersNameField.getText().split("\n");
                 List<String> returnList = Arrays.asList(players);
-                ArrayList<String> returnListFinal = new ArrayList<String>();
-                returnListFinal.addAll(returnList);
+                ArrayList<String> returnListFinal = new ArrayList<>(returnList);
                 Team addedTeam = new Team(returnListFinal, teamNameField.getText());
                 Label newTeam = new Label(teamNameField.getText());
                 pC.getChildren().add(newTeam);

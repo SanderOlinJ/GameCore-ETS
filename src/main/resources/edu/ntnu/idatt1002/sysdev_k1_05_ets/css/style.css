@@ -37,7 +37,7 @@ styling for combobox prompt text and text field
 .jfx-combo-box .cell {
     -fx-text-fill: white;
     -fx-border-radius: 10;
-    -fx-alignment: center;
+    -fx-alignment: center-left;
 }
 
 .my-list-cell {
@@ -46,5 +46,9 @@ styling for combobox prompt text and text field
     /* No alternate highlighting */
     -fx-background-color:  #282c34;
 
+}
 
+.text-field{
+    -fx-text-fill: white;
+    -fx-background-color:  #282c34;
 }
