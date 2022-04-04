@@ -1,4 +1,4 @@
-package edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
+package edu.ntnu.idatt1002.sysdev_k1_05_ets.Controllers;
 
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.GameCoreETSApplication;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.ReadersAndWriters.GameAndPlatFormReader;
@@ -153,8 +153,10 @@ public class CreateNewTournamentPageController implements Initializable {
         stage.show();
     }
 
-    private String getPathToImageFile(String gameAsString){
+    public static String getPathToImageFile(String gameAsString){
+        String str = gameAsString.replaceAll("\\s","");
+        String str2 = str.replaceAll(":","");
         return String.format("file:src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/Images/gameImages/%s",
-                gameAsString) + ".png";
+                str2) + ".png";
     }
 }
