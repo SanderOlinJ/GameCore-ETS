@@ -7,10 +7,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class MainApplication extends Application {
+public class GameCoreETSApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("scenes/start-screen.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(GameCoreETSApplication.class.getResource("scenes/start-screen.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setMinHeight(800);
         stage.setMinWidth(1200);

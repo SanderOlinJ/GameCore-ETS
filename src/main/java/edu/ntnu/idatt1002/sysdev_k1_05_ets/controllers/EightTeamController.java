@@ -1,6 +1,6 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
 
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.MainApplication;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.GameCoreETSApplication;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Tournament;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament_file_managers.TournamentWriter;
@@ -121,7 +121,7 @@ public class EightTeamController {
 
     @FXML
     private void switchToMain(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(MainApplication.class.getResource("scenes/start-screen.fxml"));
+        Parent root = FXMLLoader.load(GameCoreETSApplication.class.getResource("scenes/start-screen.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
