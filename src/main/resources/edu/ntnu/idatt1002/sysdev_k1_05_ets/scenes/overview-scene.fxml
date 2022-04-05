@@ -8,8 +8,6 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -19,7 +17,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="2000.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ntnu.idatt1002.sysdev_k1_05_ets.Controllers.CreateNewTournamentPageController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ntnu.idatt1002.sysdev_k1_05_ets.Controllers.CreateNewTournamentPageController">
     <top>
         <MenuBar BorderPane.alignment="CENTER">
             <menus>
@@ -58,11 +56,10 @@
             <HBox prefHeight="795.0" prefWidth="1200.0" VBox.vgrow="ALWAYS">
                <children>
                   <Pane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: #13161d;" HBox.hgrow="ALWAYS" />
-                  <ScrollPane hbarPolicy="NEVER" maxWidth="1800.0" prefHeight="1553.0" prefWidth="1200.0" stylesheets="@../css/style.css">
+                  <ScrollPane hbarPolicy="NEVER" maxWidth="1800.0" prefHeight="1000.0" prefWidth="1200.0" stylesheets="@../css/style.css">
                      <content>
-                            <VBox prefHeight="1604.0" prefWidth="1200.0" style="-fx-background-color: #13161d;">
+                            <VBox prefHeight="990.0" prefWidth="1200.0" style="-fx-background-color: #13161d;">
                                 <children>
-                                    <VBox maxHeight="50.0" prefHeight="0.0" prefWidth="1200.0" />
                                     <HBox maxHeight="137.0" prefHeight="137.0" prefWidth="1200.0" style="-fx-background-color: #13161d;" VBox.vgrow="ALWAYS">
                                         <children>
                                     <VBox prefHeight="137.0" prefWidth="1200.0">
@@ -78,6 +75,45 @@
                                     </VBox>
                                         </children>
                                     </HBox>
+                              <HBox prefHeight="67.0" prefWidth="1200.0">
+                                 <children>
+                                    <Pane prefHeight="200.0" prefWidth="50.0" HBox.hgrow="ALWAYS" />
+                                    <Button disable="true" mnemonicParsing="false" prefHeight="55.0" prefWidth="366.0" style="-fx-background-color: #2e3e4e;" text="Overview" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Bold" size="20.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets right="2.0" />
+                                       </HBox.margin>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                    <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="368.0" style="-fx-background-color: #2e3e4e;" text="Matches" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Bold" size="20.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                    <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="368.0" style="-fx-background-color: #2e3e4e;" text="Results" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Bold" size="20.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="2.0" />
+                                       </HBox.margin>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                    <Pane prefHeight="200.0" prefWidth="50.0" HBox.hgrow="ALWAYS" />
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </HBox>
                               <VBox maxHeight="727.0" prefHeight="727.0" prefWidth="1200.0">
                                  <children>
                                     <HBox prefHeight="100.0" prefWidth="1200.0">
@@ -124,121 +160,6 @@
                                     </HBox>
                                  </children>
                               </VBox>
-                              <VBox prefHeight="80.0" prefWidth="1200.0" />
-                              <VBox maxHeight="500.0" minWidth="1200.0" prefHeight="400.0" prefWidth="1200.0">
-                                 <children>
-                                    <HBox prefHeight="100.0" prefWidth="200.0">
-                                       <children>
-                                          <Pane prefHeight="200.0" prefWidth="200.0" />
-                                          <Pane prefHeight="48.0" prefWidth="1257.0" style="-fx-background-color: #282c34;">
-                                             <children>
-                                                <Text fill="WHITE" layoutX="19.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Game information">
-                                                   <font>
-                                                      <Font name="Arial Bold" size="22.0" />
-                                                   </font>
-                                                </Text>
-                                             </children>
-                                          </Pane>
-                                          <Pane prefHeight="200.0" prefWidth="200.0" />
-                                       </children>
-                                    </HBox>
-                                    <HBox prefHeight="365.0" prefWidth="1200.0">
-                                       <children>
-                                          <Pane prefHeight="200.0" prefWidth="200.0" />
-                                          <VBox prefHeight="242.0" prefWidth="1257.0">
-                                             <children>
-                                                <HBox prefHeight="108.0" prefWidth="1257.0" style="-fx-background-color: #2e3e4e;">
-                                                   <children>
-                                                      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Game *:">
-                                                         <font>
-                                                            <Font name="Arial Bold" size="18.0" />
-                                                         </font>
-                                                         <HBox.margin>
-                                                            <Insets left="30.0" top="35.0" />
-                                                         </HBox.margin>
-                                                      </Text>
-                                                      <TextField fx:id="gameBox" prefHeight="25.0" prefWidth="437.0" stylesheets="@../css/style.css">
-                                                         <HBox.margin>
-                                                            <Insets left="156.0" top="30.0" />
-                                                         </HBox.margin>
-                                                         <font>
-                                                            <Font name="Arial Bold" size="18.0" />
-                                                         </font>
-                                                      </TextField>
-                                                      <ImageView fx:id="gameImageView" fitHeight="204.0" fitWidth="296.0" pickOnBounds="true" preserveRatio="true">
-                                                         <HBox.margin>
-                                                            <Insets left="70.0" top="20.0" />
-                                                         </HBox.margin>
-                                                         <image>
-                                                            <Image url="@../Images/placeholder-image.png" />
-                                                         </image>
-                                                      </ImageView>
-                                                   </children>
-                                                </HBox>
-                                                <HBox prefHeight="142.0" prefWidth="1257.0" style="-fx-background-color: #2e3e4e;">
-                                                   <children>
-                                                      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Platform *:">
-                                                         <font>
-                                                            <Font name="Arial Bold" size="18.0" />
-                                                         </font>
-                                                         <HBox.margin>
-                                                            <Insets left="30.0" top="35.0" />
-                                                         </HBox.margin>
-                                                      </Text>
-                                                      <TextField fx:id="platformBox" prefHeight="39.0" prefWidth="434.0">
-                                                         <HBox.margin>
-                                                            <Insets left="133.0" top="25.0" />
-                                                         </HBox.margin>
-                                                         <font>
-                                                            <Font name="Arial" size="18.0" />
-                                                         </font>
-                                                      </TextField>
-                                                   </children>
-                                                </HBox>
-                                             </children>
-                                             <HBox.margin>
-                                                <Insets />
-                                             </HBox.margin>
-                                          </VBox>
-                                          <Pane prefHeight="200.0" prefWidth="200.0" />
-                                       </children>
-                                    </HBox>
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets />
-                                 </VBox.margin>
-                              </VBox>
-                              <VBox prefHeight="80.0" prefWidth="1200.0" />
-                              <VBox alignment="CENTER" prefHeight="54.0" prefWidth="1200.0">
-                                 <children>
-                                    <Label fx:id="warningLabel" textFill="#ed944d">
-                                       <font>
-                                          <Font size="18.0" />
-                                       </font></Label>
-                                 </children></VBox>
-                              <HBox prefHeight="140.0" prefWidth="1200.0" style="-fx-background-color: #13161d;">
-                                 <children>
-                                    <Pane maxWidth="1400.0" prefHeight="90.0" prefWidth="500.0" HBox.hgrow="ALWAYS">
-                                       <HBox.margin>
-                                          <Insets right="200.0" />
-                                       </HBox.margin>
-                                    </Pane>
-                                    <Button fx:id="continueButton" mnemonicParsing="false" onAction="#addTeamScene" style="-fx-background-color: fa8f31;" text="Continue" textFill="WHITE">
-                                       <font>
-                                          <Font name="Arial Bold" size="28.0" />
-                                       </font>
-                                       <effect>
-                                          <DropShadow />
-                                       </effect>
-                                       <HBox.margin>
-                                          <Insets bottom="20.0" right="60.0" top="20.0" />
-                                       </HBox.margin>
-                                       <cursor>
-                                          <Cursor fx:constant="HAND" />
-                                       </cursor>
-                                    </Button>
-                                 </children>
-                              </HBox>
                                 </children>
                             </VBox>
                      </content>
