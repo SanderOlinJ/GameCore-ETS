@@ -4,6 +4,7 @@ import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -19,8 +20,9 @@ class NewTournamentWriterTest {
         String platform = "PC / Mac / Linux";
         String tournamentType = "Brackets";
         String totalNumberOfTeams = "8";
+        LocalDate date = LocalDate.now();
 
-        NewTournamentWriter.writeTournamentToFileWithoutTeams(tournamentName, tournamentHost, description,
+        NewTournamentWriter.writeTournamentToFileWithoutTeams(tournamentName, tournamentHost, date, description,
                 game, platform, tournamentType, totalNumberOfTeams);
     }
 

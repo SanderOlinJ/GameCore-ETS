@@ -22,6 +22,8 @@ import javafx.scene.control.TextField;
 
 import java.io.File;
 import java.net.URL;
+import java.time.LocalDate;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 import java.io.IOException;
@@ -35,7 +37,7 @@ public class CreateNewTournamentPageController implements Initializable {
 
     @FXML TextField tournamentNameBox;
     @FXML ComboBox tournamentHostBox;
-    @FXML TextField descriptionBox;
+    @FXML TextArea descriptionBox;
     @FXML TextField gameBox;
     @FXML TextField platformBox;
     @FXML ComboBox tournamentTypeBox;
@@ -43,10 +45,13 @@ public class CreateNewTournamentPageController implements Initializable {
     @FXML Label warningLabel;
     @FXML ImageView gameImageView;
     @FXML ImageView bracketFormatImageView;
+    @FXML DatePicker datePicker;
 
 
     @FXML
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        descriptionBox.setWrapText(true);
         try {
             TextFields.bindAutoCompletion(gameBox, GameAndPlatFormReader.readFile
                     (new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/games.txt")));
@@ -56,25 +61,22 @@ public class CreateNewTournamentPageController implements Initializable {
             e.printStackTrace();
         }
 
-        gameBox.textProperty().addListener(((observableValue, oldValue , newValue) -> {
-            gameImageView.setImage(new Image(getPathToGameImageFile(newValue)));
-        }));
+        gameBox.textProperty().addListener(((observableValue, oldValue , newValue) ->
+                gameImageView.setImage(new Image(getPathToGameImageFile(newValue)))));
 
         tournamentTypeBox.getSelectionModel().selectedItemProperty().addListener(
-                ((observableValue, oldValue, newValue) -> {
-                    totalNumberOfTeamsBox.setDisable(false);
-                })
+                ((observableValue, oldValue, newValue) ->
+                        totalNumberOfTeamsBox.setDisable(false))
         );
 
         totalNumberOfTeamsBox.getSelectionModel().selectedItemProperty().addListener
-                ((observableValue, oldValue, newValue) -> {
-                    bracketFormatImageView.setImage(new Image(getPathToBracketImageFile(newValue.toString())));
-        });
+                ((observableValue, oldValue, newValue) ->
+                        bracketFormatImageView.setImage(new Image(getPathToBracketImageFile(newValue.toString()))));
 
         tournamentTypeBox.getItems().addAll("Brackets");
         tournamentTypeBox.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
             @Override public ListCell<String> call(ListView<String> p) {
-                return new ListCell<String>() {
+                return new ListCell<>() {
                     @Override
                     protected void updateItem(String item, boolean empty) {
                         super.updateItem(item, empty);
@@ -140,27 +142,33 @@ public class CreateNewTournamentPageController implements Initializable {
         //------ parse the current information of combobox to addTeamScene -----
         String tournamentName = String.valueOf(tournamentNameBox.getText());
         String tournamentHost = String.valueOf(tournamentHostBox.getValue());
+        LocalDate date = datePicker.getValue();
         String description = String.valueOf(descriptionBox.getText());
         String game = String.valueOf(gameBox.getText());
         String platform = String.valueOf(platformBox.getText());
         String tournamentType = String.valueOf(tournamentTypeBox.getValue());
-        String totalNumberOfTeams = String.valueOf(totalNumberOfTeamsBox.getValue());
+        String numberOfTeams = String.valueOf(totalNumberOfTeamsBox.getValue());
 
-        if (tournamentName.isEmpty() || tournamentHost.isEmpty() || game.isEmpty() ||
-                platform.isEmpty() || tournamentType.isEmpty() || totalNumberOfTeams.isEmpty()){
+        if (tournamentName.isEmpty() || tournamentHost.isEmpty() || date == null|| game.isEmpty() ||
+                platform.isEmpty() || tournamentType.isEmpty() || numberOfTeams.isEmpty()){
             warningLabel.setText("You have to fill out all crucial fields (*)");
             throw new IllegalArgumentException("You have to fill out all crucial fields (*)");
         }
 
-        int formatNr = Integer.parseInt(totalNumberOfTeams);
+        if (date.isBefore(LocalDate.now())){
+            warningLabel.setText("You can't choose a date in the past");
+            throw new IllegalArgumentException("You can't choose a date in the past");
+        }
+
+        int formatNr = Integer.parseInt(numberOfTeams);
 
         AddTeamController.setMaxTeams(formatNr);
         EightTeamController.setTournamentName(tournamentNameBox.getText());
 
-        NewTournamentWriter.writeTournamentToFileWithoutTeams(tournamentName, tournamentHost, description,
-                game, platform, tournamentType, totalNumberOfTeams);
+        NewTournamentWriter.writeTournamentToFileWithoutTeams(tournamentName, tournamentHost,date, description,
+                game, platform, tournamentType, numberOfTeams);
 
-        Parent root = FXMLLoader.load(GameCoreETSApplication.class.getResource("scenes/add-team.fxml"));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource("scenes/add-team.fxml")));
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
