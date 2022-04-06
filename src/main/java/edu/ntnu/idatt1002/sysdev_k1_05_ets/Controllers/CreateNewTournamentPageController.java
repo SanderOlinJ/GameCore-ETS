@@ -168,7 +168,7 @@ public class CreateNewTournamentPageController implements Initializable {
         NewTournamentWriter.writeTournamentToFileWithoutTeams(tournamentName, tournamentHost,date, description,
                 game, platform, tournamentType, numberOfTeams);
 
-        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource("scenes/add-team.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource("scenes/add-team-scene.fxml")));
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
