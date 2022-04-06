@@ -3,6 +3,7 @@ package edu.ntnu.idatt1002.sysdev_k1_05_ets;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
