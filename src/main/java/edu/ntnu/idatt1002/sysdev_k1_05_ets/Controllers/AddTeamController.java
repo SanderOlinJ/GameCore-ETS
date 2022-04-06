@@ -6,6 +6,7 @@ import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -15,6 +16,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -32,6 +34,7 @@ public class AddTeamController {
     private ArrayList<Team> existingTeams;
     private Pane p = new Pane();
     private Pane pC = new Pane();
+    private VBox scrollPaneTeam = new VBox();
 
 
     private static int maxTeams;
@@ -53,6 +56,9 @@ public class AddTeamController {
 
     @FXML
     ScrollPane currentTeams;
+
+    @FXML
+    VBox existingTeamsBox;
 
 
     @FXML
@@ -101,13 +107,15 @@ public class AddTeamController {
         for (int i = 0; i < existingTeams.size(); i++){
             Label teamLabel = new Label();
             teamLabel.setText(existingTeams.get(i).getNameOfTeam());
-            p.getChildren().add(teamLabel);
-            p.getChildren().get(i).setOnMouseClicked
+            scrollPaneTeam.getChildren().add(teamLabel);
+            scrollPaneTeam.getChildren().get(i).setOnMouseClicked
                     (mouseEvent -> addTeamExisting(teamLabel.getText()));
-            p.getChildren().get(i).setLayoutY(20 * i);
+            scrollPaneTeam.getChildren().get(i).setLayoutY(20 * i);
 
         }
-        scrollPane.setContent(p);
+        scrollPaneTeam.setAlignment(Pos.CENTER);
+        scrollPaneTeam.setPrefWidth(310);
+        scrollPane.setContent(scrollPaneTeam);
     }
 
 
@@ -129,21 +137,24 @@ public class AddTeamController {
                 teamNameField.setText("");
                 Label newTeam = new Label(teamNameField.getText());
                 pC.getChildren().add(newTeam);
-            } else {
+            }
+            else {
+                //name of each members on new lines
                 String[] players = playersNameField.getText().split("\n");
                 List<String> returnList = Arrays.asList(players);
-                ArrayList<String> returnListFinal = new ArrayList<>(returnList);
-                Team addedTeam = new Team(returnListFinal, teamNameField.getText());
+                ArrayList<String> teamMembersList = new ArrayList<>(returnList);
+
+                //Creating team labels
+                Team addedTeam = new Team(teamMembersList, teamNameField.getText());
                 Label newTeam = new Label(teamNameField.getText());
                 pC.getChildren().add(newTeam);
+
+                //add team to tournament bracket
                 EightTeamController.getBracket().addTeam(addedTeam);
                 ArrayList<Team> writeTeamList = new ArrayList<>();
                 writeTeamList.add(addedTeam);
+                //write teams to team file
                 TeamWriter.writeFile(writeTeamList,"all_Teams");
-                System.out.println(teamNameField.getText());
-                for (String string : players){
-                    System.out.println(string);
-                }
                 setCurrentTeams();
                 playersNameField.setText("");
                 teamNameField.setText("");
@@ -167,7 +178,6 @@ public class AddTeamController {
         }
         currentTeams.setContent(pC);
     }
-
 
     public static void setMaxTeams(int maxNrOfTeams) {
         maxTeams = maxNrOfTeams;

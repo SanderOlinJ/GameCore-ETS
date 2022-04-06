@@ -162,13 +162,13 @@ public class CreateNewTournamentPageController implements Initializable {
 
         int formatNr = Integer.parseInt(numberOfTeams);
 
-        AddTeamController.setMaxTeams(formatNr);
-        EightTeamController.setTournamentName(tournamentNameBox.getText());
+        edu.ntnu.idatt1002.sysdev_k1_05_ets.Controllers.AddTeamController.setMaxTeams(formatNr);
+        edu.ntnu.idatt1002.sysdev_k1_05_ets.Controllers.EightTeamController.setTournamentName(tournamentNameBox.getText());
 
         NewTournamentWriter.writeTournamentToFileWithoutTeams(tournamentName, tournamentHost,date, description,
                 game, platform, tournamentType, numberOfTeams);
 
-        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource("scenes/add-team.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource("scenes/add-team-scene.fxml")));
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
