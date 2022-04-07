@@ -23,6 +23,7 @@ public class TeamWriter {
                 try {
                     StringBuilder stringBuilder = new StringBuilder();
                     stringBuilder.append(team.getNameOfTeam()).append(DELIMITER);
+                    stringBuilder.append(team.getNameAbbr()).append(DELIMITER);
                     for (int i = 0; i < team.getMembers().size(); i++){
                         stringBuilder.append(team.getMembers().get(i)).append(DELIMITER);
                     }

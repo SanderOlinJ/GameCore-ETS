@@ -39,26 +39,14 @@ public class AddTeamController {
 
     private static int maxTeams;
 
-    @FXML
-    TextField teamNameField;
-
-    @FXML
-    TextArea playersNameField;
-
-    @FXML
-    Label warningLabel;
-
-    @FXML
-    Label existingTeamsAdd;
-
-    @FXML
-    ScrollPane scrollPane;
-
-    @FXML
-    ScrollPane currentTeams;
-
-    @FXML
-    VBox existingTeamsBox;
+    @FXML TextField teamNameField;
+    @FXML TextField teamNameAbbreviationField;
+    @FXML TextArea playersNameField;
+    @FXML Label warningLabel;
+    @FXML Label existingTeamsAdd;
+    @FXML ScrollPane scrollPane;
+    @FXML ScrollPane currentTeams;
+    @FXML VBox existingTeamsBox;
 
 
     @FXML
@@ -125,6 +113,9 @@ public class AddTeamController {
         if (teamNameField.getText().strip().equals("")){
             warningLabel.setText("Invalid team name.");
         }
+        if (teamNameAbbreviationField.getText().strip().equals("")){
+            warningLabel.setText("Invalid team abbreviations");
+        }
         //check if max amount of teams has been exceeded
         if(BracketController.getBracket().getTeams().size() >= maxTeams){
             warningLabel.setText("You have reached the maximum number of teams for this tournament. \n"
@@ -146,7 +137,8 @@ public class AddTeamController {
                 ArrayList<String> teamMembersList = new ArrayList<>(returnList);
 
                 //Creating team labels
-                Team addedTeam = new Team(teamMembersList, teamNameField.getText());
+                Team addedTeam = new Team(teamMembersList, teamNameField.getText(),
+                        teamNameAbbreviationField.getText());
                 Label newTeam = new Label(teamNameField.getText());
                 pC.getChildren().add(newTeam);
 
@@ -159,6 +151,7 @@ public class AddTeamController {
                 setCurrentTeams();
                 playersNameField.setText("");
                 teamNameField.setText("");
+                teamNameAbbreviationField.setText("");
 
             }
         }

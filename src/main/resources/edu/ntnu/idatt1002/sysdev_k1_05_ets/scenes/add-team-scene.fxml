@@ -127,7 +127,7 @@
                                                                   <Insets left="30.0" top="35.0" />
                                                                </HBox.margin>
                                                             </Text>
-                                                            <TextField fx:id="teamNameField1" prefHeight="40.0" prefWidth="275.0" style="-fx-background-color: #282c34; -fx-text-fill: #fff;">
+                                                            <TextField fx:id="teamNameAbbreviationField" prefHeight="40.0" prefWidth="275.0" style="-fx-background-color: #282c34; -fx-text-fill: #fff;">
                                                                <font>
                                                                   <Font name="Arial Bold" size="18.0" />
                                                                </font>

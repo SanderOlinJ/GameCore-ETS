@@ -5,23 +5,49 @@ import java.util.ArrayList;
 public class Team {
     private ArrayList<String> members = new ArrayList<>();
     private String nameOfTeam;
+    private String nameAbbr;
 
-    public Team(ArrayList<String> members, String nameOfTeam) {
+
+    public Team(ArrayList<String> members, String nameOfTeam, String nameAbbr) {
         if (nameOfTeam == null || nameOfTeam.isEmpty()) {
             throw new IllegalArgumentException("Team name is required!");
+        }
+        if (members == null || members.isEmpty()){
+            throw new IllegalArgumentException("Team members are required");
+        }
+        if (nameAbbr == null || nameAbbr.isEmpty()){
+            throw new IllegalArgumentException("Team name abbreviation is required");
         }
         this.members = members;
         this.nameOfTeam = nameOfTeam;
+        this.nameAbbr = nameAbbr;
     }
 
-    public Team(String nameOfTeam) {
+    public Team(String nameOfTeam, String nameAbbr) {
+        if (nameOfTeam == null || nameOfTeam.isEmpty()) {
+            throw new IllegalArgumentException("Team name is required!");
+        }
+        if (nameAbbr == null || nameAbbr.isEmpty()){
+            throw new IllegalArgumentException("Team name abbreviation is required");
+        }
+        this.nameOfTeam = nameOfTeam;
+        this.nameAbbr = nameAbbr;
+    }
+
+    public Team(String nameOfTeam){
         if (nameOfTeam == null || nameOfTeam.isEmpty()) {
             throw new IllegalArgumentException("Team name is required!");
         }
         this.nameOfTeam = nameOfTeam;
     }
 
+    public String getNameAbbr() {
+        return nameAbbr;
+    }
 
+    public void setNameAbbr(String nameAbbr) {
+        this.nameAbbr = nameAbbr;
+    }
     public ArrayList<String> getMembers() {
         return members;
     }

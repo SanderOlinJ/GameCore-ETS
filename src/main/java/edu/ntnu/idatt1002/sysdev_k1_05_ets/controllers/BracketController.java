@@ -118,7 +118,7 @@ public class BracketController {
 
         Tournament deepCopy = new Tournament("Deep Copy");
         for (Team team : tournament.getTeams()) {
-            deepCopy.addTeam(new Team(team.getMembers(), team.getNameOfTeam()));
+            deepCopy.addTeam(new Team(team.getMembers(), team.getNameOfTeam(), team.getNameAbbr()));
         }
 
         for (int i = 0; i < bracketSize - 1; i++){

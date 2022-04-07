@@ -38,7 +38,7 @@
         </MenuBar>
     </top>
     <center>
-        <VBox prefHeight="1655.0" prefWidth="1200.0" style="-fx-background-color: #282c34;" BorderPane.alignment="CENTER">
+        <VBox prefHeight="1773.0" prefWidth="1200.0" style="-fx-background-color: #282c34;" BorderPane.alignment="CENTER">
             <children>
                 <VBox maxHeight="200.0" prefHeight="131.0" prefWidth="1200.0" style="-fx-background-color: #2e3e4e;" VBox.vgrow="ALWAYS">
                     <children>
@@ -78,7 +78,7 @@
                                                 </Text>
                                             </children>
                                         </HBox>
-                                        <VBox maxHeight="547.0" prefHeight="547.0" prefWidth="1200.0">
+                                        <VBox>
                                             <children>
                                                 <HBox prefHeight="100.0" prefWidth="1200.0">
                                                     <children>
@@ -110,7 +110,7 @@
                                                                                 <Insets left="30.0" top="35.0" />
                                                                             </HBox.margin>
                                                                         </Text>
-                                                                        <TextField fx:id="tournamentNameBox" prefHeight="36.0" prefWidth="735.0" style="-fx-background-color: #282c34; -fx-text-fill: #fff;">
+                                                                        <TextField fx:id="tournamentNameBox" prefHeight="40.0" prefWidth="735.0" style="-fx-background-color: #282c34; -fx-text-fill: #fff;">
                                                                             <HBox.margin>
                                                                                 <Insets left="50.0" top="30.0" />
                                                                             </HBox.margin>
@@ -147,7 +147,7 @@
                                                                                 <Insets left="30.0" />
                                                                             </HBox.margin>
                                                                         </Text>
-                                                                        <DatePicker fx:id="datePicker" prefHeight="33.0" prefWidth="278.0" style="-fx-background-color: #282c34;" stylesheets="@../css/style.css">
+                                                                        <DatePicker fx:id="datePicker" prefHeight="40.0" prefWidth="278.0" style="-fx-background-color: #282c34;" stylesheets="@../css/style.css">
                                                                             <HBox.margin>
                                                                                 <Insets left="123.0" />
                                                                             </HBox.margin>
@@ -181,8 +181,8 @@
                                                 </HBox>
                                             </children>
                                         </VBox>
-                                        <VBox prefHeight="80.0" prefWidth="1200.0" />
-                                        <VBox maxHeight="500.0" minWidth="1200.0" prefHeight="400.0" prefWidth="1200.0">
+                                        <VBox minWidth="-Infinity" prefHeight="100.0" prefWidth="1200.0" />
+                                        <VBox>
                                             <children>
                                                 <HBox prefHeight="100.0" prefWidth="200.0">
                                                     <children>
@@ -214,7 +214,7 @@
                                                                                 <Insets left="30.0" top="35.0" />
                                                                             </HBox.margin>
                                                                         </Text>
-                                                                        <TextField fx:id="gameBox" prefHeight="25.0" prefWidth="437.0" stylesheets="@../css/style.css">
+                                                                        <TextField fx:id="gameBox" prefHeight="40.0" prefWidth="433.0" stylesheets="@../css/style.css">
                                                                             <HBox.margin>
                                                                                 <Insets left="156.0" top="30.0" />
                                                                             </HBox.margin>
@@ -242,7 +242,7 @@
                                                                                 <Insets left="30.0" top="35.0" />
                                                                             </HBox.margin>
                                                                         </Text>
-                                                                        <TextField fx:id="platformBox" prefHeight="39.0" prefWidth="434.0">
+                                                                        <TextField fx:id="platformBox" prefHeight="40.0" prefWidth="434.0">
                                                                             <HBox.margin>
                                                                                 <Insets left="133.0" top="25.0" />
                                                                             </HBox.margin>
@@ -254,7 +254,7 @@
                                                                 </HBox>
                                                             </children>
                                                             <HBox.margin>
-                                                                <Insets />
+                                                                <Insets bottom="10.0" />
                                                             </HBox.margin>
                                                         </VBox>
                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -266,7 +266,7 @@
                                             </VBox.margin>
                                         </VBox>
                                         <VBox prefHeight="80.0" prefWidth="1200.0" />
-                                        <VBox maxHeight="500.0" minWidth="1200.0" prefHeight="400.0" prefWidth="1200.0">
+                                        <VBox>
                                             <children>
                                                 <HBox prefHeight="100.0" prefWidth="200.0">
                                                     <children>
@@ -298,13 +298,30 @@
                                                                                 <Insets left="30.0" top="35.0" />
                                                                             </HBox.margin>
                                                                         </Text>
-                                                                        <ComboBox fx:id="tournamentTypeBox" prefHeight="38.0" prefWidth="438.0" style="-fx-background-color: #282c34;" styleClass="jfx-combo-box" stylesheets="@../css/style.css">
+                                                                        <ComboBox fx:id="tournamentTypeBox" minHeight="-Infinity" prefHeight="40.0" prefWidth="438.0" style="-fx-background-color: #282c34;" styleClass="jfx-combo-box" stylesheets="@../css/style.css">
                                                                             <HBox.margin>
                                                                                 <Insets left="60.0" top="30.0" />
                                                                             </HBox.margin>
                                                                         </ComboBox>
                                                                     </children>
                                                                 </HBox>
+                                                <HBox prefHeight="196.0" prefWidth="1105.0" style="-fx-background-color: #2e3e4e;">
+                                                   <children>
+                                                      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Best of *:">
+                                                         <font>
+                                                            <Font name="Arial Bold" size="18.0" />
+                                                         </font>
+                                                         <HBox.margin>
+                                                            <Insets left="30.0" top="35.0" />
+                                                         </HBox.margin>
+                                                      </Text>
+                                                      <ComboBox fx:id="bestOfBox" minHeight="-Infinity" prefHeight="40.0" prefWidth="438.0" style="-fx-background-color: #282c34;" styleClass="jfx-combo-box" stylesheets="@../css/style.css">
+                                                         <HBox.margin>
+                                                            <Insets left="145.0" top="30.0" />
+                                                         </HBox.margin>
+                                                      </ComboBox>
+                                                   </children>
+                                                </HBox>
                                                                 <HBox prefHeight="142.0" prefWidth="1257.0" style="-fx-background-color: #2e3e4e;">
                                                                     <children>
                                                                         <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Total nr. of teams">

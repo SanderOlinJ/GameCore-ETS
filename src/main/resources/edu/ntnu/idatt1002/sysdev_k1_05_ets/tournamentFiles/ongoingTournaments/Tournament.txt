@@ -1,9 +1,0 @@
-Tournament
-true
-Admin
-2022-04-06
-Yo
-Valorant
-PC / Mac / Linux
-Brackets
-4

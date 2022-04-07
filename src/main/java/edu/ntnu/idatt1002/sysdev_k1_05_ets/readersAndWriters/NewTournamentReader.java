@@ -13,7 +13,6 @@ public class NewTournamentReader {
     public NewTournamentReader(){}
 
 
-
     public static ArrayList<String> readThroughOngoingTournaments() throws IOException{
         ArrayList<String> namesOfOngoingTournaments = new ArrayList<>();
 
@@ -35,7 +34,7 @@ public class NewTournamentReader {
         ArrayList<String> namesOfOngoingTournaments = new ArrayList<>();
 
         try (Scanner scanner = new Scanner(new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
-                "tournamentFiles/previousTournaments/previousTournaments.txt"))){
+                "tournamentFiles/previousTournaments/Name.txt"))){
             if (!scanner.hasNext()){
                 throw new IOException("File is empty");
             }
@@ -64,4 +63,36 @@ public class NewTournamentReader {
         }
         return namesOfOngoingTournaments;
     }
+
+    /*
+    public static boolean maximumAmountOfOngoingTournamentsReached() throws IOException{
+        try (Scanner scanner = new Scanner(new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
+                "tournamentFiles/ongoingTournaments/ongoingTournaments.txt"))){
+            if (!scanner.hasNext()){
+                throw new IOException("File is empty");
+            }
+            ArrayList<String> tournaments = new ArrayList<>();
+            while (scanner.hasNext()){
+                String line = scanner.nextLine();
+                tournaments.add(line);
+            }
+            return tournaments.size() > 5;
+        }
+    }
+
+    public static boolean maximumAmountOfUpcomingTournamentsReached() throws IOException{
+        try (Scanner scanner = new Scanner(new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
+                "tournamentFiles/upcomingTournaments/upcomingTournaments.txt"))){
+            if (!scanner.hasNext()){
+                throw new IOException("File is empty");
+            }
+            ArrayList<String> tournaments = null;
+            while (scanner.hasNext()){
+                String line = scanner.nextLine();
+                tournaments.add(line);
+            }
+            return tournaments.size() > 10;
+        }
+    }
+     */
 }
