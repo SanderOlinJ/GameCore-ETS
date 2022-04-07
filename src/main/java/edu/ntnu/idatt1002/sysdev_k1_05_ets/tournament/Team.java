@@ -76,4 +76,12 @@ public class Team {
         this.nameOfTeam = nameOfTeam;
     }
 
+    @Override
+    public String toString() {
+        return "Team{" +
+                "members=" + members +
+                ", nameOfTeam='" + nameOfTeam + '\'' +
+                ", nameAbbr='" + nameAbbr + '\'' +
+                '}';
+    }
 }

@@ -34,7 +34,7 @@ public class NewTournamentReader {
         ArrayList<String> namesOfOngoingTournaments = new ArrayList<>();
 
         try (Scanner scanner = new Scanner(new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
-                "tournamentFiles/previousTournaments/Name.txt"))){
+                "tournamentFiles/previousTournaments/tournamentFileFormat.txt"))){
             if (!scanner.hasNext()){
                 throw new IOException("File is empty");
             }

@@ -15,6 +15,7 @@ import java.util.ArrayList;
 public class NewTournamentWriter {
 
     private static final String DELIMITER = "\n";
+    private static final String COMMA_DELIMITER = ",";
 
     public NewTournamentWriter() {}
 
@@ -67,29 +68,62 @@ public class NewTournamentWriter {
         }
     }
 
-    public static void writeTeamsToTournament(String tournamentName, String numberOfTeams ,
+    public static void writeTeamsToTournament(String tournamentName, LocalDate date, String numberOfTeams ,
                                               ArrayList<Team> teams) throws IOException {
 
-        String tournamentShortened = Utilities.shortenAndReplaceUnnecessarySymbolsInString(tournamentName);
+        String tournamentNameShortened = Utilities.shortenAndReplaceUnnecessarySymbolsInString(tournamentName);
         int totalNumberOfTeams = Integer.parseInt(numberOfTeams);
-        File file = new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
-                "tournamentFiles/" + tournamentShortened + ".txt");
+        StringBuilder str = new StringBuilder();
 
         if (teams.size() > totalNumberOfTeams){
             throw new IllegalArgumentException("This tournament is supposed to have " + numberOfTeams +
                     "competing, not " + teams.size());
         }
-        if (!file.exists()){
-            throw new IOException("There is no tournament file under this name");
+
+        if (date.isEqual(LocalDate.now())) {
+
+            File file = new File("src/main/resources/edu/ntnu/idatt1002/" +
+                    "sysdev_k1_05_ets/tournamentFiles/ongoingTournaments/" + tournamentNameShortened + ".txt");
+
+            if (!file.exists()){
+                throw new IOException("There is no tournament file under this name");
+            }
+            try (FileWriter fileWriter = new FileWriter(file, true)) {
+                writeTeamToStringInFormatOfTournamentFile(teams, str, fileWriter);
+                writeTournamentToOngoingOverviewFile(tournamentNameShortened);
+            } catch (IOException exception){
+                throw new IOException("Could not write tournament to file: " + exception.getMessage());
+            }
+
         }
 
-        try (FileWriter fileWriter = new FileWriter(file, true)) {
-            StringBuilder str = new StringBuilder();
-            teams.forEach(team -> str.append(team).append(DELIMITER));
-            fileWriter.write(str.toString());
-        } catch (IOException exception){
-            throw new IOException("Could not write teams to tournament file: " + exception.getMessage());
+        if (date.isAfter(LocalDate.now())) {
+
+            File file = new File("src/main/resources/edu/ntnu/idatt1002/" +
+                    "sysdev_k1_05_ets/tournamentFiles/upcomingTournaments/" + tournamentNameShortened + ".txt");
+
+            if (!file.exists()){
+                throw new IOException("There is no tournament file under this name");
+            }
+            try (FileWriter fileWriter = new FileWriter(file, true)) {
+                writeTeamToStringInFormatOfTournamentFile(teams, str, fileWriter);
+                writeTournamentToUpcomingOverviewFile(tournamentNameShortened);
+            } catch (IOException exception){
+                throw new IOException("Could not write tournament to file: " + exception.getMessage());
+            }
+
         }
+
+    }
+
+    private static void writeTeamToStringInFormatOfTournamentFile(ArrayList<Team> teams, StringBuilder str,
+                                                                  FileWriter fileWriter) throws IOException {
+        for (Team team : teams){
+            str.append(team.getNameOfTeam()).append(COMMA_DELIMITER).append(team.getNameAbbr());
+            team.getMembers().forEach(s -> str.append(COMMA_DELIMITER).append(s));
+            str.append(DELIMITER);
+        }
+        fileWriter.write(str.toString());
     }
 
 
@@ -156,7 +190,7 @@ public class NewTournamentWriter {
                 throw new IOException("Tournament is already registered in this file");
             }
             try (FileWriter fileWriter = new FileWriter("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
-                    "tournamentFiles/previousTournaments/Name.txt", true)) {
+                    "tournamentFiles/previousTournaments/tournamentFileFormat.txt", true)) {
                 fileWriter.write(tournamentShortened + "\n");
             } catch (IOException exception) {
                 throw new IOException("Unable to write tournament to file: " + exception.getMessage());

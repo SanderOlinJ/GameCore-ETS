@@ -5,10 +5,6 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 
 public class TeamReaderTest {
-    @Test
-    public void readTeam() throws IOException {
-        TeamReader TR = new TeamReader();
-        System.out.println(TR.convertTournamentFileToText("8_team_file"));
-    }
+
 
 }

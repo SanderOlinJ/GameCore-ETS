@@ -1,7 +1,9 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.GameCoreETSApplication;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.NewTournamentWriter;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TeamReader;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TeamWriter;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.NewTournament;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -32,11 +34,12 @@ public class AddTeamController {
     private Scene scene;
     private Stage stage;
     private ArrayList<Team> existingTeams;
+    private ArrayList<Team> teamsForTournament;
     private Pane p = new Pane();
     private Pane pC = new Pane();
     private VBox scrollPaneTeam = new VBox();
 
-
+    private static NewTournament tournament;
     private static int maxTeams;
 
     @FXML TextField teamNameField;
@@ -65,6 +68,9 @@ public class AddTeamController {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+
+        NewTournamentWriter.writeTeamsToTournament(tournament.getTournamentName(), tournament.getDate(),
+                String.valueOf(maxTeams), getTeamsForTournament());
     }
 
     @FXML
@@ -75,6 +81,7 @@ public class AddTeamController {
         }else {
             for (Team team : existingTeams) {
                 if (team.getNameOfTeam().equals(teamName)) {
+                    teamsForTournament.add(team);
                     BracketController.getBracket().addTeam(team);
                     Label newTeam = new Label(teamName);
                     pC.getChildren().add(newTeam);
@@ -88,6 +95,7 @@ public class AddTeamController {
 
     @FXML
     public void initialize () throws IOException {
+        teamsForTournament = new ArrayList<>();
         scrollPane.setContent(null);
         TeamReader readExistingTeams = new TeamReader();
         existingTeams = new ArrayList<>(readExistingTeams.readFile(
@@ -135,7 +143,6 @@ public class AddTeamController {
                 String[] players = playersNameField.getText().split("\n");
                 List<String> returnList = Arrays.asList(players);
                 ArrayList<String> teamMembersList = new ArrayList<>(returnList);
-
                 //Creating team labels
                 Team addedTeam = new Team(teamMembersList, teamNameField.getText(),
                         teamNameAbbreviationField.getText());
@@ -146,6 +153,7 @@ public class AddTeamController {
                 BracketController.getBracket().addTeam(addedTeam);
                 ArrayList<Team> writeTeamList = new ArrayList<>();
                 writeTeamList.add(addedTeam);
+                teamsForTournament.add(addedTeam);
                 //write teams to team file
                 TeamWriter.writeFile(writeTeamList,"all_Teams");
                 setCurrentTeams();
@@ -177,4 +185,11 @@ public class AddTeamController {
         maxTeams = maxNrOfTeams;
     }
 
+    public static void setTournament(NewTournament newTournament) {
+        tournament = newTournament;
+    }
+
+    public ArrayList<Team> getTeamsForTournament() {
+        return teamsForTournament;
+    }
 }

@@ -50,18 +50,21 @@ class NewTournamentWriterTest {
         assertTrue(new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/tournamentFiles" +
                 "/ongoingTournaments/LeagueofLegendsTournament.txt").exists());
     }
-
+/*
     @Test
     void testThatWriteTeamsToTournamentRuns() throws IOException {
         String tournamentName = "Valorant Tournament";
         String numberOfTeams = "8";
-        ArrayList<Team> teams = new ArrayList<>();
-        teams.add(new Team("Sander","SDR"));
-        teams.add(new Team("Joakim","JKM"));
-        teams.add(new Team("Beka","BK"));
+        LocalDate date = LocalDate.now();
+        ArrayList<String> teams = new ArrayList<>();
+        teams.add("Sander");
+        teams.add("Joakim");
+        teams.add("Beka");
 
-        NewTournamentWriter.writeTeamsToTournament(tournamentName,numberOfTeams, teams);
+        NewTournamentWriter.writeTeamsToTournament(tournamentName,date,numberOfTeams, teams);
     }
+
+ */
 
     @Test
     void testThatRemoveTournamentFromUpcomingTournamentsRuns() throws IOException{

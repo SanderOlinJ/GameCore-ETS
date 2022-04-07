@@ -1,0 +1,11 @@
+Not finished
+Tryagain
+Admin
+2022-04-07
+No description
+League of Legends
+SteamDeck
+Brackets
+3
+4
+edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team@75568cdf

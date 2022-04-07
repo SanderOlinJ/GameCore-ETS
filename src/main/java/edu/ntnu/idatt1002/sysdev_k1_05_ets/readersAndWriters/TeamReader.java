@@ -26,7 +26,7 @@ public class TeamReader {
             while (scanner.hasNext()){
                 String line = scanner.nextLine();
                 String[] values = line.split(DELIMITER);
-                Team team = new Team(values[0]);
+                Team team = new Team(values[0], values[1]);
                 for (int i = 1; i < values.length; i++){
                     team.addMember(values[i]);
                 }
@@ -65,21 +65,5 @@ public class TeamReader {
         return new Team(members, teamName, teamNameAbbr);
     }
 
-
-    public String convertTournamentFileToText(String tournamentName) throws IOException {
-        ArrayList<Team> teams = new ArrayList<>();
-        for(int i = 1; i<= Files.lines(Paths.get("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
-                "teamFiles/"+tournamentName+".csv")).count(); i++){
-
-            String readLines = readTeamsFileAtLine(tournamentName, i);
-            Team team = createTeamFromLine(readLines);
-            teams.add(team);
-        }
-
-
-        StringBuilder str = new StringBuilder();
-        teams.forEach(t -> str.append("Team name: ").append(t.getNameOfTeam()).append(", Team members: ").append(t.getMembersAsText()).append("\n"));
-        return str.toString();
-    }
 
 }

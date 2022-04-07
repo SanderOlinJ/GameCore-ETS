@@ -191,13 +191,17 @@ public class CreateNewTournamentPageController implements Initializable {
                     tournamentHost, date, description, game, platform, tournamentType,bestOf, numberOfTeams);
         }
 
-        this.tournament = new NewTournament(status, tournamentName, tournamentHost, date, description, game, platform,
+        NewTournament tournament= new NewTournament(status, tournamentName, tournamentHost, date, description, game, platform,
                 tournamentType, bestOf, numberOfTeams);
 
         int formatNr = Integer.parseInt(numberOfTeams);
 
         edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.AddTeamController.setMaxTeams(formatNr);
-        edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.EightTeamController.setTournamentName(tournamentNameBox.getText());
+        edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.AddTeamController.setTournament(tournament);
+
+
+        edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.EightTeamController
+                .setTournamentName(tournamentNameBox.getText());
 
         Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource(
                 "scenes/add-team-scene.fxml")));
@@ -207,5 +211,9 @@ public class CreateNewTournamentPageController implements Initializable {
         stage.setMinWidth(1200);
         stage.setMinHeight(800);
         stage.show();
+    }
+
+    public NewTournament getTournament() {
+        return tournament;
     }
 }
