@@ -1,5 +1,5 @@
 
-package edu.ntnu.idatt1002.sysdev_k1_05_ets.ReadersAndWriters;
+package edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters;
 
 
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;

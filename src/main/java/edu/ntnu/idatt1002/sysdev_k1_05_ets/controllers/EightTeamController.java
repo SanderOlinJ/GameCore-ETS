@@ -1,9 +1,9 @@
-package edu.ntnu.idatt1002.sysdev_k1_05_ets.Controllers;
+package edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
 
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.GameCoreETSApplication;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Tournament;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.ReadersAndWriters.*;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TournamentWriter;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,48 +19,44 @@ import java.util.ArrayList;
 
 import static java.lang.Integer.parseInt;
 
-public class BracketController {
+public class EightTeamController {
 
     private static String tournamentName;
     private static Tournament tournament = new Tournament("tournamentName");
-    static int bracketSize;
-    int numberOfTeams;
-    
 
     @FXML
-    ArrayList<Label> labels = new ArrayList<>();
-    @FXML private Label team1;
-    @FXML private Label team2;
-    @FXML private Label team3;
-    @FXML private Label team4;
-    @FXML private Label team5;
-    @FXML private Label team6;
-    @FXML private Label team7;
-    @FXML private Label team8;
-    @FXML private Label team9;
-    @FXML private Label team10;
-    @FXML private Label team11;
-    @FXML private Label team12;
-    @FXML private Label team13;
-    @FXML private Label team14;
-    @FXML private Label team15;
-    @FXML private Label team16;
-    @FXML private Label team17;
-    @FXML private Label team18;
-    @FXML private Label team19;
-    @FXML private Label team20;
-    @FXML private Label team21;
-    @FXML private Label team22;
-    @FXML private Label team23;
-    @FXML private Label team24;
-    @FXML private Label team25;
-    @FXML private Label team26;
-    @FXML private Label team27;
-    @FXML private Label team28;
-    @FXML private Label team29;
-    @FXML private Label team30;
-    @FXML private Label team31;
+    ArrayList<Label> labels = new ArrayList<Label>();
 
+    @FXML
+    private Label team1;
+    @FXML
+    private Label team2;
+    @FXML
+    private Label team3;
+    @FXML
+    private Label team4;
+    @FXML
+    private Label team5;
+    @FXML
+    private Label team6;
+    @FXML
+    private Label team7;
+    @FXML
+    private Label team8;
+    @FXML
+    private Label team9;
+    @FXML
+    private Label team10;
+    @FXML
+    private Label team11;
+    @FXML
+    private Label team12;
+    @FXML
+    private Label team13;
+    @FXML
+    private Label team14;
+    @FXML
+    private Label team15;
 
     @FXML
     private Button randomizeButton;
@@ -70,46 +66,24 @@ public class BracketController {
 
     @FXML
     public void initialize(){
-        if (bracketSize >= 4) {
-            labels.add(team1);
-            labels.add(team2);
-            labels.add(team3);
-            labels.add(team4);
-            labels.add(team5);
-            labels.add(team6);
-            labels.add(team7);
-        }
-        if (bracketSize >= 8) {
-            labels.add(team8);
-            labels.add(team9);
-            labels.add(team10);
-            labels.add(team11);
-            labels.add(team12);
-            labels.add(team13);
-            labels.add(team14);
-            labels.add(team15);
-        }
-        if (bracketSize >= 16) {
-            labels.add(team16);
-            labels.add(team17);
-            labels.add(team18);
-            labels.add(team19);
-            labels.add(team20);
-            labels.add(team21);
-            labels.add(team22);
-            labels.add(team23);
-            labels.add(team24);
-            labels.add(team25);
-            labels.add(team26);
-            labels.add(team27);
-            labels.add(team28);
-            labels.add(team29);
-            labels.add(team30);
-            labels.add(team31);
-        }
+        labels.add(team1);
+        labels.add(team2);
+        labels.add(team3);
+        labels.add(team4);
+        labels.add(team5);
+        labels.add(team6);
+        labels.add(team7);
+        labels.add(team8);
+        labels.add(team9);
+        labels.add(team10);
+        labels.add(team11);
+        labels.add(team12);
+        labels.add(team13);
+        labels.add(team14);
+        labels.add(team15);
 
         for (Label label : labels) {
-            label.setOnMouseClicked(mouseEvent -> advanceTeam(label));
+            label.setOnMouseClicked(mouseEvent -> {advanceTeam(label);});
         }
         finishButton.setDisable(true);
     }
@@ -121,10 +95,10 @@ public class BracketController {
             deepCopy.addTeam(new Team(team.getMembers(), team.getNameOfTeam()));
         }
 
-        for (int i = 0; i < bracketSize - 1; i++){
+        for (int i = 0; i < 7; i++){
             labels.get(i).setText("TBD");
         }
-        for (int i = bracketSize-1; i < 2*bracketSize - 1; i++) {
+        for (int i = 7; i < 15; i++) {
             labels.get(i).setText(deepCopy.randomlyRemoveTeam().getNameOfTeam());
         }
 
@@ -143,11 +117,6 @@ public class BracketController {
 //        team13.setText(deepCopy.randomlyRemoveTeam().getNameOfTeam());
 //        team14.setText(deepCopy.randomlyRemoveTeam().getNameOfTeam());
 //        team15.setText(deepCopy.getTeam(0).getNameOfTeam());
-    }
-
-
-    static void setBracketSize(int n){
-        bracketSize = n;
     }
 
     @FXML

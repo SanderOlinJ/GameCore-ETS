@@ -1,8 +1,8 @@
-package edu.ntnu.idatt1002.sysdev_k1_05_ets.Controllers;
+package edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
 
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.GameCoreETSApplication;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.ReadersAndWriters.GameAndPlatFormReader;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.ReadersAndWriters.NewTournamentWriter;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.GameAndPlatFormReader;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.NewTournamentWriter;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -163,8 +163,8 @@ public class CreateNewTournamentPageController implements Initializable {
 
         int formatNr = Integer.parseInt(numberOfTeams);
 
-        edu.ntnu.idatt1002.sysdev_k1_05_ets.Controllers.AddTeamController.setMaxTeams(formatNr);
-        edu.ntnu.idatt1002.sysdev_k1_05_ets.Controllers.EightTeamController.setTournamentName(tournamentNameBox.getText());
+        edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.AddTeamController.setMaxTeams(formatNr);
+        edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.EightTeamController.setTournamentName(tournamentNameBox.getText());
 
         NewTournamentWriter.writeTournamentToFileWithoutTeams(tournamentName, tournamentHost,date, description,
                 game, platform, tournamentType, numberOfTeams);

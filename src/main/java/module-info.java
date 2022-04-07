@@ -11,8 +11,8 @@ module edu.ntnu.idatt1002.sysdev_k1_05_ets {
     exports edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament;
     opens edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament to javafx.fxml;
     exports edu.ntnu.idatt1002.sysdev_k1_05_ets;
-    exports edu.ntnu.idatt1002.sysdev_k1_05_ets.Controllers;
-    opens edu.ntnu.idatt1002.sysdev_k1_05_ets.Controllers to javafx.fxml;
-    exports edu.ntnu.idatt1002.sysdev_k1_05_ets.ReadersAndWriters;
-    opens edu.ntnu.idatt1002.sysdev_k1_05_ets.ReadersAndWriters to javafx.fxml;
+    exports edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
+    opens edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers to javafx.fxml;
+    exports edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters;
+    opens edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters to javafx.fxml;
 }
