@@ -3,7 +3,7 @@ package edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.GameCoreETSApplication;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Tournament;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.ReadersAndWriters.*;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,7 +23,7 @@ public class BracketController {
 
     private static String tournamentName;
     private static Tournament tournament = new Tournament("tournamentName");
-    int bracketSize = 8;
+    static int bracketSize;
     int numberOfTeams;
     
 
@@ -118,7 +118,7 @@ public class BracketController {
 
         Tournament deepCopy = new Tournament("Deep Copy");
         for (Team team : tournament.getTeams()) {
-            deepCopy.addTeam(new Team(team.getMembers(), team.getNameOfTeam()));
+            deepCopy.addTeam(new Team(team.getMembers(), team.getNameOfTeam(), team.getNameAbbr()));
         }
 
         for (int i = 0; i < bracketSize - 1; i++){
@@ -143,6 +143,11 @@ public class BracketController {
 //        team13.setText(deepCopy.randomlyRemoveTeam().getNameOfTeam());
 //        team14.setText(deepCopy.randomlyRemoveTeam().getNameOfTeam());
 //        team15.setText(deepCopy.getTeam(0).getNameOfTeam());
+    }
+
+
+    static void setBracketSize(int n){
+        bracketSize = n;
     }
 
     @FXML

@@ -17,7 +17,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="2000.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.CreateNewTournamentPageController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1200.0" style="-fx-background-color: #13161d;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.CreateNewTournamentPageController">
     <top>
         <MenuBar BorderPane.alignment="CENTER">
             <menus>
@@ -56,9 +56,9 @@
                 <HBox prefHeight="795.0" prefWidth="1200.0" VBox.vgrow="ALWAYS">
                     <children>
                         <Pane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: #13161d;" HBox.hgrow="ALWAYS" />
-                        <ScrollPane hbarPolicy="NEVER" maxWidth="1800.0" prefHeight="1000.0" prefWidth="1200.0" stylesheets="@../css/style.css">
+                        <ScrollPane hbarPolicy="NEVER" maxWidth="1800.0" prefHeight="1263.0" prefWidth="1200.0" style="-fx-background-color: #13161d;" stylesheets="@../css/style.css">
                             <content>
-                                <VBox prefHeight="990.0" prefWidth="1200.0" style="-fx-background-color: #13161d;">
+                                <VBox prefHeight="796.0" prefWidth="1200.0" style="-fx-background-color: #13161d;">
                                     <children>
                                         <HBox maxHeight="137.0" prefHeight="137.0" prefWidth="1200.0" style="-fx-background-color: #13161d;" VBox.vgrow="ALWAYS">
                                             <children>
@@ -114,7 +114,7 @@
                                                 <Insets bottom="5.0" />
                                             </VBox.margin>
                                         </HBox>
-                                        <VBox maxHeight="727.0" prefHeight="727.0" prefWidth="1200.0">
+                                        <VBox maxHeight="727.0" prefHeight="565.0" prefWidth="1200.0">
                                             <children>
                                                 <HBox prefHeight="100.0" prefWidth="1200.0">
                                                     <children>
@@ -134,14 +134,14 @@
                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                     </children>
                                                 </HBox>
-                                                <HBox prefHeight="474.0" prefWidth="1200.0">
+                                                <HBox prefHeight="400.0" prefWidth="1200.0">
                                                     <children>
                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                         <VBox prefHeight="340.0" prefWidth="1257.0" style="-fx-background-color: #2e3e4e;">
                                              <children>
                                                 <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: black;">
                                                    <children>
-                                                      <Pane prefHeight="200.0" prefWidth="100.0" />
+                                                      <Pane prefHeight="98.0" prefWidth="50.0" />
                                                       <VBox prefHeight="200.0" prefWidth="100.0">
                                                          <children>
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -153,24 +153,28 @@
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
                                                          </children>
                                                       </VBox>
-                                                      <VBox prefHeight="100.0" prefWidth="200.0">
+                                                      <VBox prefHeight="98.0" prefWidth="325.0">
                                                          <children>
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                            <Label prefHeight="23.0" prefWidth="168.0" text="Team 1" textFill="WHITE">
-                                                               <font>
-                                                                  <Font name="Arial" size="20.0" />
-                                                               </font>
-                                                            </Label>
-                                                            <Label prefHeight="17.0" prefWidth="110.0" text="VS" textFill="#fa8f31">
-                                                               <font>
-                                                                  <Font name="Arial" size="20.0" />
-                                                               </font>
-                                                            </Label>
-                                                            <Label prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
-                                                               <font>
-                                                                  <Font name="Arial" size="20.0" />
-                                                               </font>
-                                                            </Label>
+                                                            <HBox prefHeight="100.0" prefWidth="200.0">
+                                                               <children>
+                                                                  <Label prefHeight="23.0" prefWidth="168.0" text="Team 1" textFill="WHITE">
+                                                                     <font>
+                                                                        <Font name="Arial" size="20.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                                  <Label prefHeight="17.0" prefWidth="110.0" text="VS" textFill="#fa8f31">
+                                                                     <font>
+                                                                        <Font name="Arial" size="20.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                                  <Label prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
+                                                                     <font>
+                                                                        <Font name="Arial" size="20.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                               </children>
+                                                            </HBox>
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
                                                          </children>
                                                       </VBox>
@@ -179,7 +183,7 @@
                                                 </HBox>
                                                 <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: black;">
                                                    <children>
-                                                      <Pane prefHeight="200.0" prefWidth="100.0" />
+                                                      <Pane prefHeight="200.0" prefWidth="50.0" />
                                                       <VBox prefHeight="200.0" prefWidth="100.0">
                                                          <children>
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -191,24 +195,28 @@
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
                                                          </children>
                                                       </VBox>
-                                                      <VBox prefHeight="100.0" prefWidth="200.0">
+                                                      <VBox prefHeight="98.0" prefWidth="325.0">
                                                          <children>
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                            <Label prefHeight="23.0" prefWidth="168.0" text="Team 1" textFill="WHITE">
-                                                               <font>
-                                                                  <Font name="Arial" size="20.0" />
-                                                               </font>
-                                                            </Label>
-                                                            <Label prefHeight="17.0" prefWidth="110.0" text="VS" textFill="#fa8f31">
-                                                               <font>
-                                                                  <Font name="Arial" size="20.0" />
-                                                               </font>
-                                                            </Label>
-                                                            <Label prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
-                                                               <font>
-                                                                  <Font name="Arial" size="20.0" />
-                                                               </font>
-                                                            </Label>
+                                                            <HBox prefHeight="100.0" prefWidth="200.0">
+                                                               <children>
+                                                                  <Label prefHeight="23.0" prefWidth="168.0" text="Team 1" textFill="WHITE">
+                                                                     <font>
+                                                                        <Font name="Arial" size="20.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                                  <Label prefHeight="17.0" prefWidth="110.0" text="VS" textFill="#fa8f31">
+                                                                     <font>
+                                                                        <Font name="Arial" size="20.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                                  <Label prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
+                                                                     <font>
+                                                                        <Font name="Arial" size="20.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                               </children>
+                                                            </HBox>
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
                                                          </children>
                                                       </VBox>
@@ -221,7 +229,7 @@
                                                 </HBox>
                                                 <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: black;">
                                                    <children>
-                                                      <Pane prefHeight="200.0" prefWidth="100.0" />
+                                                      <Pane prefHeight="200.0" prefWidth="50.0" />
                                                       <VBox prefHeight="200.0" prefWidth="100.0">
                                                          <children>
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -233,24 +241,69 @@
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
                                                          </children>
                                                       </VBox>
-                                                      <VBox prefHeight="100.0" prefWidth="200.0">
+                                                      <VBox prefHeight="100.0" prefWidth="325.0">
                                                          <children>
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                            <Label prefHeight="23.0" prefWidth="168.0" text="Team 1" textFill="WHITE">
+                                                            <HBox prefHeight="100.0" prefWidth="200.0">
+                                                               <children>
+                                                                  <Label prefHeight="23.0" prefWidth="168.0" text="Team 1" textFill="WHITE">
+                                                                     <font>
+                                                                        <Font name="Arial" size="20.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                                  <Label prefHeight="17.0" prefWidth="110.0" text="VS" textFill="#fa8f31">
+                                                                     <font>
+                                                                        <Font name="Arial" size="20.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                                  <Label prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
+                                                                     <font>
+                                                                        <Font name="Arial" size="20.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                               </children>
+                                                            </HBox>
+                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                         </children>
+                                                      </VBox>
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: black;">
+                                                   <children>
+                                                      <Pane prefHeight="200.0" prefWidth="50.0" />
+                                                      <VBox prefHeight="200.0" prefWidth="100.0">
+                                                         <children>
+                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                            <Label text="Time" textFill="WHITE">
                                                                <font>
                                                                   <Font name="Arial" size="20.0" />
                                                                </font>
                                                             </Label>
-                                                            <Label prefHeight="17.0" prefWidth="110.0" text="VS" textFill="#fa8f31">
-                                                               <font>
-                                                                  <Font name="Arial" size="20.0" />
-                                                               </font>
-                                                            </Label>
-                                                            <Label prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
-                                                               <font>
-                                                                  <Font name="Arial" size="20.0" />
-                                                               </font>
-                                                            </Label>
+                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                         </children>
+                                                      </VBox>
+                                                      <VBox prefHeight="100.0" prefWidth="325.0">
+                                                         <children>
+                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                            <HBox prefHeight="100.0" prefWidth="200.0">
+                                                               <children>
+                                                                  <Label prefHeight="23.0" prefWidth="168.0" text="Team 1" textFill="WHITE">
+                                                                     <font>
+                                                                        <Font name="Arial" size="20.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                                  <Label prefHeight="17.0" prefWidth="110.0" text="VS" textFill="#fa8f31">
+                                                                     <font>
+                                                                        <Font name="Arial" size="20.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                                  <Label prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
+                                                                     <font>
+                                                                        <Font name="Arial" size="20.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                               </children>
+                                                            </HBox>
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
                                                          </children>
                                                       </VBox>

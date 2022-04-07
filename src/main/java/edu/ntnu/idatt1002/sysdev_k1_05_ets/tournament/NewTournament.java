@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class NewTournament {
+    private String status;
     private String tournamentName;
     private String tournamentHost;
     private LocalDate date;
@@ -11,11 +12,16 @@ public class NewTournament {
     private String game;
     private String platform;
     private String tournamentType;
+    private String bestOf;
     private String numberOfTeams;
     private ArrayList<Team> teams;
 
-    public NewTournament(String tournamentName, String tournamentHost, LocalDate date, String description,
-                      String game, String platform, String tournamentType, String numberOfTeams) {
+    public NewTournament(String status, String tournamentName, String tournamentHost, LocalDate date,
+                         String description, String game, String platform, String tournamentType,
+                         String bestOf, String numberOfTeams) {
+        if (status == null || status.isEmpty()){
+            throw new IllegalArgumentException("Status cannot be empty!");
+        }
         if (tournamentName == null || tournamentHost.isEmpty()) {
             throw new IllegalArgumentException("Tournament name cannot be empty!");
         }
@@ -37,9 +43,13 @@ public class NewTournament {
         if (tournamentType == null || tournamentType.isEmpty()){
             throw new IllegalArgumentException("Tournament type cannot be empty!");
         }
+        if (bestOf == null || bestOf.isEmpty()){
+            throw new IllegalArgumentException("Best of cannot be empty!");
+        }
         if (numberOfTeams == null || numberOfTeams.isEmpty()){
             throw new IllegalArgumentException("Number of teams cannot be empty!");
         }
+        this.status = status;
         this.tournamentName = tournamentName;
         this.tournamentHost = tournamentHost;
         this.date = date;
@@ -47,13 +57,17 @@ public class NewTournament {
         this.game = game;
         this.platform = platform;
         this.tournamentType = tournamentType;
+        this.bestOf = bestOf;
         this.numberOfTeams = numberOfTeams;
         this.teams = new ArrayList<>();
     }
 
-    public NewTournament(String tournamentName, String tournamentHost, LocalDate date, String description,
-                      String game, String platform, String tournamentType, String numberOfTeams,
-                      ArrayList<Team> teams) {
+    public NewTournament(String status, String tournamentName, String tournamentHost, LocalDate date,
+                         String description, String game, String platform, String tournamentType,
+                         String bestOf, String numberOfTeams, ArrayList<Team> teams) {
+        if (status == null || status.isEmpty()){
+            throw new IllegalArgumentException("Status cannot be empty!");
+        }
         if (tournamentName == null || tournamentHost.isEmpty()) {
             throw new IllegalArgumentException("Tournament name cannot be empty!");
         }
@@ -74,6 +88,9 @@ public class NewTournament {
         }
         if (tournamentType == null || tournamentType.isEmpty()){
             throw new IllegalArgumentException("Tournament type cannot be empty!");
+        }
+        if (bestOf == null || bestOf.isEmpty()){
+            throw new IllegalArgumentException("Best of cannot be empty!");
         }
         if (numberOfTeams == null || numberOfTeams.isEmpty()){
             throw new IllegalArgumentException("Number of teams cannot be empty!");
@@ -91,6 +108,7 @@ public class NewTournament {
         this.game = game;
         this.platform = platform;
         this.tournamentType = tournamentType;
+        this.bestOf = bestOf;
         this.numberOfTeams = numberOfTeams;
         this.teams.addAll(teams);
     }
@@ -145,6 +163,14 @@ public class NewTournament {
 
     public String getTournamentType() {
         return tournamentType;
+    }
+
+    public String getBestOf() {
+        return bestOf;
+    }
+
+    public void setBestOf(String bestOf) {
+        this.bestOf = bestOf;
     }
 
     public void setTournamentType(String tournamentType) {

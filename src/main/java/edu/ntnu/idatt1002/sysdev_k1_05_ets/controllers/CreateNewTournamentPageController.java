@@ -1,8 +1,10 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
 
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.GameCoreETSApplication;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.ReadersAndWriters.GameAndPlatFormReader;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.ReadersAndWriters.NewTournamentWriter;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.GameAndPlatFormReader;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.NewTournamentWriter;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.utilities.Utilities;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.NewTournament;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -34,6 +36,7 @@ public class CreateNewTournamentPageController implements Initializable {
 
     private Scene scene;
     private Stage stage;
+    private NewTournament tournament;
 
     @FXML TextField tournamentNameBox;
     @FXML ComboBox tournamentHostBox;
@@ -46,6 +49,7 @@ public class CreateNewTournamentPageController implements Initializable {
     @FXML ImageView gameImageView;
     @FXML ImageView bracketFormatImageView;
     @FXML DatePicker datePicker;
+    @FXML ComboBox bestOfBox;
 
 
     @FXML
@@ -62,7 +66,7 @@ public class CreateNewTournamentPageController implements Initializable {
         }
 
         gameBox.textProperty().addListener(((observableValue, oldValue , newValue) ->
-                gameImageView.setImage(new Image(getPathToGameImageFile(newValue)))));
+                gameImageView.setImage(new Image(Utilities.getPathToGameImageFile(newValue)))));
 
         tournamentTypeBox.getSelectionModel().selectedItemProperty().addListener(
                 ((observableValue, oldValue, newValue) ->
@@ -71,7 +75,7 @@ public class CreateNewTournamentPageController implements Initializable {
 
         totalNumberOfTeamsBox.getSelectionModel().selectedItemProperty().addListener
                 ((observableValue, oldValue, newValue) ->
-                        bracketFormatImageView.setImage(new Image(getPathToBracketImageFile(newValue.toString()))));
+                        bracketFormatImageView.setImage(new Image(Utilities.getPathToBracketImageFile(newValue.toString()))));
 
         tournamentTypeBox.getItems().addAll("Brackets");
         tournamentTypeBox.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
@@ -133,6 +137,26 @@ public class CreateNewTournamentPageController implements Initializable {
                 };
             }
         });
+        bestOfBox.getItems().addAll("1","3");
+        bestOfBox.setCellFactory(new Callback<ListView, ListCell>() {
+            @Override
+            public ListCell call(ListView listView) {
+                return new ListCell<String>() {
+                    @Override
+                    protected void updateItem(String item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (item != null) {
+                            setText(item);
+                            //This won't work for the first time but will be the one
+                            //used in the next calls
+                            getStyleClass().add("my-list-cell");
+                            //size in px
+                            setFont(Font.font(16));
+                        }
+                    }
+                };
+            }
+        });
     }
 
 
@@ -140,6 +164,7 @@ public class CreateNewTournamentPageController implements Initializable {
     @FXML
     public void addTeamScene(ActionEvent event) throws IOException {
         //------ parse the current information of combobox to addTeamScene -----
+        String status = "Not finished";
         String tournamentName = String.valueOf(tournamentNameBox.getText());
         String tournamentHost = String.valueOf(tournamentHostBox.getValue());
         LocalDate date = datePicker.getValue();
@@ -147,46 +172,40 @@ public class CreateNewTournamentPageController implements Initializable {
         String game = String.valueOf(gameBox.getText());
         String platform = String.valueOf(platformBox.getText());
         String tournamentType = String.valueOf(tournamentTypeBox.getValue());
+        String bestOf = String.valueOf(bestOfBox.getValue());
         String numberOfTeams = String.valueOf(totalNumberOfTeamsBox.getValue());
 
         if (tournamentName.isEmpty() || tournamentHost.isEmpty() || date == null|| game.isEmpty() ||
-                platform.isEmpty() || tournamentType.isEmpty() || numberOfTeams.isEmpty()){
+                platform.isEmpty() || tournamentType.isEmpty() || bestOf.isEmpty() || numberOfTeams.isEmpty()){
             warningLabel.setText("You have to fill out all crucial fields (*)");
             throw new IllegalArgumentException("You have to fill out all crucial fields (*)");
         }
 
+        BracketController.setBracketSize(Integer.parseInt((String) totalNumberOfTeamsBox.getValue()));
+
         if (date.isBefore(LocalDate.now())){
             warningLabel.setText("You can't choose a date in the past");
             throw new IllegalArgumentException("You can't choose a date in the past");
+        } else {
+            NewTournamentWriter.writeOngoingOrUpcomingTournamentToFileWithoutTeams(status, tournamentName,
+                    tournamentHost, date, description, game, platform, tournamentType,bestOf, numberOfTeams);
         }
+
+        this.tournament = new NewTournament(status, tournamentName, tournamentHost, date, description, game, platform,
+                tournamentType, bestOf, numberOfTeams);
 
         int formatNr = Integer.parseInt(numberOfTeams);
 
         edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.AddTeamController.setMaxTeams(formatNr);
         edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.EightTeamController.setTournamentName(tournamentNameBox.getText());
 
-        NewTournamentWriter.writeTournamentToFileWithoutTeams(tournamentName, tournamentHost,date, description,
-                game, platform, tournamentType, numberOfTeams);
-
-        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource("scenes/add-team-scene.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource(
+                "scenes/add-team-scene.fxml")));
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.setMinWidth(1200);
         stage.setMinHeight(800);
         stage.show();
-    }
-
-    public static String getPathToGameImageFile(String gameAsString){
-        gameAsString = gameAsString.replaceAll("\\s","");
-        gameAsString = gameAsString.replaceAll(":","");
-        gameAsString = gameAsString.replaceAll("-","");
-        return String.format("file:src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/Images/gameImages/%s",
-                gameAsString) + ".png";
-    }
-
-    public static String getPathToBracketImageFile(String bracketFormatAsString){
-        return String.format("file:src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/Images/bracketFormats/%s",
-                bracketFormatAsString) + ".png";
     }
 }

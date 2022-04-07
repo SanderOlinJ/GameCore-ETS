@@ -1,4 +1,4 @@
-package edu.ntnu.idatt1002.sysdev_k1_05_ets.ReadersAndWriters;
+package edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters;
 
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
 
@@ -59,9 +59,10 @@ public class TeamReader {
     public Team createTeamFromLine(String fileLine){
         String[] strArr = fileLine.split(",");
         String teamName = strArr[0];
+        String teamNameAbbr = strArr[1];
         ArrayList<String> members = new ArrayList<>();
         members.addAll(Arrays.asList(strArr).subList(1, strArr.length));
-        return new Team(members, teamName);
+        return new Team(members, teamName, teamNameAbbr);
     }
 
 
