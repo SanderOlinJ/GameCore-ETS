@@ -37,25 +37,6 @@ public class TeamReader {
     }
 
 
-    public static String readTeamsFileAtLine(String teamFileName, int n){
-        n = Math.abs(n)-1;
-        String line = null;
-
-        try(BufferedReader bufferedReader = new BufferedReader(new FileReader(
-                "src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/teamFiles/"+teamFileName+".csv"
-        ))){
-            for(int i = 0; i<n; i++){
-                bufferedReader.readLine();
-            }
-            line = bufferedReader.readLine();
-            return line;
-        }
-        catch (IOException e){
-            e.printStackTrace();
-        }
-        return line;
-    }
-
     public Team createTeamFromLine(String fileLine){
         String[] strArr = fileLine.split(",");
         String teamName = strArr[0];

@@ -82,4 +82,11 @@ class NewTournamentWriterTest {
 
         assertTrue(NewTournamentWriter.removeTournamentFromUpcomingTournaments(tournamentNameShortened));
     }
+
+    @Test
+    void testThatUpdateTournamentsRuns() throws IOException{
+
+        NewTournamentWriter.updateTournaments();
+
+    }
 }

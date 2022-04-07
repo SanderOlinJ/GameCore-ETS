@@ -3,7 +3,9 @@ package edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.utilities.Utilities;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -13,14 +15,11 @@ public class NewTournamentReader {
     public NewTournamentReader(){}
 
 
-    public static ArrayList<String> readThroughOngoingTournaments() throws IOException{
+    public static ArrayList<String> readThroughOngoingTournaments() throws FileNotFoundException{
         ArrayList<String> namesOfOngoingTournaments = new ArrayList<>();
 
         try (Scanner scanner = new Scanner(new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
                 "tournamentFiles/ongoingTournaments/ongoingTournaments.txt"))){
-            if (!scanner.hasNext()){
-                throw new IOException("File is empty");
-            }
             while (scanner.hasNext()){
                 String line = scanner.nextLine();
                 line = Utilities.shortenAndReplaceUnnecessarySymbolsInString(line);
@@ -30,14 +29,11 @@ public class NewTournamentReader {
         return namesOfOngoingTournaments;
     }
 
-    public static ArrayList<String> readThroughPreviousTournaments() throws IOException{
+    public static ArrayList<String> readThroughPreviousTournaments() throws FileNotFoundException{
         ArrayList<String> namesOfOngoingTournaments = new ArrayList<>();
 
         try (Scanner scanner = new Scanner(new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
-                "tournamentFiles/previousTournaments/tournamentFileFormat.txt"))){
-            if (!scanner.hasNext()){
-                throw new IOException("File is empty");
-            }
+                "tournamentFiles/previousTournaments/previousTournaments.txt"))){
             while (scanner.hasNext()){
                 String line = scanner.nextLine();
                 line = Utilities.shortenAndReplaceUnnecessarySymbolsInString(line);
@@ -47,14 +43,11 @@ public class NewTournamentReader {
         return namesOfOngoingTournaments;
     }
 
-    public static ArrayList<String> readThroughUpcomingTournaments() throws IOException{
+    public static ArrayList<String> readThroughUpcomingTournaments() throws FileNotFoundException {
         ArrayList<String> namesOfOngoingTournaments = new ArrayList<>();
 
         try (Scanner scanner = new Scanner(new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
                 "tournamentFiles/upcomingTournaments/upcomingTournaments.txt"))){
-            if (!scanner.hasNext()){
-                throw new IOException("File is empty");
-            }
             while (scanner.hasNext()){
                 String line = scanner.nextLine();
                 line = Utilities.shortenAndReplaceUnnecessarySymbolsInString(line);
@@ -62,6 +55,15 @@ public class NewTournamentReader {
             }
         }
         return namesOfOngoingTournaments;
+    }
+
+    public static boolean isTournamentUpcoming(File file) throws IOException{
+        try {
+            String date = GeneralReader.readSpecificLineInFile(file,3);
+            return LocalDate.parse(date).isAfter(LocalDate.now());
+        } catch (IOException exception){
+            throw new IOException("Could not read through file: " + exception.getMessage());
+        }
     }
 
     /*

@@ -1,11 +1,10 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class GameAndPlatFormReader {
+public class GeneralReader {
     private final String DELIMITER = "\n";
 
     public static ArrayList<String> readFile(File file) throws IOException {
@@ -20,5 +19,22 @@ public class GameAndPlatFormReader {
             }
         }
         return returnList;
+    }
+
+    public static String readSpecificLineInFile(File file, int lineNumber) throws IOException{
+        lineNumber = Math.abs(lineNumber)-1;
+        String line = null;
+
+        try(BufferedReader bufferedReader = new BufferedReader(new FileReader(file))){
+            for(int i = 0; i< lineNumber; i++){
+                bufferedReader.readLine();
+            }
+            line = bufferedReader.readLine();
+            return line;
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+        return line;
     }
 }
