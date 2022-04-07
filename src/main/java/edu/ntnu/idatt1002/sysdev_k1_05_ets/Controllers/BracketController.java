@@ -23,7 +23,7 @@ public class BracketController {
 
     private static String tournamentName;
     private static Tournament tournament = new Tournament("tournamentName");
-    int bracketSize = 8;
+    static int bracketSize;
     int numberOfTeams;
     
 
@@ -143,6 +143,11 @@ public class BracketController {
 //        team13.setText(deepCopy.randomlyRemoveTeam().getNameOfTeam());
 //        team14.setText(deepCopy.randomlyRemoveTeam().getNameOfTeam());
 //        team15.setText(deepCopy.getTeam(0).getNameOfTeam());
+    }
+
+
+    static void setBracketSize(int n){
+        bracketSize = n;
     }
 
     @FXML

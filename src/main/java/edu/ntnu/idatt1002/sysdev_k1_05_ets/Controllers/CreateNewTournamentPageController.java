@@ -148,6 +148,7 @@ public class CreateNewTournamentPageController implements Initializable {
         String platform = String.valueOf(platformBox.getText());
         String tournamentType = String.valueOf(tournamentTypeBox.getValue());
         String numberOfTeams = String.valueOf(totalNumberOfTeamsBox.getValue());
+        BracketController.setBracketSize(Integer.parseInt((String) totalNumberOfTeamsBox.getValue()));
 
         if (tournamentName.isEmpty() || tournamentHost.isEmpty() || date == null|| game.isEmpty() ||
                 platform.isEmpty() || tournamentType.isEmpty() || numberOfTeams.isEmpty()){
