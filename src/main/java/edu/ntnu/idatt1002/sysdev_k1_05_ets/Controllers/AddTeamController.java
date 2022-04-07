@@ -1,4 +1,4 @@
-package edu.ntnu.idatt1002.sysdev_k1_05_ets.Controllers;
+package edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.GameCoreETSApplication;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.ReadersAndWriters.TeamReader;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.ReadersAndWriters.TeamWriter;
@@ -6,18 +6,17 @@ import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
+import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.effect.DropShadow;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -60,6 +59,12 @@ public class AddTeamController {
     @FXML
     VBox existingTeamsBox;
 
+    @FXML
+    VBox enrolledTeamsBox;
+
+    @FXML
+    TextField abbreviationField;
+
 
     @FXML
     public void setMainScene(ActionEvent event) throws IOException {
@@ -88,7 +93,7 @@ public class AddTeamController {
                 if (team.getNameOfTeam().equals(teamName)) {
                     EightTeamController.getBracket().addTeam(team);
                     Label newTeam = new Label(teamName);
-                    pC.getChildren().add(newTeam);
+                    enrolledTeamsBox.getChildren().add(newTeam);
                 }
             }
             existingTeamsAdd.setText(teamName + " has been added to your tournament");
@@ -136,7 +141,7 @@ public class AddTeamController {
                 EightTeamController.getBracket().addTeam(new Team(teamNameField.getText()));
                 teamNameField.setText("");
                 Label newTeam = new Label(teamNameField.getText());
-                pC.getChildren().add(newTeam);
+                enrolledTeamsBox.getChildren().add(newTeam);
             }
             else {
                 //name of each members on new lines
@@ -147,7 +152,7 @@ public class AddTeamController {
                 //Creating team labels
                 Team addedTeam = new Team(teamMembersList, teamNameField.getText());
                 Label newTeam = new Label(teamNameField.getText());
-                pC.getChildren().add(newTeam);
+                enrolledTeamsBox.getChildren().add(newTeam);
 
                 //add team to tournament bracket
                 EightTeamController.getBracket().addTeam(addedTeam);
@@ -156,31 +161,32 @@ public class AddTeamController {
                 //write teams to team file
                 TeamWriter.writeFile(writeTeamList,"all_Teams");
                 setCurrentTeams();
+                //reset fields after adding
                 playersNameField.setText("");
                 teamNameField.setText("");
-
+                abbreviationField.setText("");
             }
         }
     }
 
     public void setCurrentTeams(){
-        DropShadow ds = new DropShadow();
-        ds.setOffsetY(2.0f);
-        ds.setColor(Color.color(0.1f, 0.1f, 0.1f));
-        for (int i = 0; i < pC.getChildren().size(); i++) {
-            pC.getChildren().get(i).setLayoutY(20 * i);
-            pC.getChildren().get(i).setEffect(ds);
-            pC.getChildren().get(i).setCache(true);
+        Separator separator = new Separator();
+        separator.setOrientation(Orientation.HORIZONTAL);
 
-            //scaling
-            pC.getChildren().get(i).setScaleY(1);
-            pC.getChildren().get(i).setScaleX(1);
+        for (int i = 0; i < enrolledTeamsBox.getChildren().size(); i++) {
+            enrolledTeamsBox.getChildren().get(i).setStyle("-fx-text-fill : white; -fx-font-size: 15pt");
+            //enrolledTeamsBox.getChildren().add(separator);
         }
-        currentTeams.setContent(pC);
+        //styling of vbox for current teams
+        enrolledTeamsBox.setAlignment(Pos.TOP_CENTER);
+        enrolledTeamsBox.setPrefWidth(339);
+
+
     }
 
     public static void setMaxTeams(int maxNrOfTeams) {
         maxTeams = maxNrOfTeams;
     }
+    
 
 }
