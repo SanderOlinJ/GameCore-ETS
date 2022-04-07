@@ -1,23 +1,21 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.GameCoreETSApplication;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.ReadersAndWriters.GameAndPlatFormReader;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.ReadersAndWriters.TeamReader;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.ReadersAndWriters.TeamWriter;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Line;
 import javafx.stage.Stage;
+import org.controlsfx.control.textfield.TextFields;
 
 import java.io.File;
 import java.io.IOException;
@@ -25,6 +23,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class AddTeamController {
 
@@ -65,6 +64,10 @@ public class AddTeamController {
     @FXML
     TextField abbreviationField;
 
+    @FXML
+    TextField searchTeams;
+
+
 
     @FXML
     public void setMainScene(ActionEvent event) throws IOException {
@@ -104,23 +107,30 @@ public class AddTeamController {
 
     @FXML
     public void initialize () throws IOException {
-        scrollPane.setContent(null);
+        //setting search box for teams selection
         TeamReader readExistingTeams = new TeamReader();
+        ArrayList<Team> searchTeamNames = new ArrayList<>();
+        searchTeamNames = readExistingTeams.readFile
+                (new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/teamFiles/all_Teams.csv"));
+        TextFields.bindAutoCompletion(searchTeams,
+                searchTeamNames.stream().map(Team::getNameOfTeam).collect(Collectors.toList()));
+
+        //loop through the existing teams and set their style and add them to vbox in scrollpane
         existingTeams = new ArrayList<>(readExistingTeams.readFile(
                 new File("src/main/resources/edu/ntnu/idatt1002" +
                         "/sysdev_k1_05_ets/teamFiles/all_Teams.csv")));
         for (int i = 0; i < existingTeams.size(); i++){
             Label teamLabel = new Label();
             teamLabel.setText(existingTeams.get(i).getNameOfTeam());
-            scrollPaneTeam.getChildren().add(teamLabel);
-            scrollPaneTeam.getChildren().get(i).setOnMouseClicked
+            existingTeamsBox.getChildren().add(teamLabel);
+            existingTeamsBox.getChildren().get(i).setOnMouseClicked
                     (mouseEvent -> addTeamExisting(teamLabel.getText()));
-            scrollPaneTeam.getChildren().get(i).setLayoutY(20 * i);
-
+            existingTeamsBox.getChildren().get(i).setStyle("-fx-text-fill : white; -fx-font-size: 15pt");
         }
-        scrollPaneTeam.setAlignment(Pos.CENTER);
-        scrollPaneTeam.setPrefWidth(310);
-        scrollPane.setContent(scrollPaneTeam);
+
+        existingTeamsBox.setAlignment(Pos.CENTER);
+        existingTeamsBox.setPrefWidth(310);
+        scrollPane.setContent(existingTeamsBox);
     }
 
 
@@ -175,13 +185,12 @@ public class AddTeamController {
 
         for (int i = 0; i < enrolledTeamsBox.getChildren().size(); i++) {
             enrolledTeamsBox.getChildren().get(i).setStyle("-fx-text-fill : white; -fx-font-size: 15pt");
+
             //enrolledTeamsBox.getChildren().add(separator);
         }
         //styling of vbox for current teams
         enrolledTeamsBox.setAlignment(Pos.TOP_CENTER);
         enrolledTeamsBox.setPrefWidth(339);
-
-
     }
 
     public static void setMaxTeams(int maxNrOfTeams) {

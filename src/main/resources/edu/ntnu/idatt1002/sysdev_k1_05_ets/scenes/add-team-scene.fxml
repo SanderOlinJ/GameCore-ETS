@@ -167,9 +167,9 @@
                                                    <children>
                                                       <HBox>
                                                          <children>
-                                                            <TextField fx:id="searchTeams" alignment="CENTER" prefHeight="36.0" prefWidth="259.0" promptText="Search for teams" style="-fx-background-color: #282c34; -fx-text-fill: #fff;">
+                                                            <TextField fx:id="searchTeams" alignment="CENTER" prefHeight="36.0" prefWidth="189.0" promptText="Search for teams" style="-fx-background-color: #282c34; -fx-text-fill: #fff;">
                                                                <font>
-                                                                  <Font name="Arial Bold" size="18.0" />
+                                                                  <Font name="Arial" size="17.0" />
                                                                </font>
                                                                <HBox.margin>
                                                                   <Insets left="105.0" />
@@ -180,17 +180,30 @@
                                                                   <Insets left="-45.0" />
                                                                </HBox.margin>
                                                             </ImageView>
+                                                            <Button mnemonicParsing="false" text="Select">
+                                                               <HBox.margin>
+                                                                  <Insets bottom="10.0" left="20.0" top="5.0" />
+                                                               </HBox.margin>
+                                                            </Button>
                                                          </children>
                                                          <VBox.margin>
                                                             <Insets bottom="10.0" top="10.0" />
                                                          </VBox.margin>
                                                       </HBox>
+                                                      <Label text="All teams in register" textFill="WHITE">
+                                                         <font>
+                                                            <Font name="Arial" size="15.0" />
+                                                         </font>
+                                                         <VBox.margin>
+                                                            <Insets bottom="5.0" />
+                                                         </VBox.margin>
+                                                      </Label>
                                                       <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" prefHeight="360.0" prefWidth="309.0" stylesheets="@../css/style.css">
                                                          <VBox.margin>
                                                             <Insets left="80.0" right="80.0" />
                                                          </VBox.margin>
                                                          <content>
-                                                            <VBox fx:id="existingTeamsBox" alignment="CENTER" prefHeight="324.0" prefWidth="317.0" style="-fx-background-color: #282c34;" />
+                                                            <VBox fx:id="existingTeamsBox" alignment="TOP_CENTER" prefHeight="316.0" prefWidth="317.0" style="-fx-background-color: #282c34;" />
                                                          </content>
                                                       </ScrollPane>
                                                       <Label fx:id="existingTeamsAdd" text="Click on a team to add/modify" textFill="#fa8f31">
@@ -212,12 +225,12 @@
                                           <Insets left="10.0" right="10.0" top="10.0" />
                                        </VBox.margin>
                                     </Line>
-                                    <HBox alignment="CENTER" maxWidth="140.0">
+                                    <HBox alignment="CENTER" maxWidth="241.0" prefHeight="61.0" prefWidth="241.0">
                                        <VBox.margin>
                                           <Insets />
                                        </VBox.margin>
                                        <children>
-                                          <Label prefHeight="21.0" prefWidth="97.0" text="Nr. of teams :" textFill="ORANGE">
+                                          <Label prefHeight="21.0" prefWidth="145.0" text="Nr. of teams  added:" textFill="ORANGE">
                                              <HBox.margin>
                                                 <Insets />
                                              </HBox.margin>
@@ -225,12 +238,12 @@
                                                 <Font size="15.0" />
                                              </font>
                                           </Label>
-                                          <Label fx:id="nrOfTeams" alignment="CENTER" prefHeight="31.0" prefWidth="30.0" text="16" textFill="ORANGE">
+                                          <Label fx:id="nrOfTeams" alignment="CENTER" prefHeight="31.0" prefWidth="30.0" textFill="ORANGE">
                                              <HBox.margin>
                                                 <Insets />
                                              </HBox.margin>
                                              <font>
-                                                <Font size="21.0" />
+                                                <Font size="27.0" />
                                              </font>
                                           </Label>
                                        </children>
@@ -285,7 +298,7 @@
                                  <children>
                                     <HBox prefHeight="100.0" prefWidth="1200.0">
                                        <children>
-                                          <Pane prefHeight="74.0" prefWidth="1100.0" style="-fx-background-color: #282c34;">
+                                          <Pane prefHeight="72.0" prefWidth="1116.0" style="-fx-background-color: #282c34;">
                                              <children>
                                                 <Text fill="WHITE" layoutX="20.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enrolled teams">
                                                    <font>
@@ -303,7 +316,7 @@
                                                 <Insets bottom="10.0" top="10.0" />
                                              </VBox.margin>
                                              <content>
-                                                <VBox fx:id="enrolledTeamsBox" alignment="TOP_CENTER" prefHeight="300.0" prefWidth="323.0" style="-fx-background-color: #282c34;" />
+                                                <VBox fx:id="enrolledTeamsBox" alignment="TOP_CENTER" prefHeight="298.0" prefWidth="338.0" style="-fx-background-color: #282c34;" />
                                              </content>
                                           </ScrollPane>
                                        </children>
