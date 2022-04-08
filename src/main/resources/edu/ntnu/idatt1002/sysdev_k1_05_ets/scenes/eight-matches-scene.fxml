@@ -7,7 +7,10 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -17,7 +20,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1200.0" style="-fx-background-color: #13161d;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.CreateNewTournamentPageController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1200.0" style="-fx-background-color: #13161d;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.EightMatchesController">
     <top>
         <MenuBar BorderPane.alignment="CENTER">
             <menus>
@@ -97,7 +100,7 @@
                                                         <Cursor fx:constant="HAND" />
                                                     </cursor>
                                                 </Button>
-                                                <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="368.0" style="-fx-background-color: #2e3e4e;" text="Results" textFill="WHITE">
+                                                <Button mnemonicParsing="false" onAction="#setResultsScene" prefHeight="55.0" prefWidth="368.0" style="-fx-background-color: #2e3e4e;" text="Results" textFill="WHITE">
                                                     <font>
                                                         <Font name="Arial Bold" size="20.0" />
                                                     </font>
@@ -139,6 +142,132 @@
                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                         <VBox prefHeight="340.0" prefWidth="1257.0" style="-fx-background-color: #2e3e4e;">
                                              <children>
+                                                <HBox fx:id="match1" prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: black;">
+                                                   <children>
+                                                      <Pane prefHeight="98.0" prefWidth="50.0" />
+                                                      <VBox prefHeight="200.0" prefWidth="100.0">
+                                                         <children>
+                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                            <Label text="Time" textFill="WHITE">
+                                                               <font>
+                                                                  <Font name="Arial" size="20.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                         </children>
+                                                      </VBox>
+                                                      <VBox prefHeight="98.0" prefWidth="325.0">
+                                                         <children>
+                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                            <HBox prefHeight="100.0" prefWidth="200.0">
+                                                               <children>
+                                                                  <Label fx:id="team12" prefHeight="23.0" prefWidth="168.0" text="Team 1" textFill="WHITE">
+                                                                     <font>
+                                                                        <Font name="Arial" size="20.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                                  <Label prefHeight="17.0" prefWidth="110.0" text="VS" textFill="#fa8f31">
+                                                                     <font>
+                                                                        <Font name="Arial" size="20.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                                  <Label fx:id="team22" prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
+                                                                     <font>
+                                                                        <Font name="Arial" size="20.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                               </children>
+                                                            </HBox>
+                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                         </children>
+                                                      </VBox>
+                                                      <HBox prefHeight="98.0" prefWidth="630.0">
+                                                         <children>
+                                                            <VBox prefHeight="98.0" prefWidth="190.0">
+                                                               <children>
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                  <RadioButton fx:id="team1Radio2" mnemonicParsing="false" prefHeight="22.0" prefWidth="162.0" text="Team1" textFill="WHITE">
+                                                                     <font>
+                                                                        <Font name="Arial" size="15.0" />
+                                                                     </font>
+                                                                     <toggleGroup>
+                                                                        <ToggleGroup fx:id="winner2" />
+                                                                     </toggleGroup>
+                                                                     <VBox.margin>
+                                                                        <Insets bottom="10.0" />
+                                                                     </VBox.margin>
+                                                                  </RadioButton>
+                                                                  <RadioButton fx:id="team2Radio2" mnemonicParsing="false" prefHeight="22.0" prefWidth="162.0" text="Team2" textFill="WHITE" toggleGroup="$winner2">
+                                                                     <font>
+                                                                        <Font name="Arial" size="15.0" />
+                                                                     </font>
+                                                                     <VBox.margin>
+                                                                        <Insets />
+                                                                     </VBox.margin>
+                                                                  </RadioButton>
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                               </children>
+                                                            </VBox>
+                                                            <HBox prefWidth="200.0">
+                                                               <children>
+                                                                  <VBox prefHeight="98.0" prefWidth="96.0">
+                                                                     <children>
+                                                                        <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                        <Label text="Score team 1:" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Arial" size="15.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label text="Score team 2:" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Arial" size="15.0" />
+                                                                           </font>
+                                                                           <VBox.margin>
+                                                                              <Insets top="15.0" />
+                                                                           </VBox.margin>
+                                                                        </Label>
+                                                                        <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                     </children>
+                                                                  </VBox>
+                                                                  <VBox prefHeight="98.0" prefWidth="38.0">
+                                                                     <children>
+                                                                        <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                        <TextField fx:id="tournamentNameBox12" prefHeight="22.0" prefWidth="38.0" style="-fx-background-color: #282c34; -fx-text-fill: #fff;">
+                                                                           <font>
+                                                                              <Font name="Arial" size="15.0" />
+                                                                           </font>
+                                                                           <VBox.margin>
+                                                                              <Insets bottom="5.0" />
+                                                                           </VBox.margin>
+                                                                        </TextField>
+                                                                        <TextField fx:id="tournamentNameBox1" prefHeight="22.0" prefWidth="38.0" style="-fx-background-color: #282c34; -fx-text-fill: #fff;">
+                                                                           <font>
+                                                                              <Font name="Arial" size="15.0" />
+                                                                           </font>
+                                                                           <VBox.margin>
+                                                                              <Insets />
+                                                                           </VBox.margin>
+                                                                        </TextField>
+                                                                        <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                     </children>
+                                                                  </VBox>
+                                                               </children>
+                                                            </HBox>
+                                                            <VBox prefHeight="98.0" prefWidth="202.0">
+                                                               <children>
+                                                                  <Pane prefHeight="100.0" prefWidth="100.0" />
+                                                                  <Button layoutX="10.0" layoutY="46.0" mnemonicParsing="false" onAction="#winnerChosen" prefHeight="26.0" prefWidth="156.0" style="-fx-background-color: #fa8f31;" text="Select winner" textFill="WHITESMOKE">
+                                                                     <font>
+                                                                        <Font name="Arial" size="15.0" />
+                                                                     </font>
+                                                                  </Button>
+                                                                  <Pane prefHeight="100.0" prefWidth="200.0" />
+                                                               </children>
+                                                            </VBox>
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </HBox>
                                                 <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: black;">
                                                    <children>
                                                       <Pane prefHeight="98.0" prefWidth="50.0" />
@@ -158,7 +287,7 @@
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
                                                             <HBox prefHeight="100.0" prefWidth="200.0">
                                                                <children>
-                                                                  <Label prefHeight="23.0" prefWidth="168.0" text="Team 1" textFill="WHITE">
+                                                                  <Label fx:id="team1" prefHeight="23.0" prefWidth="168.0" text="Team 1" textFill="WHITE">
                                                                      <font>
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
@@ -168,7 +297,7 @@
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
                                                                   </Label>
-                                                                  <Label prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
+                                                                  <Label fx:id="team2" prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
                                                                      <font>
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
@@ -178,12 +307,96 @@
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
                                                          </children>
                                                       </VBox>
-                                                      <Pane prefHeight="200.0" prefWidth="500.0" />
+                                                      <HBox prefHeight="98.0" prefWidth="630.0">
+                                                         <children>
+                                                            <VBox prefHeight="98.0" prefWidth="190.0">
+                                                               <children>
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                  <RadioButton fx:id="team1Radio" mnemonicParsing="false" prefHeight="22.0" prefWidth="162.0" text="Team1" textFill="WHITE">
+                                                                     <font>
+                                                                        <Font name="Arial" size="15.0" />
+                                                                     </font>
+                                                                     <toggleGroup>
+                                                                        <ToggleGroup fx:id="winner" />
+                                                                     </toggleGroup>
+                                                                     <VBox.margin>
+                                                                        <Insets bottom="10.0" />
+                                                                     </VBox.margin>
+                                                                  </RadioButton>
+                                                                  <RadioButton fx:id="team2Radio" mnemonicParsing="false" prefHeight="22.0" prefWidth="162.0" text="Team2" textFill="WHITE" toggleGroup="$winner">
+                                                                     <font>
+                                                                        <Font name="Arial" size="15.0" />
+                                                                     </font>
+                                                                     <VBox.margin>
+                                                                        <Insets />
+                                                                     </VBox.margin>
+                                                                  </RadioButton>
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                               </children>
+                                                            </VBox>
+                                                            <HBox prefWidth="200.0">
+                                                               <children>
+                                                                  <VBox prefHeight="98.0" prefWidth="96.0">
+                                                                     <children>
+                                                                        <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                        <Label text="Score team 1:" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Arial" size="15.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label text="Score team 2:" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Arial" size="15.0" />
+                                                                           </font>
+                                                                           <VBox.margin>
+                                                                              <Insets top="15.0" />
+                                                                           </VBox.margin>
+                                                                        </Label>
+                                                                        <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                     </children>
+                                                                  </VBox>
+                                                                  <VBox prefHeight="98.0" prefWidth="38.0">
+                                                                     <children>
+                                                                        <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                        <TextField fx:id="tournamentNameBox1" prefHeight="22.0" prefWidth="38.0" style="-fx-background-color: #282c34; -fx-text-fill: #fff;">
+                                                                           <font>
+                                                                              <Font name="Arial" size="15.0" />
+                                                                           </font>
+                                                                           <VBox.margin>
+                                                                              <Insets bottom="5.0" />
+                                                                           </VBox.margin>
+                                                                        </TextField>
+                                                                        <TextField fx:id="tournamentNameBox" prefHeight="22.0" prefWidth="38.0" style="-fx-background-color: #282c34; -fx-text-fill: #fff;">
+                                                                           <font>
+                                                                              <Font name="Arial" size="15.0" />
+                                                                           </font>
+                                                                           <VBox.margin>
+                                                                              <Insets />
+                                                                           </VBox.margin>
+                                                                        </TextField>
+                                                                        <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                     </children>
+                                                                  </VBox>
+                                                               </children>
+                                                            </HBox>
+                                                            <VBox prefHeight="98.0" prefWidth="202.0">
+                                                               <children>
+                                                                  <Pane prefHeight="100.0" prefWidth="100.0" />
+                                                                  <Button layoutX="10.0" layoutY="46.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="156.0" style="-fx-background-color: #fa8f31;" text="Select winner" textFill="WHITESMOKE">
+                                                                     <font>
+                                                                        <Font name="Arial" size="15.0" />
+                                                                     </font>
+                                                                  </Button>
+                                                                  <Pane prefHeight="100.0" prefWidth="200.0" />
+                                                               </children>
+                                                            </VBox>
+                                                         </children>
+                                                      </HBox>
                                                    </children>
                                                 </HBox>
                                                 <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: black;">
                                                    <children>
-                                                      <Pane prefHeight="200.0" prefWidth="50.0" />
+                                                      <Pane prefHeight="98.0" prefWidth="50.0" />
                                                       <VBox prefHeight="200.0" prefWidth="100.0">
                                                          <children>
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -200,7 +413,7 @@
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
                                                             <HBox prefHeight="100.0" prefWidth="200.0">
                                                                <children>
-                                                                  <Label prefHeight="23.0" prefWidth="168.0" text="Team 1" textFill="WHITE">
+                                                                  <Label fx:id="team11" prefHeight="23.0" prefWidth="168.0" text="Team 1" textFill="WHITE">
                                                                      <font>
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
@@ -210,7 +423,7 @@
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
                                                                   </Label>
-                                                                  <Label prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
+                                                                  <Label fx:id="team21" prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
                                                                      <font>
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
@@ -220,16 +433,96 @@
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
                                                          </children>
                                                       </VBox>
-                                                      <Pane prefHeight="200.0" prefWidth="500.0">
+                                                      <HBox prefHeight="98.0" prefWidth="630.0">
                                                          <children>
-                                                            <Pane layoutX="-143.0" layoutY="49.0" prefHeight="200.0" prefWidth="500.0" />
+                                                            <VBox prefHeight="98.0" prefWidth="190.0">
+                                                               <children>
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                  <RadioButton fx:id="team1Radio1" mnemonicParsing="false" prefHeight="22.0" prefWidth="162.0" text="Team1" textFill="WHITE">
+                                                                     <font>
+                                                                        <Font name="Arial" size="15.0" />
+                                                                     </font>
+                                                                     <toggleGroup>
+                                                                        <ToggleGroup fx:id="winner1" />
+                                                                     </toggleGroup>
+                                                                     <VBox.margin>
+                                                                        <Insets bottom="10.0" />
+                                                                     </VBox.margin>
+                                                                  </RadioButton>
+                                                                  <RadioButton fx:id="team2Radio1" mnemonicParsing="false" prefHeight="22.0" prefWidth="162.0" text="Team2" textFill="WHITE" toggleGroup="$winner1">
+                                                                     <font>
+                                                                        <Font name="Arial" size="15.0" />
+                                                                     </font>
+                                                                     <VBox.margin>
+                                                                        <Insets />
+                                                                     </VBox.margin>
+                                                                  </RadioButton>
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                               </children>
+                                                            </VBox>
+                                                            <HBox prefWidth="200.0">
+                                                               <children>
+                                                                  <VBox prefHeight="98.0" prefWidth="96.0">
+                                                                     <children>
+                                                                        <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                        <Label text="Score team 1:" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Arial" size="15.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label text="Score team 2:" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Arial" size="15.0" />
+                                                                           </font>
+                                                                           <VBox.margin>
+                                                                              <Insets top="15.0" />
+                                                                           </VBox.margin>
+                                                                        </Label>
+                                                                        <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                     </children>
+                                                                  </VBox>
+                                                                  <VBox prefHeight="98.0" prefWidth="38.0">
+                                                                     <children>
+                                                                        <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                        <TextField fx:id="tournamentNameBox11" prefHeight="22.0" prefWidth="38.0" style="-fx-background-color: #282c34; -fx-text-fill: #fff;">
+                                                                           <font>
+                                                                              <Font name="Arial" size="15.0" />
+                                                                           </font>
+                                                                           <VBox.margin>
+                                                                              <Insets bottom="5.0" />
+                                                                           </VBox.margin>
+                                                                        </TextField>
+                                                                        <TextField fx:id="tournamentNameBox1" prefHeight="22.0" prefWidth="38.0" style="-fx-background-color: #282c34; -fx-text-fill: #fff;">
+                                                                           <font>
+                                                                              <Font name="Arial" size="15.0" />
+                                                                           </font>
+                                                                           <VBox.margin>
+                                                                              <Insets />
+                                                                           </VBox.margin>
+                                                                        </TextField>
+                                                                        <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                     </children>
+                                                                  </VBox>
+                                                               </children>
+                                                            </HBox>
+                                                            <VBox prefHeight="98.0" prefWidth="202.0">
+                                                               <children>
+                                                                  <Pane prefHeight="100.0" prefWidth="100.0" />
+                                                                  <Button layoutX="10.0" layoutY="46.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="156.0" style="-fx-background-color: #fa8f31;" text="Select winner" textFill="WHITESMOKE">
+                                                                     <font>
+                                                                        <Font name="Arial" size="15.0" />
+                                                                     </font>
+                                                                  </Button>
+                                                                  <Pane prefHeight="100.0" prefWidth="200.0" />
+                                                               </children>
+                                                            </VBox>
                                                          </children>
-                                                      </Pane>
+                                                      </HBox>
                                                    </children>
                                                 </HBox>
                                                 <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: black;">
                                                    <children>
-                                                      <Pane prefHeight="200.0" prefWidth="50.0" />
+                                                      <Pane prefHeight="98.0" prefWidth="50.0" />
                                                       <VBox prefHeight="200.0" prefWidth="100.0">
                                                          <children>
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -241,12 +534,12 @@
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
                                                          </children>
                                                       </VBox>
-                                                      <VBox prefHeight="100.0" prefWidth="325.0">
+                                                      <VBox prefHeight="98.0" prefWidth="325.0">
                                                          <children>
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
                                                             <HBox prefHeight="100.0" prefWidth="200.0">
                                                                <children>
-                                                                  <Label prefHeight="23.0" prefWidth="168.0" text="Team 1" textFill="WHITE">
+                                                                  <Label fx:id="team13" prefHeight="23.0" prefWidth="168.0" text="Team 1" textFill="WHITE">
                                                                      <font>
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
@@ -256,7 +549,7 @@
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
                                                                   </Label>
-                                                                  <Label prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
+                                                                  <Label fx:id="team23" prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
                                                                      <font>
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
@@ -266,47 +559,91 @@
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
                                                          </children>
                                                       </VBox>
-                                                   </children>
-                                                </HBox>
-                                                <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: black;">
-                                                   <children>
-                                                      <Pane prefHeight="200.0" prefWidth="50.0" />
-                                                      <VBox prefHeight="200.0" prefWidth="100.0">
+                                                      <HBox prefHeight="98.0" prefWidth="630.0">
                                                          <children>
-                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                            <Label text="Time" textFill="WHITE">
-                                                               <font>
-                                                                  <Font name="Arial" size="20.0" />
-                                                               </font>
-                                                            </Label>
-                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                         </children>
-                                                      </VBox>
-                                                      <VBox prefHeight="100.0" prefWidth="325.0">
-                                                         <children>
-                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                            <HBox prefHeight="100.0" prefWidth="200.0">
+                                                            <VBox prefHeight="98.0" prefWidth="190.0">
                                                                <children>
-                                                                  <Label prefHeight="23.0" prefWidth="168.0" text="Team 1" textFill="WHITE">
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                  <RadioButton fx:id="team1Radio3" mnemonicParsing="false" prefHeight="22.0" prefWidth="162.0" text="Team1" textFill="WHITE">
                                                                      <font>
-                                                                        <Font name="Arial" size="20.0" />
+                                                                        <Font name="Arial" size="15.0" />
                                                                      </font>
-                                                                  </Label>
-                                                                  <Label prefHeight="17.0" prefWidth="110.0" text="VS" textFill="#fa8f31">
+                                                                     <toggleGroup>
+                                                                        <ToggleGroup fx:id="winner3" />
+                                                                     </toggleGroup>
+                                                                     <VBox.margin>
+                                                                        <Insets bottom="10.0" />
+                                                                     </VBox.margin>
+                                                                  </RadioButton>
+                                                                  <RadioButton fx:id="team2Radio3" mnemonicParsing="false" prefHeight="22.0" prefWidth="162.0" text="Team2" textFill="WHITE" toggleGroup="$winner3">
                                                                      <font>
-                                                                        <Font name="Arial" size="20.0" />
+                                                                        <Font name="Arial" size="15.0" />
                                                                      </font>
-                                                                  </Label>
-                                                                  <Label prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
+                                                                     <VBox.margin>
+                                                                        <Insets />
+                                                                     </VBox.margin>
+                                                                  </RadioButton>
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                               </children>
+                                                            </VBox>
+                                                            <HBox prefWidth="200.0">
+                                                               <children>
+                                                                  <VBox prefHeight="98.0" prefWidth="96.0">
+                                                                     <children>
+                                                                        <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                        <Label text="Score team 1:" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Arial" size="15.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label text="Score team 2:" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Arial" size="15.0" />
+                                                                           </font>
+                                                                           <VBox.margin>
+                                                                              <Insets top="15.0" />
+                                                                           </VBox.margin>
+                                                                        </Label>
+                                                                        <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                     </children>
+                                                                  </VBox>
+                                                                  <VBox prefHeight="98.0" prefWidth="38.0">
+                                                                     <children>
+                                                                        <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                        <TextField fx:id="tournamentNameBox13" prefHeight="22.0" prefWidth="38.0" style="-fx-background-color: #282c34; -fx-text-fill: #fff;">
+                                                                           <font>
+                                                                              <Font name="Arial" size="15.0" />
+                                                                           </font>
+                                                                           <VBox.margin>
+                                                                              <Insets bottom="5.0" />
+                                                                           </VBox.margin>
+                                                                        </TextField>
+                                                                        <TextField fx:id="tournamentNameBox1" prefHeight="22.0" prefWidth="38.0" style="-fx-background-color: #282c34; -fx-text-fill: #fff;">
+                                                                           <font>
+                                                                              <Font name="Arial" size="15.0" />
+                                                                           </font>
+                                                                           <VBox.margin>
+                                                                              <Insets />
+                                                                           </VBox.margin>
+                                                                        </TextField>
+                                                                        <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                     </children>
+                                                                  </VBox>
                                                                </children>
                                                             </HBox>
-                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                            <VBox prefHeight="98.0" prefWidth="202.0">
+                                                               <children>
+                                                                  <Pane prefHeight="100.0" prefWidth="100.0" />
+                                                                  <Button layoutX="10.0" layoutY="46.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="156.0" style="-fx-background-color: #fa8f31;" text="Select winner" textFill="WHITESMOKE">
+                                                                     <font>
+                                                                        <Font name="Arial" size="15.0" />
+                                                                     </font>
+                                                                  </Button>
+                                                                  <Pane prefHeight="100.0" prefWidth="200.0" />
+                                                               </children>
+                                                            </VBox>
                                                          </children>
-                                                      </VBox>
+                                                      </HBox>
                                                    </children>
                                                 </HBox>
                                              </children>

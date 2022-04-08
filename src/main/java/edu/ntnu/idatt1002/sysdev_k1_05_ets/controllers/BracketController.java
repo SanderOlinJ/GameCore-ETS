@@ -12,10 +12,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Objects;
 
 import static java.lang.Integer.parseInt;
 
@@ -61,6 +63,7 @@ public class BracketController {
     @FXML private Label team30;
     @FXML private Label team31;
 
+    @FXML private HBox match1;
 
     @FXML
     public void initialize(){
@@ -159,6 +162,17 @@ public class BracketController {
             TournamentWriter.writeFile(labels, tournament.getNameOfTournament(),"ongoingTournaments");
         }
     }
+
+    @FXML
+    public void setMatchesScene(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource("scenes/eight-matches-scene.fxml")));
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+
 
     @FXML
     private void advanceTeam(Label label) {
