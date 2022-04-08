@@ -62,7 +62,15 @@ public class AddTeamController {
     }
     @FXML
     public void setBracketScene(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource("scenes/overview-scene-eight.fxml")));
+        String link = "scenes/overview-scene-four.fxml";
+        if (maxTeams <= 4) {
+            link = "scenes/overview-scene-four.fxml";
+        } else if (maxTeams <= 8) {
+            link = "scenes/overview-scene-eight.fxml";
+        } else if (maxTeams <= 16) {
+            link = "scenes/overview-scene-sixteen.fxml";
+        }
+        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource(link)));
 
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);

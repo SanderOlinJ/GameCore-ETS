@@ -198,7 +198,7 @@ public class CreateNewTournamentPageController implements Initializable {
         edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.AddTeamController.setTournament(tournament);
 
 
-        edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.EightTeamController
+        edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.BracketController
                 .setTournamentName(tournamentNameBox.getText());
 
         Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource(
