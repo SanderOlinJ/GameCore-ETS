@@ -120,7 +120,7 @@ public class BracketController {
             labels.get(i).setText("?");
         }
         for (int i = bracketSize-1; i < 2*bracketSize - 1; i++) {
-            labels.get(i).setText(deepCopy.randomlyRemoveTeam().getNameOfTeam());
+            labels.get(i).setText(deepCopy.randomlyRemoveTeam().getNameAbbr());
         }
 
 //        team1.setText("TBD");
