@@ -31,7 +31,7 @@ public class MainPageController {
 
     @FXML
     void onCreateNewTournamentButtonPressed(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(GameCoreETSApplication.class.getResource("scenes/new-create-new-tournament-page.fxml"));
+        Parent root = FXMLLoader.load(GameCoreETSApplication.class.getResource("scenes/create-new-tournament-page.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);

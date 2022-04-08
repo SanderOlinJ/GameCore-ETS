@@ -99,6 +99,10 @@
                             <mainClass>
                                 edu.ntnu.idatt1002.sysdev_k1_05_ets/edu.ntnu.idatt1002.sysdev_k1_05_ets.MainApp
                             </mainClass>
+                            <options>
+                                <option>--add-exports</option>
+                                <option>javafx.base/com.sun.javafx.event=org.controlsfx.controls</option>
+                            </options>
                         </configuration>
                     </execution>
                 </executions>

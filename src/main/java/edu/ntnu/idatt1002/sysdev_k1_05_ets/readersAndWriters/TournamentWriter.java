@@ -1,6 +1,5 @@
-package edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament_file_managers;
+package edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters;
 
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
 import javafx.scene.control.Label;
 
 import java.io.FileWriter;
@@ -28,7 +27,6 @@ public class TournamentWriter {
             }catch (IOException e){
                 throw new IOException("Cannot write tournament to file" + e.getMessage());
             }
-
         }
     }
 }

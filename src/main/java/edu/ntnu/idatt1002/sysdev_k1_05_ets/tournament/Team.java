@@ -4,34 +4,50 @@ import java.util.ArrayList;
 
 public class Team {
     private ArrayList<String> members = new ArrayList<>();
-    private String nameOfTeam, teamNameAbbreviation;
+    private String nameOfTeam;
+    private String nameAbbr;
 
-    public Team(ArrayList<String> members, String nameOfTeam, String teamNameAbbreviation) {
+
+    public Team(ArrayList<String> members, String nameOfTeam, String nameAbbr) {
         if (nameOfTeam == null || nameOfTeam.isEmpty()) {
             throw new IllegalArgumentException("Team name is required!");
-        } if (teamNameAbbreviation == null || teamNameAbbreviation.isEmpty()) {
-            throw new IllegalArgumentException("Team name abbreviation is required!");
-        } if (teamNameAbbreviation.length() > 6) {
-            throw new IllegalArgumentException("Max length for abbreviation is 6 characters!");
+        }
+        if (members == null || members.isEmpty()){
+            throw new IllegalArgumentException("Team members are required");
+        }
+        if (nameAbbr == null || nameAbbr.isEmpty()){
+            throw new IllegalArgumentException("Team name abbreviation is required");
         }
         this.members = members;
         this.nameOfTeam = nameOfTeam;
-        this.teamNameAbbreviation = teamNameAbbreviation;
+        this.nameAbbr = nameAbbr;
     }
 
-    public Team(String nameOfTeam, String teamNameAbbreviation) {
+    public Team(String nameOfTeam, String nameAbbr) {
         if (nameOfTeam == null || nameOfTeam.isEmpty()) {
             throw new IllegalArgumentException("Team name is required!");
-        } if (teamNameAbbreviation == null || teamNameAbbreviation.isEmpty()) {
-            throw new IllegalArgumentException("Team name abbreviation is required!");
-        } if (teamNameAbbreviation.length() > 6) {
-            throw new IllegalArgumentException("Max length for abbreviation is 6 characters!");
+        }
+        if (nameAbbr == null || nameAbbr.isEmpty()){
+            throw new IllegalArgumentException("Team name abbreviation is required");
         }
         this.nameOfTeam = nameOfTeam;
-        this.teamNameAbbreviation = teamNameAbbreviation;
+        this.nameAbbr = nameAbbr;
     }
 
+    public Team(String nameOfTeam){
+        if (nameOfTeam == null || nameOfTeam.isEmpty()) {
+            throw new IllegalArgumentException("Team name is required!");
+        }
+        this.nameOfTeam = nameOfTeam;
+    }
 
+    public String getNameAbbr() {
+        return nameAbbr;
+    }
+
+    public void setNameAbbr(String nameAbbr) {
+        this.nameAbbr = nameAbbr;
+    }
     public ArrayList<String> getMembers() {
         return members;
     }
@@ -56,16 +72,16 @@ public class Team {
         return nameOfTeam;
     }
 
-    public String getTeamNameAbbreviation() {
-        return teamNameAbbreviation;
-    }
-
     public void setNameOfTeam(String nameOfTeam) {
         this.nameOfTeam = nameOfTeam;
     }
 
-    public void setTeamNameAbbreviation(String teamNameAbbreviation) {
-        this.teamNameAbbreviation = teamNameAbbreviation;
+    @Override
+    public String toString() {
+        return "Team{" +
+                "members=" + members +
+                ", nameOfTeam='" + nameOfTeam + '\'' +
+                ", nameAbbr='" + nameAbbr + '\'' +
+                '}';
     }
-
 }

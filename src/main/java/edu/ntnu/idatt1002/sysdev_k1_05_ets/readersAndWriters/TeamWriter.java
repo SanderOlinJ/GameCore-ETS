@@ -1,5 +1,5 @@
 
-package edu.ntnu.idatt1002.sysdev_k1_05_ets.team_file_managers;
+package edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters;
 
 
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
@@ -23,6 +23,7 @@ public class TeamWriter {
                 try {
                     StringBuilder stringBuilder = new StringBuilder();
                     stringBuilder.append(team.getNameOfTeam()).append(DELIMITER);
+                    stringBuilder.append(team.getNameAbbr()).append(DELIMITER);
                     for (int i = 0; i < team.getMembers().size(); i++){
                         stringBuilder.append(team.getMembers().get(i)).append(DELIMITER);
                     }
