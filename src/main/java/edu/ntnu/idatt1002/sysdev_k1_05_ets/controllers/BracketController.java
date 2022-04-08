@@ -164,9 +164,11 @@ public class BracketController {
     public void setMatchesScene(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource("scenes/eight-matches-scene.fxml")));
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        stage.getScene().setRoot(root);
+        //        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+//        Scene scene = new Scene(root);
+//        stage.setScene(scene);
+//        stage.show();
     }
 
     @FXML
@@ -181,6 +183,13 @@ public class BracketController {
         stage.show();
     }
 
+
+    @FXML
+    public void setResultsScene(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource("scenes/eight-matches-scene.fxml")));
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        stage.getScene().setRoot(root);
+    }
 
     @FXML
     private void advanceTeam(Label label) {
@@ -199,5 +208,9 @@ public class BracketController {
 
     public static void setTournamentName(String name){
         tournamentName = name;
+    }
+
+    public void switchToMatches(){
+
     }
 }

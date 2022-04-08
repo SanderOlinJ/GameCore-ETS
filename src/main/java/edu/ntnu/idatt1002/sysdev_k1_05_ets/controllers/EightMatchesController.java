@@ -48,4 +48,21 @@ public class EightMatchesController {
         stage.setMinHeight(800);
         stage.show();
     }
+
+    @FXML
+    public void setBracketScene(ActionEvent event) throws IOException {
+        String link = "";
+        if (BracketController.bracketSize == 4){
+            link = "scenes/overview-scene-four.fxml";
+        } else if (BracketController.bracketSize == 8){
+            link = "scenes/overview-scene-eight.fxml";
+        } else if (BracketController.bracketSize == 16){
+            link = "scenes/overview-scene-sixteen.fxml";
+        }
+        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource(link)));
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        stage.getScene().setRoot(root);
+    }
+
+
 }

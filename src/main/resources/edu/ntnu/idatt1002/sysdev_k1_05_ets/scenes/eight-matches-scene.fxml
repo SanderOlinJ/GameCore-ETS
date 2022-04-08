@@ -81,7 +81,7 @@
                                         <HBox prefHeight="67.0" prefWidth="1200.0">
                                             <children>
                                                 <Pane prefHeight="200.0" prefWidth="50.0" HBox.hgrow="ALWAYS" />
-                                                <Button mnemonicParsing="false" onAction="#setOverviewScene" prefHeight="55.0" prefWidth="366.0" style="-fx-background-color: #2e3e4e;" text="Overview" textFill="WHITE">
+                                                <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="366.0" style="-fx-background-color: #2e3e4e;" text="Overview" textFill="WHITE">
                                                     <font>
                                                         <Font name="Arial Bold" size="20.0" />
                                                     </font>
@@ -232,7 +232,7 @@
                                                                   <VBox prefHeight="98.0" prefWidth="38.0">
                                                                      <children>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                                        <TextField prefHeight="22.0" prefWidth="38.0" style="-fx-background-color: #282c34; -fx-text-fill: #fff;">
+                                                                        <TextField fx:id="tournamentNameBox12" prefHeight="22.0" prefWidth="38.0" style="-fx-background-color: #282c34; -fx-text-fill: #fff;">
                                                                            <font>
                                                                               <Font name="Arial" size="15.0" />
                                                                            </font>
@@ -240,7 +240,7 @@
                                                                               <Insets bottom="5.0" />
                                                                            </VBox.margin>
                                                                         </TextField>
-                                                                        <TextField prefHeight="22.0" prefWidth="38.0" style="-fx-background-color: #282c34; -fx-text-fill: #fff;">
+                                                                        <TextField fx:id="tournamentNameBox1" prefHeight="22.0" prefWidth="38.0" style="-fx-background-color: #282c34; -fx-text-fill: #fff;">
                                                                            <font>
                                                                               <Font name="Arial" size="15.0" />
                                                                            </font>
@@ -358,7 +358,7 @@
                                                                   <VBox prefHeight="98.0" prefWidth="38.0">
                                                                      <children>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                                        <TextField prefHeight="22.0" prefWidth="38.0" style="-fx-background-color: #282c34; -fx-text-fill: #fff;">
+                                                                        <TextField fx:id="tournamentNameBox1" prefHeight="22.0" prefWidth="38.0" style="-fx-background-color: #282c34; -fx-text-fill: #fff;">
                                                                            <font>
                                                                               <Font name="Arial" size="15.0" />
                                                                            </font>
@@ -366,7 +366,7 @@
                                                                               <Insets bottom="5.0" />
                                                                            </VBox.margin>
                                                                         </TextField>
-                                                                        <TextField prefHeight="22.0" prefWidth="38.0" style="-fx-background-color: #282c34; -fx-text-fill: #fff;">
+                                                                        <TextField fx:id="tournamentNameBox" prefHeight="22.0" prefWidth="38.0" style="-fx-background-color: #282c34; -fx-text-fill: #fff;">
                                                                            <font>
                                                                               <Font name="Arial" size="15.0" />
                                                                            </font>
@@ -484,7 +484,7 @@
                                                                   <VBox prefHeight="98.0" prefWidth="38.0">
                                                                      <children>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                                        <TextField prefHeight="22.0" prefWidth="38.0" style="-fx-background-color: #282c34; -fx-text-fill: #fff;">
+                                                                        <TextField fx:id="tournamentNameBox11" prefHeight="22.0" prefWidth="38.0" style="-fx-background-color: #282c34; -fx-text-fill: #fff;">
                                                                            <font>
                                                                               <Font name="Arial" size="15.0" />
                                                                            </font>
@@ -492,7 +492,7 @@
                                                                               <Insets bottom="5.0" />
                                                                            </VBox.margin>
                                                                         </TextField>
-                                                                        <TextField prefHeight="22.0" prefWidth="38.0" style="-fx-background-color: #282c34; -fx-text-fill: #fff;">
+                                                                        <TextField fx:id="tournamentNameBox1" prefHeight="22.0" prefWidth="38.0" style="-fx-background-color: #282c34; -fx-text-fill: #fff;">
                                                                            <font>
                                                                               <Font name="Arial" size="15.0" />
                                                                            </font>
@@ -610,7 +610,7 @@
                                                                   <VBox prefHeight="98.0" prefWidth="38.0">
                                                                      <children>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                                        <TextField prefHeight="22.0" prefWidth="38.0" style="-fx-background-color: #282c34; -fx-text-fill: #fff;">
+                                                                        <TextField fx:id="tournamentNameBox13" prefHeight="22.0" prefWidth="38.0" style="-fx-background-color: #282c34; -fx-text-fill: #fff;">
                                                                            <font>
                                                                               <Font name="Arial" size="15.0" />
                                                                            </font>
@@ -618,7 +618,7 @@
                                                                               <Insets bottom="5.0" />
                                                                            </VBox.margin>
                                                                         </TextField>
-                                                                        <TextField prefHeight="22.0" prefWidth="38.0" style="-fx-background-color: #282c34; -fx-text-fill: #fff;">
+                                                                        <TextField fx:id="tournamentNameBox1" prefHeight="22.0" prefWidth="38.0" style="-fx-background-color: #282c34; -fx-text-fill: #fff;">
                                                                            <font>
                                                                               <Font name="Arial" size="15.0" />
                                                                            </font>
