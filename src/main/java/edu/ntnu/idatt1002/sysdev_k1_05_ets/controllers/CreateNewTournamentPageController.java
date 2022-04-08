@@ -54,8 +54,6 @@ public class CreateNewTournamentPageController implements Initializable {
 
     @FXML
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        descriptionBox.setWrapText(true);
         try {
             TextFields.bindAutoCompletion(gameBox, GeneralReader.readFile
                     (new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/games.txt")));

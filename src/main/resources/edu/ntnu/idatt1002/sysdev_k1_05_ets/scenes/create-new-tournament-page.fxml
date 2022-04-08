@@ -164,7 +164,7 @@
                                                                                 <Insets left="30.0" />
                                                                             </HBox.margin>
                                                                         </Text>
-                                                                        <TextArea fx:id="descriptionBox" prefHeight="153.0" prefWidth="733.0" style="-fx-background-color: #282c34;" stylesheets="@../css/style.css">
+                                                                        <TextArea fx:id="descriptionBox" prefHeight="153.0" prefWidth="733.0" style="-fx-background-color: #282c34;" stylesheets="@../css/style.css" wrapText="true">
                                                                             <font>
                                                                                 <Font name="Arial Bold" size="18.0" />
                                                                             </font>
