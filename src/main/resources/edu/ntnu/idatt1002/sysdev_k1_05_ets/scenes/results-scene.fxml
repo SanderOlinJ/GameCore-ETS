@@ -78,7 +78,7 @@
                                         <HBox prefHeight="67.0" prefWidth="1200.0">
                                             <children>
                                                 <Pane prefHeight="200.0" prefWidth="50.0" HBox.hgrow="ALWAYS" />
-                                                <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="366.0" style="-fx-background-color: #2e3e4e;" text="Overview" textFill="WHITE">
+                                                <Button mnemonicParsing="false" onAction="#setOverviewScene" prefHeight="55.0" prefWidth="366.0" style="-fx-background-color: #2e3e4e;" text="Overview" textFill="WHITE">
                                                     <font>
                                                         <Font name="Arial Bold" size="20.0" />
                                                     </font>
@@ -89,7 +89,7 @@
                                                         <Cursor fx:constant="HAND" />
                                                     </cursor>
                                                 </Button>
-                                                <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="368.0" style="-fx-background-color: #2e3e4e;" text="Matches" textFill="WHITE">
+                                                <Button mnemonicParsing="false" onAction="#setMatchesScene" prefHeight="55.0" prefWidth="368.0" style="-fx-background-color: #2e3e4e;" text="Matches" textFill="WHITE">
                                                     <font>
                                                         <Font name="Arial Bold" size="20.0" />
                                                     </font>

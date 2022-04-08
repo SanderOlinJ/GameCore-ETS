@@ -36,4 +36,16 @@ public class EightMatchesController {
         stage.setMinHeight(800);
         stage.show();
     }
+
+    @FXML
+    public void setOverviewScene(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource(
+                "scenes/overview-scene.eight.fxml")));
+        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setMinWidth(1200);
+        stage.setMinHeight(800);
+        stage.show();
+    }
 }
