@@ -22,6 +22,7 @@ public class NewTournamentWriter {
     public NewTournamentWriter() {}
 
 
+
     public static void writeOngoingOrUpcomingTournamentToFileWithoutTeams(String status, String tournamentName, String tournamentHost,
                                                          LocalDate date, String description, String game,
                                                          String platform, String tournamentType, String bestOf,

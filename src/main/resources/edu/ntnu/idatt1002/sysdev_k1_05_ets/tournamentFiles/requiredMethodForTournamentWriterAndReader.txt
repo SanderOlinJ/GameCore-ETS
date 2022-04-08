@@ -1,0 +1,27 @@
+Required methods for current solutions in "tournamentFileFormat.txt"
+
+Writers:
+
+    - Check if file with same name already exists(String tournament name shortened), boolean
+    // Create 3 files for each folder (upcoming,...) and check if they already exists
+
+    - Write tournament without teams to file(---All tournaments attributes---)
+    //First check if whether the date is present or future, then write tournament to file.
+    //Also check if description is empty. If empty, add "No description".
+    //Throw exception if file can't be written to.
+
+    - Write tournament to overview file (String tournament name shortened, File file), void
+    //Method writes the tournaments name into an overview file.
+    //Uses the file path to figure out if it is upcoming, ongoing or previous).
+
+
+Readers:
+
+    - Read Through Ongoing Tournaments, ArrayList<String>
+    - Read Through Upcoming Tournaments, ArrayList<String>
+    - Read Through Previous Tournaments, ArrayList<String>
+    //Can be used for getting file paths for each ongoing/upcoming/previous tournaments.
+    //Easy as ongoing tournament always have the same file path, unless it's been changed by someone
+
+    - Read tournament file and return arraylist of tournament properties, ArrayList<String>
+    //

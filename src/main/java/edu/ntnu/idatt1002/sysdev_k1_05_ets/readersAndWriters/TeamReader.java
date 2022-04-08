@@ -27,7 +27,7 @@ public class TeamReader {
                 String line = scanner.nextLine();
                 String[] values = line.split(DELIMITER);
                 Team team = new Team(values[0], values[1]);
-                for (int i = 1; i < values.length; i++){
+                for (int i = 2; i < values.length; i++){
                     team.addMember(values[i]);
                 }
                 returnList.add(team);
