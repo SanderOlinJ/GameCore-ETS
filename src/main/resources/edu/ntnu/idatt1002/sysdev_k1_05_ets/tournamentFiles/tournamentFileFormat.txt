@@ -22,6 +22,25 @@ Previous tournaments:
    - Reader for all previous tournaments, even those without teams or matches
    - Show all previous tournaments, the most recent one up top
 
+Edit tournaments:
+    This page should be reached from a tournament overview page (Either the main page,
+    or the specific overview tabs"
+    - Read all information about a tournament to an edit page
+    //Read a tournament that only has the basic information
+    //Read a tournament that has the basics and some teams
+    //Read a tournament that has the basics and all teams
+    //Read a tournament that has the basics, teams and some matches
+    //Read a tournament that has the basics, teams and all matches
+
+
+    Task (if Tournament only has basics):
+    - Let edit button be placed on overview page
+    - Lead to page that looks like create new tournament, but a little different
+    - Read tournament from file to mentioned page
+    - Let changes be done
+    - Overwrite or delete and make new file with new changes
+    - Overwrite or delete and make new overview file with new changes
+
 Create new tournament:
 
     - Check if file exists already under same file name

@@ -2,18 +2,24 @@ Required methods for current solutions in "tournamentFileFormat.txt"
 
 Writers:
 
-    - Check if file with same name already exists(String tournament name shortened), boolean
+X    - Check if file with same name already exists(String tournament name shortened), boolean
     // Create 3 files for each folder (upcoming,...) and check if they already exists
 
-    - Write tournament without teams to file(---All tournaments attributes---)
-    //First check if whether the date is present or future, then write tournament to file.
-    //Also check if description is empty. If empty, add "No description".
+X    - Write tournament without teams to file(---All tournaments attributes---)
+    //Check if description is empty. If empty, add "No description".
     //Throw exception if file can't be written to.
+    //Don't check if there is a duplicate here, since this method is first used when creating a tournament,
+    which already checks for duplicates independently. We then want to use this method for editing
+    tournaments later when there still are no teams added, which means it should overwrite the tournament file
+    but maybe not the overview.
 
-    - Write tournament to overview file (String tournament name shortened, File file), void
+X    - Write tournament to overview file (String tournament name shortened, File file), void
     //Method writes the tournaments name into an overview file.
     //Uses the file path to figure out if it is upcoming, ongoing or previous).
 
+    - Edit Tournament amd write back to file while removing old file(---All tournament attributes---)
+    //removed past file under same name, then writes a new one
+    //also removes file from either overview.
 
 Readers:
 
