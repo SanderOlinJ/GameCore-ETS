@@ -3,7 +3,7 @@ package edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.GameCoreETSApplication;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Tournament;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.*;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.ReadersAndWriters.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -27,7 +27,7 @@ public class BracketController {
     int numberOfTeams;
     
 
-    @FXML
+
     ArrayList<Label> labels = new ArrayList<>();
     @FXML private Label team1;
     @FXML private Label team2;
