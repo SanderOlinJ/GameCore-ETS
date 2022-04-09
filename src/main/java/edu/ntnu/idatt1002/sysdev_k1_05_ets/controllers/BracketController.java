@@ -12,10 +12,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Objects;
 
 import static java.lang.Integer.parseInt;
 
@@ -24,8 +26,6 @@ public class BracketController {
     private static String tournamentName;
     private static Tournament tournament = new Tournament("tournamentName");
     static int bracketSize;
-    int numberOfTeams;
-    
 
 
     ArrayList<Label> labels = new ArrayList<>();
@@ -61,12 +61,6 @@ public class BracketController {
     @FXML private Label team30;
     @FXML private Label team31;
 
-
-    @FXML
-    private Button randomizeButton;
-
-    @FXML
-    private Button finishButton;
 
     @FXML
     public void initialize(){
@@ -111,7 +105,8 @@ public class BracketController {
         for (Label label : labels) {
             label.setOnMouseClicked(mouseEvent -> advanceTeam(label));
         }
-        finishButton.setDisable(true);
+
+        randomize();
     }
 
     public void randomize(){
@@ -122,10 +117,10 @@ public class BracketController {
         }
 
         for (int i = 0; i < bracketSize - 1; i++){
-            labels.get(i).setText("TBD");
+            labels.get(i).setText("?");
         }
         for (int i = bracketSize-1; i < 2*bracketSize - 1; i++) {
-            labels.get(i).setText(deepCopy.randomlyRemoveTeam().getNameOfTeam());
+            labels.get(i).setText(deepCopy.randomlyRemoveTeam().getNameAbbr());
         }
 
 //        team1.setText("TBD");
@@ -166,14 +161,41 @@ public class BracketController {
     }
 
     @FXML
+    public void setMatchesScene(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource("scenes/eight-matches-scene.fxml")));
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        stage.getScene().setRoot(root);
+        //        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+//        Scene scene = new Scene(root);
+//        stage.setScene(scene);
+//        stage.show();
+    }
+
+//    @FXML
+//    public void setResultsScene(ActionEvent event) throws IOException {
+//        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource(
+//                "scenes/results-scene.fxml")));
+//        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+//        Scene scene = new Scene(root);
+//        stage.setScene(scene);
+//        stage.setMinWidth(1200);
+//        stage.setMinHeight(800);
+//        stage.show();
+//    }
+
+
+    @FXML
+    public void setResultsScene(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource("scenes/eight-matches-scene.fxml")));
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        stage.getScene().setRoot(root);
+    }
+
+    @FXML
     private void advanceTeam(Label label) {
         String teamName = label.getText();
         int id = getLabelInt(label);
         labels.get((id/2)-1).setText(teamName);
-        if (!(team1.getText().equals("TBD"))){
-            finishButton.setDisable(false);
-        }
-        randomizeButton.setDisable(true);
     }
 
     public static Tournament getBracket(){
@@ -186,5 +208,9 @@ public class BracketController {
 
     public static void setTournamentName(String name){
         tournamentName = name;
+    }
+
+    public void switchToMatches(){
+
     }
 }

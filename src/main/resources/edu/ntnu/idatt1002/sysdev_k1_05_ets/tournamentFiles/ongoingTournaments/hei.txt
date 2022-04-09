@@ -1,0 +1,11 @@
+Not finished
+hei
+Admin
+2022-04-07
+No description
+Counter-Strike: Global Offensive
+Nintendo 64
+Brackets
+1
+4
+Team{members=[Sander], nameOfTeam='Sande', nameAbbr='Sa'}

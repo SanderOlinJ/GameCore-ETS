@@ -1,8 +1,8 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
 
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.GameCoreETSApplication;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.ReadersAndWriters.GameAndPlatFormReader;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.ReadersAndWriters.NewTournamentWriter;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.GeneralReader;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.NewTournamentWriter;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.utilities.Utilities;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.NewTournament;
 import javafx.event.ActionEvent;
@@ -54,12 +54,10 @@ public class CreateNewTournamentPageController implements Initializable {
 
     @FXML
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        descriptionBox.setWrapText(true);
         try {
-            TextFields.bindAutoCompletion(gameBox, GameAndPlatFormReader.readFile
+            TextFields.bindAutoCompletion(gameBox, GeneralReader.readFile
                     (new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/games.txt")));
-            TextFields.bindAutoCompletion(platformBox, GameAndPlatFormReader.readFile
+            TextFields.bindAutoCompletion(platformBox, GeneralReader.readFile
                     (new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/platforms.txt")));
         } catch (IOException e) {
             e.printStackTrace();
@@ -191,13 +189,17 @@ public class CreateNewTournamentPageController implements Initializable {
                     tournamentHost, date, description, game, platform, tournamentType,bestOf, numberOfTeams);
         }
 
-        this.tournament = new NewTournament(status, tournamentName, tournamentHost, date, description, game, platform,
+        NewTournament tournament= new NewTournament(status, tournamentName, tournamentHost, date, description, game, platform,
                 tournamentType, bestOf, numberOfTeams);
 
         int formatNr = Integer.parseInt(numberOfTeams);
 
         edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.AddTeamController.setMaxTeams(formatNr);
-        edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.EightTeamController.setTournamentName(tournamentNameBox.getText());
+        edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.AddTeamController.setTournament(tournament);
+
+
+        edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.BracketController
+                .setTournamentName(tournamentNameBox.getText());
 
         Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource(
                 "scenes/add-team-scene.fxml")));
@@ -207,5 +209,9 @@ public class CreateNewTournamentPageController implements Initializable {
         stage.setMinWidth(1200);
         stage.setMinHeight(800);
         stage.show();
+    }
+
+    public NewTournament getTournament() {
+        return tournament;
     }
 }

@@ -24,7 +24,7 @@ public class TournamentReader {
                 String[] values = line.split(DELIMITER);
                 tournamentName = values[0];
                 for (int i = 1; i < values.length; i++){
-                    teams.add(new Team(values[i]));
+                    teams.add(new Team(values[i], values[i].substring(0,3)));
                 }
             }
         }

@@ -1,0 +1,1 @@
+NameHost2022-04-08DescriptionGamePlatformTypeNrOfTeams{.teams 1-8....}3T1,T2,2022/04/07,1900,3-0,16-13,16-10,16-12T3,T4,2022/04/07,1900T5,T6,2022/04/07,1900

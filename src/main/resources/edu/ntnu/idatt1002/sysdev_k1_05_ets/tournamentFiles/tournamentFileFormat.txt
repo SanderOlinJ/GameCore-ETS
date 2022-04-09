@@ -1,22 +1,44 @@
-finished
-Name
-Host
-Date
-Description
-Game
-Platform
-Type
-BestOf
-NrOfTeams
-{
-teams 1-8
-.
-.
-.
-.
-.
-}
-t1,t2,2022/04/07,1900,1-1,16-9,12-16
-t3,t4,2022/04/07,1900,2-1,16-11,12-16,16-14
-t5,t6,2022/04/07,1900,0-3,9-16,8-16,7-16
-t7,t8,2022/04/07,1900,1-2,16-13,9-16,10-16
+Main page:
+    - Reader for upcoming, ongoing and previous tournaments (show only 2-3 of each)
+    - Included reader for tournaments that have no match dates set yet (notification/warning label maybe)
+    - Included reader for tournaments that have no teams set yet (notification/warning label)
+    //Upcoming should show the nearest upcoming tournament
+    //Ongoing should show the closest one from being finished
+    //Previous should show the most recent
+
+
+Ongoing tournaments:
+
+    - Reader for all ongoing tournaments, even those without teams or matches
+    - Show all ongoing tournaments, the one closest from being finished up top
+
+Upcoming tournaments:
+
+   - Reader for all upcoming tournaments, even those without teams or matches
+   - Show all upcoming tournaments, the nearest one up top
+
+Previous tournaments:
+
+   - Reader for all previous tournaments, even those without teams or matches
+   - Show all previous tournaments, the most recent one up top
+
+Create new tournament:
+
+    - Check if file exists already under same file name
+    - If file exists, maker user stay on page and change tournament name.
+    - After new name, send tournament to AddTeamController
+    - Also write tournament to file without teams
+    //Makes it easier to declare a tournament ahead of its beginning, and gives room to add teams down the line.
+    - Write tournament to overview file
+
+
+Add team:
+
+    - Add teams to tournament with ArrayList.
+    - Also writes these teams to tournament file.
+    - Send tournament, now with teams, to Overview Controller
+
+Overview:
+
+MatchesController:
+    - Write matches to file
