@@ -8,22 +8,37 @@ import javafx.scene.AccessibleAction;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Paint;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class EightMatchesController {
     private Scene scene;
     private Stage stage;
-
+    private ArrayList<HBox> matches = new ArrayList<>();
     @FXML HBox match1;
+    @FXML VBox matchesBox;
+
+
+    @FXML
+    public void initialize(){
+
+    }
 
     @FXML
     public void winnerChosen(){
         ResultsController.addMatch(match1);
     }
+
+
 
     @FXML
     public void setResultsScene(ActionEvent event) throws IOException {
