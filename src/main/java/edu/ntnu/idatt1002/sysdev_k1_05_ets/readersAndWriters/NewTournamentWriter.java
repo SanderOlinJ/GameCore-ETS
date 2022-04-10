@@ -37,6 +37,7 @@ public class NewTournamentWriter {
         File file3 = new File("src/main/resources/edu/ntnu/idatt1002/" +
                 "sysdev_k1_05_ets/tournamentFiles/upcomingTournaments/" + tournamentNameShortened + ".txt");
 
+
         if (file1.exists()){
             return "Ongoing";
         } else if (file2.exists()){
