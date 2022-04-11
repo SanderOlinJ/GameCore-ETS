@@ -230,7 +230,7 @@
                                           <Insets right="20.0" />
                                        </HBox.margin>
                                     </Button>
-                                    <Button fx:id="deleteTeam" mnemonicParsing="false" style="-fx-background-color: fa8f31;" text="Delete team" textFill="WHITE">
+                                    <Button fx:id="deleteTeam" mnemonicParsing="false" onAction="#deleteTeam" style="-fx-background-color: fa8f31;" text="Delete team" textFill="WHITE">
                                        <font>
                                           <Font name="Arial Bold" size="18.0" />
                                        </font>
