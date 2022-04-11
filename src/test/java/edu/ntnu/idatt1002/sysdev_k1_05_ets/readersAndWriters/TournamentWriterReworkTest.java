@@ -1,0 +1,66 @@
+package edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters;
+
+import org.junit.jupiter.api.Test;
+
+import java.io.IOException;
+import java.time.LocalDate;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class TournamentWriterReworkTest {
+
+    @Test
+    void testThatIfFileExistsAndFindLocationReturnsCorrectLocation(){
+        String fileName = "testFile1";
+
+        assertEquals("Previous",TournamentWriterRework.ifFileExistsAndFindLocation(fileName));
+    }
+
+    @Test
+    void testThatWriteNewTournamentToFileWithBasicInfoRuns(){
+        String status = "Not finished";
+        String tournamentName = "testFile1";
+        String tournamentHost = "Admin";
+        LocalDate date = LocalDate.parse("2022-04-10");
+        String description = "";
+        String game = "Counter-Strike: Global Offensive";
+        String platform = "PC / Mac / Linux";
+        String tournamentType = "Brackets";
+        String bestOf = "3";
+        String numberOfTeams = "4";
+
+        try {
+            TournamentWriterRework.writeNewTournamentToFileWithBasicInfo(status, tournamentName, tournamentHost,
+                    date, description, game, platform, tournamentType, bestOf, numberOfTeams);
+        } catch (IOException exception){
+            exception.getMessage();
+        }
+    }
+
+    @Test
+    void testThatEveryWriteTournamentToOverviewFileRun(){
+        String fileNameOngoing = "testFileOngoing";
+        String fileNameUpcoming = "testFileUpcoming";
+        String fileNamePrevious = "testFilePrevious";
+        try {
+            TournamentWriterRework.writeTournamentToOngoingOverview(fileNameOngoing);
+            TournamentWriterRework.writeTournamentToUpcomingOverview(fileNameUpcoming);
+            TournamentWriterRework.writeTournamentToPreviousOverview(fileNamePrevious);
+        } catch (IOException exception){
+            System.out.println(exception.getMessage());
+        }
+    }
+
+    @Test
+    void testThatRemoveTournamentFromOverview(){
+        String fileNameOngoing = "testFileOngoing";
+
+        try{
+            TournamentWriterRework.removeTournamentFromOverview(fileNameOngoing);
+        } catch (IOException exception){
+            System.out.println(exception.getMessage());
+            fail();
+        }
+    }
+
+}

@@ -36,4 +36,12 @@ public class Round {
     public Team getTeam2() {
         return team2;
     }
+
+    @Override
+    public String toString() {
+        return "Round{" +
+                "scoreTeam1=" + scoreTeam1 +
+                ", scoreTeam2=" + scoreTeam2 +
+                '}';
+    }
 }

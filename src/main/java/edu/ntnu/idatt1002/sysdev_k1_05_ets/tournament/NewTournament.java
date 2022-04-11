@@ -15,6 +15,7 @@ public class NewTournament {
     private String bestOf;
     private String numberOfTeams;
     private ArrayList<Team> teams;
+    private ArrayList<Match> matches;
 
     public NewTournament(String status, String tournamentName, String tournamentHost, LocalDate date,
                          String description, String game, String platform, String tournamentType,
@@ -22,7 +23,7 @@ public class NewTournament {
         if (status == null || status.isEmpty()){
             throw new IllegalArgumentException("Status cannot be empty!");
         }
-        if (tournamentName == null || tournamentHost.isEmpty()) {
+        if (tournamentName == null || tournamentName.isEmpty()) {
             throw new IllegalArgumentException("Tournament name cannot be empty!");
         }
         if (tournamentHost == null || tournamentHost.isEmpty()){
@@ -60,6 +61,7 @@ public class NewTournament {
         this.bestOf = bestOf;
         this.numberOfTeams = numberOfTeams;
         this.teams = new ArrayList<>();
+        this.matches = new ArrayList<>();
     }
 
     public NewTournament(String status, String tournamentName, String tournamentHost, LocalDate date,
@@ -68,7 +70,7 @@ public class NewTournament {
         if (status == null || status.isEmpty()){
             throw new IllegalArgumentException("Status cannot be empty!");
         }
-        if (tournamentName == null || tournamentHost.isEmpty()) {
+        if (tournamentName == null || tournamentName.isEmpty()) {
             throw new IllegalArgumentException("Tournament name cannot be empty!");
         }
         if (tournamentHost == null || tournamentHost.isEmpty()){
@@ -98,7 +100,7 @@ public class NewTournament {
         if (teams == null || teams.isEmpty()){
             throw new IllegalArgumentException("Teams cannot be empty!");
         }
-        if (teams.size() != 4 || teams.size() != 8 || teams.size() != 16){
+        if (teams.size() != 4 && teams.size() != 8 && teams.size() != 16){
             throw new IllegalArgumentException("Number of teams has to be 4, 8 or 16");
         }
         this.tournamentName = tournamentName;
@@ -111,6 +113,23 @@ public class NewTournament {
         this.bestOf = bestOf;
         this.numberOfTeams = numberOfTeams;
         this.teams.addAll(teams);
+        this.matches = new ArrayList<>();
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public ArrayList<Match> getMatches() {
+        return matches;
+    }
+
+    public void setMatches(ArrayList<Match> matches) {
+        this.matches = matches;
     }
 
     public String getTournamentName() {
@@ -193,6 +212,21 @@ public class NewTournament {
         this.teams.addAll(teams);
     }
 
-
-
+    @Override
+    public String toString() {
+        return "NewTournament{" +
+                "status='" + status + '\'' +
+                ", tournamentName='" + tournamentName + '\'' +
+                ", tournamentHost='" + tournamentHost + '\'' +
+                ", date=" + date +
+                ", description='" + description + '\'' +
+                ", game='" + game + '\'' +
+                ", platform='" + platform + '\'' +
+                ", tournamentType='" + tournamentType + '\'' +
+                ", bestOf='" + bestOf + '\'' +
+                ", numberOfTeams='" + numberOfTeams + '\'' +
+                ", teams=" + teams + "\n" +
+                ", matches=" + matches + "\n" +
+                '}';
+    }
 }

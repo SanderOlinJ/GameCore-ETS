@@ -1,0 +1,13 @@
+Not finished
+k
+Admin
+2022-04-11
+No description
+Counter-Strike: Global Offensive
+PC / Mac / Linux
+Brackets
+3
+4
+t1,t2,t3,t4
+t1,t2,2022/04/11,1200,2-1,16-13,13-16,16-14
+t3,t4,2022/04/11,1930,1-1,16-13,13-16

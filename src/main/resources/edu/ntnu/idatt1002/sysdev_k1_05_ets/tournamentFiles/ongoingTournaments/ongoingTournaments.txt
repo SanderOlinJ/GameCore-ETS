@@ -1,2 +1,3 @@
-Tourny
-Tourny2
+RandomTournament1
+RandomTournament2
+RandomTournament3
