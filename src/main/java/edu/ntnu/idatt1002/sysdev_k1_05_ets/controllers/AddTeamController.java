@@ -206,7 +206,7 @@ public class AddTeamController {
                 setCurrentTeams();
                 playersNameField.setText("");
                 teamNameField.setText("");
-                teamNameAbbreviationField.setText("");
+                abbreviationField.setText("");
             }
         }
         existingTeamsAdd.setText(teamName + " has been removed from your tournament");
