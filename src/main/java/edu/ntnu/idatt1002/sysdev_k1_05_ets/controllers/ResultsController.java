@@ -30,9 +30,24 @@ public class ResultsController {
     }
 
     @FXML
-    public void setOverviewScene(ActionEvent event) throws IOException {
+    public void setBracketScene(ActionEvent event) throws IOException {
+        String link = "";
+        if (BracketController.bracketSize == 4){
+            link = "scenes/overview-scene-four.fxml";
+        } else if (BracketController.bracketSize == 8){
+            link = "scenes/overview-scene-eight.fxml";
+        } else if (BracketController.bracketSize == 16){
+            link = "scenes/overview-scene-sixteen.fxml";
+        }
+        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource(link)));
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        stage.getScene().setRoot(root);
+    }
+
+    @FXML
+    public void setTimeScene(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource(
-                "scenes/overview-scene-eight.fxml")));
+                "scenes/set-time-scene.fxml")));
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
@@ -41,10 +56,11 @@ public class ResultsController {
         stage.show();
     }
 
+
     @FXML
     public void setMatchesScene(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource(
-                "scenes/eight-matches-scene.fxml")));
+                "scenes/matches-scene.fxml")));
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);

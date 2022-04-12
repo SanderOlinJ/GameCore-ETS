@@ -65,7 +65,7 @@
                                                 <VBox prefHeight="137.0" prefWidth="1200.0">
                                                     <children>
                                                         <Pane prefHeight="100.0" prefWidth="1200.0" />
-                                                        <Label alignment="CENTER" prefHeight="36.0" prefWidth="1257.0" text="Tournament Name" textFill="#fa8f31">
+                                                        <Label fx:id="tournamentName" alignment="CENTER" prefHeight="36.0" prefWidth="1257.0" text="Tournament Name" textFill="#fa8f31">
                                                             <font>
                                                                 <Font name="Arial Bold" size="30.0" />
                                                             </font>
@@ -78,7 +78,7 @@
                                         <HBox prefHeight="67.0" prefWidth="1200.0">
                                             <children>
                                                 <Pane prefHeight="200.0" prefWidth="50.0" HBox.hgrow="ALWAYS" />
-                                                <Button mnemonicParsing="false" onAction="#setOverviewScene" prefHeight="55.0" prefWidth="366.0" style="-fx-background-color: #2e3e4e;" text="Overview" textFill="WHITE">
+                                                <Button mnemonicParsing="false" onAction="#setBracketScene" prefHeight="55.0" prefWidth="275.0" style="-fx-background-color: #2e3e4e;" text="Overview" textFill="WHITE">
                                                     <font>
                                                         <Font name="Arial Bold" size="20.0" />
                                                     </font>
@@ -89,7 +89,18 @@
                                                         <Cursor fx:constant="HAND" />
                                                     </cursor>
                                                 </Button>
-                                                <Button mnemonicParsing="false" onAction="#setMatchesScene" prefHeight="55.0" prefWidth="368.0" style="-fx-background-color: #2e3e4e;" text="Matches" textFill="WHITE">
+                                    <Button mnemonicParsing="false" onAction="#setTimeScene" prefHeight="55.0" prefWidth="275.0" style="-fx-background-color: #2e3e4e;" text="Set time" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Bold" size="20.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                       <HBox.margin>
+                                          <Insets right="2.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                                <Button mnemonicParsing="false" onAction="#setMatchesScene" prefHeight="55.0" prefWidth="275.0" style="-fx-background-color: #2e3e4e;" text="Matches" textFill="WHITE">
                                                     <font>
                                                         <Font name="Arial Bold" size="20.0" />
                                                     </font>
@@ -97,7 +108,7 @@
                                                         <Cursor fx:constant="HAND" />
                                                     </cursor>
                                                 </Button>
-                                                <Button disable="true" mnemonicParsing="false" prefHeight="55.0" prefWidth="368.0" style="-fx-background-color: #2e3e4e;" text="Results" textFill="WHITE">
+                                                <Button disable="true" mnemonicParsing="false" prefHeight="55.0" prefWidth="275.0" style="-fx-background-color: #2e3e4e;" text="Results" textFill="WHITE">
                                                     <font>
                                                         <Font name="Arial Bold" size="20.0" />
                                                     </font>
@@ -139,7 +150,1011 @@
                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                         <VBox fx:id="resultBox" children="" prefHeight="340.0" prefWidth="1257.0" style="-fx-background-color: #2e3e4e;">
                                              <children>
-                                                <HBox prefHeight="1.0" prefWidth="1.0" />
+                                                <HBox fx:id="match" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
+                                                   <children>
+                                                      <Pane prefHeight="98.0" prefWidth="146.0" />
+                                                      <VBox prefHeight="98.0" prefWidth="244.0">
+                                                         <children>
+                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                            <Label fx:id="timematch" text="Time" textFill="WHITE">
+                                                               <font>
+                                                                  <Font name="Arial" size="20.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                         </children>
+                                                      </VBox>
+                                                      <HBox>
+                                                         <children>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0">
+                                                               <children>
+                                                                  <VBox prefHeight="98.0" prefWidth="73.0">
+                                                                     <children>
+                                                                        <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                        <ImageView fx:id="team1PokalMatch" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+                                                                        <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                     </children>
+                                                                  </VBox>
+                                                               </children>
+                                                            </VBox>
+                                                            <VBox prefHeight="98.0" prefWidth="592.0">
+                                                               <children>
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                  <HBox prefHeight="46.0" prefWidth="638.0">
+                                                                     <children>
+                                                                        <Label fx:id="team1match" prefHeight="23.0" prefWidth="283.0" text="Team 1" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label prefHeight="23.0" prefWidth="216.0" text="VS" textFill="#fa8f31">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label fx:id="team2match" prefHeight="23.0" prefWidth="110.0" text="Team 2" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                     </children>
+                                                                  </HBox>
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                               </children>
+                                                               <HBox.margin>
+                                                                  <Insets right="10.0" />
+                                                               </HBox.margin>
+                                                            </VBox>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0">
+                                                               <children>
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                  <ImageView fx:id="team2PokalMatch" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                               </children>
+                                                            </VBox>
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox prefHeight="98.0" prefWidth="81.0" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox fx:id="match1" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
+                                                   <children>
+                                                      <Pane prefHeight="98.0" prefWidth="146.0" />
+                                                      <VBox prefHeight="98.0" prefWidth="244.0">
+                                                         <children>
+                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                            <Label fx:id="timematch1" text="Time" textFill="WHITE">
+                                                               <font>
+                                                                  <Font name="Arial" size="20.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                         </children>
+                                                      </VBox>
+                                                      <HBox>
+                                                         <children>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0">
+                                                               <children>
+                                                                  <VBox prefHeight="98.0" prefWidth="73.0">
+                                                                     <children>
+                                                                        <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                        <ImageView fx:id="team1PokalMatch1" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+                                                                        <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                     </children>
+                                                                  </VBox>
+                                                               </children>
+                                                            </VBox>
+                                                            <VBox prefHeight="98.0" prefWidth="592.0">
+                                                               <children>
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                  <HBox prefHeight="46.0" prefWidth="638.0">
+                                                                     <children>
+                                                                        <Label fx:id="team1match1" prefHeight="23.0" prefWidth="283.0" text="Team 1" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label prefHeight="23.0" prefWidth="216.0" text="VS" textFill="#fa8f31">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label fx:id="team2match1" prefHeight="23.0" prefWidth="110.0" text="Team 2" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                     </children>
+                                                                  </HBox>
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                               </children>
+                                                               <HBox.margin>
+                                                                  <Insets right="10.0" />
+                                                               </HBox.margin>
+                                                            </VBox>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0">
+                                                               <children>
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                  <ImageView fx:id="team2PokalMatch1" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                               </children>
+                                                            </VBox>
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox prefHeight="98.0" prefWidth="81.0" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox fx:id="match2" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
+                                                   <children>
+                                                      <Pane prefHeight="98.0" prefWidth="146.0" />
+                                                      <VBox prefHeight="98.0" prefWidth="244.0">
+                                                         <children>
+                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                            <Label fx:id="timematch2" text="Time" textFill="WHITE">
+                                                               <font>
+                                                                  <Font name="Arial" size="20.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                         </children>
+                                                      </VBox>
+                                                      <HBox>
+                                                         <children>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0">
+                                                               <children>
+                                                                  <VBox prefHeight="98.0" prefWidth="73.0">
+                                                                     <children>
+                                                                        <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                        <ImageView fx:id="team1PokalMatch2" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+                                                                        <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                     </children>
+                                                                  </VBox>
+                                                               </children>
+                                                            </VBox>
+                                                            <VBox prefHeight="98.0" prefWidth="592.0">
+                                                               <children>
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                  <HBox prefHeight="46.0" prefWidth="638.0">
+                                                                     <children>
+                                                                        <Label fx:id="team1match2" prefHeight="23.0" prefWidth="283.0" text="Team 1" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label prefHeight="23.0" prefWidth="216.0" text="VS" textFill="#fa8f31">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label fx:id="team2match2" prefHeight="23.0" prefWidth="110.0" text="Team 2" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                     </children>
+                                                                  </HBox>
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                               </children>
+                                                               <HBox.margin>
+                                                                  <Insets right="10.0" />
+                                                               </HBox.margin>
+                                                            </VBox>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0">
+                                                               <children>
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                  <ImageView fx:id="team2PokalMatch2" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                               </children>
+                                                            </VBox>
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox prefHeight="98.0" prefWidth="81.0" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox fx:id="match3" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
+                                                   <children>
+                                                      <Pane prefHeight="98.0" prefWidth="146.0" />
+                                                      <VBox prefHeight="98.0" prefWidth="244.0">
+                                                         <children>
+                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                            <Label fx:id="timematch3" text="Time" textFill="WHITE">
+                                                               <font>
+                                                                  <Font name="Arial" size="20.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                         </children>
+                                                      </VBox>
+                                                      <HBox>
+                                                         <children>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0">
+                                                               <children>
+                                                                  <VBox prefHeight="98.0" prefWidth="73.0">
+                                                                     <children>
+                                                                        <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                        <ImageView fx:id="team1PokalMatch3" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+                                                                        <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                     </children>
+                                                                  </VBox>
+                                                               </children>
+                                                            </VBox>
+                                                            <VBox prefHeight="98.0" prefWidth="592.0">
+                                                               <children>
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                  <HBox prefHeight="46.0" prefWidth="638.0">
+                                                                     <children>
+                                                                        <Label fx:id="team1match3" prefHeight="23.0" prefWidth="283.0" text="Team 1" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label prefHeight="23.0" prefWidth="216.0" text="VS" textFill="#fa8f31">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label fx:id="team2match3" prefHeight="23.0" prefWidth="110.0" text="Team 2" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                     </children>
+                                                                  </HBox>
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                               </children>
+                                                               <HBox.margin>
+                                                                  <Insets right="10.0" />
+                                                               </HBox.margin>
+                                                            </VBox>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0">
+                                                               <children>
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                  <ImageView fx:id="team2PokalMatch3" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                               </children>
+                                                            </VBox>
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox prefHeight="98.0" prefWidth="81.0" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox fx:id="match4" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
+                                                   <children>
+                                                      <Pane prefHeight="98.0" prefWidth="146.0" />
+                                                      <VBox prefHeight="98.0" prefWidth="244.0">
+                                                         <children>
+                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                            <Label fx:id="timematch4" text="Time" textFill="WHITE">
+                                                               <font>
+                                                                  <Font name="Arial" size="20.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                         </children>
+                                                      </VBox>
+                                                      <HBox>
+                                                         <children>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0">
+                                                               <children>
+                                                                  <VBox prefHeight="98.0" prefWidth="73.0">
+                                                                     <children>
+                                                                        <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                        <ImageView fx:id="team1PokalMatch4" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+                                                                        <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                     </children>
+                                                                  </VBox>
+                                                               </children>
+                                                            </VBox>
+                                                            <VBox prefHeight="98.0" prefWidth="592.0">
+                                                               <children>
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                  <HBox prefHeight="46.0" prefWidth="638.0">
+                                                                     <children>
+                                                                        <Label fx:id="team1match4" prefHeight="23.0" prefWidth="283.0" text="Team 1" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label prefHeight="23.0" prefWidth="216.0" text="VS" textFill="#fa8f31">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label fx:id="team2match4" prefHeight="23.0" prefWidth="110.0" text="Team 2" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                     </children>
+                                                                  </HBox>
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                               </children>
+                                                               <HBox.margin>
+                                                                  <Insets right="10.0" />
+                                                               </HBox.margin>
+                                                            </VBox>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0">
+                                                               <children>
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                  <ImageView fx:id="team2PokalMatch4" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                               </children>
+                                                            </VBox>
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox prefHeight="98.0" prefWidth="81.0" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox fx:id="match5" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
+                                                   <children>
+                                                      <Pane prefHeight="98.0" prefWidth="146.0" />
+                                                      <VBox prefHeight="98.0" prefWidth="244.0">
+                                                         <children>
+                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                            <Label fx:id="timematch5" text="Time" textFill="WHITE">
+                                                               <font>
+                                                                  <Font name="Arial" size="20.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                         </children>
+                                                      </VBox>
+                                                      <HBox>
+                                                         <children>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0">
+                                                               <children>
+                                                                  <VBox prefHeight="98.0" prefWidth="73.0">
+                                                                     <children>
+                                                                        <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                        <ImageView fx:id="team1PokalMatch5" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+                                                                        <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                     </children>
+                                                                  </VBox>
+                                                               </children>
+                                                            </VBox>
+                                                            <VBox prefHeight="98.0" prefWidth="592.0">
+                                                               <children>
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                  <HBox prefHeight="46.0" prefWidth="638.0">
+                                                                     <children>
+                                                                        <Label fx:id="team1match5" prefHeight="23.0" prefWidth="283.0" text="Team 1" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label prefHeight="23.0" prefWidth="216.0" text="VS" textFill="#fa8f31">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label fx:id="team2match5" prefHeight="23.0" prefWidth="110.0" text="Team 2" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                     </children>
+                                                                  </HBox>
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                               </children>
+                                                               <HBox.margin>
+                                                                  <Insets right="10.0" />
+                                                               </HBox.margin>
+                                                            </VBox>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0">
+                                                               <children>
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                  <ImageView fx:id="team2PokalMatch5" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                               </children>
+                                                            </VBox>
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox prefHeight="98.0" prefWidth="81.0" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox fx:id="match6" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
+                                                   <children>
+                                                      <Pane prefHeight="98.0" prefWidth="146.0" />
+                                                      <VBox prefHeight="98.0" prefWidth="244.0">
+                                                         <children>
+                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                            <Label fx:id="timematch6" text="Time" textFill="WHITE">
+                                                               <font>
+                                                                  <Font name="Arial" size="20.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                         </children>
+                                                      </VBox>
+                                                      <HBox>
+                                                         <children>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0">
+                                                               <children>
+                                                                  <VBox prefHeight="98.0" prefWidth="73.0">
+                                                                     <children>
+                                                                        <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                        <ImageView fx:id="team1PokalMatch6" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+                                                                        <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                     </children>
+                                                                  </VBox>
+                                                               </children>
+                                                            </VBox>
+                                                            <VBox prefHeight="98.0" prefWidth="592.0">
+                                                               <children>
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                  <HBox prefHeight="46.0" prefWidth="638.0">
+                                                                     <children>
+                                                                        <Label fx:id="team1match6" prefHeight="23.0" prefWidth="283.0" text="Team 1" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label prefHeight="23.0" prefWidth="216.0" text="VS" textFill="#fa8f31">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label fx:id="team2match6" prefHeight="23.0" prefWidth="110.0" text="Team 2" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                     </children>
+                                                                  </HBox>
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                               </children>
+                                                               <HBox.margin>
+                                                                  <Insets right="10.0" />
+                                                               </HBox.margin>
+                                                            </VBox>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0">
+                                                               <children>
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                  <ImageView fx:id="team2PokalMatch6" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                               </children>
+                                                            </VBox>
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox prefHeight="98.0" prefWidth="81.0" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox fx:id="match7" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
+                                                   <children>
+                                                      <Pane prefHeight="98.0" prefWidth="146.0" />
+                                                      <VBox prefHeight="98.0" prefWidth="244.0">
+                                                         <children>
+                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                            <Label fx:id="timematch7" text="Time" textFill="WHITE">
+                                                               <font>
+                                                                  <Font name="Arial" size="20.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                         </children>
+                                                      </VBox>
+                                                      <HBox>
+                                                         <children>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0">
+                                                               <children>
+                                                                  <VBox prefHeight="98.0" prefWidth="73.0">
+                                                                     <children>
+                                                                        <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                        <ImageView fx:id="team1PokalMatch7" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+                                                                        <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                     </children>
+                                                                  </VBox>
+                                                               </children>
+                                                            </VBox>
+                                                            <VBox prefHeight="98.0" prefWidth="592.0">
+                                                               <children>
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                  <HBox prefHeight="46.0" prefWidth="638.0">
+                                                                     <children>
+                                                                        <Label fx:id="team1match7" prefHeight="23.0" prefWidth="283.0" text="Team 1" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label prefHeight="23.0" prefWidth="216.0" text="VS" textFill="#fa8f31">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label fx:id="team2match7" prefHeight="23.0" prefWidth="110.0" text="Team 2" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                     </children>
+                                                                  </HBox>
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                               </children>
+                                                               <HBox.margin>
+                                                                  <Insets right="10.0" />
+                                                               </HBox.margin>
+                                                            </VBox>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0">
+                                                               <children>
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                  <ImageView fx:id="team2PokalMatch7" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                               </children>
+                                                            </VBox>
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox prefHeight="98.0" prefWidth="81.0" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox fx:id="match8" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
+                                                   <children>
+                                                      <Pane prefHeight="98.0" prefWidth="146.0" />
+                                                      <VBox prefHeight="98.0" prefWidth="244.0">
+                                                         <children>
+                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                            <Label fx:id="timematch8" text="Time" textFill="WHITE">
+                                                               <font>
+                                                                  <Font name="Arial" size="20.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                         </children>
+                                                      </VBox>
+                                                      <HBox>
+                                                         <children>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0">
+                                                               <children>
+                                                                  <VBox prefHeight="98.0" prefWidth="73.0">
+                                                                     <children>
+                                                                        <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                        <ImageView fx:id="team1PokalMatch8" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+                                                                        <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                     </children>
+                                                                  </VBox>
+                                                               </children>
+                                                            </VBox>
+                                                            <VBox prefHeight="98.0" prefWidth="592.0">
+                                                               <children>
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                  <HBox prefHeight="46.0" prefWidth="638.0">
+                                                                     <children>
+                                                                        <Label fx:id="team1match8" prefHeight="23.0" prefWidth="283.0" text="Team 1" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label prefHeight="23.0" prefWidth="216.0" text="VS" textFill="#fa8f31">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label fx:id="team2match8" prefHeight="23.0" prefWidth="110.0" text="Team 2" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                     </children>
+                                                                  </HBox>
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                               </children>
+                                                               <HBox.margin>
+                                                                  <Insets right="10.0" />
+                                                               </HBox.margin>
+                                                            </VBox>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0">
+                                                               <children>
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                  <ImageView fx:id="team2PokalMatch8" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                               </children>
+                                                            </VBox>
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox prefHeight="98.0" prefWidth="81.0" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox fx:id="match9" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
+                                                   <children>
+                                                      <Pane prefHeight="98.0" prefWidth="146.0" />
+                                                      <VBox prefHeight="98.0" prefWidth="244.0">
+                                                         <children>
+                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                            <Label fx:id="timematch9" text="Time" textFill="WHITE">
+                                                               <font>
+                                                                  <Font name="Arial" size="20.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                         </children>
+                                                      </VBox>
+                                                      <HBox>
+                                                         <children>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0">
+                                                               <children>
+                                                                  <VBox prefHeight="98.0" prefWidth="73.0">
+                                                                     <children>
+                                                                        <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                        <ImageView fx:id="team1PokalMatch9" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+                                                                        <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                     </children>
+                                                                  </VBox>
+                                                               </children>
+                                                            </VBox>
+                                                            <VBox prefHeight="98.0" prefWidth="592.0">
+                                                               <children>
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                  <HBox prefHeight="46.0" prefWidth="638.0">
+                                                                     <children>
+                                                                        <Label fx:id="team1match9" prefHeight="23.0" prefWidth="283.0" text="Team 1" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label prefHeight="23.0" prefWidth="216.0" text="VS" textFill="#fa8f31">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label fx:id="team2match9" prefHeight="23.0" prefWidth="110.0" text="Team 2" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                     </children>
+                                                                  </HBox>
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                               </children>
+                                                               <HBox.margin>
+                                                                  <Insets right="10.0" />
+                                                               </HBox.margin>
+                                                            </VBox>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0">
+                                                               <children>
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                  <ImageView fx:id="team2PokalMatch9" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                               </children>
+                                                            </VBox>
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox prefHeight="98.0" prefWidth="81.0" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox fx:id="match10" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
+                                                   <children>
+                                                      <Pane prefHeight="98.0" prefWidth="146.0" />
+                                                      <VBox prefHeight="98.0" prefWidth="244.0">
+                                                         <children>
+                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                            <Label fx:id="timematch10" text="Time" textFill="WHITE">
+                                                               <font>
+                                                                  <Font name="Arial" size="20.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                         </children>
+                                                      </VBox>
+                                                      <HBox>
+                                                         <children>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0">
+                                                               <children>
+                                                                  <VBox prefHeight="98.0" prefWidth="73.0">
+                                                                     <children>
+                                                                        <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                        <ImageView fx:id="team1PokalMatch10" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+                                                                        <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                     </children>
+                                                                  </VBox>
+                                                               </children>
+                                                            </VBox>
+                                                            <VBox prefHeight="98.0" prefWidth="592.0">
+                                                               <children>
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                  <HBox prefHeight="46.0" prefWidth="638.0">
+                                                                     <children>
+                                                                        <Label fx:id="team1match10" prefHeight="23.0" prefWidth="283.0" text="Team 1" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label prefHeight="23.0" prefWidth="216.0" text="VS" textFill="#fa8f31">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label fx:id="team2match10" prefHeight="23.0" prefWidth="110.0" text="Team 2" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                     </children>
+                                                                  </HBox>
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                               </children>
+                                                               <HBox.margin>
+                                                                  <Insets right="10.0" />
+                                                               </HBox.margin>
+                                                            </VBox>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0">
+                                                               <children>
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                  <ImageView fx:id="team2PokalMatch10" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                               </children>
+                                                            </VBox>
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox prefHeight="98.0" prefWidth="81.0" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox fx:id="match11" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
+                                                   <children>
+                                                      <Pane prefHeight="98.0" prefWidth="146.0" />
+                                                      <VBox prefHeight="98.0" prefWidth="244.0">
+                                                         <children>
+                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                            <Label fx:id="timematch11" text="Time" textFill="WHITE">
+                                                               <font>
+                                                                  <Font name="Arial" size="20.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                         </children>
+                                                      </VBox>
+                                                      <HBox>
+                                                         <children>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0">
+                                                               <children>
+                                                                  <VBox prefHeight="98.0" prefWidth="73.0">
+                                                                     <children>
+                                                                        <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                        <ImageView fx:id="team1PokalMatch11" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+                                                                        <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                     </children>
+                                                                  </VBox>
+                                                               </children>
+                                                            </VBox>
+                                                            <VBox prefHeight="98.0" prefWidth="592.0">
+                                                               <children>
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                  <HBox prefHeight="46.0" prefWidth="638.0">
+                                                                     <children>
+                                                                        <Label fx:id="team1match11" prefHeight="23.0" prefWidth="283.0" text="Team 1" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label prefHeight="23.0" prefWidth="216.0" text="VS" textFill="#fa8f31">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label fx:id="team2match11" prefHeight="23.0" prefWidth="110.0" text="Team 2" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                     </children>
+                                                                  </HBox>
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                               </children>
+                                                               <HBox.margin>
+                                                                  <Insets right="10.0" />
+                                                               </HBox.margin>
+                                                            </VBox>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0">
+                                                               <children>
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                  <ImageView fx:id="team2PokalMatch11" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                               </children>
+                                                            </VBox>
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox prefHeight="98.0" prefWidth="81.0" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox fx:id="match12" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
+                                                   <children>
+                                                      <Pane prefHeight="98.0" prefWidth="146.0" />
+                                                      <VBox prefHeight="98.0" prefWidth="244.0">
+                                                         <children>
+                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                            <Label fx:id="timematch12" text="Time" textFill="WHITE">
+                                                               <font>
+                                                                  <Font name="Arial" size="20.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                         </children>
+                                                      </VBox>
+                                                      <HBox>
+                                                         <children>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0">
+                                                               <children>
+                                                                  <VBox prefHeight="98.0" prefWidth="73.0">
+                                                                     <children>
+                                                                        <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                        <ImageView fx:id="team1PokalMatch12" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+                                                                        <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                     </children>
+                                                                  </VBox>
+                                                               </children>
+                                                            </VBox>
+                                                            <VBox prefHeight="98.0" prefWidth="592.0">
+                                                               <children>
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                  <HBox prefHeight="46.0" prefWidth="638.0">
+                                                                     <children>
+                                                                        <Label fx:id="team1match12" prefHeight="23.0" prefWidth="283.0" text="Team 1" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label prefHeight="23.0" prefWidth="216.0" text="VS" textFill="#fa8f31">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label fx:id="team2match12" prefHeight="23.0" prefWidth="110.0" text="Team 2" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                     </children>
+                                                                  </HBox>
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                               </children>
+                                                               <HBox.margin>
+                                                                  <Insets right="10.0" />
+                                                               </HBox.margin>
+                                                            </VBox>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0">
+                                                               <children>
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                  <ImageView fx:id="team2PokalMatch12" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                               </children>
+                                                            </VBox>
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox prefHeight="98.0" prefWidth="81.0" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox fx:id="match13" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
+                                                   <children>
+                                                      <Pane prefHeight="98.0" prefWidth="146.0" />
+                                                      <VBox prefHeight="98.0" prefWidth="244.0">
+                                                         <children>
+                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                            <Label fx:id="timematch13" text="Time" textFill="WHITE">
+                                                               <font>
+                                                                  <Font name="Arial" size="20.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                         </children>
+                                                      </VBox>
+                                                      <HBox>
+                                                         <children>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0">
+                                                               <children>
+                                                                  <VBox prefHeight="98.0" prefWidth="73.0">
+                                                                     <children>
+                                                                        <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                        <ImageView fx:id="team1PokalMatch13" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+                                                                        <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                     </children>
+                                                                  </VBox>
+                                                               </children>
+                                                            </VBox>
+                                                            <VBox prefHeight="98.0" prefWidth="592.0">
+                                                               <children>
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                  <HBox prefHeight="46.0" prefWidth="638.0">
+                                                                     <children>
+                                                                        <Label fx:id="team1match13" prefHeight="23.0" prefWidth="283.0" text="Team 1" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label prefHeight="23.0" prefWidth="216.0" text="VS" textFill="#fa8f31">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label fx:id="team2match13" prefHeight="23.0" prefWidth="110.0" text="Team 2" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                     </children>
+                                                                  </HBox>
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                               </children>
+                                                               <HBox.margin>
+                                                                  <Insets right="10.0" />
+                                                               </HBox.margin>
+                                                            </VBox>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0">
+                                                               <children>
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                  <ImageView fx:id="team2PokalMatch13" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                               </children>
+                                                            </VBox>
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox prefHeight="98.0" prefWidth="81.0" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox fx:id="match14" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
+                                                   <children>
+                                                      <Pane prefHeight="98.0" prefWidth="146.0" />
+                                                      <VBox prefHeight="98.0" prefWidth="244.0">
+                                                         <children>
+                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                            <Label fx:id="timematch14" text="Time" textFill="WHITE">
+                                                               <font>
+                                                                  <Font name="Arial" size="20.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                         </children>
+                                                      </VBox>
+                                                      <HBox>
+                                                         <children>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0">
+                                                               <children>
+                                                                  <VBox prefHeight="98.0" prefWidth="73.0">
+                                                                     <children>
+                                                                        <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                        <ImageView fx:id="team1PokalMatch14" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+                                                                        <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                     </children>
+                                                                  </VBox>
+                                                               </children>
+                                                            </VBox>
+                                                            <VBox prefHeight="98.0" prefWidth="592.0">
+                                                               <children>
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                  <HBox prefHeight="46.0" prefWidth="638.0">
+                                                                     <children>
+                                                                        <Label fx:id="team1match14" prefHeight="23.0" prefWidth="283.0" text="Team 1" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label prefHeight="23.0" prefWidth="216.0" text="VS" textFill="#fa8f31">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label fx:id="team2match14" prefHeight="23.0" prefWidth="110.0" text="Team 2" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                     </children>
+                                                                  </HBox>
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                               </children>
+                                                               <HBox.margin>
+                                                                  <Insets right="10.0" />
+                                                               </HBox.margin>
+                                                            </VBox>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0">
+                                                               <children>
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                  <ImageView fx:id="team2PokalMatch14" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+                                                                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                               </children>
+                                                            </VBox>
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox prefHeight="98.0" prefWidth="81.0" />
+                                                   </children>
+                                                </HBox>
                                              </children>
                                                         </VBox>
                                                         <Pane prefHeight="200.0" prefWidth="200.0" />

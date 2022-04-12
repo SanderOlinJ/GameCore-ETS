@@ -1,4 +1,4 @@
-module edu.ntnu.idatt1002.sysdev_k1_05_ets {
+module edu.ntnu.idatt.sysdev_k1_05_ets {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.web;
