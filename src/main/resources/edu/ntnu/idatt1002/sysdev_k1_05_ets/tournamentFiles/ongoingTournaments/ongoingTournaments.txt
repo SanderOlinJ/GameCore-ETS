@@ -1,3 +1,10 @@
 RandomTournament1
 RandomTournament2
 RandomTournament3
+testtorun
+2
+testFile1
+testFile1
+testFile1
+testFile1
+testFile5

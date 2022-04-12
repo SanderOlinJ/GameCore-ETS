@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -56,17 +57,19 @@ public class TournamentReaderRework {
         String tournamentName = tournamentInfo.get(1);
         String tournamentHost = tournamentInfo.get(2);
         LocalDate date = LocalDate.parse(tournamentInfo.get(3));
-        String description = tournamentInfo.get(4);
-        String game = tournamentInfo.get(5);
-        String platform = tournamentInfo.get(6);
-        String tournamentType = tournamentInfo.get(7);
-        String bestOf = tournamentInfo.get(8);
-        String numberOfTeams = tournamentInfo.get(9);
+        LocalTime time = LocalTime.parse(tournamentInfo.get(4));
+        String description = tournamentInfo.get(5);
+        String game = tournamentInfo.get(6);
+        String platform = tournamentInfo.get(7);
+        String tournamentType = tournamentInfo.get(8);
+        String bestOf = tournamentInfo.get(9);
+        String numberOfTeams = tournamentInfo.get(10);
         NewTournament tournament = new NewTournament(status, tournamentName,tournamentHost,
-                date,description,game,platform,tournamentType,bestOf,numberOfTeams);
-        if (tournamentInfo.size() > 10) {
+                date,time,description,game,platform,tournamentType,bestOf,numberOfTeams);
+
+        if (tournamentInfo.size() > 11) {
             ArrayList<Team> teams = new ArrayList<>();
-            String line = tournamentInfo.get(10);
+            String line = tournamentInfo.get(11);
             String[] values = line.split(COMMA_DELIMITER);
             for (String value : values) {
                 Team team = TeamReader.findAndReturnTeamUsingTeamName(value);
@@ -74,7 +77,7 @@ public class TournamentReaderRework {
             }
             tournament.setTeams(teams);
 
-            if (tournamentInfo.size() > 11){
+            if (tournamentInfo.size() > 12){
                 ArrayList<Match> matches = MatchReader.readMatchesFromArrayList(tournamentInfo);
                 tournament.setMatches(matches);
             }

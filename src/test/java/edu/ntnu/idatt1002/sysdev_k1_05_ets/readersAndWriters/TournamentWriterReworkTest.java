@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -19,9 +20,10 @@ class TournamentWriterReworkTest {
     @Test
     void testThatWriteNewTournamentToFileWithBasicInfoRuns(){
         String status = "Not finished";
-        String tournamentName = "testFile1";
+        String tournamentName = "testFile5";
         String tournamentHost = "Admin";
-        LocalDate date = LocalDate.parse("2022-04-10");
+        LocalDate date = LocalDate.parse("2022-04-13");
+        LocalTime time = LocalTime.parse("21:00");
         String description = "";
         String game = "Counter-Strike: Global Offensive";
         String platform = "PC / Mac / Linux";
@@ -31,7 +33,7 @@ class TournamentWriterReworkTest {
 
         try {
             TournamentWriterRework.writeNewTournamentToFileWithBasicInfo(status, tournamentName, tournamentHost,
-                    date, description, game, platform, tournamentType, bestOf, numberOfTeams);
+                    date, time, description, game, platform, tournamentType, bestOf, numberOfTeams);
         } catch (IOException exception){
             exception.getMessage();
         }

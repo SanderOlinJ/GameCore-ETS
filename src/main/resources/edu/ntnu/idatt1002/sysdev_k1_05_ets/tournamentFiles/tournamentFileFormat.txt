@@ -61,3 +61,27 @@ Overview:
 
 MatchesController:
     - Write matches to file
+
+
+Case:
+    *Opens app
+    *Create new
+    *Fills form
+    *Clicks add team
+    //App has to write tour. to file
+    //and overview
+    *Returns to main menu, instead of "add teams"
+    *Exits
+    *Log ins, user wants to change basics
+    *Clicks edit, comes to edit page, with fields filled with original
+    basic info
+    //App needs to read basic info
+    *User writes new info, clicks save
+    //App needs to write new file, and delete last.
+    //Overview file must be overwritten.
+
+
+1. check if file exists, and give location
+2. write tournament to file and overview
+3. readBasicInfo
+4. removeFromOverview

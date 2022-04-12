@@ -1,0 +1,116 @@
+1. ifFileExistsAndFindLocation()
+    - searches through the different tournament folders,
+    and returns if and where the location of a potential duplicate is.
+
+    Currently, it's used in CreateNewTournamentController as a way
+    to tell the user that there might already exist a tournament under this name
+
+2. writeTournamentToFileWithBasicInfo()
+    - Takes in all basic tournament attributes as parameters
+    (Everything except teams and matches).
+    Uses shorten tournament name-method to get a file name for the new tournament.
+    Replaces a potentially empty description with "No description"
+    Then checks if the tournament is either an ongoing or upcoming
+    tournament. Then it writes the tournament to a file which is placed
+    in either the ongoing or upcoming folder. It also uses the
+    writeTournamentToOngoingOverview() or  writeTournamentToUpcomingOverview()
+    to write the tournament to an overview file.
+
+    Also used in CreateNewTournamentController for saving a tournament
+    to file. /TODO also planning to add this to edit tournament
+
+3. writeTournamentToOngoingOverview()
+    - Takes in the shortened tournament name and writes it into
+    the ongoing overview file. This makes it easier to later
+    locate the individual tournament files.
+
+    Used in writeTournamentToFileWithBasicInfo() for writing a newly
+    added tournament to the overview file
+
+4. writeTournamentToUpcomingOverview()
+    -Same as writeTournamentToOngoingOverview()
+
+5. readTournamentFromFile()
+    - Takes in the shortened tournament name as parameter,
+    and uses the ifFileExistsAndFindLocation()-method to find
+    its path. It then reads from the file and adds all strings
+    to an arraylist, which is then divided it into relevant info.
+    After the basic tournament attributes has been assigned their
+    info, a Tournament object is instantiated. This object will
+    be returned at this point if there are no teams/matches in
+    the tournament file.
+
+    If the arraylist containing the tournament
+    file is bigger than 10, it means that teams have been added.
+    All teams are on one line, so they are then split up.
+    We then use the findAndReturnTeamUsingTeamName()-method to
+    read through the all_Teams.csv file and return the teams with their
+    members. These teams are then added to the tournament object.
+
+    If it turns out the arraylist is also bigger than 11, then it
+    means that some, if not all, matches have been written to the file.
+    The method then uses the readMatchesFromArrayList()-method and takes
+    in the entire arraylist containing the tournament info.
+
+6. findAndReturnTeamUsingTeamName()
+    - Method takes the team name as parameter. It then reads the
+    all_Teams.csv file using the readFile()-method to return an
+    arraylist with all the teams registered. This also includes
+    the team name abbreviation and players. It compares the
+    input team name to the teams in the list, and returns the
+    team found. Or it returns null if none were found.
+
+    It's currently used in readTournamentFromFile() for reading
+    team name in tournament file and returning a team object with
+    abbreviation and players
+
+7. readMatchesFromArrayList()
+    - Takes in an arraylist of string as parameters.
+    This is the list of every info related to a tournament,
+    no only matches.
+    That's why it starts looking through the list at index 11,
+    where the matches should be in the file.
+    A loop is then started, where we add matches to an arraylist
+    of matches that we return at the end.
+
+    In the loop, it first splits the list based on the delimiter ","
+    since the arraylist was split based on the delimiter "\n" (new line)
+    We store the split list in a string array.
+    The first two values in the new string array are
+    the two teams. They will always be at those two slots,
+    as long as the original arraylist was bigger than 11.
+    If it turns out the string array is bigger than 2,
+    it means that a date, and maybe time of the match
+    have been declared. We find these two at index 2 and 3.
+
+    If the string array was bigger than 3, readRoundsFromStringArray()
+    is then called, and returns the rounds (if there are any) as an
+    arraylist of rounds.
+
+    This arraylist is then set to match, if the size is not equals to 0.
+
+    The method is used in the readTournamentFromFile() as a way
+    of adding matches and rounds to the tournament from a file, if there
+    are any.
+
+8. readRoundsFromStringArray()
+    -Method takes in two teams and a string array as parameters
+    It runs only if the string array input is larger than 4.
+    "Team1,Team2,2022/04/10,1440,3-0,16-13,16-12,16-10"
+    It then parses through the list and adds rounds from file
+    to an arraylist of rounds.
+    It then returns this list
+
+    Method is used in readMatchesFromArrayList() for adding
+    rounds and round scores to a match, which is then added
+    to a tournament.
+
+9. removeTournamentFromOverview()
+    -Method takes in a shortened tournament name as parameter.
+    It then uses the ifFileExistsAndFindLocation()-method
+    to find which overview file the tournament is in.
+    Then reads the file to an arraylist. In the arraylist,
+    we remove the tournament. Then we convert the arraylist
+    to a String builder. We then delete the overview file,
+    before we write a new one without the tournament we wanted
+    removed.

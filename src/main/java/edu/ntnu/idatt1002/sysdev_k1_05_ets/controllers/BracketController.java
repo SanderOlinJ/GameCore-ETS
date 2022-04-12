@@ -1,7 +1,9 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
 
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.GameCoreETSApplication;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.ReadersAndWriters.TournamentWriter;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TournamentReaderRework;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TournamentWriter;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.NewTournament;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Tournament;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
 import javafx.event.ActionEvent;
@@ -21,6 +23,7 @@ public class BracketController {
     private static String tournamentName;
     private static Tournament tournament = new Tournament("tournamentName");
     static int bracketSize;
+    private static NewTournament newTournament;
 
     @FXML
     ArrayList<Label> labels = new ArrayList<>();
@@ -59,6 +62,7 @@ public class BracketController {
 
     @FXML
     public void initialize(){
+
         if (bracketSize >= 4) {
             labels.add(team1);
             labels.add(team2);
@@ -142,7 +146,7 @@ public class BracketController {
 
     @FXML
     private void switchToMain(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(GameCoreETSApplication.class.getResource("scenes/start-screen.fxml"));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource("scenes/start-screen.fxml")));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);

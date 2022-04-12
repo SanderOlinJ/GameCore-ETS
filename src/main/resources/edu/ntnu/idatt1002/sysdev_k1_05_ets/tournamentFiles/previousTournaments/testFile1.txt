@@ -1,7 +1,8 @@
-Not finished
+Finished
 testFile1
 Admin
 2022-04-10
+21:00
 No description
 Counter-Strike: Global Offensive
 PC / Mac / Linux

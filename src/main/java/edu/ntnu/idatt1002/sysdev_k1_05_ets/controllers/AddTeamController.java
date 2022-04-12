@@ -1,8 +1,8 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.GameCoreETSApplication;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.ReadersAndWriters.NewTournamentWriter;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.ReadersAndWriters.TeamReader;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.ReadersAndWriters.TeamWriter;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.NewTournamentWriter;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TeamReader;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TeamWriter;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.NewTournament;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
 import javafx.event.ActionEvent;
@@ -122,15 +122,14 @@ public class AddTeamController {
     @FXML
     public void initialize () throws IOException {
         //setting search box for teams selection
-        edu.ntnu.idatt1002.sysdev_k1_05_ets.ReadersAndWriters.TeamReader readExistingTeams = new TeamReader();
-        ArrayList<Team> searchTeamNames = new ArrayList<>();
-        searchTeamNames = readExistingTeams.readFile
+
+        ArrayList<Team> searchTeamNames = TeamReader.readFile
                 (new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/teamFiles/all_Teams.csv"));
         TextFields.bindAutoCompletion(searchTeams,
                 searchTeamNames.stream().map(Team::getNameOfTeam).collect(Collectors.toList()));
 
         //loop through the existing teams and set their style and add them to vbox in scrollpane
-        existingTeams = new ArrayList<>(readExistingTeams.readFile(
+        existingTeams = new ArrayList<>(TeamReader.readFile(
                 new File("src/main/resources/edu/ntnu/idatt1002" +
                         "/sysdev_k1_05_ets/teamFiles/all_Teams.csv")));
         for (int i = 0; i < existingTeams.size(); i++){
@@ -141,7 +140,7 @@ public class AddTeamController {
                     (mouseEvent -> addTeamExisting(teamLabel.getText()));
             existingTeamsBox.getChildren().get(i).setStyle("-fx-text-fill : white; -fx-font-size: 15pt");
         }
-
+        teamsForTournament = new ArrayList<>();
         existingTeamsBox.setAlignment(Pos.CENTER);
         existingTeamsBox.setPrefWidth(310);
         scrollPane.setContent(existingTeamsBox);
@@ -175,7 +174,7 @@ public class AddTeamController {
 
                 //Creating team labels
                 Team addedTeam = new Team(teamMembersList, teamNameField.getText(),abbreviationField.getText());
-
+                this.teamsForTournament.add(addedTeam);
                 Label newTeam = new Label(teamNameField.getText());
                 enrolledTeamsBox.getChildren().add(newTeam);
 

@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 public class TournamentWriterRework {
@@ -44,23 +45,30 @@ public class TournamentWriterRework {
     }
 
     /**
-     * Writes tournament basic info to file, no teams or matches
-     * Also writes tournament to overview
-     * @param status
-     * @param tournamentName
-     * @param tournamentHost
-     * @param date
-     * @param description
-     * @param game
-     * @param platform
-     * @param tournamentType
-     * @param bestOf
-     * @param numberOfTeams
+     Takes in all basic tournament attributes as parameters (Everything except teams and matches).
+     Uses shorten tournament name-method to get a file name for the new tournament.
+     Replaces a potentially empty description with "No description",
+     then checks if the tournament is either an ongoing or upcoming tournament.
+     Then it writes the tournament to a file which is placed in either the ongoing or upcoming folder.
+     It also uses the writeTournamentToOngoingOverview() or  writeTournamentToUpcomingOverview()
+     to write the tournament to an overview file.
+     * @param status status of the tournament, e.g. "Not finished"
+     * @param tournamentName name ot the tournament, String
+     * @param tournamentHost host of the tournament, only "Admin" for now, String
+     * @param date date of the tournament, LocalDate
+     * @param time time of the tournament, LocalTime
+     * @param description description of the tournament, String
+     * @param game game played at tournament, String
+     * @param platform platform the game is played on, String
+     * @param tournamentType type of tournament, only "Brackets" for now, String
+     * @param bestOf best of *number of rounds*, only "1" or "3" for now, String
+     * @param numberOfTeams number of teams playing, only "4", "8" or "16" for now, String
      * @throws IOException
      */
-    public static void writeNewTournamentToFileWithBasicInfo(String status, String tournamentName, String tournamentHost,
-                                                             LocalDate date, String description, String game, String platform,
-                                                             String tournamentType, String bestOf, String numberOfTeams)
+    public static void writeNewTournamentToFileWithBasicInfo(
+            String status, String tournamentName, String tournamentHost, LocalDate date, LocalTime time,
+            String description, String game, String platform, String tournamentType, String bestOf,
+            String numberOfTeams)
             throws IOException {
         String tournamentNameShortened = Utilities.shortenAndReplaceUnnecessarySymbolsInString(tournamentName);
 
@@ -69,11 +77,12 @@ public class TournamentWriterRework {
             description += "No description";
         }
         String tournamentStringFormat = status + DELIMITER + tournamentName + DELIMITER + tournamentHost + DELIMITER +
-                date + DELIMITER + description + DELIMITER + game + DELIMITER + platform +
+                date + DELIMITER + time + DELIMITER + description + DELIMITER + game + DELIMITER + platform +
                 DELIMITER + tournamentType + DELIMITER + bestOf + DELIMITER + numberOfTeams +
                 DELIMITER;
 
-        if (date.isEqual(LocalDate.now())) {
+        if (date.isEqual(LocalDate.now()) && status.equals("Not finished")
+                || date.isBefore(LocalDate.now()) && status.equals("Not finished")) {
 
             File file = new File("src/main/resources/edu/ntnu/idatt1002/" +
                     "sysdev_k1_05_ets/tournamentFiles/ongoingTournaments/" + tournamentNameShortened + ".txt");
@@ -85,7 +94,7 @@ public class TournamentWriterRework {
                 throw new IOException("Could not write tournament to file: " + exception.getMessage());
             }
 
-        } else if (date.isAfter(LocalDate.now())) {
+        } else if (date.isAfter(LocalDate.now()) && status.equals("Not finished")) {
 
             File file = new File("src/main/resources/edu/ntnu/idatt1002/" +
                     "sysdev_k1_05_ets/tournamentFiles/upcomingTournaments/" + tournamentNameShortened + ".txt");
@@ -111,8 +120,10 @@ public class TournamentWriterRework {
 
 
     /**
-     * Writes tournament name to ongoing overview file
-     * @param tournamentNameShortened
+     Takes in the shortened tournament name and writes it into
+     the ongoing overview file. This makes it easier to later
+     locate the individual tournament files.
+     * @param tournamentNameShortened shortened name of the tournament, String
      * @throws IOException
      */
     public static void writeTournamentToOngoingOverview(String tournamentNameShortened)
@@ -128,8 +139,10 @@ public class TournamentWriterRework {
     }
 
     /**
-     * Writes tournament name to upcoming overview file
-     * @param tournamentNameShortened
+    Takes in the shortened tournament name and writes it into
+    the upcoming overview file. This makes it easier to later
+    locate the individual tournament files.
+     * @param tournamentNameShortened shortened name of the tournament, String
      * @throws IOException
      */
     public static void writeTournamentToUpcomingOverview(String tournamentNameShortened)
@@ -143,6 +156,14 @@ public class TournamentWriterRework {
             throw new IOException("Could not write tournament to upcoming overview");
         }
     }
+
+    /**
+     Takes in the shortened tournament name and writes it into
+     the previous overview file. This makes it easier to later
+     locate the individual tournament files.
+     * @param tournamentNameShortened shortened name of the tournament, String
+     * @throws IOException
+     */
     public static void writeTournamentToPreviousOverview(String tournamentNameShortened)
             throws IOException{
         String overviewStringFormat = tournamentNameShortened + DELIMITER;
@@ -155,6 +176,16 @@ public class TournamentWriterRework {
         }
     }
 
+    /**
+     Method takes in a shortened tournament name as parameter.
+     It then uses the ifFileExistsAndFindLocation()-method
+     to find which overview file the tournament is in.
+     Then reads the overview file to an arraylist. In the arraylist,
+     we then remove the tournament and convert the arraylist
+     to a String builder. We then write over the overview file, now with 1 less tournament.
+     * @param tournamentNameShortened shortened name of the tournament, String
+     * @throws IOException
+     */
     public static void removeTournamentFromOverview(String tournamentNameShortened)
     throws IOException{
         ArrayList<String> ongoingTournaments = TournamentReaderRework.readThroughOngoingTournaments();
@@ -197,22 +228,29 @@ public class TournamentWriterRework {
             default -> throw new IOException("File doesn't exist");
 
         };
-        File newOverview = new File(file.getPath());
         ArrayList<String> overview = GeneralReader.readFile(file);
         overview.removeIf(tournament -> tournament.equals(tournamentNameShortened));
         StringBuilder stringBuilder = new StringBuilder();
         for (String string : overview){
             stringBuilder.append(string).append(DELIMITER);
         }
-        if (file.delete()){
-            try (FileWriter fileWriter = new FileWriter(newOverview)){
-                fileWriter.write(stringBuilder.toString());
-            } catch (IOException exception){
-                throw new IOException("Could not write new overview to file: " + exception.getMessage());
-            }
+
+        try (FileWriter fileWriter = new FileWriter(file)){
+            fileWriter.write(stringBuilder.toString());
+        } catch (IOException exception){
+            throw new IOException("Could not write new overview to file: " + exception.getMessage());
         }
     }
 
+    /**
+     Method takes in an arraylist of teams,
+     and a shortened tournament name as parameter, for easily finding file location.
+     It then appends the teams from the arraylist to a string builder.
+     Finally, it appends the string builder to the tournament file.
+     * @param tournamentNameShortened shortened name of the tournament, String
+     * @param teams teams to be added to tournament, ArrayList
+     * @throws IOException
+     */
     public static void writeTeamsToTournamentFile(String tournamentNameShortened, ArrayList<Team> teams)
     throws IOException{
         File file = new File(getPathToTournamentFileAsString(tournamentNameShortened));
@@ -228,6 +266,13 @@ public class TournamentWriterRework {
         }
     }
 
+    /**
+     Handy method to find which folder (ongoing-, upcoming- or previous tournaments)
+     the file of a tournament is located in.
+     * @param tournamentNameShortened shortened name of the tournament, String
+     * @return File path, String
+     * @throws IOException
+     */
     private static String getPathToTournamentFileAsString(String tournamentNameShortened)
     throws IOException {
 
@@ -246,20 +291,28 @@ public class TournamentWriterRework {
         return location;
     }
 
+    /**
+     Method is used when editing teama to an already existing tournament file with potential matches set
+     It writes out the whole file to an arraylist, and replaces index 11 (teams) with the new teams taken in
+     as a parameter. It then writes the whole file back to the original file path.
+     * @param tournamentNameShortened shortened name of the tournament, String
+     * @param teams teams to be added to tournament, ArrayList
+     * @throws IOException
+     */
     public static void editTeamsToTournamentFile(String tournamentNameShortened, ArrayList<Team> teams)
     throws IOException{
 
         File file = new File(getPathToTournamentFileAsString(tournamentNameShortened));
-        ArrayList<String> fileAsString = GeneralReader.readFile(file);
+        ArrayList<String> fileAsListOfStrings = GeneralReader.readFile(file);
         StringBuilder stringBuilder = new StringBuilder();
 
         for (Team team : teams){
             stringBuilder.append(team.getNameOfTeam()).append(COMMA_DELIMITER);
         }
-        fileAsString.set(10,stringBuilder.toString());
+        fileAsListOfStrings.set(11,stringBuilder.toString());
 
         StringBuilder stringBuilder1 = new StringBuilder();
-        for (String str : fileAsString){
+        for (String str : fileAsListOfStrings){
             stringBuilder1.append(str).append(DELIMITER);
         }
         try (FileWriter fileWriter = new FileWriter(file)){

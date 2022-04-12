@@ -16,7 +16,7 @@ class TournamentReaderReworkTest {
         String tournamentName = "completeTestFile";
         try {
             NewTournament newTournament = TournamentReaderRework.readTournamentFromFile(tournamentName);
-            System.out.println(newTournament.toString());
+            System.out.println(newTournament);
         } catch (IOException exception){
             System.out.println(exception.getMessage());
         }

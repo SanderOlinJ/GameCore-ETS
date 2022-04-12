@@ -22,7 +22,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.CreateNewTournamentPageController">
+<BorderPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.CreateNewTournamentPageController">
     <top>
         <MenuBar BorderPane.alignment="CENTER">
             <menus>
@@ -85,7 +85,7 @@
                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                         <Pane prefHeight="48.0" prefWidth="1257.0" style="-fx-background-color: #282c34;">
                                                             <children>
-                                                                <Text fill="WHITE" layoutX="20.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Basic information">
+                                                                <Text fill="WHITE" layoutX="20.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Basic information">
                                                                     <font>
                                                                         <Font name="Arial Bold" size="22.0" />
                                                                     </font>
@@ -154,6 +154,28 @@
                                                                         </DatePicker>
                                                                     </children>
                                                                 </HBox>
+                                                <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #2e3e4e;">
+                                                   <children>
+                                                      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Start time *:">
+                                                         <font>
+                                                            <Font name="Arial Bold" size="18.0" />
+                                                         </font>
+                                                         <HBox.margin>
+                                                            <Insets left="30.0" />
+                                                         </HBox.margin>
+                                                      </Text>
+                                                      <ComboBox fx:id="timeBoxHours" prefHeight="31.0" prefWidth="110.0" style="-fx-background-color: #282c34;" styleClass="jfx-combo-box" stylesheets="@../css/style.css">
+                                                         <HBox.margin>
+                                                            <Insets left="125.0" top="7.0" />
+                                                         </HBox.margin>
+                                                      </ComboBox>
+                                                      <ComboBox fx:id="timeBoxMinutes" prefHeight="31.0" prefWidth="110.0" style="-fx-background-color: #282c34;" styleClass="jfx-combo-box" stylesheets="@../css/style.css">
+                                                         <HBox.margin>
+                                                            <Insets left="20.0" top="7.0" />
+                                                         </HBox.margin>
+                                                      </ComboBox>
+                                                   </children>
+                                                </HBox>
                                                                 <HBox prefHeight="182.0" prefWidth="1105.0" style="-fx-background-color: #2e3e4e;">
                                                                     <children>
                                                                         <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Description :">
@@ -273,7 +295,7 @@
                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                         <Pane prefHeight="48.0" prefWidth="1257.0" style="-fx-background-color: #282c34;">
                                                             <children>
-                                                                <Text fill="WHITE" layoutX="19.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tournament information">
+                                                                <Text fill="WHITE" layoutX="19.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tournament information">
                                                                     <font>
                                                                         <Font name="Arial Bold" size="22.0" />
                                                                     </font>

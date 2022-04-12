@@ -1,6 +1,7 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 public class NewTournament {
@@ -8,6 +9,7 @@ public class NewTournament {
     private String tournamentName;
     private String tournamentHost;
     private LocalDate date;
+    private LocalTime time;
     private String description;
     private String game;
     private String platform;
@@ -18,8 +20,8 @@ public class NewTournament {
     private ArrayList<Match> matches;
 
     public NewTournament(String status, String tournamentName, String tournamentHost, LocalDate date,
-                         String description, String game, String platform, String tournamentType,
-                         String bestOf, String numberOfTeams) {
+                         LocalTime time, String description, String game, String platform,
+                         String tournamentType, String bestOf, String numberOfTeams) {
         if (status == null || status.isEmpty()){
             throw new IllegalArgumentException("Status cannot be empty!");
         }
@@ -28,9 +30,6 @@ public class NewTournament {
         }
         if (tournamentHost == null || tournamentHost.isEmpty()){
             throw new IllegalArgumentException("Tournament host cannot be empty!");
-        }
-        if (date.isBefore(LocalDate.now())){
-            throw new IllegalArgumentException("Date cannot be in the past");
         }
         if (description == null || description.isEmpty()){
             description += "No description";
@@ -54,6 +53,7 @@ public class NewTournament {
         this.tournamentName = tournamentName;
         this.tournamentHost = tournamentHost;
         this.date = date;
+        this.time = time;
         this.description = description;
         this.game = game;
         this.platform = platform;
@@ -65,8 +65,8 @@ public class NewTournament {
     }
 
     public NewTournament(String status, String tournamentName, String tournamentHost, LocalDate date,
-                         String description, String game, String platform, String tournamentType,
-                         String bestOf, String numberOfTeams, ArrayList<Team> teams) {
+                         LocalTime time, String description, String game, String platform,
+                         String tournamentType, String bestOf, String numberOfTeams, ArrayList<Team> teams) {
         if (status == null || status.isEmpty()){
             throw new IllegalArgumentException("Status cannot be empty!");
         }
@@ -75,9 +75,6 @@ public class NewTournament {
         }
         if (tournamentHost == null || tournamentHost.isEmpty()){
             throw new IllegalArgumentException("Tournament host cannot be empty!");
-        }
-        if (date.isBefore(LocalDate.now())){
-            throw new IllegalArgumentException("Date cannot be in the past");
         }
         if (description == null || description.isEmpty()){
             description += "No description";
@@ -106,14 +103,24 @@ public class NewTournament {
         this.tournamentName = tournamentName;
         this.tournamentHost = tournamentHost;
         this.date = date;
+        this.time = time;
         this.description = description;
         this.game = game;
         this.platform = platform;
         this.tournamentType = tournamentType;
         this.bestOf = bestOf;
         this.numberOfTeams = numberOfTeams;
+        this.teams = new ArrayList<>();
         this.teams.addAll(teams);
         this.matches = new ArrayList<>();
+    }
+
+    public LocalTime getTime() {
+        return time;
+    }
+
+    public void setTime(LocalTime time) {
+        this.time = time;
     }
 
     public String getStatus() {

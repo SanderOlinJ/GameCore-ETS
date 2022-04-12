@@ -1,8 +1,9 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
 
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.GameCoreETSApplication;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.ReadersAndWriters.GeneralReader;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.ReadersAndWriters.NewTournamentWriter;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.GeneralReader;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.NewTournamentWriter;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TournamentWriterRework;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.utilities.Utilities;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.NewTournament;
 import javafx.event.ActionEvent;
@@ -25,6 +26,7 @@ import javafx.scene.control.TextField;
 import java.io.File;
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -50,6 +52,8 @@ public class CreateNewTournamentPageController implements Initializable {
     @FXML ImageView bracketFormatImageView;
     @FXML DatePicker datePicker;
     @FXML ComboBox bestOfBox;
+    @FXML ComboBox timeBoxHours;
+    @FXML ComboBox timeBoxMinutes;
 
 
     @FXML
@@ -73,7 +77,51 @@ public class CreateNewTournamentPageController implements Initializable {
 
         totalNumberOfTeamsBox.getSelectionModel().selectedItemProperty().addListener
                 ((observableValue, oldValue, newValue) ->
-                        bracketFormatImageView.setImage(new Image(Utilities.getPathToBracketImageFile(newValue.toString()))));
+                        bracketFormatImageView.setImage(new Image(Utilities
+                                .getPathToBracketImageFile(newValue.toString()))));
+
+
+        timeBoxHours.getItems().addAll("00","01","02","03","04","05","06","07","08","09","10",
+                "11","12","13","14","15","16","17","18","19","20","21","22","23");
+        timeBoxHours.setCellFactory(new Callback<ListView, ListCell>() {
+            @Override
+            public ListCell call(ListView listView) {
+                return new ListCell<String>() {
+                    @Override
+                    protected void updateItem(String item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (item != null) {
+                            setText(item);
+                            //This won't work for the first time but will be the one
+                            //used in the next calls
+                            getStyleClass().add("my-list-cell");
+                            //size in px
+                            setFont(Font.font(16));
+                        }
+                    }
+                };
+            }
+        });
+        timeBoxMinutes.getItems().addAll("00","05","10","15","20","25","30","35","40","45","50","55");
+        timeBoxMinutes.setCellFactory(new Callback<ListView, ListCell>() {
+            @Override
+            public ListCell call(ListView listView) {
+                return new ListCell<String>() {
+                    @Override
+                    protected void updateItem(String item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (item != null) {
+                            setText(item);
+                            //This won't work for the first time but will be the one
+                            //used in the next calls
+                            getStyleClass().add("my-list-cell");
+                            //size in px
+                            setFont(Font.font(16));
+                        }
+                    }
+                };
+            }
+        });
 
         tournamentTypeBox.getItems().addAll("Brackets");
         tournamentTypeBox.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
@@ -166,6 +214,7 @@ public class CreateNewTournamentPageController implements Initializable {
         String tournamentName = String.valueOf(tournamentNameBox.getText());
         String tournamentHost = String.valueOf(tournamentHostBox.getValue());
         LocalDate date = datePicker.getValue();
+        LocalTime time = LocalTime.parse(timeBoxHours.getValue() + ":" + timeBoxMinutes.getValue());
         String description = String.valueOf(descriptionBox.getText());
         String game = String.valueOf(gameBox.getText());
         String platform = String.valueOf(platformBox.getText());
@@ -181,24 +230,25 @@ public class CreateNewTournamentPageController implements Initializable {
             throw new IllegalArgumentException("There is already a tournament file under this name");
         }
 
-        if (tournamentName.isEmpty() || tournamentHost.isEmpty() || date == null|| game.isEmpty() ||
-                platform.isEmpty() || tournamentType.isEmpty() || bestOf.isEmpty() || numberOfTeams.isEmpty()){
+        if (tournamentName.isEmpty() || tournamentHost.isEmpty() || date == null || time == null ||
+                game.isEmpty() || platform.isEmpty() || tournamentType.isEmpty() || bestOf.isEmpty() ||
+                numberOfTeams.isEmpty()){
             warningLabel.setText("You have to fill out all crucial fields (*)");
             throw new IllegalArgumentException("You have to fill out all crucial fields (*)");
         }
 
         BracketController.setBracketSize(Integer.parseInt((String) totalNumberOfTeamsBox.getValue()));
 
-        if (date.isBefore(LocalDate.now())){
+        if (date.isBefore(LocalDate.now()) || date.isEqual(LocalDate.now()) && time.isBefore(LocalTime.now())) {
             warningLabel.setText("You can't choose a date in the past");
             throw new IllegalArgumentException("You can't choose a date in the past");
         } else {
-            NewTournamentWriter.writeTournamentBasicInfoToFile(status, tournamentName,
-                    tournamentHost, date, description, game, platform, tournamentType,bestOf, numberOfTeams);
+            TournamentWriterRework.writeNewTournamentToFileWithBasicInfo(status, tournamentName,
+                    tournamentHost, date, time, description, game, platform, tournamentType,bestOf, numberOfTeams);
         }
 
-        NewTournament tournament= new NewTournament(status, tournamentName, tournamentHost, date, description, game, platform,
-                tournamentType, bestOf, numberOfTeams);
+        NewTournament tournament= new NewTournament(status, tournamentName, tournamentHost, date, time,
+                description, game, platform, tournamentType, bestOf, numberOfTeams);
 
         int formatNr = Integer.parseInt(numberOfTeams);
 
