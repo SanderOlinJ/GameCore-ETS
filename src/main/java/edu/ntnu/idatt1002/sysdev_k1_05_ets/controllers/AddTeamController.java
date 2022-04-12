@@ -1,7 +1,9 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.GameCoreETSApplication;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.ReadersAndWriters.NewTournamentWriter;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.ReadersAndWriters.TeamReader;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.ReadersAndWriters.TeamWriter;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.NewTournament;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -32,7 +34,7 @@ public class AddTeamController {
     private Pane p = new Pane();
     private Pane pC = new Pane();
     private VBox scrollPaneTeam = new VBox();
-
+    private static NewTournament tournament;
 
     private static int maxTeams;
 
@@ -66,6 +68,8 @@ public class AddTeamController {
     @FXML
     TextField searchTeams;
 
+    private ArrayList<Team> teamsForTournament;
+
 
 
     @FXML
@@ -78,22 +82,33 @@ public class AddTeamController {
     }
     @FXML
     public void setBracketScene(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource("brackets/eight_team_bracket.fxml")));
+        String link = "scenes/overview-scene-four.fxml";
+        if (maxTeams <= 4) {
+            link = "scenes/overview-scene-four.fxml";
+        } else if (maxTeams <= 8) {
+            link = "scenes/overview-scene-eight.fxml";
+        } else if (maxTeams <= 16) {
+            link = "scenes/overview-scene-sixteen.fxml";
+        }
+        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource(link)));
+
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-    }
 
+        NewTournamentWriter.writeTeamsToTournament(tournament.getTournamentName(), tournament.getDate(),
+                String.valueOf(maxTeams), getTeamsForTournament());
+    }
     @FXML
     public void addTeamExisting(String teamName){
-        if(EightTeamController.getBracket().getTeams().size() >= maxTeams){
+        if(BracketController.getBracket().getTeams().size() >= maxTeams){
             warningLabel.setText("You have reached the maximum number of teams for this tournament. \n"
                     + "max teams: "+maxTeams);
         }else {
             for (Team team : existingTeams) {
                 if (team.getNameOfTeam().equals(teamName)) {
-                    EightTeamController.getBracket().addTeam(team);
+                    BracketController.getBracket().addTeam(team);
                     Label newTeam = new Label(teamName);
                     enrolledTeamsBox.getChildren().add(newTeam);
                 }
@@ -139,7 +154,7 @@ public class AddTeamController {
             warningLabel.setText("Invalid team name.");
         }
         //check if max amount of teams has been exceeded
-        if(EightTeamController.getBracket().getTeams().size() >= maxTeams){
+        if(BracketController.getBracket().getTeams().size() >= maxTeams){
             warningLabel.setText("You have reached the maximum number of teams for this tournament. \n"
             + "max teams: "+maxTeams);
         }
@@ -147,7 +162,7 @@ public class AddTeamController {
         else {
             warningLabel.setText("");
             if (playersNameField.getText().isBlank()){
-                EightTeamController.getBracket().addTeam(new Team(teamNameField.getText()));
+                BracketController.getBracket().addTeam(new Team(teamNameField.getText()));
                 teamNameField.setText("");
                 Label newTeam = new Label(teamNameField.getText());
                 enrolledTeamsBox.getChildren().add(newTeam);
@@ -165,7 +180,7 @@ public class AddTeamController {
                 enrolledTeamsBox.getChildren().add(newTeam);
 
                 //add team to tournament bracket
-                EightTeamController.getBracket().addTeam(addedTeam);
+                BracketController.getBracket().addTeam(addedTeam);
                 ArrayList<Team> writeTeamList = new ArrayList<>();
                 writeTeamList.add(addedTeam);
                 //write teams to team file
@@ -196,6 +211,10 @@ public class AddTeamController {
     public static void setMaxTeams(int maxNrOfTeams) {
         maxTeams = maxNrOfTeams;
     }
-    
-
+    public ArrayList<Team> getTeamsForTournament() {
+        return teamsForTournament;
+    }
+    public static void setTournament(NewTournament newTournament) {
+        tournament = newTournament;
+    }
 }

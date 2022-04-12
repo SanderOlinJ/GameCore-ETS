@@ -10,10 +10,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.Scanner;
 
 public class MainPageController {
     @FXML private Menu aboutButton;
@@ -24,6 +27,16 @@ public class MainPageController {
     @FXML private Menu tournamentButton;
     @FXML Stage stage;
     @FXML BorderPane startScreenPane;
+
+    @FXML private TextArea ongoingTournaments;
+    @FXML private TextArea previousTournaments;
+
+
+
+    @FXML
+    public void initialize() throws IOException {
+        fillOngoingAndPreviousTournamentAreas();
+    }
 
     @FXML
     void onAboutButtonPressed(ActionEvent event) {
@@ -51,5 +64,25 @@ public class MainPageController {
     @FXML
     void onPreviousTournamentsButtonPressed(ActionEvent event) {
     }
+
+    //This uses the csv file previousTournaments so it looks kind of ugly and there
+    //should also be links for each tournament. This was just to fill in the empty space
+    public void fillOngoingAndPreviousTournamentAreas() throws IOException{
+        String previousTournamentsText = "";
+        File file = new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/tournamentFiles/previousTournaments.csv");
+
+        try(Scanner scanner = new Scanner(file)){
+            while (scanner.hasNext()){
+                String line = scanner.nextLine();
+                previousTournamentsText += line.toString() + "\n";
+            }
+            previousTournaments.setText(previousTournamentsText);
+        }catch (IOException e) {
+            throw new IOException("Unable to read data from file '" + file.getName() + "': " + e.getMessage());
+        }
+
+    }
+
+
 
 }

@@ -264,6 +264,7 @@ public class NewTournamentWriter {
                 throw new IOException("Unable to write tournament to file: " + exception.getMessage());
             }
         }
+        
     }
      */
 }
