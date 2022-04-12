@@ -1,26 +1,22 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.GameCoreETSApplication;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.NewTournamentWriter;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TeamReader;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TeamWriter;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.ReadersAndWriters.NewTournamentWriter;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.ReadersAndWriters.TeamReader;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.ReadersAndWriters.TeamWriter;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.NewTournament;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-import javafx.scene.effect.DropShadow;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
+import javafx.scene.control.*;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
+import org.controlsfx.control.textfield.TextFields;
 
 import java.io.File;
 import java.io.IOException;
@@ -28,28 +24,52 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class AddTeamController {
 
     private Scene scene;
     private Stage stage;
     private ArrayList<Team> existingTeams;
-    private ArrayList<Team> teamsForTournament;
     private Pane p = new Pane();
     private Pane pC = new Pane();
     private VBox scrollPaneTeam = new VBox();
-
     private static NewTournament tournament;
+
     private static int maxTeams;
 
-    @FXML TextField teamNameField;
-    @FXML TextField teamNameAbbreviationField;
-    @FXML TextArea playersNameField;
-    @FXML Label warningLabel;
-    @FXML Label existingTeamsAdd;
-    @FXML ScrollPane scrollPane;
-    @FXML ScrollPane currentTeams;
-    @FXML VBox existingTeamsBox;
+    @FXML
+    TextField teamNameField;
+
+    @FXML
+    TextArea playersNameField;
+
+    @FXML
+    Label warningLabel;
+
+    @FXML
+    Label existingTeamsAdd;
+
+    @FXML
+    ScrollPane scrollPane;
+
+    @FXML
+    ScrollPane currentTeams;
+
+    @FXML
+    VBox existingTeamsBox;
+
+    @FXML
+    VBox enrolledTeamsBox;
+
+    @FXML
+    TextField abbreviationField;
+
+    @FXML
+    TextField searchTeams;
+
+    private ArrayList<Team> teamsForTournament;
+
 
 
     @FXML
@@ -80,7 +100,6 @@ public class AddTeamController {
         NewTournamentWriter.writeTeamsToTournament(tournament.getTournamentName(), tournament.getDate(),
                 String.valueOf(maxTeams), getTeamsForTournament());
     }
-
     @FXML
     public void addTeamExisting(String teamName){
         if(BracketController.getBracket().getTeams().size() >= maxTeams){
@@ -89,10 +108,9 @@ public class AddTeamController {
         }else {
             for (Team team : existingTeams) {
                 if (team.getNameOfTeam().equals(teamName)) {
-                    teamsForTournament.add(team);
                     BracketController.getBracket().addTeam(team);
                     Label newTeam = new Label(teamName);
-                    pC.getChildren().add(newTeam);
+                    enrolledTeamsBox.getChildren().add(newTeam);
                 }
             }
             existingTeamsAdd.setText(teamName + " has been added to your tournament");
@@ -103,24 +121,30 @@ public class AddTeamController {
 
     @FXML
     public void initialize () throws IOException {
-        teamsForTournament = new ArrayList<>();
-        scrollPane.setContent(null);
-        TeamReader readExistingTeams = new TeamReader();
+        //setting search box for teams selection
+        edu.ntnu.idatt1002.sysdev_k1_05_ets.ReadersAndWriters.TeamReader readExistingTeams = new TeamReader();
+        ArrayList<Team> searchTeamNames = new ArrayList<>();
+        searchTeamNames = readExistingTeams.readFile
+                (new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/teamFiles/all_Teams.csv"));
+        TextFields.bindAutoCompletion(searchTeams,
+                searchTeamNames.stream().map(Team::getNameOfTeam).collect(Collectors.toList()));
+
+        //loop through the existing teams and set their style and add them to vbox in scrollpane
         existingTeams = new ArrayList<>(readExistingTeams.readFile(
                 new File("src/main/resources/edu/ntnu/idatt1002" +
                         "/sysdev_k1_05_ets/teamFiles/all_Teams.csv")));
         for (int i = 0; i < existingTeams.size(); i++){
             Label teamLabel = new Label();
             teamLabel.setText(existingTeams.get(i).getNameOfTeam());
-            scrollPaneTeam.getChildren().add(teamLabel);
-            scrollPaneTeam.getChildren().get(i).setOnMouseClicked
+            existingTeamsBox.getChildren().add(teamLabel);
+            existingTeamsBox.getChildren().get(i).setOnMouseClicked
                     (mouseEvent -> addTeamExisting(teamLabel.getText()));
-            scrollPaneTeam.getChildren().get(i).setLayoutY(20 * i);
-
+            existingTeamsBox.getChildren().get(i).setStyle("-fx-text-fill : white; -fx-font-size: 15pt");
         }
-        scrollPaneTeam.setAlignment(Pos.CENTER);
-        scrollPaneTeam.setPrefWidth(310);
-        scrollPane.setContent(scrollPaneTeam);
+
+        existingTeamsBox.setAlignment(Pos.CENTER);
+        existingTeamsBox.setPrefWidth(310);
+        scrollPane.setContent(existingTeamsBox);
     }
 
 
@@ -128,9 +152,6 @@ public class AddTeamController {
     public void addTeam(ActionEvent actionEvent) throws IOException {
         if (teamNameField.getText().strip().equals("")){
             warningLabel.setText("Invalid team name.");
-        }
-        if (teamNameAbbreviationField.getText().strip().equals("")){
-            warningLabel.setText("Invalid team abbreviations");
         }
         //check if max amount of teams has been exceeded
         if(BracketController.getBracket().getTeams().size() >= maxTeams){
@@ -144,31 +165,31 @@ public class AddTeamController {
                 BracketController.getBracket().addTeam(new Team(teamNameField.getText()));
                 teamNameField.setText("");
                 Label newTeam = new Label(teamNameField.getText());
-                pC.getChildren().add(newTeam);
+                enrolledTeamsBox.getChildren().add(newTeam);
             }
             else {
                 //name of each members on new lines
                 String[] players = playersNameField.getText().split("\n");
                 List<String> returnList = Arrays.asList(players);
                 ArrayList<String> teamMembersList = new ArrayList<>(returnList);
+
                 //Creating team labels
-                Team addedTeam = new Team(teamMembersList, teamNameField.getText(),
-                        teamNameAbbreviationField.getText());
+                Team addedTeam = new Team(teamMembersList, teamNameField.getText(),abbreviationField.getText());
+
                 Label newTeam = new Label(teamNameField.getText());
-                pC.getChildren().add(newTeam);
+                enrolledTeamsBox.getChildren().add(newTeam);
 
                 //add team to tournament bracket
                 BracketController.getBracket().addTeam(addedTeam);
                 ArrayList<Team> writeTeamList = new ArrayList<>();
                 writeTeamList.add(addedTeam);
-                teamsForTournament.add(addedTeam);
                 //write teams to team file
                 TeamWriter.writeFile(writeTeamList,"all_Teams");
                 setCurrentTeams();
+                //reset fields after adding
                 playersNameField.setText("");
                 teamNameField.setText("");
-                teamNameAbbreviationField.setText("");
-
+                abbreviationField.setText("");
             }
         }
     }
@@ -185,7 +206,7 @@ public class AddTeamController {
                 setCurrentTeams();
                 playersNameField.setText("");
                 teamNameField.setText("");
-                teamNameAbbreviationField.setText("");
+                abbreviationField.setText("");
             }
         }
         existingTeamsAdd.setText(teamName + " has been removed from your tournament");
@@ -193,30 +214,26 @@ public class AddTeamController {
     }
 
     public void setCurrentTeams(){
-        DropShadow ds = new DropShadow();
-        ds.setOffsetY(2.0f);
-        ds.setColor(Color.color(0.1f, 0.1f, 0.1f));
-        for (int i = 0; i < pC.getChildren().size(); i++) {
-            pC.getChildren().get(i).setLayoutY(20 * i);
-            pC.getChildren().get(i).setEffect(ds);
-            pC.getChildren().get(i).setCache(true);
+        Separator separator = new Separator();
+        separator.setOrientation(Orientation.HORIZONTAL);
 
-            //scaling
-            pC.getChildren().get(i).setScaleY(1);
-            pC.getChildren().get(i).setScaleX(1);
+        for (int i = 0; i < enrolledTeamsBox.getChildren().size(); i++) {
+            enrolledTeamsBox.getChildren().get(i).setStyle("-fx-text-fill : white; -fx-font-size: 15pt");
+
+            //enrolledTeamsBox.getChildren().add(separator);
         }
-        currentTeams.setContent(pC);
+        //styling of vbox for current teams
+        enrolledTeamsBox.setAlignment(Pos.TOP_CENTER);
+        enrolledTeamsBox.setPrefWidth(339);
     }
 
     public static void setMaxTeams(int maxNrOfTeams) {
         maxTeams = maxNrOfTeams;
     }
-
-    public static void setTournament(NewTournament newTournament) {
-        tournament = newTournament;
-    }
-
     public ArrayList<Team> getTeamsForTournament() {
         return teamsForTournament;
+    }
+    public static void setTournament(NewTournament newTournament) {
+        tournament = newTournament;
     }
 }
