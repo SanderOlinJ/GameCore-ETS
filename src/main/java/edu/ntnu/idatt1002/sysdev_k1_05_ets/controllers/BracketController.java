@@ -1,7 +1,7 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
 
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.GameCoreETSApplication;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.ReadersAndWriters.TournamentWriter;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TournamentWriter;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Tournament;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
 import javafx.event.ActionEvent;
@@ -157,7 +157,7 @@ public class BracketController {
 
     @FXML
     public void setMatchesScene(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource("scenes/eight-matches-scene.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource("scenes/matches-scene.fxml")));
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         stage.getScene().setRoot(root);
         //        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -181,10 +181,23 @@ public class BracketController {
 
     @FXML
     public void setResultsScene(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource("scenes/eight-matches-scene.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource("scenes/results-scene.fxml")));
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         stage.getScene().setRoot(root);
     }
+
+    @FXML
+    public void setTimeScene(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource(
+                "scenes/set-time-scene.fxml")));
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setMinWidth(1200);
+        stage.setMinHeight(800);
+        stage.show();
+    }
+
 
     @FXML
     private void advanceTeam(Label label) {

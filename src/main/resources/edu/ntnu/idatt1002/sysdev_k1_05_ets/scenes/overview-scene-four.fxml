@@ -79,7 +79,7 @@
                                         <HBox prefHeight="67.0" prefWidth="1200.0">
                                             <children>
                                                 <Pane prefHeight="200.0" prefWidth="50.0" HBox.hgrow="ALWAYS" />
-                                                <Button disable="true" mnemonicParsing="false" prefHeight="55.0" prefWidth="366.0" style="-fx-background-color: #2e3e4e;" text="Overview" textFill="WHITE">
+                                                <Button disable="true" mnemonicParsing="false" prefHeight="55.0" prefWidth="275.0" style="-fx-background-color: #2e3e4e;" text="Overview" textFill="WHITE">
                                                     <font>
                                                         <Font name="Arial Bold" size="20.0" />
                                                     </font>
@@ -90,7 +90,18 @@
                                                         <Cursor fx:constant="HAND" />
                                                     </cursor>
                                                 </Button>
-                                                <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="368.0" style="-fx-background-color: #2e3e4e;" text="Matches" textFill="WHITE">
+                                    <Button mnemonicParsing="false" onAction="#setTimeScene" prefHeight="55.0" prefWidth="275.0" style="-fx-background-color: #2e3e4e;" text="Set time" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Bold" size="20.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                       <HBox.margin>
+                                          <Insets right="2.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                                <Button mnemonicParsing="false" onAction="#setMatchesScene" prefHeight="55.0" prefWidth="275.0" style="-fx-background-color: #2e3e4e;" text="Matches" textFill="WHITE">
                                                     <font>
                                                         <Font name="Arial Bold" size="20.0" />
                                                     </font>
@@ -98,7 +109,7 @@
                                                         <Cursor fx:constant="HAND" />
                                                     </cursor>
                                                 </Button>
-                                                <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="368.0" style="-fx-background-color: #2e3e4e;" text="Results" textFill="WHITE">
+                                                <Button mnemonicParsing="false" onAction="#setResultsScene" prefHeight="55.0" prefWidth="275.0" style="-fx-background-color: #2e3e4e;" text="Results" textFill="WHITE">
                                                     <font>
                                                         <Font name="Arial Bold" size="20.0" />
                                                     </font>

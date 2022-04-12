@@ -1,8 +1,8 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.GameCoreETSApplication;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.ReadersAndWriters.NewTournamentWriter;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.ReadersAndWriters.TeamReader;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.ReadersAndWriters.TeamWriter;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.NewTournamentWriter;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TeamReader;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TeamWriter;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.NewTournament;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
 import javafx.event.ActionEvent;
@@ -68,7 +68,7 @@ public class AddTeamController {
     @FXML
     TextField searchTeams;
 
-    private ArrayList<Team> teamsForTournament;
+    private ArrayList<Team> teamsForTournament = new ArrayList<>();
 
 
 
@@ -122,7 +122,7 @@ public class AddTeamController {
     @FXML
     public void initialize () throws IOException {
         //setting search box for teams selection
-        edu.ntnu.idatt1002.sysdev_k1_05_ets.ReadersAndWriters.TeamReader readExistingTeams = new TeamReader();
+        TeamReader readExistingTeams = new TeamReader();
         ArrayList<Team> searchTeamNames = new ArrayList<>();
         searchTeamNames = readExistingTeams.readFile
                 (new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/teamFiles/all_Teams.csv"));
@@ -175,7 +175,7 @@ public class AddTeamController {
 
                 //Creating team labels
                 Team addedTeam = new Team(teamMembersList, teamNameField.getText(),abbreviationField.getText());
-
+                teamsForTournament.add(addedTeam);
                 Label newTeam = new Label(teamNameField.getText());
                 enrolledTeamsBox.getChildren().add(newTeam);
 
