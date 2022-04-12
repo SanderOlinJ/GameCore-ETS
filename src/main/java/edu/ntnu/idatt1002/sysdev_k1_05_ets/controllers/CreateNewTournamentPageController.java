@@ -173,6 +173,14 @@ public class CreateNewTournamentPageController implements Initializable {
         String bestOf = String.valueOf(bestOfBox.getValue());
         String numberOfTeams = String.valueOf(totalNumberOfTeamsBox.getValue());
 
+        String doesFileExist = NewTournamentWriter.doesFileWithSameNameAlreadyExist(Utilities
+                .shortenAndReplaceUnnecessarySymbolsInString(tournamentName));
+
+        if (doesFileExist.equals("Ongoing") || doesFileExist.equals("Ongoing") || doesFileExist.equals("Previous")){
+            warningLabel.setText("There is already a tournament file under this name");
+            throw new IllegalArgumentException("There is already a tournament file under this name");
+        }
+
         if (tournamentName.isEmpty() || tournamentHost.isEmpty() || date == null|| game.isEmpty() ||
                 platform.isEmpty() || tournamentType.isEmpty() || bestOf.isEmpty() || numberOfTeams.isEmpty()){
             warningLabel.setText("You have to fill out all crucial fields (*)");
@@ -185,7 +193,7 @@ public class CreateNewTournamentPageController implements Initializable {
             warningLabel.setText("You can't choose a date in the past");
             throw new IllegalArgumentException("You can't choose a date in the past");
         } else {
-            NewTournamentWriter.writeOngoingOrUpcomingTournamentToFileWithoutTeams(status, tournamentName,
+            NewTournamentWriter.writeTournamentBasicInfoToFile(status, tournamentName,
                     tournamentHost, date, description, game, platform, tournamentType,bestOf, numberOfTeams);
         }
 

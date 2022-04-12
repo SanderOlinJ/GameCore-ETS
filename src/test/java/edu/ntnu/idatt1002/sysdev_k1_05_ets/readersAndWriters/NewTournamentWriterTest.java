@@ -1,14 +1,11 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.ReadersAndWriters;
 
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
-
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -27,7 +24,7 @@ class NewTournamentWriterTest {
         String totalNumberOfTeams = "8";
         LocalDate date = LocalDate.now();
 
-        NewTournamentWriter.writeOngoingOrUpcomingTournamentToFileWithoutTeams(status, tournamentName, tournamentHost, date,
+        NewTournamentWriter.writeTournamentBasicInfoToFile(status, tournamentName, tournamentHost, date,
                 description, game, platform, tournamentType, bestOf, totalNumberOfTeams);
     }
 
@@ -44,7 +41,7 @@ class NewTournamentWriterTest {
         String totalNumberOfTeams = "8";
         LocalDate date = LocalDate.now();
 
-        NewTournamentWriter.writeOngoingOrUpcomingTournamentToFileWithoutTeams(status, tournamentName, tournamentHost, date,
+        NewTournamentWriter.writeTournamentBasicInfoToFile(status, tournamentName, tournamentHost, date,
                 description, game, platform, tournamentType, bestOf, totalNumberOfTeams);
 
         assertTrue(new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/tournamentFiles" +

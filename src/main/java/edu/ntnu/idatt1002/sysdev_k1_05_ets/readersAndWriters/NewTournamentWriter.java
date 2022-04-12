@@ -22,11 +22,52 @@ public class NewTournamentWriter {
     public NewTournamentWriter() {}
 
 
+    /**
+     * Method for checking if a file exists under the input tournament name
+     * Used to when creating a new tournament, so that the user doesn't create a tournament file
+     * with the same name as an already existing file.
+     * @param tournamentNameShortened Name of tournament, since tournament files are saved under their name
+     * @return true if a file exists, false if not
+     */
+    public static String doesFileWithSameNameAlreadyExist(String tournamentNameShortened){
+        File file1 = new File("src/main/resources/edu/ntnu/idatt1002/" +
+                "sysdev_k1_05_ets/tournamentFiles/ongoingTournaments/" + tournamentNameShortened + ".txt");
+        File file2 = new File("src/main/resources/edu/ntnu/idatt1002/" +
+                "sysdev_k1_05_ets/tournamentFiles/upcomingTournaments/" + tournamentNameShortened + ".txt");
+        File file3 = new File("src/main/resources/edu/ntnu/idatt1002/" +
+                "sysdev_k1_05_ets/tournamentFiles/upcomingTournaments/" + tournamentNameShortened + ".txt");
 
-    public static void writeOngoingOrUpcomingTournamentToFileWithoutTeams(String status, String tournamentName, String tournamentHost,
-                                                         LocalDate date, String description, String game,
-                                                         String platform, String tournamentType, String bestOf,
-                                                         String numberOfTeams) throws IOException {
+
+        if (file1.exists()){
+            return "Ongoing";
+        } else if (file2.exists()){
+            return "Upcoming";
+        } else if (file3.exists()){
+            return "Previous";
+        }else {
+            return "No";
+        }
+    }
+
+    /**
+     * Method for writing a newly created tournament to file,
+     * also writes the tournament name to an overview file.
+     * @param status Tournament status, if it's ongoing, upcoming or previous
+     * @param tournamentName Name of the tournament, used for making file name
+     * @param tournamentHost Host of the tournament
+     * @param date Date of the tournament
+     * @param description User's description of the tournament
+     * @param game Game to be played at tournament
+     * @param platform What platform the game is played on
+     * @param tournamentType Type of tournament (Only brackets for now)
+     * @param bestOf Best of how many rounds (1 or 3 for now)
+     * @param numberOfTeams Total number of teams participating (4, 8 or 16 for now)
+     * @throws IOException
+     */
+    public static void writeTournamentBasicInfoToFile(
+            String status, String tournamentName, String tournamentHost, LocalDate date, String description,
+            String game, String platform, String tournamentType, String bestOf,
+            String numberOfTeams) throws IOException {
 
         description = description.replaceAll("\n", " ");
         if (description.equals("")) {
@@ -34,15 +75,11 @@ public class NewTournamentWriter {
         }
 
         String tournamentNameShortened = Utilities.shortenAndReplaceUnnecessarySymbolsInString(tournamentName);
-
         String str = status + DELIMITER + tournamentName + DELIMITER + tournamentHost + DELIMITER +
                 date + DELIMITER + description + DELIMITER + game + DELIMITER + platform +
                 DELIMITER + tournamentType + DELIMITER + bestOf + DELIMITER + numberOfTeams +
                 DELIMITER;
 
-        if (doesFileWithSameNameAlreadyExist(tournamentNameShortened)){
-            throw new IOException("There is already a tournament file under this name");
-        }
 
         if (date.isEqual(LocalDate.now())) {
 
@@ -70,17 +107,31 @@ public class NewTournamentWriter {
         }
     }
 
-    private static boolean doesFileWithSameNameAlreadyExist(String tournamentNameShortened){
-        File file1 = new File("src/main/resources/edu/ntnu/idatt1002/" +
-                "sysdev_k1_05_ets/tournamentFiles/ongoingTournaments/" + tournamentNameShortened + ".txt");
-        File file2 = new File("src/main/resources/edu/ntnu/idatt1002/" +
-                "sysdev_k1_05_ets/tournamentFiles/upcomingTournaments/" + tournamentNameShortened + ".txt");
-        File file3 = new File("src/main/resources/edu/ntnu/idatt1002/" +
-                "sysdev_k1_05_ets/tournamentFiles/upcomingTournaments/" + tournamentNameShortened + ".txt");
+    public static void editTournamentWithoutTeamsAndWriteBackToFileWhileRemovingOldFile(File originalFile,
+            String status, String tournamentName, String tournamentHost, LocalDate date, String description,
+            String game, String platform, String tournamentType, String bestOf, String numberOfTeams){
+        try {
+            writeTournamentBasicInfoToFile(status, tournamentName, tournamentHost, date, description, game,
+                    platform, tournamentType, bestOf, numberOfTeams);
+        } catch (IOException exception){
+            exception.getMessage();
+        }
 
-        return file1.exists() || file2.exists() || file3.exists();
+        originalFile.delete();
+
+
     }
+/*
+    public static boolean removeTournamentFile(String tournamentNameShortened, File file){
+        String doesFileExist = doesFileWithSameNameAlreadyExist(tournamentNameShortened);
+        if (doesFileExist.equals("Ongoing")){
+            File removeFile = new File("src/main/resources/edu/ntnu/idatt1002/" +
+                    "sysdev_k1_05_ets/tournamentFiles/ongoingTournaments/" + tournamentNameShortened + ".txt");
 
+            removeFile.delete();
+        }
+    }
+    */
     public static void writeTeamsToTournament(String tournamentName, LocalDate date, String numberOfTeams ,
                                               ArrayList<Team> teams) throws IOException {
 
@@ -103,7 +154,6 @@ public class NewTournamentWriter {
             }
             try (FileWriter fileWriter = new FileWriter(file, true)) {
                 writeTeamToStringInFormatOfTournamentFile(teams, str, fileWriter);
-                writeTournamentToOngoingOverviewFile(tournamentNameShortened);
             } catch (IOException exception){
                 throw new IOException("Could not write tournament to file: " + exception.getMessage());
             }
@@ -120,7 +170,6 @@ public class NewTournamentWriter {
             }
             try (FileWriter fileWriter = new FileWriter(file, true)) {
                 writeTeamToStringInFormatOfTournamentFile(teams, str, fileWriter);
-                writeTournamentToUpcomingOverviewFile(tournamentNameShortened);
             } catch (IOException exception){
                 throw new IOException("Could not write tournament to file: " + exception.getMessage());
             }

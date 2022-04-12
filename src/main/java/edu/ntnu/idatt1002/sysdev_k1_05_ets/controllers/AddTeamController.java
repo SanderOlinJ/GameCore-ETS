@@ -193,6 +193,25 @@ public class AddTeamController {
             }
         }
     }
+    //it does not remove team from the list displaying the teams
+    public void deleteTeam() throws IOException {
+        String teamName = teamNameField.getText();
+        for (Team team : existingTeams) {
+            if (team.getNameOfTeam().equals(teamName)) {
+                teamsForTournament.remove(team);
+                BracketController.getBracket().removeTeam(team);
+                pC.getChildren().remove(team);
+
+                teamsForTournament.remove(team);
+                setCurrentTeams();
+                playersNameField.setText("");
+                teamNameField.setText("");
+                teamNameAbbreviationField.setText("");
+            }
+        }
+        existingTeamsAdd.setText(teamName + " has been removed from your tournament");
+        setCurrentTeams();
+    }
 
     public void setCurrentTeams(){
         Separator separator = new Separator();
