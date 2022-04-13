@@ -3,7 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
@@ -151,7 +151,7 @@
                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                         <VBox prefHeight="340.0" prefWidth="1257.0" style="-fx-background-color: #2e3e4e;">
                                                             <children>
-                                                                <HBox fx:id="match" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
+                                                                <HBox fx:id="match" minHeight="-Infinity" prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: black;">
                                                                     <children>
                                                                         <Pane prefHeight="98.0" prefWidth="50.0" />
                                                                         <VBox prefHeight="98.0" prefWidth="431.0">
@@ -189,21 +189,13 @@
                                                                                               <Font name="Arial" size="20.0" />
                                                                                           </font>
                                                                                       </Label>
-                                                                  <ComboBox fx:id="hourMatch" prefHeight="26.0" prefWidth="66.0" promptText="00">
-                                                                     <HBox.margin>
-                                                                        <Insets right="5.0" />
-                                                                     </HBox.margin>
-                                                                  </ComboBox>
+                                                                  <ChoiceBox fx:id="hoursMatch" prefWidth="74.0" style="-fx-background-color: #282c34;" />
                                                                   <Label text=":" textFill="WHITE">
                                                                      <font>
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
                                                                   </Label>
-                                                                  <ComboBox fx:id="minutesMatch" prefHeight="26.0" prefWidth="74.0" promptText="00">
-                                                                     <HBox.margin>
-                                                                        <Insets left="5.0" />
-                                                                     </HBox.margin>
-                                                                  </ComboBox>
+                                                                  <ChoiceBox fx:id="minutesMatch" prefWidth="74.0" style="-fx-background-color: #282c34;" />
                                                                </children>
                                                             </HBox>
                                                                                 <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -227,7 +219,7 @@
                                                                         </HBox>
                                                                     </children>
                                                                 </HBox>
-                                                <HBox fx:id="match1" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
+                                                <HBox fx:id="match1" minHeight="-Infinity" prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: black;">
                                                    <children>
                                                       <Pane prefHeight="98.0" prefWidth="50.0" />
                                                       <VBox prefHeight="98.0" prefWidth="431.0">
@@ -265,21 +257,13 @@
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
                                                                   </Label>
-                                                                  <ComboBox fx:id="hourMatch1" prefHeight="26.0" prefWidth="66.0" promptText="00">
-                                                                     <HBox.margin>
-                                                                        <Insets right="5.0" />
-                                                                     </HBox.margin>
-                                                                  </ComboBox>
+                                                                  <ChoiceBox fx:id="hoursMatch1" prefWidth="74.0" style="-fx-background-color: #282c34;" />
                                                                   <Label text=":" textFill="WHITE">
                                                                      <font>
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
                                                                   </Label>
-                                                                  <ComboBox fx:id="minutesMatch1" prefHeight="26.0" prefWidth="74.0" promptText="00">
-                                                                     <HBox.margin>
-                                                                        <Insets left="5.0" />
-                                                                     </HBox.margin>
-                                                                  </ComboBox>
+                                                                  <ChoiceBox fx:id="minutesMatch1" prefWidth="74.0" style="-fx-background-color: #282c34;" />
                                                                </children>
                                                             </HBox>
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -341,21 +325,13 @@
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
                                                                   </Label>
-                                                                  <ComboBox fx:id="hourMatch2" prefHeight="26.0" prefWidth="66.0" promptText="00">
-                                                                     <HBox.margin>
-                                                                        <Insets right="5.0" />
-                                                                     </HBox.margin>
-                                                                  </ComboBox>
+                                                                  <ChoiceBox fx:id="hoursMatch2" prefWidth="74.0" style="-fx-background-color: #282c34;" />
                                                                   <Label text=":" textFill="WHITE">
                                                                      <font>
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
                                                                   </Label>
-                                                                  <ComboBox fx:id="minutesMatch2" prefHeight="26.0" prefWidth="74.0" promptText="00">
-                                                                     <HBox.margin>
-                                                                        <Insets left="5.0" />
-                                                                     </HBox.margin>
-                                                                  </ComboBox>
+                                                                  <ChoiceBox fx:id="minutesMatch2" prefWidth="74.0" style="-fx-background-color: #282c34;" />
                                                                </children>
                                                             </HBox>
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -417,21 +393,13 @@
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
                                                                   </Label>
-                                                                  <ComboBox fx:id="hourMatch3" prefHeight="26.0" prefWidth="66.0" promptText="00">
-                                                                     <HBox.margin>
-                                                                        <Insets right="5.0" />
-                                                                     </HBox.margin>
-                                                                  </ComboBox>
+                                                                  <ChoiceBox fx:id="hoursMatch3" prefWidth="74.0" style="-fx-background-color: #282c34;" />
                                                                   <Label text=":" textFill="WHITE">
                                                                      <font>
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
                                                                   </Label>
-                                                                  <ComboBox fx:id="minutesMatch3" prefHeight="26.0" prefWidth="74.0" promptText="00">
-                                                                     <HBox.margin>
-                                                                        <Insets left="5.0" />
-                                                                     </HBox.margin>
-                                                                  </ComboBox>
+                                                                  <ChoiceBox fx:id="minutesMatch3" prefWidth="74.0" style="-fx-background-color: #282c34;" />
                                                                </children>
                                                             </HBox>
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -493,21 +461,13 @@
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
                                                                   </Label>
-                                                                  <ComboBox fx:id="hourMatch4" prefHeight="26.0" prefWidth="66.0" promptText="00">
-                                                                     <HBox.margin>
-                                                                        <Insets right="5.0" />
-                                                                     </HBox.margin>
-                                                                  </ComboBox>
+                                                                  <ChoiceBox fx:id="hoursMatch4" prefWidth="74.0" style="-fx-background-color: #282c34;" />
                                                                   <Label text=":" textFill="WHITE">
                                                                      <font>
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
                                                                   </Label>
-                                                                  <ComboBox fx:id="minutesMatch4" prefHeight="26.0" prefWidth="74.0" promptText="00">
-                                                                     <HBox.margin>
-                                                                        <Insets left="5.0" />
-                                                                     </HBox.margin>
-                                                                  </ComboBox>
+                                                                  <ChoiceBox fx:id="minutesMatch4" prefWidth="74.0" style="-fx-background-color: #282c34;" />
                                                                </children>
                                                             </HBox>
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -569,21 +529,13 @@
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
                                                                   </Label>
-                                                                  <ComboBox fx:id="hourMatch5" prefHeight="26.0" prefWidth="66.0" promptText="00">
-                                                                     <HBox.margin>
-                                                                        <Insets right="5.0" />
-                                                                     </HBox.margin>
-                                                                  </ComboBox>
+                                                                  <ChoiceBox fx:id="hoursMatch5" prefWidth="74.0" style="-fx-background-color: #282c34;" />
                                                                   <Label text=":" textFill="WHITE">
                                                                      <font>
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
                                                                   </Label>
-                                                                  <ComboBox fx:id="minutesMatch5" prefHeight="26.0" prefWidth="74.0" promptText="00">
-                                                                     <HBox.margin>
-                                                                        <Insets left="5.0" />
-                                                                     </HBox.margin>
-                                                                  </ComboBox>
+                                                                  <ChoiceBox fx:id="minutesMatch5" prefWidth="74.0" style="-fx-background-color: #282c34;" />
                                                                </children>
                                                             </HBox>
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -645,21 +597,13 @@
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
                                                                   </Label>
-                                                                  <ComboBox fx:id="hourMatch6" prefHeight="26.0" prefWidth="66.0" promptText="00">
-                                                                     <HBox.margin>
-                                                                        <Insets right="5.0" />
-                                                                     </HBox.margin>
-                                                                  </ComboBox>
+                                                                  <ChoiceBox fx:id="hoursMatch6" prefWidth="74.0" style="-fx-background-color: #282c34;" />
                                                                   <Label text=":" textFill="WHITE">
                                                                      <font>
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
                                                                   </Label>
-                                                                  <ComboBox fx:id="minutesMatch6" prefHeight="26.0" prefWidth="74.0" promptText="00">
-                                                                     <HBox.margin>
-                                                                        <Insets left="5.0" />
-                                                                     </HBox.margin>
-                                                                  </ComboBox>
+                                                                  <ChoiceBox fx:id="minutesMatch6" prefWidth="74.0" style="-fx-background-color: #282c34;" />
                                                                </children>
                                                             </HBox>
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -721,21 +665,13 @@
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
                                                                   </Label>
-                                                                  <ComboBox fx:id="hourMatch7" prefHeight="26.0" prefWidth="66.0" promptText="00">
-                                                                     <HBox.margin>
-                                                                        <Insets right="5.0" />
-                                                                     </HBox.margin>
-                                                                  </ComboBox>
+                                                                  <ChoiceBox fx:id="hoursMatch7" prefWidth="74.0" style="-fx-background-color: #282c34;" />
                                                                   <Label text=":" textFill="WHITE">
                                                                      <font>
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
                                                                   </Label>
-                                                                  <ComboBox fx:id="minutesMatch7" prefHeight="26.0" prefWidth="74.0" promptText="00">
-                                                                     <HBox.margin>
-                                                                        <Insets left="5.0" />
-                                                                     </HBox.margin>
-                                                                  </ComboBox>
+                                                                  <ChoiceBox fx:id="minutesMatch7" prefWidth="74.0" style="-fx-background-color: #282c34;" />
                                                                </children>
                                                             </HBox>
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -797,21 +733,13 @@
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
                                                                   </Label>
-                                                                  <ComboBox fx:id="hourMatch8" prefHeight="26.0" prefWidth="66.0" promptText="00">
-                                                                     <HBox.margin>
-                                                                        <Insets right="5.0" />
-                                                                     </HBox.margin>
-                                                                  </ComboBox>
+                                                                  <ChoiceBox fx:id="hoursMatch8" prefWidth="74.0" style="-fx-background-color: #282c34;" />
                                                                   <Label text=":" textFill="WHITE">
                                                                      <font>
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
                                                                   </Label>
-                                                                  <ComboBox fx:id="minutesMatch8" prefHeight="26.0" prefWidth="74.0" promptText="00">
-                                                                     <HBox.margin>
-                                                                        <Insets left="5.0" />
-                                                                     </HBox.margin>
-                                                                  </ComboBox>
+                                                                  <ChoiceBox fx:id="minutesMatch8" prefWidth="74.0" style="-fx-background-color: #282c34;" />
                                                                </children>
                                                             </HBox>
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -873,21 +801,13 @@
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
                                                                   </Label>
-                                                                  <ComboBox fx:id="hourMatch9" prefHeight="26.0" prefWidth="66.0" promptText="00">
-                                                                     <HBox.margin>
-                                                                        <Insets right="5.0" />
-                                                                     </HBox.margin>
-                                                                  </ComboBox>
+                                                                  <ChoiceBox fx:id="hoursMatch9" prefWidth="74.0" style="-fx-background-color: #282c34;" />
                                                                   <Label text=":" textFill="WHITE">
                                                                      <font>
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
                                                                   </Label>
-                                                                  <ComboBox fx:id="minutesMatch9" prefHeight="26.0" prefWidth="74.0" promptText="00">
-                                                                     <HBox.margin>
-                                                                        <Insets left="5.0" />
-                                                                     </HBox.margin>
-                                                                  </ComboBox>
+                                                                  <ChoiceBox fx:id="minutesMatch9" prefWidth="74.0" style="-fx-background-color: #282c34;" />
                                                                </children>
                                                             </HBox>
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -949,21 +869,13 @@
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
                                                                   </Label>
-                                                                  <ComboBox fx:id="hourMatch10" prefHeight="26.0" prefWidth="66.0" promptText="00">
-                                                                     <HBox.margin>
-                                                                        <Insets right="5.0" />
-                                                                     </HBox.margin>
-                                                                  </ComboBox>
+                                                                  <ChoiceBox fx:id="hoursMatch10" prefWidth="74.0" style="-fx-background-color: #282c34;" />
                                                                   <Label text=":" textFill="WHITE">
                                                                      <font>
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
                                                                   </Label>
-                                                                  <ComboBox fx:id="minutesMatch10" prefHeight="26.0" prefWidth="74.0" promptText="00">
-                                                                     <HBox.margin>
-                                                                        <Insets left="5.0" />
-                                                                     </HBox.margin>
-                                                                  </ComboBox>
+                                                                  <ChoiceBox fx:id="minutesMatch10" prefWidth="74.0" style="-fx-background-color: #282c34;" />
                                                                </children>
                                                             </HBox>
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -1025,21 +937,13 @@
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
                                                                   </Label>
-                                                                  <ComboBox fx:id="hourMatch11" prefHeight="26.0" prefWidth="66.0" promptText="00">
-                                                                     <HBox.margin>
-                                                                        <Insets right="5.0" />
-                                                                     </HBox.margin>
-                                                                  </ComboBox>
+                                                                  <ChoiceBox fx:id="hoursMatch11" prefWidth="74.0" style="-fx-background-color: #282c34;" />
                                                                   <Label text=":" textFill="WHITE">
                                                                      <font>
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
                                                                   </Label>
-                                                                  <ComboBox fx:id="minutesMatch11" prefHeight="26.0" prefWidth="74.0" promptText="00">
-                                                                     <HBox.margin>
-                                                                        <Insets left="5.0" />
-                                                                     </HBox.margin>
-                                                                  </ComboBox>
+                                                                  <ChoiceBox fx:id="minutesMatch11" prefWidth="74.0" style="-fx-background-color: #282c34;" />
                                                                </children>
                                                             </HBox>
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -1101,21 +1005,13 @@
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
                                                                   </Label>
-                                                                  <ComboBox fx:id="hourMatch12" prefHeight="26.0" prefWidth="66.0" promptText="00">
-                                                                     <HBox.margin>
-                                                                        <Insets right="5.0" />
-                                                                     </HBox.margin>
-                                                                  </ComboBox>
+                                                                  <ChoiceBox fx:id="hoursMatch12" prefWidth="74.0" style="-fx-background-color: #282c34;" />
                                                                   <Label text=":" textFill="WHITE">
                                                                      <font>
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
                                                                   </Label>
-                                                                  <ComboBox fx:id="minutesMatch12" prefHeight="26.0" prefWidth="74.0" promptText="00">
-                                                                     <HBox.margin>
-                                                                        <Insets left="5.0" />
-                                                                     </HBox.margin>
-                                                                  </ComboBox>
+                                                                  <ChoiceBox fx:id="minutesMatch12" prefWidth="74.0" style="-fx-background-color: #282c34;" />
                                                                </children>
                                                             </HBox>
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -1177,21 +1073,13 @@
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
                                                                   </Label>
-                                                                  <ComboBox fx:id="hourMatch13" prefHeight="26.0" prefWidth="66.0" promptText="00">
-                                                                     <HBox.margin>
-                                                                        <Insets right="5.0" />
-                                                                     </HBox.margin>
-                                                                  </ComboBox>
+                                                                  <ChoiceBox fx:id="hoursMatch13" prefWidth="74.0" style="-fx-background-color: #282c34;" />
                                                                   <Label text=":" textFill="WHITE">
                                                                      <font>
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
                                                                   </Label>
-                                                                  <ComboBox fx:id="minutesMatch13" prefHeight="26.0" prefWidth="74.0" promptText="00">
-                                                                     <HBox.margin>
-                                                                        <Insets left="5.0" />
-                                                                     </HBox.margin>
-                                                                  </ComboBox>
+                                                                  <ChoiceBox fx:id="minutesMatch13" prefWidth="74.0" style="-fx-background-color: #282c34;" />
                                                                </children>
                                                             </HBox>
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -1253,21 +1141,13 @@
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
                                                                   </Label>
-                                                                  <ComboBox fx:id="hourMatch14" prefHeight="26.0" prefWidth="66.0" promptText="00">
-                                                                     <HBox.margin>
-                                                                        <Insets right="5.0" />
-                                                                     </HBox.margin>
-                                                                  </ComboBox>
+                                                                  <ChoiceBox fx:id="hoursMatch14" prefWidth="74.0" style="-fx-background-color: #282c34;" />
                                                                   <Label text=":" textFill="WHITE">
                                                                      <font>
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
                                                                   </Label>
-                                                                  <ComboBox fx:id="minutesMatch14" prefHeight="26.0" prefWidth="74.0" promptText="00">
-                                                                     <HBox.margin>
-                                                                        <Insets left="5.0" />
-                                                                     </HBox.margin>
-                                                                  </ComboBox>
+                                                                  <ChoiceBox fx:id="minutesMatch14" prefWidth="74.0" style="-fx-background-color: #282c34;" />
                                                                </children>
                                                             </HBox>
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
