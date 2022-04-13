@@ -7,13 +7,22 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ChoiceBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Objects;
 
 public class SetTimeController {
+    @FXML ChoiceBox hoursMatch;
+    @FXML ChoiceBox minutesMatch;
 
+
+    @FXML
+    public void initialize(){
+        setHours(hoursMatch);
+        setMinutes(minutesMatch);
+    }
 
     @FXML
     public void setResultsScene(ActionEvent event) throws IOException {
@@ -52,5 +61,14 @@ public class SetTimeController {
         stage.setMinWidth(1200);
         stage.setMinHeight(800);
         stage.show();
+    }
+
+    public void setHours(ChoiceBox box){
+        box.getItems().addAll("00","01","02","03","04","05","06","07","08","09","10",
+                "11","12","13","14","15","16","17","18","19","20","21","22","23");
+    }
+
+    public void setMinutes(ChoiceBox box){
+        box.getItems().addAll("00","05","10","15","20","25","30","35","40","45","50","55");
     }
 }
