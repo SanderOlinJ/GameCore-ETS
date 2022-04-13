@@ -180,7 +180,7 @@
                                                                   <Insets left="-45.0" />
                                                                </HBox.margin>
                                                             </ImageView>
-                                                            <Button mnemonicParsing="false" text="Select">
+                                                            <Button mnemonicParsing="false" onAction="#onSearchTeamSelect" text="Select">
                                                                <HBox.margin>
                                                                   <Insets bottom="10.0" left="20.0" top="5.0" />
                                                                </HBox.margin>

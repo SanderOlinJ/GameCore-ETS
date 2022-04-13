@@ -226,10 +226,28 @@ public class AddTeamController {
         enrolledTeamsBox.setPrefWidth(339);
     }
 
+    public void onSearchTeamSelect(ActionEvent event) {
+        String teamName = searchTeams.getText();
+        Team selectedTeam = existingTeams.stream().filter(t -> t.getNameOfTeam().equals(teamName))
+                .collect(Collectors.toList()).get(0);
+        if (existingTeams.isEmpty()) return;
+
+        teamNameField.setText(teamName);
+        abbreviationField.setText(selectedTeam.getNameAbbr());
+
+        for (int i = 0; i < selectedTeam.getMembers().size(); i++) {
+            if (i == selectedTeam.getMembers().size() - 1) {
+                playersNameField.appendText(selectedTeam.getMembers().get(i));
+                return;
+            }
+            playersNameField.appendText(selectedTeam.getMembers().get(i) + "\n");
+        }
+    }
+
     public static void setMaxTeams(int maxNrOfTeams) {
         maxTeams = maxNrOfTeams;
     }
-    public ArrayList<Team> getTeamsForTournament() {
+    public ArrayList<Team> getTeamsForTournament(){
         return teamsForTournament;
     }
     public static void setTournament(NewTournament newTournament) {
