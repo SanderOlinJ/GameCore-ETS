@@ -56,6 +56,7 @@ public class TeamReader {
         for (Team team : teams){
             if (team.getNameOfTeam().equals(teamName)){
                 teamFound = team;
+                break;
             }
         }
         if (teamFound == null){

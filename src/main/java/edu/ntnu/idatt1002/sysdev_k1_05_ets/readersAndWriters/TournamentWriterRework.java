@@ -1,6 +1,5 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters;
 
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Match;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.utilities.Utilities;
 
@@ -81,8 +80,9 @@ public class TournamentWriterRework {
                 DELIMITER + tournamentType + DELIMITER + bestOf + DELIMITER + numberOfTeams +
                 DELIMITER;
 
-        if (date.isEqual(LocalDate.now()) && status.equals("Not finished")
-                || date.isBefore(LocalDate.now()) && status.equals("Not finished")) {
+        if (date.isEqual(LocalDate.now()) && time.equals(LocalTime.now()) && status.equals("Not finished") ||
+                date.isEqual(LocalDate.now()) && time.isBefore(LocalTime.now()) && status.equals("Not finished") ||
+                date.isBefore(LocalDate.now()) && status.equals("Not finished")) {
 
             File file = new File("src/main/resources/edu/ntnu/idatt1002/" +
                     "sysdev_k1_05_ets/tournamentFiles/ongoingTournaments/" + tournamentNameShortened + ".txt");
@@ -94,7 +94,8 @@ public class TournamentWriterRework {
                 throw new IOException("Could not write tournament to file: " + exception.getMessage());
             }
 
-        } else if (date.isAfter(LocalDate.now()) && status.equals("Not finished")) {
+        } else if (date.isAfter(LocalDate.now()) && status.equals("Not finished") ||
+                date.isEqual(LocalDate.now()) && time.isAfter(LocalTime.now()) && status.equals("Not finished")) {
 
             File file = new File("src/main/resources/edu/ntnu/idatt1002/" +
                     "sysdev_k1_05_ets/tournamentFiles/upcomingTournaments/" + tournamentNameShortened + ".txt");
@@ -186,7 +187,7 @@ public class TournamentWriterRework {
      * @param tournamentNameShortened shortened name of the tournament, String
      * @throws IOException
      */
-    public static void removeTournamentFromOverview(String tournamentNameShortened)
+    public static void removeTournamentFromOverviewWhenLocationNotKnown(String tournamentNameShortened)
     throws IOException{
         ArrayList<String> ongoingTournaments = TournamentReaderRework.readThroughOngoingTournaments();
         ArrayList<String> upcomingTournaments = TournamentReaderRework.readThroughUpcomingTournaments();
@@ -258,6 +259,7 @@ public class TournamentWriterRework {
         for (Team team : teams){
             stringBuilder.append(team.getNameOfTeam()).append(COMMA_DELIMITER);
         }
+        stringBuilder.setLength(stringBuilder.length()-1);
 
         try (FileWriter fileWriter = new FileWriter(file,true)){
             fileWriter.write(stringBuilder.toString());
@@ -278,17 +280,17 @@ public class TournamentWriterRework {
 
         String location = ifFileExistsAndFindLocation(tournamentNameShortened);
 
-        File file = switch (location){
-            case "Ongoing" -> new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
-                    "tournamentFiles/ongoingTournaments/" + tournamentNameShortened + ".txt");
-            case "Upcoming" -> new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
-                    "tournamentFiles/upcomingTournaments/" + tournamentNameShortened + ".txt");
-            case "Previous" -> new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
-                    "tournamentFiles/previousTournaments/" + tournamentNameShortened + ".txt");
+        String file = switch (location){
+            case "Ongoing" ->"src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
+                    "tournamentFiles/ongoingTournaments/" + tournamentNameShortened + ".txt";
+            case "Upcoming" -> "src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
+                    "tournamentFiles/upcomingTournaments/" + tournamentNameShortened + ".txt";
+            case "Previous" -> "src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
+                    "tournamentFiles/previousTournaments/" + tournamentNameShortened + ".txt";
             default -> throw new IOException("Could not find tournament file");
         };
 
-        return location;
+        return file;
     }
 
     /**
@@ -319,6 +321,118 @@ public class TournamentWriterRework {
             fileWriter.write(stringBuilder1.toString());
         } catch (IOException exception){
             throw new IOException("Could not write tournament back to file: " + exception.getMessage());
+        }
+    }
+
+    public static void updateTournamentFileLocation()
+    throws IOException{
+
+        try {
+            ArrayList<String> upcomingTournament = TournamentReaderRework.readThroughUpcomingTournaments();
+
+            for (String tournamentNameShortened : upcomingTournament){
+                File file = new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
+                        "tournamentFiles/upcomingTournaments/" + tournamentNameShortened + ".txt");
+                //If tournament is no longer upcoming
+                if (!TournamentReaderRework.isTournamentStillUpcoming(file)) {
+                    ArrayList<String> tournament = GeneralReader.readFile(file);
+                    //Remove tournament from upcoming Overview
+                    removeTournamentFromUpcomingOverview(tournamentNameShortened);
+                    //Write to ongoing overview
+                    writeTournamentToOngoingOverview(tournamentNameShortened);
+                    //Move entire tournament file to ongoing directory
+                    if (file.delete()){
+                        File newFile = new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
+                                "tournamentFiles/ongoingTournaments/" + tournamentNameShortened + ".txt");
+                        try (FileWriter fileWriter = new FileWriter(newFile)){
+                            StringBuilder stringBuilder = new StringBuilder();
+                            for (String str : tournament){
+                                stringBuilder.append(str).append("\n");
+                            }
+                            fileWriter.write(stringBuilder.toString());
+                        } catch (IOException exception){
+                            throw new IOException("Could not write to ongoing tournaments: " +
+                                    exception.getMessage());
+                        }
+                    }
+                }
+            }
+        } catch (IOException exception){
+            throw new IOException("Could not write upcoming tournament to ongoing tournaments: " +
+                    exception.getMessage());
+        }
+        try {
+            ArrayList<String> ongoingTournament = TournamentReaderRework.readThroughOngoingTournaments();
+
+            for (String tournamentNameShortened : ongoingTournament){
+                File file = new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
+                        "tournamentFiles/ongoingTournaments/" + tournamentNameShortened + ".txt");
+
+                if (!TournamentReaderRework.isTournamentStillOngoing(file)){
+                    ArrayList<String> tournament = GeneralReader.readFile(file);
+                    removeTournamentFromOngoingOverview(tournamentNameShortened);
+                    writeTournamentToPreviousOverview(tournamentNameShortened);
+                    if (file.delete()){
+                        File newFile = new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
+                                "tournamentFiles/previousTournaments/" + tournamentNameShortened + ".txt");
+                        try (FileWriter fileWriter = new FileWriter(newFile)){
+                            StringBuilder stringBuilder = new StringBuilder();
+                            for (String str : tournament){
+                                stringBuilder.append(str).append("\n");
+                            }
+                            fileWriter.write(stringBuilder.toString());
+                        } catch (IOException exception){
+                            throw new IOException("Could not write to previous tournaments: " +
+                                    exception.getMessage());
+                        }
+                    }
+                }
+            }
+        } catch (IOException exception){
+            throw new IOException("Could not write ongoing tournament to previous tournaments: " +
+                    exception.getMessage());
+        }
+
+    }
+
+    public static void removeTournamentFromUpcomingOverview(String tournamentNameShortened)
+    throws IOException{
+        try {
+            ArrayList<String> upcomingTournaments = TournamentReaderRework.readThroughUpcomingTournaments();
+            File file = new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
+                    "tournamentFiles/upcomingTournaments/upcomingTournaments.txt");
+            removeTournamentFromOverview(tournamentNameShortened, upcomingTournaments, file);
+
+        } catch (IOException exception){
+            throw new IOException("Could not remove tournament from upcoming overview: "+ exception.getMessage());
+        }
+    }
+
+    private static void removeTournamentFromOverview(String tournamentNameShortened,
+                                                     ArrayList<String> tournaments, File file)
+    throws IOException{
+        tournaments.removeIf(s -> s.equals(tournamentNameShortened));
+        StringBuilder stringBuilder = new StringBuilder();
+        for (String tournament : tournaments){
+            stringBuilder.append(tournament).append(DELIMITER);
+        }
+        try (FileWriter fileWriter = new FileWriter(file)){
+            fileWriter.write(stringBuilder.toString());
+        } catch (IOException exception){
+            throw new IOException("Could not write overview back to file: " + exception.getMessage());
+        }
+    }
+
+    public static void removeTournamentFromOngoingOverview(String tournamentNameShortened)
+    throws IOException{
+        try {
+            ArrayList<String> ongoingTournaments = TournamentReaderRework.readThroughOngoingTournaments();
+            File file = new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
+                    "tournamentFiles/upcomingTournaments/ongoingTournaments.txt");
+            removeTournamentFromOverview(tournamentNameShortened, ongoingTournaments, file);
+
+        } catch (IOException exception){
+            throw new IOException("Could not remove tournament from upcoming overview: "+ exception.getMessage());
         }
     }
 

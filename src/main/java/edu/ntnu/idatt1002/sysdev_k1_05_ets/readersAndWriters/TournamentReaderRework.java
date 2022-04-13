@@ -125,4 +125,78 @@ public class TournamentReaderRework {
         }
         return namesOfOngoingTournaments;
     }
+
+    public static boolean isTournamentStillUpcoming(File file) throws IOException{
+        try {
+            String status = GeneralReader.readSpecificLineInFile(file,1);
+            LocalDate date = LocalDate.parse(GeneralReader.readSpecificLineInFile(file,4));
+            LocalTime time = LocalTime.parse(GeneralReader.readSpecificLineInFile(file, 5));
+
+            return date.isAfter(LocalDate.now()) && status.equals("Not finished") ||
+                    date.isEqual(LocalDate.now()) && time.isAfter(LocalTime.now()) && status.equals("Not finished");
+        } catch (IOException exception){
+            throw new IOException("Could not read through file: " + exception.getMessage());
+        }
+    }
+
+    public static boolean isTournamentStillOngoing(File file) throws IOException{
+        try {
+            String status = GeneralReader.readSpecificLineInFile(file,1);
+            LocalDate date = LocalDate.parse(GeneralReader.readSpecificLineInFile(file,4));
+            LocalTime time = LocalTime.parse(GeneralReader.readSpecificLineInFile(file,5));
+
+            return date.isEqual(LocalDate.now()) && time.equals(LocalTime.now()) && status.equals("Not finished") ||
+                    date.isEqual(LocalDate.now()) && time.isBefore(LocalTime.now()) && status.equals("Not finished") ||
+                    date.isBefore(LocalDate.now()) && status.equals("Not finished");
+        } catch (IOException exception){
+            throw new IOException("Coudl not read through file: " + exception.getMessage());
+        }
+    }
+
+
+    public static ArrayList<NewTournament> showOngoingTournamentsAtMainPage()
+    throws IOException{
+        ArrayList<NewTournament> ongoingTournaments = new ArrayList<>();
+        try {
+            ArrayList<String> tournaments = readThroughOngoingTournaments();
+            for (int i = 0; i < tournaments.size() && i < 3; i++){
+                ongoingTournaments.add(readTournamentFromFile(tournaments.get(i)));
+            }
+        } catch (IOException exception){
+            throw new IOException("Could not fetch ongoing tournaments: " + exception.getMessage());
+        }
+
+        return ongoingTournaments;
+    }
+
+    public static ArrayList<NewTournament> showUpcomingTournamentsAtMainPage()
+            throws IOException{
+        ArrayList<NewTournament> upcomingTournaments = new ArrayList<>();
+        try {
+            ArrayList<String> tournaments = readThroughUpcomingTournaments();
+            for (int i = 0; i < tournaments.size() && i < 3; i++){
+                upcomingTournaments.add(readTournamentFromFile(tournaments.get(i)));
+            }
+        } catch (IOException exception){
+            throw new IOException("Could not fetch upcoming tournaments: " + exception.getMessage());
+        }
+
+        return upcomingTournaments;
+    }
+
+    public static ArrayList<NewTournament> showPreviousTournamentsAtMainPage()
+            throws IOException{
+        ArrayList<NewTournament> previousTournaments = new ArrayList<>();
+        try {
+            ArrayList<String> tournaments = readThroughPreviousTournaments();
+            for (int i = 0; i < tournaments.size() && i < 3; i++){
+                previousTournaments.add(readTournamentFromFile(tournaments.get(i)));
+            }
+        } catch (IOException exception){
+            throw new IOException("Could not fetch previous tournaments: " + exception.getMessage());
+        }
+
+        return previousTournaments;
+    }
+
 }

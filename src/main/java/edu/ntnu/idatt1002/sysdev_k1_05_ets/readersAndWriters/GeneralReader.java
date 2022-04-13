@@ -22,19 +22,17 @@ public class GeneralReader {
     }
 
     public static String readSpecificLineInFile(File file, int lineNumber) throws IOException{
-        lineNumber = Math.abs(lineNumber)-1;
-        String line = null;
-
         try(BufferedReader bufferedReader = new BufferedReader(new FileReader(file))){
+            lineNumber = Math.abs(lineNumber)-1;
+            String line;
             for(int i = 0; i< lineNumber; i++){
                 bufferedReader.readLine();
             }
             line = bufferedReader.readLine();
             return line;
         }
-        catch (IOException e){
-            e.printStackTrace();
+        catch (IOException exception){
+            throw new IOException("Could not read through file: " + exception.getMessage());
         }
-        return line;
     }
 }

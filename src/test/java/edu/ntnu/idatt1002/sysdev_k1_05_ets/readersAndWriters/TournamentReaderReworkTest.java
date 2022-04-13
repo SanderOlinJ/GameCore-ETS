@@ -22,4 +22,38 @@ class TournamentReaderReworkTest {
         }
     }
 
+    @Test
+    void testThatIsTournamentStillUpcoming(){
+        File file = new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
+                "tournamentFiles/upcomingTournaments/testFile4.txt");
+
+        try {
+            assertTrue(TournamentReaderRework.isTournamentStillUpcoming(file));
+        } catch (IOException exception) {
+            System.out.println(exception.getMessage());
+        }
+    }
+
+    @Test
+    void testThatIsTournamentStillOngoing(){
+        File file = new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
+                "tournamentFiles/upcomingTournaments/testFile4.txt");
+
+        try {
+            assertTrue(TournamentReaderRework.isTournamentStillOngoing(file));
+        } catch (IOException exception) {
+            System.out.println(exception.getMessage());
+        }
+    }
+
+    @Test
+    void testThat(){
+        try {
+
+            TournamentReaderRework.readThroughUpcomingTournaments();
+        } catch (IOException exception){
+            System.out.println(exception.getMessage());
+        }
+    }
+
 }

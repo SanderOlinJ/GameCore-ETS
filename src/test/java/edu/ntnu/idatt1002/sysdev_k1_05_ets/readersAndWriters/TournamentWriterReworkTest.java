@@ -20,12 +20,12 @@ class TournamentWriterReworkTest {
     @Test
     void testThatWriteNewTournamentToFileWithBasicInfoRuns(){
         String status = "Not finished";
-        String tournamentName = "testFile5";
+        String tournamentName = "testFile7";
         String tournamentHost = "Admin";
         LocalDate date = LocalDate.parse("2022-04-13");
-        LocalTime time = LocalTime.parse("21:00");
+        LocalTime time = LocalTime.parse("19:00");
         String description = "";
-        String game = "Counter-Strike: Global Offensive";
+        String game = "Valorant";
         String platform = "PC / Mac / Linux";
         String tournamentType = "Brackets";
         String bestOf = "3";
@@ -58,10 +58,19 @@ class TournamentWriterReworkTest {
         String fileNameOngoing = "testFileOngoing";
 
         try{
-            TournamentWriterRework.removeTournamentFromOverview(fileNameOngoing);
+            TournamentWriterRework.removeTournamentFromOverviewWhenLocationNotKnown(fileNameOngoing);
         } catch (IOException exception){
             System.out.println(exception.getMessage());
             fail();
+        }
+    }
+
+    @Test
+    void testThatUpdateTournamentFileLocationRuns(){
+        try {
+            TournamentWriterRework.updateTournamentFileLocation();
+        } catch (IOException exception){
+            System.out.println(exception.getMessage());
         }
     }
 

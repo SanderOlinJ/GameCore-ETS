@@ -87,11 +87,66 @@
                         <Insets bottom="15.0" left="50.0" right="50.0" />
                      </VBox.margin>
                      <children>
-                        <TextArea fx:id="ongoingTournaments" prefHeight="207.0" prefWidth="1103.0" style="-fx-background-color: #282c34;" stylesheets="@../css/style.css">
-                           <font>
-                              <Font name="Arial Bold" size="18.0" />
-                           </font>
-                        </TextArea>
+                        <VBox fx:id="ongoingBox1" prefHeight="206.0" prefWidth="319.0" visible="false">
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="30.0" top="10.0" />
+                           </HBox.margin>
+                           <children>
+                              <ImageView fx:id="ongoingImageView1" fitHeight="193.0" fitWidth="342.0" pickOnBounds="true" preserveRatio="true" />
+                              <Pane fx:id="ongoingPane1" minHeight="-Infinity" opacity="0.8" prefHeight="83.0" prefWidth="320.0" style="-fx-background-color: black;">
+                                 <children>
+                                    <TextArea fx:id="ongoingText1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="83.0" prefWidth="342.0" style="-fx-background-color: transparent;" styleClass="text-area" stylesheets="@../css/transparentTextArea.css" wrapText="true">
+                                       <font>
+                                          <Font name="Arial Bold" size="20.0" />
+                                       </font>
+                                    </TextArea>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="-80.0" />
+                                 </VBox.margin>
+                              </Pane>
+                           </children>
+                        </VBox>
+                        <VBox fx:id="ongoingBox2" prefHeight="206.0" prefWidth="319.0" visible="false">
+                           <children>
+                              <ImageView fx:id="ongoingImageView2" fitHeight="193.0" fitWidth="342.0" pickOnBounds="true" preserveRatio="true" />
+                              <Pane fx:id="ongoingPane2" minHeight="-Infinity" opacity="0.8" prefHeight="83.0" prefWidth="320.0" style="-fx-background-color: black;">
+                                 <children>
+                                    <TextArea fx:id="ongoingText2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="83.0" prefWidth="342.0" style="-fx-background-color: transparent;" styleClass="text-area" stylesheets="@../css/transparentTextArea.css" wrapText="true">
+                                       <font>
+                                          <Font name="Arial Bold" size="20.0" />
+                                       </font>
+                                    </TextArea>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="-80.0" />
+                                 </VBox.margin>
+                              </Pane>
+                           </children>
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" top="10.0" />
+                           </HBox.margin>
+                        </VBox>
+                        <VBox fx:id="ongoingBox3" prefHeight="206.0" prefWidth="319.0" visible="false">
+                           <children>
+                              <ImageView fx:id="ongoingImageView3" fitHeight="193.0" fitWidth="342.0" pickOnBounds="true" preserveRatio="true" />
+                              <Pane fx:id="ongoingPane3" minHeight="-Infinity" opacity="0.8" prefHeight="83.0" prefWidth="342.0" style="-fx-background-color: black;">
+                                 <children>
+                                    <TextArea fx:id="ongoingText3" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="83.0" prefWidth="342.0" style="-fx-background-color: transparent;" styleClass="text-area" stylesheets="@../css/transparentTextArea.css" wrapText="true">
+                                       <font>
+                                          <Font name="Arial Bold" size="20.0" />
+                                       </font>
+                                    </TextArea>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="-80.0" />
+                                 </VBox.margin>
+                              </Pane>
+                           </children>
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="30.0" top="10.0" />
+                           </HBox.margin>
+                        </VBox>
                      </children>
                   </HBox>
                </children>
@@ -115,13 +170,6 @@
                      <VBox.margin>
                         <Insets bottom="50.0" left="50.0" right="50.0" />
                      </VBox.margin>
-                     <children>
-                        <TextArea fx:id="previousTournaments" prefHeight="189.0" prefWidth="1100.0" style="-fx-background-color: #282c34;" stylesheets="@../css/style.css">
-                           <font>
-                              <Font name="Arial Bold" size="18.0" />
-                           </font>
-                        </TextArea>
-                     </children>
                   </HBox>
                </children>
             </VBox>

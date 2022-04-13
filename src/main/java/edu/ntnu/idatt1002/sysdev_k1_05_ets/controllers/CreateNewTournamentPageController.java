@@ -59,6 +59,7 @@ public class CreateNewTournamentPageController implements Initializable {
     @FXML
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
+            TournamentWriterRework.updateTournamentFileLocation();
             TextFields.bindAutoCompletion(gameBox, GeneralReader.readFile
                     (new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/games.txt")));
             TextFields.bindAutoCompletion(platformBox, GeneralReader.readFile
@@ -225,7 +226,7 @@ public class CreateNewTournamentPageController implements Initializable {
         String doesFileExist = NewTournamentWriter.doesFileWithSameNameAlreadyExist(Utilities
                 .shortenAndReplaceUnnecessarySymbolsInString(tournamentName));
 
-        if (doesFileExist.equals("Ongoing") || doesFileExist.equals("Ongoing") || doesFileExist.equals("Previous")){
+        if (doesFileExist.equals("Ongoing") || doesFileExist.equals("Upcoming") || doesFileExist.equals("Previous")){
             warningLabel.setText("There is already a tournament file under this name");
             throw new IllegalArgumentException("There is already a tournament file under this name");
         }
