@@ -159,7 +159,7 @@ public class TournamentReaderRework {
         ArrayList<NewTournament> ongoingTournaments = new ArrayList<>();
         try {
             ArrayList<String> tournaments = readThroughOngoingTournaments();
-            for (int i = 0; i < tournaments.size() && i < 3; i++){
+            for (int i = 0; i < tournaments.size() && i < 2; i++){
                 ongoingTournaments.add(readTournamentFromFile(tournaments.get(i)));
             }
         } catch (IOException exception){
@@ -174,7 +174,7 @@ public class TournamentReaderRework {
         ArrayList<NewTournament> upcomingTournaments = new ArrayList<>();
         try {
             ArrayList<String> tournaments = readThroughUpcomingTournaments();
-            for (int i = 0; i < tournaments.size() && i < 3; i++){
+            for (int i = 0; i < tournaments.size() && i < 2; i++){
                 upcomingTournaments.add(readTournamentFromFile(tournaments.get(i)));
             }
         } catch (IOException exception){
@@ -189,7 +189,7 @@ public class TournamentReaderRework {
         ArrayList<NewTournament> previousTournaments = new ArrayList<>();
         try {
             ArrayList<String> tournaments = readThroughPreviousTournaments();
-            for (int i = 0; i < tournaments.size() && i < 3; i++){
+            for (int i = 0; i < tournaments.size() && i < 2; i++){
                 previousTournaments.add(readTournamentFromFile(tournaments.get(i)));
             }
         } catch (IOException exception){

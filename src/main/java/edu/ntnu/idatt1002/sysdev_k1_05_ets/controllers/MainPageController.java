@@ -22,6 +22,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -50,21 +51,33 @@ public class MainPageController {
     @FXML private Pane ongoingPane2;
     @FXML private TextArea ongoingText2;
 
+    @FXML private VBox upcomingBox1;
+    @FXML private ImageView upcomingImageView1;
+    @FXML private Pane upcomingPane1;
+    @FXML private TextArea upcomingText1;
 
-    @FXML private VBox ongoingBox3;
-    @FXML private ImageView ongoingImageView3;
-    @FXML private Pane ongoingPane3;
-    @FXML private TextArea ongoingText3;
+    @FXML private VBox upcomingBox2;
+    @FXML private ImageView upcomingImageView2;
+    @FXML private Pane upcomingPane2;
+    @FXML private TextArea upcomingText2;
+
+    @FXML private VBox previousBox1;
+    @FXML private ImageView previousImageView1;
+    @FXML private Pane previousPane1;
+    @FXML private TextArea previousText1;
+
+    @FXML private VBox previousBox2;
+    @FXML private ImageView previousImageView2;
+    @FXML private Pane previousPane2;
+    @FXML private TextArea previousText2;
 
 
     @FXML
     public void initialize() throws IOException {
         TournamentWriterRework.updateTournamentFileLocation();
         showOngoingTournaments();
-        ArrayList<Team> teams = new ArrayList<>();
-        teams.add(TeamReader.findAndReturnTeamUsingTeamName("Phase"));
-        teams.add(TeamReader.findAndReturnTeamUsingTeamName("Astralis"));
-        TournamentWriterRework.writeTeamsToTournamentFile("testFile5",teams);
+        showUpcomingTournaments();
+        showPreviousTournaments();
     }
 
     @FXML
@@ -72,39 +85,57 @@ public class MainPageController {
     throws IOException{
         try {
             ArrayList<NewTournament> ongoingTournaments = TournamentReaderRework.showOngoingTournamentsAtMainPage();
-            if (ongoingTournaments.size() > 0){
-                ongoingImageView1.setImage(new Image("file:src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
-                        "Images/gameImages/"+ Utilities.shortenAndReplaceUnnecessarySymbolsInString
-                        (ongoingTournaments.get(0).getGame()) + ".png"));
-                ongoingText1.setText(ongoingTournaments.get(0).getTournamentName());
-                ongoingBox1.setVisible(true);
-
-                if (ongoingTournaments.size() > 1){
-
-                    ongoingImageView2.setImage(new Image("file:src/main/resources/edu/ntnu/idatt1002/" +
-                            "sysdev_k1_05_ets/Images/gameImages/"+
-                            Utilities.shortenAndReplaceUnnecessarySymbolsInString
-                            (ongoingTournaments.get(1).getGame()) + ".png"));
-                    ongoingText2.setText(ongoingTournaments.get(1).getTournamentName());
-                    ongoingBox2.setVisible(true);
-
-                    if (ongoingTournaments.size() == 3){
-                        ongoingImageView3.setImage(new Image("file:src/main/resources/edu/ntnu/idatt1002/" +
-                                "sysdev_k1_05_ets/Images/gameImages/"+
-                                Utilities.shortenAndReplaceUnnecessarySymbolsInString
-                                (ongoingTournaments.get(2).getGame()) + ".png"));
-                        ongoingText3.setText(ongoingTournaments.get(2).getTournamentName());
-                        ongoingBox3.setVisible(true);
-                    }
-                }
-            }
+            setMainPageWithTournaments(ongoingTournaments, ongoingImageView1, ongoingText1, ongoingBox1,
+                    ongoingImageView2, ongoingText2, ongoingBox2);
         } catch (IOException exception){
             throw new IOException("Could not show ongoing tournaments: " + exception.getMessage());
         }
     }
 
-    private void showUpcomingTournaments(){
+    @FXML
+    private void showUpcomingTournaments()
+            throws IOException{
+        try {
+            ArrayList<NewTournament> upcomingTournaments = TournamentReaderRework.showUpcomingTournamentsAtMainPage();
+            setMainPageWithTournaments(upcomingTournaments, upcomingImageView1, upcomingText1, upcomingBox1,
+                    upcomingImageView2, upcomingText2, upcomingBox2);
+        } catch (IOException exception){
+            throw new IOException("Could not show upcoming tournaments: " + exception.getMessage());
+        }
+    }
 
+    @FXML
+    private void showPreviousTournaments()
+            throws IOException{
+        try {
+            ArrayList<NewTournament> upcomingTournaments = TournamentReaderRework.showUpcomingTournamentsAtMainPage();
+            setMainPageWithTournaments(upcomingTournaments, previousImageView1, previousText1, previousBox1,
+                    previousImageView2, previousText2, previousBox2);
+        } catch (IOException exception){
+            throw new IOException("Could not show upcoming tournaments: " + exception.getMessage());
+        }
+    }
+
+    private void setMainPageWithTournaments(ArrayList<NewTournament> tournaments, ImageView imageView1,
+                                            TextArea text1, VBox vBox1, ImageView imageView2,
+                                            TextArea text2, VBox vBox2) {
+        if (tournaments.size() > 0){
+            imageView1.setImage(new Image("file:src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
+                    "Images/gameImages/"+ Utilities.shortenAndReplaceUnnecessarySymbolsInString
+                    (tournaments.get(0).getGame()) + ".png"));
+            text1.setText(tournaments.get(0).getTournamentName());
+            vBox1.setVisible(true);
+
+            if (tournaments.size() > 1){
+
+                imageView2.setImage(new Image("file:src/main/resources/edu/ntnu/idatt1002/" +
+                        "sysdev_k1_05_ets/Images/gameImages/"+
+                        Utilities.shortenAndReplaceUnnecessarySymbolsInString
+                                (tournaments.get(1).getGame()) + ".png"));
+                text2.setText(tournaments.get(1).getTournamentName());
+                vBox2.setVisible(true);
+            }
+        }
     }
 
     @FXML

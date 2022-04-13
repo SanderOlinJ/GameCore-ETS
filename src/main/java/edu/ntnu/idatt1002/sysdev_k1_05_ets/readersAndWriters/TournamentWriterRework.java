@@ -428,7 +428,7 @@ public class TournamentWriterRework {
         try {
             ArrayList<String> ongoingTournaments = TournamentReaderRework.readThroughOngoingTournaments();
             File file = new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
-                    "tournamentFiles/upcomingTournaments/ongoingTournaments.txt");
+                    "tournamentFiles/ongoingTournaments/ongoingTournaments.txt");
             removeTournamentFromOverview(tournamentNameShortened, ongoingTournaments, file);
 
         } catch (IOException exception){

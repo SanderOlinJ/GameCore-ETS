@@ -1,5 +1,5 @@
-Finished
-testFile5
+Not finished
+Worst first person shooter: The tournament
 Admin
 2022-04-13
 19:00
@@ -8,4 +8,4 @@ Valorant
 PC / Mac / Linux
 Brackets
 3
-4Phase,AstralisPhase,Astralis
+4

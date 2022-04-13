@@ -7,6 +7,8 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -16,7 +18,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.MainPageController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.MainPageController">
     <top>
         <MenuBar BorderPane.alignment="CENTER">
             <menus>
@@ -47,6 +49,21 @@
                                         <Insets bottom="10.0" left="20.0" top="30.0" />
                                     </HBox.margin>
                                 </ImageView>
+                        <Pane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" HBox.hgrow="ALWAYS" />
+                        <Button fx:id="createNewTournamentButton" maxHeight="37.0" maxWidth="376.0" mnemonicParsing="false" onAction="#onCreateNewTournamentButtonPressed" prefHeight="37.0" prefWidth="330.0" style="-fx-background-color: #fa8f31;" text="Create new tournament" textFill="#f5f5f5">
+                           <font>
+                              <Font name="Arial Bold" size="20.0" />
+                           </font>
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <HBox.margin>
+                              <Insets left="50.0" right="50.0" top="60.0" />
+                           </HBox.margin>
+                        </Button>
                             </children>
                         </HBox>
                     </children>
@@ -74,48 +91,48 @@
                                                     </children>
                                                 </HBox>
                                                 <VBox prefHeight="0.0" prefWidth="1200.0" />
-                                                <HBox prefHeight="317.0" prefWidth="998.0" style="-fx-background-color: #282c34;">
+                                                <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="317.0" prefWidth="980.0" style="-fx-background-color: #282c34;">
                                                     <children>
-                                                        <VBox prefHeight="317.0" prefWidth="456.0">
+                                                        <VBox fx:id="ongoingBox1" prefHeight="317.0" prefWidth="456.0" visible="false">
                                                             <HBox.margin>
                                                                 <Insets bottom="30.0" left="20.0" top="30.0" />
                                                             </HBox.margin>
                                                             <children>
                                                                 <ImageView fx:id="ongoingImageView1" fitHeight="262.0" fitWidth="466.0" pickOnBounds="true" preserveRatio="true" />
-                                                                <Pane fx:id="ongoingPane1" prefHeight="107.0" prefWidth="466.0" style="-fx-background-color: black; -fx-opacity: 0.95;" visible="false">
+                                                                <Pane fx:id="ongoingPane1" prefHeight="107.0" prefWidth="466.0" style="-fx-background-color: black;">
                                                                     <VBox.margin>
                                                                         <Insets top="-80.0" />
                                                                     </VBox.margin>
                                                                     <children>
-                                                                        <Text fx:id="ongoingText1" fill="#fa8f31" layoutX="83.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="300.0">
-                                                                            <font>
-                                                                                <Font name="Arial Bold" size="22.0" />
-                                                                            </font>
-                                                                        </Text>
+                                                      <TextArea fx:id="ongoingText1" layoutX="-2.0" layoutY="5.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="67.0" prefWidth="470.0" style="-fx-background-color: transparent;" stylesheets="@../css/transparentTextArea.css" wrapText="true">
+                                                         <font>
+                                                            <Font name="Arial Bold" size="20.0" />
+                                                         </font>
+                                                      </TextArea>
                                                                     </children>
                                                                 </Pane>
                                                             </children>
                                                         </VBox>
-                                                        <VBox prefHeight="317.0" prefWidth="456.0">
-                                                            <children>
-                                                                <ImageView fx:id="ongoingImageView2" fitHeight="262.0" fitWidth="466.0" pickOnBounds="true" preserveRatio="true" />
-                                                                <Pane fx:id="ongoingPane2" prefHeight="95.0" prefWidth="466.0" style="-fx-background-color: black; -fx-opacity: 0.95;" visible="false">
-                                                                    <VBox.margin>
-                                                                        <Insets top="-80.0" />
-                                                                    </VBox.margin>
-                                                                    <children>
-                                                                        <Text fx:id="ongoingText2" fill="#fa8f31" layoutX="83.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="300.0">
-                                                                            <font>
-                                                                                <Font name="Arial Bold" size="22.0" />
-                                                                            </font>
-                                                                        </Text>
-                                                                    </children>
-                                                                </Pane>
-                                                            </children>
-                                                            <HBox.margin>
-                                                                <Insets bottom="30.0" left="20.0" top="30.0" />
-                                                            </HBox.margin>
-                                                        </VBox>
+                                          <VBox fx:id="ongoingBox2" prefHeight="317.0" prefWidth="456.0" visible="false">
+                                             <children>
+                                                <ImageView fx:id="ongoingImageView2" fitHeight="262.0" fitWidth="466.0" pickOnBounds="true" preserveRatio="true" />
+                                                <Pane fx:id="ongoingPane2" prefHeight="107.0" prefWidth="466.0" style="-fx-background-color: black;">
+                                                   <VBox.margin>
+                                                      <Insets top="-80.0" />
+                                                   </VBox.margin>
+                                                   <children>
+                                                      <TextArea fx:id="ongoingText2" layoutX="-2.0" layoutY="5.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="67.0" prefWidth="470.0" style="-fx-background-color: transparent;" stylesheets="@../css/transparentTextArea.css" wrapText="true">
+                                                         <font>
+                                                            <Font name="Arial Bold" size="20.0" />
+                                                         </font>
+                                                      </TextArea>
+                                                   </children>
+                                                </Pane>
+                                             </children>
+                                             <HBox.margin>
+                                                <Insets bottom="30.0" left="20.0" top="30.0" />
+                                             </HBox.margin>
+                                          </VBox>
                                                     </children>
                                                     <VBox.margin>
                                                         <Insets left="100.0" right="100.0" />
@@ -158,40 +175,46 @@
                                                 <VBox prefHeight="0.0" prefWidth="1200.0" />
                                                 <HBox prefHeight="317.0" prefWidth="998.0" style="-fx-background-color: #282c34;">
                                                     <children>
-                                                        <VBox prefHeight="317.0" prefWidth="456.0">
-                                                            <HBox.margin>
-                                                                <Insets bottom="30.0" left="20.0" top="30.0" />
-                                                            </HBox.margin>
-                                                            <children>
-                                                                <ImageView fitHeight="262.0" fitWidth="466.0" pickOnBounds="true" preserveRatio="true">
-                                                                    <image>
-                                                                        <Image url="@../Images/gameImages/CounterStrikeGlobalOffensive.png" />
-                                                                    </image>
-                                                                </ImageView>
-                                                                <Pane prefHeight="95.0" prefWidth="466.0" style="-fx-background-color: grey; -fx-opacity: 0.7;">
-                                                                    <VBox.margin>
-                                                                        <Insets top="-80.0" />
-                                                                    </VBox.margin>
-                                                                </Pane>
-                                                            </children>
-                                                        </VBox>
-                                                        <VBox prefHeight="317.0" prefWidth="456.0">
-                                                            <children>
-                                                                <ImageView fitHeight="262.0" fitWidth="466.0" pickOnBounds="true" preserveRatio="true">
-                                                                    <image>
-                                                                        <Image url="@../Images/gameImages/CounterStrikeGlobalOffensive.png" />
-                                                                    </image>
-                                                                </ImageView>
-                                                                <Pane prefHeight="95.0" prefWidth="466.0" style="-fx-background-color: grey; -fx-opacity: 0.7;">
-                                                                    <VBox.margin>
-                                                                        <Insets top="-80.0" />
-                                                                    </VBox.margin>
-                                                                </Pane>
-                                                            </children>
-                                                            <HBox.margin>
-                                                                <Insets bottom="30.0" left="20.0" top="30.0" />
-                                                            </HBox.margin>
-                                                        </VBox>
+                                          <VBox fx:id="upcomingBox1" prefHeight="317.0" prefWidth="456.0" visible="false">
+                                             <children>
+                                                <ImageView fx:id="upcomingImageView1" fitHeight="262.0" fitWidth="466.0" pickOnBounds="true" preserveRatio="true" />
+                                                <Pane fx:id="upcomingPane1" prefHeight="107.0" prefWidth="466.0" style="-fx-background-color: black;">
+                                                   <VBox.margin>
+                                                      <Insets top="-80.0" />
+                                                   </VBox.margin>
+                                                   <children>
+                                                      <TextArea fx:id="upcomingText1" layoutX="-2.0" layoutY="5.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="67.0" prefWidth="470.0" style="-fx-background-color: transparent;" stylesheets="@../css/transparentTextArea.css" wrapText="true">
+                                                         <font>
+                                                            <Font name="Arial Bold" size="20.0" />
+                                                         </font>
+                                                      </TextArea>
+                                                   </children>
+                                                </Pane>
+                                             </children>
+                                             <HBox.margin>
+                                                <Insets bottom="30.0" left="20.0" top="30.0" />
+                                             </HBox.margin>
+                                          </VBox>
+                                          <VBox fx:id="upcomingBox2" prefHeight="317.0" prefWidth="456.0" visible="false">
+                                             <children>
+                                                <ImageView fx:id="upcomingImageView2" fitHeight="262.0" fitWidth="466.0" pickOnBounds="true" preserveRatio="true" />
+                                                <Pane fx:id="upcomingPane2" prefHeight="107.0" prefWidth="466.0" style="-fx-background-color: black;">
+                                                   <VBox.margin>
+                                                      <Insets top="-80.0" />
+                                                   </VBox.margin>
+                                                   <children>
+                                                      <TextArea fx:id="upcomingText2" layoutX="-2.0" layoutY="5.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="67.0" prefWidth="470.0" style="-fx-background-color: transparent;" stylesheets="@../css/transparentTextArea.css" wrapText="true">
+                                                         <font>
+                                                            <Font name="Arial Bold" size="20.0" />
+                                                         </font>
+                                                      </TextArea>
+                                                   </children>
+                                                </Pane>
+                                             </children>
+                                             <HBox.margin>
+                                                <Insets bottom="30.0" left="30.0" top="30.0" />
+                                             </HBox.margin>
+                                          </VBox>
                                                     </children>
                                                     <VBox.margin>
                                                         <Insets left="100.0" right="100.0" />
@@ -234,40 +257,46 @@
                                                 <VBox prefHeight="0.0" prefWidth="1200.0" />
                                                 <HBox prefHeight="317.0" prefWidth="998.0" style="-fx-background-color: #282c34;">
                                                     <children>
-                                                        <VBox prefHeight="317.0" prefWidth="456.0">
-                                                            <HBox.margin>
-                                                                <Insets bottom="30.0" left="20.0" top="30.0" />
-                                                            </HBox.margin>
-                                                            <children>
-                                                                <ImageView fitHeight="262.0" fitWidth="466.0" pickOnBounds="true" preserveRatio="true">
-                                                                    <image>
-                                                                        <Image url="@../Images/gameImages/CounterStrikeGlobalOffensive.png" />
-                                                                    </image>
-                                                                </ImageView>
-                                                                <Pane prefHeight="95.0" prefWidth="466.0" style="-fx-background-color: grey; -fx-opacity: 0.7;">
-                                                                    <VBox.margin>
-                                                                        <Insets top="-80.0" />
-                                                                    </VBox.margin>
-                                                                </Pane>
-                                                            </children>
-                                                        </VBox>
-                                                        <VBox prefHeight="317.0" prefWidth="456.0">
-                                                            <children>
-                                                                <ImageView fitHeight="262.0" fitWidth="466.0" pickOnBounds="true" preserveRatio="true">
-                                                                    <image>
-                                                                        <Image url="@../Images/gameImages/CounterStrikeGlobalOffensive.png" />
-                                                                    </image>
-                                                                </ImageView>
-                                                                <Pane prefHeight="95.0" prefWidth="466.0" style="-fx-background-color: grey; -fx-opacity: 0.7;">
-                                                                    <VBox.margin>
-                                                                        <Insets top="-80.0" />
-                                                                    </VBox.margin>
-                                                                </Pane>
-                                                            </children>
-                                                            <HBox.margin>
-                                                                <Insets bottom="30.0" left="20.0" top="30.0" />
-                                                            </HBox.margin>
-                                                        </VBox>
+                                          <VBox fx:id="previousBox1" prefHeight="317.0" prefWidth="456.0" visible="false">
+                                             <children>
+                                                <ImageView fx:id="previousImageView1" fitHeight="262.0" fitWidth="466.0" pickOnBounds="true" preserveRatio="true" />
+                                                <Pane fx:id="previousPane1" prefHeight="107.0" prefWidth="466.0" style="-fx-background-color: black;">
+                                                   <VBox.margin>
+                                                      <Insets top="-80.0" />
+                                                   </VBox.margin>
+                                                   <children>
+                                                      <TextArea fx:id="previousText1" layoutX="-2.0" layoutY="5.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="67.0" prefWidth="470.0" style="-fx-background-color: transparent;" stylesheets="@../css/transparentTextArea.css" wrapText="true">
+                                                         <font>
+                                                            <Font name="Arial Bold" size="20.0" />
+                                                         </font>
+                                                      </TextArea>
+                                                   </children>
+                                                </Pane>
+                                             </children>
+                                             <HBox.margin>
+                                                <Insets bottom="30.0" left="20.0" top="30.0" />
+                                             </HBox.margin>
+                                          </VBox>
+                                          <VBox fx:id="previousBox2" prefHeight="317.0" prefWidth="456.0" visible="false">
+                                             <children>
+                                                <ImageView fx:id="previousImageView2" fitHeight="262.0" fitWidth="466.0" pickOnBounds="true" preserveRatio="true" />
+                                                <Pane fx:id="previousPane2" prefHeight="107.0" prefWidth="466.0" style="-fx-background-color: black;">
+                                                   <VBox.margin>
+                                                      <Insets top="-80.0" />
+                                                   </VBox.margin>
+                                                   <children>
+                                                      <TextArea fx:id="previousText2" layoutX="-2.0" layoutY="5.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="67.0" prefWidth="470.0" style="-fx-background-color: transparent;" stylesheets="@../css/transparentTextArea.css" wrapText="true">
+                                                         <font>
+                                                            <Font name="Arial Bold" size="20.0" />
+                                                         </font>
+                                                      </TextArea>
+                                                   </children>
+                                                </Pane>
+                                             </children>
+                                             <HBox.margin>
+                                                <Insets bottom="30.0" left="20.0" top="30.0" />
+                                             </HBox.margin>
+                                          </VBox>
                                                     </children>
                                                     <VBox.margin>
                                                         <Insets left="100.0" right="100.0" />

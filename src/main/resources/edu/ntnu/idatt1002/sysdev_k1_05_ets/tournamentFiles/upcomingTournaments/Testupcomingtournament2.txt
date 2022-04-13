@@ -1,8 +1,8 @@
 Not finished
-testFile3
+Test upcoming tournament 2
 Admin
-2022-04-13
-18:00
+2022-04-14
+19:00
 No description
 Counter-Strike: Global Offensive
 PC / Mac / Linux

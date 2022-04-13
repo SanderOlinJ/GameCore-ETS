@@ -1,10 +1,10 @@
 Not finished
-testFile2
+Test upcoming tournament 1
 Admin
-2022-04-12
-21:00
+2022-04-14
+19:00
 No description
-Counter-Strike: Global Offensive
+League of Legends
 PC / Mac / Linux
 Brackets
 3

@@ -1,10 +1,10 @@
 Finished
-testFile3
+Test previous tournament 2
 Admin
-2022-04-12
+2022-04-05
 18:00
 No description
-Counter-Strike: Global Offensive
+League of Legends
 PC / Mac / Linux
 Brackets
 3

@@ -19,13 +19,13 @@ class TournamentWriterReworkTest {
 
     @Test
     void testThatWriteNewTournamentToFileWithBasicInfoRuns(){
-        String status = "Not finished";
-        String tournamentName = "testFile7";
+        String status = "Finished";
+        String tournamentName = "Test previous tournament 2";
         String tournamentHost = "Admin";
-        LocalDate date = LocalDate.parse("2022-04-13");
-        LocalTime time = LocalTime.parse("19:00");
+        LocalDate date = LocalDate.parse("2022-04-05");
+        LocalTime time = LocalTime.parse("18:00");
         String description = "";
-        String game = "Valorant";
+        String game = "League of Legends";
         String platform = "PC / Mac / Linux";
         String tournamentType = "Brackets";
         String bestOf = "3";

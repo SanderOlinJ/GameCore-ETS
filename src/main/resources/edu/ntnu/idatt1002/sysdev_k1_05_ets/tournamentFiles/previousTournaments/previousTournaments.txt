@@ -1,3 +1,2 @@
-testFile4
-testFile6
-testFile5
+Testprevioustournament1
+Testprevioustournament2

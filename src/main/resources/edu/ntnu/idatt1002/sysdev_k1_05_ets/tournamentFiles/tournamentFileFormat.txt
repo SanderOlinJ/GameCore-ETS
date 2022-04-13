@@ -1,3 +1,20 @@
+status
+name
+host
+date
+time
+description
+game
+platform
+type
+bestOf
+numberOfTeams
+prizePool
+entranceFee
+
+
+
+
 Main page:
     - Reader for upcoming, ongoing and previous tournaments (show only 2-3 of each)
     - Included reader for tournaments that have no match dates set yet (notification/warning label maybe)

@@ -1,10 +1,10 @@
 Finished
-testFile6
+Test previous tournament 1
 Admin
-2022-04-13
+2022-04-12
 19:00
 No description
-League of Legends
+Valorant
 PC / Mac / Linux
 Brackets
 3
