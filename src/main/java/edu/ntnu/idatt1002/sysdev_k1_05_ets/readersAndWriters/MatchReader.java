@@ -19,7 +19,7 @@ public class MatchReader {
     throws IOException{
         ArrayList<Match> matches = new ArrayList<>();
 
-        for (int i = 12; i < list.size(); i++) {
+        for (int i = 14; i < list.size(); i++) {
 
             String line = list.get(i);
             String[] values = line.split(COMMA_DELIMITER);

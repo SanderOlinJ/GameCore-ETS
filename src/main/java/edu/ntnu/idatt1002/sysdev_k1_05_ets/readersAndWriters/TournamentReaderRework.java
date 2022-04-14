@@ -62,12 +62,24 @@ public class TournamentReaderRework {
         String game = tournamentInfo.get(6);
         String platform = tournamentInfo.get(7);
         String tournamentType = tournamentInfo.get(8);
-        String bestOf = tournamentInfo.get(9);
+        String bestOf =tournamentInfo.get(9);
         String numberOfTeams = tournamentInfo.get(10);
-        NewTournament tournament = new NewTournament(status, tournamentName,tournamentHost,
-                date,time,description,game,platform,tournamentType,bestOf,numberOfTeams);
 
-        if (tournamentInfo.size() > 11) {
+        String prizePoolLine = tournamentInfo.get(11);
+        String[] prizePoolValues = prizePoolLine.split(COMMA_DELIMITER);
+        String prizePool = prizePoolValues[0];
+        String prizePoolCurrency = prizePoolValues[1];
+
+        String entranceFeeLine = tournamentInfo.get(12);
+        String[] entranceFeeValues = entranceFeeLine.split(COMMA_DELIMITER);
+        String entranceFee = entranceFeeValues[0];
+        String entranceFeeCurrency = entranceFeeValues[1];
+
+        NewTournament tournament = new NewTournament(status, tournamentName,tournamentHost,
+                date,time,description,game,platform,tournamentType,bestOf,numberOfTeams,
+                prizePool, prizePoolCurrency, entranceFee, entranceFeeCurrency);
+
+        if (tournamentInfo.size() > 13) {
             ArrayList<Team> teams = new ArrayList<>();
             String line = tournamentInfo.get(11);
             String[] values = line.split(COMMA_DELIMITER);
@@ -77,7 +89,7 @@ public class TournamentReaderRework {
             }
             tournament.setTeams(teams);
 
-            if (tournamentInfo.size() > 12){
+            if (tournamentInfo.size() > 14){
                 ArrayList<Match> matches = MatchReader.readMatchesFromArrayList(tournamentInfo);
                 tournament.setMatches(matches);
             }

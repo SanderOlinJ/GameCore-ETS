@@ -29,8 +29,7 @@ styling for combobox prompt text and text field
  */
 .jfx-combo-box {
     -fx-text-inner-color: orange;
-
-    -fx-prompt-text-fill: #13161d;
+    -fx-prompt-text-fill: white;
     -fx-font: 16px "Arial";
 }
 

@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -22,7 +23,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.CreateNewTournamentPageController">
+<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.CreateNewTournamentPageController">
     <top>
         <MenuBar BorderPane.alignment="CENTER">
             <menus>
@@ -61,7 +62,7 @@
                 <HBox prefHeight="1395.0" prefWidth="1200.0" VBox.vgrow="ALWAYS">
                     <children>
                         <Pane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: #13161d;" HBox.hgrow="ALWAYS" />
-                        <ScrollPane hbarPolicy="NEVER" maxWidth="1800.0" prefHeight="1553.0" prefWidth="1200.0" stylesheets="@../css/style.css">
+                        <ScrollPane hbarPolicy="NEVER" maxWidth="1800.0" prefHeight="1767.0" prefWidth="1200.0" stylesheets="@../css/style.css">
                             <content>
                                 <VBox prefHeight="1558.0" prefWidth="1200.0" style="-fx-background-color: #13161d;">
                                     <children>
@@ -80,12 +81,12 @@
                                         </HBox>
                                         <VBox>
                                             <children>
-                                                <HBox prefHeight="100.0" prefWidth="1200.0">
+                                                <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="48.0" prefWidth="1200.0">
                                                     <children>
                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                        <Pane prefHeight="48.0" prefWidth="1257.0" style="-fx-background-color: #282c34;">
+                                                        <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="48.0" prefWidth="1105.0" style="-fx-background-color: #282c34;">
                                                             <children>
-                                                                <Text fill="WHITE" layoutX="20.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Basic information">
+                                                                <Text fill="WHITE" layoutX="20.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Basic information">
                                                                     <font>
                                                                         <Font name="Arial Bold" size="22.0" />
                                                                     </font>
@@ -95,12 +96,12 @@
                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                     </children>
                                                 </HBox>
-                                                <HBox prefHeight="415.0" prefWidth="1200.0">
+                                                <HBox prefHeight="380.0" prefWidth="1200.0">
                                                     <children>
                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                        <VBox>
+                                                        <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="380.0" prefWidth="1105.0">
                                                             <children>
-                                                                <HBox prefHeight="108.0" prefWidth="1257.0" style="-fx-background-color: #2e3e4e;">
+                                                                <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="63.0" prefWidth="1105.0" style="-fx-background-color: #2e3e4e;">
                                                                     <children>
                                                                         <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Tournament name *:">
                                                                             <font>
@@ -110,17 +111,17 @@
                                                                                 <Insets left="30.0" top="35.0" />
                                                                             </HBox.margin>
                                                                         </Text>
-                                                                        <TextField fx:id="tournamentNameBox" prefHeight="40.0" prefWidth="735.0" style="-fx-background-color: #282c34; -fx-text-fill: #fff;">
+                                                                        <TextField fx:id="tournamentNameBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="735.0" style="-fx-background-color: #282c34;">
                                                                             <HBox.margin>
                                                                                 <Insets left="50.0" top="30.0" />
                                                                             </HBox.margin>
                                                                             <font>
-                                                                                <Font name="Arial Bold" size="18.0" />
+                                                                                <Font name="Arial" size="18.0" />
                                                                             </font>
                                                                         </TextField>
                                                                     </children>
                                                                 </HBox>
-                                                                <HBox prefHeight="142.0" prefWidth="1105.0" style="-fx-background-color: #2e3e4e;">
+                                                                <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="91.0" prefWidth="1105.0" style="-fx-background-color: #2e3e4e;">
                                                                     <children>
                                                                         <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Tournament host *:">
                                                                             <font>
@@ -130,14 +131,14 @@
                                                                                 <Insets left="30.0" top="35.0" />
                                                                             </HBox.margin>
                                                                         </Text>
-                                                                        <ComboBox fx:id="tournamentHostBox" prefHeight="40.0" prefWidth="735.0" style="-fx-background-color: #282c34;" styleClass="jfx-combo-box" stylesheets="@../css/style.css">
+                                                                        <ComboBox fx:id="tournamentHostBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="278.0" style="-fx-background-color: #282c34;" styleClass="jfx-combo-box" stylesheets="@../css/style.css">
                                                                             <HBox.margin>
-                                                                                <Insets left="60.0" top="30.0" />
+                                                                                <Insets left="60.0" top="27.0" />
                                                                             </HBox.margin>
                                                                         </ComboBox>
                                                                     </children>
                                                                 </HBox>
-                                                                <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #2e3e4e;">
+                                                                <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="49.0" prefWidth="1105.0" style="-fx-background-color: #2e3e4e;">
                                                                     <children>
                                                                         <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Start date *:">
                                                                             <font>
@@ -147,14 +148,14 @@
                                                                                 <Insets left="30.0" />
                                                                             </HBox.margin>
                                                                         </Text>
-                                                                        <DatePicker fx:id="datePicker" prefHeight="40.0" prefWidth="278.0" style="-fx-background-color: #282c34;" stylesheets="@../css/style.css">
+                                                                        <DatePicker fx:id="datePicker" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="278.0" style="-fx-background-color: #282c34;" stylesheets="@../css/style.css">
                                                                             <HBox.margin>
                                                                                 <Insets left="123.0" />
                                                                             </HBox.margin>
                                                                         </DatePicker>
                                                                     </children>
                                                                 </HBox>
-                                                <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #2e3e4e;">
+                                                <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="49.0" prefWidth="1105.0" style="-fx-background-color: #2e3e4e;">
                                                    <children>
                                                       <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Start time *:">
                                                          <font>
@@ -164,19 +165,19 @@
                                                             <Insets left="30.0" />
                                                          </HBox.margin>
                                                       </Text>
-                                                      <ComboBox fx:id="timeBoxHours" prefHeight="31.0" prefWidth="110.0" style="-fx-background-color: #282c34;" styleClass="jfx-combo-box" stylesheets="@../css/style.css">
+                                                      <ComboBox fx:id="timeBoxHours" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="110.0" style="-fx-background-color: #282c34;" styleClass="jfx-combo-box" stylesheets="@../css/style.css">
                                                          <HBox.margin>
-                                                            <Insets left="125.0" top="7.0" />
+                                                            <Insets bottom="7.0" left="123.0" top="7.0" />
                                                          </HBox.margin>
                                                       </ComboBox>
-                                                      <ComboBox fx:id="timeBoxMinutes" prefHeight="31.0" prefWidth="110.0" style="-fx-background-color: #282c34;" styleClass="jfx-combo-box" stylesheets="@../css/style.css">
+                                                      <ComboBox fx:id="timeBoxMinutes" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="110.0" style="-fx-background-color: #282c34;" styleClass="jfx-combo-box" stylesheets="@../css/style.css">
                                                          <HBox.margin>
-                                                            <Insets left="20.0" top="7.0" />
+                                                            <Insets bottom="7.0" left="20.0" top="7.0" />
                                                          </HBox.margin>
                                                       </ComboBox>
                                                    </children>
                                                 </HBox>
-                                                                <HBox prefHeight="182.0" prefWidth="1105.0" style="-fx-background-color: #2e3e4e;">
+                                                                <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="132.0" prefWidth="1105.0" style="-fx-background-color: #2e3e4e;">
                                                                     <children>
                                                                         <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Description :">
                                                                             <font>
@@ -186,12 +187,12 @@
                                                                                 <Insets left="30.0" />
                                                                             </HBox.margin>
                                                                         </Text>
-                                                                        <TextArea fx:id="descriptionBox" prefHeight="153.0" prefWidth="733.0" style="-fx-background-color: #282c34;" stylesheets="@../css/style.css" wrapText="true">
+                                                                        <TextArea fx:id="descriptionBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="113.0" prefWidth="733.0" promptText="Max. 250 characters" style="-fx-background-color: #282c34;" stylesheets="@../css/style.css" wrapText="true">
                                                                             <font>
-                                                                                <Font name="Arial Bold" size="18.0" />
+                                                                                <Font name="Arial" size="18.0" />
                                                                             </font>
                                                                             <HBox.margin>
-                                                                                <Insets bottom="10.0" left="114.0" />
+                                                                                <Insets bottom="10.0" left="114.0" top="10.0" />
                                                                             </HBox.margin>
                                                                         </TextArea>
                                                                     </children>
@@ -203,15 +204,15 @@
                                                 </HBox>
                                             </children>
                                         </VBox>
-                                        <VBox minWidth="-Infinity" prefHeight="100.0" prefWidth="1200.0" />
+                                        <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="1200.0" />
                                         <VBox>
                                             <children>
-                                                <HBox prefHeight="100.0" prefWidth="200.0">
+                                                <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="48.0" prefWidth="1200.0">
                                                     <children>
                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                        <Pane prefHeight="48.0" prefWidth="1257.0" style="-fx-background-color: #282c34;">
+                                                        <Pane maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="48.0" prefWidth="1105.0" style="-fx-background-color: #282c34;">
                                                             <children>
-                                                                <Text fill="WHITE" layoutX="19.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Game information">
+                                                                <Text fill="WHITE" layoutX="14.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Game information">
                                                                     <font>
                                                                         <Font name="Arial Bold" size="22.0" />
                                                                     </font>
@@ -221,12 +222,12 @@
                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                     </children>
                                                 </HBox>
-                                                <HBox prefHeight="365.0" prefWidth="1200.0">
+                                                <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="275.0" prefWidth="1200.0">
                                                     <children>
                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                        <VBox prefHeight="242.0" prefWidth="1257.0">
+                                                        <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="278.0" prefWidth="1105.0">
                                                             <children>
-                                                                <HBox prefHeight="108.0" prefWidth="1257.0" style="-fx-background-color: #2e3e4e;">
+                                                                <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="175.0" prefWidth="1105.0" style="-fx-background-color: #2e3e4e;">
                                                                     <children>
                                                                         <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Game *:">
                                                                             <font>
@@ -236,17 +237,17 @@
                                                                                 <Insets left="30.0" top="35.0" />
                                                                             </HBox.margin>
                                                                         </Text>
-                                                                        <TextField fx:id="gameBox" prefHeight="40.0" prefWidth="433.0" stylesheets="@../css/style.css">
+                                                                        <TextField fx:id="gameBox" prefHeight="40.0" prefWidth="433.0" promptText="Type and choose" stylesheets="@../css/style.css">
                                                                             <HBox.margin>
                                                                                 <Insets left="156.0" top="30.0" />
                                                                             </HBox.margin>
                                                                             <font>
-                                                                                <Font name="Arial Bold" size="18.0" />
+                                                                                <Font name="Arial" size="18.0" />
                                                                             </font>
                                                                         </TextField>
                                                                         <ImageView fx:id="gameImageView" fitHeight="155.0" fitWidth="296.0" pickOnBounds="true" preserveRatio="true">
                                                                             <HBox.margin>
-                                                                                <Insets left="70.0" top="20.0" />
+                                                                                <Insets left="110.0" top="20.0" />
                                                                             </HBox.margin>
                                                                             <image>
                                                                                 <Image url="@../Images/placeholder-image.png" />
@@ -254,7 +255,7 @@
                                                                         </ImageView>
                                                                     </children>
                                                                 </HBox>
-                                                                <HBox prefHeight="142.0" prefWidth="1257.0" style="-fx-background-color: #2e3e4e;">
+                                                                <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="102.0" prefWidth="1105.0" style="-fx-background-color: #2e3e4e;">
                                                                     <children>
                                                                         <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Platform *:">
                                                                             <font>
@@ -264,7 +265,7 @@
                                                                                 <Insets left="30.0" top="35.0" />
                                                                             </HBox.margin>
                                                                         </Text>
-                                                                        <TextField fx:id="platformBox" prefHeight="40.0" prefWidth="434.0">
+                                                                        <TextField fx:id="platformBox" prefHeight="40.0" prefWidth="434.0" promptText="Type and choose">
                                                                             <HBox.margin>
                                                                                 <Insets left="133.0" top="25.0" />
                                                                             </HBox.margin>
@@ -287,15 +288,15 @@
                                                 <Insets />
                                             </VBox.margin>
                                         </VBox>
-                                        <VBox prefHeight="80.0" prefWidth="1200.0" />
+                                        <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="1200.0" />
                                         <VBox>
                                             <children>
-                                                <HBox prefHeight="100.0" prefWidth="200.0">
+                                                <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="48.0" prefWidth="1200.0">
                                                     <children>
                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                        <Pane prefHeight="48.0" prefWidth="1257.0" style="-fx-background-color: #282c34;">
+                                                        <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="48.0" prefWidth="1105.0" style="-fx-background-color: #282c34;">
                                                             <children>
-                                                                <Text fill="WHITE" layoutX="19.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tournament information">
+                                                                <Text fill="WHITE" layoutX="14.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tournament information">
                                                                     <font>
                                                                         <Font name="Arial Bold" size="22.0" />
                                                                     </font>
@@ -310,7 +311,7 @@
                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                         <VBox prefHeight="242.0" prefWidth="1257.0">
                                                             <children>
-                                                                <HBox prefHeight="108.0" prefWidth="1257.0" style="-fx-background-color: #2e3e4e;">
+                                                                <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="1105.0" style="-fx-background-color: #2e3e4e;">
                                                                     <children>
                                                                         <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Tournament type *:">
                                                                             <font>
@@ -327,7 +328,7 @@
                                                                         </ComboBox>
                                                                     </children>
                                                                 </HBox>
-                                                <HBox prefHeight="196.0" prefWidth="1105.0" style="-fx-background-color: #2e3e4e;">
+                                                <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="1105.0" style="-fx-background-color: #2e3e4e;">
                                                    <children>
                                                       <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Best of *:">
                                                          <font>
@@ -344,7 +345,7 @@
                                                       </ComboBox>
                                                    </children>
                                                 </HBox>
-                                                                <HBox prefHeight="142.0" prefWidth="1257.0" style="-fx-background-color: #2e3e4e;">
+                                                                <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="198.0" prefWidth="1105.0" style="-fx-background-color: #2e3e4e;">
                                                                     <children>
                                                                         <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Total nr. of teams">
                                                                             <font>
@@ -360,7 +361,7 @@
                                                                             </HBox.margin>
                                                                         </ComboBox>
                                                                         <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="164.0" prefWidth="289.0" />
-                                                                        <ImageView fx:id="bracketFormatImageView" fitHeight="189.0" fitWidth="350.0" pickOnBounds="true" preserveRatio="true">
+                                                                        <ImageView fx:id="bracketFormatImageView" fitHeight="195.0" fitWidth="354.0" pickOnBounds="true" preserveRatio="true">
                                                                             <image>
                                                                                 <Image url="@../Images/placeholder-image.png" />
                                                                             </image>
@@ -370,6 +371,85 @@
                                                                         </ImageView>
                                                                     </children>
                                                                 </HBox>
+                                                <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="41.0" prefWidth="1105.0" style="-fx-background-color: #2e3e4e;">
+                                                   <children>
+                                                      <Pane prefHeight="17.0" prefWidth="254.0" />
+                                                      <CheckBox fx:id="activatePrizePool" mnemonicParsing="false" onAction="#onActivatePrizePoolPressed" text="Activate prize pool" textFill="WHITE">
+                                                         <HBox.margin>
+                                                            <Insets top="5.0" />
+                                                         </HBox.margin>
+                                                         <font>
+                                                            <Font name="Arial Bold" size="14.0" />
+                                                         </font>
+                                                      </CheckBox>
+                                                   </children>
+                                                </HBox>
+                                                <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="66.0" prefWidth="1105.0" style="-fx-background-color: #2e3e4e;">
+                                                   <children>
+                                                      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Prize pool :">
+                                                         <font>
+                                                            <Font name="Arial Bold" size="18.0" />
+                                                         </font>
+                                                         <HBox.margin>
+                                                            <Insets left="30.0" top="7.0" />
+                                                         </HBox.margin>
+                                                      </Text>
+                                                      <TextField fx:id="prizePoolTextField" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="190.0" promptText="e.g. 40000">
+                                                         <font>
+                                                            <Font name="Arial Bold" size="18.0" />
+                                                         </font>
+                                                         <HBox.margin>
+                                                            <Insets left="127.0" />
+                                                         </HBox.margin>
+                                                      </TextField>
+                                                      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Currency :">
+                                                         <font>
+                                                            <Font name="Arial Bold" size="18.0" />
+                                                         </font>
+                                                         <HBox.margin>
+                                                            <Insets left="30.0" top="7.0" />
+                                                         </HBox.margin>
+                                                      </Text>
+                                                      <ComboBox fx:id="prizePoolCurrencyBox" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="126.0" promptText="e.g. NOK" style="-fx-background-color: #282c34;" styleClass="jfx-combo-box" stylesheets="@../css/style.css">
+                                                         <HBox.margin>
+                                                            <Insets left="30.0" />
+                                                         </HBox.margin>
+                                                      </ComboBox>
+                                                   </children>
+                                                </HBox>
+                                                <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="76.0" prefWidth="1105.0" style="-fx-background-color: #2e3e4e;">
+                                                   <children>
+                                                      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Entrance fee :">
+                                                         <font>
+                                                            <Font name="Arial Bold" size="18.0" />
+                                                         </font>
+                                                         <HBox.margin>
+                                                            <Insets left="30.0" top="7.0" />
+                                                         </HBox.margin>
+                                                      </Text>
+                                                      <TextField fx:id="entranceFeeTextField" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="190.0" promptText="e.g. 1000">
+                                                         <font>
+                                                            <Font name="Arial Bold" size="18.0" />
+                                                         </font>
+                                                         <HBox.margin>
+                                                            <Insets left="105.0" />
+                                                         </HBox.margin>
+                                                      </TextField>
+                                                      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Currency :">
+                                                         <font>
+                                                            <Font name="Arial Bold" size="18.0" />
+                                                         </font>
+                                                         <HBox.margin>
+                                                            <Insets left="30.0" top="7.0" />
+                                                         </HBox.margin>
+                                                      </Text>
+                                                      <ComboBox fx:id="entranceFeeCurrencyBox" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="126.0" promptText="e.g. NOK" style="-fx-background-color: #282c34;" styleClass="jfx-combo-box" stylesheets="@../css/style.css">
+                                                         <HBox.margin>
+                                                            <Insets left="30.0" />
+                                                         </HBox.margin>
+                                                      </ComboBox>
+                                                   </children>
+                                                </HBox>
                                                             </children>
                                                             <HBox.margin>
                                                                 <Insets />
@@ -402,7 +482,7 @@
                                                         <DropShadow />
                                                     </effect>
                                                     <HBox.margin>
-                                                        <Insets bottom="20.0" right="60.0" top="20.0" />
+                                                        <Insets bottom="40.0" right="60.0" top="30.0" />
                                                     </HBox.margin>
                                                     <cursor>
                                                         <Cursor fx:constant="HAND" />

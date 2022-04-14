@@ -108,8 +108,8 @@ public class MainPageController {
     private void showPreviousTournaments()
             throws IOException{
         try {
-            ArrayList<NewTournament> upcomingTournaments = TournamentReaderRework.showUpcomingTournamentsAtMainPage();
-            setMainPageWithTournaments(upcomingTournaments, previousImageView1, previousText1, previousBox1,
+            ArrayList<NewTournament> previousTournaments = TournamentReaderRework.showPreviousTournamentsAtMainPage();
+            setMainPageWithTournaments(previousTournaments, previousImageView1, previousText1, previousBox1,
                     previousImageView2, previousText2, previousBox2);
         } catch (IOException exception){
             throw new IOException("Could not show upcoming tournaments: " + exception.getMessage());

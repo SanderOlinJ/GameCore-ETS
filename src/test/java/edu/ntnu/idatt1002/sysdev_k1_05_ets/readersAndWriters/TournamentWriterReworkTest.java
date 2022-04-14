@@ -19,23 +19,28 @@ class TournamentWriterReworkTest {
 
     @Test
     void testThatWriteNewTournamentToFileWithBasicInfoRuns(){
-        String status = "Finished";
-        String tournamentName = "Test previous tournament 2";
+        String status = "Not finished";
+        String tournamentName = "Test 6";
         String tournamentHost = "Admin";
-        LocalDate date = LocalDate.parse("2022-04-05");
-        LocalTime time = LocalTime.parse("18:00");
+        LocalDate date = LocalDate.parse("2022-04-15");
+        LocalTime time = LocalTime.parse("19:00");
         String description = "";
-        String game = "League of Legends";
+        String game = "Valorant";
         String platform = "PC / Mac / Linux";
         String tournamentType = "Brackets";
         String bestOf = "3";
         String numberOfTeams = "4";
+        String prizePool = "0";
+        String prizePoolCurrency = "null";
+        String entranceFee = "0";
+        String entranceFeeCurrency = "null";
 
         try {
             TournamentWriterRework.writeNewTournamentToFileWithBasicInfo(status, tournamentName, tournamentHost,
-                    date, time, description, game, platform, tournamentType, bestOf, numberOfTeams);
+                    date, time, description, game, platform, tournamentType, bestOf, numberOfTeams,
+                    prizePool, prizePoolCurrency, entranceFee, entranceFeeCurrency);
         } catch (IOException exception){
-            exception.getMessage();
+            exception.printStackTrace();
         }
     }
 

@@ -67,7 +67,8 @@ public class TournamentWriterRework {
     public static void writeNewTournamentToFileWithBasicInfo(
             String status, String tournamentName, String tournamentHost, LocalDate date, LocalTime time,
             String description, String game, String platform, String tournamentType, String bestOf,
-            String numberOfTeams)
+            String numberOfTeams, String prizePool, String prizePoolCurrency, String entranceFee,
+            String entranceFeeCurrency)
             throws IOException {
         String tournamentNameShortened = Utilities.shortenAndReplaceUnnecessarySymbolsInString(tournamentName);
 
@@ -78,7 +79,8 @@ public class TournamentWriterRework {
         String tournamentStringFormat = status + DELIMITER + tournamentName + DELIMITER + tournamentHost + DELIMITER +
                 date + DELIMITER + time + DELIMITER + description + DELIMITER + game + DELIMITER + platform +
                 DELIMITER + tournamentType + DELIMITER + bestOf + DELIMITER + numberOfTeams +
-                DELIMITER;
+                DELIMITER + prizePool + COMMA_DELIMITER + prizePoolCurrency + DELIMITER +
+                entranceFee + COMMA_DELIMITER + entranceFeeCurrency + DELIMITER;
 
         if (date.isEqual(LocalDate.now()) && time.equals(LocalTime.now()) && status.equals("Not finished") ||
                 date.isEqual(LocalDate.now()) && time.isBefore(LocalTime.now()) && status.equals("Not finished") ||
@@ -311,7 +313,7 @@ public class TournamentWriterRework {
         for (Team team : teams){
             stringBuilder.append(team.getNameOfTeam()).append(COMMA_DELIMITER);
         }
-        fileAsListOfStrings.set(11,stringBuilder.toString());
+        fileAsListOfStrings.set(13,stringBuilder.toString());
 
         StringBuilder stringBuilder1 = new StringBuilder();
         for (String str : fileAsListOfStrings){

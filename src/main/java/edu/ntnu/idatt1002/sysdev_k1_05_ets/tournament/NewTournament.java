@@ -1,5 +1,7 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament;
 
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.utilities.Utilities;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -16,12 +18,18 @@ public class NewTournament {
     private String tournamentType;
     private String bestOf;
     private String numberOfTeams;
+    private String prizePool;
+    private String prizePoolCurrency;
+    private String entranceFee;
+    private String entranceFeeCurrency;
     private ArrayList<Team> teams;
     private ArrayList<Match> matches;
 
     public NewTournament(String status, String tournamentName, String tournamentHost, LocalDate date,
                          LocalTime time, String description, String game, String platform,
-                         String tournamentType, String bestOf, String numberOfTeams) {
+                         String tournamentType, String bestOf, String numberOfTeams,
+                         String prizePool, String prizePoolCurrency,
+                         String entranceFee, String entranceFeeCurrency) {
         if (status == null || status.isEmpty()){
             throw new IllegalArgumentException("Status cannot be empty!");
         }
@@ -48,6 +56,22 @@ public class NewTournament {
         }
         if (numberOfTeams == null || numberOfTeams.isEmpty()){
             throw new IllegalArgumentException("Number of teams cannot be empty!");
+        }
+        if (prizePool == null || prizePool.isEmpty()){
+            throw new IllegalArgumentException("Prize pool cannot be empty!");
+        }
+        if (!prizePoolCurrency.equals("NOK") && !prizePoolCurrency.equals("USD") && !prizePoolCurrency.equals("EUR")
+                && !prizePoolCurrency.equals("GBP") && !prizePoolCurrency.equals("null")){
+            throw new IllegalArgumentException("Invalid prize-pool currency!");
+        }
+        if (entranceFee == null || entranceFee.isEmpty()){
+            throw new IllegalArgumentException("Entrance fee cannot be empty!");
+        }
+
+        if (!entranceFeeCurrency.equals("NOK") && !entranceFeeCurrency.equals("USD")
+                && !entranceFeeCurrency.equals("EUR") && !entranceFeeCurrency.equals("GBP")
+                && !entranceFeeCurrency.equals("null")){
+            throw new IllegalArgumentException("Invalid entrance-fee currency!");
         }
         this.status = status;
         this.tournamentName = tournamentName;
@@ -60,13 +84,19 @@ public class NewTournament {
         this.tournamentType = tournamentType;
         this.bestOf = bestOf;
         this.numberOfTeams = numberOfTeams;
+        this.prizePool = prizePool;
+        this.prizePoolCurrency = prizePoolCurrency;
+        this.entranceFee = entranceFee;
+        this.entranceFeeCurrency = entranceFeeCurrency;
         this.teams = new ArrayList<>();
         this.matches = new ArrayList<>();
     }
 
     public NewTournament(String status, String tournamentName, String tournamentHost, LocalDate date,
                          LocalTime time, String description, String game, String platform,
-                         String tournamentType, String bestOf, String numberOfTeams, ArrayList<Team> teams) {
+                         String tournamentType, String bestOf, String numberOfTeams, String prizePool,
+                         String prizePoolCurrency, String entranceFee, String entranceFeeCurrency,
+                         ArrayList<Team> teams) {
         if (status == null || status.isEmpty()){
             throw new IllegalArgumentException("Status cannot be empty!");
         }
@@ -93,6 +123,22 @@ public class NewTournament {
         }
         if (numberOfTeams == null || numberOfTeams.isEmpty()){
             throw new IllegalArgumentException("Number of teams cannot be empty!");
+        }
+        if (prizePool == null || prizePool.isEmpty()){
+            throw new IllegalArgumentException("Prize pool cannot be empty!");
+        }
+        if (!prizePoolCurrency.equals("NOK") && !prizePoolCurrency.equals("USD") && !prizePoolCurrency.equals("EUR")
+                && !prizePoolCurrency.equals("GBP") && !prizePoolCurrency.equals("null")){
+            throw new IllegalArgumentException("Invalid prize-pool currency!");
+        }
+        if (entranceFee == null || entranceFee.isEmpty()){
+            throw new IllegalArgumentException("Entrance fee cannot be empty!");
+        }
+
+        if (!entranceFeeCurrency.equals("NOK") && !entranceFeeCurrency.equals("USD")
+                && !entranceFeeCurrency.equals("EUR") && !entranceFeeCurrency.equals("GBP")
+                && !entranceFeeCurrency.equals("null")){
+            throw new IllegalArgumentException("Invalid entrance-fee currency!");
         }
         if (teams == null || teams.isEmpty()){
             throw new IllegalArgumentException("Teams cannot be empty!");
@@ -110,9 +156,45 @@ public class NewTournament {
         this.tournamentType = tournamentType;
         this.bestOf = bestOf;
         this.numberOfTeams = numberOfTeams;
+        this.prizePool = prizePool;
+        this.prizePoolCurrency = prizePoolCurrency;
+        this.entranceFee = entranceFee;
+        this.entranceFeeCurrency = entranceFeeCurrency;
         this.teams = new ArrayList<>();
         this.teams.addAll(teams);
         this.matches = new ArrayList<>();
+    }
+
+    public String getPrizePool() {
+        return prizePool;
+    }
+
+    public void setPrizePool(String prizePool) {
+        this.prizePool = prizePool;
+    }
+
+    public String getPrizePoolCurrency() {
+        return prizePoolCurrency;
+    }
+
+    public void setPrizePoolCurrency(String prizePoolCurrency) {
+        this.prizePoolCurrency = prizePoolCurrency;
+    }
+
+    public String getEntranceFee() {
+        return entranceFee;
+    }
+
+    public void setEntranceFee(String entranceFee) {
+        this.entranceFee = entranceFee;
+    }
+
+    public String getEntranceFeeCurrency() {
+        return entranceFeeCurrency;
+    }
+
+    public void setEntranceFeeCurrency(String entranceFeeCurrency) {
+        this.entranceFeeCurrency = entranceFeeCurrency;
     }
 
     public LocalTime getTime() {

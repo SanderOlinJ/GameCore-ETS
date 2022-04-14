@@ -20,11 +20,13 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import javafx.util.converter.NumberStringConverter;
 import org.controlsfx.control.textfield.TextFields;
 import javafx.scene.control.TextField;
 
 import java.io.File;
 import java.net.URL;
+import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Objects;
@@ -40,24 +42,29 @@ public class CreateNewTournamentPageController implements Initializable {
     private Stage stage;
     private NewTournament tournament;
 
-    @FXML TextField tournamentNameBox;
-    @FXML ComboBox tournamentHostBox;
-    @FXML TextArea descriptionBox;
-    @FXML TextField gameBox;
-    @FXML TextField platformBox;
-    @FXML ComboBox tournamentTypeBox;
-    @FXML ComboBox totalNumberOfTeamsBox;
-    @FXML Label warningLabel;
-    @FXML ImageView gameImageView;
-    @FXML ImageView bracketFormatImageView;
-    @FXML DatePicker datePicker;
-    @FXML ComboBox bestOfBox;
-    @FXML ComboBox timeBoxHours;
-    @FXML ComboBox timeBoxMinutes;
-
+    @FXML private TextField tournamentNameBox;
+    @FXML private ComboBox tournamentHostBox;
+    @FXML private TextArea descriptionBox;
+    @FXML private TextField gameBox;
+    @FXML private TextField platformBox;
+    @FXML private ComboBox tournamentTypeBox;
+    @FXML private ComboBox totalNumberOfTeamsBox;
+    @FXML private Label warningLabel;
+    @FXML private ImageView gameImageView;
+    @FXML private ImageView bracketFormatImageView;
+    @FXML private DatePicker datePicker;
+    @FXML private ComboBox bestOfBox;
+    @FXML private ComboBox timeBoxHours;
+    @FXML private ComboBox timeBoxMinutes;
+    @FXML private TextField prizePoolTextField;
+    @FXML private TextField entranceFeeTextField;
+    @FXML private ComboBox prizePoolCurrencyBox;
+    @FXML private ComboBox entranceFeeCurrencyBox;
+    @FXML private CheckBox activatePrizePool;
 
     @FXML
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         try {
             TournamentWriterRework.updateTournamentFileLocation();
             TextFields.bindAutoCompletion(gameBox, GeneralReader.readFile
@@ -71,10 +78,9 @@ public class CreateNewTournamentPageController implements Initializable {
         gameBox.textProperty().addListener(((observableValue, oldValue , newValue) ->
                 gameImageView.setImage(new Image(Utilities.getPathToGameImageFile(newValue)))));
 
-        tournamentTypeBox.getSelectionModel().selectedItemProperty().addListener(
+        tournamentTypeBox.getSelectionModel().selectedItemProperty().addListener
                 ((observableValue, oldValue, newValue) ->
-                        totalNumberOfTeamsBox.setDisable(false))
-        );
+                        totalNumberOfTeamsBox.setDisable(false));
 
         totalNumberOfTeamsBox.getSelectionModel().selectedItemProperty().addListener
                 ((observableValue, oldValue, newValue) ->
@@ -204,6 +210,63 @@ public class CreateNewTournamentPageController implements Initializable {
                 };
             }
         });
+
+        prizePoolCurrencyBox.getItems().addAll("NOK","USD","EUR","GBG");
+        prizePoolCurrencyBox.setCellFactory(new Callback<ListView, ListCell>() {
+            @Override
+            public ListCell call(ListView listView) {
+                return new ListCell<String>() {
+                    @Override
+                    protected void updateItem(String item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (item != null) {
+                            setText(item);
+                            //This won't work for the first time but will be the one
+                            //used in the next calls
+                            getStyleClass().add("my-list-cell");
+                            //size in px
+                            setFont(Font.font(16));
+                        }
+                    }
+                };
+            }
+        });
+
+        entranceFeeCurrencyBox.getItems().addAll("NOK","USD","EUR","GBG");
+        entranceFeeCurrencyBox.setCellFactory(new Callback<ListView, ListCell>() {
+            @Override
+            public ListCell call(ListView listView) {
+                return new ListCell<String>() {
+                    @Override
+                    protected void updateItem(String item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (item != null) {
+                            setText(item);
+                            //This won't work for the first time but will be the one
+                            //used in the next calls
+                            getStyleClass().add("my-list-cell");
+                            //size in px
+                            setFont(Font.font(16));
+                        }
+                    }
+                };
+            }
+        });
+    }
+
+    @FXML
+    public void onActivatePrizePoolPressed(ActionEvent event){
+        if (activatePrizePool.isSelected()) {
+            prizePoolTextField.setDisable(false);
+            prizePoolCurrencyBox.setDisable(false);
+            entranceFeeTextField.setDisable(false);
+            entranceFeeCurrencyBox.setDisable(false);
+        }else {
+            prizePoolTextField.setDisable(true);
+            prizePoolCurrencyBox.setDisable(true);
+            entranceFeeTextField.setDisable(true);
+            entranceFeeCurrencyBox.setDisable(true);
+        }
     }
 
 
@@ -215,47 +278,55 @@ public class CreateNewTournamentPageController implements Initializable {
         String tournamentName = String.valueOf(tournamentNameBox.getText());
         String tournamentHost = String.valueOf(tournamentHostBox.getValue());
         LocalDate date = datePicker.getValue();
-        LocalTime time = LocalTime.parse(timeBoxHours.getValue() + ":" + timeBoxMinutes.getValue());
+        LocalTime time;
+        try {
+            time = LocalTime.parse(timeBoxHours.getValue() + ":" + timeBoxMinutes.getValue());
+        } catch (DateTimeException exception){
+            warningLabel.setText("You must pick a time");
+            throw new IOException("You must pick a time");
+        }
         String description = String.valueOf(descriptionBox.getText());
         String game = String.valueOf(gameBox.getText());
         String platform = String.valueOf(platformBox.getText());
         String tournamentType = String.valueOf(tournamentTypeBox.getValue());
         String bestOf = String.valueOf(bestOfBox.getValue());
         String numberOfTeams = String.valueOf(totalNumberOfTeamsBox.getValue());
+        String prizePool = "0";
+        String prizePoolCurrency = "null";
+        String entranceFee = "0";
+        String entranceFeeCurrency = "null";
 
-        String doesFileExist = NewTournamentWriter.doesFileWithSameNameAlreadyExist(Utilities
-                .shortenAndReplaceUnnecessarySymbolsInString(tournamentName));
-
-        if (doesFileExist.equals("Ongoing") || doesFileExist.equals("Upcoming") || doesFileExist.equals("Previous")){
-            warningLabel.setText("There is already a tournament file under this name");
-            throw new IllegalArgumentException("There is already a tournament file under this name");
+        if (activatePrizePool.isSelected()){
+            prizePool = String.valueOf(prizePoolTextField.getText());
+            prizePoolCurrency = String.valueOf(prizePoolCurrencyBox.getValue());
+            entranceFee = String.valueOf(entranceFeeTextField.getText());
+            entranceFeeCurrency = String.valueOf(entranceFeeCurrencyBox.getValue());
         }
-
-        if (tournamentName.isEmpty() || tournamentHost.isEmpty() || date == null || time == null ||
-                game.isEmpty() || platform.isEmpty() || tournamentType.isEmpty() || bestOf.isEmpty() ||
-                numberOfTeams.isEmpty()){
-            warningLabel.setText("You have to fill out all crucial fields (*)");
-            throw new IllegalArgumentException("You have to fill out all crucial fields (*)");
-        }
-
-        BracketController.setBracketSize(Integer.parseInt((String) totalNumberOfTeamsBox.getValue()));
-
-        if (date.isBefore(LocalDate.now()) || date.isEqual(LocalDate.now()) && time.isBefore(LocalTime.now())) {
-            warningLabel.setText("You can't choose a date in the past");
-            throw new IllegalArgumentException("You can't choose a date in the past");
-        } else {
-            TournamentWriterRework.writeNewTournamentToFileWithBasicInfo(status, tournamentName,
-                    tournamentHost, date, time, description, game, platform, tournamentType,bestOf, numberOfTeams);
+        try {
+            checkIfAllRequiredFieldsAreFilledOut(tournamentName, tournamentHost, date, game, platform, tournamentType, bestOf, numberOfTeams);
+            checkIfFileAlreadyExists(tournamentName);
+            checkIfDateIsInvalid(date, time);
+            checkThatGameExistsInLibrary(game);
+            checkThatPlatformExistsInLibrary(platform);
+            if (activatePrizePool.isSelected()) {
+                checkIfPricePoolActivated(prizePool, prizePoolCurrency, entranceFee, entranceFeeCurrency);
+            }
+        } catch (IOException exception){
+            throw new IOException(exception.getMessage());
         }
 
         NewTournament tournament= new NewTournament(status, tournamentName, tournamentHost, date, time,
-                description, game, platform, tournamentType, bestOf, numberOfTeams);
+                description, game, platform, tournamentType, bestOf, numberOfTeams, prizePool, prizePoolCurrency,
+                entranceFee, entranceFeeCurrency);
 
+        TournamentWriterRework.writeNewTournamentToFileWithBasicInfo(status, tournamentName,
+                tournamentHost, date, time, description, game, platform, tournamentType,bestOf, numberOfTeams,
+                prizePool, prizePoolCurrency, entranceFee, entranceFeeCurrency);
         int formatNr = Integer.parseInt(numberOfTeams);
 
         edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.AddTeamController.setMaxTeams(formatNr);
         edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.AddTeamController.setTournament(tournament);
-
+        BracketController.setBracketSize(Integer.parseInt((String) totalNumberOfTeamsBox.getValue()));
 
         edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.BracketController
                 .setTournamentName(tournamentNameBox.getText());
@@ -268,6 +339,76 @@ public class CreateNewTournamentPageController implements Initializable {
         stage.setMinWidth(1200);
         stage.setMinHeight(800);
         stage.show();
+    }
+
+    private void checkIfDateIsInvalid(LocalDate date, LocalTime time) throws IOException {
+        if (date.isBefore(LocalDate.now()) || date.isEqual(LocalDate.now()) && time.isBefore(LocalTime.now())) {
+            warningLabel.setText("You can't choose a date in the past");
+            throw new IOException("You can't choose a date in the past");
+        }
+    }
+
+    private void checkIfAllRequiredFieldsAreFilledOut(String tournamentName, String tournamentHost, LocalDate date,
+                                                      String game, String platform, String tournamentType,
+                                                      String bestOf, String numberOfTeams)
+    throws IOException {
+
+        if (tournamentName.isEmpty() || tournamentHost.isEmpty() || date == null ||
+                game.isEmpty() || platform.isEmpty() || tournamentType.isEmpty() || bestOf.isEmpty() ||
+                numberOfTeams.isEmpty()){
+            warningLabel.setText("You have to fill out all crucial fields (*)");
+            throw new IOException("You have to fill out all crucial fields (*)");
+        }
+    }
+
+    private void checkIfFileAlreadyExists(String tournamentName) throws IOException {
+        String doesFileExist = NewTournamentWriter.doesFileWithSameNameAlreadyExist(Utilities
+                .shortenAndReplaceUnnecessarySymbolsInString(tournamentName));
+
+        if (doesFileExist.equals("Ongoing") || doesFileExist.equals("Upcoming") || doesFileExist.equals("Previous")){
+            warningLabel.setText("There is already a tournament file under this name");
+            throw new IOException("There is already a tournament file under this name");
+        }
+    }
+
+    private void checkIfPricePoolActivated(String prizePool, String prizePoolCurrency, String entranceFee,
+                                                  String entranceFeeCurrency)
+    throws IOException{
+        if (prizePool.equals("") || prizePool.equals("0")){
+            warningLabel.setText("Prize pool cannot be 0 or blank");
+            throw new IOException("Prize pool cannot be 0 or blank");
+        }
+        if (prizePoolCurrency.equals("null")){
+            warningLabel.setText("Prize pool needs to be declared with a currency");
+            throw new IOException("Prize pool needs to be declared with a currency");
+        }
+        if (entranceFee.equals("")){
+            warningLabel.setText("Entrance fee cannot be blank. " +
+                    "If there are no entrance fee, type '0'");
+            throw new IOException("Entrance fee cannot be blank.\n" +
+                    "If there are no entrance fee, type '0'");
+        }
+        if (entranceFeeCurrency.equals("null")){
+            warningLabel.setText("Entrance fee needs to be declared with a currency");
+            throw new IOException("Entrance fee needs to be declared with a currency");
+        }
+    }
+
+    private void checkThatGameExistsInLibrary(String game)
+    throws IOException{
+        if (!GeneralReader.isGameInLibrary(game)) {
+            warningLabel.setText("The game you chose does not exist, or is not in library");
+            throw new IOException("The game you chose does not exist, or is not in library");
+        }
+
+    }
+
+    private void checkThatPlatformExistsInLibrary(String platform)
+    throws IOException{
+        if (!GeneralReader.isPlatformInLibrary(platform)){
+            warningLabel.setText("The platform you chose does not exist, or is not in library");
+            throw new IOException("The platform you chose does not exist, or is not in library");
+        }
     }
 
     public NewTournament getTournament() {
