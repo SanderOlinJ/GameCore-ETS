@@ -62,7 +62,7 @@ public class NewTournament {
         }
         if (!prizePoolCurrency.equals("NOK") && !prizePoolCurrency.equals("USD") && !prizePoolCurrency.equals("EUR")
                 && !prizePoolCurrency.equals("GBP") && !prizePoolCurrency.equals("null")){
-            throw new IllegalArgumentException("Invalid prize-pool currency!");
+            throw new IllegalArgumentException("Invalid prize pool-currency!");
         }
         if (entranceFee == null || entranceFee.isEmpty()){
             throw new IllegalArgumentException("Entrance fee cannot be empty!");
@@ -71,7 +71,7 @@ public class NewTournament {
         if (!entranceFeeCurrency.equals("NOK") && !entranceFeeCurrency.equals("USD")
                 && !entranceFeeCurrency.equals("EUR") && !entranceFeeCurrency.equals("GBP")
                 && !entranceFeeCurrency.equals("null")){
-            throw new IllegalArgumentException("Invalid entrance-fee currency!");
+            throw new IllegalArgumentException("Invalid entrance fee-currency!");
         }
         this.status = status;
         this.tournamentName = tournamentName;
@@ -138,7 +138,7 @@ public class NewTournament {
         if (!entranceFeeCurrency.equals("NOK") && !entranceFeeCurrency.equals("USD")
                 && !entranceFeeCurrency.equals("EUR") && !entranceFeeCurrency.equals("GBP")
                 && !entranceFeeCurrency.equals("null")){
-            throw new IllegalArgumentException("Invalid entrance-fee currency!");
+            throw new IllegalArgumentException("Invalid entrance fee-currency!");
         }
         if (teams == null || teams.isEmpty()){
             throw new IllegalArgumentException("Teams cannot be empty!");

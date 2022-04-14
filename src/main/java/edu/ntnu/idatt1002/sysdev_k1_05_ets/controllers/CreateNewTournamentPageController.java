@@ -18,6 +18,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import javafx.util.converter.NumberStringConverter;
@@ -56,9 +57,13 @@ public class CreateNewTournamentPageController implements Initializable {
     @FXML private ComboBox bestOfBox;
     @FXML private ComboBox timeBoxHours;
     @FXML private ComboBox timeBoxMinutes;
+    @FXML private Text prizePoolText;
     @FXML private TextField prizePoolTextField;
+    @FXML private Text entranceFeeText;
     @FXML private TextField entranceFeeTextField;
+    @FXML private Text prizePoolCurrencyText;
     @FXML private ComboBox prizePoolCurrencyBox;
+    @FXML private Text entranceFeeCurrencyText;
     @FXML private ComboBox entranceFeeCurrencyBox;
     @FXML private CheckBox activatePrizePool;
 
@@ -211,7 +216,7 @@ public class CreateNewTournamentPageController implements Initializable {
             }
         });
 
-        prizePoolCurrencyBox.getItems().addAll("NOK","USD","EUR","GBG");
+        prizePoolCurrencyBox.getItems().addAll("NOK","USD","EUR","GBP");
         prizePoolCurrencyBox.setCellFactory(new Callback<ListView, ListCell>() {
             @Override
             public ListCell call(ListView listView) {
@@ -232,7 +237,7 @@ public class CreateNewTournamentPageController implements Initializable {
             }
         });
 
-        entranceFeeCurrencyBox.getItems().addAll("NOK","USD","EUR","GBG");
+        entranceFeeCurrencyBox.getItems().addAll("NOK","USD","EUR","GBP");
         entranceFeeCurrencyBox.setCellFactory(new Callback<ListView, ListCell>() {
             @Override
             public ListCell call(ListView listView) {
@@ -257,11 +262,19 @@ public class CreateNewTournamentPageController implements Initializable {
     @FXML
     public void onActivatePrizePoolPressed(ActionEvent event){
         if (activatePrizePool.isSelected()) {
+            prizePoolText.setOpacity(1);
+            prizePoolCurrencyText.setOpacity(1);
+            entranceFeeText.setOpacity(1);
+            entranceFeeCurrencyText.setOpacity(1);
             prizePoolTextField.setDisable(false);
             prizePoolCurrencyBox.setDisable(false);
             entranceFeeTextField.setDisable(false);
             entranceFeeCurrencyBox.setDisable(false);
         }else {
+            prizePoolText.setOpacity(0.5);
+            prizePoolCurrencyText.setOpacity(0.5);
+            entranceFeeText.setOpacity(0.5);
+            entranceFeeCurrencyText.setOpacity(0.5);
             prizePoolTextField.setDisable(true);
             prizePoolCurrencyBox.setDisable(true);
             entranceFeeTextField.setDisable(true);

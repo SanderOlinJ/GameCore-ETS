@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="2000.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.OngoingTournamentsController">
+    <top>
+        <MenuBar BorderPane.alignment="CENTER">
+            <menus>
+                <Menu fx:id="homeButton" disable="true" mnemonicParsing="false" text="Home" />
+                <Menu fx:id="tournamentButton" mnemonicParsing="false" text="Tournaments">
+                    <items>
+                        <MenuItem fx:id="ongoingTournamentsButton" mnemonicParsing="false" text="Ongoing tournaments" />
+                        <MenuItem fx:id="previousTournamentButton" mnemonicParsing="false" text="Previous tournaments" />
+                    </items>
+                </Menu>
+                <Menu fx:id="aboutButton" mnemonicParsing="false" text="About" />
+            </menus>
+        </MenuBar>
+    </top>
+    <center>
+        <VBox prefHeight="1655.0" prefWidth="1200.0" style="-fx-background-color: #282c34;" BorderPane.alignment="CENTER">
+            <children>
+                <VBox maxHeight="200.0" prefHeight="131.0" prefWidth="1200.0" style="-fx-background-color: #2e3e4e;" VBox.vgrow="ALWAYS">
+                    <children>
+                        <VBox prefHeight="130.0" prefWidth="119.0" style="-fx-background-color: #2e3e4e;" VBox.vgrow="NEVER" />
+                        <HBox prefHeight="120.0" prefWidth="1200.0" VBox.vgrow="ALWAYS">
+                            <children>
+                                <ImageView fitHeight="96.0" fitWidth="611.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
+                                    <image>
+                                        <Image url="@../Images/GameCoreETSLogo2.png" />
+                                    </image>
+                                    <HBox.margin>
+                                        <Insets bottom="10.0" left="20.0" top="30.0" />
+                                    </HBox.margin>
+                                </ImageView>
+                                <Pane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" HBox.hgrow="ALWAYS" />
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+                <HBox prefHeight="1395.0" prefWidth="1200.0" VBox.vgrow="ALWAYS">
+                    <children>
+                        <Pane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: black;" HBox.hgrow="ALWAYS" />
+                        <ScrollPane hbarPolicy="NEVER" maxWidth="1500.0" prefHeight="800.0" prefWidth="1200.0" stylesheets="@../css/style.css">
+                            <content>
+                                <VBox prefHeight="1703.0" prefWidth="1200.0" style="-fx-background-color: #13161d;">
+                                    <children>
+                                        <VBox maxHeight="50.0" prefHeight="0.0" prefWidth="1200.0" />
+                                        <VBox>
+                                            <children>
+                                                <HBox maxHeight="137.0" prefHeight="137.0" prefWidth="1200.0" style="-fx-background-color: #13161d;" VBox.vgrow="ALWAYS">
+                                                    <children>
+                                                        <Text fill="#fa8f31" strokeType="OUTSIDE" strokeWidth="0.0" text="Ongoing tournaments" HBox.hgrow="ALWAYS">
+                                                            <font>
+                                                                <Font name="Yu Gothic Medium" size="29.0" />
+                                                            </font>
+                                                            <HBox.margin>
+                                                                <Insets bottom="10.0" left="50.0" top="40.0" />
+                                                            </HBox.margin>
+                                                        </Text>
+                                                    </children>
+                                                </HBox>
+                                                <VBox prefHeight="0.0" prefWidth="1200.0" />
+                                                <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="317.0" prefWidth="980.0" style="-fx-background-color: #282c34;">
+                                                    <children>
+                                          <VBox fx:id="ongoingBox1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="273.0" prefWidth="350.0" visible="false">
+                                             <children>
+                                                <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="193.0" prefWidth="350.0" style="-fx-background-color: black;">
+                                                   <VBox.margin>
+                                                      <Insets />
+                                                   </VBox.margin>
+                                                   <children>
+                                                      <ImageView fx:id="ongoingImageView1" fitHeight="211.0" fitWidth="336.0" layoutX="7.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../Images/gameImages/LeagueofLegends.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </children>
+                                                </Pane>
+                                                <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="350.0" style="-fx-background-color: black;">
+                                                   <VBox.margin>
+                                                      <Insets />
+                                                   </VBox.margin>
+                                                   <children>
+                                                      <TextArea fx:id="ongoingText1" editable="false" layoutX="7.0" layoutY="7.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="67.0" prefWidth="336.0" style="-fx-background-color: #13161d;" stylesheets="@../css/transparentTextArea.css" text="Tournament" wrapText="true">
+                                                         <font>
+                                                            <Font name="Arial Bold" size="20.0" />
+                                                         </font>
+                                                      </TextArea>
+                                                   </children>
+                                                </Pane>
+                                             </children>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                             <HBox.margin>
+                                                <Insets left="70.0" right="60.0" top="22.0" />
+                                             </HBox.margin>
+                                          </VBox>
+                                                        <VBox fx:id="ongoingBox2" prefHeight="317.0" prefWidth="456.0" visible="false">
+                                                            <HBox.margin>
+                                                                <Insets bottom="30.0" top="30.0" />
+                                                            </HBox.margin>
+                                                        </VBox>
+                                                    </children>
+                                                    <VBox.margin>
+                                                        <Insets left="100.0" right="100.0" />
+                                                    </VBox.margin>
+                                                </HBox>
+                                                <VBox prefHeight="23.0" prefWidth="1200.0" />
+                                                <HBox prefHeight="34.0" prefWidth="1200.0">
+                                                    <children>
+                                                        <Pane prefHeight="34.0" prefWidth="906.0" />
+                                                    </children>
+                                                </HBox>
+                                            </children>
+                                        </VBox>
+                                        <VBox maxHeight="50.0" prefHeight="0.0" prefWidth="1200.0" />
+                                        <VBox maxHeight="50.0" prefHeight="0.0" prefWidth="1200.0" />
+                                    </children>
+                                </VBox>
+                            </content>
+                        </ScrollPane>
+                        <Pane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: black;" HBox.hgrow="ALWAYS" />
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </center>
+    <bottom>
+        <VBox prefHeight="2.0" prefWidth="1200.0" style="-fx-background-color: #282c34;" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets top="70.0" />
+            </padding>
+        </VBox>
+    </bottom>
+</BorderPane>

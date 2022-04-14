@@ -43,48 +43,57 @@ public class MainPageController {
 
     @FXML private VBox ongoingBox1;
     @FXML private ImageView ongoingImageView1;
-    @FXML private Pane ongoingPane1;
     @FXML private TextArea ongoingText1;
 
     @FXML private VBox ongoingBox2;
     @FXML private ImageView ongoingImageView2;
-    @FXML private Pane ongoingPane2;
     @FXML private TextArea ongoingText2;
 
     @FXML private VBox upcomingBox1;
     @FXML private ImageView upcomingImageView1;
-    @FXML private Pane upcomingPane1;
     @FXML private TextArea upcomingText1;
 
     @FXML private VBox upcomingBox2;
     @FXML private ImageView upcomingImageView2;
-    @FXML private Pane upcomingPane2;
     @FXML private TextArea upcomingText2;
 
     @FXML private VBox previousBox1;
     @FXML private ImageView previousImageView1;
-    @FXML private Pane previousPane1;
     @FXML private TextArea previousText1;
 
     @FXML private VBox previousBox2;
     @FXML private ImageView previousImageView2;
-    @FXML private Pane previousPane2;
     @FXML private TextArea previousText2;
 
+    private ArrayList<NewTournament> ongoingTournaments;
+    private ArrayList<NewTournament> upcomingTournaments;
+    private ArrayList<NewTournament> previousTournaments;
 
     @FXML
     public void initialize() throws IOException {
         TournamentWriterRework.updateTournamentFileLocation();
+        ongoingTournaments = new ArrayList<>();
+        upcomingTournaments = new ArrayList<>();
+        previousTournaments = new ArrayList<>();
         showOngoingTournaments();
         showUpcomingTournaments();
         showPreviousTournaments();
+
+        ongoingBox1.setOnMouseClicked(mouseEvent -> onOngoingTournamentOneClicked());
+
+    }
+
+    @FXML
+    private void onOngoingTournamentOneClicked(){
+        System.out.println("Yo");
+
     }
 
     @FXML
     private void showOngoingTournaments()
     throws IOException{
         try {
-            ArrayList<NewTournament> ongoingTournaments = TournamentReaderRework.showOngoingTournamentsAtMainPage();
+            ongoingTournaments = TournamentReaderRework.showOngoingTournamentsAtMainPage();
             setMainPageWithTournaments(ongoingTournaments, ongoingImageView1, ongoingText1, ongoingBox1,
                     ongoingImageView2, ongoingText2, ongoingBox2);
         } catch (IOException exception){
@@ -96,7 +105,7 @@ public class MainPageController {
     private void showUpcomingTournaments()
             throws IOException{
         try {
-            ArrayList<NewTournament> upcomingTournaments = TournamentReaderRework.showUpcomingTournamentsAtMainPage();
+            upcomingTournaments = TournamentReaderRework.showUpcomingTournamentsAtMainPage();
             setMainPageWithTournaments(upcomingTournaments, upcomingImageView1, upcomingText1, upcomingBox1,
                     upcomingImageView2, upcomingText2, upcomingBox2);
         } catch (IOException exception){
@@ -108,7 +117,7 @@ public class MainPageController {
     private void showPreviousTournaments()
             throws IOException{
         try {
-            ArrayList<NewTournament> previousTournaments = TournamentReaderRework.showPreviousTournamentsAtMainPage();
+            previousTournaments = TournamentReaderRework.showPreviousTournamentsAtMainPage();
             setMainPageWithTournaments(previousTournaments, previousImageView1, previousText1, previousBox1,
                     previousImageView2, previousText2, previousBox2);
         } catch (IOException exception){

@@ -22,8 +22,8 @@ class TournamentWriterReworkTest {
         String status = "Not finished";
         String tournamentName = "Test 6";
         String tournamentHost = "Admin";
-        LocalDate date = LocalDate.parse("2022-04-15");
-        LocalTime time = LocalTime.parse("19:00");
+        LocalDate date = LocalDate.parse("2022-04-14");
+        LocalTime time = LocalTime.parse("18:00");
         String description = "";
         String game = "Valorant";
         String platform = "PC / Mac / Linux";

@@ -38,7 +38,7 @@
             <children>
                 <VBox maxHeight="200.0" prefHeight="131.0" prefWidth="1200.0" style="-fx-background-color: #2e3e4e;" VBox.vgrow="ALWAYS">
                     <children>
-                        <VBox prefHeight="130.0" prefWidth="119.0" style="-fx-background-color: #2e3e4e;" VBox.vgrow="NEVER" />
+                        <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="130.0" prefWidth="119.0" style="-fx-background-color: #2e3e4e;" VBox.vgrow="NEVER" />
                         <HBox prefHeight="120.0" prefWidth="1200.0" VBox.vgrow="ALWAYS">
                             <children>
                                 <ImageView fitHeight="96.0" fitWidth="611.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
@@ -91,20 +91,31 @@
                                                     </children>
                                                 </HBox>
                                                 <VBox prefHeight="0.0" prefWidth="1200.0" />
-                                                <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="317.0" prefWidth="980.0" style="-fx-background-color: #282c34;">
+                                                <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="317.0" prefWidth="900.0" style="-fx-background-color: #282c34;">
                                                     <children>
-                                                        <VBox fx:id="ongoingBox1" prefHeight="317.0" prefWidth="456.0" visible="false">
+                                                        <VBox fx:id="ongoingBox1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="273.0" prefWidth="350.0" visible="false">
                                                             <HBox.margin>
-                                                                <Insets bottom="30.0" left="20.0" top="30.0" />
+                                                                <Insets left="70.0" right="60.0" top="22.0" />
                                                             </HBox.margin>
                                                             <children>
-                                                                <ImageView fx:id="ongoingImageView1" fitHeight="262.0" fitWidth="466.0" pickOnBounds="true" preserveRatio="true" />
-                                                                <Pane fx:id="ongoingPane1" prefHeight="107.0" prefWidth="466.0" style="-fx-background-color: black;">
+                                                <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="193.0" prefWidth="350.0" style="-fx-background-color: black;">
+                                                   <VBox.margin>
+                                                      <Insets />
+                                                   </VBox.margin>
+                                                   <children>
+                                                                      <ImageView fx:id="ongoingImageView1" fitHeight="211.0" fitWidth="336.0" layoutX="7.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../Images/gameImages/LeagueofLegends.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </children>
+                                                </Pane>
+                                                                <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="350.0" style="-fx-background-color: black;">
                                                                     <VBox.margin>
-                                                                        <Insets top="-80.0" />
+                                                                        <Insets />
                                                                     </VBox.margin>
                                                                     <children>
-                                                      <TextArea fx:id="ongoingText1" layoutX="-2.0" layoutY="5.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="67.0" prefWidth="470.0" style="-fx-background-color: transparent;" stylesheets="@../css/transparentTextArea.css" wrapText="true">
+                                                      <TextArea fx:id="ongoingText1" editable="false" layoutX="7.0" layoutY="7.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="67.0" prefWidth="336.0" style="-fx-background-color: #13161d;" stylesheets="@../css/transparentTextArea.css" text="Tournament" wrapText="true">
                                                          <font>
                                                             <Font name="Arial Bold" size="20.0" />
                                                          </font>
@@ -112,16 +123,30 @@
                                                                     </children>
                                                                 </Pane>
                                                             </children>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
                                                         </VBox>
-                                          <VBox fx:id="ongoingBox2" prefHeight="317.0" prefWidth="456.0" visible="false">
+                                          <VBox fx:id="ongoingBox2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="273.0" prefWidth="350.0" visible="false">
                                              <children>
-                                                <ImageView fx:id="ongoingImageView2" fitHeight="262.0" fitWidth="466.0" pickOnBounds="true" preserveRatio="true" />
-                                                <Pane fx:id="ongoingPane2" prefHeight="107.0" prefWidth="466.0" style="-fx-background-color: black;">
+                                                <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="193.0" prefWidth="350.0" style="-fx-background-color: black;">
                                                    <VBox.margin>
-                                                      <Insets top="-80.0" />
+                                                      <Insets />
                                                    </VBox.margin>
                                                    <children>
-                                                      <TextArea fx:id="ongoingText2" layoutX="-2.0" layoutY="5.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="67.0" prefWidth="470.0" style="-fx-background-color: transparent;" stylesheets="@../css/transparentTextArea.css" wrapText="true">
+                                                      <ImageView fx:id="ongoingImageView2" fitHeight="211.0" fitWidth="336.0" layoutX="7.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../Images/gameImages/LeagueofLegends.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </children>
+                                                </Pane>
+                                                <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="350.0" style="-fx-background-color: black;">
+                                                   <VBox.margin>
+                                                      <Insets />
+                                                   </VBox.margin>
+                                                   <children>
+                                                      <TextArea fx:id="ongoingText2" layoutX="7.0" layoutY="7.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="67.0" prefWidth="336.0" style="-fx-background-color: #13161d;" stylesheets="@../css/transparentTextArea.css" text="Tournament" wrapText="true">
                                                          <font>
                                                             <Font name="Arial Bold" size="20.0" />
                                                          </font>
@@ -130,12 +155,12 @@
                                                 </Pane>
                                              </children>
                                              <HBox.margin>
-                                                <Insets bottom="30.0" left="20.0" top="30.0" />
+                                                <Insets top="22.0" />
                                              </HBox.margin>
                                           </VBox>
                                                     </children>
                                                     <VBox.margin>
-                                                        <Insets left="100.0" right="100.0" />
+                                                        <Insets left="150.0" right="150.0" />
                                                     </VBox.margin>
                                                 </HBox>
                                                 <VBox prefHeight="23.0" prefWidth="1200.0" />
@@ -173,17 +198,59 @@
                                                     </children>
                                                 </HBox>
                                                 <VBox prefHeight="0.0" prefWidth="1200.0" />
-                                                <HBox prefHeight="317.0" prefWidth="998.0" style="-fx-background-color: #282c34;">
-                                                    <children>
-                                          <VBox fx:id="upcomingBox1" prefHeight="317.0" prefWidth="456.0" visible="false">
+                                    <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="317.0" prefWidth="900.0" style="-fx-background-color: #282c34;">
+                                       <children>
+                                          <VBox fx:id="upcomingBox1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="273.0" prefWidth="350.0" visible="false">
+                                             <HBox.margin>
+                                                <Insets left="70.0" right="60.0" top="22.0" />
+                                             </HBox.margin>
                                              <children>
-                                                <ImageView fx:id="upcomingImageView1" fitHeight="262.0" fitWidth="466.0" pickOnBounds="true" preserveRatio="true" />
-                                                <Pane fx:id="upcomingPane1" prefHeight="107.0" prefWidth="466.0" style="-fx-background-color: black;">
+                                                <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="193.0" prefWidth="350.0" style="-fx-background-color: black;">
                                                    <VBox.margin>
-                                                      <Insets top="-80.0" />
+                                                      <Insets />
                                                    </VBox.margin>
                                                    <children>
-                                                      <TextArea fx:id="upcomingText1" layoutX="-2.0" layoutY="5.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="67.0" prefWidth="470.0" style="-fx-background-color: transparent;" stylesheets="@../css/transparentTextArea.css" wrapText="true">
+                                                      <ImageView fx:id="upcomingImageView1" fitHeight="211.0" fitWidth="336.0" layoutX="7.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../Images/gameImages/LeagueofLegends.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </children>
+                                                </Pane>
+                                                <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="350.0" style="-fx-background-color: black;">
+                                                   <VBox.margin>
+                                                      <Insets />
+                                                   </VBox.margin>
+                                                   <children>
+                                                      <TextArea fx:id="upcomingText1" layoutX="7.0" layoutY="7.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="67.0" prefWidth="336.0" style="-fx-background-color: #13161d;" stylesheets="@../css/transparentTextArea.css" text="Tournament" wrapText="true">
+                                                         <font>
+                                                            <Font name="Arial Bold" size="20.0" />
+                                                         </font>
+                                                      </TextArea>
+                                                   </children>
+                                                </Pane>
+                                             </children>
+                                          </VBox>
+                                          <VBox fx:id="upcomingBox2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="273.0" prefWidth="350.0" visible="false">
+                                             <children>
+                                                <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="193.0" prefWidth="350.0" style="-fx-background-color: black;">
+                                                   <VBox.margin>
+                                                      <Insets />
+                                                   </VBox.margin>
+                                                   <children>
+                                                      <ImageView fx:id="upcomingImageView2" fitHeight="211.0" fitWidth="336.0" layoutX="7.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../Images/gameImages/LeagueofLegends.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </children>
+                                                </Pane>
+                                                <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="350.0" style="-fx-background-color: black;">
+                                                   <VBox.margin>
+                                                      <Insets />
+                                                   </VBox.margin>
+                                                   <children>
+                                                      <TextArea fx:id="upcomingText2" layoutX="7.0" layoutY="7.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="67.0" prefWidth="336.0" style="-fx-background-color: #13161d;" stylesheets="@../css/transparentTextArea.css" text="Tournament" wrapText="true">
                                                          <font>
                                                             <Font name="Arial Bold" size="20.0" />
                                                          </font>
@@ -192,34 +259,14 @@
                                                 </Pane>
                                              </children>
                                              <HBox.margin>
-                                                <Insets bottom="30.0" left="20.0" top="30.0" />
+                                                <Insets top="22.0" />
                                              </HBox.margin>
                                           </VBox>
-                                          <VBox fx:id="upcomingBox2" prefHeight="317.0" prefWidth="456.0" visible="false">
-                                             <children>
-                                                <ImageView fx:id="upcomingImageView2" fitHeight="262.0" fitWidth="466.0" pickOnBounds="true" preserveRatio="true" />
-                                                <Pane fx:id="upcomingPane2" prefHeight="107.0" prefWidth="466.0" style="-fx-background-color: black;">
-                                                   <VBox.margin>
-                                                      <Insets top="-80.0" />
-                                                   </VBox.margin>
-                                                   <children>
-                                                      <TextArea fx:id="upcomingText2" layoutX="-2.0" layoutY="5.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="67.0" prefWidth="470.0" style="-fx-background-color: transparent;" stylesheets="@../css/transparentTextArea.css" wrapText="true">
-                                                         <font>
-                                                            <Font name="Arial Bold" size="20.0" />
-                                                         </font>
-                                                      </TextArea>
-                                                   </children>
-                                                </Pane>
-                                             </children>
-                                             <HBox.margin>
-                                                <Insets bottom="30.0" left="30.0" top="30.0" />
-                                             </HBox.margin>
-                                          </VBox>
-                                                    </children>
-                                                    <VBox.margin>
-                                                        <Insets left="100.0" right="100.0" />
-                                                    </VBox.margin>
-                                                </HBox>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets left="150.0" right="150.0" />
+                                       </VBox.margin>
+                                    </HBox>
                                                 <VBox prefHeight="23.0" prefWidth="1200.0" />
                                                 <HBox prefHeight="34.0" prefWidth="1200.0">
                                                     <children>
@@ -255,17 +302,59 @@
                                                     </children>
                                                 </HBox>
                                                 <VBox prefHeight="0.0" prefWidth="1200.0" />
-                                                <HBox prefHeight="317.0" prefWidth="998.0" style="-fx-background-color: #282c34;">
-                                                    <children>
-                                          <VBox fx:id="previousBox1" prefHeight="317.0" prefWidth="456.0" visible="false">
+                                    <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="317.0" prefWidth="900.0" style="-fx-background-color: #282c34;">
+                                       <children>
+                                          <VBox fx:id="previousBox1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="273.0" prefWidth="350.0" visible="false">
+                                             <HBox.margin>
+                                                <Insets left="70.0" right="60.0" top="22.0" />
+                                             </HBox.margin>
                                              <children>
-                                                <ImageView fx:id="previousImageView1" fitHeight="262.0" fitWidth="466.0" pickOnBounds="true" preserveRatio="true" />
-                                                <Pane fx:id="previousPane1" prefHeight="107.0" prefWidth="466.0" style="-fx-background-color: black;">
+                                                <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="193.0" prefWidth="350.0" style="-fx-background-color: black;">
                                                    <VBox.margin>
-                                                      <Insets top="-80.0" />
+                                                      <Insets />
                                                    </VBox.margin>
                                                    <children>
-                                                      <TextArea fx:id="previousText1" layoutX="-2.0" layoutY="5.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="67.0" prefWidth="470.0" style="-fx-background-color: transparent;" stylesheets="@../css/transparentTextArea.css" wrapText="true">
+                                                      <ImageView fx:id="previousImageView1" fitHeight="211.0" fitWidth="336.0" layoutX="7.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../Images/gameImages/LeagueofLegends.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </children>
+                                                </Pane>
+                                                <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="350.0" style="-fx-background-color: black;">
+                                                   <VBox.margin>
+                                                      <Insets />
+                                                   </VBox.margin>
+                                                   <children>
+                                                      <TextArea fx:id="previousText1" layoutX="7.0" layoutY="7.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="67.0" prefWidth="336.0" style="-fx-background-color: #13161d;" stylesheets="@../css/transparentTextArea.css" text="Tournament" wrapText="true">
+                                                         <font>
+                                                            <Font name="Arial Bold" size="20.0" />
+                                                         </font>
+                                                      </TextArea>
+                                                   </children>
+                                                </Pane>
+                                             </children>
+                                          </VBox>
+                                          <VBox fx:id="previousBox2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="273.0" prefWidth="350.0" visible="false">
+                                             <children>
+                                                <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="193.0" prefWidth="350.0" style="-fx-background-color: black;">
+                                                   <VBox.margin>
+                                                      <Insets />
+                                                   </VBox.margin>
+                                                   <children>
+                                                      <ImageView fx:id="previousImageView2" fitHeight="211.0" fitWidth="336.0" layoutX="7.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../Images/gameImages/LeagueofLegends.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </children>
+                                                </Pane>
+                                                <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="350.0" style="-fx-background-color: black;">
+                                                   <VBox.margin>
+                                                      <Insets />
+                                                   </VBox.margin>
+                                                   <children>
+                                                      <TextArea fx:id="previousText2" layoutX="7.0" layoutY="7.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="67.0" prefWidth="336.0" style="-fx-background-color: #13161d;" stylesheets="@../css/transparentTextArea.css" text="Tournament" wrapText="true">
                                                          <font>
                                                             <Font name="Arial Bold" size="20.0" />
                                                          </font>
@@ -274,34 +363,14 @@
                                                 </Pane>
                                              </children>
                                              <HBox.margin>
-                                                <Insets bottom="30.0" left="20.0" top="30.0" />
+                                                <Insets top="22.0" />
                                              </HBox.margin>
                                           </VBox>
-                                          <VBox fx:id="previousBox2" prefHeight="317.0" prefWidth="456.0" visible="false">
-                                             <children>
-                                                <ImageView fx:id="previousImageView2" fitHeight="262.0" fitWidth="466.0" pickOnBounds="true" preserveRatio="true" />
-                                                <Pane fx:id="previousPane2" prefHeight="107.0" prefWidth="466.0" style="-fx-background-color: black;">
-                                                   <VBox.margin>
-                                                      <Insets top="-80.0" />
-                                                   </VBox.margin>
-                                                   <children>
-                                                      <TextArea fx:id="previousText2" layoutX="-2.0" layoutY="5.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="67.0" prefWidth="470.0" style="-fx-background-color: transparent;" stylesheets="@../css/transparentTextArea.css" wrapText="true">
-                                                         <font>
-                                                            <Font name="Arial Bold" size="20.0" />
-                                                         </font>
-                                                      </TextArea>
-                                                   </children>
-                                                </Pane>
-                                             </children>
-                                             <HBox.margin>
-                                                <Insets bottom="30.0" left="20.0" top="30.0" />
-                                             </HBox.margin>
-                                          </VBox>
-                                                    </children>
-                                                    <VBox.margin>
-                                                        <Insets left="100.0" right="100.0" />
-                                                    </VBox.margin>
-                                                </HBox>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets left="150.0" right="150.0" />
+                                       </VBox.margin>
+                                    </HBox>
                                                 <VBox prefHeight="23.0" prefWidth="1200.0" />
                                                 <HBox prefHeight="34.0" prefWidth="1200.0">
                                                     <children>
