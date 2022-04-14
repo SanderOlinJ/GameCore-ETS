@@ -3,7 +3,6 @@ package edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Match;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.NewTournament;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.utilities.Utilities;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -166,12 +165,16 @@ public class TournamentReaderRework {
     }
 
 
-    public static ArrayList<NewTournament> showOngoingTournamentsAtMainPage()
+    public static ArrayList<NewTournament> readAllOngoingTournamentsToList(int n)
     throws IOException{
+
         ArrayList<NewTournament> ongoingTournaments = new ArrayList<>();
         try {
             ArrayList<String> tournaments = readThroughOngoingTournaments();
-            for (int i = 0; i < tournaments.size() && i < 2; i++){
+            if (n == 0){
+                n = tournaments.size();
+            }
+            for (int i = 0; i < tournaments.size() && i < n; i++){
                 ongoingTournaments.add(readTournamentFromFile(tournaments.get(i)));
             }
         } catch (IOException exception){
@@ -181,12 +184,15 @@ public class TournamentReaderRework {
         return ongoingTournaments;
     }
 
-    public static ArrayList<NewTournament> showUpcomingTournamentsAtMainPage()
+    public static ArrayList<NewTournament> readAllUpcomingTournamentsToList(int n)
             throws IOException{
         ArrayList<NewTournament> upcomingTournaments = new ArrayList<>();
         try {
             ArrayList<String> tournaments = readThroughUpcomingTournaments();
-            for (int i = 0; i < tournaments.size() && i < 2; i++){
+            if (n == 0){
+                n = tournaments.size();
+            }
+            for (int i = 0; i < tournaments.size() && i < n; i++){
                 upcomingTournaments.add(readTournamentFromFile(tournaments.get(i)));
             }
         } catch (IOException exception){
@@ -196,12 +202,15 @@ public class TournamentReaderRework {
         return upcomingTournaments;
     }
 
-    public static ArrayList<NewTournament> showPreviousTournamentsAtMainPage()
+    public static ArrayList<NewTournament> readAllPreviousTournamentsToList(int n)
             throws IOException{
         ArrayList<NewTournament> previousTournaments = new ArrayList<>();
         try {
             ArrayList<String> tournaments = readThroughPreviousTournaments();
-            for (int i = 0; i < tournaments.size() && i < 2; i++){
+            if (n == 0){
+                n = tournaments.size();
+            }
+            for (int i = 0; i < tournaments.size() && i < n; i++){
                 previousTournaments.add(readTournamentFromFile(tournaments.get(i)));
             }
         } catch (IOException exception){

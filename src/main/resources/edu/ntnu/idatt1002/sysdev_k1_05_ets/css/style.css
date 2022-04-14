@@ -133,3 +133,9 @@ styling for combobox prompt text and text field
     -fx-highlight-fill: #7ecfff;
 }
 
+.button {
+    -fx-background-color: linear-gradient(#fa8f31,#ff5400);
+    -fx-background-radius: 30;
+    -fx-background-insets: 0;
+    -fx-text-fill: white;
+}

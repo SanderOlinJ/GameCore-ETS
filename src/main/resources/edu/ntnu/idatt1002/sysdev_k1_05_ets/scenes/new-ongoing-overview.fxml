@@ -18,7 +18,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.OngoingTournamentsController">
     <top>
-        <MenuBar BorderPane.alignment="CENTER">
+        <MenuBar fx:id="menuBar" BorderPane.alignment="CENTER">
             <menus>
                 <Menu fx:id="homeButton" disable="true" mnemonicParsing="false" text="Home" />
                 <Menu fx:id="tournamentButton" mnemonicParsing="false" text="Tournaments">
@@ -36,7 +36,7 @@
             <children>
                 <VBox maxHeight="200.0" prefHeight="131.0" prefWidth="1200.0" style="-fx-background-color: #2e3e4e;" VBox.vgrow="ALWAYS">
                     <children>
-                        <VBox prefHeight="130.0" prefWidth="119.0" style="-fx-background-color: #2e3e4e;" VBox.vgrow="NEVER" />
+                        <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="130.0" prefWidth="119.0" style="-fx-background-color: #2e3e4e;" VBox.vgrow="NEVER" />
                         <HBox prefHeight="120.0" prefWidth="1200.0" VBox.vgrow="ALWAYS">
                             <children>
                                 <ImageView fitHeight="96.0" fitWidth="611.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
@@ -47,22 +47,20 @@
                                         <Insets bottom="10.0" left="20.0" top="30.0" />
                                     </HBox.margin>
                                 </ImageView>
-                                <Pane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" HBox.hgrow="ALWAYS" />
                             </children>
                         </HBox>
                     </children>
                 </VBox>
-                <HBox prefHeight="1395.0" prefWidth="1200.0" VBox.vgrow="ALWAYS">
+                <HBox prefHeight="800.0" prefWidth="1200.0" VBox.vgrow="ALWAYS">
                     <children>
                         <Pane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: black;" HBox.hgrow="ALWAYS" />
-                        <ScrollPane hbarPolicy="NEVER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" stylesheets="@../css/style.css">
+                        <ScrollPane hbarPolicy="NEVER" maxWidth="1200.0" prefHeight="800.0" prefWidth="1200.0" stylesheets="@../css/style.css">
                             <content>
-                                <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="1704.0" prefWidth="1200.0" style="-fx-background-color: #13161d;">
+                                <VBox prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #13161d;">
                                     <children>
-                                        <VBox maxHeight="50.0" prefHeight="0.0" prefWidth="1200.0" />
-                                        <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="1703.0" prefWidth="1200.0">
+                                        <VBox prefHeight="800.0" prefWidth="1200.0">
                                             <children>
-                                                <HBox maxHeight="137.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="137.0" prefWidth="1196.0" style="-fx-background-color: #13161d;" VBox.vgrow="ALWAYS">
+                                                <HBox maxHeight="137.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="137.0" prefWidth="1200.0" style="-fx-background-color: #13161d;" VBox.vgrow="ALWAYS">
                                                     <children>
                                                         <Text fill="#fa8f31" strokeType="OUTSIDE" strokeWidth="0.0" text="Ongoing tournaments" HBox.hgrow="ALWAYS">
                                                             <font>
@@ -74,40 +72,39 @@
                                                         </Text>
                                                     </children>
                                                 </HBox>
-                                                <VBox prefHeight="0.0" prefWidth="1200.0" />
-                                                <HBox fx:id="box1" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="1021.0" style="-fx-background-color: #282c34;" visible="false">
-                                                    <children>
+                                    <HBox fx:id="box1" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="1021.0" style="-fx-background-color: #282c34;" visible="false">
+                                       <children>
                                           <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="417.0">
                                              <children>
-                                                <ImageView fx:id="imageView1" fitHeight="230.0" fitWidth="417.0" pickOnBounds="true" preserveRatio="true" />
+                                                <ImageView fx:id="imageView1" fitHeight="230.0" fitWidth="417.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../Images/gameImages/Valorant.png" />
+                                                   </image>
+                                                </ImageView>
                                              </children>
                                           </VBox>
-                                                        <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="604.0">
-                                                            <HBox.margin>
-                                                                <Insets />
-                                                            </HBox.margin>
+                                          <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="604.0">
+                                             <HBox.margin>
+                                                <Insets />
+                                             </HBox.margin>
                                              <children>
-                                                <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="454.0">
+                                                <Text fx:id="name1" fill="#fa8f31" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.2" text="Turnering" wrappingWidth="472.13671875">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="24.0" />
+                                                   </font>
                                                    <VBox.margin>
                                                       <Insets left="15.0" top="10.0" />
                                                    </VBox.margin>
-                                                   <children>
-                                                      <Text fx:id="name1" fill="#fa8f31" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.2" wrappingWidth="472.13671875">
-                                                         <font>
-                                                            <Font name="Arial Bold" size="24.0" />
-                                                         </font>
-                                                      </Text>
-                                                   </children>
-                                                </HBox>
-                                                <Text fx:id="game1" fill="WHITE" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.1" wrappingWidth="548.13671875">
+                                                </Text>
+                                                <Text fx:id="game1" fill="WHITE" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.1" text="Valorant" wrappingWidth="548.13671875">
                                                    <font>
                                                       <Font name="Arial" size="18.0" />
                                                    </font>
                                                    <VBox.margin>
-                                                      <Insets left="15.0" top="5.0" />
+                                                      <Insets left="18.0" top="5.0" />
                                                    </VBox.margin>
                                                 </Text>
-                                                <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="602.0">
+                                                <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="593.0">
                                                    <children>
                                                       <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="183.0">
                                                          <children>
@@ -165,7 +162,11 @@
                                                             </Text>
                                                          </children>
                                                       </HBox>
-                                                   </children></HBox>
+                                                   </children>
+                                                   <VBox.margin>
+                                                      <Insets left="5.0" top="10.0" />
+                                                   </VBox.margin>
+                                                </HBox>
                                                 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="545.0">
                                                    <children>
                                                       <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="183.0">
@@ -213,6 +214,9 @@
                                                          </HBox.margin>
                                                       </Text>
                                                    </children>
+                                                   <VBox.margin>
+                                                      <Insets left="5.0" />
+                                                   </VBox.margin>
                                                 </HBox>
                                                 <HBox prefHeight="100.0" prefWidth="200.0" />
                                                 <Button fx:id="overviewButton1" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="33.0" prefWidth="119.0" stylesheets="@../css/style.css" text="Overview" textFill="WHITE">
@@ -227,18 +231,21 @@
                                                    </VBox.margin>
                                                 </Button>
                                              </children>
-                                                        </VBox>
-                                                    </children>
-                                                    <VBox.margin>
-                                                        <Insets left="100.0" right="100.0" />
-                                                    </VBox.margin>
-                                                </HBox>
-                                                <VBox prefHeight="23.0" prefWidth="1200.0" />
+                                          </VBox>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets left="89.5" right="89.5" />
+                                       </VBox.margin>
+                                    </HBox>
                                     <HBox fx:id="box2" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="1021.0" style="-fx-background-color: #282c34;" visible="false">
                                        <children>
                                           <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="417.0">
                                              <children>
-                                                <ImageView fx:id="imageView2" fitHeight="230.0" fitWidth="417.0" pickOnBounds="true" preserveRatio="true" />
+                                                <ImageView fx:id="imageView2" fitHeight="230.0" fitWidth="417.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../Images/gameImages/Valorant.png" />
+                                                   </image>
+                                                </ImageView>
                                              </children>
                                           </VBox>
                                           <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="604.0">
@@ -246,27 +253,23 @@
                                                 <Insets />
                                              </HBox.margin>
                                              <children>
-                                                <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="454.0">
+                                                <Text fx:id="name2" fill="#fa8f31" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.2" text="Turnering" wrappingWidth="472.13671875">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="24.0" />
+                                                   </font>
                                                    <VBox.margin>
                                                       <Insets left="15.0" top="10.0" />
                                                    </VBox.margin>
-                                                   <children>
-                                                      <Text fx:id="name2" fill="#fa8f31" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.2" wrappingWidth="472.13671875">
-                                                         <font>
-                                                            <Font name="Arial Bold" size="24.0" />
-                                                         </font>
-                                                      </Text>
-                                                   </children>
-                                                </HBox>
-                                                <Text fx:id="game2" fill="WHITE" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.1" wrappingWidth="548.13671875">
+                                                </Text>
+                                                <Text fx:id="game2" fill="WHITE" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.1" text="Valorant" wrappingWidth="548.13671875">
                                                    <font>
                                                       <Font name="Arial" size="18.0" />
                                                    </font>
                                                    <VBox.margin>
-                                                      <Insets left="15.0" top="5.0" />
+                                                      <Insets left="18.0" top="5.0" />
                                                    </VBox.margin>
                                                 </Text>
-                                                <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="602.0">
+                                                <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="593.0">
                                                    <children>
                                                       <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="183.0">
                                                          <children>
@@ -325,6 +328,9 @@
                                                          </children>
                                                       </HBox>
                                                    </children>
+                                                   <VBox.margin>
+                                                      <Insets left="5.0" top="10.0" />
+                                                   </VBox.margin>
                                                 </HBox>
                                                 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="545.0">
                                                    <children>
@@ -373,6 +379,9 @@
                                                          </HBox.margin>
                                                       </Text>
                                                    </children>
+                                                   <VBox.margin>
+                                                      <Insets left="5.0" />
+                                                   </VBox.margin>
                                                 </HBox>
                                                 <HBox prefHeight="100.0" prefWidth="200.0" />
                                                 <Button fx:id="overviewButton2" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="33.0" prefWidth="119.0" stylesheets="@../css/style.css" text="Overview" textFill="WHITE">
@@ -390,15 +399,18 @@
                                           </VBox>
                                        </children>
                                        <VBox.margin>
-                                          <Insets left="100.0" right="100.0" />
+                                          <Insets left="89.5" right="89.5" top="50.0" />
                                        </VBox.margin>
                                     </HBox>
-                                    <VBox prefHeight="23.0" prefWidth="1200.0" />
                                     <HBox fx:id="box3" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="1021.0" style="-fx-background-color: #282c34;" visible="false">
                                        <children>
                                           <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="417.0">
                                              <children>
-                                                <ImageView fx:id="imageView3" fitHeight="230.0" fitWidth="417.0" pickOnBounds="true" preserveRatio="true" />
+                                                <ImageView fx:id="imageView3" fitHeight="230.0" fitWidth="417.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../Images/gameImages/Valorant.png" />
+                                                   </image>
+                                                </ImageView>
                                              </children>
                                           </VBox>
                                           <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="604.0">
@@ -406,27 +418,23 @@
                                                 <Insets />
                                              </HBox.margin>
                                              <children>
-                                                <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="454.0">
+                                                <Text fx:id="name3" fill="#fa8f31" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.2" text="Turnering" wrappingWidth="472.13671875">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="24.0" />
+                                                   </font>
                                                    <VBox.margin>
                                                       <Insets left="15.0" top="10.0" />
                                                    </VBox.margin>
-                                                   <children>
-                                                      <Text fx:id="name3" fill="#fa8f31" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.2" wrappingWidth="472.13671875">
-                                                         <font>
-                                                            <Font name="Arial Bold" size="24.0" />
-                                                         </font>
-                                                      </Text>
-                                                   </children>
-                                                </HBox>
-                                                <Text fx:id="game3" fill="WHITE" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.1" wrappingWidth="548.13671875">
+                                                </Text>
+                                                <Text fx:id="game3" fill="WHITE" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.1" text="Valorant" wrappingWidth="548.13671875">
                                                    <font>
                                                       <Font name="Arial" size="18.0" />
                                                    </font>
                                                    <VBox.margin>
-                                                      <Insets left="15.0" top="5.0" />
+                                                      <Insets left="18.0" top="5.0" />
                                                    </VBox.margin>
                                                 </Text>
-                                                <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="602.0">
+                                                <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="593.0">
                                                    <children>
                                                       <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="183.0">
                                                          <children>
@@ -485,6 +493,9 @@
                                                          </children>
                                                       </HBox>
                                                    </children>
+                                                   <VBox.margin>
+                                                      <Insets left="5.0" top="10.0" />
+                                                   </VBox.margin>
                                                 </HBox>
                                                 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="545.0">
                                                    <children>
@@ -533,6 +544,9 @@
                                                          </HBox.margin>
                                                       </Text>
                                                    </children>
+                                                   <VBox.margin>
+                                                      <Insets left="5.0" />
+                                                   </VBox.margin>
                                                 </HBox>
                                                 <HBox prefHeight="100.0" prefWidth="200.0" />
                                                 <Button fx:id="overviewButton3" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="33.0" prefWidth="119.0" stylesheets="@../css/style.css" text="Overview" textFill="WHITE">
@@ -550,15 +564,18 @@
                                           </VBox>
                                        </children>
                                        <VBox.margin>
-                                          <Insets left="100.0" right="100.0" />
+                                          <Insets left="89.5" right="89.5" top="50.0" />
                                        </VBox.margin>
                                     </HBox>
-                                    <VBox prefHeight="23.0" prefWidth="1200.0" />
                                     <HBox fx:id="box4" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="1021.0" style="-fx-background-color: #282c34;" visible="false">
                                        <children>
                                           <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="417.0">
                                              <children>
-                                                <ImageView fx:id="imageView4" fitHeight="230.0" fitWidth="417.0" pickOnBounds="true" preserveRatio="true" />
+                                                <ImageView fx:id="imageView4" fitHeight="230.0" fitWidth="417.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../Images/gameImages/Valorant.png" />
+                                                   </image>
+                                                </ImageView>
                                              </children>
                                           </VBox>
                                           <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="604.0">
@@ -566,27 +583,23 @@
                                                 <Insets />
                                              </HBox.margin>
                                              <children>
-                                                <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="454.0">
+                                                <Text fx:id="name4" fill="#fa8f31" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.2" text="Turnering" wrappingWidth="472.13671875">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="24.0" />
+                                                   </font>
                                                    <VBox.margin>
                                                       <Insets left="15.0" top="10.0" />
                                                    </VBox.margin>
-                                                   <children>
-                                                      <Text fx:id="name4" fill="#fa8f31" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.2" wrappingWidth="472.13671875">
-                                                         <font>
-                                                            <Font name="Arial Bold" size="24.0" />
-                                                         </font>
-                                                      </Text>
-                                                   </children>
-                                                </HBox>
-                                                <Text fx:id="game4" fill="WHITE" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.1" wrappingWidth="548.13671875">
+                                                </Text>
+                                                <Text fx:id="game4" fill="WHITE" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.1" text="Valorant" wrappingWidth="548.13671875">
                                                    <font>
                                                       <Font name="Arial" size="18.0" />
                                                    </font>
                                                    <VBox.margin>
-                                                      <Insets left="15.0" top="5.0" />
+                                                      <Insets left="18.0" top="5.0" />
                                                    </VBox.margin>
                                                 </Text>
-                                                <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="602.0">
+                                                <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="593.0">
                                                    <children>
                                                       <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="183.0">
                                                          <children>
@@ -645,6 +658,9 @@
                                                          </children>
                                                       </HBox>
                                                    </children>
+                                                   <VBox.margin>
+                                                      <Insets left="5.0" top="10.0" />
+                                                   </VBox.margin>
                                                 </HBox>
                                                 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="545.0">
                                                    <children>
@@ -693,6 +709,9 @@
                                                          </HBox.margin>
                                                       </Text>
                                                    </children>
+                                                   <VBox.margin>
+                                                      <Insets left="5.0" />
+                                                   </VBox.margin>
                                                 </HBox>
                                                 <HBox prefHeight="100.0" prefWidth="200.0" />
                                                 <Button fx:id="overviewButton4" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="33.0" prefWidth="119.0" stylesheets="@../css/style.css" text="Overview" textFill="WHITE">
@@ -710,15 +729,18 @@
                                           </VBox>
                                        </children>
                                        <VBox.margin>
-                                          <Insets left="100.0" right="100.0" />
+                                          <Insets left="89.5" right="89.5" top="50.0" />
                                        </VBox.margin>
                                     </HBox>
-                                    <VBox prefHeight="23.0" prefWidth="1200.0" />
                                     <HBox fx:id="box5" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="1021.0" style="-fx-background-color: #282c34;" visible="false">
                                        <children>
                                           <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="417.0">
                                              <children>
-                                                <ImageView fx:id="imageView311" fitHeight="230.0" fitWidth="417.0" pickOnBounds="true" preserveRatio="true" />
+                                                <ImageView fx:id="imageView5" fitHeight="230.0" fitWidth="417.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../Images/gameImages/Valorant.png" />
+                                                   </image>
+                                                </ImageView>
                                              </children>
                                           </VBox>
                                           <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="604.0">
@@ -726,27 +748,23 @@
                                                 <Insets />
                                              </HBox.margin>
                                              <children>
-                                                <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="454.0">
+                                                <Text fx:id="name5" fill="#fa8f31" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.2" text="Turnering" wrappingWidth="472.13671875">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="24.0" />
+                                                   </font>
                                                    <VBox.margin>
                                                       <Insets left="15.0" top="10.0" />
                                                    </VBox.margin>
-                                                   <children>
-                                                      <Text fx:id="name5" fill="#fa8f31" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.2" wrappingWidth="472.13671875">
-                                                         <font>
-                                                            <Font name="Arial Bold" size="24.0" />
-                                                         </font>
-                                                      </Text>
-                                                   </children>
-                                                </HBox>
-                                                <Text fx:id="game5" fill="WHITE" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.1" wrappingWidth="548.13671875">
+                                                </Text>
+                                                <Text fx:id="game5" fill="WHITE" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.1" text="Valorant" wrappingWidth="548.13671875">
                                                    <font>
                                                       <Font name="Arial" size="18.0" />
                                                    </font>
                                                    <VBox.margin>
-                                                      <Insets left="15.0" top="5.0" />
+                                                      <Insets left="18.0" top="5.0" />
                                                    </VBox.margin>
                                                 </Text>
-                                                <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="602.0">
+                                                <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="593.0">
                                                    <children>
                                                       <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="183.0">
                                                          <children>
@@ -805,6 +823,9 @@
                                                          </children>
                                                       </HBox>
                                                    </children>
+                                                   <VBox.margin>
+                                                      <Insets left="5.0" top="10.0" />
+                                                   </VBox.margin>
                                                 </HBox>
                                                 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="545.0">
                                                    <children>
@@ -853,6 +874,9 @@
                                                          </HBox.margin>
                                                       </Text>
                                                    </children>
+                                                   <VBox.margin>
+                                                      <Insets left="5.0" />
+                                                   </VBox.margin>
                                                 </HBox>
                                                 <HBox prefHeight="100.0" prefWidth="200.0" />
                                                 <Button fx:id="overviewButton5" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="33.0" prefWidth="119.0" stylesheets="@../css/style.css" text="Overview" textFill="WHITE">
@@ -870,7 +894,7 @@
                                           </VBox>
                                        </children>
                                        <VBox.margin>
-                                          <Insets left="100.0" right="100.0" />
+                                          <Insets left="89.5" right="89.5" top="50.0" />
                                        </VBox.margin>
                                     </HBox>
                                             </children>

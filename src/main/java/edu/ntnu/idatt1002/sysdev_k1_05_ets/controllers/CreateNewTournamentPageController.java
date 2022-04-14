@@ -37,7 +37,7 @@ import java.io.IOException;
 
 
 
-public class CreateNewTournamentPageController implements Initializable {
+public class CreateNewTournamentPageController{
 
     private Scene scene;
     private Stage stage;
@@ -68,7 +68,7 @@ public class CreateNewTournamentPageController implements Initializable {
     @FXML private CheckBox activatePrizePool;
 
     @FXML
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void initialize() {
 
         try {
             TournamentWriterRework.updateTournamentFileLocation();

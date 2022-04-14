@@ -20,12 +20,12 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.MainPageController">
     <top>
-        <MenuBar BorderPane.alignment="CENTER">
+        <MenuBar fx:id="menuBar" BorderPane.alignment="CENTER">
             <menus>
                 <Menu fx:id="homeButton" disable="true" mnemonicParsing="false" text="Home" />
                 <Menu fx:id="tournamentButton" mnemonicParsing="false" text="Tournaments">
                     <items>
-                        <MenuItem fx:id="ongoingTournamentsButton" mnemonicParsing="false" text="Ongoing tournaments" />
+                        <MenuItem fx:id="ongoingTournamentsButton" mnemonicParsing="false" onAction="#onOngoingTournamentsButtonPressed" text="Ongoing tournaments" />
                         <MenuItem fx:id="previousTournamentButton" mnemonicParsing="false" text="Previous tournaments" />
                     </items>
                 </Menu>
