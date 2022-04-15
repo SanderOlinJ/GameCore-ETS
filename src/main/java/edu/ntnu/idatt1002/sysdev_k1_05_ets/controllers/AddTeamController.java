@@ -253,4 +253,5 @@ public class AddTeamController {
     public static void setTournament(NewTournament newTournament) {
         tournament = newTournament;
     }
+    public static int getMaxTeams(){return maxTeams;}
 }

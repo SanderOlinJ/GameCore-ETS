@@ -101,7 +101,7 @@
                                           <Insets right="2.0" />
                                        </HBox.margin>
                                     </Button>
-                                                <Button disable="true" mnemonicParsing="false" onAction="#setMatchesScene" prefHeight="55.0" prefWidth="275.0" style="-fx-background-color: #2e3e4e;" text="Matches" textFill="WHITE">
+                                                <Button mnemonicParsing="false" onAction="#setMatchesScene" prefHeight="55.0" prefWidth="275.0" style="-fx-background-color: #2e3e4e;" text="Matches" textFill="WHITE">
                                                     <font>
                                                         <Font name="Arial Bold" size="20.0" />
                                                     </font>
@@ -109,7 +109,7 @@
                                                         <Cursor fx:constant="HAND" />
                                                     </cursor>
                                                 </Button>
-                                                <Button disable="true" mnemonicParsing="false" onAction="#setResultsScene" prefHeight="55.0" prefWidth="275.0" style="-fx-background-color: #2e3e4e;" text="Results" textFill="WHITE">
+                                                <Button mnemonicParsing="false" onAction="#setResultsScene" prefHeight="55.0" prefWidth="275.0" style="-fx-background-color: #2e3e4e;" text="Results" textFill="WHITE">
                                                     <font>
                                                         <Font name="Arial Bold" size="20.0" />
                                                     </font>

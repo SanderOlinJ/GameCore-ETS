@@ -55,6 +55,7 @@ public class BracketController {
     @FXML private Label team29;
     @FXML private Label team30;
     @FXML private Label team31;
+    @FXML Label nameOfTournament;
 
 
     @FXML
@@ -102,6 +103,7 @@ public class BracketController {
         }
 
         randomize();
+        nameOfTournament.setText(tournamentName);
     }
 
     public void randomize(){
@@ -218,6 +220,7 @@ public class BracketController {
         tournamentName = name;
     }
 
+    public static String getTournamentName(){return tournamentName;}
     public void switchToMatches(){
 
     }

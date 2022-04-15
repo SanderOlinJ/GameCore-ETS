@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -18,15 +19,15 @@ import java.util.Objects;
 
 public class ResultsController {
 
-    @FXML
-    private VBox resultBox;
+    @FXML private VBox resultBox;
+    @FXML Label tournamentName;
     private static ArrayList<HBox> matches = new ArrayList<>();
 
     public void initialize(){
         for (int i = 0; i < matches.size(); i++){
             resultBox.getChildren().add(matches.get(i));
         }
-
+        tournamentName.setText(BracketController.getTournamentName());
     }
 
     @FXML

@@ -8,20 +8,83 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Objects;
 
 public class SetTimeController {
     @FXML ChoiceBox hoursMatch;
     @FXML ChoiceBox minutesMatch;
+    @FXML ChoiceBox hoursMatch1;
+    @FXML ChoiceBox minutesMatch1;
+    @FXML ChoiceBox hoursMatch2;
+    @FXML ChoiceBox minutesMatch2;
+    @FXML ChoiceBox hoursMatch3;
+    @FXML ChoiceBox minutesMatch3;
+    @FXML ChoiceBox hoursMatch4;
+    @FXML ChoiceBox minutesMatch4;
+    @FXML ChoiceBox hoursMatch5;
+    @FXML ChoiceBox minutesMatch5;
+    @FXML ChoiceBox hoursMatch6;
+    @FXML ChoiceBox minutesMatch6;
+    @FXML ChoiceBox hoursMatch7;
+    @FXML ChoiceBox minutesMatch7;
+    @FXML ChoiceBox hoursMatch8;
+    @FXML ChoiceBox minutesMatch8;
+    @FXML ChoiceBox hoursMatch9;
+    @FXML ChoiceBox minutesMatch9;
+    @FXML ChoiceBox hoursMatch10;
+    @FXML ChoiceBox minutesMatch10;
+    @FXML ChoiceBox hoursMatch11;
+    @FXML ChoiceBox minutesMatch11;
+    @FXML ChoiceBox hoursMatch12;
+    @FXML ChoiceBox minutesMatch12;
+    @FXML ChoiceBox hoursMatch13;
+    @FXML ChoiceBox minutesMatch13;
+    @FXML ChoiceBox hoursMatch14;
+    @FXML ChoiceBox minutesMatch14;
+    @FXML HBox match;
+    @FXML HBox match1;
+    @FXML HBox match2;
+    @FXML HBox match3;
+    @FXML HBox match4;
+    @FXML HBox match5;
+    @FXML HBox match6;
+    @FXML HBox match7;
+    @FXML HBox match8;
+    @FXML HBox match9;
+    @FXML HBox match10;
+    @FXML HBox match11;
+    @FXML HBox match12;
+    @FXML HBox match13;
+    @FXML HBox match14;
+    @FXML Label tournamentName;
+
+    private ArrayList<ChoiceBox> hourBoxes;
+    private ArrayList<ChoiceBox> minuteBoxes;
 
 
     @FXML
     public void initialize(){
-        setHours(hoursMatch);
-        setMinutes(minutesMatch);
+        hourBoxes = new ArrayList<>(Arrays.asList(hoursMatch, hoursMatch1, hoursMatch2, hoursMatch3, hoursMatch4,
+                hoursMatch5, hoursMatch6, hoursMatch7, hoursMatch8, hoursMatch9, hoursMatch10, hoursMatch11,
+                minutesMatch12, minutesMatch13, minutesMatch14));
+        minuteBoxes = new ArrayList<>(Arrays.asList(minutesMatch,minutesMatch1,minutesMatch2,minutesMatch3,minutesMatch4
+                ,minutesMatch5,minutesMatch6,minutesMatch7,minutesMatch8,minutesMatch9,minutesMatch10,minutesMatch11,
+                minutesMatch12,minutesMatch13,hoursMatch14));
+        for (ChoiceBox box : hourBoxes){
+            setHours(box);
+        }
+        for (ChoiceBox box : minuteBoxes){
+            setMinutes(box);
+        }
+        setVisibleMatches();
+        tournamentName.setText(BracketController.getTournamentName());
     }
 
     @FXML
@@ -70,5 +133,36 @@ public class SetTimeController {
 
     public void setMinutes(ChoiceBox box){
         box.getItems().addAll("00","05","10","15","20","25","30","35","40","45","50","55");
+    }
+
+    public void setVisibleMatches(){
+        if (AddTeamController.getMaxTeams() == 8){
+            match2.setDisable(false);
+            match2.setVisible(true);
+            match2.setPrefHeight(100);
+            match3.setDisable(false);
+            match3.setVisible(true);
+            match3.setPrefHeight(100);
+        }
+        else if (AddTeamController.getMaxTeams() == 16){
+            match2.setDisable(false);
+            match2.setVisible(true);
+            match2.setPrefHeight(100);
+            match3.setDisable(false);
+            match3.setVisible(true);
+            match3.setPrefHeight(100);
+            match4.setDisable(false);
+            match4.setVisible(true);
+            match4.setPrefHeight(100);
+            match5.setDisable(false);
+            match5.setVisible(true);
+            match5.setPrefHeight(100);
+            match6.setDisable(false);
+            match6.setVisible(true);
+            match6.setPrefHeight(100);
+            match7.setDisable(false);
+            match7.setVisible(true);
+            match7.setPrefHeight(100);
+        }
     }
 }
