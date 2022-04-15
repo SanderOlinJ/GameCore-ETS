@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.StartScreenController">
+<StackPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.StartScreenController">
    <children>
       <BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #2e3e4e;">
          <center>
@@ -35,7 +35,7 @@
                         </HBox>
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Button fx:id="startButton" mnemonicParsing="false" onAction="#onStartButtonPressed" prefHeight="39.0" prefWidth="196.0" style="-fx-background-color: fa8f31;" text="Start" textFill="WHITE">
+                              <Button fx:id="startButton" mnemonicParsing="false" onAction="#onStartButtonPressed" prefHeight="39.0" prefWidth="196.0" styleClass="jfx-button" stylesheets="@../css/style.css" text="Start" textFill="WHITE">
                                  <HBox.margin>
                                     <Insets left="600.0" right="600.0" top="100.0" />
                                  </HBox.margin>
@@ -43,7 +43,7 @@
                                     <Font name="Arial Bold" size="21.0" />
                                  </font>
                                  <effect>
-                                    <DropShadow />
+                                    <DropShadow height="10.0" radius="4.5" width="10.0" />
                                  </effect>
                                  <cursor>
                                     <Cursor fx:constant="HAND" />

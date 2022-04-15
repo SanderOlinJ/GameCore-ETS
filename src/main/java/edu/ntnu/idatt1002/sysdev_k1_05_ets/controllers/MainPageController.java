@@ -27,6 +27,9 @@ public class MainPageController {
     @FXML private MenuBar menuBar;
     @FXML private Menu aboutButton;
     @FXML private Button createNewTournamentButton;
+    @FXML private Button viewMoreOngoing;
+    @FXML private Button viewMoreUpcoming;
+    @FXML private Button viewMorePrevious;
     @FXML private Menu homeButton;
     @FXML private MenuItem ongoingTournamentsButton;
     @FXML private MenuItem previousTournamentButton;
@@ -177,5 +180,26 @@ public class MainPageController {
     void onPreviousTournamentsButtonPressed(ActionEvent event) {
     }
 
+    @FXML
+    void onViewMoreOngoingPressed(ActionEvent event)
+    throws IOException{
+        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class
+                .getResource("scenes/new-ongoing-overview.fxml")));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setMinWidth(1200);
+        stage.setMinHeight(800);
+        stage.show();
+    }
 
+    @FXML
+    void onViewMoreUpcomingPressed(ActionEvent event){
+
+    }
+
+    @FXML
+    void onViewMorePreviousPressed(ActionEvent event){
+
+    }
 }

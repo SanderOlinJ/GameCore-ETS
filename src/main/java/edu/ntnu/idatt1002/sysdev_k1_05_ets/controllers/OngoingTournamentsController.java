@@ -14,6 +14,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 public class OngoingTournamentsController {
@@ -152,6 +154,26 @@ public class OngoingTournamentsController {
 
     }
 
+    private void makeTournaments(){
+        NewTournament newTournament1 = new NewTournament("Not finished", "test1",
+                "Admin", LocalDate.parse("2022-04-16"), LocalTime.parse("16:00"),
+                "","League of Legends",
+                "PC / Mac / Linux","Brackets","3","4","0",
+                "null","0","null");
+        NewTournament newTournament2 = new NewTournament("Not finished", "test1",
+                "Admin", LocalDate.parse("2022-04-16"), LocalTime.parse("16:00"),
+                "","League of Legends",
+                "PC / Mac / Linux","Brackets","3","4","0",
+                "null","0","null");
+        NewTournament newTournament3 = new NewTournament("Not finished", "test1",
+                "Admin", LocalDate.parse("2022-04-16"), LocalTime.parse("16:00"),
+                "","League of Legends",
+                "PC / Mac / Linux","Brackets","3","4","0",
+                "null","0","null");
+        tournaments.add(newTournament1);
+        tournaments.add(newTournament2);
+        tournaments.add(newTournament3);
+    }
 
     private void setMainPageWithTournaments() {
         if (tournaments.size() > 0) {

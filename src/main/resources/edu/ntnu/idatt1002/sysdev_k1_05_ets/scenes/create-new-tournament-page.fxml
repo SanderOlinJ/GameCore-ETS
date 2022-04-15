@@ -474,15 +474,15 @@
                                                         <Insets right="200.0" />
                                                     </HBox.margin>
                                                 </Pane>
-                                                <Button fx:id="continueButton" mnemonicParsing="false" onAction="#addTeamScene" style="-fx-background-color: fa8f31;" text="Continue" textFill="WHITE">
+                                                <Button fx:id="continueButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addTeamScene" prefHeight="40.0" prefWidth="153.0" styleClass="jfx-button" stylesheets="@../css/style.css" text="Continue" textFill="WHITE">
                                                     <font>
-                                                        <Font name="Arial Bold" size="28.0" />
+                                                        <Font name="Arial Bold" size="22.0" />
                                                     </font>
                                                     <effect>
-                                                        <DropShadow />
+                                                        <DropShadow height="10.0" radius="4.5" width="10.0" />
                                                     </effect>
                                                     <HBox.margin>
-                                                        <Insets bottom="40.0" right="60.0" top="30.0" />
+                                                        <Insets bottom="40.0" right="60.0" top="25.0" />
                                                     </HBox.margin>
                                                     <cursor>
                                                         <Cursor fx:constant="HAND" />

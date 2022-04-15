@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
@@ -16,7 +17,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.OngoingTournamentsController">
+<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.OngoingTournamentsController">
     <top>
         <MenuBar fx:id="menuBar" BorderPane.alignment="CENTER">
             <menus>
@@ -54,25 +55,25 @@
                 <HBox prefHeight="800.0" prefWidth="1200.0" VBox.vgrow="ALWAYS">
                     <children>
                         <Pane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: black;" HBox.hgrow="ALWAYS" />
-                        <ScrollPane hbarPolicy="NEVER" maxWidth="1200.0" prefHeight="800.0" prefWidth="1200.0" stylesheets="@../css/style.css">
+                        <ScrollPane hbarPolicy="NEVER" prefHeight="800.0" prefWidth="1200.0" stylesheets="@../css/style.css">
                             <content>
                                 <VBox prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #13161d;">
                                     <children>
-                                        <VBox prefHeight="800.0" prefWidth="1200.0">
+                                        <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="1594.0" prefWidth="1201.0">
                                             <children>
                                                 <HBox maxHeight="137.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="137.0" prefWidth="1200.0" style="-fx-background-color: #13161d;" VBox.vgrow="ALWAYS">
                                                     <children>
                                                         <Text fill="#fa8f31" strokeType="OUTSIDE" strokeWidth="0.0" text="Ongoing tournaments" HBox.hgrow="ALWAYS">
                                                             <font>
-                                                                <Font name="Yu Gothic Medium" size="29.0" />
+                                                                <Font name="Yu Gothic Medium" size="35.0" />
                                                             </font>
                                                             <HBox.margin>
-                                                                <Insets bottom="10.0" left="50.0" top="40.0" />
+                                                                <Insets bottom="10.0" left="85.0" top="40.0" />
                                                             </HBox.margin>
                                                         </Text>
                                                     </children>
                                                 </HBox>
-                                    <HBox fx:id="box1" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="1021.0" style="-fx-background-color: #282c34;" visible="false">
+                                    <HBox fx:id="box1" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="1021.0" style="-fx-background-color: #282c34;">
                                        <children>
                                           <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="417.0">
                                              <children>
@@ -88,7 +89,7 @@
                                                 <Insets />
                                              </HBox.margin>
                                              <children>
-                                                <Text fx:id="name1" fill="#fa8f31" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.2" text="Turnering" wrappingWidth="472.13671875">
+                                                <Text fx:id="name1" fill="#fa8f31" strokeMiterLimit="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Turnering" wrappingWidth="472.13671875">
                                                    <font>
                                                       <Font name="Arial Bold" size="24.0" />
                                                    </font>
@@ -96,7 +97,7 @@
                                                       <Insets left="15.0" top="10.0" />
                                                    </VBox.margin>
                                                 </Text>
-                                                <Text fx:id="game1" fill="WHITE" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.1" text="Valorant" wrappingWidth="548.13671875">
+                                                <Text fx:id="game1" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Valorant" wrappingWidth="548.13671875">
                                                    <font>
                                                       <Font name="Arial" size="18.0" />
                                                    </font>
@@ -164,7 +165,7 @@
                                                       </HBox>
                                                    </children>
                                                    <VBox.margin>
-                                                      <Insets left="5.0" top="10.0" />
+                                                      <Insets left="5.0" />
                                                    </VBox.margin>
                                                 </HBox>
                                                 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="545.0">
@@ -219,16 +220,19 @@
                                                    </VBox.margin>
                                                 </HBox>
                                                 <HBox prefHeight="100.0" prefWidth="200.0" />
-                                                <Button fx:id="overviewButton1" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="33.0" prefWidth="119.0" stylesheets="@../css/style.css" text="Overview" textFill="WHITE">
+                                                <Button fx:id="overviewButton1" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="33.0" prefWidth="119.0" styleClass="jfx-button" stylesheets="@../css/style.css" text="Overview" textFill="WHITE">
                                                    <font>
                                                       <Font name="Arial Bold" size="16.0" />
                                                    </font>
-                                                   <effect>
-                                                      <DropShadow height="30.0" radius="14.5" width="30.0" />
-                                                   </effect>
                                                    <VBox.margin>
                                                       <Insets bottom="15.0" left="450.0" />
                                                    </VBox.margin>
+                                                   <effect>
+                                                      <DropShadow height="10.0" radius="4.5" width="10.0" />
+                                                   </effect>
+                                                   <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                   </cursor>
                                                 </Button>
                                              </children>
                                           </VBox>
@@ -237,7 +241,7 @@
                                           <Insets left="89.5" right="89.5" />
                                        </VBox.margin>
                                     </HBox>
-                                    <HBox fx:id="box2" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="1021.0" style="-fx-background-color: #282c34;" visible="false">
+                                    <HBox fx:id="box2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="1021.0" style="-fx-background-color: #282c34;" visible="false">
                                        <children>
                                           <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="417.0">
                                              <children>
@@ -253,7 +257,7 @@
                                                 <Insets />
                                              </HBox.margin>
                                              <children>
-                                                <Text fx:id="name2" fill="#fa8f31" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.2" text="Turnering" wrappingWidth="472.13671875">
+                                                <Text fx:id="name2" fill="#fa8f31" strokeType="OUTSIDE" strokeWidth="0.0" text="Turnering" wrappingWidth="472.13671875">
                                                    <font>
                                                       <Font name="Arial Bold" size="24.0" />
                                                    </font>
@@ -261,7 +265,7 @@
                                                       <Insets left="15.0" top="10.0" />
                                                    </VBox.margin>
                                                 </Text>
-                                                <Text fx:id="game2" fill="WHITE" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.1" text="Valorant" wrappingWidth="548.13671875">
+                                                <Text fx:id="game2" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Valorant" wrappingWidth="548.13671875">
                                                    <font>
                                                       <Font name="Arial" size="18.0" />
                                                    </font>
@@ -329,7 +333,7 @@
                                                       </HBox>
                                                    </children>
                                                    <VBox.margin>
-                                                      <Insets left="5.0" top="10.0" />
+                                                      <Insets left="5.0" />
                                                    </VBox.margin>
                                                 </HBox>
                                                 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="545.0">
@@ -384,16 +388,19 @@
                                                    </VBox.margin>
                                                 </HBox>
                                                 <HBox prefHeight="100.0" prefWidth="200.0" />
-                                                <Button fx:id="overviewButton2" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="33.0" prefWidth="119.0" stylesheets="@../css/style.css" text="Overview" textFill="WHITE">
+                                                <Button fx:id="overviewButton2" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="33.0" prefWidth="119.0" styleClass="jfx-button" stylesheets="@../css/style.css" text="Overview" textFill="WHITE">
                                                    <font>
                                                       <Font name="Arial Bold" size="16.0" />
                                                    </font>
-                                                   <effect>
-                                                      <DropShadow height="30.0" radius="14.5" width="30.0" />
-                                                   </effect>
                                                    <VBox.margin>
                                                       <Insets bottom="15.0" left="450.0" />
                                                    </VBox.margin>
+                                                   <effect>
+                                                      <DropShadow height="10.0" radius="4.5" width="10.0" />
+                                                   </effect>
+                                                   <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                   </cursor>
                                                 </Button>
                                              </children>
                                           </VBox>
@@ -418,7 +425,7 @@
                                                 <Insets />
                                              </HBox.margin>
                                              <children>
-                                                <Text fx:id="name3" fill="#fa8f31" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.2" text="Turnering" wrappingWidth="472.13671875">
+                                                <Text fx:id="name3" fill="#fa8f31" strokeType="OUTSIDE" strokeWidth="0.0" text="Turnering" wrappingWidth="472.13671875">
                                                    <font>
                                                       <Font name="Arial Bold" size="24.0" />
                                                    </font>
@@ -426,7 +433,7 @@
                                                       <Insets left="15.0" top="10.0" />
                                                    </VBox.margin>
                                                 </Text>
-                                                <Text fx:id="game3" fill="WHITE" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.1" text="Valorant" wrappingWidth="548.13671875">
+                                                <Text fx:id="game3" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Valorant" wrappingWidth="548.13671875">
                                                    <font>
                                                       <Font name="Arial" size="18.0" />
                                                    </font>
@@ -494,7 +501,7 @@
                                                       </HBox>
                                                    </children>
                                                    <VBox.margin>
-                                                      <Insets left="5.0" top="10.0" />
+                                                      <Insets left="5.0" />
                                                    </VBox.margin>
                                                 </HBox>
                                                 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="545.0">
@@ -549,16 +556,19 @@
                                                    </VBox.margin>
                                                 </HBox>
                                                 <HBox prefHeight="100.0" prefWidth="200.0" />
-                                                <Button fx:id="overviewButton3" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="33.0" prefWidth="119.0" stylesheets="@../css/style.css" text="Overview" textFill="WHITE">
+                                                <Button fx:id="overviewButton3" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="33.0" prefWidth="119.0" styleClass="jfx-button" stylesheets="@../css/style.css" text="Overview" textFill="WHITE">
                                                    <font>
                                                       <Font name="Arial Bold" size="16.0" />
                                                    </font>
-                                                   <effect>
-                                                      <DropShadow height="30.0" radius="14.5" width="30.0" />
-                                                   </effect>
                                                    <VBox.margin>
                                                       <Insets bottom="15.0" left="450.0" />
                                                    </VBox.margin>
+                                                   <effect>
+                                                      <DropShadow height="10.0" radius="4.5" width="10.0" />
+                                                   </effect>
+                                                   <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                   </cursor>
                                                 </Button>
                                              </children>
                                           </VBox>
@@ -583,7 +593,7 @@
                                                 <Insets />
                                              </HBox.margin>
                                              <children>
-                                                <Text fx:id="name4" fill="#fa8f31" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.2" text="Turnering" wrappingWidth="472.13671875">
+                                                <Text fx:id="name4" fill="#fa8f31" strokeType="OUTSIDE" strokeWidth="0.0" text="Turnering" wrappingWidth="472.13671875">
                                                    <font>
                                                       <Font name="Arial Bold" size="24.0" />
                                                    </font>
@@ -591,7 +601,7 @@
                                                       <Insets left="15.0" top="10.0" />
                                                    </VBox.margin>
                                                 </Text>
-                                                <Text fx:id="game4" fill="WHITE" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.1" text="Valorant" wrappingWidth="548.13671875">
+                                                <Text fx:id="game4" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Valorant" wrappingWidth="548.13671875">
                                                    <font>
                                                       <Font name="Arial" size="18.0" />
                                                    </font>
@@ -659,7 +669,7 @@
                                                       </HBox>
                                                    </children>
                                                    <VBox.margin>
-                                                      <Insets left="5.0" top="10.0" />
+                                                      <Insets left="5.0" />
                                                    </VBox.margin>
                                                 </HBox>
                                                 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="545.0">
@@ -714,16 +724,19 @@
                                                    </VBox.margin>
                                                 </HBox>
                                                 <HBox prefHeight="100.0" prefWidth="200.0" />
-                                                <Button fx:id="overviewButton4" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="33.0" prefWidth="119.0" stylesheets="@../css/style.css" text="Overview" textFill="WHITE">
+                                                <Button fx:id="overviewButton4" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="33.0" prefWidth="119.0" styleClass="jfx-button" stylesheets="@../css/style.css" text="Overview" textFill="WHITE">
                                                    <font>
                                                       <Font name="Arial Bold" size="16.0" />
                                                    </font>
-                                                   <effect>
-                                                      <DropShadow height="30.0" radius="14.5" width="30.0" />
-                                                   </effect>
                                                    <VBox.margin>
                                                       <Insets bottom="15.0" left="450.0" />
                                                    </VBox.margin>
+                                                   <effect>
+                                                      <DropShadow height="10.0" radius="4.5" width="10.0" />
+                                                   </effect>
+                                                   <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                   </cursor>
                                                 </Button>
                                              </children>
                                           </VBox>
@@ -748,7 +761,7 @@
                                                 <Insets />
                                              </HBox.margin>
                                              <children>
-                                                <Text fx:id="name5" fill="#fa8f31" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.2" text="Turnering" wrappingWidth="472.13671875">
+                                                <Text fx:id="name5" fill="#fa8f31" strokeType="OUTSIDE" strokeWidth="0.0" text="Turnering" wrappingWidth="472.13671875">
                                                    <font>
                                                       <Font name="Arial Bold" size="24.0" />
                                                    </font>
@@ -756,7 +769,7 @@
                                                       <Insets left="15.0" top="10.0" />
                                                    </VBox.margin>
                                                 </Text>
-                                                <Text fx:id="game5" fill="WHITE" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.1" text="Valorant" wrappingWidth="548.13671875">
+                                                <Text fx:id="game5" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Valorant" wrappingWidth="548.13671875">
                                                    <font>
                                                       <Font name="Arial" size="18.0" />
                                                    </font>
@@ -824,7 +837,7 @@
                                                       </HBox>
                                                    </children>
                                                    <VBox.margin>
-                                                      <Insets left="5.0" top="10.0" />
+                                                      <Insets left="5.0" />
                                                    </VBox.margin>
                                                 </HBox>
                                                 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="545.0">
@@ -879,16 +892,19 @@
                                                    </VBox.margin>
                                                 </HBox>
                                                 <HBox prefHeight="100.0" prefWidth="200.0" />
-                                                <Button fx:id="overviewButton5" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="33.0" prefWidth="119.0" stylesheets="@../css/style.css" text="Overview" textFill="WHITE">
+                                                <Button fx:id="overviewButton5" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="33.0" prefWidth="119.0" styleClass="jfx-button" stylesheets="@../css/style.css" text="Overview" textFill="WHITE">
                                                    <font>
                                                       <Font name="Arial Bold" size="16.0" />
                                                    </font>
-                                                   <effect>
-                                                      <DropShadow height="30.0" radius="14.5" width="30.0" />
-                                                   </effect>
                                                    <VBox.margin>
                                                       <Insets bottom="15.0" left="450.0" />
                                                    </VBox.margin>
+                                                   <effect>
+                                                      <DropShadow height="10.0" radius="4.5" width="10.0" />
+                                                   </effect>
+                                                   <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                   </cursor>
                                                 </Button>
                                              </children>
                                           </VBox>
