@@ -23,11 +23,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.CreateNewTournamentPageController">
+<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.CreateNewTournamentPageController">
     <top>
         <MenuBar BorderPane.alignment="CENTER">
             <menus>
-                <Menu fx:id="homeButton" disable="true" mnemonicParsing="false" text="Home" />
+                <Menu fx:id="homeButton" mnemonicParsing="false" text="Home" />
                 <Menu fx:id="tournamentButton" mnemonicParsing="false" text="Tournaments">
                     <items>
                         <MenuItem fx:id="ongoingTournamentsButton" mnemonicParsing="false" text="Ongoing tournaments" />
@@ -64,7 +64,7 @@
                         <Pane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: #13161d;" HBox.hgrow="ALWAYS" />
                         <ScrollPane hbarPolicy="NEVER" maxWidth="1800.0" prefHeight="1767.0" prefWidth="1200.0" stylesheets="@../css/style.css">
                             <content>
-                                <VBox prefHeight="1558.0" prefWidth="1200.0" style="-fx-background-color: #13161d;">
+                                <VBox maxWidth="-Infinity" minWidth="-Infinity" prefHeight="1558.0" prefWidth="1183.0" style="-fx-background-color: #13161d;">
                                     <children>
                                         <VBox maxHeight="50.0" prefHeight="0.0" prefWidth="1200.0" />
                                         <HBox maxHeight="137.0" prefHeight="137.0" prefWidth="1200.0" style="-fx-background-color: #13161d;" VBox.vgrow="ALWAYS">

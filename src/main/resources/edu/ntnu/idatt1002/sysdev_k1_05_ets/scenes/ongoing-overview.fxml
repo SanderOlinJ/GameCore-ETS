@@ -17,15 +17,16 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.OngoingTournamentsController">
+<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.OverviewController">
     <top>
         <MenuBar fx:id="menuBar" BorderPane.alignment="CENTER">
             <menus>
-                <Menu fx:id="homeButton" disable="true" mnemonicParsing="false" text="Home" />
+                <Menu fx:id="homeButton" mnemonicParsing="false" onAction="#onHomeButtonPressed" text="Home"/>
                 <Menu fx:id="tournamentButton" mnemonicParsing="false" text="Tournaments">
                     <items>
-                        <MenuItem fx:id="ongoingTournamentsButton" mnemonicParsing="false" text="Ongoing tournaments" />
-                        <MenuItem fx:id="previousTournamentButton" mnemonicParsing="false" text="Previous tournaments" />
+                        <MenuItem fx:id="ongoingTournamentsButton" disable="true" mnemonicParsing="false" onAction="#onOngoingTournamentsButtonPressed" text="Ongoing tournaments" />
+                  <MenuItem fx:id="upcomingTournamentsButton" mnemonicParsing="false" onAction="#onUpcomingTournamentsButtonPressed" text="Upcoming tournaments" />
+                        <MenuItem fx:id="previousTournamentsButton" mnemonicParsing="false" onAction="#onPreviousTournamentsButtonPressed" text="Previous tournaments" />
                     </items>
                 </Menu>
                 <Menu fx:id="aboutButton" mnemonicParsing="false" text="About" />
@@ -52,18 +53,18 @@
                         </HBox>
                     </children>
                 </VBox>
-                <HBox prefHeight="800.0" prefWidth="1200.0" VBox.vgrow="ALWAYS">
+                <HBox minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" VBox.vgrow="ALWAYS">
                     <children>
                         <Pane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: black;" HBox.hgrow="ALWAYS" />
-                        <ScrollPane hbarPolicy="NEVER" prefHeight="800.0" prefWidth="1200.0" stylesheets="@../css/style.css">
+                        <ScrollPane hbarPolicy="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" stylesheets="@../css/style.css">
                             <content>
-                                <VBox prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #13161d;">
+                                <VBox maxWidth="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1183.0" style="-fx-background-color: #13161d;">
                                     <children>
-                                        <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="1594.0" prefWidth="1201.0">
+                                        <VBox maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1594.0" prefWidth="1183.0">
                                             <children>
                                                 <HBox maxHeight="137.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="137.0" prefWidth="1200.0" style="-fx-background-color: #13161d;" VBox.vgrow="ALWAYS">
                                                     <children>
-                                                        <Text fill="#fa8f31" strokeType="OUTSIDE" strokeWidth="0.0" text="Ongoing tournaments" HBox.hgrow="ALWAYS">
+                                                        <Text fx:id="overviewTitle" fill="#fa8f31" strokeType="OUTSIDE" strokeWidth="0.0" text="Ongoing tournaments" HBox.hgrow="ALWAYS">
                                                             <font>
                                                                 <Font name="Yu Gothic Medium" size="35.0" />
                                                             </font>
@@ -73,7 +74,7 @@
                                                         </Text>
                                                     </children>
                                                 </HBox>
-                                    <HBox fx:id="box1" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="1021.0" style="-fx-background-color: #282c34;">
+                                    <HBox fx:id="box1" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="1021.0" style="-fx-background-color: #282c34;" visible="false">
                                        <children>
                                           <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="417.0">
                                              <children>
