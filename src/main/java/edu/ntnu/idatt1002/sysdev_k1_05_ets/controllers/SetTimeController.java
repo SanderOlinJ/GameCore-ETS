@@ -1,6 +1,7 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
 
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.GameCoreETSApplication;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,9 +15,11 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class SetTimeController {
     @FXML ChoiceBox hoursMatch;
@@ -133,6 +136,15 @@ public class SetTimeController {
         stage.show();
     }
 
+    @FXML
+    public void setTime()  {
+        for (int i = 0; i < hourBoxes.size(); i++) {
+            if (hourBoxes.get(i).getValue() != null && minuteBoxes.get(i).getValue() != null){
+               MatchesController.setTimeLabel(hourBoxes.get(i).getValue().toString(),
+                       minuteBoxes.get(i).getValue().toString());
+            }
+        }
+    }
     public void setHours(ChoiceBox box){
         box.getItems().addAll("00","01","02","03","04","05","06","07","08","09","10",
                 "11","12","13","14","15","16","17","18","19","20","21","22","23");
@@ -141,6 +153,8 @@ public class SetTimeController {
     public void setMinutes(ChoiceBox box){
         box.getItems().addAll("00","05","10","15","20","25","30","35","40","45","50","55");
     }
+
+
 
     public void setVisibleMatches(){
         if (AddTeamController.getMaxTeams() == 8){

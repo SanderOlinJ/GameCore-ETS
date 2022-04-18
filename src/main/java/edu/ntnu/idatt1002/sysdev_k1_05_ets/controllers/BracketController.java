@@ -212,6 +212,7 @@ public class BracketController {
         String teamName = label.getText();
         int id = getLabelInt(label);
         labels.get((id/2)-1).setText(teamName);
+        tournament.getTeams().set((id/2)-1,tournament.getTeam(id));
     }
 
     public static Tournament getBracket(){

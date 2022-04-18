@@ -65,7 +65,7 @@
                 <HBox prefHeight="795.0" prefWidth="1200.0" VBox.vgrow="ALWAYS">
                     <children>
                         <Pane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: #13161d;" HBox.hgrow="ALWAYS" />
-                        <ScrollPane hbarPolicy="NEVER" maxWidth="1800.0" prefHeight="1263.0" prefWidth="1200.0" style="-fx-background-color: #13161d;" stylesheets="@../css/style.css">
+                        <ScrollPane hbarPolicy="NEVER" maxWidth="1800.0" prefHeight="1000.0" prefWidth="1200.0" style="-fx-background-color: #13161d;" stylesheets="@../css/style.css">
                             <content>
                                 <VBox prefHeight="796.0" prefWidth="1200.0" style="-fx-background-color: #13161d;">
                                     <children>
@@ -134,7 +134,7 @@
                                                 <Insets bottom="5.0" />
                                             </VBox.margin>
                                         </HBox>
-                                        <VBox maxHeight="727.0" prefHeight="565.0" prefWidth="1200.0">
+                                        <VBox maxHeight="727.0" prefHeight="556.0" prefWidth="1200.0">
                                             <children>
                                                 <HBox prefHeight="100.0" prefWidth="1200.0">
                                                     <children>
@@ -162,7 +162,7 @@
                                                                 <HBox fx:id="match" minHeight="-Infinity" prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: black;">
                                                                     <children>
                                                                         <Pane prefHeight="98.0" prefWidth="50.0" />
-                                                                        <VBox prefHeight="98.0" prefWidth="431.0">
+                                                                        <VBox prefHeight="98.0" prefWidth="549.0">
                                                                             <children>
                                                                                 <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                                 <HBox prefHeight="100.0" prefWidth="200.0">
@@ -187,7 +187,7 @@
                                                                                 <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                             </children>
                                                                         </VBox>
-                                                                        <VBox prefHeight="98.0" prefWidth="324.0">
+                                                                        <VBox prefHeight="98.0" prefWidth="468.0">
                                                                             <children>
                                                                                 <Pane prefHeight="200.0" prefWidth="200.0" />
                                                             <HBox>
@@ -209,28 +209,12 @@
                                                                                 <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                             </children>
                                                                         </VBox>
-                                                                        <HBox prefHeight="98.0" prefWidth="207.0">
-                                                                            <children>
-                                                                                <HBox prefWidth="200.0" />
-                                                                                <VBox prefHeight="98.0" prefWidth="202.0">
-                                                                                    <children>
-                                                                                        <Pane prefHeight="100.0" prefWidth="100.0" />
-                                                                                        <Button layoutX="10.0" layoutY="46.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="156.0" style="-fx-background-color: #fa8f31;" text="Set time" textFill="WHITESMOKE">
-                                                                                            <font>
-                                                                                                <Font name="Arial" size="15.0" />
-                                                                                            </font>
-                                                                                        </Button>
-                                                                                        <Pane prefHeight="100.0" prefWidth="200.0" />
-                                                                                    </children>
-                                                                                </VBox>
-                                                                            </children>
-                                                                        </HBox>
                                                                     </children>
                                                                 </HBox>
                                                 <HBox fx:id="match1" minHeight="-Infinity" prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: black;">
                                                    <children>
                                                       <Pane prefHeight="98.0" prefWidth="50.0" />
-                                                      <VBox prefHeight="98.0" prefWidth="431.0">
+                                                      <VBox prefHeight="98.0" prefWidth="549.0">
                                                          <children>
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
                                                             <HBox prefHeight="100.0" prefWidth="200.0">
@@ -277,28 +261,12 @@
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
                                                          </children>
                                                       </VBox>
-                                                      <HBox prefHeight="98.0" prefWidth="207.0">
-                                                         <children>
-                                                            <HBox prefWidth="200.0" />
-                                                            <VBox prefHeight="98.0" prefWidth="202.0">
-                                                               <children>
-                                                                  <Pane prefHeight="100.0" prefWidth="100.0" />
-                                                                  <Button layoutX="10.0" layoutY="46.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="156.0" style="-fx-background-color: #fa8f31;" text="Set time" textFill="WHITESMOKE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="15.0" />
-                                                                     </font>
-                                                                  </Button>
-                                                                  <Pane prefHeight="100.0" prefWidth="200.0" />
-                                                               </children>
-                                                            </VBox>
-                                                         </children>
-                                                      </HBox>
                                                    </children>
                                                 </HBox>
                                                 <HBox fx:id="match2" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
                                                    <children>
                                                       <Pane prefHeight="98.0" prefWidth="50.0" />
-                                                      <VBox prefHeight="98.0" prefWidth="431.0">
+                                                      <VBox prefHeight="98.0" prefWidth="549.0">
                                                          <children>
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
                                                             <HBox prefHeight="100.0" prefWidth="200.0">
@@ -345,28 +313,12 @@
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
                                                          </children>
                                                       </VBox>
-                                                      <HBox prefHeight="98.0" prefWidth="207.0">
-                                                         <children>
-                                                            <HBox prefWidth="200.0" />
-                                                            <VBox prefHeight="98.0" prefWidth="202.0">
-                                                               <children>
-                                                                  <Pane prefHeight="100.0" prefWidth="100.0" />
-                                                                  <Button layoutX="10.0" layoutY="46.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="156.0" style="-fx-background-color: #fa8f31;" text="Set time" textFill="WHITESMOKE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="15.0" />
-                                                                     </font>
-                                                                  </Button>
-                                                                  <Pane prefHeight="100.0" prefWidth="200.0" />
-                                                               </children>
-                                                            </VBox>
-                                                         </children>
-                                                      </HBox>
                                                    </children>
                                                 </HBox>
                                                 <HBox fx:id="match3" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
                                                    <children>
                                                       <Pane prefHeight="98.0" prefWidth="50.0" />
-                                                      <VBox prefHeight="98.0" prefWidth="431.0">
+                                                      <VBox prefHeight="98.0" prefWidth="549.0">
                                                          <children>
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
                                                             <HBox prefHeight="100.0" prefWidth="200.0">
@@ -413,28 +365,12 @@
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
                                                          </children>
                                                       </VBox>
-                                                      <HBox prefHeight="98.0" prefWidth="207.0">
-                                                         <children>
-                                                            <HBox prefWidth="200.0" />
-                                                            <VBox prefHeight="98.0" prefWidth="202.0">
-                                                               <children>
-                                                                  <Pane prefHeight="100.0" prefWidth="100.0" />
-                                                                  <Button layoutX="10.0" layoutY="46.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="156.0" style="-fx-background-color: #fa8f31;" text="Set time" textFill="WHITESMOKE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="15.0" />
-                                                                     </font>
-                                                                  </Button>
-                                                                  <Pane prefHeight="100.0" prefWidth="200.0" />
-                                                               </children>
-                                                            </VBox>
-                                                         </children>
-                                                      </HBox>
                                                    </children>
                                                 </HBox>
                                                 <HBox fx:id="match4" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
                                                    <children>
                                                       <Pane prefHeight="98.0" prefWidth="50.0" />
-                                                      <VBox prefHeight="98.0" prefWidth="431.0">
+                                                      <VBox prefHeight="98.0" prefWidth="549.0">
                                                          <children>
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
                                                             <HBox prefHeight="100.0" prefWidth="200.0">
@@ -481,28 +417,12 @@
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
                                                          </children>
                                                       </VBox>
-                                                      <HBox prefHeight="98.0" prefWidth="207.0">
-                                                         <children>
-                                                            <HBox prefWidth="200.0" />
-                                                            <VBox prefHeight="98.0" prefWidth="202.0">
-                                                               <children>
-                                                                  <Pane prefHeight="100.0" prefWidth="100.0" />
-                                                                  <Button layoutX="10.0" layoutY="46.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="156.0" style="-fx-background-color: #fa8f31;" text="Set time" textFill="WHITESMOKE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="15.0" />
-                                                                     </font>
-                                                                  </Button>
-                                                                  <Pane prefHeight="100.0" prefWidth="200.0" />
-                                                               </children>
-                                                            </VBox>
-                                                         </children>
-                                                      </HBox>
                                                    </children>
                                                 </HBox>
                                                 <HBox fx:id="match5" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
                                                    <children>
                                                       <Pane prefHeight="98.0" prefWidth="50.0" />
-                                                      <VBox prefHeight="98.0" prefWidth="431.0">
+                                                      <VBox prefHeight="98.0" prefWidth="549.0">
                                                          <children>
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
                                                             <HBox prefHeight="100.0" prefWidth="200.0">
@@ -549,28 +469,12 @@
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
                                                          </children>
                                                       </VBox>
-                                                      <HBox prefHeight="98.0" prefWidth="207.0">
-                                                         <children>
-                                                            <HBox prefWidth="200.0" />
-                                                            <VBox prefHeight="98.0" prefWidth="202.0">
-                                                               <children>
-                                                                  <Pane prefHeight="100.0" prefWidth="100.0" />
-                                                                  <Button layoutX="10.0" layoutY="46.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="156.0" style="-fx-background-color: #fa8f31;" text="Set time" textFill="WHITESMOKE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="15.0" />
-                                                                     </font>
-                                                                  </Button>
-                                                                  <Pane prefHeight="100.0" prefWidth="200.0" />
-                                                               </children>
-                                                            </VBox>
-                                                         </children>
-                                                      </HBox>
                                                    </children>
                                                 </HBox>
                                                 <HBox fx:id="match6" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
                                                    <children>
                                                       <Pane prefHeight="98.0" prefWidth="50.0" />
-                                                      <VBox prefHeight="98.0" prefWidth="431.0">
+                                                      <VBox prefHeight="98.0" prefWidth="549.0">
                                                          <children>
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
                                                             <HBox prefHeight="100.0" prefWidth="200.0">
@@ -617,28 +521,12 @@
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
                                                          </children>
                                                       </VBox>
-                                                      <HBox prefHeight="98.0" prefWidth="207.0">
-                                                         <children>
-                                                            <HBox prefWidth="200.0" />
-                                                            <VBox prefHeight="98.0" prefWidth="202.0">
-                                                               <children>
-                                                                  <Pane prefHeight="100.0" prefWidth="100.0" />
-                                                                  <Button layoutX="10.0" layoutY="46.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="156.0" style="-fx-background-color: #fa8f31;" text="Set time" textFill="WHITESMOKE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="15.0" />
-                                                                     </font>
-                                                                  </Button>
-                                                                  <Pane prefHeight="100.0" prefWidth="200.0" />
-                                                               </children>
-                                                            </VBox>
-                                                         </children>
-                                                      </HBox>
                                                    </children>
                                                 </HBox>
                                                 <HBox fx:id="match7" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
                                                    <children>
                                                       <Pane prefHeight="98.0" prefWidth="50.0" />
-                                                      <VBox prefHeight="98.0" prefWidth="431.0">
+                                                      <VBox prefHeight="98.0" prefWidth="549.0">
                                                          <children>
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
                                                             <HBox prefHeight="100.0" prefWidth="200.0">
@@ -685,28 +573,12 @@
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
                                                          </children>
                                                       </VBox>
-                                                      <HBox prefHeight="98.0" prefWidth="207.0">
-                                                         <children>
-                                                            <HBox prefWidth="200.0" />
-                                                            <VBox prefHeight="98.0" prefWidth="202.0">
-                                                               <children>
-                                                                  <Pane prefHeight="100.0" prefWidth="100.0" />
-                                                                  <Button layoutX="10.0" layoutY="46.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="156.0" style="-fx-background-color: #fa8f31;" text="Set time" textFill="WHITESMOKE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="15.0" />
-                                                                     </font>
-                                                                  </Button>
-                                                                  <Pane prefHeight="100.0" prefWidth="200.0" />
-                                                               </children>
-                                                            </VBox>
-                                                         </children>
-                                                      </HBox>
                                                    </children>
                                                 </HBox>
                                                 <HBox fx:id="match8" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
                                                    <children>
                                                       <Pane prefHeight="98.0" prefWidth="50.0" />
-                                                      <VBox prefHeight="98.0" prefWidth="431.0">
+                                                      <VBox prefHeight="98.0" prefWidth="549.0">
                                                          <children>
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
                                                             <HBox prefHeight="100.0" prefWidth="200.0">
@@ -753,28 +625,12 @@
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
                                                          </children>
                                                       </VBox>
-                                                      <HBox prefHeight="98.0" prefWidth="207.0">
-                                                         <children>
-                                                            <HBox prefWidth="200.0" />
-                                                            <VBox prefHeight="98.0" prefWidth="202.0">
-                                                               <children>
-                                                                  <Pane prefHeight="100.0" prefWidth="100.0" />
-                                                                  <Button layoutX="10.0" layoutY="46.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="156.0" style="-fx-background-color: #fa8f31;" text="Set time" textFill="WHITESMOKE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="15.0" />
-                                                                     </font>
-                                                                  </Button>
-                                                                  <Pane prefHeight="100.0" prefWidth="200.0" />
-                                                               </children>
-                                                            </VBox>
-                                                         </children>
-                                                      </HBox>
                                                    </children>
                                                 </HBox>
                                                 <HBox fx:id="match9" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
                                                    <children>
                                                       <Pane prefHeight="98.0" prefWidth="50.0" />
-                                                      <VBox prefHeight="98.0" prefWidth="431.0">
+                                                      <VBox prefHeight="98.0" prefWidth="549.0">
                                                          <children>
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
                                                             <HBox prefHeight="100.0" prefWidth="200.0">
@@ -821,28 +677,12 @@
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
                                                          </children>
                                                       </VBox>
-                                                      <HBox prefHeight="98.0" prefWidth="207.0">
-                                                         <children>
-                                                            <HBox prefWidth="200.0" />
-                                                            <VBox prefHeight="98.0" prefWidth="202.0">
-                                                               <children>
-                                                                  <Pane prefHeight="100.0" prefWidth="100.0" />
-                                                                  <Button layoutX="10.0" layoutY="46.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="156.0" style="-fx-background-color: #fa8f31;" text="Set time" textFill="WHITESMOKE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="15.0" />
-                                                                     </font>
-                                                                  </Button>
-                                                                  <Pane prefHeight="100.0" prefWidth="200.0" />
-                                                               </children>
-                                                            </VBox>
-                                                         </children>
-                                                      </HBox>
                                                    </children>
                                                 </HBox>
                                                 <HBox fx:id="match10" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
                                                    <children>
                                                       <Pane prefHeight="98.0" prefWidth="50.0" />
-                                                      <VBox prefHeight="98.0" prefWidth="431.0">
+                                                      <VBox prefHeight="98.0" prefWidth="549.0">
                                                          <children>
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
                                                             <HBox prefHeight="100.0" prefWidth="200.0">
@@ -889,28 +729,12 @@
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
                                                          </children>
                                                       </VBox>
-                                                      <HBox prefHeight="98.0" prefWidth="207.0">
-                                                         <children>
-                                                            <HBox prefWidth="200.0" />
-                                                            <VBox prefHeight="98.0" prefWidth="202.0">
-                                                               <children>
-                                                                  <Pane prefHeight="100.0" prefWidth="100.0" />
-                                                                  <Button layoutX="10.0" layoutY="46.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="156.0" style="-fx-background-color: #fa8f31;" text="Set time" textFill="WHITESMOKE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="15.0" />
-                                                                     </font>
-                                                                  </Button>
-                                                                  <Pane prefHeight="100.0" prefWidth="200.0" />
-                                                               </children>
-                                                            </VBox>
-                                                         </children>
-                                                      </HBox>
                                                    </children>
                                                 </HBox>
                                                 <HBox fx:id="match11" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
                                                    <children>
                                                       <Pane prefHeight="98.0" prefWidth="50.0" />
-                                                      <VBox prefHeight="98.0" prefWidth="431.0">
+                                                      <VBox prefHeight="98.0" prefWidth="549.0">
                                                          <children>
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
                                                             <HBox prefHeight="100.0" prefWidth="200.0">
@@ -957,28 +781,12 @@
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
                                                          </children>
                                                       </VBox>
-                                                      <HBox prefHeight="98.0" prefWidth="207.0">
-                                                         <children>
-                                                            <HBox prefWidth="200.0" />
-                                                            <VBox prefHeight="98.0" prefWidth="202.0">
-                                                               <children>
-                                                                  <Pane prefHeight="100.0" prefWidth="100.0" />
-                                                                  <Button layoutX="10.0" layoutY="46.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="156.0" style="-fx-background-color: #fa8f31;" text="Set time" textFill="WHITESMOKE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="15.0" />
-                                                                     </font>
-                                                                  </Button>
-                                                                  <Pane prefHeight="100.0" prefWidth="200.0" />
-                                                               </children>
-                                                            </VBox>
-                                                         </children>
-                                                      </HBox>
                                                    </children>
                                                 </HBox>
                                                 <HBox fx:id="match12" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
                                                    <children>
                                                       <Pane prefHeight="98.0" prefWidth="50.0" />
-                                                      <VBox prefHeight="98.0" prefWidth="431.0">
+                                                      <VBox prefHeight="98.0" prefWidth="549.0">
                                                          <children>
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
                                                             <HBox prefHeight="100.0" prefWidth="200.0">
@@ -1025,28 +833,12 @@
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
                                                          </children>
                                                       </VBox>
-                                                      <HBox prefHeight="98.0" prefWidth="207.0">
-                                                         <children>
-                                                            <HBox prefWidth="200.0" />
-                                                            <VBox prefHeight="98.0" prefWidth="202.0">
-                                                               <children>
-                                                                  <Pane prefHeight="100.0" prefWidth="100.0" />
-                                                                  <Button layoutX="10.0" layoutY="46.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="156.0" style="-fx-background-color: #fa8f31;" text="Set time" textFill="WHITESMOKE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="15.0" />
-                                                                     </font>
-                                                                  </Button>
-                                                                  <Pane prefHeight="100.0" prefWidth="200.0" />
-                                                               </children>
-                                                            </VBox>
-                                                         </children>
-                                                      </HBox>
                                                    </children>
                                                 </HBox>
                                                 <HBox fx:id="match13" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
                                                    <children>
                                                       <Pane prefHeight="98.0" prefWidth="50.0" />
-                                                      <VBox prefHeight="98.0" prefWidth="431.0">
+                                                      <VBox prefHeight="98.0" prefWidth="549.0">
                                                          <children>
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
                                                             <HBox prefHeight="100.0" prefWidth="200.0">
@@ -1093,28 +885,12 @@
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
                                                          </children>
                                                       </VBox>
-                                                      <HBox prefHeight="98.0" prefWidth="207.0">
-                                                         <children>
-                                                            <HBox prefWidth="200.0" />
-                                                            <VBox prefHeight="98.0" prefWidth="202.0">
-                                                               <children>
-                                                                  <Pane prefHeight="100.0" prefWidth="100.0" />
-                                                                  <Button layoutX="10.0" layoutY="46.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="156.0" style="-fx-background-color: #fa8f31;" text="Set time" textFill="WHITESMOKE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="15.0" />
-                                                                     </font>
-                                                                  </Button>
-                                                                  <Pane prefHeight="100.0" prefWidth="200.0" />
-                                                               </children>
-                                                            </VBox>
-                                                         </children>
-                                                      </HBox>
                                                    </children>
                                                 </HBox>
                                                 <HBox fx:id="match14" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
                                                    <children>
                                                       <Pane prefHeight="98.0" prefWidth="50.0" />
-                                                      <VBox prefHeight="98.0" prefWidth="431.0">
+                                                      <VBox prefHeight="98.0" prefWidth="549.0">
                                                          <children>
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
                                                             <HBox prefHeight="100.0" prefWidth="200.0">
@@ -1161,22 +937,6 @@
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
                                                          </children>
                                                       </VBox>
-                                                      <HBox prefHeight="98.0" prefWidth="207.0">
-                                                         <children>
-                                                            <HBox prefWidth="200.0" />
-                                                            <VBox prefHeight="98.0" prefWidth="202.0">
-                                                               <children>
-                                                                  <Pane prefHeight="100.0" prefWidth="100.0" />
-                                                                  <Button layoutX="10.0" layoutY="46.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="156.0" style="-fx-background-color: #fa8f31;" text="Set time" textFill="WHITESMOKE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="15.0" />
-                                                                     </font>
-                                                                  </Button>
-                                                                  <Pane prefHeight="100.0" prefWidth="200.0" />
-                                                               </children>
-                                                            </VBox>
-                                                         </children>
-                                                      </HBox>
                                                    </children>
                                                 </HBox>
                                                             </children>
@@ -1184,13 +944,29 @@
                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                     </children>
                                                 </HBox>
+                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <Pane prefHeight="100.0" prefWidth="1026.0" />
+                                          <VBox prefHeight="100.0" prefWidth="146.0">
+                                             <children>
+                                                <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                <Button mnemonicParsing="false" onAction="#setTime" prefHeight="26.0" prefWidth="123.0" style="-fx-background-color: #fa8f31;" text="Set time" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="18.0" />
+                                                   </font>
+                                                </Button>
+                                                <Pane prefHeight="200.0" prefWidth="200.0" />
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
                                             </children>
                                         </VBox>
                                     </children>
                                 </VBox>
                             </content>
                         </ScrollPane>
-                        <Pane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: #13161d;" HBox.hgrow="ALWAYS" />
+                  <Pane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: #13161d;" HBox.hgrow="ALWAYS" />
                     </children>
                 </HBox>
             </children>
