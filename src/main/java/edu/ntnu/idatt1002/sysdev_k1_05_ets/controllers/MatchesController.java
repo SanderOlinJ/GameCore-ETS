@@ -10,6 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
@@ -18,6 +19,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
@@ -40,6 +43,21 @@ public class MatchesController {
     @FXML HBox match12;
     @FXML HBox match13;
     @FXML HBox match14;
+    @FXML Label timematch;
+    @FXML Label timematch1;
+    @FXML Label timematch2;
+    @FXML Label timematch3;
+    @FXML Label timematch4;
+    @FXML Label timematch5;
+    @FXML Label timematch6;
+    @FXML Label timematch7;
+    @FXML Label timematch8;
+    @FXML Label timematch9;
+    @FXML Label timematch10;
+    @FXML Label timematch11;
+    @FXML Label timematch12;
+    @FXML Label timematch13;
+    @FXML Label timematch14;
     @FXML Label team1match;
     @FXML Label team1match1;
     @FXML Label team1match2;
@@ -70,6 +88,36 @@ public class MatchesController {
     @FXML Label team2match12;
     @FXML Label team2match13;
     @FXML Label team2match14;
+    @FXML RadioButton radio1Match;
+    @FXML RadioButton radio2Match;
+    @FXML RadioButton radio1Match1;
+    @FXML RadioButton radio2Match1;
+    @FXML RadioButton radio1Match2;
+    @FXML RadioButton radio2Match2;
+    @FXML RadioButton radio1Match3;
+    @FXML RadioButton radio2Match3;
+    @FXML RadioButton radio1Match4;
+    @FXML RadioButton radio2Match4;
+    @FXML RadioButton radio1Match5;
+    @FXML RadioButton radio2Match5;
+    @FXML RadioButton radio1Match6;
+    @FXML RadioButton radio2Match6;
+    @FXML RadioButton radio1Match7;
+    @FXML RadioButton radio2Match7;
+    @FXML RadioButton radio1Match8;
+    @FXML RadioButton radio2Match8;
+    @FXML RadioButton radio1Match9;
+    @FXML RadioButton radio2Match9;
+    @FXML RadioButton radio1Match10;
+    @FXML RadioButton radio2Match10;
+    @FXML RadioButton radio1Match11;
+    @FXML RadioButton radio2Match11;
+    @FXML RadioButton radio1Match12;
+    @FXML RadioButton radio2Match12;
+    @FXML RadioButton radio1Match13;
+    @FXML RadioButton radio2Match13;
+    @FXML RadioButton radio1Match14;
+    @FXML RadioButton radio2Match14;
     @FXML ToggleGroup winnerMatch;
     @FXML ToggleGroup winnerMatch1;
     @FXML ToggleGroup winnerMatch2;
@@ -123,10 +171,18 @@ public class MatchesController {
     @FXML private MenuItem previousTournamentsButton;
     @FXML private MenuItem aboutButton;
 
+    private static ArrayList<String> times = new ArrayList<>();
+    private ArrayList<Label> timeLabels = new ArrayList<>(Arrays.asList(timematch,timematch1,timematch2,timematch3,
+            timematch4,timematch5,timematch6,timematch7,timematch8,timematch9,timematch10,timematch11,timematch12,
+            timematch13,timematch14));
+
     @FXML
     protected void initialize(){
         setVisibleMatches();
         tournamentName.setText(BracketController.getTournamentName());
+        for (int i = 0; i < times.size(); i++) {
+            timeLabels.get(i).setText(times.get(i));
+        }
     }
 
     @FXML
@@ -173,14 +229,23 @@ public class MatchesController {
         stage.getScene().setRoot(root);
     }
 
+    public static void setTimeLabel(String hour, String minute){
+        times.add(hour + ":" + minute);
+    }
+
     public void setVisibleMatches(){
+        ArrayList<Team>  teams = (ArrayList<Team>) BracketController.getBracket().getTeams().stream().
+                filter(p -> !(p.getNameOfTeam().equals("?"))).collect(Collectors.toList());
         if (AddTeamController.getMaxTeams() == 4){
-            ArrayList<Team>  teams = (ArrayList<Team>) BracketController.getBracket().getTeams().stream().
-                    filter(p -> !(p.getNameOfTeam().equals("?"))).collect(Collectors.toList());
             team1match.setText(teams.get(0).getNameOfTeam());
             team2match.setText(teams.get(2).getNameOfTeam());
             team1match1.setText(teams.get(1).getNameOfTeam());
             team2match1.setText(teams.get(3).getNameOfTeam());
+
+            radio1Match.setText(teams.get(0).getNameOfTeam());
+            radio2Match.setText(teams.get(2).getNameOfTeam());
+            radio1Match1.setText(teams.get(1).getNameOfTeam());
+            radio2Match1.setText(teams.get(3).getNameOfTeam());
         }
 
         else if (AddTeamController.getMaxTeams() == 8){
@@ -190,6 +255,14 @@ public class MatchesController {
             match3.setDisable(false);
             match3.setVisible(true);
             match3.setPrefHeight(100);
+            team1match.setText(teams.get(0).getNameOfTeam());
+            team2match.setText(teams.get(1).getNameOfTeam());
+            team1match1.setText(teams.get(2).getNameOfTeam());
+            team2match1.setText(teams.get(3).getNameOfTeam());
+            team1match2.setText(teams.get(4).getNameOfTeam());
+            team2match2.setText(teams.get(5).getNameOfTeam());
+            team1match3.setText(teams.get(6).getNameOfTeam());
+            team2match3.setText(teams.get(7).getNameOfTeam());
 
         }
         else if (AddTeamController.getMaxTeams() == 16){
