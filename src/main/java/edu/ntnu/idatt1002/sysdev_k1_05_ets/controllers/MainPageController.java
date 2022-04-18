@@ -25,18 +25,18 @@ import java.util.Objects;
 public class MainPageController {
 
     @FXML private MenuBar menuBar;
-    @FXML private Menu aboutButton;
     @FXML private Button createNewTournamentButton;
     @FXML private Button viewMoreOngoing;
     @FXML private Button viewMoreUpcoming;
     @FXML private Button viewMorePrevious;
-    @FXML private Menu homeButton;
+    @FXML Stage stage;
+    @FXML BorderPane startScreenPane;
+
+    @FXML private MenuItem homeButton;
     @FXML private MenuItem ongoingTournamentsButton;
     @FXML private MenuItem upcomingTournamentsButton;
     @FXML private MenuItem previousTournamentsButton;
-    @FXML private Menu tournamentButton;
-    @FXML Stage stage;
-    @FXML BorderPane startScreenPane;
+    @FXML private MenuItem aboutButton;
 
     @FXML private VBox ongoingBox1;
     @FXML private ImageView ongoingImageView1;
@@ -145,10 +145,6 @@ public class MainPageController {
     }
 
     @FXML
-    void onAboutButtonPressed(ActionEvent event) {
-    }
-
-    @FXML
     void onCreateNewTournamentButtonPressed(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class
                 .getResource("scenes/create-new-tournament-page.fxml")));
@@ -168,6 +164,8 @@ public class MainPageController {
     void onHomeButtonPressed(ActionEvent event) {
     }
 
+    @FXML
+    void onAboutButtonPressed(ActionEvent event){}
 
     @FXML
     void onOngoingTournamentsButtonPressed(ActionEvent event) throws IOException {

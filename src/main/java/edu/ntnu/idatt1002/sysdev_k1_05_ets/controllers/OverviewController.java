@@ -27,13 +27,12 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class OverviewController {
-    @FXML private Menu homeButton;
-    @FXML private MenuItem home;
-    @FXML private Menu tournamentButton;
+
+    @FXML private MenuItem homeButton;
     @FXML private MenuItem ongoingTournamentsButton;
     @FXML private MenuItem upcomingTournamentsButton;
     @FXML private MenuItem previousTournamentsButton;
-    @FXML private Menu aboutButton;
+    @FXML private MenuItem aboutButton;
     @FXML private MenuBar menuBar;
     @FXML private HBox box1;
     @FXML private HBox box2;
@@ -230,9 +229,11 @@ public class OverviewController {
     throws IOException{
         System.out.println("yo");
         Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class
-                .getResource("scenes/main-page-test.fxml")));
+                .getResource("scenes/main-page.fxml")));
         onTournamentMenuItemPressed(root);
     }
 
+    @FXML
+    void onAboutButtonPressed(ActionEvent event){}
 
 }

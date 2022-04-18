@@ -38,35 +38,21 @@ public class AddTeamController {
 
     private static int maxTeams;
 
-    @FXML
-    TextField teamNameField;
-
-    @FXML
-    TextArea playersNameField;
-
-    @FXML
-    Label warningLabel;
-
-    @FXML
-    Label existingTeamsAdd;
-
-    @FXML
-    ScrollPane scrollPane;
-
-    @FXML
-    ScrollPane currentTeams;
-
-    @FXML
-    VBox existingTeamsBox;
-
-    @FXML
-    VBox enrolledTeamsBox;
-
-    @FXML
-    TextField abbreviationField;
-
-    @FXML
-    TextField searchTeams;
+    @FXML private TextField teamNameField;
+    @FXML private TextArea playersNameField;
+    @FXML private Label warningLabel;
+    @FXML private Label existingTeamsAdd;
+    @FXML private ScrollPane scrollPane;
+    @FXML private ScrollPane currentTeams;
+    @FXML private VBox existingTeamsBox;
+    @FXML private VBox enrolledTeamsBox;
+    @FXML private TextField abbreviationField;
+    @FXML private TextField searchTeams;
+    @FXML private MenuItem homeButton;
+    @FXML private MenuItem ongoingTournamentsButton;
+    @FXML private MenuItem upcomingTournamentsButton;
+    @FXML private MenuItem previousTournamentsButton;
+    @FXML private MenuItem aboutButton;
 
     private ArrayList<Team> teamsForTournament;
 
@@ -193,7 +179,7 @@ public class AddTeamController {
         }
     }
     //it does not remove team from the list displaying the teams
-    public void deleteTeam() throws IOException {
+    public void deleteTeam() {
         String teamName = teamNameField.getText();
         for (Team team : existingTeams) {
             if (team.getNameOfTeam().equals(teamName)) {
@@ -254,4 +240,19 @@ public class AddTeamController {
         tournament = newTournament;
     }
     public static int getMaxTeams(){return maxTeams;}
+
+    @FXML
+    void onHomeButtonPressed(){}
+
+    @FXML
+    void onOngoingTournamentsButtonPressed(){}
+
+    @FXML
+    void onUpcomingTournamentsButtonPressed(){}
+
+    @FXML
+    void onPreviousTournamentsButtonPressed(){}
+
+    @FXML
+    void onAboutButtonPressed(){}
 }

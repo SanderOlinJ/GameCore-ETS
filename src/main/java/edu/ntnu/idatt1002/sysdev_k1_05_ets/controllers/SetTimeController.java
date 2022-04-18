@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
@@ -64,6 +65,12 @@ public class SetTimeController {
     @FXML HBox match13;
     @FXML HBox match14;
     @FXML Label tournamentName;
+
+    @FXML private MenuItem homeButton;
+    @FXML private MenuItem ongoingTournamentsButton;
+    @FXML private MenuItem upcomingTournamentsButton;
+    @FXML private MenuItem previousTournamentsButton;
+    @FXML private MenuItem aboutButton;
 
     private ArrayList<ChoiceBox> hourBoxes;
     private ArrayList<ChoiceBox> minuteBoxes;
@@ -165,4 +172,19 @@ public class SetTimeController {
             match7.setPrefHeight(100);
         }
     }
+
+    @FXML
+    void onHomeButtonPressed(){}
+
+    @FXML
+    void onOngoingTournamentsButtonPressed(){}
+
+    @FXML
+    void onUpcomingTournamentsButtonPressed(){}
+
+    @FXML
+    void onPreviousTournamentsButtonPressed(){}
+
+    @FXML
+    void onAboutButtonPressed(){}
 }

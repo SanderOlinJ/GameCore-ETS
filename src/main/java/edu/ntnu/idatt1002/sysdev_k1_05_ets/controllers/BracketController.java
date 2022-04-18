@@ -11,6 +11,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -57,6 +58,11 @@ public class BracketController {
     @FXML private Label team31;
     @FXML Label nameOfTournament;
 
+    @FXML private MenuItem homeButton;
+    @FXML private MenuItem ongoingTournamentsButton;
+    @FXML private MenuItem upcomingTournamentsButton;
+    @FXML private MenuItem previousTournamentsButton;
+    @FXML private MenuItem aboutButton;
 
     @FXML
     public void initialize(){
@@ -221,7 +227,20 @@ public class BracketController {
     }
 
     public static String getTournamentName(){return tournamentName;}
-    public void switchToMatches(){
+    public void switchToMatches(){}
 
-    }
+    @FXML
+    void onHomeButtonPressed(){}
+
+    @FXML
+    void onOngoingTournamentsButtonPressed(){}
+
+    @FXML
+    void onUpcomingTournamentsButtonPressed(){}
+
+    @FXML
+    void onPreviousTournamentsButtonPressed(){}
+
+    @FXML
+    void onAboutButtonPressed(){}
 }

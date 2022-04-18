@@ -8,6 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -23,9 +24,15 @@ public class ResultsController {
     @FXML Label tournamentName;
     private static ArrayList<HBox> matches = new ArrayList<>();
 
+    @FXML private MenuItem homeButton;
+    @FXML private MenuItem ongoingTournamentsButton;
+    @FXML private MenuItem upcomingTournamentsButton;
+    @FXML private MenuItem previousTournamentsButton;
+    @FXML private MenuItem aboutButton;
+
     public void initialize(){
-        for (int i = 0; i < matches.size(); i++){
-            resultBox.getChildren().add(matches.get(i));
+        for (HBox match : matches) {
+            resultBox.getChildren().add(match);
         }
         tournamentName.setText(BracketController.getTournamentName());
     }
@@ -76,5 +83,19 @@ public class ResultsController {
         matches.add(match);
     }
 
+    @FXML
+    void onHomeButtonPressed(){}
+
+    @FXML
+    void onOngoingTournamentsButtonPressed(){}
+
+    @FXML
+    void onUpcomingTournamentsButtonPressed(){}
+
+    @FXML
+    void onPreviousTournamentsButtonPressed(){}
+
+    @FXML
+    void onAboutButtonPressed(){}
 
 }

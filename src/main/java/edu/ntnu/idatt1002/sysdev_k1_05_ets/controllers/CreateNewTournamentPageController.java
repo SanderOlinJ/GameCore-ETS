@@ -67,6 +67,12 @@ public class CreateNewTournamentPageController{
     @FXML private ComboBox entranceFeeCurrencyBox;
     @FXML private CheckBox activatePrizePool;
 
+    @FXML private MenuItem homeButton;
+    @FXML private MenuItem ongoingTournamentsButton;
+    @FXML private MenuItem upcomingTournamentsButton;
+    @FXML private MenuItem previousTournamentsButton;
+    @FXML private MenuItem aboutButton;
+
     @FXML
     public void initialize() {
 
@@ -427,4 +433,20 @@ public class CreateNewTournamentPageController{
     public NewTournament getTournament() {
         return tournament;
     }
+
+
+    @FXML
+    void onHomeButtonPressed(){}
+
+    @FXML
+    void onOngoingTournamentsButtonPressed(){}
+
+    @FXML
+    void onUpcomingTournamentsButtonPressed(){}
+
+    @FXML
+    void onPreviousTournamentsButtonPressed(){}
+
+    @FXML
+    void onAboutButtonPressed(){}
 }
