@@ -1,6 +1,7 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters;
 
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.NewTournament;
+import javafx.scene.layout.VBox;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;

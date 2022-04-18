@@ -318,4 +318,31 @@ public class NewTournament {
                 ", matches=" + matches + "\n" +
                 '}';
     }
+
+    public Match findNextMatchToBePlayed(){
+        Match nextMatch = null;
+
+        ArrayList<Match> notFinishedMatches = new ArrayList<>();
+        if (this.matches.size() > 0){
+            for (Match match : matches){
+                if (!match.isFinished()){
+                    notFinishedMatches.add(match);
+                }
+            }
+            LocalTime time = this.matches.get(0).getTimeOfMatch();
+            LocalDate date = this.matches.get(0).getDateOfMatch();
+
+            for (int i = 1; i < this.matches.size(); i++){
+                if (this.matches.get(i).getDateOfMatch().isBefore(date)
+                        || this.matches.get(i).getDateOfMatch().isEqual(date)
+                                && this.matches.get(i).getTimeOfMatch().isBefore(time)){
+
+                    date = this.matches.get(i).getDateOfMatch();
+                    time = this.matches.get(i).getTimeOfMatch();
+                    nextMatch = this.matches.get(i);
+                }
+            }
+        }
+        return nextMatch;
+    }
 }
