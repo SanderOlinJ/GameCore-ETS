@@ -171,16 +171,13 @@ public class MatchesController {
     @FXML private MenuItem previousTournamentsButton;
     @FXML private MenuItem aboutButton;
 
-    private ArrayList<HBox> matches;
-
     private static ArrayList<String> times = new ArrayList<>();
-    private ArrayList<Label> timeLabels;
+    private ArrayList<Label> timeLabels = new ArrayList<>(Arrays.asList(timematch,timematch1,timematch2,timematch3,
+            timematch4,timematch5,timematch6,timematch7,timematch8,timematch9,timematch10,timematch11,timematch12,
+            timematch13,timematch14));
 
     @FXML
     protected void initialize(){
-        timeLabels = new ArrayList<>(Arrays.asList(timematch,timematch1,timematch2,timematch3,
-                timematch4,timematch5,timematch6,timematch7,timematch8,timematch9,timematch10,timematch11,timematch12,
-                timematch13,timematch14));
         setVisibleMatches();
         tournamentName.setText(BracketController.getTournamentName());
         for (int i = 0; i < times.size(); i++) {
@@ -237,16 +234,8 @@ public class MatchesController {
     }
 
     public void setVisibleMatches(){
-        matches = new ArrayList<>(Arrays.asList(match,match1,match2,match3,match4,match5,match6,
-                match7,match8,match9,match10,match11,match12,match13,match14));
-        int numberOfTeams = AddTeamController.getMaxTeams();
         ArrayList<Team>  teams = (ArrayList<Team>) BracketController.getBracket().getTeams().stream().
                 filter(p -> !(p.getNameOfTeam().equals("?"))).collect(Collectors.toList());
-        for (int i = 0; i < numberOfTeams/2; i++){
-            matches.get(i).setDisable(false);
-            matches.get(i).setVisible(true);
-            matches.get(i).setPrefHeight(100);
-        }
         if (AddTeamController.getMaxTeams() == 4){
             team1match.setText(teams.get(0).getNameOfTeam());
             team2match.setText(teams.get(2).getNameOfTeam());

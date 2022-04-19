@@ -20,29 +20,29 @@ public class TournamentReaderRework {
     public TournamentReaderRework(){}
 
     /**
-     * Reads all available info from tournament file to tournament
-     * Method can read tournament even without teams and matches listed.
-     * Method only reads for teams if file size suggests so, and will only read for matches
-     * if teams have been added.
-     * @param tournamentNameShortened shortened name of the tournament, String
-     * @return NewTournament, if the tournament exists.
-     * @throws IOException if tournament file does not exist, or if file could not be read
+     * Reads all info from tournament file to tournament
+     * Including teams and matches.
+     * @param tournamentNameShortened
+     * @return
+     * @throws IOException
      */
     public static NewTournament readTournamentFromFile(String tournamentNameShortened)
     throws IOException {
         String location = TournamentWriterRework.ifFileExistsAndFindLocation(tournamentNameShortened);
 
         File file = switch (location) {
+            case "No" -> throw new IOException("File doesn't exist");
             case "Ongoing" -> new File("src/main/resources/edu/ntnu/idatt1002/" +
                     "sysdev_k1_05_ets/tournamentFiles/ongoingTournaments/" + tournamentNameShortened + ".txt");
             case "Upcoming" -> new File("src/main/resources/edu/ntnu/idatt1002/" +
                     "sysdev_k1_05_ets/tournamentFiles/upcomingTournaments/" + tournamentNameShortened + ".txt");
             case "Previous" -> new File("src/main/resources/edu/ntnu/idatt1002/" +
                     "sysdev_k1_05_ets/tournamentFiles/previousTournaments/" + tournamentNameShortened + ".txt");
-            default -> throw new IOException("File doesn't exist");
+            default -> null;
         };
         ArrayList<String> tournamentInfo = new ArrayList<>();
         try {
+            assert file != null;
             try(Scanner scanner = new Scanner(file)){
                 while (scanner.hasNext()){
                     tournamentInfo.add(scanner.nextLine());
@@ -80,7 +80,7 @@ public class TournamentReaderRework {
 
         if (tournamentInfo.size() > 13) {
             ArrayList<Team> teams = new ArrayList<>();
-            String line = tournamentInfo.get(13);
+            String line = tournamentInfo.get(11);
             String[] values = line.split(COMMA_DELIMITER);
             for (String value : values) {
                 Team team = TeamReader.findAndReturnTeamUsingTeamName(value);
@@ -91,7 +91,6 @@ public class TournamentReaderRework {
             if (tournamentInfo.size() > 14){
                 ArrayList<Match> matches = MatchReader.readMatchesFromArrayList(tournamentInfo);
                 tournament.setMatches(matches);
-
             }
 
         }
