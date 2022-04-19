@@ -26,7 +26,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class OverviewController {
+public class TournamentsOverviewController {
 
     @FXML private MenuItem homeButton;
     @FXML private MenuItem ongoingTournamentsButton;
