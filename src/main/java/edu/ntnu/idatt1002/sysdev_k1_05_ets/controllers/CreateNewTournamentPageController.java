@@ -13,7 +13,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+
 import javafx.scene.control.*;
+import javafx.scene.control.MenuBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
@@ -67,11 +69,14 @@ public class CreateNewTournamentPageController{
     @FXML private ComboBox entranceFeeCurrencyBox;
     @FXML private CheckBox activatePrizePool;
 
+    @FXML private MenuBar menuBar;
+
     @FXML private MenuItem homeButton;
     @FXML private MenuItem ongoingTournamentsButton;
     @FXML private MenuItem upcomingTournamentsButton;
     @FXML private MenuItem previousTournamentsButton;
     @FXML private MenuItem aboutButton;
+    @FXML private MenuItem helpButton;
 
     @FXML
     public void initialize() {
@@ -436,17 +441,53 @@ public class CreateNewTournamentPageController{
 
 
     @FXML
-    void onHomeButtonPressed(){}
+    void onHomeButtonPressed(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class
+                .getResource("scenes/main-page.fxml")));
+        setNextWindowFromMenuBar(root);
+    }
 
     @FXML
-    void onOngoingTournamentsButtonPressed(){}
+    void onAboutButtonPressed(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource("scenes/about-page.fxml")));
+        setNextWindowFromMenuBar(root);
+    }
 
     @FXML
-    void onUpcomingTournamentsButtonPressed(){}
+    void onOngoingTournamentsButtonPressed(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class
+                .getResource("scenes/ongoing-overview.fxml")));
+        setNextWindowFromMenuBar(root);
+    }
+
+    private void setNextWindowFromMenuBar(Parent root) {
+        Stage stage = (Stage) menuBar.getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setMinWidth(1200);
+        stage.setMinHeight(800);
+        stage.show();
+    }
 
     @FXML
-    void onPreviousTournamentsButtonPressed(){}
+    void onUpcomingTournamentsButtonPressed(ActionEvent event)
+            throws IOException{
+        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class
+                .getResource("scenes/upcoming-overview.fxml")));
+        setNextWindowFromMenuBar(root);
+    }
 
     @FXML
-    void onAboutButtonPressed(){}
+    void onPreviousTournamentsButtonPressed(ActionEvent event)
+            throws IOException{
+        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class
+                .getResource("scenes/previous-overview.fxml")));
+        setNextWindowFromMenuBar(root);
+    }
+
+    @FXML
+    void onHelpButtonPressed(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource("scenes/help-page.fxml")));
+        setNextWindowFromMenuBar(root);
+    }
 }

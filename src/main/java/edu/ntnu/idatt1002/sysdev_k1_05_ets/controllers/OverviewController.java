@@ -33,6 +33,7 @@ public class OverviewController {
     @FXML private MenuItem upcomingTournamentsButton;
     @FXML private MenuItem previousTournamentsButton;
     @FXML private MenuItem aboutButton;
+    @FXML private MenuItem helpButton;
     @FXML private MenuBar menuBar;
     @FXML private HBox box1;
     @FXML private HBox box2;
@@ -227,13 +228,21 @@ public class OverviewController {
     @FXML
     void onHomeButtonPressed(ActionEvent event)
     throws IOException{
-        System.out.println("yo");
         Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class
                 .getResource("scenes/main-page.fxml")));
         onTournamentMenuItemPressed(root);
     }
 
     @FXML
-    void onAboutButtonPressed(ActionEvent event){}
+    void onAboutButtonPressed(ActionEvent event) throws IOException{
+        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource("scenes/about-page.fxml")));
+        onTournamentMenuItemPressed(root);
+    }
+
+    @FXML
+    void onHelpButtonPressed(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource("scenes/help-page.fxml")));
+        onTournamentMenuItemPressed(root);
+    }
 
 }

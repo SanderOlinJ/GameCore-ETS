@@ -37,6 +37,7 @@ public class MainPageController {
     @FXML private MenuItem upcomingTournamentsButton;
     @FXML private MenuItem previousTournamentsButton;
     @FXML private MenuItem aboutButton;
+    @FXML private MenuItem helpButton;
 
     @FXML private VBox ongoingBox1;
     @FXML private ImageView ongoingImageView1;
@@ -165,7 +166,16 @@ public class MainPageController {
     }
 
     @FXML
-    void onAboutButtonPressed(ActionEvent event){}
+    void onHelpButtonPressed(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource("scenes/help-page.fxml")));
+        setNextWindowFromMenuBar(root);
+    }
+
+    @FXML
+    void onAboutButtonPressed(ActionEvent event) throws IOException{
+        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource("scenes/about-page.fxml")));
+        setNextWindowFromMenuBar(root);
+    }
 
     @FXML
     void onOngoingTournamentsButtonPressed(ActionEvent event) throws IOException {
@@ -222,5 +232,4 @@ public class MainPageController {
                 .getResource("scenes/previous-overview.fxml")));
         setNextWindow(event, root);
     }
-
 }
