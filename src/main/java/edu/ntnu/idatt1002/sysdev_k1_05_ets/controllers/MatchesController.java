@@ -237,64 +237,26 @@ public class MatchesController {
     }
 
     public void setVisibleMatches(){
-        matches = new ArrayList<>(Arrays.asList(match,match1,match2,match3,match4,match5,match6,
-                match7,match8,match9,match10,match11,match12,match13,match14));
-        int numberOfTeams = AddTeamController.getMaxTeams();
         ArrayList<Team>  teams = (ArrayList<Team>) BracketController.getBracket().getTeams().stream().
                 filter(p -> !(p.getNameOfTeam().equals("?"))).collect(Collectors.toList());
+        ArrayList<HBox> matches = new ArrayList<>(Arrays.asList(match, match1, match2, match3, match4, match5, match6,
+                match7, match8, match9, match10, match11, match12, match13, match14));
+
+        ArrayList<Label> teamOnes = new ArrayList<>(Arrays.asList(team1match,team1match1,team1match2,team1match3,
+                team1match4,team1match5,team1match6,team1match7,team1match8,team1match9,team1match10,team1match11,
+                team1match12,team1match13,team1match14));
+        ArrayList<Label> teamTwos = new ArrayList<>(Arrays.asList(team2match,team2match1,team2match2,team2match3,
+                team2match4,team2match5,team2match6,team2match7,team2match8,team2match9,team2match10,team2match11,
+                team2match12,team2match13,team2match14));
+        int numberOfTeams = AddTeamController.getMaxTeams();
         for (int i = 0; i < numberOfTeams/2; i++){
-            matches.get(i).setDisable(false);
             matches.get(i).setVisible(true);
             matches.get(i).setPrefHeight(100);
+            matches.get(i).setDisable(false);
         }
-        if (AddTeamController.getMaxTeams() == 4){
-            team1match.setText(teams.get(0).getNameOfTeam());
-            team2match.setText(teams.get(2).getNameOfTeam());
-            team1match1.setText(teams.get(1).getNameOfTeam());
-            team2match1.setText(teams.get(3).getNameOfTeam());
-
-            radio1Match.setText(teams.get(0).getNameOfTeam());
-            radio2Match.setText(teams.get(2).getNameOfTeam());
-            radio1Match1.setText(teams.get(1).getNameOfTeam());
-            radio2Match1.setText(teams.get(3).getNameOfTeam());
-        }
-
-        else if (AddTeamController.getMaxTeams() == 8){
-            match2.setDisable(false);
-            match2.setVisible(true);
-            match2.setPrefHeight(100);
-            match3.setDisable(false);
-            match3.setVisible(true);
-            match3.setPrefHeight(100);
-            team1match.setText(teams.get(0).getNameOfTeam());
-            team2match.setText(teams.get(1).getNameOfTeam());
-            team1match1.setText(teams.get(2).getNameOfTeam());
-            team2match1.setText(teams.get(3).getNameOfTeam());
-            team1match2.setText(teams.get(4).getNameOfTeam());
-            team2match2.setText(teams.get(5).getNameOfTeam());
-            team1match3.setText(teams.get(6).getNameOfTeam());
-            team2match3.setText(teams.get(7).getNameOfTeam());
-
-        }
-        else if (AddTeamController.getMaxTeams() == 16){
-            match2.setDisable(false);
-            match2.setVisible(true);
-            match2.setPrefHeight(100);
-            match3.setDisable(false);
-            match3.setVisible(true);
-            match3.setPrefHeight(100);
-            match4.setDisable(false);
-            match4.setVisible(true);
-            match4.setPrefHeight(100);
-            match5.setDisable(false);
-            match5.setVisible(true);
-            match5.setPrefHeight(100);
-            match6.setDisable(false);
-            match6.setVisible(true);
-            match6.setPrefHeight(100);
-            match7.setDisable(false);
-            match7.setVisible(true);
-            match7.setPrefHeight(100);
+        for (int i = 0; i < teams.size()/2; i++){
+            teamOnes.get(i).setText(teams.get(2*i).getNameAbbr());
+            teamTwos.get(i).setText(teams.get(2*i+1).getNameAbbr());
         }
     }
 
