@@ -20,10 +20,10 @@ class TournamentWriterReworkTest {
     @Test
     void testThatWriteNewTournamentToFileWithBasicInfoRuns(){
         String status = "Not finished";
-        String tournamentName = "Test 15";
+        String tournamentName = "Complete Test File";
         String tournamentHost = "Admin";
         LocalDate date = LocalDate.parse("2022-04-18");
-        LocalTime time = LocalTime.parse("00:05");
+        LocalTime time = LocalTime.parse("15:00");
         String description = "";
         String game = "Valorant";
         String platform = "PC / Mac / Linux";
