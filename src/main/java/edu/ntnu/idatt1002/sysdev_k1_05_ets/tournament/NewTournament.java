@@ -323,26 +323,56 @@ public class NewTournament {
         Match nextMatch = null;
 
         ArrayList<Match> notFinishedMatches = new ArrayList<>();
-        if (this.matches.size() > 0){
-            for (Match match : matches){
-                if (!match.isFinished()){
+        if (this.matches.size() > 0) {
+            for (Match match : matches) {
+                if (!match.isFinished() && match.getTimeOfMatch() != null && match.getDateOfMatch() != null) {
                     notFinishedMatches.add(match);
                 }
             }
-            LocalTime time = this.matches.get(0).getTimeOfMatch();
-            LocalDate date = this.matches.get(0).getDateOfMatch();
+            if (notFinishedMatches.size() > 0) {
+                LocalTime time = notFinishedMatches.get(0).getTimeOfMatch();
+                LocalDate date = notFinishedMatches.get(0).getDateOfMatch();
+                nextMatch = notFinishedMatches.get(0);
+                if (notFinishedMatches.size() > 1) {
+                    for (int i = 1; i < notFinishedMatches.size(); i++) {
+                        if (notFinishedMatches.get(i).getDateOfMatch().isBefore(date)
+                                || notFinishedMatches.get(i).getDateOfMatch().isEqual(date)
+                                && notFinishedMatches.get(i).getTimeOfMatch().isBefore(time)) {
 
-            for (int i = 1; i < this.matches.size(); i++){
-                if (this.matches.get(i).getDateOfMatch().isBefore(date)
-                        || this.matches.get(i).getDateOfMatch().isEqual(date)
-                                && this.matches.get(i).getTimeOfMatch().isBefore(time)){
-
-                    date = this.matches.get(i).getDateOfMatch();
-                    time = this.matches.get(i).getTimeOfMatch();
-                    nextMatch = this.matches.get(i);
+                            date = notFinishedMatches.get(i).getDateOfMatch();
+                            time = notFinishedMatches.get(i).getTimeOfMatch();
+                            nextMatch = notFinishedMatches.get(i);
+                        }
+                    }
                 }
             }
         }
         return nextMatch;
+    }
+
+    public boolean doesTournamentHaveAnUnfinishedAndSetMatch(){
+
+        if (this.matches.size() > 0){
+            for (Match match : matches){
+                if (!match.isFinished() && match.getTimeOfMatch() != null && match.getDateOfMatch() != null){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public int findNumberOfTeamsLeft(){
+        int numberOfTeamsLeft = Integer.parseInt(getNumberOfTeams());
+
+        if (this.matches.size() > 0){
+            for (Match match : matches){
+                if (match.isFinished()){
+                    numberOfTeamsLeft--;
+                }
+            }
+        }
+        return numberOfTeamsLeft;
+
     }
 }

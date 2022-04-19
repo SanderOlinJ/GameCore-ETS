@@ -153,7 +153,7 @@
                                                                                         <Insets left="15.0" top="20.0" />
                                                                                     </HBox.margin>
                                                                                 </Text>
-                                                                                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="vs">
+                                                                                <Text fx:id="vs1" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="vs">
                                                                                     <font>
                                                                                         <Font name="Arial Bold" size="18.0" />
                                                                                     </font>
@@ -321,7 +321,7 @@
                                                                                         <Insets left="15.0" top="20.0" />
                                                                                     </HBox.margin>
                                                                                 </Text>
-                                                                                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="vs">
+                                                                                <Text fx:id="vs2" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="vs">
                                                                                     <font>
                                                                                         <Font name="Arial Bold" size="18.0" />
                                                                                     </font>
@@ -489,7 +489,7 @@
                                                                                         <Insets left="15.0" top="20.0" />
                                                                                     </HBox.margin>
                                                                                 </Text>
-                                                                                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="vs">
+                                                                                <Text fx:id="vs3" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="vs">
                                                                                     <font>
                                                                                         <Font name="Arial Bold" size="18.0" />
                                                                                     </font>
@@ -657,7 +657,7 @@
                                                                                         <Insets left="15.0" top="20.0" />
                                                                                     </HBox.margin>
                                                                                 </Text>
-                                                                                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="vs">
+                                                                                <Text fx:id="vs4" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="vs">
                                                                                     <font>
                                                                                         <Font name="Arial Bold" size="18.0" />
                                                                                     </font>
@@ -825,7 +825,7 @@
                                                                                         <Insets left="15.0" top="20.0" />
                                                                                     </HBox.margin>
                                                                                 </Text>
-                                                                                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="vs">
+                                                                                <Text fx:id="vs5" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="vs">
                                                                                     <font>
                                                                                         <Font name="Arial Bold" size="18.0" />
                                                                                     </font>

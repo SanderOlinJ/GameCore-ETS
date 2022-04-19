@@ -11,3 +11,7 @@ Brackets
 4
 0,null
 0,null
+Phase,FaZe,Fnatic,Lords
+Phase,FaZe,2022-04-14,18:00,2,1,16-13,13-16,16-12
+Fnatic,Lords,2022-04-14,17:00,1,2,13-16,16-11,11-16
+Phase,Lords,2022-04-15,12:00

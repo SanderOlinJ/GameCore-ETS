@@ -14,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -131,6 +132,7 @@ public class MainPageController {
                     (tournaments.get(0).getGame()) + ".png"));
             text1.setText(tournaments.get(0).getTournamentName());
             vBox1.setVisible(true);
+            vBox1.setDisable(false);
 
             if (tournaments.size() > 1){
 
@@ -140,6 +142,7 @@ public class MainPageController {
                                 (tournaments.get(1).getGame()) + ".png"));
                 text2.setText(tournaments.get(1).getTournamentName());
                 vBox2.setVisible(true);
+                vBox2.setDisable(false);
             }
         }
     }
@@ -222,5 +225,23 @@ public class MainPageController {
                 .getResource("scenes/previous-overview.fxml")));
         setNextWindow(event, root);
     }
+
+    @FXML
+    void onOngoingBox1Clicked(MouseEvent event){}
+
+    @FXML
+    void onOngoingBox2Clicked(MouseEvent event){}
+
+    @FXML
+    void onUpcomingBox1Clicked(MouseEvent event){}
+
+    @FXML
+    void onUpcomingBox2Clicked(MouseEvent event){}
+
+    @FXML
+    void onPreviousBox1Clicked(MouseEvent event){}
+
+    @FXML
+    void onPreviousBox2Clicked(MouseEvent event){}
 
 }
