@@ -15,6 +15,7 @@ import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Objects;
 
 public class BracketController {
@@ -123,7 +124,9 @@ public class BracketController {
             labels.get(i).setText("?");
         }
         for (int i = bracketSize-1; i < 2*bracketSize - 1; i++) {
-            labels.get(i).setText(deepCopy.randomlyRemoveTeam().getNameAbbr());
+            Team team = deepCopy.randomlyRemoveTeam();
+            Collections.swap(tournament.getTeams(), i - 7, tournament.getIndexOfTeam(team));
+            labels.get(i).setText(team.getNameAbbr());
         }
 
 //        team1.setText("TBD");
@@ -211,6 +214,7 @@ public class BracketController {
     private void advanceTeam(Label label) {
         String teamName = label.getText();
         int id = getLabelInt(label);
+        tournament.getTeams().set((id/2)-1, tournament.getTeam(id));
         labels.get((id/2)-1).setText(teamName);
         tournament.getTeams().set((id/2)-1,tournament.getTeam(id));
     }
