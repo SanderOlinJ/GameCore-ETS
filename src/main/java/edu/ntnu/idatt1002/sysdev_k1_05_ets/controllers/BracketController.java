@@ -15,7 +15,9 @@ import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class BracketController {
 
@@ -113,34 +115,25 @@ public class BracketController {
     }
 
     public void randomize(){
-
         Tournament deepCopy = new Tournament("Deep Copy");
         for (Team team : tournament.getTeams()) {
             deepCopy.addTeam(new Team(team.getMembers(), team.getNameOfTeam(), team.getNameAbbr()));
         }
-
         for (int i = 0; i < bracketSize - 1; i++){
             labels.get(i).setText("?");
         }
         for (int i = bracketSize-1; i < 2*bracketSize - 1; i++) {
-            labels.get(i).setText(deepCopy.randomlyRemoveTeam().getNameAbbr());
+            Team team = deepCopy.randomlyRemoveTeam();
+            Collections.swap(tournament.getTeams(),bracketSize-1,tournament.getIndexOfTeam(team));
+            labels.get(i).setText(team.getNameAbbr());
         }
-
-//        team1.setText("TBD");
-//        team2.setText("TBD");
-//        team3.setText("TBD");
-//        team4.setText("TBD");
-//        team5.setText("TBD");
-//        team6.setText("TBD");
-//        team7.setText("TBD");
-//        team8.setText(deepCopy.randomlyRemoveTeam().getNameOfTeam());
-//        team9.setText(deepCopy.randomlyRemoveTeam().getNameOfTeam());
-//        team10.setText(deepCopy.randomlyRemoveTeam().getNameOfTeam());
-//        team11.setText(deepCopy.randomlyRemoveTeam().getNameOfTeam());
-//        team12.setText(deepCopy.randomlyRemoveTeam().getNameOfTeam());
-//        team13.setText(deepCopy.randomlyRemoveTeam().getNameOfTeam());
-//        team14.setText(deepCopy.randomlyRemoveTeam().getNameOfTeam());
-//        team15.setText(deepCopy.getTeam(0).getNameOfTeam());
+        ArrayList<String> sendTeams = new ArrayList<>();
+        for (Label label : labels) {
+            if (!(label.getText().equals("?"))) {
+                sendTeams.add(label.getText());
+            }
+        }
+        MatchesController.setTeams(sendTeams);
     }
 
 

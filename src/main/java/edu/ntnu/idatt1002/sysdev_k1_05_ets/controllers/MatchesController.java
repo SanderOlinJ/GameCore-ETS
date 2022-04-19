@@ -172,16 +172,15 @@ public class MatchesController {
     @FXML private MenuItem aboutButton;
 
     private ArrayList<HBox> matches;
-
+    private static ArrayList<String> teams = new ArrayList<>();
     private static ArrayList<String> times = new ArrayList<>();
-    private ArrayList<Label> timeLabels;
 
     @FXML
     protected void initialize(){
-        timeLabels = new ArrayList<>(Arrays.asList(timematch,timematch1,timematch2,timematch3,
-                timematch4,timematch5,timematch6,timematch7,timematch8,timematch9,timematch10,timematch11,timematch12,
-                timematch13,timematch14));
         setVisibleMatches();
+        ArrayList<Label> timeLabels = new ArrayList<>(Arrays.asList(timematch, timematch1, timematch2, timematch3,
+                timematch4, timematch5, timematch6, timematch7, timematch8, timematch9, timematch10, timematch11, timematch12,
+                timematch13, timematch14));
         tournamentName.setText(BracketController.getTournamentName());
         for (int i = 0; i < times.size(); i++) {
             timeLabels.get(i).setText(times.get(i));
@@ -237,9 +236,7 @@ public class MatchesController {
     }
 
     public void setVisibleMatches(){
-        ArrayList<Team>  teams = (ArrayList<Team>) BracketController.getBracket().getTeams().stream().
-                filter(p -> !(p.getNameOfTeam().equals("?"))).collect(Collectors.toList());
-        ArrayList<HBox> matches = new ArrayList<>(Arrays.asList(match, match1, match2, match3, match4, match5, match6,
+        matches = new ArrayList<>(Arrays.asList(match, match1, match2, match3, match4, match5, match6,
                 match7, match8, match9, match10, match11, match12, match13, match14));
 
         ArrayList<Label> teamOnes = new ArrayList<>(Arrays.asList(team1match,team1match1,team1match2,team1match3,
@@ -255,9 +252,15 @@ public class MatchesController {
             matches.get(i).setDisable(false);
         }
         for (int i = 0; i < teams.size()/2; i++){
-            teamOnes.get(i).setText(teams.get(2*i).getNameAbbr());
-            teamTwos.get(i).setText(teams.get(2*i+1).getNameAbbr());
+            teamOnes.get(i).setText(teams.get(2*i));
+            teamTwos.get(i).setText(teams.get(2*i+1));
         }
+
+    }
+
+    //TODO temporary solution, not ideal
+    public static void setTeams(ArrayList<String> teamsIn){
+        teams.addAll(teamsIn);
     }
 
     @FXML
