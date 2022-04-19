@@ -41,6 +41,7 @@ import java.io.IOException;
 
 public class CreateNewTournamentPageController{
 
+    public Button continueButton;
     private Scene scene;
     private Stage stage;
     private NewTournament tournament;
@@ -346,14 +347,12 @@ public class CreateNewTournamentPageController{
         TournamentWriterRework.writeNewTournamentToFileWithBasicInfo(status, tournamentName,
                 tournamentHost, date, time, description, game, platform, tournamentType,bestOf, numberOfTeams,
                 prizePool, prizePoolCurrency, entranceFee, entranceFeeCurrency);
+
         int formatNr = Integer.parseInt(numberOfTeams);
-
-        edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.AddTeamController.setMaxTeams(formatNr);
-        edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.AddTeamController.setTournament(tournament);
-        BracketController.setBracketSize(Integer.parseInt((String) totalNumberOfTeamsBox.getValue()));
-
-        edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.BracketController
-                .setTournamentName(tournamentNameBox.getText());
+        AddTeamController.setMaxTeams(formatNr);
+        AddTeamController.setTournament(tournament);
+        BracketController.setBracketSize(formatNr);
+        BracketController.setTournamentName(tournamentName);
 
         Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource(
                 "scenes/add-team-scene.fxml")));

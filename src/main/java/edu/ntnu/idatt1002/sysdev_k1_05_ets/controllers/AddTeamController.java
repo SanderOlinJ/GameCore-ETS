@@ -1,10 +1,9 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.GameCoreETSApplication;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.NewTournamentWriter;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TeamReader;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TeamWriter;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.*;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.NewTournament;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.utilities.Utilities;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -56,76 +55,17 @@ public class AddTeamController {
     private ArrayList<Team> teamsForTournament;
 
 
-
-    @FXML
-    public void setMainScene(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource("scenes/start-screen.fxml")));
-        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-    @FXML
-    public void setBracketScene(ActionEvent event) throws IOException {
-        String link = "scenes/overview-scene-four.fxml";
-        if (maxTeams <= 4) {
-            link = "scenes/overview-scene-four.fxml";
-        } else if (maxTeams <= 8) {
-            link = "scenes/overview-scene-eight.fxml";
-        } else if (maxTeams <= 16) {
-            link = "scenes/overview-scene-sixteen.fxml";
-        }
-        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource(link)));
-
-        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-
-        NewTournamentWriter.writeTeamsToTournament(tournament.getTournamentName(), tournament.getDate(),
-                String.valueOf(maxTeams), getTeamsForTournament());
-    }
-    @FXML
-    public void addTeamExisting(String teamName){
-        boolean teamIsAlreadyEnrolled = isTeamAlreadyEnrolled(teamName);
-        if(teamIsAlreadyEnrolled){
-            warningLabel.setText(teamName + " is already enrolled for the tournament");
-            return;
-        }
-        if(BracketController.getBracket().getTeams().size() >= maxTeams){
-            warningLabel.setText("You have reached the maximum number of teams for this tournament. \n"
-                    + "max teams is set to: "+maxTeams);
-            return;
-        }
-
-
-        else {
-            for (Team team : existingTeams) {
-                if (team.getNameOfTeam().equals(teamName)) {
-                    BracketController.getBracket().addTeam(team);
-                    Label newTeam = new Label(teamName);
-                    enrolledTeamsBox.getChildren().add(newTeam);
-                }
-            }
-            existingTeamsAdd.setText(teamName + " has been added to your tournament");
-            setCurrentTeams();
-        }
-    }
-
-
     @FXML
     public void initialize () throws IOException {
         //setting search box for teams selection
 
-        ArrayList<Team> searchTeamNames = TeamReader.readFile
-                (new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/teamFiles/all_Teams.csv"));
+        ArrayList<Team> searchTeamNames = TeamReader.readTeamsFromAllTeamsFile();
         TextFields.bindAutoCompletion(searchTeams,
                 searchTeamNames.stream().map(Team::getNameOfTeam).collect(Collectors.toList()));
 
-        //loop through the existing teams and set their style and add them to vbox in scrollpane
-        existingTeams = new ArrayList<>(TeamReader.readFile(
-                new File("src/main/resources/edu/ntnu/idatt1002" +
-                        "/sysdev_k1_05_ets/teamFiles/all_Teams.csv")));
+        //loop through the existing teams and set their style and add them to vbox in scroll pane
+        existingTeams = new ArrayList<>(TeamReader.readTeamsFromAllTeamsFile());
+
         for (int i = 0; i < existingTeams.size(); i++){
             Label teamLabel = new Label();
             teamLabel.setText(existingTeams.get(i).getNameOfTeam());
@@ -141,6 +81,62 @@ public class AddTeamController {
     }
 
 
+    @FXML
+    public void setMainScene(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource("scenes/start-screen.fxml")));
+        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    public void setBracketScene(ActionEvent event) throws IOException {
+        String link = "";
+        if (maxTeams <= 4) {
+            link = "scenes/overview-scene-four.fxml";
+        } else if (maxTeams <= 8) {
+            link = "scenes/overview-scene-eight.fxml";
+        } else if (maxTeams <= 16) {
+            link = "scenes/overview-scene-sixteen.fxml";
+        }
+        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource(link)));
+
+        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
+        TournamentWriterRework.writeTeamsToTournamentFile(Utilities
+                .shortenAndReplaceUnnecessarySymbolsInString(tournament.getTournamentName()),getTeamsForTournament());
+    }
+    @FXML
+    public void addTeamExisting(String teamName){
+        boolean teamIsAlreadyEnrolled = isTeamAlreadyEnrolled(teamName);
+        if(teamIsAlreadyEnrolled){
+            warningLabel.setText(teamName + " is already enrolled for the tournament");
+            return;
+        }
+        if(BracketController.getBracket().getTeams().size() >= maxTeams){
+            warningLabel.setText("You have reached the maximum number of teams for this tournament. \n"
+                    + "max teams is set to: "+maxTeams);
+        }
+
+
+        else {
+            for (Team team : existingTeams) {
+                if (team.getNameOfTeam().equals(teamName)) {
+                    BracketController.getBracket().addTeam(team);
+                    Label newTeam = new Label(teamName);
+                    enrolledTeamsBox.getChildren().add(newTeam);
+                    teamsForTournament.add(team);
+                }
+            }
+            existingTeamsAdd.setText(teamName + " has been added to your tournament");
+            setCurrentTeams();
+        }
+    }
+
 
     public void addTeam(ActionEvent actionEvent) throws IOException {
         if (teamNameField.getText().strip().equals("")){
@@ -155,7 +151,6 @@ public class AddTeamController {
         boolean teamIsAlreadyEnrolled = isTeamAlreadyEnrolled(teamNameField.getText());
         if(teamIsAlreadyEnrolled){
             warningLabel.setText(teamNameField.getText() + " is already enrolled for the tournament");
-            return;
         }
 
         else {
@@ -226,7 +221,7 @@ public class AddTeamController {
    }
 
     public void setCurrentTeams(){
-        /**Separator separator = new Separator();
+        /*Separator separator = new Separator();
         separator.setOrientation(Orientation.HORIZONTAL);
          */
 

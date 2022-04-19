@@ -124,7 +124,11 @@ public class TournamentsOverviewController {
             name1.setText(tournaments.get(0).getTournamentName());
             game1.setText(tournaments.get(0).getGame());
             totalTeams1.setText(tournaments.get(0).getNumberOfTeams());
-            teamsLeft1.setText("" + tournaments.get(0).findNumberOfTeamsLeft());
+            if (tournaments.get(0).getTeams().size() > 0) {
+                teamsLeft1.setText("" + tournaments.get(0).findNumberOfTeamsLeft());
+            } else {
+                teamsLeft1.setText("No teams set");
+            }
             if (tournaments.get(0).doesTournamentHaveAnUnfinishedAndSetMatch()) {
                 String team11Name = tournaments.get(0).findNextMatchToBePlayed().getTeam1().getNameOfTeam();
                 String team12Name = tournaments.get(0).findNextMatchToBePlayed().getTeam2().getNameOfTeam();
@@ -147,7 +151,11 @@ public class TournamentsOverviewController {
                 name2.setText(tournaments.get(1).getTournamentName());
                 game2.setText(tournaments.get(1).getGame());
                 totalTeams2.setText(tournaments.get(1).getNumberOfTeams());
-                teamsLeft2.setText(tournaments.get(1).getNumberOfTeams());
+                if (tournaments.get(1).getTeams().size() > 0){
+                    teamsLeft2.setText("" + tournaments.get(1).findNumberOfTeamsLeft());
+                } else {
+                    teamsLeft2.setText("No teams set");
+                }
                 if (tournaments.get(1).doesTournamentHaveAnUnfinishedAndSetMatch()) {
                     String team21Name = tournaments.get(1).findNextMatchToBePlayed().getTeam1().getNameOfTeam();
                     String team22Name = tournaments.get(1).findNextMatchToBePlayed().getTeam2().getNameOfTeam();
@@ -170,7 +178,11 @@ public class TournamentsOverviewController {
                     name3.setText(tournaments.get(2).getTournamentName());
                     game3.setText(tournaments.get(2).getGame());
                     totalTeams3.setText(tournaments.get(2).getNumberOfTeams());
-                    teamsLeft3.setText(tournaments.get(2).getNumberOfTeams());
+                    if (tournaments.get(2).getTeams().size() > 0){
+                        teamsLeft3.setText("" + tournaments.get(2).findNumberOfTeamsLeft());
+                    } else {
+                        teamsLeft3.setText("No teams set");
+                    }
                     if (tournaments.get(2).doesTournamentHaveAnUnfinishedAndSetMatch()) {
                         String team31Name = tournaments.get(2).findNextMatchToBePlayed().getTeam1().getNameOfTeam();
                         String team32Name = tournaments.get(2).findNextMatchToBePlayed().getTeam2().getNameOfTeam();
@@ -193,7 +205,11 @@ public class TournamentsOverviewController {
                         name4.setText(tournaments.get(3).getTournamentName());
                         game4.setText(tournaments.get(3).getGame());
                         totalTeams4.setText(tournaments.get(3).getNumberOfTeams());
-                        teamsLeft4.setText(tournaments.get(3).getNumberOfTeams());
+                        if (tournaments.get(3).getTeams().size() > 0){
+                            teamsLeft4.setText("" + tournaments.get(3).findNumberOfTeamsLeft());
+                        } else {
+                            teamsLeft4.setText("No teams set");
+                        }
                         if (tournaments.get(3).doesTournamentHaveAnUnfinishedAndSetMatch()) {
                             String team41Name = tournaments.get(3).findNextMatchToBePlayed().getTeam1().getNameOfTeam();
                             String team42Name = tournaments.get(3).findNextMatchToBePlayed().getTeam2().getNameOfTeam();
@@ -216,7 +232,11 @@ public class TournamentsOverviewController {
                             name5.setText(tournaments.get(4).getTournamentName());
                             game5.setText(tournaments.get(4).getGame());
                             totalTeams5.setText(tournaments.get(4).getNumberOfTeams());
-                            teamsLeft5.setText(tournaments.get(4).getNumberOfTeams());
+                            if (tournaments.get(4).getTeams().size() > 0){
+                                teamsLeft5.setText("" + tournaments.get(4).findNumberOfTeamsLeft());
+                            } else {
+                                teamsLeft5.setText("No teams set");
+                            }
                             if (tournaments.get(4).doesTournamentHaveAnUnfinishedAndSetMatch()) {
                                 String team51Name = tournaments.get(4).findNextMatchToBePlayed().getTeam1().getNameOfTeam();
                                 String team52Name = tournaments.get(4).findNextMatchToBePlayed().getTeam2().getNameOfTeam();

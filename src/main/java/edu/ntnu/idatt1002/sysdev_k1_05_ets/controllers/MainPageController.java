@@ -96,7 +96,7 @@ public class MainPageController {
             setMainPageWithTournaments(ongoingTournaments, ongoingImageView1, ongoingText1, ongoingBox1,
                     ongoingImageView2, ongoingText2, ongoingBox2);
         } catch (IOException exception){
-            throw new IOException("Could not show ongoing tournaments: " + exception.getMessage());
+            throw new IOException(exception.getMessage());
         }
     }
 
