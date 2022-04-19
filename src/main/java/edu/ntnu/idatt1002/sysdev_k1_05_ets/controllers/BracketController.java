@@ -85,11 +85,17 @@ public class BracketController {
             labels.addAll(Arrays.asList(team16,team17,team18,team19,team20,team21,team22,team23,team24,team25,team26,
                     team27,team28,team29,team30,team31));
         }
-        for (int i = 0; i < teams.size(); i++){
-            labels.get(i+(bracketSize-1)).setText(teams.get(i).getNameAbbr());
-        }
-        for (Label label : labels) {
-            label.setOnMouseClicked(mouseEvent -> advanceTeam(label));
+        if (teams.size() > bracketSize) {
+            for (int i = 0; i < bracketSize; i++) {
+                labels.get(i + (bracketSize - 1)).setText(teams.get(i).getNameAbbr());
+            }
+            for (int i = bracketSize - 2; i < teams.size(); i++){
+                labels.get(i).setText(teams.get(i).getNameAbbr());
+            }
+        }else {
+            for (int i = 0; i < teams.size(); i++) {
+                labels.get(i + (bracketSize - 1)).setText(teams.get(i).getNameAbbr());
+            }
         }
         nameOfTournament.setText(tournamentName);
     }
@@ -97,7 +103,7 @@ public class BracketController {
     public void randomize(){
         Tournament deepCopy = new Tournament("Deep Copy");
         for (Team team : tournament.getTeams()) {
-            deepCopy.addTeam(new Team(team.getMembers(), team.getNameOfTeam(), team.getNameAbbr()));
+            deepCopy.addTeam(new Team(team.getNameOfTeam(), team.getNameAbbr()));
         }
         for (int i = 0; i < bracketSize - 1; i++){
             labels.get(i).setText("?");
@@ -173,13 +179,7 @@ public class BracketController {
     }
 
 
-    @FXML
-    private void advanceTeam(Label label) {
-        String teamName = label.getText();
-        int id = getLabelInt(label);
-        labels.get((id/2)-1).setText(teamName);
-        tournament.getTeams().set((id/2)-1,tournament.getTeam(id));
-    }
+
 
     public static Tournament getBracket(){
         return tournament;

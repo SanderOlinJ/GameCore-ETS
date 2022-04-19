@@ -197,7 +197,7 @@ public class MatchesController {
             timeLabels.get(i).setText(times.get(i));
         }
     }
-
+    //TODO fix wonky code
     @FXML
     public void winnerChosen(){
         ArrayList<ToggleGroup> winners = new ArrayList<>(Arrays.asList(winnerMatch,winnerMatch1,winnerMatch2,
@@ -218,6 +218,11 @@ public class MatchesController {
                 matches.get(i).setDisable(true);
                 matches.get(i).setVisible(false);
                 matches.get(i).setPrefHeight(0);
+                if (Integer.parseInt(teamOnesScore.get(i).getText()) > Integer.parseInt(teamTwosScore.get(i).getText())){
+                    advanceTeam(team1);
+                }else {
+                    advanceTeam(team2);
+                }
             }
         }
     }
@@ -232,6 +237,11 @@ public class MatchesController {
         stage.setMinWidth(1200);
         stage.setMinHeight(800);
         stage.show();
+    }
+
+    private void advanceTeam(Team team) {
+        Team teamAdvance = new Team(team.getNameOfTeam(),team.getNameAbbr());
+        BracketController.getBracket().addTeam(teamAdvance);
     }
 
     @FXML
