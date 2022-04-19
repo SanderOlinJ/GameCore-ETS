@@ -51,6 +51,7 @@ public class AddTeamController {
     @FXML private MenuItem upcomingTournamentsButton;
     @FXML private MenuItem previousTournamentsButton;
     @FXML private MenuItem aboutButton;
+    @FXML private Label nrOfTeams;
 
     private ArrayList<Team> teamsForTournament;
 
@@ -68,6 +69,7 @@ public class AddTeamController {
 
         for (int i = 0; i < existingTeams.size(); i++){
             Label teamLabel = new Label();
+            teamLabel.setPrefWidth(200);
             teamLabel.setText(existingTeams.get(i).getNameOfTeam());
             existingTeamsBox.getChildren().add(teamLabel);
             existingTeamsBox.getChildren().get(i).setOnMouseClicked
@@ -76,7 +78,6 @@ public class AddTeamController {
         }
         teamsForTournament = new ArrayList<>();
         existingTeamsBox.setAlignment(Pos.CENTER);
-        existingTeamsBox.setPrefWidth(310);
         scrollPane.setContent(existingTeamsBox);
     }
 
@@ -128,8 +129,11 @@ public class AddTeamController {
                 if (team.getNameOfTeam().equals(teamName)) {
                     BracketController.getBracket().addTeam(team);
                     Label newTeam = new Label(teamName);
+                    newTeam.setPrefWidth(300);
+                    newTeam.setAlignment(Pos.TOP_LEFT);
                     enrolledTeamsBox.getChildren().add(newTeam);
                     teamsForTournament.add(team);
+                    nrOfTeams.setText("" + teamsForTournament.size());
                 }
             }
             existingTeamsAdd.setText(teamName + " has been added to your tournament");
@@ -153,6 +157,7 @@ public class AddTeamController {
             warningLabel.setText(teamNameField.getText() + " is already enrolled for the tournament");
         }
 
+        // TODO: 19.04.2022: if a team was "selected" from registry and edited, remove previous instance of the team for the all_Teams.csv, and replace with new version
         else {
             warningLabel.setText("");
             if (playersNameField.getText().isBlank()){
@@ -171,7 +176,10 @@ public class AddTeamController {
                 Team addedTeam = new Team(teamMembersList, teamNameField.getText(),abbreviationField.getText());
                 this.teamsForTournament.add(addedTeam);
                 Label newTeam = new Label(teamNameField.getText());
+                newTeam.setPrefWidth(300);
+                newTeam.setAlignment(Pos.TOP_LEFT);
                 enrolledTeamsBox.getChildren().add(newTeam);
+                nrOfTeams.setText("" + teamsForTournament.size());
 
                 //add team to tournament bracket
                 BracketController.getBracket().addTeam(addedTeam);
@@ -199,6 +207,7 @@ public class AddTeamController {
                 pC.getChildren().remove(team);
 
                 teamsForTournament.remove(team);
+                nrOfTeams.setText("" + teamsForTournament.size());
                 setCurrentTeams();
                 playersNameField.setText("");
                 teamNameField.setText("");
@@ -226,7 +235,7 @@ public class AddTeamController {
          */
 
         for (int i = 0; i < enrolledTeamsBox.getChildren().size(); i++) {
-            Label teamLabel = null;
+            Label teamLabel;
             teamLabel = (Label) enrolledTeamsBox.getChildren().get(i);
             enrolledTeamsBox.getChildren().get(i).setStyle("-fx-text-fill : white; -fx-font-size: 15pt");
             Label finalTeamLabel = teamLabel;
