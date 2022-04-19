@@ -91,7 +91,6 @@ public class TournamentReaderRework {
             if (tournamentInfo.size() > 14){
                 ArrayList<Match> matches = MatchReader.readMatchesFromArrayList(tournamentInfo);
                 tournament.setMatches(matches);
-
             }
 
         }

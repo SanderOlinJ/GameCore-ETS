@@ -27,17 +27,6 @@ public class Match {
         this.team2 = team2;
     }
 
-    public Match(Team team1, Team team2, LocalDate dateOfMatch, LocalTime timeOfMatch, ArrayList<Round> rounds,
-                 int matchScoreTeam1, int matchScoreTeam2){
-        this.team1 = team1;
-        this.team2 = team2;
-        this.dateOfMatch = dateOfMatch;
-        this.timeOfMatch = timeOfMatch;
-        this.rounds = rounds;
-        this.matchScoreTeam1 = matchScoreTeam1;
-        this.matchScoreTeam2 = matchScoreTeam2;
-    }
-
     public Team getTeam1() {
         return team1;
     }
@@ -98,8 +87,8 @@ public class Match {
         rounds.add(round);
     }
 
-    public void addAllRounds(ArrayList<Round> roundsToAdd){
-        this.rounds.addAll(roundsToAdd);
+    public void addAllRounds(ArrayList<Round> rounds){
+        rounds.addAll(rounds);
     }
 
     public Team getVictor(){

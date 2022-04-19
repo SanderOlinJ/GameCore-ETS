@@ -51,6 +51,7 @@ public class MatchReader {
             }
             matches.add(match);
         }
+
         return matches;
     }
 }
