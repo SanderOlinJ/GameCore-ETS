@@ -8,7 +8,6 @@ import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -88,10 +87,19 @@ public class AddTeamController {
     }
     @FXML
     public void addTeamExisting(String teamName){
+        boolean teamIsAlreadyEnrolled = isTeamAlreadyEnrolled(teamName);
+        if(teamIsAlreadyEnrolled){
+            warningLabel.setText(teamName + " is already enrolled for the tournament");
+            return;
+        }
         if(BracketController.getBracket().getTeams().size() >= maxTeams){
             warningLabel.setText("You have reached the maximum number of teams for this tournament. \n"
-                    + "max teams: "+maxTeams);
-        }else {
+                    + "max teams is set to: "+maxTeams);
+            return;
+        }
+
+
+        else {
             for (Team team : existingTeams) {
                 if (team.getNameOfTeam().equals(teamName)) {
                     BracketController.getBracket().addTeam(team);
@@ -144,6 +152,12 @@ public class AddTeamController {
             + "max teams: "+maxTeams);
         }
 
+        boolean teamIsAlreadyEnrolled = isTeamAlreadyEnrolled(teamNameField.getText());
+        if(teamIsAlreadyEnrolled){
+            warningLabel.setText(teamNameField.getText() + " is already enrolled for the tournament");
+            return;
+        }
+
         else {
             warningLabel.setText("");
             if (playersNameField.getText().isBlank()){
@@ -178,6 +192,8 @@ public class AddTeamController {
             }
         }
     }
+
+
     //it does not remove team from the list displaying the teams
     public void deleteTeam() {
         String teamName = teamNameField.getText();
@@ -198,13 +214,29 @@ public class AddTeamController {
         setCurrentTeams();
     }
 
+
+   public void deleteTeamFromTeams(Label teamLabel){
+
+       for(int i = 0; i < enrolledTeamsBox.getChildren().size(); i++){
+           if(enrolledTeamsBox.getChildren().get(i).equals(teamLabel)){
+               enrolledTeamsBox.getChildren().remove(i);
+               BracketController.getBracket().removeTeam(teamLabel.getText());
+           }
+       }
+   }
+
     public void setCurrentTeams(){
-        Separator separator = new Separator();
+        /**Separator separator = new Separator();
         separator.setOrientation(Orientation.HORIZONTAL);
+         */
 
         for (int i = 0; i < enrolledTeamsBox.getChildren().size(); i++) {
+            Label teamLabel = null;
+            teamLabel = (Label) enrolledTeamsBox.getChildren().get(i);
             enrolledTeamsBox.getChildren().get(i).setStyle("-fx-text-fill : white; -fx-font-size: 15pt");
-
+            Label finalTeamLabel = teamLabel;
+            enrolledTeamsBox.getChildren().get(i).setOnMouseClicked
+                    (mouseEvent -> deleteTeamFromTeams(finalTeamLabel));
             //enrolledTeamsBox.getChildren().add(separator);
         }
         //styling of vbox for current teams
@@ -230,6 +262,20 @@ public class AddTeamController {
         }
     }
 
+    /**
+     * checks if team is in the enrolled teams box
+     * @param teamName
+     * @return true/false, enrolled/not enrolled
+     */
+    public boolean isTeamAlreadyEnrolled(String teamName){
+        for (int i = 0; i < enrolledTeamsBox.getChildren().size(); i++) {
+            Label teamLabel = (Label) enrolledTeamsBox.getChildren().get(i);
+            if(teamLabel.getText().equals(teamName)){
+                return true;
+            }
+        }
+        return false;
+    }
     public static void setMaxTeams(int maxNrOfTeams) {
         maxTeams = maxNrOfTeams;
     }

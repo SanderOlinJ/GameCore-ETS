@@ -101,7 +101,7 @@
                                                 <VBox prefHeight="0.0" prefWidth="1200.0" />
                                                 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="317.0" prefWidth="1021.0" style="-fx-background-color: #282c34;">
                                                     <children>
-                                                        <VBox fx:id="ongoingBox1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="273.0" prefWidth="350.0" visible="false">
+                                                        <VBox fx:id="ongoingBox1" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onOngoingBox1Clicked" prefHeight="273.0" prefWidth="350.0" visible="false">
                                                             <HBox.margin>
                                                                 <Insets left="120.0" right="81.0" top="22.0" />
                                                             </HBox.margin>
@@ -135,7 +135,7 @@
                                                 <Cursor fx:constant="HAND" />
                                              </cursor>
                                                         </VBox>
-                                          <VBox fx:id="ongoingBox2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="273.0" prefWidth="350.0" visible="false">
+                                          <VBox fx:id="ongoingBox2" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onOngoingBox2Clicked" prefHeight="273.0" prefWidth="350.0" visible="false">
                                              <children>
                                                 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="193.0" prefWidth="350.0" style="-fx-background-color: black;">
                                                    <VBox.margin>
@@ -154,7 +154,7 @@
                                                       <Insets />
                                                    </VBox.margin>
                                                    <children>
-                                                      <TextArea fx:id="ongoingText2" layoutX="7.0" layoutY="7.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="67.0" prefWidth="336.0" style="-fx-background-color: #13161d;" stylesheets="@../css/transparentTextArea.css" text="Tournament" wrapText="true">
+                                                      <TextArea fx:id="ongoingText2" editable="false" layoutX="7.0" layoutY="7.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="67.0" prefWidth="336.0" style="-fx-background-color: #13161d;" stylesheets="@../css/transparentTextArea.css" text="Tournament" wrapText="true">
                                                          <font>
                                                             <Font name="Arial Bold" size="20.0" />
                                                          </font>
@@ -165,6 +165,9 @@
                                              <HBox.margin>
                                                 <Insets top="22.0" />
                                              </HBox.margin>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
                                           </VBox>
                                                     </children>
                                                     <VBox.margin>
@@ -211,7 +214,7 @@
                                                 <VBox prefHeight="0.0" prefWidth="1200.0" />
                                     <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="317.0" prefWidth="1021.0" style="-fx-background-color: #282c34;">
                                        <children>
-                                          <VBox fx:id="upcomingBox1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="273.0" prefWidth="350.0" visible="false">
+                                          <VBox fx:id="upcomingBox1" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onUpcomingBox1Clicked" prefHeight="273.0" prefWidth="350.0" visible="false">
                                              <HBox.margin>
                                                 <Insets left="120.0" right="81.0" top="22.0" />
                                              </HBox.margin>
@@ -233,7 +236,7 @@
                                                       <Insets />
                                                    </VBox.margin>
                                                    <children>
-                                                      <TextArea fx:id="upcomingText1" layoutX="7.0" layoutY="7.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="67.0" prefWidth="336.0" style="-fx-background-color: #13161d;" stylesheets="@../css/transparentTextArea.css" text="Tournament" wrapText="true">
+                                                      <TextArea fx:id="upcomingText1" editable="false" layoutX="7.0" layoutY="7.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="67.0" prefWidth="336.0" style="-fx-background-color: #13161d;" stylesheets="@../css/transparentTextArea.css" text="Tournament" wrapText="true">
                                                          <font>
                                                             <Font name="Arial Bold" size="20.0" />
                                                          </font>
@@ -241,8 +244,11 @@
                                                    </children>
                                                 </Pane>
                                              </children>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
                                           </VBox>
-                                          <VBox fx:id="upcomingBox2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="273.0" prefWidth="350.0" visible="false">
+                                          <VBox fx:id="upcomingBox2" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onUpcomingBox2Clicked" prefHeight="273.0" prefWidth="350.0" visible="false">
                                              <children>
                                                 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="193.0" prefWidth="350.0" style="-fx-background-color: black;">
                                                    <VBox.margin>
@@ -261,7 +267,7 @@
                                                       <Insets />
                                                    </VBox.margin>
                                                    <children>
-                                                      <TextArea fx:id="upcomingText2" layoutX="7.0" layoutY="7.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="67.0" prefWidth="336.0" style="-fx-background-color: #13161d;" stylesheets="@../css/transparentTextArea.css" text="Tournament" wrapText="true">
+                                                      <TextArea fx:id="upcomingText2" editable="false" layoutX="7.0" layoutY="7.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="67.0" prefWidth="336.0" style="-fx-background-color: #13161d;" stylesheets="@../css/transparentTextArea.css" text="Tournament" wrapText="true">
                                                          <font>
                                                             <Font name="Arial Bold" size="20.0" />
                                                          </font>
@@ -272,6 +278,9 @@
                                              <HBox.margin>
                                                 <Insets top="22.0" />
                                              </HBox.margin>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
                                           </VBox>
                                        </children>
                                        <VBox.margin>
@@ -318,7 +327,7 @@
                                                 <VBox prefHeight="0.0" prefWidth="1200.0" />
                                     <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="317.0" prefWidth="1021.0" style="-fx-background-color: #282c34;">
                                        <children>
-                                          <VBox fx:id="previousBox1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="273.0" prefWidth="350.0" visible="false">
+                                          <VBox fx:id="previousBox1" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onPreviousBox1Clicked" prefHeight="273.0" prefWidth="350.0" visible="false">
                                              <HBox.margin>
                                                 <Insets left="120.0" right="81.0" top="22.0" />
                                              </HBox.margin>
@@ -340,7 +349,7 @@
                                                       <Insets />
                                                    </VBox.margin>
                                                    <children>
-                                                      <TextArea fx:id="previousText1" layoutX="7.0" layoutY="7.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="67.0" prefWidth="336.0" style="-fx-background-color: #13161d;" stylesheets="@../css/transparentTextArea.css" text="Tournament" wrapText="true">
+                                                      <TextArea fx:id="previousText1" editable="false" layoutX="7.0" layoutY="7.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="67.0" prefWidth="336.0" style="-fx-background-color: #13161d;" stylesheets="@../css/transparentTextArea.css" text="Tournament" wrapText="true">
                                                          <font>
                                                             <Font name="Arial Bold" size="20.0" />
                                                          </font>
@@ -348,8 +357,11 @@
                                                    </children>
                                                 </Pane>
                                              </children>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
                                           </VBox>
-                                          <VBox fx:id="previousBox2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="273.0" prefWidth="350.0" visible="false">
+                                          <VBox fx:id="previousBox2" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onPreviousBox2Clicked" prefHeight="273.0" prefWidth="350.0" visible="false">
                                              <children>
                                                 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="193.0" prefWidth="350.0" style="-fx-background-color: black;">
                                                    <VBox.margin>
@@ -368,7 +380,7 @@
                                                       <Insets />
                                                    </VBox.margin>
                                                    <children>
-                                                      <TextArea fx:id="previousText2" layoutX="7.0" layoutY="7.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="67.0" prefWidth="336.0" style="-fx-background-color: #13161d;" stylesheets="@../css/transparentTextArea.css" text="Tournament" wrapText="true">
+                                                      <TextArea fx:id="previousText2" editable="false" layoutX="7.0" layoutY="7.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="67.0" prefWidth="336.0" style="-fx-background-color: #13161d;" stylesheets="@../css/transparentTextArea.css" text="Tournament" wrapText="true">
                                                          <font>
                                                             <Font name="Arial Bold" size="20.0" />
                                                          </font>
@@ -379,6 +391,9 @@
                                              <HBox.margin>
                                                 <Insets top="22.0" />
                                              </HBox.margin>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
                                           </VBox>
                                        </children>
                                        <VBox.margin>
