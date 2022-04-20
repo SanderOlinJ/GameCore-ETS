@@ -141,7 +141,7 @@
                <VBox.margin>
                   <Insets />
                </VBox.margin></ScrollPane>
-            <Label fx:id="existingTeamsAdd" text="Click on existing teams to add them to the registered list" textFill="#fa8f31" />
+            <Label fx:id="warningLabel" text="Click on existing teams to add them to the registered list" textFill="#fa8f31" />
          </children>
       </VBox>
    </right>

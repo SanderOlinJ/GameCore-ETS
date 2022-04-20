@@ -16,7 +16,6 @@ import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import org.controlsfx.control.textfield.TextFields;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -39,7 +38,6 @@ public class AddTeamController {
     @FXML private TextField teamNameField;
     @FXML private TextArea playersNameField;
     @FXML private Label warningLabel;
-    @FXML private Label existingTeamsAdd;
     @FXML private ScrollPane scrollPane;
     @FXML private ScrollPane currentTeams;
     @FXML private VBox existingTeamsBox;
@@ -119,26 +117,44 @@ public class AddTeamController {
             return;
         }
         if(BracketController.getBracket().getTeams().size() >= maxTeams){
-            warningLabel.setText("You have reached the maximum number of teams for this tournament. \n"
-                    + "max teams is set to: "+maxTeams);
+            warningLabel.setText("Reached maximum number of teams. \n"
+                    + "max teams is set to "+maxTeams+" teams for this tournament");
         }
+
 
 
         else {
             for (Team team : existingTeams) {
                 if (team.getNameOfTeam().equals(teamName)) {
-                    BracketController.getBracket().addTeam(team);
+                    /**BracketController.getBracket().addTeam(team);
                     Label newTeam = new Label(teamName);
                     newTeam.setPrefWidth(300);
                     newTeam.setAlignment(Pos.TOP_LEFT);
                     enrolledTeamsBox.getChildren().add(newTeam);
                     teamsForTournament.add(team);
-                    nrOfTeams.setText("" + teamsForTournament.size());
+                    nrOfTeams.setText("" + teamsForTournament.size());*/
+                    teamNameField.setText(team.getNameOfTeam());
+                    abbreviationField.setText(team.getNameAbbr());
+                    playersNameField.setText("");
+                    //showing team members in textarea
+                    teamMembersToLines(team);
+
                 }
             }
-            existingTeamsAdd.setText(teamName + " has been added to your tournament");
+
             setCurrentTeams();
         }
+    }
+
+    public void teamMembersToLines(Team team) {
+        for (int i = 0; i < team.getMembers().size(); i++) {
+            if (i == team.getMembers().size() - 1) {
+                playersNameField.appendText(team.getMembers().get(i));
+                return;
+            }
+            playersNameField.appendText(team.getMembers().get(i) + "\n");
+        }
+        return;
     }
 
 
@@ -188,6 +204,9 @@ public class AddTeamController {
                 //write teams to team file
                 TeamWriter.writeFile(writeTeamList,"all_Teams");
                 setCurrentTeams();
+
+                //info to user
+                warningLabel.setText(addedTeam.getNameOfTeam() + " has been added to your tournament");
                 //reset fields after adding
                 playersNameField.setText("");
                 teamNameField.setText("");
@@ -214,7 +233,7 @@ public class AddTeamController {
                 abbreviationField.setText("");
             }
         }
-        existingTeamsAdd.setText(teamName + " has been removed from your tournament");
+        warningLabel.setText(teamName + " has been removed from your tournament");
         setCurrentTeams();
     }
 
@@ -223,7 +242,9 @@ public class AddTeamController {
 
        for(int i = 0; i < enrolledTeamsBox.getChildren().size(); i++){
            if(enrolledTeamsBox.getChildren().get(i).equals(teamLabel)){
+               Label label = (Label) enrolledTeamsBox.getChildren().get(i);
                enrolledTeamsBox.getChildren().remove(i);
+               warningLabel.setText(label.getText() + " has been removed from enrolled teams.");
                BracketController.getBracket().removeTeam(teamLabel.getText());
            }
        }
@@ -257,13 +278,7 @@ public class AddTeamController {
         teamNameField.setText(teamName);
         abbreviationField.setText(selectedTeam.getNameAbbr());
 
-        for (int i = 0; i < selectedTeam.getMembers().size(); i++) {
-            if (i == selectedTeam.getMembers().size() - 1) {
-                playersNameField.appendText(selectedTeam.getMembers().get(i));
-                return;
-            }
-            playersNameField.appendText(selectedTeam.getMembers().get(i) + "\n");
-        }
+        teamMembersToLines(selectedTeam);
     }
 
     /**
