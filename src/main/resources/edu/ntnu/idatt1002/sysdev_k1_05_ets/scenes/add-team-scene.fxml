@@ -69,7 +69,7 @@
                   <Pane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: black;" HBox.hgrow="ALWAYS" />
                   <ScrollPane hbarPolicy="NEVER" maxWidth="-Infinity" prefHeight="1541.0" prefWidth="1200.0" stylesheets="@../css/style.css">
                      <content>
-                        <VBox minWidth="-Infinity" prefHeight="1144.0" prefWidth="1184.0" style="-fx-background-color: #13161d;">
+                        <VBox minWidth="-Infinity" prefHeight="1145.0" prefWidth="1184.0" style="-fx-background-color: #13161d;">
                            <children>
                               <HBox maxHeight="137.0" prefHeight="137.0" prefWidth="1200.0" style="-fx-background-color: #13161d;" VBox.vgrow="ALWAYS">
                                  <children>
@@ -241,9 +241,9 @@
                                                 <Insets top="15.0" />
                                              </VBox.margin>
                                           </HBox>
-                                          <HBox alignment="CENTER" prefWidth="809.0">
+                                          <HBox alignment="TOP_CENTER" prefHeight="70.0" prefWidth="809.0">
                                              <children>
-                                                <Label fx:id="warningLabel" alignment="CENTER" prefWidth="644.0" textAlignment="CENTER" textFill="#fa8f31">
+                                                <Label fx:id="warningLabel" alignment="CENTER" prefHeight="71.0" prefWidth="644.0" textAlignment="CENTER" textFill="#fa8f31" wrapText="true">
                                                    <font>
                                                       <Font name="Arial" size="24.0" />
                                                    </font>

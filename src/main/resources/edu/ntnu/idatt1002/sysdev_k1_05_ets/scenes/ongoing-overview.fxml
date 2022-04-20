@@ -56,6 +56,21 @@
                                         <Insets bottom="10.0" left="20.0" top="30.0" />
                                     </HBox.margin>
                                 </ImageView>
+                        <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="136.0" prefWidth="140.0" />
+                        <Button fx:id="createNewTournamentButton" maxHeight="37.0" maxWidth="376.0" mnemonicParsing="false" onAction="#onCreateNewTournamentButtonPressed" prefHeight="37.0" prefWidth="330.0" styleClass="jfx-button" stylesheets="@../css/style.css" text="Create new tournament" textFill="#f5f5f5">
+                           <font>
+                              <Font name="Arial Bold" size="20.0" />
+                           </font>
+                           <effect>
+                              <DropShadow height="10.0" radius="4.5" width="10.0" />
+                           </effect>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <HBox.margin>
+                              <Insets left="50.0" right="50.0" top="60.0" />
+                           </HBox.margin>
+                        </Button>
                             </children>
                         </HBox>
                     </children>

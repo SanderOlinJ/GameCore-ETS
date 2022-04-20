@@ -8,6 +8,7 @@ import edu.ntnu.idatt1002.sysdev_k1_05_ets.utilities.Utilities;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -96,6 +97,7 @@ public class TournamentsOverviewController {
     @FXML private Text vs3;
     @FXML private Text vs4;
     @FXML private Text vs5;
+    @FXML private Button createNewTournamentButton;
 
     private ArrayList<NewTournament> tournaments;
 
@@ -309,6 +311,18 @@ public class TournamentsOverviewController {
     void onHelpButtonPressed(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource("scenes/help-page.fxml")));
         onTournamentMenuItemPressed(root);
+    }
+
+    @FXML
+    void onCreateNewTournamentButtonPressed(ActionEvent event) throws IOException{
+        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class
+                .getResource("scenes/create-new-tournament-page.fxml")));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setMinWidth(1200);
+        stage.setMinHeight(800);
+        stage.show();
     }
 
 }
