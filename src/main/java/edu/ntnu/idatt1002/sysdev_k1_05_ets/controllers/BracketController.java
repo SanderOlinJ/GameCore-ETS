@@ -85,18 +85,23 @@ public class BracketController {
             labels.addAll(Arrays.asList(team16,team17,team18,team19,team20,team21,team22,team23,team24,team25,team26,
                     team27,team28,team29,team30,team31));
         }
-        if (teams.size() > bracketSize) {
-            for (int i = 0; i < bracketSize; i++) {
+
+        for (int i = 0; i < teams.size(); i++){
+            int index = 0;
+            if (i > 15){index =  8;}
+            else if (i > 7){index = 5;}
+            else if (i > 3){index = 3;}
+            if (i < bracketSize){
                 labels.get(i + (bracketSize - 1)).setText(teams.get(i).getNameAbbr());
-            }
-            for (int i = bracketSize - 2; i < teams.size(); i++){
-                labels.get(i).setText(teams.get(i).getNameAbbr());
-            }
-        }else {
-            for (int i = 0; i < teams.size(); i++) {
-                labels.get(i + (bracketSize - 1)).setText(teams.get(i).getNameAbbr());
+            }else{
+                if (labels.get(0).getText().equals("?") || labels.get(0).getText().isEmpty()) {
+                    labels.get(i - index).setText(teams.get(i).getNameAbbr());
+                }else {
+                    labels.get(0).setText(teams.get(i).getNameAbbr());
+                }
             }
         }
+
         nameOfTournament.setText(tournamentName);
     }
 

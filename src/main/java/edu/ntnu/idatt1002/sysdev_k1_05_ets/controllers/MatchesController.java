@@ -197,7 +197,7 @@ public class MatchesController {
             timeLabels.get(i).setText(times.get(i));
         }
     }
-    //TODO fix wonky code
+
     @FXML
     public void winnerChosen(){
         ArrayList<ToggleGroup> winners = new ArrayList<>(Arrays.asList(winnerMatch,winnerMatch1,winnerMatch2,
@@ -211,18 +211,15 @@ public class MatchesController {
                 team2ScoreMatch10,team2ScoreMatch11,team2ScoreMatch12,team2ScoreMatch13,team2ScoreMatch14));
         for (int i = 0; i < winners.size(); i++){
             if (winners.get(i).getSelectedToggle() != null) {
-                Team team1 = BracketController.getBracket().getTeamByAbbr(teamOnes.get(i).getText());
-                Team team2 = BracketController.getBracket().getTeamByAbbr(teamTwos.get(i).getText());
-                ResultsController.addMatch(new Match(team1, team2, Integer.parseInt(teamOnesScore.get(i).getText()),
-                        Integer.parseInt(teamTwosScore.get(i).getText()), LocalTime.parse(times.get(i))));
+                Team team1 = BracketController.getBracket().getTeamByName(teamOnes.get(i).getText());
+                Team team2 = BracketController.getBracket().getTeamByName(teamTwos.get(i).getText());
+                Match match = new Match(team1, team2, Integer.parseInt(teamOnesScore.get(i).getText()),
+                                Integer.parseInt(teamTwosScore.get(i).getText()), LocalTime.parse(times.get(i)));
+                ResultsController.addMatch(match);
                 matches.get(i).setDisable(true);
                 matches.get(i).setVisible(false);
                 matches.get(i).setPrefHeight(0);
-                if (Integer.parseInt(teamOnesScore.get(i).getText()) > Integer.parseInt(teamTwosScore.get(i).getText())){
-                    advanceTeam(team1);
-                }else {
-                    advanceTeam(team2);
-                }
+                advanceTeam(match.getVictor());
             }
         }
     }
@@ -240,8 +237,7 @@ public class MatchesController {
     }
 
     private void advanceTeam(Team team) {
-        Team teamAdvance = new Team(team.getNameOfTeam(),team.getNameAbbr());
-        BracketController.getBracket().addTeam(teamAdvance);
+        BracketController.getBracket().addTeam(team);
     }
 
     @FXML
