@@ -197,13 +197,13 @@
                                                                                               <Font name="Arial" size="20.0" />
                                                                                           </font>
                                                                                       </Label>
-                                                                  <ChoiceBox fx:id="hoursMatch" prefWidth="74.0" style="-fx-background-color: #282c34;" />
+                                                                  <ChoiceBox fx:id="hoursMatch" prefWidth="74.0" style="-fx-background-color: #282c34 #282c34;" stylesheets="@../css/choiceBox_text_color.css" />
                                                                   <Label text=":" textFill="WHITE">
                                                                      <font>
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
                                                                   </Label>
-                                                                  <ChoiceBox fx:id="minutesMatch" prefWidth="74.0" style="-fx-background-color: #282c34;" />
+                                                                  <ChoiceBox fx:id="minutesMatch" prefWidth="74.0" style="-fx-background-color: #282c34;" stylesheets="@../css/choiceBox_text_color.css" />
                                                                </children>
                                                             </HBox>
                                                                                 <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -249,13 +249,13 @@
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
                                                                   </Label>
-                                                                  <ChoiceBox fx:id="hoursMatch1" prefWidth="74.0" style="-fx-background-color: #282c34;" />
+                                                                  <ChoiceBox fx:id="hoursMatch1" prefWidth="74.0" style="-fx-background-color: #282c34;" stylesheets="@../css/choiceBox_text_color.css" />
                                                                   <Label text=":" textFill="WHITE">
                                                                      <font>
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
                                                                   </Label>
-                                                                  <ChoiceBox fx:id="minutesMatch1" prefWidth="74.0" style="-fx-background-color: #282c34;" />
+                                                                  <ChoiceBox fx:id="minutesMatch1" prefWidth="74.0" style="-fx-background-color: #282c34;" stylesheets="@../css/choiceBox_text_color.css" />
                                                                </children>
                                                             </HBox>
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
