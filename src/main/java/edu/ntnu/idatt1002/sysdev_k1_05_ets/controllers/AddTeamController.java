@@ -195,7 +195,7 @@ public class AddTeamController {
                 newTeam.setPrefWidth(300);
                 newTeam.setAlignment(Pos.TOP_LEFT);
                 enrolledTeamsBox.getChildren().add(newTeam);
-                nrOfTeams.setText("" + teamsForTournament.size());
+                nrOfTeams.setText("" + enrolledTeamsBox.getChildren().size());
 
                 //add team to tournament bracket
                 BracketController.getBracket().addTeam(addedTeam);
@@ -239,15 +239,20 @@ public class AddTeamController {
 
 
    public void deleteTeamFromTeams(Label teamLabel){
-
+        boolean found = false;
        for(int i = 0; i < enrolledTeamsBox.getChildren().size(); i++){
            if(enrolledTeamsBox.getChildren().get(i).equals(teamLabel)){
+               found = true;
                Label label = (Label) enrolledTeamsBox.getChildren().get(i);
                enrolledTeamsBox.getChildren().remove(i);
                warningLabel.setText(label.getText() + " has been removed from enrolled teams.");
                BracketController.getBracket().removeTeam(teamLabel.getText());
            }
+           if(found){
+               nrOfTeams.setText(String.valueOf(enrolledTeamsBox.getChildren().size()));
+           }
        }
+
    }
 
     public void setCurrentTeams(){

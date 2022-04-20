@@ -107,9 +107,9 @@ public class Tournament {
     }
 
     public void removeTeam(String teamName) {
-        for (Team t: getTeams()){
-            if(t.getNameOfTeam().equals(teamName)){
-                this.teams.remove(t);
+        for(int i = 0; i<teams.size(); i++){
+            if(teams.get(i).getNameOfTeam().equals(teamName)){
+                this.teams.remove(teams.get(i));
             }
         }
     }
