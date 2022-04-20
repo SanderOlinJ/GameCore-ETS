@@ -10,6 +10,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.MenuBar;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.HBox;
@@ -17,6 +20,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
@@ -39,6 +44,21 @@ public class MatchesController {
     @FXML HBox match12;
     @FXML HBox match13;
     @FXML HBox match14;
+    @FXML Label timematch;
+    @FXML Label timematch1;
+    @FXML Label timematch2;
+    @FXML Label timematch3;
+    @FXML Label timematch4;
+    @FXML Label timematch5;
+    @FXML Label timematch6;
+    @FXML Label timematch7;
+    @FXML Label timematch8;
+    @FXML Label timematch9;
+    @FXML Label timematch10;
+    @FXML Label timematch11;
+    @FXML Label timematch12;
+    @FXML Label timematch13;
+    @FXML Label timematch14;
     @FXML Label team1match;
     @FXML Label team1match1;
     @FXML Label team1match2;
@@ -69,6 +89,36 @@ public class MatchesController {
     @FXML Label team2match12;
     @FXML Label team2match13;
     @FXML Label team2match14;
+    @FXML RadioButton radio1Match;
+    @FXML RadioButton radio2Match;
+    @FXML RadioButton radio1Match1;
+    @FXML RadioButton radio2Match1;
+    @FXML RadioButton radio1Match2;
+    @FXML RadioButton radio2Match2;
+    @FXML RadioButton radio1Match3;
+    @FXML RadioButton radio2Match3;
+    @FXML RadioButton radio1Match4;
+    @FXML RadioButton radio2Match4;
+    @FXML RadioButton radio1Match5;
+    @FXML RadioButton radio2Match5;
+    @FXML RadioButton radio1Match6;
+    @FXML RadioButton radio2Match6;
+    @FXML RadioButton radio1Match7;
+    @FXML RadioButton radio2Match7;
+    @FXML RadioButton radio1Match8;
+    @FXML RadioButton radio2Match8;
+    @FXML RadioButton radio1Match9;
+    @FXML RadioButton radio2Match9;
+    @FXML RadioButton radio1Match10;
+    @FXML RadioButton radio2Match10;
+    @FXML RadioButton radio1Match11;
+    @FXML RadioButton radio2Match11;
+    @FXML RadioButton radio1Match12;
+    @FXML RadioButton radio2Match12;
+    @FXML RadioButton radio1Match13;
+    @FXML RadioButton radio2Match13;
+    @FXML RadioButton radio1Match14;
+    @FXML RadioButton radio2Match14;
     @FXML ToggleGroup winnerMatch;
     @FXML ToggleGroup winnerMatch1;
     @FXML ToggleGroup winnerMatch2;
@@ -116,10 +166,29 @@ public class MatchesController {
     @FXML TextField team2ScoreMatch14;
     @FXML Label tournamentName;
 
+    @FXML private MenuItem homeButton;
+    @FXML private MenuItem ongoingTournamentsButton;
+    @FXML private MenuItem upcomingTournamentsButton;
+    @FXML private MenuItem previousTournamentsButton;
+    @FXML private MenuItem aboutButton;
+    @FXML private MenuItem helpButton;
+
+    @FXML private MenuBar menuBar;
+
+    private ArrayList<HBox> matches;
+    private static ArrayList<String> teams = new ArrayList<>();
+    private static ArrayList<String> times = new ArrayList<>();
+
     @FXML
     protected void initialize(){
         setVisibleMatches();
+        ArrayList<Label> timeLabels = new ArrayList<>(Arrays.asList(timematch, timematch1, timematch2, timematch3,
+                timematch4, timematch5, timematch6, timematch7, timematch8, timematch9, timematch10, timematch11, timematch12,
+                timematch13, timematch14));
         tournamentName.setText(BracketController.getTournamentName());
+        for (int i = 0; i < times.size(); i++) {
+            timeLabels.get(i).setText(times.get(i));
+        }
     }
 
     @FXML
@@ -166,45 +235,86 @@ public class MatchesController {
         stage.getScene().setRoot(root);
     }
 
-    public void setVisibleMatches(){
-        if (AddTeamController.getMaxTeams() == 4){
-            ArrayList<Team>  teams = (ArrayList<Team>) BracketController.getBracket().getTeams().stream().
-                    filter(p -> !(p.getNameOfTeam().equals("?"))).collect(Collectors.toList());
-            team1match.setText(teams.get(0).getNameOfTeam());
-            team2match.setText(teams.get(2).getNameOfTeam());
-            team1match1.setText(teams.get(1).getNameOfTeam());
-            team2match1.setText(teams.get(3).getNameOfTeam());
-        }
-
-        else if (AddTeamController.getMaxTeams() == 8){
-            match2.setDisable(false);
-            match2.setVisible(true);
-            match2.setPrefHeight(100);
-            match3.setDisable(false);
-            match3.setVisible(true);
-            match3.setPrefHeight(100);
-
-        }
-        else if (AddTeamController.getMaxTeams() == 16){
-            match2.setDisable(false);
-            match2.setVisible(true);
-            match2.setPrefHeight(100);
-            match3.setDisable(false);
-            match3.setVisible(true);
-            match3.setPrefHeight(100);
-            match4.setDisable(false);
-            match4.setVisible(true);
-            match4.setPrefHeight(100);
-            match5.setDisable(false);
-            match5.setVisible(true);
-            match5.setPrefHeight(100);
-            match6.setDisable(false);
-            match6.setVisible(true);
-            match6.setPrefHeight(100);
-            match7.setDisable(false);
-            match7.setVisible(true);
-            match7.setPrefHeight(100);
-        }
+    public static void setTimeLabel(String hour, String minute){
+        times.add(hour + ":" + minute);
     }
 
+    public void setVisibleMatches(){
+        matches = new ArrayList<>(Arrays.asList(match, match1, match2, match3, match4, match5, match6,
+                match7, match8, match9, match10, match11, match12, match13, match14));
+
+        ArrayList<Label> teamOnes = new ArrayList<>(Arrays.asList(team1match,team1match1,team1match2,team1match3,
+                team1match4,team1match5,team1match6,team1match7,team1match8,team1match9,team1match10,team1match11,
+                team1match12,team1match13,team1match14));
+        ArrayList<Label> teamTwos = new ArrayList<>(Arrays.asList(team2match,team2match1,team2match2,team2match3,
+                team2match4,team2match5,team2match6,team2match7,team2match8,team2match9,team2match10,team2match11,
+                team2match12,team2match13,team2match14));
+        int numberOfTeams = AddTeamController.getMaxTeams();
+        for (int i = 0; i < numberOfTeams/2; i++){
+            matches.get(i).setVisible(true);
+            matches.get(i).setPrefHeight(100);
+            matches.get(i).setDisable(false);
+        }
+        for (int i = 0; i < teams.size()/2; i++){
+            teamOnes.get(i).setText(teams.get(2*i));
+            teamTwos.get(i).setText(teams.get(2*i+1));
+        }
+
+    }
+
+    //TODO temporary solution, not ideal
+    public static void setTeams(ArrayList<String> teamsIn){
+        teams.addAll(teamsIn);
+    }
+
+    @FXML
+    void onHomeButtonPressed(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class
+                .getResource("scenes/main-page.fxml")));
+        setNextWindowFromMenuBar(root);
+    }
+
+    @FXML
+    void onAboutButtonPressed(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource("scenes/about-page.fxml")));
+        setNextWindowFromMenuBar(root);
+    }
+
+    @FXML
+    void onHelpButtonPressed(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource("scenes/help-page.fxml")));
+        setNextWindowFromMenuBar(root);
+    }
+
+    @FXML
+    void onOngoingTournamentsButtonPressed(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class
+                .getResource("scenes/ongoing-overview.fxml")));
+        setNextWindowFromMenuBar(root);
+    }
+
+    private void setNextWindowFromMenuBar(Parent root) {
+        Stage stage = (Stage) menuBar.getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setMinWidth(1200);
+        stage.setMinHeight(800);
+        stage.show();
+    }
+
+    @FXML
+    void onUpcomingTournamentsButtonPressed(ActionEvent event)
+            throws IOException{
+        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class
+                .getResource("scenes/upcoming-overview.fxml")));
+        setNextWindowFromMenuBar(root);
+    }
+
+    @FXML
+    void onPreviousTournamentsButtonPressed(ActionEvent event)
+            throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class
+                .getResource("scenes/previous-overview.fxml")));
+        setNextWindowFromMenuBar(root);
+    }
 }

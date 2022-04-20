@@ -26,14 +26,14 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class OverviewController {
-    @FXML private Menu homeButton;
-    @FXML private MenuItem home;
-    @FXML private Menu tournamentButton;
+public class TournamentsOverviewController {
+
+    @FXML private MenuItem homeButton;
     @FXML private MenuItem ongoingTournamentsButton;
     @FXML private MenuItem upcomingTournamentsButton;
     @FXML private MenuItem previousTournamentsButton;
-    @FXML private Menu aboutButton;
+    @FXML private MenuItem aboutButton;
+    @FXML private MenuItem helpButton;
     @FXML private MenuBar menuBar;
     @FXML private HBox box1;
     @FXML private HBox box2;
@@ -91,6 +91,12 @@ public class OverviewController {
     @FXML private Text totalTeams4;
     @FXML private Text totalTeams5;
     @FXML private Text overviewTitle;
+    @FXML private Text vs1;
+    @FXML private Text vs2;
+    @FXML private Text vs3;
+    @FXML private Text vs4;
+    @FXML private Text vs5;
+
     private ArrayList<NewTournament> tournaments;
 
 
@@ -118,11 +124,23 @@ public class OverviewController {
             name1.setText(tournaments.get(0).getTournamentName());
             game1.setText(tournaments.get(0).getGame());
             totalTeams1.setText(tournaments.get(0).getNumberOfTeams());
-            teamsLeft1.setText(tournaments.get(0).getNumberOfTeams());
-            team11.setText("Bruh");
-            team12.setText("Bruh");
-            date1.setText(tournaments.get(0).getDate().toString());
-            time1.setText(tournaments.get(0).getTime().toString());
+            if (tournaments.get(0).getTeams().size() > 0) {
+                teamsLeft1.setText("" + tournaments.get(0).findNumberOfTeamsLeft());
+            } else {
+                teamsLeft1.setText("No teams set");
+            }
+            if (tournaments.get(0).doesTournamentHaveAnUnfinishedAndSetMatch()) {
+                String team11Name = tournaments.get(0).findNextMatchToBePlayed().getTeam1().getNameOfTeam();
+                String team12Name = tournaments.get(0).findNextMatchToBePlayed().getTeam2().getNameOfTeam();
+                String match1Date = tournaments.get(0).findNextMatchToBePlayed().getDateOfMatch().toString();
+                String match1Time = tournaments.get(0).findNextMatchToBePlayed().getTimeOfMatch().toString();
+                team11.setText(team11Name);
+                team12.setText(team12Name);
+                date1.setText(match1Date);
+                time1.setText(match1Time);
+            }else {
+                vs1.setText("No matches set");
+            }
             box1.setDisable(false);
             box1.setVisible(true);
 
@@ -133,11 +151,23 @@ public class OverviewController {
                 name2.setText(tournaments.get(1).getTournamentName());
                 game2.setText(tournaments.get(1).getGame());
                 totalTeams2.setText(tournaments.get(1).getNumberOfTeams());
-                teamsLeft2.setText(tournaments.get(1).getNumberOfTeams());
-                team21.setText("Bruh");
-                team22.setText("Bruh");
-                date2.setText(tournaments.get(1).getDate().toString());
-                time2.setText(tournaments.get(1).getTime().toString());
+                if (tournaments.get(1).getTeams().size() > 0){
+                    teamsLeft2.setText("" + tournaments.get(1).findNumberOfTeamsLeft());
+                } else {
+                    teamsLeft2.setText("No teams set");
+                }
+                if (tournaments.get(1).doesTournamentHaveAnUnfinishedAndSetMatch()) {
+                    String team21Name = tournaments.get(1).findNextMatchToBePlayed().getTeam1().getNameOfTeam();
+                    String team22Name = tournaments.get(1).findNextMatchToBePlayed().getTeam2().getNameOfTeam();
+                    String match2Date = tournaments.get(1).findNextMatchToBePlayed().getDateOfMatch().toString();
+                    String match2Time = tournaments.get(1).findNextMatchToBePlayed().getTimeOfMatch().toString();
+                    team21.setText(team21Name);
+                    team22.setText(team22Name);
+                    date2.setText(match2Date);
+                    time2.setText(match2Time);
+                } else {
+                    vs2.setText("No matches set");
+                }
                 box2.setDisable(false);
                 box2.setVisible(true);
 
@@ -148,11 +178,23 @@ public class OverviewController {
                     name3.setText(tournaments.get(2).getTournamentName());
                     game3.setText(tournaments.get(2).getGame());
                     totalTeams3.setText(tournaments.get(2).getNumberOfTeams());
-                    teamsLeft3.setText(tournaments.get(2).getNumberOfTeams());
-                    team31.setText("Bruh");
-                    team32.setText("Bruh");
-                    date3.setText(tournaments.get(2).getDate().toString());
-                    time3.setText(tournaments.get(2).getTime().toString());
+                    if (tournaments.get(2).getTeams().size() > 0){
+                        teamsLeft3.setText("" + tournaments.get(2).findNumberOfTeamsLeft());
+                    } else {
+                        teamsLeft3.setText("No teams set");
+                    }
+                    if (tournaments.get(2).doesTournamentHaveAnUnfinishedAndSetMatch()) {
+                        String team31Name = tournaments.get(2).findNextMatchToBePlayed().getTeam1().getNameOfTeam();
+                        String team32Name = tournaments.get(2).findNextMatchToBePlayed().getTeam2().getNameOfTeam();
+                        String match3Date = tournaments.get(2).findNextMatchToBePlayed().getDateOfMatch().toString();
+                        String match3Time = tournaments.get(2).findNextMatchToBePlayed().getTimeOfMatch().toString();
+                        team31.setText(team31Name);
+                        team32.setText(team32Name);
+                        date3.setText(match3Date);
+                        time3.setText(match3Time);
+                    } else {
+                        vs3.setText("No matches set");
+                    }
                     box3.setDisable(false);
                     box3.setVisible(true);
 
@@ -163,11 +205,23 @@ public class OverviewController {
                         name4.setText(tournaments.get(3).getTournamentName());
                         game4.setText(tournaments.get(3).getGame());
                         totalTeams4.setText(tournaments.get(3).getNumberOfTeams());
-                        teamsLeft4.setText(tournaments.get(3).getNumberOfTeams());
-                        team41.setText("Bruh");
-                        team42.setText("Bruh");
-                        date4.setText(tournaments.get(3).getDate().toString());
-                        time4.setText(tournaments.get(3).getTime().toString());
+                        if (tournaments.get(3).getTeams().size() > 0){
+                            teamsLeft4.setText("" + tournaments.get(3).findNumberOfTeamsLeft());
+                        } else {
+                            teamsLeft4.setText("No teams set");
+                        }
+                        if (tournaments.get(3).doesTournamentHaveAnUnfinishedAndSetMatch()) {
+                            String team41Name = tournaments.get(3).findNextMatchToBePlayed().getTeam1().getNameOfTeam();
+                            String team42Name = tournaments.get(3).findNextMatchToBePlayed().getTeam2().getNameOfTeam();
+                            String match4Date = tournaments.get(3).findNextMatchToBePlayed().getDateOfMatch().toString();
+                            String match4Time = tournaments.get(3).findNextMatchToBePlayed().getTimeOfMatch().toString();
+                            team41.setText(team41Name);
+                            team42.setText(team42Name);
+                            date4.setText(match4Date);
+                            time4.setText(match4Time);
+                        } else {
+                            vs4.setText("No matches set");
+                        }
                         box4.setDisable(false);
                         box4.setVisible(true);
 
@@ -178,11 +232,23 @@ public class OverviewController {
                             name5.setText(tournaments.get(4).getTournamentName());
                             game5.setText(tournaments.get(4).getGame());
                             totalTeams5.setText(tournaments.get(4).getNumberOfTeams());
-                            teamsLeft5.setText(tournaments.get(4).getNumberOfTeams());
-                            team51.setText("Bruh");
-                            team52.setText("Bruh");
-                            date5.setText(tournaments.get(4).getDate().toString());
-                            time5.setText(tournaments.get(4).getTime().toString());
+                            if (tournaments.get(4).getTeams().size() > 0){
+                                teamsLeft5.setText("" + tournaments.get(4).findNumberOfTeamsLeft());
+                            } else {
+                                teamsLeft5.setText("No teams set");
+                            }
+                            if (tournaments.get(4).doesTournamentHaveAnUnfinishedAndSetMatch()) {
+                                String team51Name = tournaments.get(4).findNextMatchToBePlayed().getTeam1().getNameOfTeam();
+                                String team52Name = tournaments.get(4).findNextMatchToBePlayed().getTeam2().getNameOfTeam();
+                                String match5Date = tournaments.get(4).findNextMatchToBePlayed().getDateOfMatch().toString();
+                                String match5Time = tournaments.get(4).findNextMatchToBePlayed().getTimeOfMatch().toString();
+                                team51.setText(team51Name);
+                                team52.setText(team52Name);
+                                date5.setText(match5Date);
+                                time5.setText(match5Time);
+                            } else {
+                                vs5.setText("No matches set");
+                            }
                             box5.setDisable(false);
                             box5.setVisible(true);
                         }
@@ -228,11 +294,21 @@ public class OverviewController {
     @FXML
     void onHomeButtonPressed(ActionEvent event)
     throws IOException{
-        System.out.println("yo");
         Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class
-                .getResource("scenes/main-page-test.fxml")));
+                .getResource("scenes/main-page.fxml")));
         onTournamentMenuItemPressed(root);
     }
 
+    @FXML
+    void onAboutButtonPressed(ActionEvent event) throws IOException{
+        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource("scenes/about-page.fxml")));
+        onTournamentMenuItemPressed(root);
+    }
+
+    @FXML
+    void onHelpButtonPressed(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource("scenes/help-page.fxml")));
+        onTournamentMenuItemPressed(root);
+    }
 
 }

@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class StartScreenController {
 
@@ -19,7 +20,8 @@ public class StartScreenController {
 
     @FXML
     void onStartButtonPressed(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(GameCoreETSApplication.class.getResource("scenes/main-page-test.fxml"));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class
+                .getResource("scenes/main-page.fxml")));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);

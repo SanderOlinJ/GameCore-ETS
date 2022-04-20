@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
@@ -17,163 +18,429 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.MainPageController">
-   <top>
-      <MenuBar BorderPane.alignment="CENTER">
-        <menus>
-          <Menu fx:id="homeButton" disable="true" mnemonicParsing="false" onAction="#onHomeButtonPressed" text="Home" />
-          <Menu fx:id="tournamentButton" mnemonicParsing="false" text="Tournaments">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.MainPageController">
+    <top>
+        <MenuBar fx:id="menuBar" BorderPane.alignment="CENTER">
+            <menus>
+                <Menu disable="true" mnemonicParsing="false" text="Home">
                <items>
-                  <MenuItem fx:id="ongoingTournamentsButton" mnemonicParsing="false" onAction="#onOngoingTournamentsButtonPressed" text="Ongoing tournaments" />
-                  <MenuItem fx:id="previousTournamentButton" mnemonicParsing="false" onAction="#onPreviousTournamentsButtonPressed" text="Previous tournaments" />
-               </items>
-          </Menu>
-          <Menu fx:id="aboutButton" mnemonicParsing="false" onAction="#onAboutButtonPressed" text="About" />
-        </menus>
-      </MenuBar>
-   </top>
-   <center>
-      <VBox prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #282c34;" BorderPane.alignment="CENTER">
-         <children>
-            <VBox maxHeight="200.0" prefHeight="131.0" prefWidth="1200.0" style="-fx-background-color: #2e3e4e;" VBox.vgrow="ALWAYS">
-               <children>
-                  <VBox prefHeight="130.0" prefWidth="119.0" style="-fx-background-color: #2e3e4e;" VBox.vgrow="NEVER" />
-                  <HBox prefHeight="120.0" prefWidth="1200.0" VBox.vgrow="ALWAYS">
-                     <children>
-                        <ImageView fitHeight="96.0" fitWidth="611.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
-                           <image>
-                              <Image url="@../Images/GameCoreETSLogo2.png" />
-                           </image>
-                           <HBox.margin>
-                              <Insets bottom="10.0" left="20.0" top="30.0" />
-                           </HBox.margin>
-                        </ImageView>
-                        <Pane prefHeight="111.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                        <Button fx:id="createNewTournamentButton" maxHeight="36.0" maxWidth="376.0" mnemonicParsing="false" onAction="#onCreateNewTournamentButtonPressed" prefHeight="36.0" prefWidth="376.0" style="-fx-background-color: #fa8f31;" text="Create new tournament" textFill="#f5f5f5" HBox.hgrow="ALWAYS">
-                           <HBox.margin>
-                              <Insets bottom="30.0" right="40.0" top="53.0" />
-                           </HBox.margin>
+                  <MenuItem fx:id="homeButton" mnemonicParsing="false" onAction="#onHomeButtonPressed" text="Home" />
+               </items></Menu>
+                <Menu mnemonicParsing="false" text="Tournaments">
+                    <items>
+                        <MenuItem fx:id="ongoingTournamentsButton" mnemonicParsing="false" onAction="#onOngoingTournamentsButtonPressed" text="Ongoing tournaments" />
+                  <MenuItem fx:id="upcomingTournamentsButton" mnemonicParsing="false" onAction="#onUpcomingTournamentsButtonPressed" text="Upcoming tournaments" />
+                        <MenuItem fx:id="previousTournamentsButton" mnemonicParsing="false" onAction="#onPreviousTournamentsButtonPressed" text="Previous tournaments" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="More">
+               <items>
+                  <MenuItem fx:id="aboutButton" mnemonicParsing="false" onAction="#onAboutButtonPressed" text="About" />
+                  <MenuItem fx:id="helpButton" mnemonicParsing="false" onAction="#onHelpButtonPressed" text="Help" />
+               </items></Menu>
+            </menus>
+        </MenuBar>
+    </top>
+    <center>
+        <VBox prefHeight="1655.0" prefWidth="1200.0" style="-fx-background-color: #282c34;" BorderPane.alignment="CENTER">
+            <children>
+                <VBox maxHeight="200.0" prefHeight="131.0" prefWidth="1200.0" style="-fx-background-color: #2e3e4e;" VBox.vgrow="ALWAYS">
+                    <children>
+                        <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="130.0" prefWidth="119.0" style="-fx-background-color: #2e3e4e;" VBox.vgrow="NEVER" />
+                        <HBox prefHeight="120.0" prefWidth="1200.0" VBox.vgrow="ALWAYS">
+                            <children>
+                                <ImageView fitHeight="96.0" fitWidth="611.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
+                                    <image>
+                                        <Image url="@../Images/GameCoreETSLogo2.png" />
+                                    </image>
+                                    <HBox.margin>
+                                        <Insets bottom="10.0" left="20.0" top="30.0" />
+                                    </HBox.margin>
+                                </ImageView>
+                        <Pane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" HBox.hgrow="ALWAYS" />
+                        <Button fx:id="createNewTournamentButton" maxHeight="37.0" maxWidth="376.0" mnemonicParsing="false" onAction="#onCreateNewTournamentButtonPressed" prefHeight="37.0" prefWidth="330.0" styleClass="jfx-button" stylesheets="@../css/style.css" text="Create new tournament" textFill="#f5f5f5">
                            <font>
                               <Font name="Arial Bold" size="20.0" />
                            </font>
                            <effect>
-                              <DropShadow />
+                              <DropShadow height="10.0" radius="4.5" width="10.0" />
                            </effect>
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
+                           <HBox.margin>
+                              <Insets left="50.0" right="50.0" top="60.0" />
+                           </HBox.margin>
                         </Button>
-                     </children>
-                  </HBox>
-               </children>
-            </VBox>
-            <VBox prefHeight="290.0" prefWidth="1200.0" style="-fx-background-color: #13161d;" VBox.vgrow="ALWAYS">
-               <children>
-                  <VBox maxHeight="50.0" prefHeight="200.0" prefWidth="100.0" />
-                  <HBox prefHeight="79.0" prefWidth="1200.0" style="-fx-background-color: #13161d;" VBox.vgrow="ALWAYS">
-                     <children>
-                        <Text fill="#fa8f31" strokeType="OUTSIDE" strokeWidth="0.0" text="Ongoing tournaments" HBox.hgrow="ALWAYS">
-                           <font>
-                              <Font name="Yu Gothic Medium" size="29.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets bottom="10.0" left="50.0" top="40.0" />
-                           </HBox.margin>
-                        </Text>
-                     </children>
-                  </HBox>
-                  <HBox minHeight="170.0" prefHeight="300.0" prefWidth="1100.0" style="-fx-background-color: #282c34;" VBox.vgrow="ALWAYS">
-                     <VBox.margin>
-                        <Insets bottom="15.0" left="50.0" right="50.0" />
-                     </VBox.margin>
-                     <children>
-                        <VBox fx:id="ongoingBox1" prefHeight="206.0" prefWidth="319.0" visible="false">
-                           <HBox.margin>
-                              <Insets bottom="10.0" left="30.0" top="10.0" />
-                           </HBox.margin>
-                           <children>
-                              <ImageView fx:id="ongoingImageView1" fitHeight="193.0" fitWidth="342.0" pickOnBounds="true" preserveRatio="true" />
-                              <Pane fx:id="ongoingPane1" minHeight="-Infinity" opacity="0.8" prefHeight="83.0" prefWidth="320.0" style="-fx-background-color: black;">
-                                 <children>
-                                    <TextArea fx:id="ongoingText1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="83.0" prefWidth="342.0" style="-fx-background-color: transparent;" styleClass="text-area" stylesheets="@../css/transparentTextArea.css" wrapText="true">
-                                       <font>
-                                          <Font name="Arial Bold" size="20.0" />
-                                       </font>
-                                    </TextArea>
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets top="-80.0" />
-                                 </VBox.margin>
-                              </Pane>
-                           </children>
-                        </VBox>
-                        <VBox fx:id="ongoingBox2" prefHeight="206.0" prefWidth="319.0" visible="false">
-                           <children>
-                              <ImageView fx:id="ongoingImageView2" fitHeight="193.0" fitWidth="342.0" pickOnBounds="true" preserveRatio="true" />
-                              <Pane fx:id="ongoingPane2" minHeight="-Infinity" opacity="0.8" prefHeight="83.0" prefWidth="320.0" style="-fx-background-color: black;">
-                                 <children>
-                                    <TextArea fx:id="ongoingText2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="83.0" prefWidth="342.0" style="-fx-background-color: transparent;" styleClass="text-area" stylesheets="@../css/transparentTextArea.css" wrapText="true">
-                                       <font>
-                                          <Font name="Arial Bold" size="20.0" />
-                                       </font>
-                                    </TextArea>
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets top="-80.0" />
-                                 </VBox.margin>
-                              </Pane>
-                           </children>
-                           <HBox.margin>
-                              <Insets bottom="10.0" left="10.0" top="10.0" />
-                           </HBox.margin>
-                        </VBox>
-                        <VBox fx:id="ongoingBox3" prefHeight="206.0" prefWidth="319.0" visible="false">
-                           <children>
-                              <ImageView fx:id="ongoingImageView3" fitHeight="193.0" fitWidth="342.0" pickOnBounds="true" preserveRatio="true" />
-                              <Pane fx:id="ongoingPane3" minHeight="-Infinity" opacity="0.8" prefHeight="83.0" prefWidth="342.0" style="-fx-background-color: black;">
-                                 <children>
-                                    <TextArea fx:id="ongoingText3" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="83.0" prefWidth="342.0" style="-fx-background-color: transparent;" styleClass="text-area" stylesheets="@../css/transparentTextArea.css" wrapText="true">
-                                       <font>
-                                          <Font name="Arial Bold" size="20.0" />
-                                       </font>
-                                    </TextArea>
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets top="-80.0" />
-                                 </VBox.margin>
-                              </Pane>
-                           </children>
-                           <HBox.margin>
-                              <Insets bottom="10.0" left="10.0" right="30.0" top="10.0" />
-                           </HBox.margin>
-                        </VBox>
-                     </children>
-                  </HBox>
-               </children>
-            </VBox>
-            <VBox prefHeight="307.0" prefWidth="1200.0" style="-fx-background-color: #13161d;" VBox.vgrow="ALWAYS">
-               <children>
-                  <VBox maxHeight="40.0" prefHeight="200.0" prefWidth="100.0" />
-                  <HBox prefHeight="44.0" prefWidth="1200.0" VBox.vgrow="ALWAYS">
-                     <children>
-                        <Text fill="#fa8f31" strokeType="OUTSIDE" strokeWidth="0.0" text="Previous tournaments" HBox.hgrow="ALWAYS">
-                           <font>
-                              <Font name="Yu Gothic Medium" size="29.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets bottom="10.0" left="50.0" top="40.0" />
-                           </HBox.margin>
-                        </Text>
-                     </children>
-                  </HBox>
-                  <HBox minHeight="170.0" prefHeight="300.0" prefWidth="1100.0" style="-fx-background-color: #282c34;" VBox.vgrow="ALWAYS">
-                     <VBox.margin>
-                        <Insets bottom="50.0" left="50.0" right="50.0" />
-                     </VBox.margin>
-                  </HBox>
-               </children>
-            </VBox>
-         </children>
-      </VBox>
-   </center>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+                <HBox prefHeight="1395.0" prefWidth="1200.0" VBox.vgrow="ALWAYS">
+                    <children>
+                        <Pane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: black;" HBox.hgrow="ALWAYS" />
+                        <ScrollPane hbarPolicy="NEVER" maxWidth="1500.0" prefHeight="800.0" prefWidth="1200.0" stylesheets="@../css/style.css">
+                            <content>
+                                <VBox maxWidth="-Infinity" minWidth="-Infinity" prefHeight="1703.0" prefWidth="1183.0" style="-fx-background-color: #13161d;">
+                                    <children>
+                                        <VBox maxHeight="50.0" prefHeight="0.0" prefWidth="1200.0" />
+                                        <VBox>
+                                            <children>
+                                                <HBox maxHeight="137.0" prefHeight="137.0" prefWidth="1200.0" style="-fx-background-color: #13161d;" VBox.vgrow="ALWAYS">
+                                                    <children>
+                                                        <Text fill="#fa8f31" strokeType="OUTSIDE" strokeWidth="0.0" text="Ongoing tournaments" HBox.hgrow="ALWAYS">
+                                                            <font>
+                                                                <Font name="Yu Gothic Medium" size="35.0" />
+                                                            </font>
+                                                            <HBox.margin>
+                                                                <Insets bottom="10.0" left="85.0" top="40.0" />
+                                                            </HBox.margin>
+                                                        </Text>
+                                                    </children>
+                                                </HBox>
+                                                <VBox prefHeight="0.0" prefWidth="1200.0" />
+                                                <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="317.0" prefWidth="1021.0" style="-fx-background-color: #282c34;">
+                                                    <children>
+                                                        <VBox fx:id="ongoingBox1" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onOngoingBox1Clicked" prefHeight="273.0" prefWidth="350.0" visible="false">
+                                                            <HBox.margin>
+                                                                <Insets left="120.0" right="81.0" top="22.0" />
+                                                            </HBox.margin>
+                                                            <children>
+                                                <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="193.0" prefWidth="350.0" style="-fx-background-color: black;">
+                                                   <VBox.margin>
+                                                      <Insets />
+                                                   </VBox.margin>
+                                                   <children>
+                                                                      <ImageView fx:id="ongoingImageView1" fitHeight="211.0" fitWidth="336.0" layoutX="7.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../Images/gameImages/LeagueofLegends.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </children>
+                                                </Pane>
+                                                                <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="350.0" style="-fx-background-color: black;">
+                                                                    <VBox.margin>
+                                                                        <Insets />
+                                                                    </VBox.margin>
+                                                                    <children>
+                                                      <TextArea fx:id="ongoingText1" editable="false" layoutX="7.0" layoutY="7.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="67.0" prefWidth="336.0" style="-fx-background-color: #13161d;" stylesheets="@../css/transparentTextArea.css" text="Tournament" wrapText="true">
+                                                         <font>
+                                                            <Font name="Arial Bold" size="20.0" />
+                                                         </font>
+                                                      </TextArea>
+                                                                    </children>
+                                                                </Pane>
+                                                            </children>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                                        </VBox>
+                                          <VBox fx:id="ongoingBox2" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onOngoingBox2Clicked" prefHeight="273.0" prefWidth="350.0" visible="false">
+                                             <children>
+                                                <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="193.0" prefWidth="350.0" style="-fx-background-color: black;">
+                                                   <VBox.margin>
+                                                      <Insets />
+                                                   </VBox.margin>
+                                                   <children>
+                                                      <ImageView fx:id="ongoingImageView2" fitHeight="211.0" fitWidth="336.0" layoutX="7.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../Images/gameImages/LeagueofLegends.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </children>
+                                                </Pane>
+                                                <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="350.0" style="-fx-background-color: black;">
+                                                   <VBox.margin>
+                                                      <Insets />
+                                                   </VBox.margin>
+                                                   <children>
+                                                      <TextArea fx:id="ongoingText2" editable="false" layoutX="7.0" layoutY="7.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="67.0" prefWidth="336.0" style="-fx-background-color: #13161d;" stylesheets="@../css/transparentTextArea.css" text="Tournament" wrapText="true">
+                                                         <font>
+                                                            <Font name="Arial Bold" size="20.0" />
+                                                         </font>
+                                                      </TextArea>
+                                                   </children>
+                                                </Pane>
+                                             </children>
+                                             <HBox.margin>
+                                                <Insets top="22.0" />
+                                             </HBox.margin>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </VBox>
+                                                    </children>
+                                                    <VBox.margin>
+                                                        <Insets left="89.5" right="89.5" />
+                                                    </VBox.margin>
+                                                </HBox>
+                                                <VBox prefHeight="23.0" prefWidth="1200.0" />
+                                                <HBox prefHeight="34.0" prefWidth="1200.0">
+                                                    <children>
+                                                        <Pane prefHeight="34.0" prefWidth="906.0" />
+                                                        <Button fx:id="viewMoreOngoing" mnemonicParsing="false" onAction="#onViewMoreOngoingPressed" prefHeight="30.0" prefWidth="149.0" styleClass="jfx-button" stylesheets="@../css/style.css" text="View more...." textFill="WHITE">
+                                                            <font>
+                                                                <Font name="Arial Bold" size="18.0" />
+                                                            </font>
+                                                            <cursor>
+                                                                <Cursor fx:constant="HAND" />
+                                                            </cursor>
+                                                            <HBox.margin>
+                                                                <Insets bottom="5.0" />
+                                                            </HBox.margin>
+                                             <effect>
+                                                <DropShadow height="10.0" radius="4.5" width="10.0" />
+                                             </effect>
+                                                        </Button>
+                                                    </children>
+                                                </HBox>
+                                            </children>
+                                        </VBox>
+                                        <VBox maxHeight="50.0" prefHeight="0.0" prefWidth="1200.0" />
+                                        <VBox>
+                                            <children>
+                                                <HBox maxHeight="137.0" prefHeight="137.0" prefWidth="1200.0" style="-fx-background-color: #13161d;" VBox.vgrow="ALWAYS">
+                                                    <children>
+                                                        <Text fill="#fa8f31" strokeType="OUTSIDE" strokeWidth="0.0" text="Upcoming tournaments" HBox.hgrow="ALWAYS">
+                                                            <font>
+                                                                <Font name="Yu Gothic Medium" size="35.0" />
+                                                            </font>
+                                                            <HBox.margin>
+                                                                <Insets bottom="10.0" left="85.0" top="40.0" />
+                                                            </HBox.margin>
+                                                        </Text>
+                                                    </children>
+                                                </HBox>
+                                                <VBox prefHeight="0.0" prefWidth="1200.0" />
+                                    <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="317.0" prefWidth="1021.0" style="-fx-background-color: #282c34;">
+                                       <children>
+                                          <VBox fx:id="upcomingBox1" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onUpcomingBox1Clicked" prefHeight="273.0" prefWidth="350.0" visible="false">
+                                             <HBox.margin>
+                                                <Insets left="120.0" right="81.0" top="22.0" />
+                                             </HBox.margin>
+                                             <children>
+                                                <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="193.0" prefWidth="350.0" style="-fx-background-color: black;">
+                                                   <VBox.margin>
+                                                      <Insets />
+                                                   </VBox.margin>
+                                                   <children>
+                                                      <ImageView fx:id="upcomingImageView1" fitHeight="211.0" fitWidth="336.0" layoutX="7.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../Images/gameImages/LeagueofLegends.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </children>
+                                                </Pane>
+                                                <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="350.0" style="-fx-background-color: black;">
+                                                   <VBox.margin>
+                                                      <Insets />
+                                                   </VBox.margin>
+                                                   <children>
+                                                      <TextArea fx:id="upcomingText1" editable="false" layoutX="7.0" layoutY="7.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="67.0" prefWidth="336.0" style="-fx-background-color: #13161d;" stylesheets="@../css/transparentTextArea.css" text="Tournament" wrapText="true">
+                                                         <font>
+                                                            <Font name="Arial Bold" size="20.0" />
+                                                         </font>
+                                                      </TextArea>
+                                                   </children>
+                                                </Pane>
+                                             </children>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </VBox>
+                                          <VBox fx:id="upcomingBox2" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onUpcomingBox2Clicked" prefHeight="273.0" prefWidth="350.0" visible="false">
+                                             <children>
+                                                <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="193.0" prefWidth="350.0" style="-fx-background-color: black;">
+                                                   <VBox.margin>
+                                                      <Insets />
+                                                   </VBox.margin>
+                                                   <children>
+                                                      <ImageView fx:id="upcomingImageView2" fitHeight="211.0" fitWidth="336.0" layoutX="7.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../Images/gameImages/LeagueofLegends.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </children>
+                                                </Pane>
+                                                <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="350.0" style="-fx-background-color: black;">
+                                                   <VBox.margin>
+                                                      <Insets />
+                                                   </VBox.margin>
+                                                   <children>
+                                                      <TextArea fx:id="upcomingText2" editable="false" layoutX="7.0" layoutY="7.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="67.0" prefWidth="336.0" style="-fx-background-color: #13161d;" stylesheets="@../css/transparentTextArea.css" text="Tournament" wrapText="true">
+                                                         <font>
+                                                            <Font name="Arial Bold" size="20.0" />
+                                                         </font>
+                                                      </TextArea>
+                                                   </children>
+                                                </Pane>
+                                             </children>
+                                             <HBox.margin>
+                                                <Insets top="22.0" />
+                                             </HBox.margin>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </VBox>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets left="89.5" right="89.5" />
+                                       </VBox.margin>
+                                    </HBox>
+                                                <VBox prefHeight="23.0" prefWidth="1200.0" />
+                                                <HBox prefHeight="34.0" prefWidth="1200.0">
+                                                    <children>
+                                                        <Pane prefHeight="34.0" prefWidth="906.0" />
+                                                        <Button fx:id="viewMoreUpcoming" mnemonicParsing="false" onAction="#onViewMoreUpcomingPressed" prefHeight="30.0" prefWidth="149.0" styleClass="jfx-button" stylesheets="@../css/style.css" text="View more...." textFill="WHITE">
+                                                            <font>
+                                                                <Font name="Arial Bold" size="18.0" />
+                                                            </font>
+                                                            <cursor>
+                                                                <Cursor fx:constant="HAND" />
+                                                            </cursor>
+                                                            <HBox.margin>
+                                                                <Insets bottom="5.0" />
+                                                            </HBox.margin>
+                                             <effect>
+                                                <DropShadow height="10.0" radius="4.5" width="10.0" />
+                                             </effect>
+                                                        </Button>
+                                                    </children>
+                                                </HBox>
+                                            </children>
+                                        </VBox>
+                                        <VBox maxHeight="50.0" prefHeight="0.0" prefWidth="1200.0" />
+                                        <VBox prefWidth="1200.0">
+                                            <children>
+                                                <HBox maxHeight="137.0" prefHeight="137.0" prefWidth="1200.0" style="-fx-background-color: #13161d;" VBox.vgrow="ALWAYS">
+                                                    <children>
+                                                        <Text fill="#fa8f31" strokeType="OUTSIDE" strokeWidth="0.0" text="Previous tournaments" HBox.hgrow="ALWAYS">
+                                                            <font>
+                                                                <Font name="Yu Gothic Medium" size="35.0" />
+                                                            </font>
+                                                            <HBox.margin>
+                                                                <Insets bottom="10.0" left="85.0" top="40.0" />
+                                                            </HBox.margin>
+                                                        </Text>
+                                                    </children>
+                                                </HBox>
+                                                <VBox prefHeight="0.0" prefWidth="1200.0" />
+                                    <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="317.0" prefWidth="1021.0" style="-fx-background-color: #282c34;">
+                                       <children>
+                                          <VBox fx:id="previousBox1" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onPreviousBox1Clicked" prefHeight="273.0" prefWidth="350.0" visible="false">
+                                             <HBox.margin>
+                                                <Insets left="120.0" right="81.0" top="22.0" />
+                                             </HBox.margin>
+                                             <children>
+                                                <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="193.0" prefWidth="350.0" style="-fx-background-color: black;">
+                                                   <VBox.margin>
+                                                      <Insets />
+                                                   </VBox.margin>
+                                                   <children>
+                                                      <ImageView fx:id="previousImageView1" fitHeight="211.0" fitWidth="336.0" layoutX="7.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../Images/gameImages/LeagueofLegends.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </children>
+                                                </Pane>
+                                                <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="350.0" style="-fx-background-color: black;">
+                                                   <VBox.margin>
+                                                      <Insets />
+                                                   </VBox.margin>
+                                                   <children>
+                                                      <TextArea fx:id="previousText1" editable="false" layoutX="7.0" layoutY="7.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="67.0" prefWidth="336.0" style="-fx-background-color: #13161d;" stylesheets="@../css/transparentTextArea.css" text="Tournament" wrapText="true">
+                                                         <font>
+                                                            <Font name="Arial Bold" size="20.0" />
+                                                         </font>
+                                                      </TextArea>
+                                                   </children>
+                                                </Pane>
+                                             </children>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </VBox>
+                                          <VBox fx:id="previousBox2" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onPreviousBox2Clicked" prefHeight="273.0" prefWidth="350.0" visible="false">
+                                             <children>
+                                                <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="193.0" prefWidth="350.0" style="-fx-background-color: black;">
+                                                   <VBox.margin>
+                                                      <Insets />
+                                                   </VBox.margin>
+                                                   <children>
+                                                      <ImageView fx:id="previousImageView2" fitHeight="211.0" fitWidth="336.0" layoutX="7.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../Images/gameImages/LeagueofLegends.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </children>
+                                                </Pane>
+                                                <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="350.0" style="-fx-background-color: black;">
+                                                   <VBox.margin>
+                                                      <Insets />
+                                                   </VBox.margin>
+                                                   <children>
+                                                      <TextArea fx:id="previousText2" editable="false" layoutX="7.0" layoutY="7.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="67.0" prefWidth="336.0" style="-fx-background-color: #13161d;" stylesheets="@../css/transparentTextArea.css" text="Tournament" wrapText="true">
+                                                         <font>
+                                                            <Font name="Arial Bold" size="20.0" />
+                                                         </font>
+                                                      </TextArea>
+                                                   </children>
+                                                </Pane>
+                                             </children>
+                                             <HBox.margin>
+                                                <Insets top="22.0" />
+                                             </HBox.margin>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </VBox>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets left="89.5" right="89.5" />
+                                       </VBox.margin>
+                                    </HBox>
+                                                <VBox prefHeight="23.0" prefWidth="1200.0" />
+                                                <HBox prefHeight="34.0" prefWidth="1200.0">
+                                                    <children>
+                                                        <Pane prefHeight="34.0" prefWidth="906.0">
+                                                            <HBox.margin>
+                                                                <Insets />
+                                                            </HBox.margin>
+                                                        </Pane>
+                                                        <Button fx:id="viewMorePrevious" mnemonicParsing="false" onAction="#onViewMorePreviousPressed" prefHeight="30.0" prefWidth="149.0" styleClass="jfx-button" stylesheets="@../css/style.css" text="View more...." textFill="WHITE">
+                                                            <font>
+                                                                <Font name="Arial Bold" size="18.0" />
+                                                            </font>
+                                                            <cursor>
+                                                                <Cursor fx:constant="HAND" />
+                                                            </cursor>
+                                                            <HBox.margin>
+                                                                <Insets bottom="5.0" />
+                                                            </HBox.margin>
+                                             <effect>
+                                                <DropShadow height="10.0" radius="4.5" width="10.0" />
+                                             </effect>
+                                                        </Button>
+                                                    </children>
+                                                </HBox>
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </VBox>
+                            </content>
+                        </ScrollPane>
+                        <Pane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: black;" HBox.hgrow="ALWAYS" />
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </center>
+    <bottom>
+        <VBox prefHeight="2.0" prefWidth="1200.0" style="-fx-background-color: #282c34;" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets top="70.0" />
+            </padding>
+        </VBox>
+    </bottom>
 </BorderPane>

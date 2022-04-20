@@ -17,23 +17,21 @@ public class TeamReader {
 
     public TeamReader(){}
 
-    public static ArrayList<Team> readFile(File file) throws IOException{
-        ArrayList<Team> returnList = new ArrayList<>();
-        try (Scanner scanner = new Scanner(file)){
-            if (!scanner.hasNext()){
-                throw new IOException("File is empty");
+    public static ArrayList<Team> readTeamsFromAllTeamsFile()
+    throws IOException{
+        ArrayList<Team> teams = new ArrayList<>();
+        ArrayList<String> fileAsList = GeneralReader.readFile(new File("src/main/resources/edu/ntnu/" +
+                "idatt1002/sysdev_k1_05_ets/teamFiles/all_Teams.csv"));
+
+        for (String str : fileAsList){
+            String[] values = str.split(DELIMITER);
+            Team team = new Team(values[0], values[1]);
+            for (int i = 2; i < values.length; i++){
+                team.addMember(values[i]);
             }
-            while (scanner.hasNext()){
-                String line = scanner.nextLine();
-                String[] values = line.split(DELIMITER);
-                Team team = new Team(values[0], values[1]);
-                for (int i = 2; i < values.length; i++){
-                    team.addMember(values[i]);
-                }
-                returnList.add(team);
-            }
+            teams.add(team);
         }
-        return returnList;
+        return teams;
     }
 
 
@@ -48,11 +46,8 @@ public class TeamReader {
 
     public static Team findAndReturnTeamUsingTeamName(String teamName)
     throws IOException{
-
         Team teamFound = null;
-        File file = new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/teamFiles/all_Teams.csv");
-        ArrayList<Team> teams = readFile(file);
-
+        ArrayList<Team> teams = readTeamsFromAllTeamsFile();
         for (Team team : teams){
             if (team.getNameOfTeam().equals(teamName)){
                 teamFound = team;
@@ -64,6 +59,4 @@ public class TeamReader {
         }
         return teamFound;
     }
-
-
 }

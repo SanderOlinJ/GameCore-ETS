@@ -1,0 +1,14 @@
+Not finished
+Test 100
+Admin
+2022-04-22
+20:00
+No description
+League of Legends
+PC / Mac / Linux
+Brackets
+1
+8
+0,null
+0,null
+Team Liquid,Ninjas in Pyjamas,Lords,Fnatic,FaZe,Phase,G2 Esports,Astralis

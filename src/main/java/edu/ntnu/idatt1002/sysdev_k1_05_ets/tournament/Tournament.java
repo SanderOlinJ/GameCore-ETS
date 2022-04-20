@@ -97,6 +97,23 @@ public class Tournament {
         this.teams.remove(team);
     }
 
+    public int getIndexOfTeam(Team team) {
+        for (int i = 0; i < teams.size(); i++) {
+            if (team.getNameOfTeam().equals(teams.get(i).getNameOfTeam())){
+                return i;
+            }
+        }
+        return 0;
+    }
+
+    public void removeTeam(String teamName) {
+        for(int i = 0; i<teams.size(); i++){
+            if(teams.get(i).getNameOfTeam().equals(teamName)){
+                this.teams.remove(teams.get(i));
+            }
+        }
+    }
+
     public Team randomlyRemoveTeam() {
         Random random = new Random();
         Team returnTeam = this.getTeam(random.nextInt(getNumberOfTeams()));

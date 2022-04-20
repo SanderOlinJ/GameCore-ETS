@@ -11,10 +11,14 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.MenuBar;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class BracketController {
 
@@ -57,6 +61,14 @@ public class BracketController {
     @FXML private Label team31;
     @FXML Label nameOfTournament;
 
+    @FXML private MenuItem homeButton;
+    @FXML private MenuItem ongoingTournamentsButton;
+    @FXML private MenuItem upcomingTournamentsButton;
+    @FXML private MenuItem previousTournamentsButton;
+    @FXML private MenuItem aboutButton;
+    @FXML private MenuItem helpButton;
+
+    @FXML private MenuBar menuBar;
 
     @FXML
     public void initialize(){
@@ -107,34 +119,25 @@ public class BracketController {
     }
 
     public void randomize(){
-
         Tournament deepCopy = new Tournament("Deep Copy");
         for (Team team : tournament.getTeams()) {
             deepCopy.addTeam(new Team(team.getMembers(), team.getNameOfTeam(), team.getNameAbbr()));
         }
-
         for (int i = 0; i < bracketSize - 1; i++){
             labels.get(i).setText("?");
         }
         for (int i = bracketSize-1; i < 2*bracketSize - 1; i++) {
-            labels.get(i).setText(deepCopy.randomlyRemoveTeam().getNameAbbr());
+            Team team = deepCopy.randomlyRemoveTeam();
+            Collections.swap(tournament.getTeams(),bracketSize-1,tournament.getIndexOfTeam(team));
+            labels.get(i).setText(team.getNameAbbr());
         }
-
-//        team1.setText("TBD");
-//        team2.setText("TBD");
-//        team3.setText("TBD");
-//        team4.setText("TBD");
-//        team5.setText("TBD");
-//        team6.setText("TBD");
-//        team7.setText("TBD");
-//        team8.setText(deepCopy.randomlyRemoveTeam().getNameOfTeam());
-//        team9.setText(deepCopy.randomlyRemoveTeam().getNameOfTeam());
-//        team10.setText(deepCopy.randomlyRemoveTeam().getNameOfTeam());
-//        team11.setText(deepCopy.randomlyRemoveTeam().getNameOfTeam());
-//        team12.setText(deepCopy.randomlyRemoveTeam().getNameOfTeam());
-//        team13.setText(deepCopy.randomlyRemoveTeam().getNameOfTeam());
-//        team14.setText(deepCopy.randomlyRemoveTeam().getNameOfTeam());
-//        team15.setText(deepCopy.getTeam(0).getNameOfTeam());
+        ArrayList<String> sendTeams = new ArrayList<>();
+        for (Label label : labels) {
+            if (!(label.getText().equals("?"))) {
+                sendTeams.add(label.getText());
+            }
+        }
+        MatchesController.setTeams(sendTeams);
     }
 
 
@@ -206,6 +209,7 @@ public class BracketController {
         String teamName = label.getText();
         int id = getLabelInt(label);
         labels.get((id/2)-1).setText(teamName);
+        tournament.getTeams().set((id/2)-1,tournament.getTeam(id));
     }
 
     public static Tournament getBracket(){
@@ -221,7 +225,56 @@ public class BracketController {
     }
 
     public static String getTournamentName(){return tournamentName;}
-    public void switchToMatches(){
+    public void switchToMatches(){}
 
+    @FXML
+    void onHomeButtonPressed(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class
+                .getResource("scenes/main-page.fxml")));
+        setNextWindowFromMenuBar(root);
+    }
+
+    @FXML
+    void onAboutButtonPressed(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource("scenes/about-page.fxml")));
+        setNextWindowFromMenuBar(root);
+    }
+
+    @FXML
+    void onHelpButtonPressed(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource("scenes/help-page.fxml")));
+        setNextWindowFromMenuBar(root);
+    }
+
+    @FXML
+    void onOngoingTournamentsButtonPressed(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class
+                .getResource("scenes/ongoing-overview.fxml")));
+        setNextWindowFromMenuBar(root);
+    }
+
+    private void setNextWindowFromMenuBar(Parent root) {
+        Stage stage = (Stage) menuBar.getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setMinWidth(1200);
+        stage.setMinHeight(800);
+        stage.show();
+    }
+
+    @FXML
+    void onUpcomingTournamentsButtonPressed(ActionEvent event)
+            throws IOException{
+        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class
+                .getResource("scenes/upcoming-overview.fxml")));
+        setNextWindowFromMenuBar(root);
+    }
+
+    @FXML
+    void onPreviousTournamentsButtonPressed(ActionEvent event)
+            throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class
+                .getResource("scenes/previous-overview.fxml")));
+        setNextWindowFromMenuBar(root);
     }
 }

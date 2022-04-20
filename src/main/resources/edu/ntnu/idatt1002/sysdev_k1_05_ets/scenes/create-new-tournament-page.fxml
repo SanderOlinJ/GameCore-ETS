@@ -25,16 +25,24 @@
 
 <BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.CreateNewTournamentPageController">
     <top>
-        <MenuBar BorderPane.alignment="CENTER">
+        <MenuBar fx:id="menuBar" BorderPane.alignment="CENTER">
             <menus>
-                <Menu fx:id="homeButton" mnemonicParsing="false" text="Home" />
-                <Menu fx:id="tournamentButton" mnemonicParsing="false" text="Tournaments">
+                <Menu mnemonicParsing="false" text="Home">
+               <items>
+                  <MenuItem fx:id="homeButton" mnemonicParsing="false" onAction="#onHomeButtonPressed" text="Home" />
+               </items></Menu>
+                <Menu mnemonicParsing="false" text="Tournaments">
                     <items>
-                        <MenuItem fx:id="ongoingTournamentsButton" mnemonicParsing="false" text="Ongoing tournaments" />
-                        <MenuItem fx:id="previousTournamentButton" mnemonicParsing="false" text="Previous tournaments" />
+                        <MenuItem fx:id="ongoingTournamentsButton" mnemonicParsing="false" onAction="#onOngoingTournamentsButtonPressed" text="Ongoing tournaments" />
+                  <MenuItem fx:id="upcomingTournamentsButton" mnemonicParsing="false" onAction="#onUpcomingTournamentsButtonPressed" text="Upcoming tournaments" />
+                        <MenuItem fx:id="previousTournamentsButton" mnemonicParsing="false" onAction="#onPreviousTournamentsButtonPressed" text="Previous tournaments" />
                     </items>
                 </Menu>
-                <Menu fx:id="aboutButton" mnemonicParsing="false" text="About" />
+                <Menu mnemonicParsing="false" text="More">
+               <items>
+                  <MenuItem fx:id="aboutButton" mnemonicParsing="false" onAction="#onAboutButtonPressed" text="About" />
+                  <MenuItem fx:id="helpButton" mnemonicParsing="false" onAction="#onHelpButtonPressed" text="Help" />
+               </items></Menu>
             </menus>
         </MenuBar>
     </top>
@@ -61,10 +69,10 @@
                 </VBox>
                 <HBox prefHeight="1395.0" prefWidth="1200.0" VBox.vgrow="ALWAYS">
                     <children>
-                        <Pane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: #13161d;" HBox.hgrow="ALWAYS" />
+                        <Pane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: black;" HBox.hgrow="ALWAYS" />
                         <ScrollPane hbarPolicy="NEVER" maxWidth="1800.0" prefHeight="1767.0" prefWidth="1200.0" stylesheets="@../css/style.css">
                             <content>
-                                <VBox maxWidth="-Infinity" minWidth="-Infinity" prefHeight="1558.0" prefWidth="1183.0" style="-fx-background-color: #13161d;">
+                                <VBox maxWidth="-Infinity" minWidth="-Infinity" prefHeight="1674.0" prefWidth="1183.0" style="-fx-background-color: #13161d;">
                                     <children>
                                         <VBox maxHeight="50.0" prefHeight="0.0" prefWidth="1200.0" />
                                         <HBox maxHeight="137.0" prefHeight="137.0" prefWidth="1200.0" style="-fx-background-color: #13161d;" VBox.vgrow="ALWAYS">
@@ -74,7 +82,7 @@
                                                         <Font name="Yu Gothic Medium" size="29.0" />
                                                     </font>
                                                     <HBox.margin>
-                                                        <Insets bottom="10.0" left="50.0" top="40.0" />
+                                                        <Insets bottom="30.0" left="50.0" top="40.0" />
                                                     </HBox.margin>
                                                 </Text>
                                             </children>
@@ -84,15 +92,15 @@
                                                 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="48.0" prefWidth="1200.0">
                                                     <children>
                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                        <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="48.0" prefWidth="1105.0" style="-fx-background-color: #282c34;">
-                                                            <children>
-                                                                <Text fill="WHITE" layoutX="20.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Basic information">
+                                          <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="48.0" prefWidth="1105.0" style="-fx-background-color: #282c34;">
+                                             <children>
+                                                                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Basic information">
                                                                     <font>
                                                                         <Font name="Arial Bold" size="22.0" />
                                                                     </font>
                                                                 </Text>
-                                                            </children>
-                                                        </Pane>
+                                             </children>
+                                          </HBox>
                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                     </children>
                                                 </HBox>
@@ -210,15 +218,15 @@
                                                 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="48.0" prefWidth="1200.0">
                                                     <children>
                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                        <Pane maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="48.0" prefWidth="1105.0" style="-fx-background-color: #282c34;">
-                                                            <children>
-                                                                <Text fill="WHITE" layoutX="14.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Game information">
+                                          <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="48.0" prefWidth="1105.0" style="-fx-background-color: #282c34;">
+                                             <children>
+                                                                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Game information">
                                                                     <font>
                                                                         <Font name="Arial Bold" size="22.0" />
                                                                     </font>
                                                                 </Text>
-                                                            </children>
-                                                        </Pane>
+                                             </children>
+                                          </HBox>
                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                     </children>
                                                 </HBox>
@@ -294,15 +302,15 @@
                                                 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="48.0" prefWidth="1200.0">
                                                     <children>
                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                        <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="48.0" prefWidth="1105.0" style="-fx-background-color: #282c34;">
-                                                            <children>
-                                                                <Text fill="WHITE" layoutX="14.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tournament information">
+                                          <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="48.0" prefWidth="1105.0" style="-fx-background-color: #282c34;">
+                                             <children>
+                                                                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Tournament information">
                                                                     <font>
                                                                         <Font name="Arial Bold" size="22.0" />
                                                                     </font>
                                                                 </Text>
-                                                            </children>
-                                                        </Pane>
+                                             </children>
+                                          </HBox>
                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                     </children>
                                                 </HBox>
@@ -494,7 +502,7 @@
                                 </VBox>
                             </content>
                         </ScrollPane>
-                        <Pane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: #13161d;" HBox.hgrow="ALWAYS" />
+                        <Pane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: black;" HBox.hgrow="ALWAYS" />
                     </children>
                 </HBox>
             </children>

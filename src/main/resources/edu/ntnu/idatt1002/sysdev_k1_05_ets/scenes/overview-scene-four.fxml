@@ -20,16 +20,24 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.BracketController">
     <top>
-        <MenuBar BorderPane.alignment="CENTER">
+        <MenuBar fx:id="menuBar" BorderPane.alignment="CENTER">
             <menus>
-                <Menu fx:id="homeButton" disable="true" mnemonicParsing="false" text="Home" />
-                <Menu fx:id="tournamentButton" mnemonicParsing="false" text="Tournaments">
+                <Menu mnemonicParsing="false" text="Home">
+               <items>
+                  <MenuItem fx:id="homeButton" mnemonicParsing="false" onAction="#onHomeButtonPressed" text="Home" />
+               </items></Menu>
+                <Menu mnemonicParsing="false" text="Tournaments">
                     <items>
-                        <MenuItem fx:id="ongoingTournamentsButton" mnemonicParsing="false" text="Ongoing tournaments" />
-                        <MenuItem fx:id="previousTournamentButton" mnemonicParsing="false" text="Previous tournaments" />
+                        <MenuItem fx:id="ongoingTournamentsButton" mnemonicParsing="false" onAction="#onOngoingTournamentsButtonPressed" text="Ongoing tournaments" />
+                  <MenuItem fx:id="upcomingTournamentsButton" mnemonicParsing="false" onAction="#onUpcomingTournamentsButtonPressed" text="Upcoming tournaments" />
+                        <MenuItem fx:id="previousTournamentsButton" mnemonicParsing="false" onAction="#onPreviousTournamentsButtonPressed" text="Previous tournaments" />
                     </items>
                 </Menu>
-                <Menu fx:id="aboutButton" mnemonicParsing="false" text="About" />
+                <Menu mnemonicParsing="false" text="More">
+               <items>
+                  <MenuItem fx:id="aboutButton" mnemonicParsing="false" onAction="#onAboutButtonPressed" text="About" />
+                  <MenuItem fx:id="helpButton" mnemonicParsing="false" onAction="#onHelpButtonPressed" text="Help" />
+               </items></Menu>
             </menus>
         </MenuBar>
     </top>

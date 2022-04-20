@@ -14,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -25,18 +26,19 @@ import java.util.Objects;
 public class MainPageController {
 
     @FXML private MenuBar menuBar;
-    @FXML private Menu aboutButton;
     @FXML private Button createNewTournamentButton;
     @FXML private Button viewMoreOngoing;
     @FXML private Button viewMoreUpcoming;
     @FXML private Button viewMorePrevious;
-    @FXML private Menu homeButton;
+    @FXML Stage stage;
+    @FXML BorderPane startScreenPane;
+
+    @FXML private MenuItem homeButton;
     @FXML private MenuItem ongoingTournamentsButton;
     @FXML private MenuItem upcomingTournamentsButton;
     @FXML private MenuItem previousTournamentsButton;
-    @FXML private Menu tournamentButton;
-    @FXML Stage stage;
-    @FXML BorderPane startScreenPane;
+    @FXML private MenuItem aboutButton;
+    @FXML private MenuItem helpButton;
 
     @FXML private VBox ongoingBox1;
     @FXML private ImageView ongoingImageView1;
@@ -94,7 +96,7 @@ public class MainPageController {
             setMainPageWithTournaments(ongoingTournaments, ongoingImageView1, ongoingText1, ongoingBox1,
                     ongoingImageView2, ongoingText2, ongoingBox2);
         } catch (IOException exception){
-            throw new IOException("Could not show ongoing tournaments: " + exception.getMessage());
+            throw new IOException(exception.getMessage());
         }
     }
 
@@ -131,6 +133,7 @@ public class MainPageController {
                     (tournaments.get(0).getGame()) + ".png"));
             text1.setText(tournaments.get(0).getTournamentName());
             vBox1.setVisible(true);
+            vBox1.setDisable(false);
 
             if (tournaments.size() > 1){
 
@@ -140,12 +143,9 @@ public class MainPageController {
                                 (tournaments.get(1).getGame()) + ".png"));
                 text2.setText(tournaments.get(1).getTournamentName());
                 vBox2.setVisible(true);
+                vBox2.setDisable(false);
             }
         }
-    }
-
-    @FXML
-    void onAboutButtonPressed(ActionEvent event) {
     }
 
     @FXML
@@ -168,6 +168,17 @@ public class MainPageController {
     void onHomeButtonPressed(ActionEvent event) {
     }
 
+    @FXML
+    void onHelpButtonPressed(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource("scenes/help-page.fxml")));
+        setNextWindowFromMenuBar(root);
+    }
+
+    @FXML
+    void onAboutButtonPressed(ActionEvent event) throws IOException{
+        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource("scenes/about-page.fxml")));
+        setNextWindowFromMenuBar(root);
+    }
 
     @FXML
     void onOngoingTournamentsButtonPressed(ActionEvent event) throws IOException {
@@ -224,5 +235,23 @@ public class MainPageController {
                 .getResource("scenes/previous-overview.fxml")));
         setNextWindow(event, root);
     }
+
+    @FXML
+    void onOngoingBox1Clicked(MouseEvent event){}
+
+    @FXML
+    void onOngoingBox2Clicked(MouseEvent event){}
+
+    @FXML
+    void onUpcomingBox1Clicked(MouseEvent event){}
+
+    @FXML
+    void onUpcomingBox2Clicked(MouseEvent event){}
+
+    @FXML
+    void onPreviousBox1Clicked(MouseEvent event){}
+
+    @FXML
+    void onPreviousBox2Clicked(MouseEvent event){}
 
 }

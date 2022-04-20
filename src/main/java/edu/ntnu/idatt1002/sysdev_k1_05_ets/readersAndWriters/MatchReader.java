@@ -42,6 +42,9 @@ public class MatchReader {
                                 team1, team2, values);
                         if (rounds.size() != 0) {
                             match.setRounds(rounds);
+                            match.setFinished(list.get(9).equals("1") && rounds.size() == 1
+                                    || list.get(9).equals("3") && matchScoreTeam1 == 2
+                                    || list.get(9).equals("3") && matchScoreTeam2 == 2);
                         }
                     }
                 }
