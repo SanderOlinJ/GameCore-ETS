@@ -20,7 +20,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.BracketController">
     <top>
-        <MenuBar BorderPane.alignment="CENTER">
+        <MenuBar fx:id="menuBar" BorderPane.alignment="CENTER">
             <menus>
                 <Menu mnemonicParsing="false" text="Home">
                <items>
@@ -36,7 +36,7 @@
                 <Menu mnemonicParsing="false" text="More">
                <items>
                   <MenuItem fx:id="aboutButton" mnemonicParsing="false" onAction="#onAboutButtonPressed" text="About" />
-                  <MenuItem disable="true" mnemonicParsing="false" text="Help" />
+                  <MenuItem fx:id="helpButton" mnemonicParsing="false" onAction="#onHelpButtonPressed" text="Help" />
                </items></Menu>
             </menus>
         </MenuBar>

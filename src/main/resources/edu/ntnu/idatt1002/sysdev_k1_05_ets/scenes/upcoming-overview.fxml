@@ -35,7 +35,7 @@
                 <Menu mnemonicParsing="false" text="More">
                <items>
                   <MenuItem fx:id="aboutButton" mnemonicParsing="false" onAction="#onAboutButtonPressed" text="About" />
-                  <MenuItem disable="true" mnemonicParsing="false" text="Help" />
+                  <MenuItem mnemonicParsing="false" text="Help" />
                </items></Menu>
             </menus>
         </MenuBar>
