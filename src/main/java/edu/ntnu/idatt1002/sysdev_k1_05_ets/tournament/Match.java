@@ -15,10 +15,11 @@ public class Match {
     private LocalTime timeOfMatch;
     private boolean finished;
 
-    public Match(Team team1, Team team2, LocalDate dateOfMatch, LocalTime timeOfMatch) {
+    public Match(Team team1, Team team2, int scoreTeam1, int scoreTeam2, LocalTime timeOfMatch) {
         this.team1 = team1;
         this.team2 = team2;
-        this.dateOfMatch = dateOfMatch;
+        this.matchScoreTeam1 = scoreTeam1;
+        this.matchScoreTeam2 = scoreTeam2;
         this.timeOfMatch = timeOfMatch;
     }
 
@@ -92,19 +93,10 @@ public class Match {
     }
 
     public Team getVictor(){
-        int scoreTeam1 = 0;
-        int scoreTeam2 = 0;
-        for (Round round : rounds){
-            scoreTeam1 = round.getScoreTeam1();
-            scoreTeam2 = round.getScoreTeam2();
+        if (matchScoreTeam1 > matchScoreTeam2){
+            return team1;
         }
-        if (scoreTeam1 > scoreTeam2){
-            return getTeam1();
-        } else if (scoreTeam2 > scoreTeam1){
-            return getTeam2();
-        } else {
-            return null;
-        }
+        return team2;
     }
 
     @Override

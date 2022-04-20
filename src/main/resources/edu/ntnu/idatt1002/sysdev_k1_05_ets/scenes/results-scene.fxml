@@ -179,28 +179,41 @@
                                                                   <VBox prefHeight="98.0" prefWidth="73.0">
                                                                      <children>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                                        <ImageView fx:id="team1PokalMatch" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+                                                                        <ImageView fx:id="team1WinnerMatch" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                                                           <image>
+                                                                              <Image url="@../Images/winner-pokal.png" />
+                                                                           </image></ImageView>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                      </children>
                                                                   </VBox>
                                                                </children>
                                                             </VBox>
-                                                            <VBox prefHeight="98.0" prefWidth="592.0">
+                                                            <VBox prefHeight="98.0" prefWidth="535.0">
                                                                <children>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                   <HBox prefHeight="46.0" prefWidth="638.0">
                                                                      <children>
-                                                                        <Label fx:id="team1match" prefHeight="23.0" prefWidth="283.0" text="Team 1" textFill="WHITE">
+                                                                        <Label fx:id="team1match" prefHeight="23.0" prefWidth="94.0" text="Team 1" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
                                                                         </Label>
-                                                                        <Label prefHeight="23.0" prefWidth="216.0" text="VS" textFill="#fa8f31">
+                                                                        <Label fx:id="team1ScoreMatch" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="141.0" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
                                                                         </Label>
-                                                                        <Label fx:id="team2match" prefHeight="23.0" prefWidth="110.0" text="Team 2" textFill="WHITE">
+                                                                        <Label prefHeight="23.0" prefWidth="55.0" text="VS" textFill="#fa8f31">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label fx:id="team2ScoreMatch" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="141.0" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label fx:id="team2match" prefHeight="23.0" prefWidth="94.0" text="Team 2" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
@@ -216,7 +229,10 @@
                                                             <VBox prefHeight="200.0" prefWidth="100.0">
                                                                <children>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                                  <ImageView fx:id="team2PokalMatch" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+                                                                  <ImageView fx:id="team2WinnerMatch" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                                                     <image>
+                                                                        <Image url="@../Images/winner-pokal.png" />
+                                                                     </image></ImageView>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                </children>
                                                             </VBox>
@@ -246,28 +262,42 @@
                                                                   <VBox prefHeight="98.0" prefWidth="73.0">
                                                                      <children>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                                        <ImageView fx:id="team1PokalMatch1" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+                                                                        <ImageView fx:id="team1WinnerMatch1" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                                                           <image>
+                                                                              <Image url="@../Images/winner-pokal.png" />
+                                                                           </image>
+                                                                        </ImageView>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                      </children>
                                                                   </VBox>
                                                                </children>
                                                             </VBox>
-                                                            <VBox prefHeight="98.0" prefWidth="592.0">
+                                                            <VBox prefHeight="98.0" prefWidth="535.0">
                                                                <children>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                   <HBox prefHeight="46.0" prefWidth="638.0">
                                                                      <children>
-                                                                        <Label fx:id="team1match1" prefHeight="23.0" prefWidth="283.0" text="Team 1" textFill="WHITE">
+                                                                        <Label fx:id="team1match1" prefHeight="23.0" prefWidth="94.0" text="Team 1" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
                                                                         </Label>
-                                                                        <Label prefHeight="23.0" prefWidth="216.0" text="VS" textFill="#fa8f31">
+                                                                        <Label fx:id="team1ScoreMatch1" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="141.0" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
                                                                         </Label>
-                                                                        <Label fx:id="team2match1" prefHeight="23.0" prefWidth="110.0" text="Team 2" textFill="WHITE">
+                                                                        <Label prefHeight="23.0" prefWidth="55.0" text="VS" textFill="#fa8f31">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label fx:id="team2ScoreMatch1" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="141.0" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label fx:id="team2match1" prefHeight="23.0" prefWidth="94.0" text="Team 2" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
@@ -283,7 +313,11 @@
                                                             <VBox prefHeight="200.0" prefWidth="100.0">
                                                                <children>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                                  <ImageView fx:id="team2PokalMatch1" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+                                                                  <ImageView fx:id="team2WinnerMatch1" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                                                     <image>
+                                                                        <Image url="@../Images/winner-pokal.png" />
+                                                                     </image>
+                                                                  </ImageView>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                </children>
                                                             </VBox>
@@ -313,28 +347,42 @@
                                                                   <VBox prefHeight="98.0" prefWidth="73.0">
                                                                      <children>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                                        <ImageView fx:id="team1PokalMatch2" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+                                                                        <ImageView fx:id="team1WinnerMatch2" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                                                           <image>
+                                                                              <Image url="@../Images/winner-pokal.png" />
+                                                                           </image>
+                                                                        </ImageView>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                      </children>
                                                                   </VBox>
                                                                </children>
                                                             </VBox>
-                                                            <VBox prefHeight="98.0" prefWidth="592.0">
+                                                            <VBox prefHeight="98.0" prefWidth="535.0">
                                                                <children>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                   <HBox prefHeight="46.0" prefWidth="638.0">
                                                                      <children>
-                                                                        <Label fx:id="team1match2" prefHeight="23.0" prefWidth="283.0" text="Team 1" textFill="WHITE">
+                                                                        <Label fx:id="team1match2" prefHeight="23.0" prefWidth="94.0" text="Team 1" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
                                                                         </Label>
-                                                                        <Label prefHeight="23.0" prefWidth="216.0" text="VS" textFill="#fa8f31">
+                                                                        <Label fx:id="team1ScoreMatch2" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="141.0" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
                                                                         </Label>
-                                                                        <Label fx:id="team2match2" prefHeight="23.0" prefWidth="110.0" text="Team 2" textFill="WHITE">
+                                                                        <Label prefHeight="23.0" prefWidth="55.0" text="VS" textFill="#fa8f31">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label fx:id="team2ScoreMatch2" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="141.0" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label fx:id="team2match2" prefHeight="23.0" prefWidth="94.0" text="Team 2" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
@@ -350,7 +398,11 @@
                                                             <VBox prefHeight="200.0" prefWidth="100.0">
                                                                <children>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                                  <ImageView fx:id="team2PokalMatch2" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+                                                                  <ImageView fx:id="team2WinnerMatch2" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                                                     <image>
+                                                                        <Image url="@../Images/winner-pokal.png" />
+                                                                     </image>
+                                                                  </ImageView>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                </children>
                                                             </VBox>
@@ -380,28 +432,42 @@
                                                                   <VBox prefHeight="98.0" prefWidth="73.0">
                                                                      <children>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                                        <ImageView fx:id="team1PokalMatch3" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+                                                                        <ImageView fx:id="team1WinnerMatch3" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                                                           <image>
+                                                                              <Image url="@../Images/winner-pokal.png" />
+                                                                           </image>
+                                                                        </ImageView>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                      </children>
                                                                   </VBox>
                                                                </children>
                                                             </VBox>
-                                                            <VBox prefHeight="98.0" prefWidth="592.0">
+                                                            <VBox prefHeight="98.0" prefWidth="535.0">
                                                                <children>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                   <HBox prefHeight="46.0" prefWidth="638.0">
                                                                      <children>
-                                                                        <Label fx:id="team1match3" prefHeight="23.0" prefWidth="283.0" text="Team 1" textFill="WHITE">
+                                                                        <Label fx:id="team1match3" prefHeight="23.0" prefWidth="94.0" text="Team 1" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
                                                                         </Label>
-                                                                        <Label prefHeight="23.0" prefWidth="216.0" text="VS" textFill="#fa8f31">
+                                                                        <Label fx:id="team1ScoreMatch3" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="141.0" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
                                                                         </Label>
-                                                                        <Label fx:id="team2match3" prefHeight="23.0" prefWidth="110.0" text="Team 2" textFill="WHITE">
+                                                                        <Label prefHeight="23.0" prefWidth="55.0" text="VS" textFill="#fa8f31">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label fx:id="team2ScoreMatch3" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="141.0" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label fx:id="team2match3" prefHeight="23.0" prefWidth="94.0" text="Team 2" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
@@ -417,7 +483,11 @@
                                                             <VBox prefHeight="200.0" prefWidth="100.0">
                                                                <children>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                                  <ImageView fx:id="team2PokalMatch3" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+                                                                  <ImageView fx:id="team2WinnerMatch3" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                                                     <image>
+                                                                        <Image url="@../Images/winner-pokal.png" />
+                                                                     </image>
+                                                                  </ImageView>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                </children>
                                                             </VBox>
@@ -447,28 +517,42 @@
                                                                   <VBox prefHeight="98.0" prefWidth="73.0">
                                                                      <children>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                                        <ImageView fx:id="team1PokalMatch4" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+                                                                        <ImageView fx:id="team1WinnerMatch4" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                                                           <image>
+                                                                              <Image url="@../Images/winner-pokal.png" />
+                                                                           </image>
+                                                                        </ImageView>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                      </children>
                                                                   </VBox>
                                                                </children>
                                                             </VBox>
-                                                            <VBox prefHeight="98.0" prefWidth="592.0">
+                                                            <VBox prefHeight="98.0" prefWidth="535.0">
                                                                <children>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                   <HBox prefHeight="46.0" prefWidth="638.0">
                                                                      <children>
-                                                                        <Label fx:id="team1match4" prefHeight="23.0" prefWidth="283.0" text="Team 1" textFill="WHITE">
+                                                                        <Label fx:id="team1match4" prefHeight="23.0" prefWidth="94.0" text="Team 1" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
                                                                         </Label>
-                                                                        <Label prefHeight="23.0" prefWidth="216.0" text="VS" textFill="#fa8f31">
+                                                                        <Label fx:id="team1ScoreMatch4" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="141.0" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
                                                                         </Label>
-                                                                        <Label fx:id="team2match4" prefHeight="23.0" prefWidth="110.0" text="Team 2" textFill="WHITE">
+                                                                        <Label prefHeight="23.0" prefWidth="55.0" text="VS" textFill="#fa8f31">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label fx:id="team2ScoreMatch4" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="141.0" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label fx:id="team2match4" prefHeight="23.0" prefWidth="94.0" text="Team 2" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
@@ -484,7 +568,11 @@
                                                             <VBox prefHeight="200.0" prefWidth="100.0">
                                                                <children>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                                  <ImageView fx:id="team2PokalMatch4" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+                                                                  <ImageView fx:id="team2WinnerMatch4" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                                                     <image>
+                                                                        <Image url="@../Images/winner-pokal.png" />
+                                                                     </image>
+                                                                  </ImageView>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                </children>
                                                             </VBox>
@@ -514,28 +602,42 @@
                                                                   <VBox prefHeight="98.0" prefWidth="73.0">
                                                                      <children>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                                        <ImageView fx:id="team1PokalMatch5" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+                                                                        <ImageView fx:id="team1WinnerMatch5" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                                                           <image>
+                                                                              <Image url="@../Images/winner-pokal.png" />
+                                                                           </image>
+                                                                        </ImageView>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                      </children>
                                                                   </VBox>
                                                                </children>
                                                             </VBox>
-                                                            <VBox prefHeight="98.0" prefWidth="592.0">
+                                                            <VBox prefHeight="98.0" prefWidth="535.0">
                                                                <children>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                   <HBox prefHeight="46.0" prefWidth="638.0">
                                                                      <children>
-                                                                        <Label fx:id="team1match5" prefHeight="23.0" prefWidth="283.0" text="Team 1" textFill="WHITE">
+                                                                        <Label fx:id="team1match5" prefHeight="23.0" prefWidth="94.0" text="Team 1" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
                                                                         </Label>
-                                                                        <Label prefHeight="23.0" prefWidth="216.0" text="VS" textFill="#fa8f31">
+                                                                        <Label fx:id="team1ScoreMatch5" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="141.0" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
                                                                         </Label>
-                                                                        <Label fx:id="team2match5" prefHeight="23.0" prefWidth="110.0" text="Team 2" textFill="WHITE">
+                                                                        <Label prefHeight="23.0" prefWidth="55.0" text="VS" textFill="#fa8f31">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label fx:id="team2ScoreMatch5" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="141.0" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label fx:id="team2match5" prefHeight="23.0" prefWidth="94.0" text="Team 2" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
@@ -551,7 +653,11 @@
                                                             <VBox prefHeight="200.0" prefWidth="100.0">
                                                                <children>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                                  <ImageView fx:id="team2PokalMatch5" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+                                                                  <ImageView fx:id="team2WinnerMatch5" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                                                     <image>
+                                                                        <Image url="@../Images/winner-pokal.png" />
+                                                                     </image>
+                                                                  </ImageView>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                </children>
                                                             </VBox>
@@ -581,28 +687,42 @@
                                                                   <VBox prefHeight="98.0" prefWidth="73.0">
                                                                      <children>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                                        <ImageView fx:id="team1PokalMatch6" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+                                                                        <ImageView fx:id="team1WinnerMatch6" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                                                           <image>
+                                                                              <Image url="@../Images/winner-pokal.png" />
+                                                                           </image>
+                                                                        </ImageView>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                      </children>
                                                                   </VBox>
                                                                </children>
                                                             </VBox>
-                                                            <VBox prefHeight="98.0" prefWidth="592.0">
+                                                            <VBox prefHeight="98.0" prefWidth="535.0">
                                                                <children>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                   <HBox prefHeight="46.0" prefWidth="638.0">
                                                                      <children>
-                                                                        <Label fx:id="team1match6" prefHeight="23.0" prefWidth="283.0" text="Team 1" textFill="WHITE">
+                                                                        <Label fx:id="team1match6" prefHeight="23.0" prefWidth="94.0" text="Team 1" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
                                                                         </Label>
-                                                                        <Label prefHeight="23.0" prefWidth="216.0" text="VS" textFill="#fa8f31">
+                                                                        <Label fx:id="team1ScoreMatch6" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="141.0" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
                                                                         </Label>
-                                                                        <Label fx:id="team2match6" prefHeight="23.0" prefWidth="110.0" text="Team 2" textFill="WHITE">
+                                                                        <Label prefHeight="23.0" prefWidth="55.0" text="VS" textFill="#fa8f31">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label fx:id="team2ScoreMatch6" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="141.0" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label fx:id="team2match6" prefHeight="23.0" prefWidth="94.0" text="Team 2" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
@@ -618,7 +738,11 @@
                                                             <VBox prefHeight="200.0" prefWidth="100.0">
                                                                <children>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                                  <ImageView fx:id="team2PokalMatch6" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+                                                                  <ImageView fx:id="team2WinnerMatch6" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                                                     <image>
+                                                                        <Image url="@../Images/winner-pokal.png" />
+                                                                     </image>
+                                                                  </ImageView>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                </children>
                                                             </VBox>
@@ -648,28 +772,42 @@
                                                                   <VBox prefHeight="98.0" prefWidth="73.0">
                                                                      <children>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                                        <ImageView fx:id="team1PokalMatch7" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+                                                                        <ImageView fx:id="team1WinnerMatch7" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                                                           <image>
+                                                                              <Image url="@../Images/winner-pokal.png" />
+                                                                           </image>
+                                                                        </ImageView>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                      </children>
                                                                   </VBox>
                                                                </children>
                                                             </VBox>
-                                                            <VBox prefHeight="98.0" prefWidth="592.0">
+                                                            <VBox prefHeight="98.0" prefWidth="535.0">
                                                                <children>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                   <HBox prefHeight="46.0" prefWidth="638.0">
                                                                      <children>
-                                                                        <Label fx:id="team1match7" prefHeight="23.0" prefWidth="283.0" text="Team 1" textFill="WHITE">
+                                                                        <Label fx:id="team1match7" prefHeight="23.0" prefWidth="94.0" text="Team 1" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
                                                                         </Label>
-                                                                        <Label prefHeight="23.0" prefWidth="216.0" text="VS" textFill="#fa8f31">
+                                                                        <Label fx:id="team1ScoreMatch7" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="141.0" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
                                                                         </Label>
-                                                                        <Label fx:id="team2match7" prefHeight="23.0" prefWidth="110.0" text="Team 2" textFill="WHITE">
+                                                                        <Label prefHeight="23.0" prefWidth="55.0" text="VS" textFill="#fa8f31">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label fx:id="team2ScoreMatch7" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="141.0" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label fx:id="team2match7" prefHeight="23.0" prefWidth="94.0" text="Team 2" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
@@ -685,7 +823,11 @@
                                                             <VBox prefHeight="200.0" prefWidth="100.0">
                                                                <children>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                                  <ImageView fx:id="team2PokalMatch7" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+                                                                  <ImageView fx:id="team2WinnerMatch7" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                                                     <image>
+                                                                        <Image url="@../Images/winner-pokal.png" />
+                                                                     </image>
+                                                                  </ImageView>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                </children>
                                                             </VBox>
@@ -715,28 +857,42 @@
                                                                   <VBox prefHeight="98.0" prefWidth="73.0">
                                                                      <children>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                                        <ImageView fx:id="team1PokalMatch8" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+                                                                        <ImageView fx:id="team1WinnerMatch8" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                                                           <image>
+                                                                              <Image url="@../Images/winner-pokal.png" />
+                                                                           </image>
+                                                                        </ImageView>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                      </children>
                                                                   </VBox>
                                                                </children>
                                                             </VBox>
-                                                            <VBox prefHeight="98.0" prefWidth="592.0">
+                                                            <VBox prefHeight="98.0" prefWidth="535.0">
                                                                <children>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                   <HBox prefHeight="46.0" prefWidth="638.0">
                                                                      <children>
-                                                                        <Label fx:id="team1match8" prefHeight="23.0" prefWidth="283.0" text="Team 1" textFill="WHITE">
+                                                                        <Label fx:id="team1match8" prefHeight="23.0" prefWidth="94.0" text="Team 1" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
                                                                         </Label>
-                                                                        <Label prefHeight="23.0" prefWidth="216.0" text="VS" textFill="#fa8f31">
+                                                                        <Label fx:id="team1ScoreMatch8" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="141.0" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
                                                                         </Label>
-                                                                        <Label fx:id="team2match8" prefHeight="23.0" prefWidth="110.0" text="Team 2" textFill="WHITE">
+                                                                        <Label prefHeight="23.0" prefWidth="55.0" text="VS" textFill="#fa8f31">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label fx:id="team2ScoreMatch8" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="141.0" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label fx:id="team2match8" prefHeight="23.0" prefWidth="94.0" text="Team 2" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
@@ -752,7 +908,11 @@
                                                             <VBox prefHeight="200.0" prefWidth="100.0">
                                                                <children>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                                  <ImageView fx:id="team2PokalMatch8" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+                                                                  <ImageView fx:id="team2WinnerMatch8" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                                                     <image>
+                                                                        <Image url="@../Images/winner-pokal.png" />
+                                                                     </image>
+                                                                  </ImageView>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                </children>
                                                             </VBox>
@@ -782,28 +942,42 @@
                                                                   <VBox prefHeight="98.0" prefWidth="73.0">
                                                                      <children>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                                        <ImageView fx:id="team1PokalMatch9" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+                                                                        <ImageView fx:id="team1WinnerMatch9" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                                                           <image>
+                                                                              <Image url="@../Images/winner-pokal.png" />
+                                                                           </image>
+                                                                        </ImageView>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                      </children>
                                                                   </VBox>
                                                                </children>
                                                             </VBox>
-                                                            <VBox prefHeight="98.0" prefWidth="592.0">
+                                                            <VBox prefHeight="98.0" prefWidth="535.0">
                                                                <children>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                   <HBox prefHeight="46.0" prefWidth="638.0">
                                                                      <children>
-                                                                        <Label fx:id="team1match9" prefHeight="23.0" prefWidth="283.0" text="Team 1" textFill="WHITE">
+                                                                        <Label fx:id="team1match9" prefHeight="23.0" prefWidth="94.0" text="Team 1" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
                                                                         </Label>
-                                                                        <Label prefHeight="23.0" prefWidth="216.0" text="VS" textFill="#fa8f31">
+                                                                        <Label fx:id="team1ScoreMatch9" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="141.0" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
                                                                         </Label>
-                                                                        <Label fx:id="team2match9" prefHeight="23.0" prefWidth="110.0" text="Team 2" textFill="WHITE">
+                                                                        <Label prefHeight="23.0" prefWidth="55.0" text="VS" textFill="#fa8f31">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label fx:id="team2ScoreMatch9" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="141.0" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label fx:id="team2match9" prefHeight="23.0" prefWidth="94.0" text="Team 2" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
@@ -819,7 +993,11 @@
                                                             <VBox prefHeight="200.0" prefWidth="100.0">
                                                                <children>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                                  <ImageView fx:id="team2PokalMatch9" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+                                                                  <ImageView fx:id="team2WinnerMatch9" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                                                     <image>
+                                                                        <Image url="@../Images/winner-pokal.png" />
+                                                                     </image>
+                                                                  </ImageView>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                </children>
                                                             </VBox>
@@ -849,28 +1027,42 @@
                                                                   <VBox prefHeight="98.0" prefWidth="73.0">
                                                                      <children>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                                        <ImageView fx:id="team1PokalMatch10" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+                                                                        <ImageView fx:id="team1WinnerMatch10" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                                                           <image>
+                                                                              <Image url="@../Images/winner-pokal.png" />
+                                                                           </image>
+                                                                        </ImageView>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                      </children>
                                                                   </VBox>
                                                                </children>
                                                             </VBox>
-                                                            <VBox prefHeight="98.0" prefWidth="592.0">
+                                                            <VBox prefHeight="98.0" prefWidth="535.0">
                                                                <children>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                   <HBox prefHeight="46.0" prefWidth="638.0">
                                                                      <children>
-                                                                        <Label fx:id="team1match10" prefHeight="23.0" prefWidth="283.0" text="Team 1" textFill="WHITE">
+                                                                        <Label fx:id="team1match10" prefHeight="23.0" prefWidth="94.0" text="Team 1" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
                                                                         </Label>
-                                                                        <Label prefHeight="23.0" prefWidth="216.0" text="VS" textFill="#fa8f31">
+                                                                        <Label fx:id="team1ScoreMatch10" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="141.0" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
                                                                         </Label>
-                                                                        <Label fx:id="team2match10" prefHeight="23.0" prefWidth="110.0" text="Team 2" textFill="WHITE">
+                                                                        <Label prefHeight="23.0" prefWidth="55.0" text="VS" textFill="#fa8f31">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label fx:id="team2ScoreMatch10" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="141.0" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label fx:id="team2match10" prefHeight="23.0" prefWidth="94.0" text="Team 2" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
@@ -886,7 +1078,11 @@
                                                             <VBox prefHeight="200.0" prefWidth="100.0">
                                                                <children>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                                  <ImageView fx:id="team2PokalMatch10" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+                                                                  <ImageView fx:id="team2WinnerMatch10" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                                                     <image>
+                                                                        <Image url="@../Images/winner-pokal.png" />
+                                                                     </image>
+                                                                  </ImageView>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                </children>
                                                             </VBox>
@@ -916,28 +1112,42 @@
                                                                   <VBox prefHeight="98.0" prefWidth="73.0">
                                                                      <children>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                                        <ImageView fx:id="team1PokalMatch11" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+                                                                        <ImageView fx:id="team1WinnerMatch11" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                                                           <image>
+                                                                              <Image url="@../Images/winner-pokal.png" />
+                                                                           </image>
+                                                                        </ImageView>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                      </children>
                                                                   </VBox>
                                                                </children>
                                                             </VBox>
-                                                            <VBox prefHeight="98.0" prefWidth="592.0">
+                                                            <VBox prefHeight="98.0" prefWidth="535.0">
                                                                <children>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                   <HBox prefHeight="46.0" prefWidth="638.0">
                                                                      <children>
-                                                                        <Label fx:id="team1match11" prefHeight="23.0" prefWidth="283.0" text="Team 1" textFill="WHITE">
+                                                                        <Label fx:id="team1match11" prefHeight="23.0" prefWidth="94.0" text="Team 1" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
                                                                         </Label>
-                                                                        <Label prefHeight="23.0" prefWidth="216.0" text="VS" textFill="#fa8f31">
+                                                                        <Label fx:id="team1ScoreMatch11" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="141.0" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
                                                                         </Label>
-                                                                        <Label fx:id="team2match11" prefHeight="23.0" prefWidth="110.0" text="Team 2" textFill="WHITE">
+                                                                        <Label prefHeight="23.0" prefWidth="55.0" text="VS" textFill="#fa8f31">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label fx:id="team2ScoreMatch11" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="141.0" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label fx:id="team2match11" prefHeight="23.0" prefWidth="94.0" text="Team 2" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
@@ -953,7 +1163,11 @@
                                                             <VBox prefHeight="200.0" prefWidth="100.0">
                                                                <children>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                                  <ImageView fx:id="team2PokalMatch11" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+                                                                  <ImageView fx:id="team2WinnerMatch11" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                                                     <image>
+                                                                        <Image url="@../Images/winner-pokal.png" />
+                                                                     </image>
+                                                                  </ImageView>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                </children>
                                                             </VBox>
@@ -983,28 +1197,42 @@
                                                                   <VBox prefHeight="98.0" prefWidth="73.0">
                                                                      <children>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                                        <ImageView fx:id="team1PokalMatch12" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+                                                                        <ImageView fx:id="team1WinnerMatch12" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                                                           <image>
+                                                                              <Image url="@../Images/winner-pokal.png" />
+                                                                           </image>
+                                                                        </ImageView>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                      </children>
                                                                   </VBox>
                                                                </children>
                                                             </VBox>
-                                                            <VBox prefHeight="98.0" prefWidth="592.0">
+                                                            <VBox prefHeight="98.0" prefWidth="535.0">
                                                                <children>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                   <HBox prefHeight="46.0" prefWidth="638.0">
                                                                      <children>
-                                                                        <Label fx:id="team1match12" prefHeight="23.0" prefWidth="283.0" text="Team 1" textFill="WHITE">
+                                                                        <Label fx:id="team1match12" prefHeight="23.0" prefWidth="94.0" text="Team 1" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
                                                                         </Label>
-                                                                        <Label prefHeight="23.0" prefWidth="216.0" text="VS" textFill="#fa8f31">
+                                                                        <Label fx:id="team1ScoreMatch12" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="141.0" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
                                                                         </Label>
-                                                                        <Label fx:id="team2match12" prefHeight="23.0" prefWidth="110.0" text="Team 2" textFill="WHITE">
+                                                                        <Label prefHeight="23.0" prefWidth="55.0" text="VS" textFill="#fa8f31">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label fx:id="team2ScoreMatch12" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="141.0" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label fx:id="team2match12" prefHeight="23.0" prefWidth="94.0" text="Team 2" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
@@ -1020,7 +1248,11 @@
                                                             <VBox prefHeight="200.0" prefWidth="100.0">
                                                                <children>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                                  <ImageView fx:id="team2PokalMatch12" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+                                                                  <ImageView fx:id="team2WinnerMatch12" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                                                     <image>
+                                                                        <Image url="@../Images/winner-pokal.png" />
+                                                                     </image>
+                                                                  </ImageView>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                </children>
                                                             </VBox>
@@ -1050,28 +1282,42 @@
                                                                   <VBox prefHeight="98.0" prefWidth="73.0">
                                                                      <children>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                                        <ImageView fx:id="team1PokalMatch13" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+                                                                        <ImageView fx:id="team1WinnerMatch13" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                                                           <image>
+                                                                              <Image url="@../Images/winner-pokal.png" />
+                                                                           </image>
+                                                                        </ImageView>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                      </children>
                                                                   </VBox>
                                                                </children>
                                                             </VBox>
-                                                            <VBox prefHeight="98.0" prefWidth="592.0">
+                                                            <VBox prefHeight="98.0" prefWidth="535.0">
                                                                <children>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                   <HBox prefHeight="46.0" prefWidth="638.0">
                                                                      <children>
-                                                                        <Label fx:id="team1match13" prefHeight="23.0" prefWidth="283.0" text="Team 1" textFill="WHITE">
+                                                                        <Label fx:id="team1match13" prefHeight="23.0" prefWidth="94.0" text="Team 1" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
                                                                         </Label>
-                                                                        <Label prefHeight="23.0" prefWidth="216.0" text="VS" textFill="#fa8f31">
+                                                                        <Label fx:id="team1ScoreMatch13" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="141.0" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
                                                                         </Label>
-                                                                        <Label fx:id="team2match13" prefHeight="23.0" prefWidth="110.0" text="Team 2" textFill="WHITE">
+                                                                        <Label prefHeight="23.0" prefWidth="55.0" text="VS" textFill="#fa8f31">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label fx:id="team2ScoreMatch13" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="141.0" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label fx:id="team2match13" prefHeight="23.0" prefWidth="94.0" text="Team 2" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
@@ -1087,7 +1333,11 @@
                                                             <VBox prefHeight="200.0" prefWidth="100.0">
                                                                <children>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                                  <ImageView fx:id="team2PokalMatch13" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+                                                                  <ImageView fx:id="team2WinnerMatch13" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                                                     <image>
+                                                                        <Image url="@../Images/winner-pokal.png" />
+                                                                     </image>
+                                                                  </ImageView>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                </children>
                                                             </VBox>
@@ -1117,28 +1367,42 @@
                                                                   <VBox prefHeight="98.0" prefWidth="73.0">
                                                                      <children>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                                        <ImageView fx:id="team1PokalMatch14" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+                                                                        <ImageView fx:id="team1WinnerMatch14" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                                                           <image>
+                                                                              <Image url="@../Images/winner-pokal.png" />
+                                                                           </image>
+                                                                        </ImageView>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                      </children>
                                                                   </VBox>
                                                                </children>
                                                             </VBox>
-                                                            <VBox prefHeight="98.0" prefWidth="592.0">
+                                                            <VBox prefHeight="98.0" prefWidth="535.0">
                                                                <children>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                   <HBox prefHeight="46.0" prefWidth="638.0">
                                                                      <children>
-                                                                        <Label fx:id="team1match14" prefHeight="23.0" prefWidth="283.0" text="Team 1" textFill="WHITE">
+                                                                        <Label fx:id="team1match14" prefHeight="23.0" prefWidth="94.0" text="Team 1" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
                                                                         </Label>
-                                                                        <Label prefHeight="23.0" prefWidth="216.0" text="VS" textFill="#fa8f31">
+                                                                        <Label fx:id="team1ScoreMatch14" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="141.0" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
                                                                         </Label>
-                                                                        <Label fx:id="team2match14" prefHeight="23.0" prefWidth="110.0" text="Team 2" textFill="WHITE">
+                                                                        <Label prefHeight="23.0" prefWidth="55.0" text="VS" textFill="#fa8f31">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label fx:id="team2ScoreMatch14" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="141.0" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Arial" size="20.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label fx:id="team2match14" prefHeight="23.0" prefWidth="94.0" text="Team 2" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
@@ -1154,7 +1418,11 @@
                                                             <VBox prefHeight="200.0" prefWidth="100.0">
                                                                <children>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                                  <ImageView fx:id="team2PokalMatch14" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+                                                                  <ImageView fx:id="team2WinnerMatch14" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                                                     <image>
+                                                                        <Image url="@../Images/winner-pokal.png" />
+                                                                     </image>
+                                                                  </ImageView>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                </children>
                                                             </VBox>

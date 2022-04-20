@@ -159,7 +159,7 @@
                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                         <VBox prefHeight="340.0" prefWidth="1257.0" style="-fx-background-color: #2e3e4e;">
                                                             <children>
-                                                                <HBox fx:id="match" minHeight="-Infinity" prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: black;">
+                                                                <HBox fx:id="match" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
                                                                     <children>
                                                                         <Pane prefHeight="98.0" prefWidth="50.0" />
                                                                         <VBox prefHeight="98.0" prefWidth="549.0">
@@ -211,7 +211,7 @@
                                                                         </VBox>
                                                                     </children>
                                                                 </HBox>
-                                                <HBox fx:id="match1" minHeight="-Infinity" prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: black;">
+                                                <HBox fx:id="match1" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
                                                    <children>
                                                       <Pane prefHeight="98.0" prefWidth="50.0" />
                                                       <VBox prefHeight="98.0" prefWidth="549.0">

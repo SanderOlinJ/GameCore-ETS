@@ -68,6 +68,36 @@ public class SetTimeController {
     @FXML HBox match12;
     @FXML HBox match13;
     @FXML HBox match14;
+    @FXML Label team1match;
+    @FXML Label team1match1;
+    @FXML Label team1match2;
+    @FXML Label team1match3;
+    @FXML Label team1match4;
+    @FXML Label team1match5;
+    @FXML Label team1match6;
+    @FXML Label team1match7;
+    @FXML Label team1match8;
+    @FXML Label team1match9;
+    @FXML Label team1match10;
+    @FXML Label team1match11;
+    @FXML Label team1match12;
+    @FXML Label team1match13;
+    @FXML Label team1match14;
+    @FXML Label team2match;
+    @FXML Label team2match1;
+    @FXML Label team2match2;
+    @FXML Label team2match3;
+    @FXML Label team2match4;
+    @FXML Label team2match5;
+    @FXML Label team2match6;
+    @FXML Label team2match7;
+    @FXML Label team2match8;
+    @FXML Label team2match9;
+    @FXML Label team2match10;
+    @FXML Label team2match11;
+    @FXML Label team2match12;
+    @FXML Label team2match13;
+    @FXML Label team2match14;
     @FXML Label tournamentName;
 
     @FXML private MenuItem homeButton;
@@ -82,6 +112,7 @@ public class SetTimeController {
     private ArrayList<ChoiceBox> hourBoxes;
     private ArrayList<ChoiceBox> minuteBoxes;
     private ArrayList<HBox> matches;
+    private static ArrayList<Team> teams = new ArrayList<>();
 
 
     @FXML
@@ -147,6 +178,9 @@ public class SetTimeController {
             if (hourBoxes.get(i).getValue() != null && minuteBoxes.get(i).getValue() != null){
                MatchesController.setTimeLabel(hourBoxes.get(i).getValue().toString(),
                        minuteBoxes.get(i).getValue().toString());
+               matches.get(i).setPrefHeight(0);
+               matches.get(i).setDisable(true);
+               matches.get(i).setVisible(false);
             }
         }
     }
@@ -164,11 +198,22 @@ public class SetTimeController {
     public void setVisibleMatches(){
         matches = new ArrayList<>(Arrays.asList(match,match1,match2,match3,match4,match5,match6,
                 match7,match8,match9,match10,match11,match12,match13,match14));
+        ArrayList<Label> teamOnes = new ArrayList<>(Arrays.asList(team1match,team1match1,team1match2,team1match3,
+                team1match4,team1match5,team1match6,team1match7,team1match8,team1match9,team1match10,team1match11,
+                team1match12,team1match13,team1match14));
+        ArrayList<Label> teamTwos = new ArrayList<>(Arrays.asList(team2match,team2match1,team2match2,team2match3,
+                team2match4,team2match5,team2match6,team2match7,team2match8,team2match9,team2match10,team2match11,
+                team2match12,team2match13,team2match14));
+        teams = BracketController.getBracket().getTeams();
         int numberOfTeams = AddTeamController.getMaxTeams();
         for (int i = 0; i < numberOfTeams/2; i++){
             matches.get(i).setVisible(true);
             matches.get(i).setPrefHeight(100);
             matches.get(i).setDisable(false);
+        }
+        for (int i = 0; i < teams.size()/2; i++){
+            teamOnes.get(i).setText(teams.get(2*i).getNameOfTeam());
+            teamTwos.get(i).setText(teams.get(2*i+1).getNameOfTeam());
         }
     }
 

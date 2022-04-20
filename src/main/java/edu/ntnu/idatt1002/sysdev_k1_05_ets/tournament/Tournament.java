@@ -85,6 +85,15 @@ public class Tournament {
         return null;
     }
 
+    public Team getTeamByAbbr(String teamAbbr){
+        for (Team team : teams){
+            if (team.getNameAbbr().equals(teamAbbr)){
+                return team;
+            }
+        }
+        return null;
+    }
+
     public void setNameOfTournament(String nameOfTournament) {
         this.nameOfTournament = nameOfTournament;
     }

@@ -1,6 +1,7 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
 
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.GameCoreETSApplication;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Match;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,6 +20,7 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -176,13 +178,18 @@ public class MatchesController {
     @FXML private MenuBar menuBar;
 
     private ArrayList<HBox> matches;
-    private static ArrayList<String> teams = new ArrayList<>();
+    private ArrayList<Label> timeLabels;
+    private ArrayList<Label> teamOnes;
+    private ArrayList<Label> teamTwos;
+    private ArrayList<TextField> teamOnesScore;
+    private ArrayList<TextField> teamTwosScore;
+    private static ArrayList<Team> teams = new ArrayList<>();
     private static ArrayList<String> times = new ArrayList<>();
 
     @FXML
     protected void initialize(){
         setVisibleMatches();
-        ArrayList<Label> timeLabels = new ArrayList<>(Arrays.asList(timematch, timematch1, timematch2, timematch3,
+        timeLabels = new ArrayList<>(Arrays.asList(timematch, timematch1, timematch2, timematch3,
                 timematch4, timematch5, timematch6, timematch7, timematch8, timematch9, timematch10, timematch11, timematch12,
                 timematch13, timematch14));
         tournamentName.setText(BracketController.getTournamentName());
@@ -193,7 +200,26 @@ public class MatchesController {
 
     @FXML
     public void winnerChosen(){
-        ResultsController.addMatch(match1);
+        ArrayList<ToggleGroup> winners = new ArrayList<>(Arrays.asList(winnerMatch,winnerMatch1,winnerMatch2,
+                winnerMatch3,winnerMatch4,winnerMatch5,winnerMatch6,winnerMatch7,winnerMatch8,winnerMatch9,winnerMatch10
+                ,winnerMatch11,winnerMatch12,winnerMatch13,winnerMatch14));
+        teamOnesScore = new ArrayList<>(Arrays.asList(team1ScoreMatch,team1ScoreMatch1,team1ScoreMatch2,team1ScoreMatch3
+                ,team1ScoreMatch4,team1ScoreMatch5,team1ScoreMatch6,team1ScoreMatch7,team1ScoreMatch8,team1ScoreMatch9,
+                team1ScoreMatch10,team1ScoreMatch11,team1ScoreMatch12,team1ScoreMatch13,team1ScoreMatch14));
+        teamTwosScore = new ArrayList<>(Arrays.asList(team2ScoreMatch,team2ScoreMatch1,team2ScoreMatch2,team2ScoreMatch3
+                ,team2ScoreMatch4,team2ScoreMatch5,team2ScoreMatch6,team2ScoreMatch7,team2ScoreMatch8,team2ScoreMatch9,
+                team2ScoreMatch10,team2ScoreMatch11,team2ScoreMatch12,team2ScoreMatch13,team2ScoreMatch14));
+        for (int i = 0; i < winners.size(); i++){
+            if (winners.get(i).getSelectedToggle() != null) {
+                Team team1 = BracketController.getBracket().getTeamByAbbr(teamOnes.get(i).getText());
+                Team team2 = BracketController.getBracket().getTeamByAbbr(teamTwos.get(i).getText());
+                ResultsController.addMatch(new Match(team1, team2, Integer.parseInt(teamOnesScore.get(i).getText()),
+                        Integer.parseInt(teamTwosScore.get(i).getText()), LocalTime.parse(times.get(i))));
+                matches.get(i).setDisable(true);
+                matches.get(i).setVisible(false);
+                matches.get(i).setPrefHeight(0);
+            }
+        }
     }
 
     @FXML
@@ -240,15 +266,21 @@ public class MatchesController {
     }
 
     public void setVisibleMatches(){
+        teams = BracketController.getBracket().getTeams();
         matches = new ArrayList<>(Arrays.asList(match, match1, match2, match3, match4, match5, match6,
                 match7, match8, match9, match10, match11, match12, match13, match14));
-
-        ArrayList<Label> teamOnes = new ArrayList<>(Arrays.asList(team1match,team1match1,team1match2,team1match3,
+        teamOnes = new ArrayList<>(Arrays.asList(team1match,team1match1,team1match2,team1match3,
                 team1match4,team1match5,team1match6,team1match7,team1match8,team1match9,team1match10,team1match11,
                 team1match12,team1match13,team1match14));
-        ArrayList<Label> teamTwos = new ArrayList<>(Arrays.asList(team2match,team2match1,team2match2,team2match3,
+        teamTwos = new ArrayList<>(Arrays.asList(team2match,team2match1,team2match2,team2match3,
                 team2match4,team2match5,team2match6,team2match7,team2match8,team2match9,team2match10,team2match11,
                 team2match12,team2match13,team2match14));
+        ArrayList<RadioButton> radioOnes = new ArrayList<>(Arrays.asList(radio1Match,radio1Match1,radio1Match2,
+                radio1Match3,radio1Match4,radio1Match5, radio1Match6,radio1Match7,radio1Match8,radio1Match9,
+                radio1Match10,radio1Match11,radio1Match12,radio1Match13,radio1Match14));
+        ArrayList<RadioButton> radioTwos = new ArrayList<>(Arrays.asList(radio2Match,radio2Match1,radio2Match2,
+                radio2Match3,radio2Match4,radio2Match5,radio2Match6,radio2Match7,radio2Match8,radio2Match9,radio2Match10
+                ,radio2Match11,radio2Match12,radio2Match13,radio2Match14));
         int numberOfTeams = AddTeamController.getMaxTeams();
         for (int i = 0; i < numberOfTeams/2; i++){
             matches.get(i).setVisible(true);
@@ -256,15 +288,12 @@ public class MatchesController {
             matches.get(i).setDisable(false);
         }
         for (int i = 0; i < teams.size()/2; i++){
-            teamOnes.get(i).setText(teams.get(2*i));
-            teamTwos.get(i).setText(teams.get(2*i+1));
+            teamOnes.get(i).setText(teams.get(2*i).getNameOfTeam());
+            radioOnes.get(i).setText(teams.get(2*i).getNameOfTeam());
+            teamTwos.get(i).setText(teams.get(2*i+1).getNameOfTeam());
+            radioTwos.get(i).setText(teams.get(2*i+1).getNameOfTeam());
         }
 
-    }
-
-    //TODO temporary solution, not ideal
-    public static void setTeams(ArrayList<String> teamsIn){
-        teams.addAll(teamsIn);
     }
 
     @FXML

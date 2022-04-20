@@ -16,6 +16,7 @@ import javafx.scene.control.MenuBar;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -70,51 +71,26 @@ public class BracketController {
 
     @FXML private MenuBar menuBar;
 
+
     @FXML
     public void initialize(){
+        ArrayList<Team> teams = new ArrayList<>(tournament.getTeams());
         if (bracketSize >= 4) {
-            labels.add(team1);
-            labels.add(team2);
-            labels.add(team3);
-            labels.add(team4);
-            labels.add(team5);
-            labels.add(team6);
-            labels.add(team7);
+            labels.addAll(Arrays.asList(team1,team2,team3,team4,team5,team6,team7));
         }
         if (bracketSize >= 8) {
-            labels.add(team8);
-            labels.add(team9);
-            labels.add(team10);
-            labels.add(team11);
-            labels.add(team12);
-            labels.add(team13);
-            labels.add(team14);
-            labels.add(team15);
+            labels.addAll(Arrays.asList(team8,team9,team10,team11,team12,team13,team14,team15));
         }
         if (bracketSize >= 16) {
-            labels.add(team16);
-            labels.add(team17);
-            labels.add(team18);
-            labels.add(team19);
-            labels.add(team20);
-            labels.add(team21);
-            labels.add(team22);
-            labels.add(team23);
-            labels.add(team24);
-            labels.add(team25);
-            labels.add(team26);
-            labels.add(team27);
-            labels.add(team28);
-            labels.add(team29);
-            labels.add(team30);
-            labels.add(team31);
+            labels.addAll(Arrays.asList(team16,team17,team18,team19,team20,team21,team22,team23,team24,team25,team26,
+                    team27,team28,team29,team30,team31));
         }
-
+        for (int i = 0; i < teams.size(); i++){
+            labels.get(i+(bracketSize-1)).setText(teams.get(i).getNameAbbr());
+        }
         for (Label label : labels) {
             label.setOnMouseClicked(mouseEvent -> advanceTeam(label));
         }
-
-        randomize();
         nameOfTournament.setText(tournamentName);
     }
 
@@ -128,16 +104,9 @@ public class BracketController {
         }
         for (int i = bracketSize-1; i < 2*bracketSize - 1; i++) {
             Team team = deepCopy.randomlyRemoveTeam();
-            Collections.swap(tournament.getTeams(),bracketSize-1,tournament.getIndexOfTeam(team));
+            Collections.swap(tournament.getTeams(),i-(bracketSize-1),tournament.getIndexOfTeam(team));
             labels.get(i).setText(team.getNameAbbr());
         }
-        ArrayList<String> sendTeams = new ArrayList<>();
-        for (Label label : labels) {
-            if (!(label.getText().equals("?"))) {
-                sendTeams.add(label.getText());
-            }
-        }
-        MatchesController.setTeams(sendTeams);
     }
 
 
