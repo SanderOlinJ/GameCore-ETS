@@ -177,6 +177,7 @@ public class MatchesController {
 
     @FXML private MenuBar menuBar;
 
+    private static int n = 2;
     private ArrayList<HBox> matches;
     private ArrayList<Label> timeLabels;
     private ArrayList<Label> teamOnes;
@@ -316,20 +317,28 @@ public class MatchesController {
                  radioTwos.get(i).setText(teams.get(2 * i + 1).getNameOfTeam());
             }
         }
-        if ((numberOfTeams - bracketSize) % 2 == 0) {
-            for (int i = 0; i < (numberOfTeams - bracketSize) / 2; i++) {
-                matches.get(i + bracketSize / 2).setDisable(false);
-                matches.get(i + bracketSize / 2).setVisible(true);
-                matches.get(i + bracketSize / 2).setPrefHeight(100);
-                teamOnes.get(i + bracketSize / 2).setText(teams.get(2 * i + bracketSize).getNameOfTeam());
-                radioOnes.get(i + bracketSize / 2).setText(teams.get(2 * i + bracketSize).getNameOfTeam());
-                teamTwos.get(i + bracketSize / 2).setText(teams.get(2 * i + 1 + bracketSize).getNameOfTeam());
-                radioTwos.get(i + bracketSize / 2).setText(teams.get(2 * i + 1 + bracketSize).getNameOfTeam());
+        else{
+            if ((numberOfTeams - bracketSize) % 2 == 0) {
+                for (int i = 0; i < (numberOfTeams - bracketSize) / n; i++) {
+                    matches.get(i + bracketSize / 2).setDisable(false);
+                    matches.get(i + bracketSize / 2).setVisible(true);
+                    matches.get(i + bracketSize / 2).setPrefHeight(100);
+                    teamOnes.get(i + bracketSize / 2).setText(teams.get(2 * i + bracketSize).getNameOfTeam());
+                    radioOnes.get(i + bracketSize / 2).setText(teams.get(2 * i + bracketSize).getNameOfTeam());
+                    teamTwos.get(i + bracketSize / 2).setText(teams.get(2 * i + 1 + bracketSize).getNameOfTeam());
+                    radioTwos.get(i + bracketSize / 2).setText(teams.get(2 * i + 1 + bracketSize).getNameOfTeam());
+                    if (bracketSize == 8) {
+                        if (i == 1) {n += 4;}
+                    }
+                    //TODO fix it so that proper teams show up upon semi finals and finals
+                    else if (bracketSize == 16){
+                        if (i == 3) {n += 3;}
+                    }
+
+                    }
+                }
             }
         }
-
-
-    }
 
     @FXML
     void onHomeButtonPressed(ActionEvent event) throws IOException {
