@@ -92,7 +92,7 @@ public class BracketController {
                 if (i > 29){index = 30;}
                 else if (i > 27){index = 27;}
                 else if (i > 23){index = 21;}
-                else if (i > 15){index =  8;}
+                else if (i > 15){index =  9;}
             }
             if (bracketSize == 8) {
                 if (i > 13) {
