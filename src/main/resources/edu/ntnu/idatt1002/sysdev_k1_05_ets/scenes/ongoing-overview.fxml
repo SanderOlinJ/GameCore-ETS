@@ -203,7 +203,7 @@
                                                                   <Insets left="25.0" top="20.0" />
                                                                </HBox.margin>
                                                             </Text>
-                                                            <Text fx:id="teamsLeft1" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
+                                                            <Text fx:id="teamsLeft1" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="115.0">
                                                                <font>
                                                                   <Font name="Arial Bold" size="18.0" />
                                                                </font>
@@ -221,14 +221,6 @@
                                                             <Font name="Arial Bold" size="18.0" />
                                                          </font>
                                                       </Text>
-                                                      <Text fx:id="date1" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
-                                                         <font>
-                                                            <Font name="Arial Bold" size="18.0" />
-                                                         </font>
-                                                         <HBox.margin>
-                                                            <Insets left="15.0" top="21.0" />
-                                                         </HBox.margin>
-                                                      </Text>
                                                       <Text fx:id="time1" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
                                                          <font>
                                                             <Font name="Arial Bold" size="18.0" />
@@ -243,7 +235,7 @@
                                                    </VBox.margin>
                                                 </HBox>
                                                 <HBox prefHeight="100.0" prefWidth="200.0" />
-                                                <Button fx:id="overviewButton1" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="33.0" prefWidth="119.0" styleClass="jfx-button" stylesheets="@../css/style.css" text="Overview" textFill="WHITE">
+                                                <Button fx:id="overviewButton1" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onOverviewButton1Clicked" prefHeight="33.0" prefWidth="119.0" styleClass="jfx-button" stylesheets="@../css/style.css" text="Overview" textFill="WHITE">
                                                    <font>
                                                       <Font name="Arial Bold" size="16.0" />
                                                    </font>
@@ -371,7 +363,7 @@
                                                                   <Insets left="25.0" top="20.0" />
                                                                </HBox.margin>
                                                             </Text>
-                                                            <Text fx:id="teamsLeft2" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
+                                                            <Text fx:id="teamsLeft2" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="115.0">
                                                                <font>
                                                                   <Font name="Arial Bold" size="18.0" />
                                                                </font>
@@ -389,14 +381,6 @@
                                                             <Font name="Arial Bold" size="18.0" />
                                                          </font>
                                                       </Text>
-                                                      <Text fx:id="date2" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
-                                                         <font>
-                                                            <Font name="Arial Bold" size="18.0" />
-                                                         </font>
-                                                         <HBox.margin>
-                                                            <Insets left="15.0" top="21.0" />
-                                                         </HBox.margin>
-                                                      </Text>
                                                       <Text fx:id="time2" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
                                                          <font>
                                                             <Font name="Arial Bold" size="18.0" />
@@ -411,7 +395,7 @@
                                                    </VBox.margin>
                                                 </HBox>
                                                 <HBox prefHeight="100.0" prefWidth="200.0" />
-                                                <Button fx:id="overviewButton2" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="33.0" prefWidth="119.0" styleClass="jfx-button" stylesheets="@../css/style.css" text="Overview" textFill="WHITE">
+                                                <Button fx:id="overviewButton2" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onOverviewButton2Clicked" prefHeight="33.0" prefWidth="119.0" styleClass="jfx-button" stylesheets="@../css/style.css" text="Overview" textFill="WHITE">
                                                    <font>
                                                       <Font name="Arial Bold" size="16.0" />
                                                    </font>
@@ -539,7 +523,7 @@
                                                                   <Insets left="25.0" top="20.0" />
                                                                </HBox.margin>
                                                             </Text>
-                                                            <Text fx:id="teamsLeft3" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
+                                                            <Text fx:id="teamsLeft3" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="115.0">
                                                                <font>
                                                                   <Font name="Arial Bold" size="18.0" />
                                                                </font>
@@ -557,14 +541,6 @@
                                                             <Font name="Arial Bold" size="18.0" />
                                                          </font>
                                                       </Text>
-                                                      <Text fx:id="date3" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
-                                                         <font>
-                                                            <Font name="Arial Bold" size="18.0" />
-                                                         </font>
-                                                         <HBox.margin>
-                                                            <Insets left="15.0" top="21.0" />
-                                                         </HBox.margin>
-                                                      </Text>
                                                       <Text fx:id="time3" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
                                                          <font>
                                                             <Font name="Arial Bold" size="18.0" />
@@ -579,7 +555,7 @@
                                                    </VBox.margin>
                                                 </HBox>
                                                 <HBox prefHeight="100.0" prefWidth="200.0" />
-                                                <Button fx:id="overviewButton3" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="33.0" prefWidth="119.0" styleClass="jfx-button" stylesheets="@../css/style.css" text="Overview" textFill="WHITE">
+                                                <Button fx:id="overviewButton3" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onOverviewButton3Clicked" prefHeight="33.0" prefWidth="119.0" styleClass="jfx-button" stylesheets="@../css/style.css" text="Overview" textFill="WHITE">
                                                    <font>
                                                       <Font name="Arial Bold" size="16.0" />
                                                    </font>
@@ -707,7 +683,7 @@
                                                                   <Insets left="25.0" top="20.0" />
                                                                </HBox.margin>
                                                             </Text>
-                                                            <Text fx:id="teamsLeft4" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
+                                                            <Text fx:id="teamsLeft4" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="115.0">
                                                                <font>
                                                                   <Font name="Arial Bold" size="18.0" />
                                                                </font>
@@ -725,14 +701,6 @@
                                                             <Font name="Arial Bold" size="18.0" />
                                                          </font>
                                                       </Text>
-                                                      <Text fx:id="date4" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
-                                                         <font>
-                                                            <Font name="Arial Bold" size="18.0" />
-                                                         </font>
-                                                         <HBox.margin>
-                                                            <Insets left="15.0" top="21.0" />
-                                                         </HBox.margin>
-                                                      </Text>
                                                       <Text fx:id="time4" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
                                                          <font>
                                                             <Font name="Arial Bold" size="18.0" />
@@ -747,7 +715,7 @@
                                                    </VBox.margin>
                                                 </HBox>
                                                 <HBox prefHeight="100.0" prefWidth="200.0" />
-                                                <Button fx:id="overviewButton4" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="33.0" prefWidth="119.0" styleClass="jfx-button" stylesheets="@../css/style.css" text="Overview" textFill="WHITE">
+                                                <Button fx:id="overviewButton4" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onOverviewButton4Clicked" prefHeight="33.0" prefWidth="119.0" styleClass="jfx-button" stylesheets="@../css/style.css" text="Overview" textFill="WHITE">
                                                    <font>
                                                       <Font name="Arial Bold" size="16.0" />
                                                    </font>
@@ -875,7 +843,7 @@
                                                                   <Insets left="25.0" top="20.0" />
                                                                </HBox.margin>
                                                             </Text>
-                                                            <Text fx:id="teamsLeft5" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
+                                                            <Text fx:id="teamsLeft5" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="115.0">
                                                                <font>
                                                                   <Font name="Arial Bold" size="18.0" />
                                                                </font>
@@ -893,14 +861,6 @@
                                                             <Font name="Arial Bold" size="18.0" />
                                                          </font>
                                                       </Text>
-                                                      <Text fx:id="date5" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
-                                                         <font>
-                                                            <Font name="Arial Bold" size="18.0" />
-                                                         </font>
-                                                         <HBox.margin>
-                                                            <Insets left="15.0" top="21.0" />
-                                                         </HBox.margin>
-                                                      </Text>
                                                       <Text fx:id="time5" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
                                                          <font>
                                                             <Font name="Arial Bold" size="18.0" />
@@ -915,7 +875,7 @@
                                                    </VBox.margin>
                                                 </HBox>
                                                 <HBox prefHeight="100.0" prefWidth="200.0" />
-                                                <Button fx:id="overviewButton5" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="33.0" prefWidth="119.0" styleClass="jfx-button" stylesheets="@../css/style.css" text="Overview" textFill="WHITE">
+                                                <Button fx:id="overviewButton5" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onOverviewButton5Clicked" prefHeight="33.0" prefWidth="119.0" styleClass="jfx-button" stylesheets="@../css/style.css" text="Overview" textFill="WHITE">
                                                    <font>
                                                       <Font name="Arial Bold" size="16.0" />
                                                    </font>

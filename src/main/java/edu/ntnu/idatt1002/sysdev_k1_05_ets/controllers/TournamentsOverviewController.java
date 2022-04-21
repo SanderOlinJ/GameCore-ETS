@@ -41,11 +41,6 @@ public class TournamentsOverviewController {
     @FXML private HBox box3;
     @FXML private HBox box4;
     @FXML private HBox box5;
-    @FXML private Text date1;
-    @FXML private Text date2;
-    @FXML private Text date3;
-    @FXML private Text date4;
-    @FXML private Text date5;
     @FXML private Text game1;
     @FXML private Text game2;
     @FXML private Text game3;
@@ -126,19 +121,18 @@ public class TournamentsOverviewController {
             name1.setText(tournaments.get(0).getTournamentName());
             game1.setText(tournaments.get(0).getGame());
             totalTeams1.setText(tournaments.get(0).getNumberOfTeams());
-            if (tournaments.get(0).getTeams().size() > 0) {
+            if (tournaments.get(0).getTeams().size() == Integer.parseInt(tournaments.get(0).getNumberOfTeams())) {
                 teamsLeft1.setText("" + tournaments.get(0).findNumberOfTeamsLeft());
             } else {
-                teamsLeft1.setText("No teams set");
+                teamsLeft1.setText("No / Not all teams set");
             }
             if (tournaments.get(0).doesTournamentHaveAnUnfinishedAndSetMatch()) {
                 String team11Name = tournaments.get(0).findNextMatchToBePlayed().getTeam1().getNameOfTeam();
                 String team12Name = tournaments.get(0).findNextMatchToBePlayed().getTeam2().getNameOfTeam();
-                String match1Date = tournaments.get(0).findNextMatchToBePlayed().getDateOfMatch().toString();
+
                 String match1Time = tournaments.get(0).findNextMatchToBePlayed().getTimeOfMatch().toString();
                 team11.setText(team11Name);
                 team12.setText(team12Name);
-                date1.setText(match1Date);
                 time1.setText(match1Time);
             }else {
                 vs1.setText("No matches set");
@@ -153,19 +147,17 @@ public class TournamentsOverviewController {
                 name2.setText(tournaments.get(1).getTournamentName());
                 game2.setText(tournaments.get(1).getGame());
                 totalTeams2.setText(tournaments.get(1).getNumberOfTeams());
-                if (tournaments.get(1).getTeams().size() > 0){
+                if (tournaments.get(1).getTeams().size() == Integer.parseInt(tournaments.get(1).getNumberOfTeams())){
                     teamsLeft2.setText("" + tournaments.get(1).findNumberOfTeamsLeft());
                 } else {
-                    teamsLeft2.setText("No teams set");
+                    teamsLeft2.setText("No / Not all teams set");
                 }
                 if (tournaments.get(1).doesTournamentHaveAnUnfinishedAndSetMatch()) {
                     String team21Name = tournaments.get(1).findNextMatchToBePlayed().getTeam1().getNameOfTeam();
                     String team22Name = tournaments.get(1).findNextMatchToBePlayed().getTeam2().getNameOfTeam();
-                    String match2Date = tournaments.get(1).findNextMatchToBePlayed().getDateOfMatch().toString();
                     String match2Time = tournaments.get(1).findNextMatchToBePlayed().getTimeOfMatch().toString();
                     team21.setText(team21Name);
                     team22.setText(team22Name);
-                    date2.setText(match2Date);
                     time2.setText(match2Time);
                 } else {
                     vs2.setText("No matches set");
@@ -180,19 +172,18 @@ public class TournamentsOverviewController {
                     name3.setText(tournaments.get(2).getTournamentName());
                     game3.setText(tournaments.get(2).getGame());
                     totalTeams3.setText(tournaments.get(2).getNumberOfTeams());
-                    if (tournaments.get(2).getTeams().size() > 0){
+                    if (tournaments.get(2).getTeams().size() == Integer.parseInt(tournaments.get(2)
+                            .getNumberOfTeams())){
                         teamsLeft3.setText("" + tournaments.get(2).findNumberOfTeamsLeft());
                     } else {
-                        teamsLeft3.setText("No teams set");
+                        teamsLeft3.setText("No / Not all teams set");
                     }
                     if (tournaments.get(2).doesTournamentHaveAnUnfinishedAndSetMatch()) {
                         String team31Name = tournaments.get(2).findNextMatchToBePlayed().getTeam1().getNameOfTeam();
                         String team32Name = tournaments.get(2).findNextMatchToBePlayed().getTeam2().getNameOfTeam();
-                        String match3Date = tournaments.get(2).findNextMatchToBePlayed().getDateOfMatch().toString();
                         String match3Time = tournaments.get(2).findNextMatchToBePlayed().getTimeOfMatch().toString();
                         team31.setText(team31Name);
                         team32.setText(team32Name);
-                        date3.setText(match3Date);
                         time3.setText(match3Time);
                     } else {
                         vs3.setText("No matches set");
@@ -201,25 +192,28 @@ public class TournamentsOverviewController {
                     box3.setVisible(true);
 
                     if (tournaments.size() > 3) {
-                        imageView4.setImage(new Image("file:src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
-                                "Images/gameImages/" + Utilities.shortenAndReplaceUnnecessarySymbolsInString
+                        imageView4.setImage(new Image("file:src/main/resources/edu/ntnu/idatt1002/" +
+                                "sysdev_k1_05_ets/Images/gameImages/" +
+                                Utilities.shortenAndReplaceUnnecessarySymbolsInString
                                 (tournaments.get(3).getGame()) + ".png"));
                         name4.setText(tournaments.get(3).getTournamentName());
                         game4.setText(tournaments.get(3).getGame());
                         totalTeams4.setText(tournaments.get(3).getNumberOfTeams());
-                        if (tournaments.get(3).getTeams().size() > 0){
+                        if (tournaments.get(3).getTeams().size() == Integer.parseInt(tournaments.get(3)
+                                .getNumberOfTeams())){
                             teamsLeft4.setText("" + tournaments.get(3).findNumberOfTeamsLeft());
                         } else {
-                            teamsLeft4.setText("No teams set");
+                            teamsLeft4.setText("No / Not all teams set");
                         }
                         if (tournaments.get(3).doesTournamentHaveAnUnfinishedAndSetMatch()) {
-                            String team41Name = tournaments.get(3).findNextMatchToBePlayed().getTeam1().getNameOfTeam();
-                            String team42Name = tournaments.get(3).findNextMatchToBePlayed().getTeam2().getNameOfTeam();
-                            String match4Date = tournaments.get(3).findNextMatchToBePlayed().getDateOfMatch().toString();
-                            String match4Time = tournaments.get(3).findNextMatchToBePlayed().getTimeOfMatch().toString();
+                            String team41Name = tournaments.get(3).findNextMatchToBePlayed()
+                                    .getTeam1().getNameOfTeam();
+                            String team42Name = tournaments.get(3).findNextMatchToBePlayed()
+                                    .getTeam2().getNameOfTeam();
+                            String match4Time = tournaments.get(3).findNextMatchToBePlayed()
+                                    .getTimeOfMatch().toString();
                             team41.setText(team41Name);
                             team42.setText(team42Name);
-                            date4.setText(match4Date);
                             time4.setText(match4Time);
                         } else {
                             vs4.setText("No matches set");
@@ -228,25 +222,28 @@ public class TournamentsOverviewController {
                         box4.setVisible(true);
 
                         if (tournaments.size() > 4) {
-                            imageView5.setImage(new Image("file:src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
-                                    "Images/gameImages/" + Utilities.shortenAndReplaceUnnecessarySymbolsInString
+                            imageView5.setImage(new Image("file:src/main/resources/edu/ntnu/idatt1002/" +
+                                    "sysdev_k1_05_ets/Images/gameImages/" +
+                                    Utilities.shortenAndReplaceUnnecessarySymbolsInString
                                     (tournaments.get(4).getGame()) + ".png"));
                             name5.setText(tournaments.get(4).getTournamentName());
                             game5.setText(tournaments.get(4).getGame());
                             totalTeams5.setText(tournaments.get(4).getNumberOfTeams());
-                            if (tournaments.get(4).getTeams().size() > 0){
+                            if (tournaments.get(4).getTeams().size() == Integer.parseInt(tournaments.get(4)
+                                    .getNumberOfTeams())){
                                 teamsLeft5.setText("" + tournaments.get(4).findNumberOfTeamsLeft());
                             } else {
-                                teamsLeft5.setText("No teams set");
+                                teamsLeft5.setText("No / Not all teams set");
                             }
                             if (tournaments.get(4).doesTournamentHaveAnUnfinishedAndSetMatch()) {
-                                String team51Name = tournaments.get(4).findNextMatchToBePlayed().getTeam1().getNameOfTeam();
-                                String team52Name = tournaments.get(4).findNextMatchToBePlayed().getTeam2().getNameOfTeam();
-                                String match5Date = tournaments.get(4).findNextMatchToBePlayed().getDateOfMatch().toString();
-                                String match5Time = tournaments.get(4).findNextMatchToBePlayed().getTimeOfMatch().toString();
+                                String team51Name = tournaments.get(4).findNextMatchToBePlayed().getTeam1()
+                                        .getNameOfTeam();
+                                String team52Name = tournaments.get(4).findNextMatchToBePlayed().getTeam2()
+                                        .getNameOfTeam();
+                                String match5Time = tournaments.get(4).findNextMatchToBePlayed().getTimeOfMatch()
+                                        .toString();
                                 team51.setText(team51Name);
                                 team52.setText(team52Name);
-                                date5.setText(match5Date);
                                 time5.setText(match5Time);
                             } else {
                                 vs5.setText("No matches set");
@@ -317,6 +314,128 @@ public class TournamentsOverviewController {
     void onCreateNewTournamentButtonPressed(ActionEvent event) throws IOException{
         Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class
                 .getResource("scenes/create-new-tournament-page.fxml")));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setMinWidth(1200);
+        stage.setMinHeight(800);
+        stage.show();
+    }
+
+    @FXML
+    void onOverviewButton1Clicked(ActionEvent event)
+    throws IOException{
+        String link = "";
+        int maxTeams = Integer.parseInt(tournaments.get(0).getNumberOfTeams());
+        if (teamsLeft1.getText().equals("No / Not all teams set")){
+            link = "scenes/add-team-scene.fxml";
+            AddTeamController.setTournament(tournaments.get(0));
+            AddTeamController.setMaxTeams(maxTeams);
+        } else {
+            if (maxTeams <= 4) {
+                link = "scenes/overview-scene-four.fxml";
+            } else if (maxTeams <= 8) {
+                link = "scenes/overview-scene-eight.fxml";
+            } else if (maxTeams <= 16) {
+                link = "scenes/overview-scene-sixteen.fxml";
+            }
+            BracketController.setBracketSize(maxTeams);
+            BracketController.setTournamentName(tournaments.get(0).getTournamentName());
+        }
+        setNextWindow(event, link);
+    }
+
+    @FXML
+    void onOverviewButton2Clicked(ActionEvent event) throws IOException{
+        String link = "";
+        int maxTeams = Integer.parseInt(tournaments.get(1).getNumberOfTeams());
+        if (teamsLeft2.getText().equals("No / Not all teams set")){
+            link = "scenes/add-team-scene.fxml";
+            AddTeamController.setTournament(tournaments.get(1));
+            AddTeamController.setMaxTeams(maxTeams);
+        } else {
+            if (maxTeams <= 4) {
+                link = "scenes/overview-scene-four.fxml";
+            } else if (maxTeams <= 8) {
+                link = "scenes/overview-scene-eight.fxml";
+            } else if (maxTeams <= 16) {
+                link = "scenes/overview-scene-sixteen.fxml";
+            }
+            BracketController.setBracketSize(maxTeams);
+            BracketController.setTournamentName(tournaments.get(1).getTournamentName());
+        }
+        setNextWindow(event, link);
+    }
+
+    @FXML
+    void onOverviewButton3Clicked(ActionEvent event) throws IOException{
+        String link = "";
+        int maxTeams = Integer.parseInt(tournaments.get(2).getNumberOfTeams());
+        if (teamsLeft3.getText().equals("No / Not all teams set")){
+            link = "scenes/add-team-scene.fxml";
+            AddTeamController.setTournament(tournaments.get(2));
+            AddTeamController.setMaxTeams(maxTeams);
+        } else {
+            if (maxTeams <= 4) {
+                link = "scenes/overview-scene-four.fxml";
+            } else if (maxTeams <= 8) {
+                link = "scenes/overview-scene-eight.fxml";
+            } else if (maxTeams <= 16) {
+                link = "scenes/overview-scene-sixteen.fxml";
+            }
+            BracketController.setBracketSize(maxTeams);
+            BracketController.setTournamentName(tournaments.get(2).getTournamentName());
+        }
+        setNextWindow(event, link);
+    }
+
+    @FXML
+    void onOverviewButton4Clicked(ActionEvent event) throws IOException{
+        String link = "";
+        int maxTeams = Integer.parseInt(tournaments.get(3).getNumberOfTeams());
+        if (teamsLeft4.getText().equals("No / Not all teams set")){
+            link = "scenes/add-team-scene.fxml";
+            AddTeamController.setTournament(tournaments.get(3));
+            AddTeamController.setMaxTeams(maxTeams);
+        } else {
+            if (maxTeams <= 4) {
+                link = "scenes/overview-scene-four.fxml";
+            } else if (maxTeams <= 8) {
+                link = "scenes/overview-scene-eight.fxml";
+            } else if (maxTeams <= 16) {
+                link = "scenes/overview-scene-sixteen.fxml";
+            }
+            BracketController.setBracketSize(maxTeams);
+            BracketController.setTournamentName(tournaments.get(3).getTournamentName());
+        }
+        setNextWindow(event, link);
+    }
+
+    @FXML
+    void onOverviewButton5Clicked(ActionEvent event) throws IOException{
+        String link = "";
+        int maxTeams = Integer.parseInt(tournaments.get(4).getNumberOfTeams());
+        if (teamsLeft5.getText().equals("No / Not all teams set")){
+            link = "scenes/add-team-scene.fxml";
+            AddTeamController.setTournament(tournaments.get(4));
+            AddTeamController.setMaxTeams(maxTeams);
+        } else {
+            if (maxTeams <= 4) {
+                link = "scenes/overview-scene-four.fxml";
+            } else if (maxTeams <= 8) {
+                link = "scenes/overview-scene-eight.fxml";
+            } else if (maxTeams <= 16) {
+                link = "scenes/overview-scene-sixteen.fxml";
+            }
+            BracketController.setBracketSize(maxTeams);
+            BracketController.setTournamentName(tournaments.get(4).getTournamentName());
+        }
+        setNextWindow(event, link);
+    }
+
+    private void setNextWindow(ActionEvent event, String link) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class
+                .getResource(link)));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);

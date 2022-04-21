@@ -17,10 +17,7 @@ import javafx.stage.Stage;
 import org.controlsfx.control.textfield.TextFields;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class AddTeamController {
@@ -59,7 +56,6 @@ public class AddTeamController {
     @FXML
     public void initialize () throws IOException {
         //setting search box for teams selection
-
         ArrayList<Team> searchTeamNames = TeamReader.readTeamsFromAllTeamsFile();
         TextFields.bindAutoCompletion(searchTeams,
                 searchTeamNames.stream().map(Team::getNameOfTeam).collect(Collectors.toList()));
@@ -79,6 +75,18 @@ public class AddTeamController {
         teamsForTournament = new ArrayList<>();
         existingTeamsBox.setAlignment(Pos.CENTER);
         scrollPane.setContent(existingTeamsBox);
+
+        if (tournament.getTeams().size() > 0){
+            for (int i = 0; i < tournament.getTeams().size(); i++) {
+                Label alreadyRegisteredTeam = new Label(tournament.getTeams().get(i).getNameOfTeam());
+                alreadyRegisteredTeam.setPrefWidth(300);
+                alreadyRegisteredTeam.setAlignment(Pos.TOP_LEFT);
+                enrolledTeamsBox.getChildren().add(alreadyRegisteredTeam);
+                teamsForTournament.add(tournament.getTeams().get(i));
+            }
+            nrOfTeams.setText("" + tournament.getTeams().size());
+            setCurrentTeams();
+        }
     }
 
 
@@ -93,6 +101,11 @@ public class AddTeamController {
 
     @FXML
     public void setBracketScene(ActionEvent event) throws IOException {
+        Collections.shuffle(teamsForTournament);
+        TournamentWriterRework.writeTeamsToTournamentFile(Utilities
+                .shortenAndReplaceUnnecessarySymbolsInString(tournament.getTournamentName()),teamsForTournament);
+        BracketController.setBracketSize(Integer.parseInt(tournament.getNumberOfTeams()));
+        BracketController.setTournamentName(tournament.getTournamentName());
         String link = "";
         if (maxTeams <= 4) {
             link = "scenes/overview-scene-four.fxml";
@@ -107,28 +120,23 @@ public class AddTeamController {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-
-        TournamentWriterRework.writeTeamsToTournamentFile(Utilities
-                .shortenAndReplaceUnnecessarySymbolsInString(tournament.getTournamentName()),getTeamsForTournament());
     }
     @FXML
     public void addTeamExisting(String teamName){
-        boolean teamIsAlreadyEnrolled = isTeamAlreadyEnrolled(teamName);
-        if(teamIsAlreadyEnrolled){
+
+        if(isTeamAlreadyEnrolled(teamName)){
             warningLabel.setText(teamName + " is already enrolled for the tournament");
             return;
         }
-        if(BracketController.getBracket().getTeams().size() >= maxTeams){
+        if(teamsForTournament.size() >= maxTeams){
             warningLabel.setText("Reached maximum number of teams. \n"
                     + "max teams is set to "+maxTeams+" teams for this tournament");
         }
 
-
-
         else {
             for (Team team : existingTeams) {
                 if (team.getNameOfTeam().equals(teamName)) {
-                    /**BracketController.getBracket().addTeam(team);
+                    /*BracketController.getBracket().addTeam(team);
                     Label newTeam = new Label(teamName);
                     newTeam.setPrefWidth(300);
                     newTeam.setAlignment(Pos.TOP_LEFT);
@@ -156,7 +164,6 @@ public class AddTeamController {
             }
             playersNameField.appendText(team.getMembers().get(i) + "\n");
         }
-        return;
     }
 
 
@@ -165,13 +172,12 @@ public class AddTeamController {
             warningLabel.setText("Invalid team name.");
         }
         //check if max amount of teams has been exceeded
-        if(BracketController.getBracket().getTeams().size() >= maxTeams){
+        if(teamsForTournament.size() >= maxTeams){
             warningLabel.setText("You have reached the maximum number of teams for this tournament. \n"
             + "max teams: "+maxTeams);
         }
 
-        boolean teamIsAlreadyEnrolled = isTeamAlreadyEnrolled(teamNameField.getText());
-        if(teamIsAlreadyEnrolled){
+        if(isTeamAlreadyEnrolled(teamNameField.getText())){
             warningLabel.setText(teamNameField.getText() + " is already enrolled for the tournament");
         }
 
@@ -179,7 +185,7 @@ public class AddTeamController {
         else {
             warningLabel.setText("");
             if (playersNameField.getText().isBlank()){
-                BracketController.getBracket().addTeam(new Team(teamNameField.getText()));
+                teamsForTournament.add(new Team(teamNameField.getText()));
                 teamNameField.setText("");
                 Label newTeam = new Label(teamNameField.getText());
                 enrolledTeamsBox.getChildren().add(newTeam);
@@ -192,7 +198,6 @@ public class AddTeamController {
 
                 //Creating team labels
                 Team addedTeam = new Team(teamMembersList, teamNameField.getText(),abbreviationField.getText());
-                this.teamsForTournament.add(addedTeam);
                 Label newTeam = new Label(teamNameField.getText());
                 newTeam.setPrefWidth(300);
                 newTeam.setAlignment(Pos.TOP_LEFT);
@@ -200,7 +205,7 @@ public class AddTeamController {
                 nrOfTeams.setText("" + enrolledTeamsBox.getChildren().size());
 
                 //add team to tournament bracket
-                BracketController.getBracket().addTeam(addedTeam);
+                teamsForTournament.add(addedTeam);
                 ArrayList<Team> writeTeamList = new ArrayList<>();
                 writeTeamList.add(addedTeam);
                 //write teams to team file
@@ -218,28 +223,6 @@ public class AddTeamController {
     }
 
 
-    //it does not remove team from the list displaying the teams
-    public void deleteTeam() {
-        String teamName = teamNameField.getText();
-        for (Team team : existingTeams) {
-            if (team.getNameOfTeam().equals(teamName)) {
-                teamsForTournament.remove(team);
-                BracketController.getBracket().removeTeam(team);
-                pC.getChildren().remove(team);
-
-                teamsForTournament.remove(team);
-                nrOfTeams.setText("" + teamsForTournament.size());
-                setCurrentTeams();
-                playersNameField.setText("");
-                teamNameField.setText("");
-                abbreviationField.setText("");
-            }
-        }
-        warningLabel.setText(teamName + " has been removed from your tournament");
-        setCurrentTeams();
-    }
-
-
    public void deleteTeamFromTeams(Label teamLabel){
         boolean found = false;
        for(int i = 0; i < enrolledTeamsBox.getChildren().size(); i++){
@@ -248,7 +231,7 @@ public class AddTeamController {
                Label label = (Label) enrolledTeamsBox.getChildren().get(i);
                enrolledTeamsBox.getChildren().remove(i);
                warningLabel.setText(label.getText() + " has been removed from enrolled teams.");
-               BracketController.getBracket().removeTeam(teamLabel.getText());
+               teamsForTournament.remove(i);
            }
            if(found){
                nrOfTeams.setText(String.valueOf(enrolledTeamsBox.getChildren().size()));
@@ -339,7 +322,11 @@ public class AddTeamController {
         setNextWindowFromMenuBar(root);
     }
 
-    private void setNextWindowFromMenuBar(Parent root) {
+    private void setNextWindowFromMenuBar(Parent root) throws IOException{
+        TournamentWriterRework.writeTeamsToTournamentFile(Utilities.shortenAndReplaceUnnecessarySymbolsInString
+                (tournament.getTournamentName()),teamsForTournament);
+        tournament = new NewTournament("Clean");
+        teamsForTournament = new ArrayList<>();
         Stage stage = (Stage) menuBar.getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);

@@ -5,6 +5,7 @@ import edu.ntnu.idatt1002.sysdev_k1_05_ets.utilities.Utilities;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class NewTournament {
     private String status;
@@ -23,6 +24,15 @@ public class NewTournament {
     private String entranceFeeCurrency;
     private ArrayList<Team> teams;
     private ArrayList<Match> matches;
+
+    public NewTournament(String tournamentName){
+        if (tournamentName == null || tournamentName.isEmpty()) {
+            throw new IllegalArgumentException("Tournament name cannot be empty!");
+        }
+        this.tournamentName = tournamentName;
+        this.teams = new ArrayList<>();
+        this.matches = new ArrayList<>();
+    }
 
     public NewTournament(String status, String tournamentName, String tournamentHost, LocalDate date,
                          LocalTime time, String description, String game, String platform,
@@ -301,27 +311,35 @@ public class NewTournament {
                 '}';
     }
 
+    public Team getTeamByName(String teamName){
+        for (Team team : teams){
+            if (team.getNameOfTeam().equals(teamName)){
+                return team;
+            }
+        }
+        return null;
+    }
+
+    public void addTeam(Team team){
+        this.teams.add(team);
+    }
+
     public Match findNextMatchToBePlayed(){
         Match nextMatch = null;
 
         ArrayList<Match> notFinishedMatches = new ArrayList<>();
         if (this.matches.size() > 0) {
             for (Match match : matches) {
-                if (!match.isFinished() && match.getTimeOfMatch() != null && match.getDateOfMatch() != null) {
+                if (!match.isFinished() && match.getTimeOfMatch() != null) {
                     notFinishedMatches.add(match);
                 }
             }
             if (notFinishedMatches.size() > 0) {
                 LocalTime time = notFinishedMatches.get(0).getTimeOfMatch();
-                LocalDate date = notFinishedMatches.get(0).getDateOfMatch();
                 nextMatch = notFinishedMatches.get(0);
                 if (notFinishedMatches.size() > 1) {
                     for (int i = 1; i < notFinishedMatches.size(); i++) {
-                        if (notFinishedMatches.get(i).getDateOfMatch().isBefore(date)
-                                || notFinishedMatches.get(i).getDateOfMatch().isEqual(date)
-                                && notFinishedMatches.get(i).getTimeOfMatch().isBefore(time)) {
-
-                            date = notFinishedMatches.get(i).getDateOfMatch();
+                        if (notFinishedMatches.get(i).getTimeOfMatch().isBefore(time)) {
                             time = notFinishedMatches.get(i).getTimeOfMatch();
                             nextMatch = notFinishedMatches.get(i);
                         }
@@ -336,7 +354,7 @@ public class NewTournament {
 
         if (this.matches.size() > 0){
             for (Match match : matches){
-                if (!match.isFinished() && match.getTimeOfMatch() != null && match.getDateOfMatch() != null){
+                if (!match.isFinished() && match.getTimeOfMatch() != null){
                     return true;
                 }
             }
@@ -356,5 +374,16 @@ public class NewTournament {
         }
         return numberOfTeamsLeft;
 
+    }
+
+    public Team randomlyRemoveTeam() {
+        Random random = new Random();
+        Team returnTeam = this.getTeams().get(random.nextInt(getTeams().size()));
+        removeTeam(returnTeam);
+        return returnTeam;
+    }
+
+    public void removeTeam(Team team) {
+        this.teams.remove(team);
     }
 }

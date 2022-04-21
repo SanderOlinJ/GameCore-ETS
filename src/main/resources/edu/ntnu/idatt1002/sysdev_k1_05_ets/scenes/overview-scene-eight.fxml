@@ -146,11 +146,6 @@
                                                       <Font name="Arial Bold" size="22.0" />
                                                    </font>
                                                 </Text>
-                                                <Button layoutX="937.0" layoutY="46.0" mnemonicParsing="false" onAction="#randomize" prefHeight="34.0" prefWidth="126.0" styleClass="jfx-button" stylesheets="@../css/style.css" text="Randomize" textFill="WHITE">
-                                                   <font>
-                                                      <Font name="Arial Bold" size="16.0" />
-                                                   </font>
-                                                </Button>
                                              </children>
                                              <HBox.margin>
                                                 <Insets />

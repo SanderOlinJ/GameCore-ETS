@@ -1,10 +1,12 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters;
 
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -20,7 +22,7 @@ class TournamentWriterReworkTest {
     @Test
     void testThatWriteNewTournamentToFileWithBasicInfoRuns(){
         String status = "Not finished";
-        String tournamentName = "Test 15";
+        String tournamentName = "Test 4";
         String tournamentHost = "Admin";
         LocalDate date = LocalDate.parse("2022-04-18");
         LocalTime time = LocalTime.parse("00:05");
@@ -76,6 +78,18 @@ class TournamentWriterReworkTest {
         } catch (IOException exception){
             System.out.println(exception.getMessage());
         }
+    }
+
+    @Test
+    void testThatWriteTeamsToTournamentRuns() throws IOException{
+        ArrayList<Team> teams = new ArrayList<>();
+        Team team1 = TeamReader.findAndReturnTeamUsingTeamName("FaZe");
+        Team team2 = TeamReader.findAndReturnTeamUsingTeamName("Fnatic");
+        Team team3 = TeamReader.findAndReturnTeamUsingTeamName("Phase");
+        teams.add(team1);
+        teams.add(team2);
+        teams.add(team3);
+        TournamentWriterRework.writeTeamsToTournamentFile("Test4",teams);
     }
 
 }

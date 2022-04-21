@@ -13,7 +13,7 @@ class TournamentReaderReworkTest {
     @Test
 
     void testThatReadTournamentFromFileRuns(){
-        String tournamentName = "completeTestFile";
+        String tournamentName = "Test4";
         try {
             NewTournament newTournament = TournamentReaderRework.readTournamentFromFile(tournamentName);
             System.out.println(newTournament);
@@ -49,7 +49,6 @@ class TournamentReaderReworkTest {
     @Test
     void testThat(){
         try {
-
             TournamentReaderRework.readThroughUpcomingTournaments();
         } catch (IOException exception){
             System.out.println(exception.getMessage());

@@ -244,30 +244,6 @@ public class TournamentWriterRework {
         }
     }
 
-    /**
-     Method takes in an arraylist of teams,
-     and a shortened tournament name as parameter, for easily finding file location.
-     It then appends the teams from the arraylist to a string builder.
-     Finally, it appends the string builder to the tournament file.
-     * @param tournamentNameShortened shortened name of the tournament, String
-     * @param teams teams to be added to tournament, ArrayList
-     * @throws IOException
-     */
-    public static void writeTeamsToTournamentFile(String tournamentNameShortened, ArrayList<Team> teams)
-    throws IOException{
-        File file = new File(getPathToTournamentFileAsString(tournamentNameShortened));
-        StringBuilder stringBuilder = new StringBuilder();
-        for (Team team : teams){
-            stringBuilder.append(team.getNameOfTeam()).append(COMMA_DELIMITER);
-        }
-        stringBuilder.setLength(stringBuilder.length()-1);
-
-        try (FileWriter fileWriter = new FileWriter(file,true)){
-            fileWriter.write(stringBuilder.toString());
-        } catch (IOException exception){
-            throw new IOException("Could not write teams to file: " + exception.getMessage());
-        }
-    }
 
     /**
      Handy method to find which folder (ongoing-, upcoming- or previous tournaments)
@@ -281,7 +257,7 @@ public class TournamentWriterRework {
 
         String location = ifFileExistsAndFindLocation(tournamentNameShortened);
 
-        String file = switch (location){
+        return switch (location){
             case "Ongoing" ->"src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
                     "tournamentFiles/ongoingTournaments/" + tournamentNameShortened + ".txt";
             case "Upcoming" -> "src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
@@ -290,19 +266,20 @@ public class TournamentWriterRework {
                     "tournamentFiles/previousTournaments/" + tournamentNameShortened + ".txt";
             default -> throw new IOException("Could not find tournament file");
         };
-
-        return file;
     }
 
+
     /**
-     Method is used when editing teama to an already existing tournament file with potential matches set
-     It writes out the whole file to an arraylist, and replaces index 11 (teams) with the new teams taken in
+     Method takes in an arraylist of teams,
+     and a shortened tournament name as parameter, for easily finding file location.
+     It writes out the whole file to an arraylist, and adds or replaces index 11 (teams) with the new teams taken in
      as a parameter. It then writes the whole file back to the original file path.
+     Can also be used to edit teams if matches has been set, but this functionality has not been implemented.
      * @param tournamentNameShortened shortened name of the tournament, String
      * @param teams teams to be added to tournament, ArrayList
      * @throws IOException
      */
-    public static void editTeamsToTournamentFile(String tournamentNameShortened, ArrayList<Team> teams)
+    public static void writeTeamsToTournamentFile(String tournamentNameShortened, ArrayList<Team> teams)
     throws IOException{
 
         File file = new File(getPathToTournamentFileAsString(tournamentNameShortened));
@@ -312,7 +289,10 @@ public class TournamentWriterRework {
         for (Team team : teams){
             stringBuilder.append(team.getNameOfTeam()).append(COMMA_DELIMITER);
         }
-        fileAsListOfStrings.set(13,stringBuilder.toString());
+        if (fileAsListOfStrings.size() <= 12){
+            fileAsListOfStrings.add("");
+        }
+        fileAsListOfStrings.set(12,stringBuilder.toString());
 
         StringBuilder stringBuilder1 = new StringBuilder();
         for (String str : fileAsListOfStrings){

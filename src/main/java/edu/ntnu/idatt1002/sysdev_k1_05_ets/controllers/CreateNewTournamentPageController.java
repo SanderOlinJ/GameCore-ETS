@@ -328,8 +328,6 @@ public class CreateNewTournamentPageController{
         int formatNr = Integer.parseInt(numberOfTeams);
         AddTeamController.setMaxTeams(formatNr);
         AddTeamController.setTournament(tournament);
-        BracketController.setBracketSize(formatNr);
-        BracketController.setTournamentName(tournamentName);
 
         Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource(
                 "scenes/add-team-scene.fxml")));

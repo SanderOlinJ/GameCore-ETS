@@ -10,7 +10,6 @@ public class Match {
     private int matchScoreTeam2;
     private final Team team1;
     private final Team team2;
-    private LocalDate dateOfMatch;
     private LocalTime timeOfMatch;
     private boolean finished;
 
@@ -67,14 +66,6 @@ public class Match {
         this.finished = finished;
     }
 
-    public LocalDate getDateOfMatch() {
-        return dateOfMatch;
-    }
-
-    public void setDateOfMatch(LocalDate dateOfMatch) {
-        this.dateOfMatch = dateOfMatch;
-    }
-
     public Team getVictor(){
         if (matchScoreTeam1 > matchScoreTeam2){
             return team1;
@@ -89,7 +80,6 @@ public class Match {
                 ", matchScoreTeam2=" + matchScoreTeam2 +
                 ", team1=" + team1 +
                 ", team2=" + team2 +
-                ", dateOfMatch=" + dateOfMatch +
                 ", timeOfMatch=" + timeOfMatch +
                 ", finished=" + finished +
                 '}';

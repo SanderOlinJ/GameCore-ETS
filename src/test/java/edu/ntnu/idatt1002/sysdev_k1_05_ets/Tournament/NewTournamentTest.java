@@ -57,9 +57,6 @@ class NewTournamentTest {
             match.setTimeOfMatch(LocalTime.parse("00:00:00"));
         }
 
-        match1.setDateOfMatch(LocalDate.parse("2022-12-12"));
-        match2.setDateOfMatch(LocalDate.parse("2023-12-12"));
-
         newTournament.setMatches(matches);
         assertEquals(match1, newTournament.findNextMatchToBePlayed());
     }
@@ -91,9 +88,6 @@ class NewTournamentTest {
             match.setFinished(false);
             match.setTimeOfMatch(LocalTime.parse("00:00:00"));
         }
-
-        match1.setDateOfMatch(LocalDate.parse("2022-12-12"));
-        match2.setDateOfMatch(LocalDate.parse("2023-12-12"));
 
         match1.setFinished(true);
 

@@ -1,9 +1,12 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
 
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.GameCoreETSApplication;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TournamentReaderRework;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TournamentWriter;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.NewTournament;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Tournament;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.utilities.Utilities;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,6 +28,7 @@ public class BracketController {
 
     private static String tournamentName;
     private static Tournament tournament = new Tournament("tournamentName");
+    private static NewTournament newTournament = new NewTournament("tournamentName");
     static int bracketSize;
 
     @FXML
@@ -74,7 +78,15 @@ public class BracketController {
 
     @FXML
     public void initialize(){
-        ArrayList<Team> teams = new ArrayList<>(tournament.getTeams());
+
+        try {
+            newTournament = TournamentReaderRework.readTournamentFromFile(Utilities
+                    .shortenAndReplaceUnnecessarySymbolsInString(tournamentName));
+        } catch (IOException exception){
+            exception.printStackTrace();
+        }
+
+        ArrayList<Team> teams = newTournament.getTeams();
         if (bracketSize >= 4) {
             labels.addAll(Arrays.asList(team1,team2,team3,team4,team5,team6,team7));
         }
@@ -118,43 +130,22 @@ public class BracketController {
             }
         }
 
-        nameOfTournament.setText(tournamentName);
-    }
-
-    public void randomize(){
-        Tournament deepCopy = new Tournament("Deep Copy");
-        for (Team team : tournament.getTeams()) {
-            deepCopy.addTeam(new Team(team.getNameOfTeam(), team.getNameAbbr()));
-        }
         for (int i = 0; i < bracketSize - 1; i++){
             labels.get(i).setText("?");
         }
         for (int i = bracketSize-1; i < 2*bracketSize - 1; i++) {
-            Team team = deepCopy.randomlyRemoveTeam();
-            Collections.swap(tournament.getTeams(),i-(bracketSize-1),tournament.getIndexOfTeam(team));
-            labels.get(i).setText(team.getNameAbbr());
+            labels.get(i).setText(teams.get(i-(bracketSize-1)).getNameAbbr());
         }
+
+        nameOfTournament.setText(tournamentName);
     }
+
 
 
     static void setBracketSize(int n){
         bracketSize = n;
     }
 
-    @FXML
-    private void switchToMain(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(GameCoreETSApplication.class.getResource("scenes/start-screen.fxml"));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-        tournament.setNameOfTournament(tournamentName);
-        if (tournament.isDone()) {
-            TournamentWriter.writeFile(labels, tournament.getNameOfTournament(),"previousTournaments");
-        }else {
-            TournamentWriter.writeFile(labels, tournament.getNameOfTournament(),"ongoingTournaments");
-        }
-    }
 
     @FXML
     public void setMatchesScene(ActionEvent event) throws IOException {
@@ -202,8 +193,8 @@ public class BracketController {
 
 
 
-    public static Tournament getBracket(){
-        return tournament;
+    public static NewTournament getBracket(){
+        return newTournament;
     }
 
     public int getLabelInt(Label label){
