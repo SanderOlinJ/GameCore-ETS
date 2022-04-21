@@ -88,9 +88,25 @@ public class BracketController {
 
         for (int i = 0; i < teams.size(); i++){
             int index = 0;
-            if (i > 15){index =  8;}
-            else if (i > 7){index = 5;}
-            else if (i > 3){index = 3;}
+            if (bracketSize == 16){
+                if (i > 29){index = 30;}
+                else if (i > 27){index = 27;}
+                else if (i > 23){index = 21;}
+                else if (i > 15){index =  8;}
+            }
+            if (bracketSize == 8) {
+                if (i > 13) {
+                    index = 14;
+                } else if (i > 11) {
+                    index = 11;
+                } else if (i > 7) {
+                    index = 5;
+                }
+            }
+            else if (bracketSize == 4){
+                if (i > 5){index = 6;}
+                else if (i > 3) {index = 3;}
+            }
             if (i < bracketSize){
                 labels.get(i + (bracketSize - 1)).setText(teams.get(i).getNameAbbr());
             }else{

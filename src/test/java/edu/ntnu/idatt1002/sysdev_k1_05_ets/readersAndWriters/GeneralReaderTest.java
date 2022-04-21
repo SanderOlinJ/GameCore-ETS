@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-public class GameReaderTest {
+public class GeneralReaderTest {
 
     @Test
     void testOne() throws IOException {

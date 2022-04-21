@@ -183,6 +183,8 @@ public class MatchesController {
     private ArrayList<Label> teamTwos;
     private ArrayList<TextField> teamOnesScore;
     private ArrayList<TextField> teamTwosScore;
+    private ArrayList<RadioButton> radioOnes;
+    private ArrayList<RadioButton> radioTwos;
     private static ArrayList<Team> teams = new ArrayList<>();
     private static ArrayList<String> times = new ArrayList<>();
 
@@ -219,6 +221,20 @@ public class MatchesController {
                 matches.get(i).setDisable(true);
                 matches.get(i).setVisible(false);
                 matches.get(i).setPrefHeight(0);
+                /*
+                if (teams.size() > BracketController.bracketSize) {
+                    matches.remove(matches.get(i));
+                    teamOnes.remove(teamOnes.get(i));
+                    teamTwos.remove(teamOnes.get(i));
+                    teamOnesScore.remove(teamOnesScore.get(i));
+                    teamTwosScore.remove(teamTwosScore.get(i));
+                    winners.remove(winners.get(i));
+                    timeLabels.remove(timeLabels.get(i));
+                    times.remove(times.get(i));
+                    radioOnes.remove(radioOnes.get(i));
+                    radioTwos.remove(radioTwos.get(i));
+                }
+                */
                 advanceTeam(match.getVictor());
             }
         }
@@ -281,24 +297,37 @@ public class MatchesController {
         teamTwos = new ArrayList<>(Arrays.asList(team2match,team2match1,team2match2,team2match3,
                 team2match4,team2match5,team2match6,team2match7,team2match8,team2match9,team2match10,team2match11,
                 team2match12,team2match13,team2match14));
-        ArrayList<RadioButton> radioOnes = new ArrayList<>(Arrays.asList(radio1Match,radio1Match1,radio1Match2,
+        radioOnes = new ArrayList<>(Arrays.asList(radio1Match,radio1Match1,radio1Match2,
                 radio1Match3,radio1Match4,radio1Match5, radio1Match6,radio1Match7,radio1Match8,radio1Match9,
                 radio1Match10,radio1Match11,radio1Match12,radio1Match13,radio1Match14));
-        ArrayList<RadioButton> radioTwos = new ArrayList<>(Arrays.asList(radio2Match,radio2Match1,radio2Match2,
+        radioTwos = new ArrayList<>(Arrays.asList(radio2Match,radio2Match1,radio2Match2,
                 radio2Match3,radio2Match4,radio2Match5,radio2Match6,radio2Match7,radio2Match8,radio2Match9,radio2Match10
                 ,radio2Match11,radio2Match12,radio2Match13,radio2Match14));
-        int numberOfTeams = AddTeamController.getMaxTeams();
-        for (int i = 0; i < numberOfTeams/2; i++){
-            matches.get(i).setVisible(true);
-            matches.get(i).setPrefHeight(100);
-            matches.get(i).setDisable(false);
+        int numberOfTeams = teams.size();
+        int bracketSize = BracketController.bracketSize;
+        if (numberOfTeams <= bracketSize) {
+            for (int i = 0; i < numberOfTeams / 2; i++) {
+                 matches.get(i).setVisible(true);
+                 matches.get(i).setPrefHeight(100);
+                 matches.get(i).setDisable(false);
+                 teamOnes.get(i).setText(teams.get(2 * i).getNameOfTeam());
+                 radioOnes.get(i).setText(teams.get(2 * i).getNameOfTeam());
+                 teamTwos.get(i).setText(teams.get(2 * i + 1).getNameOfTeam());
+                 radioTwos.get(i).setText(teams.get(2 * i + 1).getNameOfTeam());
+            }
         }
-        for (int i = 0; i < teams.size()/2; i++){
-            teamOnes.get(i).setText(teams.get(2*i).getNameOfTeam());
-            radioOnes.get(i).setText(teams.get(2*i).getNameOfTeam());
-            teamTwos.get(i).setText(teams.get(2*i+1).getNameOfTeam());
-            radioTwos.get(i).setText(teams.get(2*i+1).getNameOfTeam());
+        if ((numberOfTeams - bracketSize) % 2 == 0) {
+            for (int i = 0; i < (numberOfTeams - bracketSize) / 2; i++) {
+                matches.get(i + bracketSize / 2).setDisable(false);
+                matches.get(i + bracketSize / 2).setVisible(true);
+                matches.get(i + bracketSize / 2).setPrefHeight(100);
+                teamOnes.get(i + bracketSize / 2).setText(teams.get(2 * i + bracketSize).getNameOfTeam());
+                radioOnes.get(i + bracketSize / 2).setText(teams.get(2 * i + bracketSize).getNameOfTeam());
+                teamTwos.get(i + bracketSize / 2).setText(teams.get(2 * i + 1 + bracketSize).getNameOfTeam());
+                radioTwos.get(i + bracketSize / 2).setText(teams.get(2 * i + 1 + bracketSize).getNameOfTeam());
+            }
         }
+
 
     }
 

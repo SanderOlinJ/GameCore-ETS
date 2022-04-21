@@ -111,6 +111,8 @@ public class SetTimeController {
 
     private ArrayList<ChoiceBox> hourBoxes;
     private ArrayList<ChoiceBox> minuteBoxes;
+    ArrayList<Label> teamOnes;
+    ArrayList<Label> teamTwos;
     private ArrayList<HBox> matches;
     private static ArrayList<Team> teams = new ArrayList<>();
 
@@ -181,6 +183,16 @@ public class SetTimeController {
                matches.get(i).setPrefHeight(0);
                matches.get(i).setDisable(true);
                matches.get(i).setVisible(false);
+               matches.get(i).setDisable(true);
+               matches.get(i).setVisible(false);
+               matches.get(i).setPrefHeight(0);
+               /**
+               matches.remove(matches.get(i));
+               hourBoxes.remove(hourBoxes.get(i));
+               minuteBoxes.remove(minuteBoxes.get(i));
+               teamOnes.remove(teamOnes.get(i));
+               teamTwos.remove(teamOnes.get(i));
+                */
             }
         }
     }
@@ -198,22 +210,32 @@ public class SetTimeController {
     public void setVisibleMatches(){
         matches = new ArrayList<>(Arrays.asList(match,match1,match2,match3,match4,match5,match6,
                 match7,match8,match9,match10,match11,match12,match13,match14));
-        ArrayList<Label> teamOnes = new ArrayList<>(Arrays.asList(team1match,team1match1,team1match2,team1match3,
+        teamOnes = new ArrayList<>(Arrays.asList(team1match,team1match1,team1match2,team1match3,
                 team1match4,team1match5,team1match6,team1match7,team1match8,team1match9,team1match10,team1match11,
                 team1match12,team1match13,team1match14));
-        ArrayList<Label> teamTwos = new ArrayList<>(Arrays.asList(team2match,team2match1,team2match2,team2match3,
+        teamTwos = new ArrayList<>(Arrays.asList(team2match,team2match1,team2match2,team2match3,
                 team2match4,team2match5,team2match6,team2match7,team2match8,team2match9,team2match10,team2match11,
                 team2match12,team2match13,team2match14));
         teams = BracketController.getBracket().getTeams();
-        int numberOfTeams = AddTeamController.getMaxTeams();
-        for (int i = 0; i < numberOfTeams/2; i++){
-            matches.get(i).setVisible(true);
-            matches.get(i).setPrefHeight(100);
-            matches.get(i).setDisable(false);
+        int bracketSize = BracketController.bracketSize;
+        int numberOfTeams = teams.size();
+        if (numberOfTeams <= bracketSize) {
+            for (int i = 0; i < numberOfTeams / 2; i++) {
+                matches.get(i).setVisible(true);
+                matches.get(i).setPrefHeight(100);
+                matches.get(i).setDisable(false);
+                teamOnes.get(i).setText(teams.get(2 * i).getNameOfTeam());
+                teamTwos.get(i).setText(teams.get(2 * i + 1).getNameOfTeam());
+            }
         }
-        for (int i = 0; i < teams.size()/2; i++){
-            teamOnes.get(i).setText(teams.get(2*i).getNameOfTeam());
-            teamTwos.get(i).setText(teams.get(2*i+1).getNameOfTeam());
+        else if ((numberOfTeams - bracketSize) % 2 == 0){
+            for (int i = 0; i < (numberOfTeams - bracketSize)/2; i++) {
+                matches.get(i).setDisable(false);
+                matches.get(i).setVisible(true);
+                matches.get(i).setPrefHeight(100);
+                teamOnes.get(i).setText(teams.get(2*i + bracketSize).getNameOfTeam());
+                teamTwos.get(i).setText(teams.get(2*i + 1 + bracketSize).getNameOfTeam());
+            }
         }
     }
 
