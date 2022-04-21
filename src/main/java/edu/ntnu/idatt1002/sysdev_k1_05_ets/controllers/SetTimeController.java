@@ -8,12 +8,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.MenuBar;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
 import java.io.IOException;
 import java.lang.reflect.Array;
@@ -23,36 +22,37 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class SetTimeController {
-    @FXML ChoiceBox hoursMatch;
-    @FXML ChoiceBox minutesMatch;
-    @FXML ChoiceBox hoursMatch1;
-    @FXML ChoiceBox minutesMatch1;
-    @FXML ChoiceBox hoursMatch2;
-    @FXML ChoiceBox minutesMatch2;
-    @FXML ChoiceBox hoursMatch3;
-    @FXML ChoiceBox minutesMatch3;
-    @FXML ChoiceBox hoursMatch4;
-    @FXML ChoiceBox minutesMatch4;
-    @FXML ChoiceBox hoursMatch5;
-    @FXML ChoiceBox minutesMatch5;
-    @FXML ChoiceBox hoursMatch6;
-    @FXML ChoiceBox minutesMatch6;
-    @FXML ChoiceBox hoursMatch7;
-    @FXML ChoiceBox minutesMatch7;
-    @FXML ChoiceBox hoursMatch8;
-    @FXML ChoiceBox minutesMatch8;
-    @FXML ChoiceBox hoursMatch9;
-    @FXML ChoiceBox minutesMatch9;
-    @FXML ChoiceBox hoursMatch10;
-    @FXML ChoiceBox minutesMatch10;
-    @FXML ChoiceBox hoursMatch11;
-    @FXML ChoiceBox minutesMatch11;
-    @FXML ChoiceBox hoursMatch12;
-    @FXML ChoiceBox minutesMatch12;
-    @FXML ChoiceBox hoursMatch13;
-    @FXML ChoiceBox minutesMatch13;
-    @FXML ChoiceBox hoursMatch14;
-    @FXML ChoiceBox minutesMatch14;
+
+    @FXML ComboBox hoursMatch;
+    @FXML ComboBox minutesMatch;
+    @FXML ComboBox hoursMatch1;
+    @FXML ComboBox minutesMatch1;
+    @FXML ComboBox hoursMatch2;
+    @FXML ComboBox minutesMatch2;
+    @FXML ComboBox hoursMatch3;
+    @FXML ComboBox minutesMatch3;
+    @FXML ComboBox hoursMatch4;
+    @FXML ComboBox minutesMatch4;
+    @FXML ComboBox hoursMatch5;
+    @FXML ComboBox minutesMatch5;
+    @FXML ComboBox hoursMatch6;
+    @FXML ComboBox minutesMatch6;
+    @FXML ComboBox hoursMatch7;
+    @FXML ComboBox minutesMatch7;
+    @FXML ComboBox hoursMatch8;
+    @FXML ComboBox minutesMatch8;
+    @FXML ComboBox hoursMatch9;
+    @FXML ComboBox minutesMatch9;
+    @FXML ComboBox hoursMatch10;
+    @FXML ComboBox minutesMatch10;
+    @FXML ComboBox hoursMatch11;
+    @FXML ComboBox minutesMatch11;
+    @FXML ComboBox hoursMatch12;
+    @FXML ComboBox minutesMatch12;
+    @FXML ComboBox hoursMatch13;
+    @FXML ComboBox minutesMatch13;
+    @FXML ComboBox hoursMatch14;
+    @FXML ComboBox minutesMatch14;
     @FXML HBox match;
     @FXML HBox match1;
     @FXML HBox match2;
@@ -109,8 +109,8 @@ public class SetTimeController {
 
     @FXML private MenuBar menuBar;
 
-    private ArrayList<ChoiceBox> hourBoxes;
-    private ArrayList<ChoiceBox> minuteBoxes;
+    private ArrayList<ComboBox> hourBoxes;
+    private ArrayList<ComboBox> minuteBoxes;
     ArrayList<Label> teamOnes;
     ArrayList<Label> teamTwos;
     private ArrayList<HBox> matches;
@@ -125,11 +125,11 @@ public class SetTimeController {
         minuteBoxes = new ArrayList<>(Arrays.asList(minutesMatch,minutesMatch1,minutesMatch2,minutesMatch3,minutesMatch4
                 ,minutesMatch5,minutesMatch6,minutesMatch7,minutesMatch8,minutesMatch9,minutesMatch10,minutesMatch11,
                 minutesMatch12,minutesMatch13,hoursMatch14));
-        for (ChoiceBox box : hourBoxes){
-            setHours(box);
+        for (ComboBox box : hourBoxes){
+            setHoursToBox(box);
         }
-        for (ChoiceBox box : minuteBoxes){
-            setMinutes(box);
+        for (ComboBox box : minuteBoxes){
+            setMinutesToBox(box);
         }
         setVisibleMatches();
         tournamentName.setText(BracketController.getTournamentName());
@@ -186,7 +186,7 @@ public class SetTimeController {
                matches.get(i).setDisable(true);
                matches.get(i).setVisible(false);
                matches.get(i).setPrefHeight(0);
-               /**
+               /*
                matches.remove(matches.get(i));
                hourBoxes.remove(hourBoxes.get(i));
                minuteBoxes.remove(minuteBoxes.get(i));
@@ -196,13 +196,60 @@ public class SetTimeController {
             }
         }
     }
-    public void setHours(ChoiceBox box){
+    public void setHours(ComboBox box){
         box.getItems().addAll("00","01","02","03","04","05","06","07","08","09","10",
                 "11","12","13","14","15","16","17","18","19","20","21","22","23");
     }
 
-    public void setMinutes(ChoiceBox box){
+    public void setMinutes(ComboBox box){
         box.getItems().addAll("00","05","10","15","20","25","30","35","40","45","50","55");
+    }
+
+    public void setHoursToBox(ComboBox box){
+        box.getItems().addAll("00","01","02","03","04","05","06","07","08","09","10",
+                "11","12","13","14","15","16","17","18","19","20","21","22","23");
+        box.setCellFactory(new Callback<ListView, ListCell>() {
+            @Override
+            public ListCell call(ListView listView) {
+                return new ListCell<String>() {
+                    @Override
+                    protected void updateItem(String item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (item != null) {
+                            setText(item);
+                            //This won't work for the first time but will be the one
+                            //used in the next calls
+                            getStyleClass().add("my-list-cell");
+                            //size in px
+                            setFont(Font.font(16));
+                        }
+                    }
+                };
+            }
+        });
+    }
+
+    public void setMinutesToBox(ComboBox box){
+        box.getItems().addAll("00","05","10","15","20","25","30","35","40","45","50","55");
+        box.setCellFactory(new Callback<ListView, ListCell>() {
+            @Override
+            public ListCell call(ListView listView) {
+                return new ListCell<String>() {
+                    @Override
+                    protected void updateItem(String item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (item != null) {
+                            setText(item);
+                            //This won't work for the first time but will be the one
+                            //used in the next calls
+                            getStyleClass().add("my-list-cell");
+                            //size in px
+                            setFont(Font.font(16));
+                        }
+                    }
+                };
+            }
+        });
     }
 
 

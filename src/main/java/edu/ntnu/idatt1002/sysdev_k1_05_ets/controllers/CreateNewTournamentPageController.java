@@ -57,7 +57,6 @@ public class CreateNewTournamentPageController{
     @FXML private ImageView gameImageView;
     @FXML private ImageView bracketFormatImageView;
     @FXML private DatePicker datePicker;
-    @FXML private ComboBox bestOfBox;
     @FXML private ComboBox timeBoxHours;
     @FXML private ComboBox timeBoxMinutes;
     @FXML private Text prizePoolText;
@@ -159,7 +158,6 @@ public class CreateNewTournamentPageController{
                             //This won't work for the first time but will be the one
                             //used in the next calls
                             getStyleClass().add("my-list-cell");
-                            setTextFill(Color.RED);
                             //size in px
                             setFont(Font.font(16));
                         }
@@ -189,26 +187,6 @@ public class CreateNewTournamentPageController{
         });
         tournamentHostBox.getItems().add("Admin");
         tournamentHostBox.setCellFactory(new Callback<ListView, ListCell>() {
-            @Override
-            public ListCell call(ListView listView) {
-                return new ListCell<String>() {
-                    @Override
-                    protected void updateItem(String item, boolean empty) {
-                        super.updateItem(item, empty);
-                        if (item != null) {
-                            setText(item);
-                            //This won't work for the first time but will be the one
-                            //used in the next calls
-                            getStyleClass().add("my-list-cell");
-                            //size in px
-                            setFont(Font.font(16));
-                        }
-                    }
-                };
-            }
-        });
-        bestOfBox.getItems().addAll("1","3");
-        bestOfBox.setCellFactory(new Callback<ListView, ListCell>() {
             @Override
             public ListCell call(ListView listView) {
                 return new ListCell<String>() {
@@ -314,7 +292,6 @@ public class CreateNewTournamentPageController{
         String game = String.valueOf(gameBox.getText());
         String platform = String.valueOf(platformBox.getText());
         String tournamentType = String.valueOf(tournamentTypeBox.getValue());
-        String bestOf = String.valueOf(bestOfBox.getValue());
         String numberOfTeams = String.valueOf(totalNumberOfTeamsBox.getValue());
         String prizePool = "0";
         String prizePoolCurrency = "null";
@@ -328,7 +305,7 @@ public class CreateNewTournamentPageController{
             entranceFeeCurrency = String.valueOf(entranceFeeCurrencyBox.getValue());
         }
         try {
-            checkIfAllRequiredFieldsAreFilledOut(tournamentName, tournamentHost, date, game, platform, tournamentType, bestOf, numberOfTeams);
+            checkIfAllRequiredFieldsAreFilledOut(tournamentName, tournamentHost, date, game, platform, tournamentType, numberOfTeams);
             checkIfFileAlreadyExists(tournamentName);
             checkIfDateIsInvalid(date, time);
             checkThatGameExistsInLibrary(game);
@@ -341,11 +318,11 @@ public class CreateNewTournamentPageController{
         }
 
         NewTournament tournament= new NewTournament(status, tournamentName, tournamentHost, date, time,
-                description, game, platform, tournamentType, bestOf, numberOfTeams, prizePool, prizePoolCurrency,
+                description, game, platform, tournamentType, numberOfTeams, prizePool, prizePoolCurrency,
                 entranceFee, entranceFeeCurrency);
 
         TournamentWriterRework.writeNewTournamentToFileWithBasicInfo(status, tournamentName,
-                tournamentHost, date, time, description, game, platform, tournamentType,bestOf, numberOfTeams,
+                tournamentHost, date, time, description, game, platform, tournamentType, numberOfTeams,
                 prizePool, prizePoolCurrency, entranceFee, entranceFeeCurrency);
 
         int formatNr = Integer.parseInt(numberOfTeams);
@@ -373,11 +350,11 @@ public class CreateNewTournamentPageController{
 
     private void checkIfAllRequiredFieldsAreFilledOut(String tournamentName, String tournamentHost, LocalDate date,
                                                       String game, String platform, String tournamentType,
-                                                      String bestOf, String numberOfTeams)
+                                                      String numberOfTeams)
     throws IOException {
 
         if (tournamentName.isEmpty() || tournamentHost.isEmpty() || date == null ||
-                game.isEmpty() || platform.isEmpty() || tournamentType.isEmpty() || bestOf.isEmpty() ||
+                game.isEmpty() || platform.isEmpty() || tournamentType.isEmpty() ||
                 numberOfTeams.isEmpty()){
             warningLabel.setText("You have to fill out all crucial fields (*)");
             throw new IOException("You have to fill out all crucial fields (*)");

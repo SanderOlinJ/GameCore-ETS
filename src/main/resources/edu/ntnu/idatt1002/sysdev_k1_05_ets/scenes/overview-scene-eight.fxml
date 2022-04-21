@@ -146,9 +146,9 @@
                                                       <Font name="Arial Bold" size="22.0" />
                                                    </font>
                                                 </Text>
-                                                <Button layoutX="967.0" layoutY="46.0" mnemonicParsing="false" onAction="#randomize" prefHeight="34.0" prefWidth="96.0" style="-fx-background-color: #fa8f31;" text="Randomize" textFill="WHITE">
+                                                <Button layoutX="937.0" layoutY="46.0" mnemonicParsing="false" onAction="#randomize" prefHeight="34.0" prefWidth="126.0" styleClass="jfx-button" stylesheets="@../css/style.css" text="Randomize" textFill="WHITE">
                                                    <font>
-                                                      <Font name="Arial" size="12.0" />
+                                                      <Font name="Arial Bold" size="16.0" />
                                                    </font>
                                                 </Button>
                                              </children>

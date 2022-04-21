@@ -28,7 +28,6 @@ class TournamentWriterReworkTest {
         String game = "Valorant";
         String platform = "PC / Mac / Linux";
         String tournamentType = "Brackets";
-        String bestOf = "3";
         String numberOfTeams = "4";
         String prizePool = "0";
         String prizePoolCurrency = "null";
@@ -37,7 +36,7 @@ class TournamentWriterReworkTest {
 
         try {
             TournamentWriterRework.writeNewTournamentToFileWithBasicInfo(status, tournamentName, tournamentHost,
-                    date, time, description, game, platform, tournamentType, bestOf, numberOfTeams,
+                    date, time, description, game, platform, tournamentType, numberOfTeams,
                     prizePool, prizePoolCurrency, entranceFee, entranceFeeCurrency);
         } catch (IOException exception){
             exception.printStackTrace();

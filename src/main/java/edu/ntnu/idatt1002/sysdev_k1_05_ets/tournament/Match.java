@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 public class Match {
 
-    private ArrayList<Round> rounds;
     private int matchScoreTeam1;
     private int matchScoreTeam2;
     private final Team team1;
@@ -52,10 +51,6 @@ public class Match {
         return team2;
     }
 
-    public void setRounds(ArrayList<Round> rounds) {
-        this.rounds = rounds;
-    }
-
     public LocalTime getTimeOfMatch() {
         return timeOfMatch;
     }
@@ -80,18 +75,6 @@ public class Match {
         this.dateOfMatch = dateOfMatch;
     }
 
-    public ArrayList<Round> getRounds() {
-        return rounds;
-    }
-
-    public void addRound(Round round){
-        rounds.add(round);
-    }
-
-    public void addAllRounds(ArrayList<Round> rounds){
-        rounds.addAll(rounds);
-    }
-
     public Team getVictor(){
         if (matchScoreTeam1 > matchScoreTeam2){
             return team1;
@@ -102,7 +85,6 @@ public class Match {
     @Override
     public String toString() {
         return "\nMatch{" +
-                "rounds=" + rounds + "\n" +
                 ", matchScoreTeam1=" + matchScoreTeam1 +
                 ", matchScoreTeam2=" + matchScoreTeam2 +
                 ", team1=" + team1 +

@@ -1,7 +1,6 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters;
 
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Match;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Round;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
 
 import java.io.IOException;
@@ -19,7 +18,7 @@ public class MatchReader {
     throws IOException{
         ArrayList<Match> matches = new ArrayList<>();
 
-        for (int i = 14; i < list.size(); i++) {
+        for (int i = 13; i < list.size(); i++) {
 
             String line = list.get(i);
             String[] values = line.split(COMMA_DELIMITER);
@@ -38,14 +37,6 @@ public class MatchReader {
                         int matchScoreTeam2 = Integer.parseInt(values[5]);
                         match.setMatchScoreTeam1(matchScoreTeam1);
                         match.setMatchScoreTeam2(matchScoreTeam2);
-                        ArrayList<Round> rounds = RoundReader.readRoundsFromStringArray(
-                                team1, team2, values);
-                        if (rounds.size() != 0) {
-                            match.setRounds(rounds);
-                            match.setFinished(list.get(9).equals("1") && rounds.size() == 1
-                                    || list.get(9).equals("3") && matchScoreTeam1 == 2
-                                    || list.get(9).equals("3") && matchScoreTeam2 == 2);
-                        }
                     }
                 }
             }

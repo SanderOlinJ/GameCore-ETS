@@ -60,13 +60,12 @@ public class TournamentWriterRework {
      * @param game game played at tournament, String
      * @param platform platform the game is played on, String
      * @param tournamentType type of tournament, only "Brackets" for now, String
-     * @param bestOf best of *number of rounds*, only "1" or "3" for now, String
      * @param numberOfTeams number of teams playing, only "4", "8" or "16" for now, String
      * @throws IOException
      */
     public static void writeNewTournamentToFileWithBasicInfo(
             String status, String tournamentName, String tournamentHost, LocalDate date, LocalTime time,
-            String description, String game, String platform, String tournamentType, String bestOf,
+            String description, String game, String platform, String tournamentType,
             String numberOfTeams, String prizePool, String prizePoolCurrency, String entranceFee,
             String entranceFeeCurrency)
             throws IOException {
@@ -78,7 +77,7 @@ public class TournamentWriterRework {
         }
         String tournamentStringFormat = status + DELIMITER + tournamentName + DELIMITER + tournamentHost + DELIMITER +
                 date + DELIMITER + time + DELIMITER + description + DELIMITER + game + DELIMITER + platform +
-                DELIMITER + tournamentType + DELIMITER + bestOf + DELIMITER + numberOfTeams +
+                DELIMITER + tournamentType + DELIMITER + numberOfTeams +
                 DELIMITER + prizePool + COMMA_DELIMITER + prizePoolCurrency + DELIMITER +
                 entranceFee + COMMA_DELIMITER + entranceFeeCurrency + DELIMITER;
 

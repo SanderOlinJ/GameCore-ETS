@@ -3,12 +3,13 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -18,7 +19,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #13161d;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.SetTimeController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #13161d;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.SetTimeController">
     <top>
         <MenuBar fx:id="menuBar" BorderPane.alignment="CENTER">
             <menus>
@@ -42,7 +43,7 @@
         </MenuBar>
     </top>
     <center>
-        <VBox prefHeight="1655.0" prefWidth="1200.0" style="-fx-background-color: #282c34;" stylesheets="@../css/choiceBox_text_color.css" BorderPane.alignment="CENTER">
+        <VBox prefHeight="1655.0" prefWidth="1200.0" style="-fx-background-color: #282c34;" BorderPane.alignment="CENTER">
             <children>
                 <VBox maxHeight="200.0" prefHeight="131.0" prefWidth="1200.0" style="-fx-background-color: #2e3e4e;" VBox.vgrow="ALWAYS">
                     <children>
@@ -190,793 +191,799 @@
                                                                         <VBox prefHeight="98.0" prefWidth="468.0">
                                                                             <children>
                                                                                 <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                            <HBox>
-                                                               <children>
-                                                                                      <Label fx:id="timematch" prefHeight="23.0" prefWidth="155.0" text="Match start at:" textFill="WHITE">
+                                                                                <HBox>
+                                                                                   <children>
+                                                                                      <Label fx:id="timematch" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="23.0" prefWidth="155.0" text="Match start at:" textFill="WHITE">
                                                                                           <font>
                                                                                               <Font name="Arial" size="20.0" />
                                                                                           </font>
                                                                                       </Label>
-                                                                  <ChoiceBox fx:id="hoursMatch" prefWidth="74.0" style="-fx-background-color: #282c34 #282c34;" stylesheets="@../css/choiceBox_text_color.css" />
-                                                                  <Label text=":" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <ChoiceBox fx:id="minutesMatch" prefWidth="74.0" style="-fx-background-color: #282c34;" stylesheets="@../css/choiceBox_text_color.css" />
-                                                               </children>
-                                                            </HBox>
+                                                                                      <ComboBox fx:id="hoursMatch" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="90.0" style="-fx-background-color: #282c34;" styleClass="jfx-combo-box" stylesheets="@../css/style.css" />
+                                                                                      <Label text=":" textFill="WHITE">
+                                                                                         <font>
+                                                                                            <Font name="Arial" size="20.0" />
+                                                                                         </font>
+                                                                                      </Label>
+                                                                                      <ComboBox fx:id="minutesMatch" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="90.0" style="-fx-background-color: #282c34;" styleClass="jfx-combo-box" stylesheets="@../css/style.css" />
+                                                                                   </children>
+                                                                                </HBox>
                                                                                 <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                             </children>
                                                                         </VBox>
                                                                     </children>
                                                                 </HBox>
-                                                <HBox fx:id="match1" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
-                                                   <children>
-                                                      <Pane prefHeight="98.0" prefWidth="50.0" />
-                                                      <VBox prefHeight="98.0" prefWidth="549.0">
-                                                         <children>
-                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                            <HBox prefHeight="100.0" prefWidth="200.0">
-                                                               <children>
-                                                                  <Label fx:id="team1match1" prefHeight="23.0" prefWidth="168.0" text="Team 1" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Label prefHeight="17.0" prefWidth="110.0" text="VS" textFill="#fa8f31">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Label fx:id="team2match1" prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                               </children>
-                                                            </HBox>
-                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                         </children>
-                                                      </VBox>
-                                                      <VBox prefHeight="98.0" prefWidth="324.0">
-                                                         <children>
-                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                            <HBox>
-                                                               <children>
-                                                                  <Label fx:id="timematch1" prefHeight="23.0" prefWidth="155.0" text="Match start at:" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <ChoiceBox fx:id="hoursMatch1" prefWidth="74.0" style="-fx-background-color: #282c34;" stylesheets="@../css/choiceBox_text_color.css" />
-                                                                  <Label text=":" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <ChoiceBox fx:id="minutesMatch1" prefWidth="74.0" style="-fx-background-color: #282c34;" stylesheets="@../css/choiceBox_text_color.css" />
-                                                               </children>
-                                                            </HBox>
-                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                         </children>
-                                                      </VBox>
-                                                   </children>
-                                                </HBox>
-                                                <HBox fx:id="match2" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
-                                                   <children>
-                                                      <Pane prefHeight="98.0" prefWidth="50.0" />
-                                                      <VBox prefHeight="98.0" prefWidth="549.0">
-                                                         <children>
-                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                            <HBox prefHeight="100.0" prefWidth="200.0">
-                                                               <children>
-                                                                  <Label fx:id="team1match2" prefHeight="23.0" prefWidth="168.0" text="Team 1" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Label prefHeight="17.0" prefWidth="110.0" text="VS" textFill="#fa8f31">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Label fx:id="team2match2" prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                               </children>
-                                                            </HBox>
-                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                         </children>
-                                                      </VBox>
-                                                      <VBox prefHeight="98.0" prefWidth="324.0">
-                                                         <children>
-                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                            <HBox>
-                                                               <children>
-                                                                  <Label fx:id="timematch2" prefHeight="23.0" prefWidth="155.0" text="Match start at:" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <ChoiceBox fx:id="hoursMatch2" prefWidth="74.0" style="-fx-background-color: #282c34;" />
-                                                                  <Label text=":" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <ChoiceBox fx:id="minutesMatch2" prefWidth="74.0" style="-fx-background-color: #282c34;" />
-                                                               </children>
-                                                            </HBox>
-                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                         </children>
-                                                      </VBox>
-                                                   </children>
-                                                </HBox>
-                                                <HBox fx:id="match3" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
-                                                   <children>
-                                                      <Pane prefHeight="98.0" prefWidth="50.0" />
-                                                      <VBox prefHeight="98.0" prefWidth="549.0">
-                                                         <children>
-                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                            <HBox prefHeight="100.0" prefWidth="200.0">
-                                                               <children>
-                                                                  <Label fx:id="team1match3" prefHeight="23.0" prefWidth="168.0" text="Team 1" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Label prefHeight="17.0" prefWidth="110.0" text="VS" textFill="#fa8f31">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Label fx:id="team2match3" prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                               </children>
-                                                            </HBox>
-                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                         </children>
-                                                      </VBox>
-                                                      <VBox prefHeight="98.0" prefWidth="324.0">
-                                                         <children>
-                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                            <HBox>
-                                                               <children>
-                                                                  <Label fx:id="timematch3" prefHeight="23.0" prefWidth="155.0" text="Match start at:" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <ChoiceBox fx:id="hoursMatch3" prefWidth="74.0" style="-fx-background-color: #282c34;" />
-                                                                  <Label text=":" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <ChoiceBox fx:id="minutesMatch3" prefWidth="74.0" style="-fx-background-color: #282c34;" />
-                                                               </children>
-                                                            </HBox>
-                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                         </children>
-                                                      </VBox>
-                                                   </children>
-                                                </HBox>
-                                                <HBox fx:id="match4" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
-                                                   <children>
-                                                      <Pane prefHeight="98.0" prefWidth="50.0" />
-                                                      <VBox prefHeight="98.0" prefWidth="549.0">
-                                                         <children>
-                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                            <HBox prefHeight="100.0" prefWidth="200.0">
-                                                               <children>
-                                                                  <Label fx:id="team1match4" prefHeight="23.0" prefWidth="168.0" text="Team 1" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Label prefHeight="17.0" prefWidth="110.0" text="VS" textFill="#fa8f31">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Label fx:id="team2match4" prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                               </children>
-                                                            </HBox>
-                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                         </children>
-                                                      </VBox>
-                                                      <VBox prefHeight="98.0" prefWidth="324.0">
-                                                         <children>
-                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                            <HBox>
-                                                               <children>
-                                                                  <Label fx:id="timematch4" prefHeight="23.0" prefWidth="155.0" text="Match start at:" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <ChoiceBox fx:id="hoursMatch4" prefWidth="74.0" style="-fx-background-color: #282c34;" />
-                                                                  <Label text=":" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <ChoiceBox fx:id="minutesMatch4" prefWidth="74.0" style="-fx-background-color: #282c34;" />
-                                                               </children>
-                                                            </HBox>
-                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                         </children>
-                                                      </VBox>
-                                                   </children>
-                                                </HBox>
-                                                <HBox fx:id="match5" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
-                                                   <children>
-                                                      <Pane prefHeight="98.0" prefWidth="50.0" />
-                                                      <VBox prefHeight="98.0" prefWidth="549.0">
-                                                         <children>
-                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                            <HBox prefHeight="100.0" prefWidth="200.0">
-                                                               <children>
-                                                                  <Label fx:id="team1match5" prefHeight="23.0" prefWidth="168.0" text="Team 1" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Label prefHeight="17.0" prefWidth="110.0" text="VS" textFill="#fa8f31">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Label fx:id="team2match5" prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                               </children>
-                                                            </HBox>
-                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                         </children>
-                                                      </VBox>
-                                                      <VBox prefHeight="98.0" prefWidth="324.0">
-                                                         <children>
-                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                            <HBox>
-                                                               <children>
-                                                                  <Label fx:id="timematch5" prefHeight="23.0" prefWidth="155.0" text="Match start at:" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <ChoiceBox fx:id="hoursMatch5" prefWidth="74.0" style="-fx-background-color: #282c34;" />
-                                                                  <Label text=":" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <ChoiceBox fx:id="minutesMatch5" prefWidth="74.0" style="-fx-background-color: #282c34;" />
-                                                               </children>
-                                                            </HBox>
-                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                         </children>
-                                                      </VBox>
-                                                   </children>
-                                                </HBox>
-                                                <HBox fx:id="match6" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
-                                                   <children>
-                                                      <Pane prefHeight="98.0" prefWidth="50.0" />
-                                                      <VBox prefHeight="98.0" prefWidth="549.0">
-                                                         <children>
-                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                            <HBox prefHeight="100.0" prefWidth="200.0">
-                                                               <children>
-                                                                  <Label fx:id="team1match6" prefHeight="23.0" prefWidth="168.0" text="Team 1" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Label prefHeight="17.0" prefWidth="110.0" text="VS" textFill="#fa8f31">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Label fx:id="team2match6" prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                               </children>
-                                                            </HBox>
-                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                         </children>
-                                                      </VBox>
-                                                      <VBox prefHeight="98.0" prefWidth="324.0">
-                                                         <children>
-                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                            <HBox>
-                                                               <children>
-                                                                  <Label fx:id="timematch6" prefHeight="23.0" prefWidth="155.0" text="Match start at:" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <ChoiceBox fx:id="hoursMatch6" prefWidth="74.0" style="-fx-background-color: #282c34;" />
-                                                                  <Label text=":" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <ChoiceBox fx:id="minutesMatch6" prefWidth="74.0" style="-fx-background-color: #282c34;" />
-                                                               </children>
-                                                            </HBox>
-                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                         </children>
-                                                      </VBox>
-                                                   </children>
-                                                </HBox>
-                                                <HBox fx:id="match7" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
-                                                   <children>
-                                                      <Pane prefHeight="98.0" prefWidth="50.0" />
-                                                      <VBox prefHeight="98.0" prefWidth="549.0">
-                                                         <children>
-                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                            <HBox prefHeight="100.0" prefWidth="200.0">
-                                                               <children>
-                                                                  <Label fx:id="team1match7" prefHeight="23.0" prefWidth="168.0" text="Team 1" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Label prefHeight="17.0" prefWidth="110.0" text="VS" textFill="#fa8f31">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Label fx:id="team2match7" prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                               </children>
-                                                            </HBox>
-                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                         </children>
-                                                      </VBox>
-                                                      <VBox prefHeight="98.0" prefWidth="324.0">
-                                                         <children>
-                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                            <HBox>
-                                                               <children>
-                                                                  <Label fx:id="timematch7" prefHeight="23.0" prefWidth="155.0" text="Match start at:" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <ChoiceBox fx:id="hoursMatch7" prefWidth="74.0" style="-fx-background-color: #282c34;" />
-                                                                  <Label text=":" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <ChoiceBox fx:id="minutesMatch7" prefWidth="74.0" style="-fx-background-color: #282c34;" />
-                                                               </children>
-                                                            </HBox>
-                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                         </children>
-                                                      </VBox>
-                                                   </children>
-                                                </HBox>
-                                                <HBox fx:id="match8" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
-                                                   <children>
-                                                      <Pane prefHeight="98.0" prefWidth="50.0" />
-                                                      <VBox prefHeight="98.0" prefWidth="549.0">
-                                                         <children>
-                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                            <HBox prefHeight="100.0" prefWidth="200.0">
-                                                               <children>
-                                                                  <Label fx:id="team1match8" prefHeight="23.0" prefWidth="168.0" text="Team 1" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Label prefHeight="17.0" prefWidth="110.0" text="VS" textFill="#fa8f31">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Label fx:id="team2match8" prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                               </children>
-                                                            </HBox>
-                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                         </children>
-                                                      </VBox>
-                                                      <VBox prefHeight="98.0" prefWidth="324.0">
-                                                         <children>
-                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                            <HBox>
-                                                               <children>
-                                                                  <Label fx:id="timematch8" prefHeight="23.0" prefWidth="155.0" text="Match start at:" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <ChoiceBox fx:id="hoursMatch8" prefWidth="74.0" style="-fx-background-color: #282c34;" />
-                                                                  <Label text=":" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <ChoiceBox fx:id="minutesMatch8" prefWidth="74.0" style="-fx-background-color: #282c34;" />
-                                                               </children>
-                                                            </HBox>
-                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                         </children>
-                                                      </VBox>
-                                                   </children>
-                                                </HBox>
-                                                <HBox fx:id="match9" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
-                                                   <children>
-                                                      <Pane prefHeight="98.0" prefWidth="50.0" />
-                                                      <VBox prefHeight="98.0" prefWidth="549.0">
-                                                         <children>
-                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                            <HBox prefHeight="100.0" prefWidth="200.0">
-                                                               <children>
-                                                                  <Label fx:id="team1match9" prefHeight="23.0" prefWidth="168.0" text="Team 1" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Label prefHeight="17.0" prefWidth="110.0" text="VS" textFill="#fa8f31">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Label fx:id="team2match9" prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                               </children>
-                                                            </HBox>
-                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                         </children>
-                                                      </VBox>
-                                                      <VBox prefHeight="98.0" prefWidth="324.0">
-                                                         <children>
-                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                            <HBox>
-                                                               <children>
-                                                                  <Label fx:id="timematch9" prefHeight="23.0" prefWidth="155.0" text="Match start at:" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <ChoiceBox fx:id="hoursMatch9" prefWidth="74.0" style="-fx-background-color: #282c34;" />
-                                                                  <Label text=":" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <ChoiceBox fx:id="minutesMatch9" prefWidth="74.0" style="-fx-background-color: #282c34;" />
-                                                               </children>
-                                                            </HBox>
-                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                         </children>
-                                                      </VBox>
-                                                   </children>
-                                                </HBox>
-                                                <HBox fx:id="match10" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
-                                                   <children>
-                                                      <Pane prefHeight="98.0" prefWidth="50.0" />
-                                                      <VBox prefHeight="98.0" prefWidth="549.0">
-                                                         <children>
-                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                            <HBox prefHeight="100.0" prefWidth="200.0">
-                                                               <children>
-                                                                  <Label fx:id="team1match10" prefHeight="23.0" prefWidth="168.0" text="Team 1" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Label prefHeight="17.0" prefWidth="110.0" text="VS" textFill="#fa8f31">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Label fx:id="team2match10" prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                               </children>
-                                                            </HBox>
-                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                         </children>
-                                                      </VBox>
-                                                      <VBox prefHeight="98.0" prefWidth="324.0">
-                                                         <children>
-                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                            <HBox>
-                                                               <children>
-                                                                  <Label fx:id="timematch10" prefHeight="23.0" prefWidth="155.0" text="Match start at:" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <ChoiceBox fx:id="hoursMatch10" prefWidth="74.0" style="-fx-background-color: #282c34;" />
-                                                                  <Label text=":" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <ChoiceBox fx:id="minutesMatch10" prefWidth="74.0" style="-fx-background-color: #282c34;" />
-                                                               </children>
-                                                            </HBox>
-                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                         </children>
-                                                      </VBox>
-                                                   </children>
-                                                </HBox>
-                                                <HBox fx:id="match11" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
-                                                   <children>
-                                                      <Pane prefHeight="98.0" prefWidth="50.0" />
-                                                      <VBox prefHeight="98.0" prefWidth="549.0">
-                                                         <children>
-                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                            <HBox prefHeight="100.0" prefWidth="200.0">
-                                                               <children>
-                                                                  <Label fx:id="team1match11" prefHeight="23.0" prefWidth="168.0" text="Team 1" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Label prefHeight="17.0" prefWidth="110.0" text="VS" textFill="#fa8f31">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Label fx:id="team2match11" prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                               </children>
-                                                            </HBox>
-                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                         </children>
-                                                      </VBox>
-                                                      <VBox prefHeight="98.0" prefWidth="324.0">
-                                                         <children>
-                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                            <HBox>
-                                                               <children>
-                                                                  <Label fx:id="timematch11" prefHeight="23.0" prefWidth="155.0" text="Match start at:" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <ChoiceBox fx:id="hoursMatch11" prefWidth="74.0" style="-fx-background-color: #282c34;" />
-                                                                  <Label text=":" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <ChoiceBox fx:id="minutesMatch11" prefWidth="74.0" style="-fx-background-color: #282c34;" />
-                                                               </children>
-                                                            </HBox>
-                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                         </children>
-                                                      </VBox>
-                                                   </children>
-                                                </HBox>
-                                                <HBox fx:id="match12" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
-                                                   <children>
-                                                      <Pane prefHeight="98.0" prefWidth="50.0" />
-                                                      <VBox prefHeight="98.0" prefWidth="549.0">
-                                                         <children>
-                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                            <HBox prefHeight="100.0" prefWidth="200.0">
-                                                               <children>
-                                                                  <Label fx:id="team1match12" prefHeight="23.0" prefWidth="168.0" text="Team 1" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Label prefHeight="17.0" prefWidth="110.0" text="VS" textFill="#fa8f31">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Label fx:id="team2match12" prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                               </children>
-                                                            </HBox>
-                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                         </children>
-                                                      </VBox>
-                                                      <VBox prefHeight="98.0" prefWidth="324.0">
-                                                         <children>
-                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                            <HBox>
-                                                               <children>
-                                                                  <Label fx:id="timematch12" prefHeight="23.0" prefWidth="155.0" text="Match start at:" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <ChoiceBox fx:id="hoursMatch12" prefWidth="74.0" style="-fx-background-color: #282c34;" />
-                                                                  <Label text=":" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <ChoiceBox fx:id="minutesMatch12" prefWidth="74.0" style="-fx-background-color: #282c34;" />
-                                                               </children>
-                                                            </HBox>
-                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                         </children>
-                                                      </VBox>
-                                                   </children>
-                                                </HBox>
-                                                <HBox fx:id="match13" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
-                                                   <children>
-                                                      <Pane prefHeight="98.0" prefWidth="50.0" />
-                                                      <VBox prefHeight="98.0" prefWidth="549.0">
-                                                         <children>
-                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                            <HBox prefHeight="100.0" prefWidth="200.0">
-                                                               <children>
-                                                                  <Label fx:id="team1match13" prefHeight="23.0" prefWidth="168.0" text="Team 1" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Label prefHeight="17.0" prefWidth="110.0" text="VS" textFill="#fa8f31">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Label fx:id="team2match13" prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                               </children>
-                                                            </HBox>
-                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                         </children>
-                                                      </VBox>
-                                                      <VBox prefHeight="98.0" prefWidth="324.0">
-                                                         <children>
-                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                            <HBox>
-                                                               <children>
-                                                                  <Label fx:id="timematch13" prefHeight="23.0" prefWidth="155.0" text="Match start at:" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <ChoiceBox fx:id="hoursMatch13" prefWidth="74.0" style="-fx-background-color: #282c34;" />
-                                                                  <Label text=":" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <ChoiceBox fx:id="minutesMatch13" prefWidth="74.0" style="-fx-background-color: #282c34;" />
-                                                               </children>
-                                                            </HBox>
-                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                         </children>
-                                                      </VBox>
-                                                   </children>
-                                                </HBox>
-                                                <HBox fx:id="match14" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
-                                                   <children>
-                                                      <Pane prefHeight="98.0" prefWidth="50.0" />
-                                                      <VBox prefHeight="98.0" prefWidth="549.0">
-                                                         <children>
-                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                            <HBox prefHeight="100.0" prefWidth="200.0">
-                                                               <children>
-                                                                  <Label fx:id="team1match14" prefHeight="23.0" prefWidth="168.0" text="Team 1" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Label prefHeight="17.0" prefWidth="110.0" text="VS" textFill="#fa8f31">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Label fx:id="team2match14" prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                               </children>
-                                                            </HBox>
-                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                         </children>
-                                                      </VBox>
-                                                      <VBox prefHeight="98.0" prefWidth="324.0">
-                                                         <children>
-                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                            <HBox>
-                                                               <children>
-                                                                  <Label fx:id="timematch14" prefHeight="23.0" prefWidth="155.0" text="Match start at:" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <ChoiceBox fx:id="hoursMatch14" prefWidth="74.0" style="-fx-background-color: #282c34;" />
-                                                                  <Label text=":" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="20.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <ChoiceBox fx:id="minutesMatch14" prefWidth="74.0" style="-fx-background-color: #282c34;" />
-                                                               </children>
-                                                            </HBox>
-                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                         </children>
-                                                      </VBox>
-                                                   </children>
-                                                </HBox>
+                                                                <HBox fx:id="match1" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
+                                                                   <children>
+                                                                      <Pane prefHeight="98.0" prefWidth="50.0" />
+                                                                      <VBox prefHeight="98.0" prefWidth="549.0">
+                                                                         <children>
+                                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                            <HBox prefHeight="100.0" prefWidth="200.0">
+                                                                               <children>
+                                                                                  <Label fx:id="team1match1" prefHeight="23.0" prefWidth="168.0" text="Team 1" textFill="WHITE">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                                  <Label prefHeight="17.0" prefWidth="110.0" text="VS" textFill="#fa8f31">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                                  <Label fx:id="team2match1" prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                               </children>
+                                                                            </HBox>
+                                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                         </children>
+                                                                      </VBox>
+                                                                      <VBox prefHeight="98.0" prefWidth="324.0">
+                                                                         <children>
+                                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                            <HBox>
+                                                                               <children>
+                                                                                  <Label fx:id="timematch1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="23.0" prefWidth="155.0" text="Match start at:" textFill="WHITE">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                                  <ComboBox fx:id="hoursMatch1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="90.0" style="-fx-background-color: #282c34;" styleClass="jfx-combo-box" stylesheets="@../css/style.css" />
+                                                                                  <Label text=":" textFill="WHITE">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                                  <ComboBox fx:id="minutesMatch1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="90.0" style="-fx-background-color: #282c34;" styleClass="jfx-combo-box" stylesheets="@../css/style.css" />
+                                                                               </children>
+                                                                            </HBox>
+                                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                         </children>
+                                                                      </VBox>
+                                                                   </children>
+                                                                </HBox>
+                                                                <HBox fx:id="match2" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
+                                                                   <children>
+                                                                      <Pane prefHeight="98.0" prefWidth="50.0" />
+                                                                      <VBox prefHeight="98.0" prefWidth="549.0">
+                                                                         <children>
+                                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                            <HBox prefHeight="100.0" prefWidth="200.0">
+                                                                               <children>
+                                                                                  <Label fx:id="team1match2" prefHeight="23.0" prefWidth="168.0" text="Team 1" textFill="WHITE">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                                  <Label prefHeight="17.0" prefWidth="110.0" text="VS" textFill="#fa8f31">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                                  <Label fx:id="team2match2" prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                               </children>
+                                                                            </HBox>
+                                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                         </children>
+                                                                      </VBox>
+                                                                      <VBox prefHeight="98.0" prefWidth="324.0">
+                                                                         <children>
+                                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                            <HBox>
+                                                                               <children>
+                                                                                  <Label fx:id="timematch2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="23.0" prefWidth="155.0" text="Match start at:" textFill="WHITE">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                                  <ComboBox fx:id="hoursMatch2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="90.0" style="-fx-background-color: #282c34;" styleClass="jfx-combo-box" stylesheets="@../css/style.css" />
+                                                                                  <Label text=":" textFill="WHITE">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                                  <ComboBox fx:id="minutesMatch2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="90.0" style="-fx-background-color: #282c34;" styleClass="jfx-combo-box" stylesheets="@../css/style.css" />
+                                                                               </children>
+                                                                            </HBox>
+                                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                         </children>
+                                                                      </VBox>
+                                                                   </children>
+                                                                </HBox>
+                                                                <HBox fx:id="match3" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
+                                                                   <children>
+                                                                      <Pane prefHeight="98.0" prefWidth="50.0" />
+                                                                      <VBox prefHeight="98.0" prefWidth="549.0">
+                                                                         <children>
+                                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                            <HBox prefHeight="100.0" prefWidth="200.0">
+                                                                               <children>
+                                                                                  <Label fx:id="team1match3" prefHeight="23.0" prefWidth="168.0" text="Team 1" textFill="WHITE">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                                  <Label prefHeight="17.0" prefWidth="110.0" text="VS" textFill="#fa8f31">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                                  <Label fx:id="team2match3" prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                               </children>
+                                                                            </HBox>
+                                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                         </children>
+                                                                      </VBox>
+                                                                      <VBox prefHeight="98.0" prefWidth="324.0">
+                                                                         <children>
+                                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                            <HBox>
+                                                                               <children>
+                                                                                  <Label fx:id="timematch3" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="23.0" prefWidth="155.0" text="Match start at:" textFill="WHITE">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                                  <ComboBox fx:id="hoursMatch3" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="90.0" style="-fx-background-color: #282c34;" styleClass="jfx-combo-box" stylesheets="@../css/style.css" />
+                                                                                  <Label text=":" textFill="WHITE">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                                  <ComboBox fx:id="minutesMatch3" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="90.0" style="-fx-background-color: #282c34;" styleClass="jfx-combo-box" stylesheets="@../css/style.css" />
+                                                                               </children>
+                                                                            </HBox>
+                                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                         </children>
+                                                                      </VBox>
+                                                                   </children>
+                                                                </HBox>
+                                                                <HBox fx:id="match4" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
+                                                                   <children>
+                                                                      <Pane prefHeight="98.0" prefWidth="50.0" />
+                                                                      <VBox prefHeight="98.0" prefWidth="549.0">
+                                                                         <children>
+                                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                            <HBox prefHeight="100.0" prefWidth="200.0">
+                                                                               <children>
+                                                                                  <Label fx:id="team1match4" prefHeight="23.0" prefWidth="168.0" text="Team 1" textFill="WHITE">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                                  <Label prefHeight="17.0" prefWidth="110.0" text="VS" textFill="#fa8f31">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                                  <Label fx:id="team2match4" prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                               </children>
+                                                                            </HBox>
+                                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                         </children>
+                                                                      </VBox>
+                                                                      <VBox prefHeight="98.0" prefWidth="324.0">
+                                                                         <children>
+                                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                            <HBox>
+                                                                               <children>
+                                                                                  <Label fx:id="timematch4" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="23.0" prefWidth="155.0" text="Match start at:" textFill="WHITE">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                                  <ComboBox fx:id="hoursMatch4" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="90.0" style="-fx-background-color: #282c34;" styleClass="jfx-combo-box" stylesheets="@../css/style.css" />
+                                                                                  <Label text=":" textFill="WHITE">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                                  <ComboBox fx:id="minutesMatch4" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="90.0" style="-fx-background-color: #282c34;" styleClass="jfx-combo-box" stylesheets="@../css/style.css" />
+                                                                               </children>
+                                                                            </HBox>
+                                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                         </children>
+                                                                      </VBox>
+                                                                   </children>
+                                                                </HBox>
+                                                                <HBox fx:id="match5" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
+                                                                   <children>
+                                                                      <Pane prefHeight="98.0" prefWidth="50.0" />
+                                                                      <VBox prefHeight="98.0" prefWidth="549.0">
+                                                                         <children>
+                                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                            <HBox prefHeight="100.0" prefWidth="200.0">
+                                                                               <children>
+                                                                                  <Label fx:id="team1match5" prefHeight="23.0" prefWidth="168.0" text="Team 1" textFill="WHITE">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                                  <Label prefHeight="17.0" prefWidth="110.0" text="VS" textFill="#fa8f31">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                                  <Label fx:id="team2match5" prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                               </children>
+                                                                            </HBox>
+                                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                         </children>
+                                                                      </VBox>
+                                                                      <VBox prefHeight="98.0" prefWidth="324.0">
+                                                                         <children>
+                                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                            <HBox>
+                                                                               <children>
+                                                                                  <Label fx:id="timematch5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="23.0" prefWidth="155.0" text="Match start at:" textFill="WHITE">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                                  <ComboBox fx:id="hoursMatch5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="90.0" style="-fx-background-color: #282c34;" styleClass="jfx-combo-box" stylesheets="@../css/style.css" />
+                                                                                  <Label text=":" textFill="WHITE">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                                  <ComboBox fx:id="minutesMatch5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="90.0" style="-fx-background-color: #282c34;" styleClass="jfx-combo-box" stylesheets="@../css/style.css" />
+                                                                               </children>
+                                                                            </HBox>
+                                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                         </children>
+                                                                      </VBox>
+                                                                   </children>
+                                                                </HBox>
+                                                                <HBox fx:id="match6" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
+                                                                   <children>
+                                                                      <Pane prefHeight="98.0" prefWidth="50.0" />
+                                                                      <VBox prefHeight="98.0" prefWidth="549.0">
+                                                                         <children>
+                                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                            <HBox prefHeight="100.0" prefWidth="200.0">
+                                                                               <children>
+                                                                                  <Label fx:id="team1match6" prefHeight="23.0" prefWidth="168.0" text="Team 1" textFill="WHITE">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                                  <Label prefHeight="17.0" prefWidth="110.0" text="VS" textFill="#fa8f31">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                                  <Label fx:id="team2match6" prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                               </children>
+                                                                            </HBox>
+                                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                         </children>
+                                                                      </VBox>
+                                                                      <VBox prefHeight="98.0" prefWidth="324.0">
+                                                                         <children>
+                                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                            <HBox>
+                                                                               <children>
+                                                                                  <Label fx:id="timematch6" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="23.0" prefWidth="155.0" text="Match start at:" textFill="WHITE">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                                  <ComboBox fx:id="hoursMatch6" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="90.0" style="-fx-background-color: #282c34;" styleClass="jfx-combo-box" stylesheets="@../css/style.css" />
+                                                                                  <Label text=":" textFill="WHITE">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                                  <ComboBox fx:id="minutesMatch6" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="90.0" style="-fx-background-color: #282c34;" styleClass="jfx-combo-box" stylesheets="@../css/style.css" />
+                                                                               </children>
+                                                                            </HBox>
+                                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                         </children>
+                                                                      </VBox>
+                                                                   </children>
+                                                                </HBox>
+                                                                <HBox fx:id="match7" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
+                                                                   <children>
+                                                                      <Pane prefHeight="98.0" prefWidth="50.0" />
+                                                                      <VBox prefHeight="98.0" prefWidth="549.0">
+                                                                         <children>
+                                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                            <HBox prefHeight="100.0" prefWidth="200.0">
+                                                                               <children>
+                                                                                  <Label fx:id="team1match7" prefHeight="23.0" prefWidth="168.0" text="Team 1" textFill="WHITE">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                                  <Label prefHeight="17.0" prefWidth="110.0" text="VS" textFill="#fa8f31">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                                  <Label fx:id="team2match7" prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                               </children>
+                                                                            </HBox>
+                                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                         </children>
+                                                                      </VBox>
+                                                                      <VBox prefHeight="98.0" prefWidth="324.0">
+                                                                         <children>
+                                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                            <HBox>
+                                                                               <children>
+                                                                                  <Label fx:id="timematch7" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="23.0" prefWidth="155.0" text="Match start at:" textFill="WHITE">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                                  <ComboBox fx:id="hoursMatch7" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="90.0" style="-fx-background-color: #282c34;" styleClass="jfx-combo-box" stylesheets="@../css/style.css" />
+                                                                                  <Label text=":" textFill="WHITE">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                                  <ComboBox fx:id="minutesMatch7" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="90.0" style="-fx-background-color: #282c34;" styleClass="jfx-combo-box" stylesheets="@../css/style.css" />
+                                                                               </children>
+                                                                            </HBox>
+                                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                         </children>
+                                                                      </VBox>
+                                                                   </children>
+                                                                </HBox>
+                                                                <HBox fx:id="match8" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
+                                                                   <children>
+                                                                      <Pane prefHeight="98.0" prefWidth="50.0" />
+                                                                      <VBox prefHeight="98.0" prefWidth="549.0">
+                                                                         <children>
+                                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                            <HBox prefHeight="100.0" prefWidth="200.0">
+                                                                               <children>
+                                                                                  <Label fx:id="team1match8" prefHeight="23.0" prefWidth="168.0" text="Team 1" textFill="WHITE">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                                  <Label prefHeight="17.0" prefWidth="110.0" text="VS" textFill="#fa8f31">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                                  <Label fx:id="team2match8" prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                               </children>
+                                                                            </HBox>
+                                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                         </children>
+                                                                      </VBox>
+                                                                      <VBox prefHeight="98.0" prefWidth="324.0">
+                                                                         <children>
+                                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                            <HBox>
+                                                                               <children>
+                                                                                  <Label fx:id="timematch8" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="23.0" prefWidth="155.0" text="Match start at:" textFill="WHITE">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                                  <ComboBox fx:id="hoursMatch8" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="90.0" style="-fx-background-color: #282c34;" styleClass="jfx-combo-box" stylesheets="@../css/style.css" />
+                                                                                  <Label text=":" textFill="WHITE">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                                  <ComboBox fx:id="minutesMatch8" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="90.0" style="-fx-background-color: #282c34;" styleClass="jfx-combo-box" stylesheets="@../css/style.css" />
+                                                                               </children>
+                                                                            </HBox>
+                                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                         </children>
+                                                                      </VBox>
+                                                                   </children>
+                                                                </HBox>
+                                                                <HBox fx:id="match9" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
+                                                                   <children>
+                                                                      <Pane prefHeight="98.0" prefWidth="50.0" />
+                                                                      <VBox prefHeight="98.0" prefWidth="549.0">
+                                                                         <children>
+                                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                            <HBox prefHeight="100.0" prefWidth="200.0">
+                                                                               <children>
+                                                                                  <Label fx:id="team1match9" prefHeight="23.0" prefWidth="168.0" text="Team 1" textFill="WHITE">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                                  <Label prefHeight="17.0" prefWidth="110.0" text="VS" textFill="#fa8f31">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                                  <Label fx:id="team2match9" prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                               </children>
+                                                                            </HBox>
+                                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                         </children>
+                                                                      </VBox>
+                                                                      <VBox prefHeight="98.0" prefWidth="324.0">
+                                                                         <children>
+                                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                            <HBox>
+                                                                               <children>
+                                                                                  <Label fx:id="timematch9" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="23.0" prefWidth="155.0" text="Match start at:" textFill="WHITE">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                                  <ComboBox fx:id="hoursMatch9" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="90.0" style="-fx-background-color: #282c34;" styleClass="jfx-combo-box" stylesheets="@../css/style.css" />
+                                                                                  <Label text=":" textFill="WHITE">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                                  <ComboBox fx:id="minutesMatch9" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="90.0" style="-fx-background-color: #282c34;" styleClass="jfx-combo-box" stylesheets="@../css/style.css" />
+                                                                               </children>
+                                                                            </HBox>
+                                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                         </children>
+                                                                      </VBox>
+                                                                   </children>
+                                                                </HBox>
+                                                                <HBox fx:id="match10" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
+                                                                   <children>
+                                                                      <Pane prefHeight="98.0" prefWidth="50.0" />
+                                                                      <VBox prefHeight="98.0" prefWidth="549.0">
+                                                                         <children>
+                                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                            <HBox prefHeight="100.0" prefWidth="200.0">
+                                                                               <children>
+                                                                                  <Label fx:id="team1match10" prefHeight="23.0" prefWidth="168.0" text="Team 1" textFill="WHITE">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                                  <Label prefHeight="17.0" prefWidth="110.0" text="VS" textFill="#fa8f31">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                                  <Label fx:id="team2match10" prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                               </children>
+                                                                            </HBox>
+                                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                         </children>
+                                                                      </VBox>
+                                                                      <VBox prefHeight="98.0" prefWidth="324.0">
+                                                                         <children>
+                                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                            <HBox>
+                                                                               <children>
+                                                                                  <Label fx:id="timematch10" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="23.0" prefWidth="155.0" text="Match start at:" textFill="WHITE">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                                  <ComboBox fx:id="hoursMatch10" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="90.0" style="-fx-background-color: #282c34;" styleClass="jfx-combo-box" stylesheets="@../css/style.css" />
+                                                                                  <Label text=":" textFill="WHITE">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                                  <ComboBox fx:id="minutesMatch10" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="90.0" style="-fx-background-color: #282c34;" styleClass="jfx-combo-box" stylesheets="@../css/style.css" />
+                                                                               </children>
+                                                                            </HBox>
+                                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                         </children>
+                                                                      </VBox>
+                                                                   </children>
+                                                                </HBox>
+                                                                <HBox fx:id="match11" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
+                                                                   <children>
+                                                                      <Pane prefHeight="98.0" prefWidth="50.0" />
+                                                                      <VBox prefHeight="98.0" prefWidth="549.0">
+                                                                         <children>
+                                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                            <HBox prefHeight="100.0" prefWidth="200.0">
+                                                                               <children>
+                                                                                  <Label fx:id="team1match11" prefHeight="23.0" prefWidth="168.0" text="Team 1" textFill="WHITE">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                                  <Label prefHeight="17.0" prefWidth="110.0" text="VS" textFill="#fa8f31">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                                  <Label fx:id="team2match11" prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                               </children>
+                                                                            </HBox>
+                                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                         </children>
+                                                                      </VBox>
+                                                                      <VBox prefHeight="98.0" prefWidth="324.0">
+                                                                         <children>
+                                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                            <HBox>
+                                                                               <children>
+                                                                                  <Label fx:id="timematch11" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="23.0" prefWidth="155.0" text="Match start at:" textFill="WHITE">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                                  <ComboBox fx:id="hoursMatch11" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="90.0" style="-fx-background-color: #282c34;" styleClass="jfx-combo-box" stylesheets="@../css/style.css" />
+                                                                                  <Label text=":" textFill="WHITE">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                                  <ComboBox fx:id="minutesMatch11" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="90.0" style="-fx-background-color: #282c34;" styleClass="jfx-combo-box" stylesheets="@../css/style.css" />
+                                                                               </children>
+                                                                            </HBox>
+                                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                         </children>
+                                                                      </VBox>
+                                                                   </children>
+                                                                </HBox>
+                                                                <HBox fx:id="match12" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
+                                                                   <children>
+                                                                      <Pane prefHeight="98.0" prefWidth="50.0" />
+                                                                      <VBox prefHeight="98.0" prefWidth="549.0">
+                                                                         <children>
+                                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                            <HBox prefHeight="100.0" prefWidth="200.0">
+                                                                               <children>
+                                                                                  <Label fx:id="team1match12" prefHeight="23.0" prefWidth="168.0" text="Team 1" textFill="WHITE">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                                  <Label prefHeight="17.0" prefWidth="110.0" text="VS" textFill="#fa8f31">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                                  <Label fx:id="team2match12" prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                               </children>
+                                                                            </HBox>
+                                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                         </children>
+                                                                      </VBox>
+                                                                      <VBox prefHeight="98.0" prefWidth="324.0">
+                                                                         <children>
+                                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                            <HBox>
+                                                                               <children>
+                                                                                  <Label fx:id="timematch12" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="23.0" prefWidth="155.0" text="Match start at:" textFill="WHITE">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                                  <ComboBox fx:id="hoursMatch12" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="90.0" style="-fx-background-color: #282c34;" styleClass="jfx-combo-box" stylesheets="@../css/style.css" />
+                                                                                  <Label text=":" textFill="WHITE">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                                  <ComboBox fx:id="minutesMatch12" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="90.0" style="-fx-background-color: #282c34;" styleClass="jfx-combo-box" stylesheets="@../css/style.css" />
+                                                                               </children>
+                                                                            </HBox>
+                                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                         </children>
+                                                                      </VBox>
+                                                                   </children>
+                                                                </HBox>
+                                                                <HBox fx:id="match13" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
+                                                                   <children>
+                                                                      <Pane prefHeight="98.0" prefWidth="50.0" />
+                                                                      <VBox prefHeight="98.0" prefWidth="549.0">
+                                                                         <children>
+                                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                            <HBox prefHeight="100.0" prefWidth="200.0">
+                                                                               <children>
+                                                                                  <Label fx:id="team1match13" prefHeight="23.0" prefWidth="168.0" text="Team 1" textFill="WHITE">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                                  <Label prefHeight="17.0" prefWidth="110.0" text="VS" textFill="#fa8f31">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                                  <Label fx:id="team2match13" prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                               </children>
+                                                                            </HBox>
+                                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                         </children>
+                                                                      </VBox>
+                                                                      <VBox prefHeight="98.0" prefWidth="324.0">
+                                                                         <children>
+                                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                            <HBox>
+                                                                               <children>
+                                                                                  <Label fx:id="timematch13" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="23.0" prefWidth="155.0" text="Match start at:" textFill="WHITE">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                                  <ComboBox fx:id="hoursMatch13" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="90.0" style="-fx-background-color: #282c34;" styleClass="jfx-combo-box" stylesheets="@../css/style.css" />
+                                                                                  <Label text=":" textFill="WHITE">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                                  <ComboBox fx:id="minutesMatch13" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="90.0" style="-fx-background-color: #282c34;" styleClass="jfx-combo-box" stylesheets="@../css/style.css" />
+                                                                               </children>
+                                                                            </HBox>
+                                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                         </children>
+                                                                      </VBox>
+                                                                   </children>
+                                                                </HBox>
+                                                                <HBox fx:id="match14" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
+                                                                   <children>
+                                                                      <Pane prefHeight="98.0" prefWidth="50.0" />
+                                                                      <VBox prefHeight="98.0" prefWidth="549.0">
+                                                                         <children>
+                                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                            <HBox prefHeight="100.0" prefWidth="200.0">
+                                                                               <children>
+                                                                                  <Label fx:id="team1match14" prefHeight="23.0" prefWidth="168.0" text="Team 1" textFill="WHITE">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                                  <Label prefHeight="17.0" prefWidth="110.0" text="VS" textFill="#fa8f31">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                                  <Label fx:id="team2match14" prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                               </children>
+                                                                            </HBox>
+                                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                         </children>
+                                                                      </VBox>
+                                                                      <VBox prefHeight="98.0" prefWidth="324.0">
+                                                                         <children>
+                                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                            <HBox>
+                                                                               <children>
+                                                                                  <Label fx:id="timematch14" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="23.0" prefWidth="155.0" text="Match start at:" textFill="WHITE">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                                  <ComboBox fx:id="hoursMatch14" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="90.0" style="-fx-background-color: #282c34;" styleClass="jfx-combo-box" stylesheets="@../css/style.css" />
+                                                                                  <Label text=":" textFill="WHITE">
+                                                                                     <font>
+                                                                                        <Font name="Arial" size="20.0" />
+                                                                                     </font>
+                                                                                  </Label>
+                                                                                  <ComboBox fx:id="minutesMatch14" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="90.0" style="-fx-background-color: #282c34;" styleClass="jfx-combo-box" stylesheets="@../css/style.css" />
+                                                                               </children>
+                                                                            </HBox>
+                                                                            <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                         </children>
+                                                                      </VBox>
+                                                                   </children>
+                                                                </HBox>
+                                                                            </children>
+                                                                        </VBox>
+                                                                        <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                    </children>
+                                                                </HBox>
+                                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                                       <children>
+                                                          <Pane prefHeight="100.0" prefWidth="1026.0" />
+                                                          <VBox prefHeight="100.0" prefWidth="146.0">
+                                                             <children>
+                                                                <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                                <Button mnemonicParsing="false" onAction="#setTime" prefHeight="26.0" prefWidth="123.0" styleClass="jfx-button" stylesheets="@../css/style.css" text="Set time" textFill="WHITE">
+                                                                   <font>
+                                                                      <Font name="Arial Bold" size="18.0" />
+                                                                   </font>
+                                                   <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                   </cursor>
+                                                   <effect>
+                                                      <DropShadow height="10.0" radius="4.5" width="10.0" />
+                                                   </effect>
+                                                                </Button>
+                                                                <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                             </children>
+                                                          </VBox>
+                                                       </children>
+                                                    </HBox>
                                                             </children>
                                                         </VBox>
-                                                        <Pane prefHeight="200.0" prefWidth="200.0" />
                                                     </children>
-                                                </HBox>
-                                    <HBox prefHeight="100.0" prefWidth="200.0">
-                                       <children>
-                                          <Pane prefHeight="100.0" prefWidth="1026.0" />
-                                          <VBox prefHeight="100.0" prefWidth="146.0">
-                                             <children>
-                                                <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                <Button mnemonicParsing="false" onAction="#setTime" prefHeight="26.0" prefWidth="123.0" style="-fx-background-color: #fa8f31;" text="Set time" textFill="WHITE">
-                                                   <font>
-                                                      <Font name="Arial Bold" size="18.0" />
-                                                   </font>
-                                                </Button>
-                                                <Pane prefHeight="200.0" prefWidth="200.0" />
-                                             </children>
-                                          </VBox>
-                                       </children>
-                                    </HBox>
-                                            </children>
-                                        </VBox>
+                                                </VBox>
+                                            </content>
+                                        </ScrollPane>
+                                  <Pane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: #13161d;" HBox.hgrow="ALWAYS" />
                                     </children>
-                                </VBox>
-                            </content>
-                        </ScrollPane>
-                  <Pane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: #13161d;" HBox.hgrow="ALWAYS" />
-                    </children>
-                </HBox>
-            </children>
-        </VBox>
-    </center>
-    <bottom>
-        <VBox prefHeight="0.0" prefWidth="1200.0" style="-fx-background-color: #282c34;" BorderPane.alignment="CENTER">
-            <padding>
-                <Insets top="70.0" />
-            </padding>
-        </VBox>
-    </bottom>
-</BorderPane>
+                                </HBox>
+                            </children>
+                        </VBox>
+                    </center>
+                    <bottom>
+                        <VBox prefHeight="0.0" prefWidth="1200.0" style="-fx-background-color: #282c34;" BorderPane.alignment="CENTER">
+                            <padding>
+                                <Insets top="70.0" />
+                            </padding>
+                        </VBox>
+                    </bottom>
+                </BorderPane>

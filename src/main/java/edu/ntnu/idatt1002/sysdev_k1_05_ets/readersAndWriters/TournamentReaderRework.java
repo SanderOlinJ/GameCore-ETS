@@ -61,26 +61,25 @@ public class TournamentReaderRework {
         String game = tournamentInfo.get(6);
         String platform = tournamentInfo.get(7);
         String tournamentType = tournamentInfo.get(8);
-        String bestOf =tournamentInfo.get(9);
-        String numberOfTeams = tournamentInfo.get(10);
+        String numberOfTeams = tournamentInfo.get(9);
 
-        String prizePoolLine = tournamentInfo.get(11);
+        String prizePoolLine = tournamentInfo.get(10);
         String[] prizePoolValues = prizePoolLine.split(COMMA_DELIMITER);
         String prizePool = prizePoolValues[0];
         String prizePoolCurrency = prizePoolValues[1];
 
-        String entranceFeeLine = tournamentInfo.get(12);
+        String entranceFeeLine = tournamentInfo.get(11);
         String[] entranceFeeValues = entranceFeeLine.split(COMMA_DELIMITER);
         String entranceFee = entranceFeeValues[0];
         String entranceFeeCurrency = entranceFeeValues[1];
 
         NewTournament tournament = new NewTournament(status, tournamentName,tournamentHost,
-                date,time,description,game,platform,tournamentType,bestOf,numberOfTeams,
+                date,time,description,game,platform,tournamentType,numberOfTeams,
                 prizePool, prizePoolCurrency, entranceFee, entranceFeeCurrency);
 
-        if (tournamentInfo.size() > 13) {
+        if (tournamentInfo.size() > 12) {
             ArrayList<Team> teams = new ArrayList<>();
-            String line = tournamentInfo.get(13);
+            String line = tournamentInfo.get(12);
             String[] values = line.split(COMMA_DELIMITER);
             for (String value : values) {
                 Team team = TeamReader.findAndReturnTeamUsingTeamName(value);
@@ -88,7 +87,7 @@ public class TournamentReaderRework {
             }
             tournament.setTeams(teams);
 
-            if (tournamentInfo.size() > 14){
+            if (tournamentInfo.size() > 13){
                 ArrayList<Match> matches = MatchReader.readMatchesFromArrayList(tournamentInfo);
                 tournament.setMatches(matches);
             }

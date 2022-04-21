@@ -16,7 +16,6 @@ public class NewTournament {
     private String game;
     private String platform;
     private String tournamentType;
-    private String bestOf;
     private String numberOfTeams;
     private String prizePool;
     private String prizePoolCurrency;
@@ -27,7 +26,7 @@ public class NewTournament {
 
     public NewTournament(String status, String tournamentName, String tournamentHost, LocalDate date,
                          LocalTime time, String description, String game, String platform,
-                         String tournamentType, String bestOf, String numberOfTeams,
+                         String tournamentType, String numberOfTeams,
                          String prizePool, String prizePoolCurrency,
                          String entranceFee, String entranceFeeCurrency) {
         if (status == null || status.isEmpty()){
@@ -50,9 +49,6 @@ public class NewTournament {
         }
         if (tournamentType == null || tournamentType.isEmpty()){
             throw new IllegalArgumentException("Tournament type cannot be empty!");
-        }
-        if (bestOf == null || bestOf.isEmpty()){
-            throw new IllegalArgumentException("Best of cannot be empty!");
         }
         if (numberOfTeams == null || numberOfTeams.isEmpty()){
             throw new IllegalArgumentException("Number of teams cannot be empty!");
@@ -82,7 +78,6 @@ public class NewTournament {
         this.game = game;
         this.platform = platform;
         this.tournamentType = tournamentType;
-        this.bestOf = bestOf;
         this.numberOfTeams = numberOfTeams;
         this.prizePool = prizePool;
         this.prizePoolCurrency = prizePoolCurrency;
@@ -94,7 +89,7 @@ public class NewTournament {
 
     public NewTournament(String status, String tournamentName, String tournamentHost, LocalDate date,
                          LocalTime time, String description, String game, String platform,
-                         String tournamentType, String bestOf, String numberOfTeams, String prizePool,
+                         String tournamentType, String numberOfTeams, String prizePool,
                          String prizePoolCurrency, String entranceFee, String entranceFeeCurrency,
                          ArrayList<Team> teams) {
         if (status == null || status.isEmpty()){
@@ -117,9 +112,6 @@ public class NewTournament {
         }
         if (tournamentType == null || tournamentType.isEmpty()){
             throw new IllegalArgumentException("Tournament type cannot be empty!");
-        }
-        if (bestOf == null || bestOf.isEmpty()){
-            throw new IllegalArgumentException("Best of cannot be empty!");
         }
         if (numberOfTeams == null || numberOfTeams.isEmpty()){
             throw new IllegalArgumentException("Number of teams cannot be empty!");
@@ -154,7 +146,6 @@ public class NewTournament {
         this.game = game;
         this.platform = platform;
         this.tournamentType = tournamentType;
-        this.bestOf = bestOf;
         this.numberOfTeams = numberOfTeams;
         this.prizePool = prizePool;
         this.prizePoolCurrency = prizePoolCurrency;
@@ -273,14 +264,6 @@ public class NewTournament {
         return tournamentType;
     }
 
-    public String getBestOf() {
-        return bestOf;
-    }
-
-    public void setBestOf(String bestOf) {
-        this.bestOf = bestOf;
-    }
-
     public void setTournamentType(String tournamentType) {
         this.tournamentType = tournamentType;
     }
@@ -312,7 +295,6 @@ public class NewTournament {
                 ", game='" + game + '\'' +
                 ", platform='" + platform + '\'' +
                 ", tournamentType='" + tournamentType + '\'' +
-                ", bestOf='" + bestOf + '\'' +
                 ", numberOfTeams='" + numberOfTeams + '\'' +
                 ", teams=" + teams + "\n" +
                 ", matches=" + matches + "\n" +
