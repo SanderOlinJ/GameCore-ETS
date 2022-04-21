@@ -16,12 +16,12 @@ class NewTournamentTest {
 
     @Test
     void teamsIsNullInConstructor(){
-        ArrayList<Team> teams = new ArrayList<Team>();
+        ArrayList<Team> teams = new ArrayList<>();
         try{
             NewTournament newTournament = new NewTournament("Upcoming", "MadTournament",
                     "Admin",  LocalDate.parse("2022-04-25"),  LocalTime.parse("16:15:12"),
                     "A bloody insane tournament", "Fortnite", "PS5", "Brackets",
-                    "1", "4", "10000", "NOK", "0",
+                    "4", "10000", "NOK", "0",
                     "NOK", teams);
         }catch(IllegalArgumentException e){
             assertEquals("Teams cannot be empty!", e.getMessage());
@@ -36,13 +36,13 @@ class NewTournamentTest {
         Team team3 = new Team("Team3");
         Team team4 = new Team("Team4");
 
-        ArrayList<Team> teams = new ArrayList<Team>();
+        ArrayList<Team> teams = new ArrayList<>();
         teams.add(team1);
         teams.add(team2);
         teams.add(team3);
         teams.add(team4);
 
-        ArrayList<Match> matches = new ArrayList<Match>();
+        ArrayList<Match> matches = new ArrayList<>();
         Match match1 = new Match(team1, team2);
         Match match2 = new Match(team3, team4);
         matches.add(match1);
@@ -50,7 +50,7 @@ class NewTournamentTest {
         NewTournament newTournament = new NewTournament("Upcoming", "MadTournament",
                     "Admin",  LocalDate.parse("2022-04-25"),  LocalTime.parse("16:15:12"),
                     "A bloody insane tournament", "Fortnite", "PS5", "Brackets",
-                    "1", "4", "10000", "NOK", "0",
+                     "4", "10000", "NOK", "0",
                     "NOK", teams);
         for(Match match : matches){
             match.setFinished(false);
@@ -71,13 +71,13 @@ class NewTournamentTest {
         Team team3 = new Team("Team3");
         Team team4 = new Team("Team4");
 
-        ArrayList<Team> teams = new ArrayList<Team>();
+        ArrayList<Team> teams = new ArrayList<>();
         teams.add(team1);
         teams.add(team2);
         teams.add(team3);
         teams.add(team4);
 
-        ArrayList<Match> matches = new ArrayList<Match>();
+        ArrayList<Match> matches = new ArrayList<>();
         Match match1 = new Match(team1, team2);
         Match match2 = new Match(team3, team4);
         matches.add(match1);
@@ -85,7 +85,7 @@ class NewTournamentTest {
         NewTournament newTournament = new NewTournament("Upcoming", "MadTournament",
                 "Admin",  LocalDate.parse("2022-04-25"),  LocalTime.parse("16:15:12"),
                 "A bloody insane tournament", "Fortnite", "PS5", "Brackets",
-                "1", "4", "10000", "NOK", "0",
+                 "4", "10000", "NOK", "0",
                 "NOK", teams);
         for(Match match : matches){
             match.setFinished(false);
