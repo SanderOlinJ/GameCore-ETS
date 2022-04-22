@@ -1,9 +1,11 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets;
 
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.scenes.View;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.scenes.ViewSwitcher;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -11,8 +13,9 @@ import java.io.IOException;
 public class GameCoreETSApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(GameCoreETSApplication.class.getResource("scenes/start-screen.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
+        Scene scene = new Scene(new Pane());
+        ViewSwitcher.setScene(scene);
+        ViewSwitcher.switchTo(View.START);
         stage.setMinHeight(800);
         stage.setMinWidth(1200);
         stage.getIcons()

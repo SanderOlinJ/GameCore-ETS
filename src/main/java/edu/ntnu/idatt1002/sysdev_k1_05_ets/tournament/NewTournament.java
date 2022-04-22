@@ -7,6 +7,10 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * Class for describing a tournament
+ */
+
 public class NewTournament {
     private String status;
     private String tournamentName;
@@ -25,6 +29,12 @@ public class NewTournament {
     private ArrayList<Team> teams;
     private ArrayList<Match> matches;
 
+    /**
+     * The first constructor. I takes the tournament name and throws an exception if it is
+     * null/empty
+     * @param tournamentName the tournament name
+     */
+
     public NewTournament(String tournamentName){
         if (tournamentName == null || tournamentName.isEmpty()) {
             throw new IllegalArgumentException("Tournament name cannot be empty!");
@@ -34,6 +44,27 @@ public class NewTournament {
         this.matches = new ArrayList<>();
     }
 
+    /**
+     * The second constructor. It takes the status, the tournament name, the tournament host,
+     * the date, the time, the description, the game, the platform, the tournament type, the number of teams,
+     * the prize pool, the prize pool currency, the entrance fee and the entrance fee currency. It throws an
+     * exception if any of these are null/empty. It also throws an exception if the currency
+     * in any of the currency-parameters are not 'NOK', 'USD', 'EUR' or 'GBP'.
+     * @param status tournament status
+     * @param tournamentName tournament name
+     * @param tournamentHost tournament host
+     * @param date the date of the tournament
+     * @param time the time of the tournament
+     * @param description the description
+     * @param game the game to be played
+     * @param platform the platform to be played on
+     * @param tournamentType tournament type
+     * @param numberOfTeams number of teams
+     * @param prizePool the prize pool
+     * @param prizePoolCurrency prize pool currency
+     * @param entranceFee entrance fee
+     * @param entranceFeeCurrency entrance fee currency
+     */
     public NewTournament(String status, String tournamentName, String tournamentHost, LocalDate date,
                          LocalTime time, String description, String game, String platform,
                          String tournamentType, String numberOfTeams,
@@ -96,7 +127,30 @@ public class NewTournament {
         this.teams = new ArrayList<>();
         this.matches = new ArrayList<>();
     }
-
+    /**
+     * The second constructor. It takes the status, the tournament name, the tournament host,
+     * the date, the time, the description, the game, the platform, the tournament type, the number of teams,
+     * the prize pool, the prize pool currency, the entrance fee, the entrance fee currency and
+     * the teams. It throws an
+     * exception if any of these are null/empty. It also throws an exception if the currency
+     * in any of the currency-parameters are not 'NOK', 'USD', 'EUR' or 'GBP'. And also if the number of
+     * teams are not 4, 8 or 16.
+     * @param status tournament status
+     * @param tournamentName tournament name
+     * @param tournamentHost tournament host
+     * @param date the date of the tournament
+     * @param time the time of the tournament
+     * @param description the description
+     * @param game the game to be played
+     * @param platform the platform to be played on
+     * @param tournamentType tournament type
+     * @param numberOfTeams number of teams
+     * @param prizePool the prize pool
+     * @param prizePoolCurrency prize pool currency
+     * @param entranceFee entrance fee
+     * @param entranceFeeCurrency entrance fee currency
+     * @param teams the teams
+     */
     public NewTournament(String status, String tournamentName, String tournamentHost, LocalDate date,
                          LocalTime time, String description, String game, String platform,
                          String tournamentType, String numberOfTeams, String prizePool,
@@ -166,134 +220,267 @@ public class NewTournament {
         this.matches = new ArrayList<>();
     }
 
+    /**
+     * Returns the prizepool
+     * @return prize pool
+     */
     public String getPrizePool() {
         return prizePool;
     }
 
+    /**
+     * Sets prize pool
+     * @param prizePool
+     */
     public void setPrizePool(String prizePool) {
         this.prizePool = prizePool;
     }
 
+    /**
+     * Returns the prize pool currency
+     * @return prize pool currency
+     */
     public String getPrizePoolCurrency() {
         return prizePoolCurrency;
     }
 
+    /**
+     * Sets the prize pool curreny
+     * @param prizePoolCurrency
+     */
     public void setPrizePoolCurrency(String prizePoolCurrency) {
         this.prizePoolCurrency = prizePoolCurrency;
     }
 
+    /**
+     * Returns the entrance fee
+     * @return entrance fee
+     */
     public String getEntranceFee() {
         return entranceFee;
     }
 
+    /**
+     * Sets the entrance fee
+     * @param entranceFee
+     */
     public void setEntranceFee(String entranceFee) {
         this.entranceFee = entranceFee;
     }
 
+    /**
+     * Returns the entrance fee currency
+     * @return entrance fee currency
+     */
     public String getEntranceFeeCurrency() {
         return entranceFeeCurrency;
     }
 
+    /**
+     * Sets the entrance fee currency
+     * @param entranceFeeCurrency
+     */
     public void setEntranceFeeCurrency(String entranceFeeCurrency) {
         this.entranceFeeCurrency = entranceFeeCurrency;
     }
 
+    /**
+     * Returns the time of the tournament
+     * @return time
+     */
     public LocalTime getTime() {
         return time;
     }
 
+    /**
+     * Sets the time of the tournamnet
+     * @param time
+     */
     public void setTime(LocalTime time) {
         this.time = time;
     }
 
+    /**
+     * Returns the status of the tournament
+     * @return status
+     */
     public String getStatus() {
         return status;
     }
 
+    /**
+     * Sets the status if the tournament
+     * @param status
+     */
     public void setStatus(String status) {
         this.status = status;
     }
 
+    /**
+     * Returns the matches
+     * @return matches
+     */
     public ArrayList<Match> getMatches() {
         return matches;
     }
 
+    /**
+     * Sets the matches
+     * @param matches
+     */
     public void setMatches(ArrayList<Match> matches) {
         this.matches = matches;
     }
 
+    /**
+     * Returns the tournament name
+     * @return tournament name
+     */
     public String getTournamentName() {
         return tournamentName;
     }
 
+    /**
+     * Sets the tournament name
+     * @param tournamentName
+     */
     public void setTournamentName(String tournamentName) {
         this.tournamentName = tournamentName;
     }
 
+    /**
+     * Returns the tournament host
+     * @return tournament host
+     */
     public String getTournamentHost() {
         return tournamentHost;
     }
 
+    /**
+     * Sets the tournament host
+     * @param tournamentHost
+     */
     public void setTournamentHost(String tournamentHost) {
         this.tournamentHost = tournamentHost;
     }
 
+    /**
+     * Returns thedate of the tournament
+     * @return
+     */
     public LocalDate getDate() {
         return date;
     }
 
+    /**
+     * Sets the date of the tournament
+     * @param date
+     */
     public void setDate(LocalDate date) {
         this.date = date;
     }
 
+    /**
+     * Returns the description of the tournament
+     * @return description
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     * Sets the description of the tournament
+     * @param description
+     */
     public void setDescription(String description) {
         this.description = description;
     }
 
+    /**
+     * Returns the game to be played
+     * @return game to be played
+     */
     public String getGame() {
         return game;
     }
 
+    /**
+     * Sets the game to be played
+     * @param game
+     */
     public void setGame(String game) {
         this.game = game;
     }
 
+    /**
+     * Returns the platform to be played on
+     * @return
+     */
     public String getPlatform() {
         return platform;
     }
 
+    /**
+     * Sets the platform to be played on
+     * @param platform
+     */
     public void setPlatform(String platform) {
         this.platform = platform;
     }
 
+    /**
+     * Returns the tournament type
+     * @return tournament type
+     */
     public String getTournamentType() {
         return tournamentType;
     }
 
+    /**
+     * Sets the tournament type
+     * @param tournamentType
+     */
     public void setTournamentType(String tournamentType) {
         this.tournamentType = tournamentType;
     }
 
+    /**
+     * Returns the number of teams
+     * @return number of teams
+     */
     public String getNumberOfTeams() {
         return numberOfTeams;
     }
 
+    /**
+     * Sets the number of teams
+     * @param numberOfTeams
+     */
     public void setNumberOfTeams(String numberOfTeams) {
         this.numberOfTeams = numberOfTeams;
     }
 
+    /**
+     * Returns the teams of the tournament
+     * @return teams
+     */
     public ArrayList<Team> getTeams() {
         return teams;
     }
 
+    /**
+     * Adds teams to the list of teams
+     * @param teams
+     */
     public void setTeams(ArrayList<Team> teams) {
         this.teams.addAll(teams);
     }
 
+    /**
+     * Returns a string containing information about the tournament
+     * @return status, tournament name, tournament host, date, description, game, platform,
+     * tournament type, number of teams, teams and matches as a string
+     */
     @Override
     public String toString() {
         return "NewTournament{" +
@@ -311,6 +498,11 @@ public class NewTournament {
                 '}';
     }
 
+    /**
+     * Returns the team that corresponds to the team name given
+     * @param teamName
+     * @return team
+     */
     public Team getTeamByName(String teamName){
         for (Team team : teams){
             if (team.getNameOfTeam().equals(teamName)){
@@ -320,10 +512,19 @@ public class NewTournament {
         return null;
     }
 
+    /**
+     * Adds a team to the list of teams
+     * @param team
+     */
     public void addTeam(Team team){
         this.teams.add(team);
     }
 
+    /**
+     * Finds the next match to be played by first creating a list of matches that are not finished
+     * and then finding the match that is nearest in the future
+     * @return next match to be played
+     */
     public Match findNextMatchToBePlayed(){
         Match nextMatch = null;
 
@@ -350,6 +551,10 @@ public class NewTournament {
         return nextMatch;
     }
 
+    /**
+     * Returns true if the tournament has an unfinished match that is set, false if not
+     * @return true or false
+     */
     public boolean doesTournamentHaveAnUnfinishedAndSetMatch(){
         if (this.matches.size() > 0){
             for (Match match : matches){
@@ -361,6 +566,10 @@ public class NewTournament {
         return false;
     }
 
+    /**
+     * Returns the number of unfinished teams left
+     * @return number of unfinished teams left
+     */
     public int findNumberOfTeamsLeft(){
         int numberOfTeamsLeft = Integer.parseInt(getNumberOfTeams());
 
@@ -375,6 +584,10 @@ public class NewTournament {
 
     }
 
+    /**
+     * Randomly removes a team from teams and returns it
+     * @return team
+     */
     public Team randomlyRemoveTeam() {
         Random random = new Random();
         Team returnTeam = this.getTeams().get(random.nextInt(getTeams().size()));
@@ -382,6 +595,10 @@ public class NewTournament {
         return returnTeam;
     }
 
+    /**
+     * Removes the given team from teams
+     * @param team
+     */
     public void removeTeam(Team team) {
         this.teams.remove(team);
     }
