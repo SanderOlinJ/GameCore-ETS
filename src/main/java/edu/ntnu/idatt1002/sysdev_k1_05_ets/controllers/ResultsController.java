@@ -210,11 +210,11 @@ public class ResultsController {
 
     @FXML
     public void setBracketScene(ActionEvent event) throws IOException {
-        if (BracketController.bracketSize == 4){
+        if (BracketController.getBracketSize() == 4){
             ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_4);
-        } else if (BracketController.bracketSize == 8){
+        } else if (BracketController.getBracketSize() == 8){
             ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_8);
-        } else if (BracketController.bracketSize == 16){
+        } else if (BracketController.getBracketSize() == 16){
             ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_16);
         }
     }
