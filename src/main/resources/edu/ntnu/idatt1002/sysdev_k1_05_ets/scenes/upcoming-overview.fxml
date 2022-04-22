@@ -36,6 +36,7 @@
                <items>
                   <MenuItem fx:id="aboutButton" mnemonicParsing="false" onAction="#onAboutButtonPressed" text="About" />
                   <MenuItem mnemonicParsing="false" text="Help" />
+                  <MenuItem mnemonicParsing="false" onAction="#onHelpButtonPressed" text="Help" />
                </items></Menu>
             </menus>
         </MenuBar>

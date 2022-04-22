@@ -15,4 +15,6 @@ module edu.ntnu.idatt1002.sysdev_k1_05_ets {
     opens edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers to javafx.fxml;
     exports edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters;
     opens edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters to javafx.fxml;
+    exports edu.ntnu.idatt1002.sysdev_k1_05_ets.scenes;
+    opens edu.ntnu.idatt1002.sysdev_k1_05_ets.scenes to javafx.fxml;
 }

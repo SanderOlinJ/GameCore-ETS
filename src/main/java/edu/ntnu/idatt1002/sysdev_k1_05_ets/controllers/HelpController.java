@@ -1,6 +1,8 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
 
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.GameCoreETSApplication;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.scenes.View;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.scenes.ViewSwitcher;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,22 +28,17 @@ public class HelpController {
 
     @FXML
     void onHomeButtonPressed(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class
-                .getResource("scenes/main-page.fxml")));
-        setNextWindowFromMenuBar(root);
+        ViewSwitcher.switchTo(View.MAIN);
     }
 
     @FXML
     void onAboutButtonPressed(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource("scenes/about-page.fxml")));
-        setNextWindowFromMenuBar(root);
+        ViewSwitcher.switchTo(View.ABOUT);
     }
 
     @FXML
     void onOngoingTournamentsButtonPressed(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class
-                .getResource("scenes/ongoing-overview.fxml")));
-        setNextWindowFromMenuBar(root);
+        ViewSwitcher.switchTo(View.ONGOING_TOURNAMENTS);
     }
 
     private void setNextWindowFromMenuBar(Parent root) {
@@ -56,17 +53,13 @@ public class HelpController {
     @FXML
     void onUpcomingTournamentsButtonPressed(ActionEvent event)
             throws IOException{
-        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class
-                .getResource("scenes/upcoming-overview.fxml")));
-        setNextWindowFromMenuBar(root);
+        ViewSwitcher.switchTo(View.UPCOMING_OVERVIEW);
     }
 
     @FXML
     void onPreviousTournamentsButtonPressed(ActionEvent event)
             throws IOException{
-        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class
-                .getResource("scenes/previous-overview.fxml")));
-        setNextWindowFromMenuBar(root);
+        ViewSwitcher.switchTo(View.PREVIOUS_TOURNAMENTS);
     }
 
     @FXML

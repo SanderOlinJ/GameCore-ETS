@@ -3,6 +3,8 @@ package edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.GameCoreETSApplication;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TournamentReaderRework;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TournamentWriterRework;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.scenes.View;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.scenes.ViewSwitcher;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.NewTournament;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.utilities.Utilities;
 import javafx.event.ActionEvent;
@@ -12,7 +14,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
@@ -22,8 +23,6 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -259,9 +258,7 @@ public class TournamentsOverviewController {
 
     @FXML
     void onOngoingTournamentsButtonPressed(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class
-                .getResource("scenes/ongoing-overview.fxml")));
-        onTournamentMenuItemPressed(root);
+        ViewSwitcher.switchTo(View.ONGOING_TOURNAMENTS);
     }
 
     private void onTournamentMenuItemPressed(Parent root) {
@@ -276,50 +273,35 @@ public class TournamentsOverviewController {
     @FXML
     void onUpcomingTournamentsButtonPressed(ActionEvent event)
             throws IOException{
-        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class
-                .getResource("scenes/upcoming-overview.fxml")));
-        onTournamentMenuItemPressed(root);
+        ViewSwitcher.switchTo(View.UPCOMING_OVERVIEW);
     }
 
     @FXML
     void onPreviousTournamentsButtonPressed(ActionEvent event)
             throws IOException{
-        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class
-                .getResource("scenes/previous-overview.fxml")));
-        onTournamentMenuItemPressed(root);
+        ViewSwitcher.switchTo(View.PREVIOUS_TOURNAMENTS);
     }
 
 
     @FXML
     void onHomeButtonPressed(ActionEvent event)
     throws IOException{
-        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class
-                .getResource("scenes/main-page.fxml")));
-        onTournamentMenuItemPressed(root);
+        ViewSwitcher.switchTo(View.MAIN);
     }
 
     @FXML
     void onAboutButtonPressed(ActionEvent event) throws IOException{
-        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource("scenes/about-page.fxml")));
-        onTournamentMenuItemPressed(root);
+        ViewSwitcher.switchTo(View.ABOUT);
     }
 
     @FXML
     void onHelpButtonPressed(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource("scenes/help-page.fxml")));
-        onTournamentMenuItemPressed(root);
+        ViewSwitcher.switchTo(View.HELP);
     }
 
     @FXML
     void onCreateNewTournamentButtonPressed(ActionEvent event) throws IOException{
-        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class
-                .getResource("scenes/create-new-tournament-page.fxml")));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setMinWidth(1200);
-        stage.setMinHeight(800);
-        stage.show();
+        ViewSwitcher.switchTo(View.CREATE_NEW_TOURNAMENT);
     }
 
     @FXML

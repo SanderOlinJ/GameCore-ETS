@@ -3,6 +3,8 @@ package edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.GameCoreETSApplication;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TournamentReaderRework;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TournamentWriter;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.scenes.View;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.scenes.ViewSwitcher;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.NewTournament;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Tournament;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
@@ -17,6 +19,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.MenuBar;
 import javafx.stage.Stage;
+
+import javax.net.ssl.HandshakeCompletedEvent;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -158,40 +162,16 @@ public class BracketController {
 //        stage.show();
     }
 
-//    @FXML
-//    public void setResultsScene(ActionEvent event) throws IOException {
-//        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource(
-//                "scenes/results-scene.fxml")));
-//        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-//        Scene scene = new Scene(root);
-//        stage.setScene(scene);
-//        stage.setMinWidth(1200);
-//        stage.setMinHeight(800);
-//        stage.show();
-//    }
-
 
     @FXML
     public void setResultsScene(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource("scenes/results-scene.fxml")));
-        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        stage.getScene().setRoot(root);
+        ViewSwitcher.switchTo(View.TOURNAMENT_RESULTS);
     }
 
     @FXML
     public void setTimeScene(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource(
-                "scenes/set-time-scene.fxml")));
-        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setMinWidth(1200);
-        stage.setMinHeight(800);
-        stage.show();
+        ViewSwitcher.switchTo(View.SET_TIME);
     }
-
-
-
 
     public static NewTournament getBracket(){
         return newTournament;
@@ -206,32 +186,26 @@ public class BracketController {
     }
 
     public static String getTournamentName(){return tournamentName;}
-    public void switchToMatches(){}
+
 
     @FXML
     void onHomeButtonPressed(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class
-                .getResource("scenes/main-page.fxml")));
-        setNextWindowFromMenuBar(root);
+        ViewSwitcher.switchTo(View.MAIN);
     }
 
     @FXML
     void onAboutButtonPressed(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource("scenes/about-page.fxml")));
-        setNextWindowFromMenuBar(root);
+        ViewSwitcher.switchTo(View.ABOUT);
     }
 
     @FXML
     void onHelpButtonPressed(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource("scenes/help-page.fxml")));
-        setNextWindowFromMenuBar(root);
+        ViewSwitcher.switchTo(View.HELP);
     }
 
     @FXML
     void onOngoingTournamentsButtonPressed(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class
-                .getResource("scenes/ongoing-overview.fxml")));
-        setNextWindowFromMenuBar(root);
+        ViewSwitcher.switchTo(View.ONGOING_TOURNAMENTS);
     }
 
     private void setNextWindowFromMenuBar(Parent root) {
@@ -246,16 +220,12 @@ public class BracketController {
     @FXML
     void onUpcomingTournamentsButtonPressed(ActionEvent event)
             throws IOException{
-        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class
-                .getResource("scenes/upcoming-overview.fxml")));
-        setNextWindowFromMenuBar(root);
+        ViewSwitcher.switchTo(View.UPCOMING_OVERVIEW);
     }
 
     @FXML
     void onPreviousTournamentsButtonPressed(ActionEvent event)
             throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class
-                .getResource("scenes/previous-overview.fxml")));
-        setNextWindowFromMenuBar(root);
+        ViewSwitcher.switchTo(View.PREVIOUS_TOURNAMENTS);
     }
 }

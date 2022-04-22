@@ -4,12 +4,13 @@ import edu.ntnu.idatt1002.sysdev_k1_05_ets.GameCoreETSApplication;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.GeneralReader;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.NewTournamentWriter;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TournamentWriterRework;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.scenes.View;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.scenes.ViewSwitcher;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.utilities.Utilities;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.NewTournament;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -23,17 +24,14 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-import javafx.util.converter.NumberStringConverter;
 import org.controlsfx.control.textfield.TextFields;
 import javafx.scene.control.TextField;
 
 import java.io.File;
-import java.net.URL;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Objects;
-import java.util.ResourceBundle;
 
 import java.io.IOException;
 
@@ -329,14 +327,7 @@ public class CreateNewTournamentPageController{
         AddTeamController.setMaxTeams(formatNr);
         AddTeamController.setTournament(tournament);
 
-        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource(
-                "scenes/add-team-scene.fxml")));
-        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setMinWidth(1200);
-        stage.setMinHeight(800);
-        stage.show();
+        ViewSwitcher.switchTo(View.ADD_TEAM);
     }
 
     private void checkIfDateIsInvalid(LocalDate date, LocalTime time) throws IOException {
@@ -416,22 +407,17 @@ public class CreateNewTournamentPageController{
 
     @FXML
     void onHomeButtonPressed(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class
-                .getResource("scenes/main-page.fxml")));
-        setNextWindowFromMenuBar(root);
+        ViewSwitcher.switchTo(View.MAIN);
     }
 
     @FXML
     void onAboutButtonPressed(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource("scenes/about-page.fxml")));
-        setNextWindowFromMenuBar(root);
+        ViewSwitcher.switchTo(View.ABOUT);
     }
 
     @FXML
     void onOngoingTournamentsButtonPressed(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class
-                .getResource("scenes/ongoing-overview.fxml")));
-        setNextWindowFromMenuBar(root);
+        ViewSwitcher.switchTo(View.ONGOING_TOURNAMENTS);
     }
 
     private void setNextWindowFromMenuBar(Parent root) {
@@ -446,22 +432,17 @@ public class CreateNewTournamentPageController{
     @FXML
     void onUpcomingTournamentsButtonPressed(ActionEvent event)
             throws IOException{
-        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class
-                .getResource("scenes/upcoming-overview.fxml")));
-        setNextWindowFromMenuBar(root);
+        ViewSwitcher.switchTo(View.UPCOMING_OVERVIEW);
     }
 
     @FXML
     void onPreviousTournamentsButtonPressed(ActionEvent event)
             throws IOException{
-        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class
-                .getResource("scenes/previous-overview.fxml")));
-        setNextWindowFromMenuBar(root);
+        ViewSwitcher.switchTo(View.PREVIOUS_TOURNAMENTS);
     }
 
     @FXML
     void onHelpButtonPressed(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource("scenes/help-page.fxml")));
-        setNextWindowFromMenuBar(root);
+        ViewSwitcher.switchTo(View.HELP);
     }
 }
