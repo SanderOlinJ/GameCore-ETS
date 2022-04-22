@@ -1,5 +1,6 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters;
 
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Match;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.utilities.Utilities;
 
@@ -9,6 +10,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class TournamentWriterRework {
 
@@ -125,11 +127,12 @@ public class TournamentWriterRework {
      Takes in the shortened tournament name and writes it into
      the ongoing overview file. This makes it easier to later
      locate the individual tournament files.
-     * @param tournamentNameShortened shortened name of the tournament, String
+     * @param tournamentName name of the tournament, String
      * @throws IOException
      */
-    public static void writeTournamentToOngoingOverview(String tournamentNameShortened)
+    public static void writeTournamentToOngoingOverview(String tournamentName)
     throws IOException{
+        String tournamentNameShortened = Utilities.shortenAndReplaceUnnecessarySymbolsInString(tournamentName);
         String overviewStringFormat = tournamentNameShortened + DELIMITER;
         File file = new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
                 "tournamentFiles/ongoingTournaments/ongoingTournaments.txt");
@@ -144,11 +147,12 @@ public class TournamentWriterRework {
     Takes in the shortened tournament name and writes it into
     the upcoming overview file. This makes it easier to later
     locate the individual tournament files.
-     * @param tournamentNameShortened shortened name of the tournament, String
+     * @param tournamentName name of the tournament, String
      * @throws IOException
      */
-    public static void writeTournamentToUpcomingOverview(String tournamentNameShortened)
+    public static void writeTournamentToUpcomingOverview(String tournamentName)
     throws IOException{
+        String tournamentNameShortened = Utilities.shortenAndReplaceUnnecessarySymbolsInString(tournamentName);
         String overviewStringFormat = tournamentNameShortened + DELIMITER;
         File file = new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
                 "tournamentFiles/upcomingTournaments/upcomingTournaments.txt");
@@ -163,11 +167,12 @@ public class TournamentWriterRework {
      Takes in the shortened tournament name and writes it into
      the previous overview file. This makes it easier to later
      locate the individual tournament files.
-     * @param tournamentNameShortened shortened name of the tournament, String
+     * @param tournamentName name of the tournament, String
      * @throws IOException
      */
-    public static void writeTournamentToPreviousOverview(String tournamentNameShortened)
+    public static void writeTournamentToPreviousOverview(String tournamentName)
             throws IOException{
+        String tournamentNameShortened = Utilities.shortenAndReplaceUnnecessarySymbolsInString(tournamentName);
         String overviewStringFormat = tournamentNameShortened + DELIMITER;
         File file = new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
                 "tournamentFiles/previousTournaments/previousTournaments.txt");
@@ -185,11 +190,12 @@ public class TournamentWriterRework {
      Then reads the overview file to an arraylist. In the arraylist,
      we then remove the tournament and convert the arraylist
      to a String builder. We then write over the overview file, now with 1 less tournament.
-     * @param tournamentNameShortened shortened name of the tournament, String
+     * @param tournamentName name of the tournament, String
      * @throws IOException
      */
-    public static void removeTournamentFromOverviewWhenLocationNotKnown(String tournamentNameShortened)
+    public static void removeTournamentFromOverviewWhenLocationNotKnown(String tournamentName)
     throws IOException{
+        String tournamentNameShortened = Utilities.shortenAndReplaceUnnecessarySymbolsInString(tournamentName);
         ArrayList<String> ongoingTournaments = TournamentReaderRework.readThroughOngoingTournaments();
         ArrayList<String> upcomingTournaments = TournamentReaderRework.readThroughUpcomingTournaments();
         ArrayList<String> previousTournaments = TournamentReaderRework.readThroughPreviousTournaments();
@@ -248,12 +254,13 @@ public class TournamentWriterRework {
     /**
      Handy method to find which folder (ongoing-, upcoming- or previous tournaments)
      the file of a tournament is located in.
-     * @param tournamentNameShortened shortened name of the tournament, String
+     * @param tournamentName name of the tournament, String
      * @return File path, String
      * @throws IOException
      */
-    private static String getPathToTournamentFileAsString(String tournamentNameShortened)
+    private static String getPathToTournamentFileAsString(String tournamentName)
     throws IOException {
+        String tournamentNameShortened = Utilities.shortenAndReplaceUnnecessarySymbolsInString(tournamentName);
 
         String location = ifFileExistsAndFindLocation(tournamentNameShortened);
 
@@ -275,13 +282,14 @@ public class TournamentWriterRework {
      It writes out the whole file to an arraylist, and adds or replaces index 11 (teams) with the new teams taken in
      as a parameter. It then writes the whole file back to the original file path.
      Can also be used to edit teams if matches has been set, but this functionality has not been implemented.
-     * @param tournamentNameShortened shortened name of the tournament, String
+     * @param tournamentName name of the tournament, String
      * @param teams teams to be added to tournament, ArrayList
      * @throws IOException
      */
-    public static void writeTeamsToTournamentFile(String tournamentNameShortened, ArrayList<Team> teams)
+    public static void writeTeamsToTournamentFile(String tournamentName, ArrayList<Team> teams)
     throws IOException{
 
+        String tournamentNameShortened = Utilities.shortenAndReplaceUnnecessarySymbolsInString(tournamentName);
         File file = new File(getPathToTournamentFileAsString(tournamentNameShortened));
         ArrayList<String> fileAsListOfStrings = GeneralReader.readFile(file);
         StringBuilder stringBuilder = new StringBuilder();
@@ -376,9 +384,10 @@ public class TournamentWriterRework {
 
     }
 
-    public static void removeTournamentFromUpcomingOverview(String tournamentNameShortened)
+    public static void removeTournamentFromUpcomingOverview(String tournamentName)
     throws IOException{
         try {
+            String tournamentNameShortened = Utilities.shortenAndReplaceUnnecessarySymbolsInString(tournamentName);
             ArrayList<String> upcomingTournaments = TournamentReaderRework.readThroughUpcomingTournaments();
             File file = new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
                     "tournamentFiles/upcomingTournaments/upcomingTournaments.txt");
@@ -389,9 +398,10 @@ public class TournamentWriterRework {
         }
     }
 
-    private static void removeTournamentFromOverview(String tournamentNameShortened,
+    private static void removeTournamentFromOverview(String tournamentName,
                                                      ArrayList<String> tournaments, File file)
     throws IOException{
+        String tournamentNameShortened = Utilities.shortenAndReplaceUnnecessarySymbolsInString(tournamentName);
         tournaments.removeIf(s -> s.equals(tournamentNameShortened));
         StringBuilder stringBuilder = new StringBuilder();
         for (String tournament : tournaments){
@@ -404,9 +414,10 @@ public class TournamentWriterRework {
         }
     }
 
-    public static void removeTournamentFromOngoingOverview(String tournamentNameShortened)
+    public static void removeTournamentFromOngoingOverview(String tournamentName)
     throws IOException{
         try {
+            String tournamentNameShortened = Utilities.shortenAndReplaceUnnecessarySymbolsInString(tournamentName);
             ArrayList<String> ongoingTournaments = TournamentReaderRework.readThroughOngoingTournaments();
             File file = new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
                     "tournamentFiles/ongoingTournaments/ongoingTournaments.txt");
@@ -416,5 +427,326 @@ public class TournamentWriterRework {
             throw new IOException("Could not remove tournament from upcoming overview: "+ exception.getMessage());
         }
     }
+
+    public static void writeMatchesToTournament(String tournamentName, Match inputMatch)
+    throws IOException {
+
+        String tournamentNameShortened = Utilities.shortenAndReplaceUnnecessarySymbolsInString(tournamentName);
+        File file = new File(getPathToTournamentFileAsString(tournamentNameShortened));
+        ArrayList<String> fileAsListOfStrings = GeneralReader.readFile(file);
+        StringBuilder stringBuilder = new StringBuilder();
+        int nrOfTeams = Integer.parseInt(fileAsListOfStrings.get(9));
+
+        for (int i = 0; i < 13; i++) {
+            stringBuilder.append(fileAsListOfStrings.get(i)).append(",");
+        }
+        if (fileAsListOfStrings.size() == 13) {
+            ArrayList<Team> teams = new ArrayList<>();
+            String line = fileAsListOfStrings.get(12);
+            String[] values = line.split(",");
+            for (String value : values) {
+                teams.add(TeamReader.findAndReturnTeamUsingTeamName(value));
+            }
+            for (int i = 0; i < teams.size(); i += 2) {
+                stringBuilder.append(teams.get(i).getNameOfTeam()).append(",")
+                        .append(teams.get(i + 1).getNameOfTeam()).append(",").append(DELIMITER);
+            }
+        } else {
+            ArrayList<Match> matches = MatchReader.readMatchesFromArrayList(fileAsListOfStrings);
+            ArrayList<Team> victors = new ArrayList<>();
+            Match[] matchesInFourTeamBracket = new Match[3];
+            Match[] matchesInEightTeamBracket = new Match[7];
+            Match[] matchesInSixteenTeamBracket = new Match[15];
+            boolean matchFinished = false;
+
+            for (int i = 0; i < matches.size(); i++) {
+                if (matches.get(i).getTeam1().equals(inputMatch.getTeam1()) &&
+                        matches.get(i).getTeam2().equals(inputMatch.getTeam2())) {
+                    if (matches.get(i).getTimeOfMatch() == null) {
+                        matches.get(i).setTimeOfMatch(inputMatch.getTimeOfMatch());
+                    }
+                    if (matches.get(i).getMatchScoreTeam1() == -1 || matches.get(i).getMatchScoreTeam2() == -1) {
+                        matches.get(i).setMatchScoreTeam1(inputMatch.getMatchScoreTeam1());
+                        matches.get(i).setMatchScoreTeam2(inputMatch.getMatchScoreTeam2());
+                        matches.get(i).setFinished(true);
+                    }
+                }
+            }
+            for (int i = 0; i < matches.size(); i++) {
+                matchesInFourTeamBracket[i] = matches.get(i);
+                if (matches.get(i).isFinished()){
+                    if (nrOfTeams == 4){
+                        if (matchesInFourTeamBracket[2] != null){
+                            matchesInFourTeamBracket[2].setTeam2(matches.get(i).getVictor());
+                        }else {
+                            matchesInFourTeamBracket[2] = new Match(matches.get(i).getVictor());
+                        }
+                    }
+                    else if (nrOfTeams == 8){
+                        if (i == 0 || i == 1){
+                            if (matchesInEightTeamBracket[4] != null && matchesInEightTeamBracket[4].getTeam2() == null){
+                                matchesInEightTeamBracket[4].setTeam2(matches.get(i).getVictor());
+                            } else {
+                                matchesInEightTeamBracket[4] = new Match(matches.get(i).getVictor());
+                            }
+                        } else if (i == 2 || i == 3){
+                            if (matchesInEightTeamBracket[5] != null && matchesInEightTeamBracket[5].getTeam2() == null){
+                                matchesInEightTeamBracket[5].setTeam2(matches.get(i).getVictor());
+                            } else {
+                                matchesInEightTeamBracket[5] = new Match(matches.get(i).getVictor());
+                            }
+                        } else if (i == 4 || i == 5){
+                            if (matchesInEightTeamBracket[6] != null && matchesInEightTeamBracket[6].getTeam2() == null){
+                                matchesInEightTeamBracket[6].setTeam2(matches.get(i).getVictor());
+                            } else {
+                                matchesInEightTeamBracket[6] = new Match(matches.get(i).getVictor());
+                            }
+                        } else if (i == 6){
+                            if (matchesInEightTeamBracket[7] != null && matchesInEightTeamBracket[7].getTeam2() == null){
+                                matchesInEightTeamBracket[7].setTeam2(matches.get(i).getVictor());
+                            } else {
+                                matchesInEightTeamBracket[7] = new Match(matches.get(i).getVictor());
+                            }
+                        }
+                    }
+                    else if (nrOfTeams == 16){
+                        if (i == 0 || i == 1){
+                            if (matchesInSixteenTeamBracket[7] != null && matchesInSixteenTeamBracket[4].getTeam2() == null){
+                                matchesInSixteenTeamBracket[7].setTeam2(matches.get(i).getVictor());
+                            } else {
+                                matchesInSixteenTeamBracket[7] = new Match(matches.get(i).getVictor());
+                            }
+                        } else if (i == 2 || i == 3){
+                            if (matchesInSixteenTeamBracket[8] != null && matchesInSixteenTeamBracket[8].getTeam2() == null){
+                                matchesInSixteenTeamBracket[8].setTeam2(matches.get(i).getVictor());
+                            } else {
+                                matchesInSixteenTeamBracket[8] = new Match(matches.get(i).getVictor());
+                            }
+                        } else if (i == 4 || i == 5){
+                            if (matchesInSixteenTeamBracket[9] != null && matchesInSixteenTeamBracket[9].getTeam2() == null){
+                                matchesInSixteenTeamBracket[9].setTeam2(matches.get(i).getVictor());
+                            } else {
+                                matchesInSixteenTeamBracket[9] = new Match(matches.get(i).getVictor());
+                            }
+                        } else if (i == 6 || i == 7){
+                            if (matchesInSixteenTeamBracket[10] != null && matchesInSixteenTeamBracket[10].getTeam2() == null){
+                                matchesInSixteenTeamBracket[10].setTeam2(matches.get(i).getVictor());
+                            } else {
+                                matchesInSixteenTeamBracket[10] = new Match(matches.get(i).getVictor());
+                            }
+                        } else if (i == 8 || i == 9){
+                            if (matchesInSixteenTeamBracket[11] != null && matchesInSixteenTeamBracket[11].getTeam2() == null){
+                                matchesInSixteenTeamBracket[11].setTeam2(matches.get(i).getVictor());
+                            } else {
+                                matchesInSixteenTeamBracket[11] = new Match(matches.get(i).getVictor());
+                            }
+                        } else if (i == 10 || i == 11){
+                            if (matchesInSixteenTeamBracket[12] != null && matchesInSixteenTeamBracket[12].getTeam2() == null){
+                                matchesInSixteenTeamBracket[12].setTeam2(matches.get(i).getVictor());
+                            } else {
+                                matchesInSixteenTeamBracket[12] = new Match(matches.get(i).getVictor());
+                            }
+                        } else if (i == 12 || i == 13){
+                            if (matchesInSixteenTeamBracket[12] != null && matchesInSixteenTeamBracket[12].getTeam2() == null){
+                                matchesInSixteenTeamBracket[12].setTeam2(matches.get(i).getVictor());
+                            } else {
+                                matchesInSixteenTeamBracket[12] = new Match(matches.get(i).getVictor());
+                            }
+                        }
+                    }
+                }
+
+            }
+
+        /*
+            for (int i = 0; i < matches.size(); i++) {
+                stringBuilder.append(matches.get(i).getTeam1().getNameOfTeam()).append(",").
+                        append(matches.get(i).getTeam2().getNameOfTeam()).append(",");
+
+                if (matches.get(i).getTimeOfMatch() != null) {
+                    stringBuilder.append(matches.get(i).getTimeOfMatch()).append(",");
+
+
+                    stringBuilder.append(matches.get(i).getMatchScoreTeam1()).append(",")
+                            .append(matches.get(i).getMatchScoreTeam2()).append(",")
+                            .append(matches.get(i).getVictor());
+                    matchFinished = true;
+                } else if (matches.get(i).getTeam1().equals(inputMatch.getTeam1()) &&
+                        matches.get(i).getTeam2().equals(inputMatch.getTeam2())) {
+                    stringBuilder.append(inputMatch.getMatchScoreTeam1()).append(",")
+                            .append(inputMatch.getMatchScoreTeam2()).append(",")
+                            .append(inputMatch.getVictor());
+                    matchFinished = true;
+                }
+                if (matchFinished) {
+                    if (nrOfTeams == 4) {
+                        victorsInFourTeamBracket[i] = matches.get(i).getVictor().getNameOfTeam();
+                    } else if (nrOfTeams == 8) {
+                        victorsInEightTeamBracket[i] = matches.get(i).getVictor().getNameOfTeam();
+                    } else if (nrOfTeams == 16) {
+                        victorsInSixteenTeamBracket[i] = matches.get(i).getVictor().getNameOfTeam();
+                    }
+                }
+                else if (matches.get(i).getTeam1().equals(inputMatch.getTeam1()) &&
+                    matches.get(i).getTeam2().equals(inputMatch.getTeam2())) {
+                    stringBuilder.append(inputMatch.getTimeOfMatch()).append(",");
+                }
+            }
+            stringBuilder.append(DELIMITER);
+        int bruh = 0;
+        for (String str : victorsInEightTeamBracket) {
+            if (str != null) {
+                bruh++;
+            }
+        }
+
+        for (int i = 0; i < bruh; i++) {
+            if (nrOfTeams == 4 && matches.size() <= 2) {
+                for (int j = 0; j < matches.size(); j++) {
+                    if (victors.get(i).equals(matches.get(j).getVictor())) {
+                        stringBuilder.append(matches.get(j).getVictor()).append(",");
+                    }
+                }
+            }
+
+            if (nrOfTeams == 8 && matches.size() <= 6) {
+                for (int j = 0; j < matches.size(); j++) {
+                    if (victors.get(i).equals(matches.get(j).getVictor())) {
+
+                    }
+                }
+            }
+        }
+
+         */
+        }
+
+        try (FileWriter fileWriter = new FileWriter(file)) {
+            fileWriter.write(stringBuilder.toString());
+        } catch (IOException exception) {
+            throw new IOException("Could not write tournament back to file: " + exception.getMessage());
+        }
+    }
+
+
+
+    public static void writeStartMatchesToTournamentFile(String tournamentName)
+    throws IOException{
+
+        String tournamentNameShortened = Utilities.shortenAndReplaceUnnecessarySymbolsInString(tournamentName);
+
+        File file = new File(getPathToTournamentFileAsString(tournamentNameShortened));
+        ArrayList<String> fileAsListOfStrings = GeneralReader.readFile(file);
+
+        StringBuilder stringBuilder1 = new StringBuilder();
+        for (String str : fileAsListOfStrings){
+            stringBuilder1.append(str).append(DELIMITER);
+        }
+
+        ArrayList<Team> teams = new ArrayList<>();
+        String line = fileAsListOfStrings.get(12);
+        String[] values = line.split(",");
+        for (String value : values){
+            teams.add(TeamReader.findAndReturnTeamUsingTeamName(value));
+        }
+        for (int i = 0; i < teams.size(); i += 2){
+            stringBuilder1.append(teams.get(i).getNameOfTeam()).append(",")
+                    .append(teams.get(i+1).getNameOfTeam()).append(",").append(DELIMITER);
+        }
+
+
+        try (FileWriter fileWriter = new FileWriter(file)){
+            fileWriter.write(stringBuilder1.toString());
+        } catch (IOException exception){
+            throw new IOException("Could not write tournament back to file: " + exception.getMessage());
+        }
+    }
+
+    public static void writeTimeToMatchInTournamentFile(String tournamentName, Match inputMatch,
+                                                        LocalTime time)
+    throws IOException{
+        String tournamentNameShortened = Utilities.shortenAndReplaceUnnecessarySymbolsInString(tournamentName);
+
+        File file = new File(getPathToTournamentFileAsString(tournamentNameShortened));
+        ArrayList<String> fileAsListOfStrings = GeneralReader.readFile(file);
+
+        StringBuilder stringBuilder = new StringBuilder();
+        ArrayList<Match> matches = MatchReader.readMatchesFromArrayList(fileAsListOfStrings);
+
+        for (int i = 0; i < 13; i++){
+            stringBuilder.append(fileAsListOfStrings.get(i)).append(DELIMITER);
+        }
+
+        for (Match match : matches){
+            stringBuilder.append(match.getTeam1().getNameOfTeam()).append(",")
+                    .append(match.getTeam2().getNameOfTeam()).append(",");
+            if (match.getTimeOfMatch() != null){
+                stringBuilder.append(match.getTimeOfMatch()).append(",");
+            }
+            if (match.getTeam1().equals(inputMatch.getTeam1()) && match.getTeam2().equals(inputMatch.getTeam2())){
+                stringBuilder.append(time).append(",");
+            }
+            stringBuilder.append(DELIMITER);
+        }
+
+        try (FileWriter fileWriter = new FileWriter(file)){
+            fileWriter.write(stringBuilder.toString());
+        } catch (IOException exception){
+            throw new IOException("Could not write tournament back to file: " + exception.getMessage());
+        }
+
+    }
+
+    public static void writeMatchScoreAndVictorToTournamentFile(String tournamentName, Match inputMatch)
+    throws IOException{
+        String tournamentNameShortened = Utilities.shortenAndReplaceUnnecessarySymbolsInString(tournamentName);
+
+        File file = new File(getPathToTournamentFileAsString(tournamentNameShortened));
+        ArrayList<String> fileAsListOfStrings = GeneralReader.readFile(file);
+
+        StringBuilder stringBuilder = new StringBuilder();
+        ArrayList<Match> matches = MatchReader.readMatchesFromArrayList(fileAsListOfStrings);
+
+        for (int i = 0; i < 13; i++){
+            stringBuilder.append(fileAsListOfStrings.get(i)).append(DELIMITER);
+        }
+
+        for (Match match : matches){
+
+            stringBuilder.append(match.getTeam1().getNameOfTeam()).append(",")
+                    .append(match.getTeam2().getNameOfTeam()).append(",").append(match.getTimeOfMatch()).append(",");
+
+            if (match.getMatchScoreTeam1() != -1){
+                stringBuilder.append(match.getMatchScoreTeam1()).append(",");
+                if (match.getMatchScoreTeam2() != -1){
+                    stringBuilder.append(match.getMatchScoreTeam2()).append(",");
+                }
+            }
+            if (match.getVictor() != null){
+                stringBuilder.append(match.getVictor().getNameOfTeam());
+            }
+
+            if (match.getTeam1().equals(inputMatch.getTeam1()) && match.getTeam2().equals(inputMatch.getTeam2())){
+                stringBuilder.append(inputMatch.getMatchScoreTeam1()).append(",")
+                        .append(inputMatch.getMatchScoreTeam2()).append(",");
+                if (inputMatch.getMatchScoreTeam1() > inputMatch.getMatchScoreTeam2()){
+                    stringBuilder.append(match.getTeam1().getNameOfTeam());
+                } else {
+                    stringBuilder.append(match.getTeam2().getNameOfTeam());
+                }
+            }
+            stringBuilder.append(DELIMITER);
+        }
+
+
+
+
+        try (FileWriter fileWriter = new FileWriter(file)){
+            fileWriter.write(stringBuilder.toString());
+        } catch (IOException exception){
+            throw new IOException("Could not write tournament back to file: " + exception.getMessage());
+        }
+    }
+
 
 }

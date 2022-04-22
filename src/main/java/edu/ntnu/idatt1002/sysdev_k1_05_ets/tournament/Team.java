@@ -1,6 +1,7 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Team {
     private ArrayList<String> members = new ArrayList<>();
@@ -90,5 +91,18 @@ public class Team {
                 ", nameOfTeam='" + nameOfTeam + '\'' +
                 ", nameAbbr='" + nameAbbr + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Team team = (Team) o;
+        return Objects.equals(members, team.members) && Objects.equals(nameOfTeam, team.nameOfTeam) && Objects.equals(nameAbbr, team.nameAbbr);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(members, nameOfTeam, nameAbbr);
     }
 }

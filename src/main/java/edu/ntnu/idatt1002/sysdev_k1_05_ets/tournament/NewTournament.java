@@ -351,7 +351,6 @@ public class NewTournament {
     }
 
     public boolean doesTournamentHaveAnUnfinishedAndSetMatch(){
-
         if (this.matches.size() > 0){
             for (Match match : matches){
                 if (!match.isFinished() && match.getTimeOfMatch() != null){
@@ -385,5 +384,46 @@ public class NewTournament {
 
     public void removeTeam(Team team) {
         this.teams.remove(team);
+    }
+
+
+    public int getNumberOfMatchesWithNoTimeSet(){
+        int nr = 0;
+        for (Match match : matches){
+            if (match.getTimeOfMatch() == null){
+                nr++;
+            }
+        }
+        return nr;
+    }
+
+    public ArrayList<Match> getMatchesWithNoTimeSet(){
+        ArrayList<Match> matchesWithNoTimeSet = new ArrayList<>();
+        for (Match match : matches){
+            if (match.getTimeOfMatch() == null){
+                matchesWithNoTimeSet.add(match);
+            }
+        }
+        return matchesWithNoTimeSet;
+    }
+
+    public int getNumberOfUnfinishedMatches(){
+        int nr = 0;
+        for (Match match : matches){
+            if (!match.isFinished()){
+                nr++;
+            }
+        }
+        return nr;
+    }
+
+    public ArrayList<Match> getUnfinishedMatches(){
+        ArrayList<Match> unfinishedMatches = new ArrayList<>();
+        for (Match match : matches){
+            if (!match.isFinished()){
+                unfinishedMatches.add(match);
+            }
+        }
+        return unfinishedMatches;
     }
 }

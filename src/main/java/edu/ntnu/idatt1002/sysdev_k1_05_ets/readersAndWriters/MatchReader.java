@@ -34,6 +34,7 @@ public class MatchReader {
                     int matchScoreTeam2 = Integer.parseInt(values[4]);
                     match.setMatchScoreTeam1(matchScoreTeam1);
                     match.setMatchScoreTeam2(matchScoreTeam2);
+                    match.setFinished(true);
                 }
             }
             matches.add(match);

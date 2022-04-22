@@ -951,7 +951,7 @@
                                                           <VBox prefHeight="100.0" prefWidth="146.0">
                                                              <children>
                                                                 <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                                <Button mnemonicParsing="false" onAction="#setTime" prefHeight="26.0" prefWidth="123.0" styleClass="jfx-button" stylesheets="@../css/style.css" text="Set time" textFill="WHITE">
+                                                                <Button fx:id="setTimeButton" mnemonicParsing="false" onAction="#setTime" prefHeight="26.0" prefWidth="123.0" styleClass="jfx-button" stylesheets="@../css/style.css" text="Set time" textFill="WHITE">
                                                                    <font>
                                                                       <Font name="Arial Bold" size="18.0" />
                                                                    </font>

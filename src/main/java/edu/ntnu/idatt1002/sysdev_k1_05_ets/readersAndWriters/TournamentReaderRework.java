@@ -3,6 +3,7 @@ package edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Match;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.NewTournament;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.utilities.Utilities;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -24,12 +25,13 @@ public class TournamentReaderRework {
      * Method can read tournament even without teams and matches listed.
      * Method only reads for teams if file size suggests so, and will only read for matches
      * if teams have been added.
-     * @param tournamentNameShortened shortened name of the tournament, String
+     * @param tournamentName name of the tournament, String
      * @return NewTournament, if the tournament exists.
      * @throws IOException if tournament file does not exist, or if file could not be read
      */
-    public static NewTournament readTournamentFromFile(String tournamentNameShortened)
+    public static NewTournament readTournamentFromFile(String tournamentName)
     throws IOException {
+        String tournamentNameShortened = Utilities.shortenAndReplaceUnnecessarySymbolsInString(tournamentName);
         String location = TournamentWriterRework.ifFileExistsAndFindLocation(tournamentNameShortened);
 
         File file = switch (location) {
@@ -53,7 +55,7 @@ public class TournamentReaderRework {
         }
 
         String status = tournamentInfo.get(0);
-        String tournamentName = tournamentInfo.get(1);
+        String nameOfTournament = tournamentInfo.get(1);
         String tournamentHost = tournamentInfo.get(2);
         LocalDate date = LocalDate.parse(tournamentInfo.get(3));
         LocalTime time = LocalTime.parse(tournamentInfo.get(4));
@@ -73,7 +75,7 @@ public class TournamentReaderRework {
         String entranceFee = entranceFeeValues[0];
         String entranceFeeCurrency = entranceFeeValues[1];
 
-        NewTournament tournament = new NewTournament(status, tournamentName,tournamentHost,
+        NewTournament tournament = new NewTournament(status, nameOfTournament,tournamentHost,
                 date,time,description,game,platform,tournamentType,numberOfTeams,
                 prizePool, prizePoolCurrency, entranceFee, entranceFeeCurrency);
 

@@ -1,0 +1,17 @@
+Not finished
+Test 2
+Admin
+2022-04-23
+12:00
+No description
+League of Legends
+Nintendo 64
+Brackets
+8
+0,null
+0,null
+FaZe,Team Liquid,Lords,ENCE,Ninjas in Pyjamas,Fnatic,Phase,LGB Esports,
+FaZe,Team Liquid,00:05,2,1,FaZe
+Lords,ENCE,01:00,2,0,Lords
+Ninjas in Pyjamas,Fnatic,02:10,1,2,Fnatic
+Phase,LGB Esports,01:00,1,2,LGB Esports

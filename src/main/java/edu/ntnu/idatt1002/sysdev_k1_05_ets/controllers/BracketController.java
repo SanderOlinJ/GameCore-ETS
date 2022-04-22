@@ -2,11 +2,8 @@ package edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
 
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.GameCoreETSApplication;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TournamentReaderRework;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TournamentWriter;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.NewTournament;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Tournament;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.utilities.Utilities;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,16 +17,14 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 public class BracketController {
 
-    private static String tournamentName;
-    private static Tournament tournament = new Tournament("tournamentName");
-    private static NewTournament newTournament = new NewTournament("tournamentName");
-    static int bracketSize;
+    private static String nameOfTournament;
+    private NewTournament newTournament;
+    private static int bracketSize;
+
 
     @FXML
     ArrayList<Label> labels = new ArrayList<>();
@@ -64,7 +59,7 @@ public class BracketController {
     @FXML private Label team29;
     @FXML private Label team30;
     @FXML private Label team31;
-    @FXML Label nameOfTournament;
+    @FXML Label tournamentName;
 
     @FXML private MenuItem homeButton;
     @FXML private MenuItem ongoingTournamentsButton;
@@ -80,8 +75,7 @@ public class BracketController {
     public void initialize(){
 
         try {
-            newTournament = TournamentReaderRework.readTournamentFromFile(Utilities
-                    .shortenAndReplaceUnnecessarySymbolsInString(tournamentName));
+            newTournament = TournamentReaderRework.readTournamentFromFile(nameOfTournament);
         } catch (IOException exception){
             exception.printStackTrace();
         }
@@ -137,18 +131,14 @@ public class BracketController {
             labels.get(i).setText(teams.get(i-(bracketSize-1)).getNameAbbr());
         }
 
-        nameOfTournament.setText(tournamentName);
+        tournamentName.setText(nameOfTournament);
     }
 
-
-
-    static void setBracketSize(int n){
-        bracketSize = n;
-    }
 
 
     @FXML
     public void setMatchesScene(ActionEvent event) throws IOException {
+        MatchesController.setNameOfTournament(nameOfTournament);
         Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource("scenes/matches-scene.fxml")));
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         stage.getScene().setRoot(root);
@@ -180,6 +170,7 @@ public class BracketController {
 
     @FXML
     public void setTimeScene(ActionEvent event) throws IOException {
+        SetTimeController.setNameOfTournament(nameOfTournament);
         Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource(
                 "scenes/set-time-scene.fxml")));
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -193,7 +184,7 @@ public class BracketController {
 
 
 
-    public static NewTournament getBracket(){
+    public NewTournament getBracket(){
         return newTournament;
     }
 
@@ -201,12 +192,21 @@ public class BracketController {
         return Integer.parseInt(label.getId().substring(4));
     }
 
-    public static void setTournamentName(String name){
-        tournamentName = name;
+    public static void setNameOfTournament(String name){
+        nameOfTournament = name;
     }
 
-    public static String getTournamentName(){return tournamentName;}
+    public static String getNameOfTournament(){return nameOfTournament;}
     public void switchToMatches(){}
+
+    public static int getBracketSize() {
+        return bracketSize;
+    }
+
+    public static void setBracketSize(int n){
+        bracketSize = n;
+    }
+
 
     @FXML
     void onHomeButtonPressed(ActionEvent event) throws IOException {

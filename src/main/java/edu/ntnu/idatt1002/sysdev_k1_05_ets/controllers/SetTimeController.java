@@ -1,6 +1,11 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
 
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.GameCoreETSApplication;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TeamReader;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TournamentReaderRework;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TournamentWriterRework;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Match;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.NewTournament;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,15 +20,16 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Objects;
-import java.util.stream.Collectors;
+import java.time.LocalTime;
+import java.util.*;
 
 public class SetTimeController {
 
+    private static String nameOfTournament;
+    private NewTournament tournament;
     @FXML ComboBox hoursMatch;
+
+    @FXML Button setTimeButton;
     @FXML ComboBox minutesMatch;
     @FXML ComboBox hoursMatch1;
     @FXML ComboBox minutesMatch1;
@@ -119,12 +125,19 @@ public class SetTimeController {
 
     @FXML
     public void initialize(){
+        try {
+            tournament = TournamentReaderRework.readTournamentFromFile(nameOfTournament);
+        } catch (IOException exception){
+            exception.printStackTrace();
+        }
+
         hourBoxes = new ArrayList<>(Arrays.asList(hoursMatch, hoursMatch1, hoursMatch2, hoursMatch3, hoursMatch4,
                 hoursMatch5, hoursMatch6, hoursMatch7, hoursMatch8, hoursMatch9, hoursMatch10, hoursMatch11,
                 minutesMatch12, minutesMatch13, minutesMatch14));
         minuteBoxes = new ArrayList<>(Arrays.asList(minutesMatch,minutesMatch1,minutesMatch2,minutesMatch3,minutesMatch4
                 ,minutesMatch5,minutesMatch6,minutesMatch7,minutesMatch8,minutesMatch9,minutesMatch10,minutesMatch11,
                 minutesMatch12,minutesMatch13,hoursMatch14));
+
         for (ComboBox box : hourBoxes){
             setHoursToBox(box);
         }
@@ -132,7 +145,7 @@ public class SetTimeController {
             setMinutesToBox(box);
         }
         setVisibleMatches();
-        tournamentName.setText(BracketController.getTournamentName());
+        tournamentName.setText(nameOfTournament);
     }
 
     @FXML
@@ -147,14 +160,16 @@ public class SetTimeController {
         stage.show();
     }
 
+
     @FXML
     public void setBracketScene(ActionEvent event) throws IOException {
+        BracketController.setNameOfTournament(nameOfTournament);
         String link = "";
-        if (BracketController.bracketSize == 4){
+        if (tournament.getTeams().size() == 4){
             link = "scenes/overview-scene-four.fxml";
-        } else if (BracketController.bracketSize == 8){
+        } else if (BracketController.getBracketSize() == 8){
             link = "scenes/overview-scene-eight.fxml";
-        } else if (BracketController.bracketSize == 16){
+        } else if (BracketController.getBracketSize() == 16){
             link = "scenes/overview-scene-sixteen.fxml";
         }
         Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource(link)));
@@ -164,6 +179,7 @@ public class SetTimeController {
 
     @FXML
     public void setMatchesScene(ActionEvent event) throws IOException {
+        MatchesController.setNameOfTournament(nameOfTournament);
         Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource(
                 "scenes/matches-scene.fxml")));
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -177,15 +193,29 @@ public class SetTimeController {
     @FXML
     public void setTime()  {
         for (int i = 0; i < hourBoxes.size(); i++) {
-            if (hourBoxes.get(i).getValue() != null && minuteBoxes.get(i).getValue() != null){
-               MatchesController.setTimeLabel(hourBoxes.get(i).getValue().toString(),
-                       minuteBoxes.get(i).getValue().toString());
-               matches.get(i).setPrefHeight(0);
-               matches.get(i).setDisable(true);
-               matches.get(i).setVisible(false);
-               matches.get(i).setDisable(true);
-               matches.get(i).setVisible(false);
-               matches.get(i).setPrefHeight(0);
+            if (hourBoxes.get(i).getValue() != null && minuteBoxes.get(i).getValue() != null &&
+                !hourBoxes.get(i).isDisable() && !minuteBoxes.get(i).isDisable()){
+                   matches.get(i).setPrefHeight(0);
+                   matches.get(i).setDisable(true);
+                   matches.get(i).setVisible(false);
+                   matches.get(i).setDisable(true);
+                   matches.get(i).setVisible(false);
+                   matches.get(i).setPrefHeight(0);
+
+                   try {
+                       Team team1 = TeamReader.findAndReturnTeamUsingTeamName(teamOnes.get(i).getText());
+                       Team team2 = TeamReader.findAndReturnTeamUsingTeamName(teamTwos.get(i).getText());
+                       Match match = new Match(team1, team2);
+                       LocalTime time = LocalTime.parse(hourBoxes.get(i).getValue() + ":" + minuteBoxes.get(i).getValue());
+                       TournamentWriterRework.writeTimeToMatchInTournamentFile(tournament
+                               .getTournamentName(), match , time);
+                       hourBoxes.get(i).setDisable(true);
+                       minuteBoxes.get(i).setDisable(true);
+
+                   } catch (IOException exception){
+                       exception.printStackTrace();
+                   }
+
                /*
                matches.remove(matches.get(i));
                hourBoxes.remove(hourBoxes.get(i));
@@ -246,6 +276,7 @@ public class SetTimeController {
 
 
     public void setVisibleMatches(){
+        int nrOfMatchesNoTimeSet = tournament.getNumberOfMatchesWithNoTimeSet();
         matches = new ArrayList<>(Arrays.asList(match,match1,match2,match3,match4,match5,match6,
                 match7,match8,match9,match10,match11,match12,match13,match14));
         teamOnes = new ArrayList<>(Arrays.asList(team1match,team1match1,team1match2,team1match3,
@@ -254,27 +285,27 @@ public class SetTimeController {
         teamTwos = new ArrayList<>(Arrays.asList(team2match,team2match1,team2match2,team2match3,
                 team2match4,team2match5,team2match6,team2match7,team2match8,team2match9,team2match10,team2match11,
                 team2match12,team2match13,team2match14));
-        teams = BracketController.getBracket().getTeams();
-        int bracketSize = BracketController.bracketSize;
-        int numberOfTeams = teams.size();
-        if (numberOfTeams <= bracketSize) {
-            for (int i = 0; i < numberOfTeams / 2; i++) {
-                matches.get(i).setVisible(true);
-                matches.get(i).setPrefHeight(100);
-                matches.get(i).setDisable(false);
-                teamOnes.get(i).setText(teams.get(2 * i).getNameOfTeam());
-                teamTwos.get(i).setText(teams.get(2 * i + 1).getNameOfTeam());
-            }
+        teams = tournament.getTeams();
+
+        for (int i = 0; i < nrOfMatchesNoTimeSet; i++) {
+            matches.get(i).setVisible(true);
+            matches.get(i).setPrefHeight(100);
+            matches.get(i).setDisable(false);
+            teamOnes.get(i).setText(tournament.getMatchesWithNoTimeSet().get(i).getTeam1().getNameOfTeam());
+            teamTwos.get(i).setText(tournament.getMatchesWithNoTimeSet().get(i).getTeam2().getNameOfTeam());
         }
-        else if ((numberOfTeams - bracketSize) % 2 == 0){
-            for (int i = 0; i < (numberOfTeams - bracketSize)/2; i++) {
-                matches.get(i).setDisable(false);
-                matches.get(i).setVisible(true);
-                matches.get(i).setPrefHeight(100);
-                teamOnes.get(i).setText(teams.get(2*i + bracketSize).getNameOfTeam());
-                teamTwos.get(i).setText(teams.get(2*i + 1 + bracketSize).getNameOfTeam());
-            }
-        }
+    }
+
+    public NewTournament getTournament() {
+        return tournament;
+    }
+
+    public void setTournament(NewTournament tournament) {
+        this.tournament = tournament;
+    }
+
+    public static void setNameOfTournament(String nameOfTournament) {
+        SetTimeController.nameOfTournament = nameOfTournament;
     }
 
     @FXML

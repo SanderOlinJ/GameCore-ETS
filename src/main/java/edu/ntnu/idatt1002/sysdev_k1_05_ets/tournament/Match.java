@@ -8,22 +8,29 @@ public class Match {
 
     private int matchScoreTeam1;
     private int matchScoreTeam2;
-    private final Team team1;
-    private final Team team2;
+    private Team team1;
+    private Team team2;
     private LocalTime timeOfMatch;
     private boolean finished;
 
-    public Match(Team team1, Team team2, int scoreTeam1, int scoreTeam2, LocalTime timeOfMatch) {
+    public Match(Team team1, Team team2, int scoreTeam1, int scoreTeam2, LocalTime timeOfMatch, boolean finished) {
         this.team1 = team1;
         this.team2 = team2;
         this.matchScoreTeam1 = scoreTeam1;
         this.matchScoreTeam2 = scoreTeam2;
         this.timeOfMatch = timeOfMatch;
+        this.finished = finished;
     }
 
     public Match(Team team1, Team team2){
         this.team1 = team1;
         this.team2 = team2;
+        this.matchScoreTeam1 = -1;
+        this.matchScoreTeam2 = -1;
+    }
+
+    public Match(Team team1){
+        this.team1 = team1;
     }
 
     public Team getTeam1() {
@@ -66,11 +73,18 @@ public class Match {
         this.finished = finished;
     }
 
+    public void setTeam2(Team team2){
+        this.team2 = team2;
+    }
+
     public Team getVictor(){
-        if (matchScoreTeam1 > matchScoreTeam2){
-            return team1;
+        if (finished) {
+            if (matchScoreTeam1 > matchScoreTeam2) {
+                return team1;
+            }
+            return team2;
         }
-        return team2;
+        return null;
     }
 
     @Override

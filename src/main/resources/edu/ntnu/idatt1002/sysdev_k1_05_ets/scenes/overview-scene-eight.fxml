@@ -74,7 +74,7 @@
                                     <VBox prefHeight="137.0" prefWidth="1200.0">
                                        <children>
                                           <Pane prefHeight="100.0" prefWidth="1200.0" />
-                                          <Label fx:id="nameOfTournament" alignment="CENTER" prefHeight="36.0" prefWidth="1257.0" text="Tournament Name" textFill="#fa8f31">
+                                          <Label fx:id="tournamentName" alignment="CENTER" prefHeight="36.0" prefWidth="1257.0" text="Tournament Name" textFill="#fa8f31">
                                              <font>
                                                 <Font name="Arial Bold" size="30.0" />
                                              </font>

@@ -1,7 +1,10 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
 
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.GameCoreETSApplication;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TournamentReaderRework;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TournamentWriterRework;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Match;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.NewTournament;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -30,6 +33,8 @@ import java.util.stream.Collectors;
 public class MatchesController {
     private Scene scene;
     private Stage stage;
+    private NewTournament tournament;
+    private static String nameOfTournament;
 
     @FXML HBox match;
     @FXML HBox match1;
@@ -191,14 +196,16 @@ public class MatchesController {
 
     @FXML
     protected void initialize(){
-        setVisibleMatches();
+        try {
+            tournament = TournamentReaderRework.readTournamentFromFile(nameOfTournament);
+        } catch (IOException exception){
+            exception.printStackTrace();
+        }
         timeLabels = new ArrayList<>(Arrays.asList(timematch, timematch1, timematch2, timematch3,
                 timematch4, timematch5, timematch6, timematch7, timematch8, timematch9, timematch10, timematch11, timematch12,
                 timematch13, timematch14));
-        tournamentName.setText(BracketController.getTournamentName());
-        for (int i = 0; i < times.size(); i++) {
-            timeLabels.get(i).setText(times.get(i));
-        }
+        tournamentName.setText(nameOfTournament);
+        setVisibleMatches();
     }
 
     @FXML
@@ -214,14 +221,22 @@ public class MatchesController {
                 team2ScoreMatch10,team2ScoreMatch11,team2ScoreMatch12,team2ScoreMatch13,team2ScoreMatch14));
         for (int i = 0; i < winners.size(); i++){
             if (winners.get(i).getSelectedToggle() != null) {
-                Team team1 = BracketController.getBracket().getTeamByName(teamOnes.get(i).getText());
-                Team team2 = BracketController.getBracket().getTeamByName(teamTwos.get(i).getText());
-                Match match = new Match(team1, team2, Integer.parseInt(teamOnesScore.get(i).getText()),
-                                Integer.parseInt(teamTwosScore.get(i).getText()), LocalTime.parse(times.get(i)));
-                ResultsController.addMatch(match);
+                Team team1 = tournament.getTeamByName(teamOnes.get(i).getText());
+                Team team2 = tournament.getTeamByName(teamTwos.get(i).getText());
+                Match matchWithResults = new Match(team1, team2, Integer.parseInt(teamOnesScore.get(i).getText()),
+                                Integer.parseInt(teamTwosScore.get(i).getText()),
+                        LocalTime.parse(timeLabels.get(i).getText()), true);
                 matches.get(i).setDisable(true);
                 matches.get(i).setVisible(false);
                 matches.get(i).setPrefHeight(0);
+                try {
+                    TournamentWriterRework.writeMatchScoreAndVictorToTournamentFile(tournament.getTournamentName()
+                            ,matchWithResults);
+                } catch (IOException exception){
+                    exception.printStackTrace();
+                }
+
+
                 /*
                 if (teams.size() > BracketController.bracketSize) {
                     matches.remove(matches.get(i));
@@ -236,7 +251,7 @@ public class MatchesController {
                     radioTwos.remove(radioTwos.get(i));
                 }
                 */
-                advanceTeam(match.getVictor());
+                //advanceTeam(matchWithResults.getVictor());
             }
         }
     }
@@ -252,10 +267,12 @@ public class MatchesController {
         stage.setMinHeight(800);
         stage.show();
     }
-
+    /*
     private void advanceTeam(Team team) {
         BracketController.getBracket().addTeam(team);
     }
+
+     */
 
     @FXML
     public void setTimeScene(ActionEvent event) throws IOException {
@@ -272,11 +289,11 @@ public class MatchesController {
     @FXML
     public void setBracketScene(ActionEvent event) throws IOException {
         String link = "";
-        if (BracketController.bracketSize == 4){
+        if (BracketController.getBracketSize() == 4){
             link = "scenes/overview-scene-four.fxml";
-        } else if (BracketController.bracketSize == 8){
+        } else if (BracketController.getBracketSize() == 8){
             link = "scenes/overview-scene-eight.fxml";
-        } else if (BracketController.bracketSize == 16){
+        } else if (BracketController.getBracketSize() == 16){
             link = "scenes/overview-scene-sixteen.fxml";
         }
         Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource(link)));
@@ -289,7 +306,7 @@ public class MatchesController {
     }
 
     public void setVisibleMatches(){
-        teams = BracketController.getBracket().getTeams();
+        int nrOfUnfinishedMatches = tournament.getNumberOfUnfinishedMatches();
         matches = new ArrayList<>(Arrays.asList(match, match1, match2, match3, match4, match5, match6,
                 match7, match8, match9, match10, match11, match12, match13, match14));
         teamOnes = new ArrayList<>(Arrays.asList(team1match,team1match1,team1match2,team1match3,
@@ -304,41 +321,18 @@ public class MatchesController {
         radioTwos = new ArrayList<>(Arrays.asList(radio2Match,radio2Match1,radio2Match2,
                 radio2Match3,radio2Match4,radio2Match5,radio2Match6,radio2Match7,radio2Match8,radio2Match9,radio2Match10
                 ,radio2Match11,radio2Match12,radio2Match13,radio2Match14));
-        int numberOfTeams = teams.size();
-        int bracketSize = BracketController.bracketSize;
-        if (numberOfTeams <= bracketSize) {
-            for (int i = 0; i < numberOfTeams / 2; i++) {
-                 matches.get(i).setVisible(true);
-                 matches.get(i).setPrefHeight(100);
-                 matches.get(i).setDisable(false);
-                 teamOnes.get(i).setText(teams.get(2 * i).getNameOfTeam());
-                 radioOnes.get(i).setText(teams.get(2 * i).getNameOfTeam());
-                 teamTwos.get(i).setText(teams.get(2 * i + 1).getNameOfTeam());
-                 radioTwos.get(i).setText(teams.get(2 * i + 1).getNameOfTeam());
-            }
-        }
-        else{
-            if ((numberOfTeams - bracketSize) % 2 == 0) {
-                for (int i = 0; i < (numberOfTeams - bracketSize) / n; i++) {
-                    matches.get(i + bracketSize / 2).setDisable(false);
-                    matches.get(i + bracketSize / 2).setVisible(true);
-                    matches.get(i + bracketSize / 2).setPrefHeight(100);
-                    teamOnes.get(i + bracketSize / 2).setText(teams.get(2 * i + bracketSize).getNameOfTeam());
-                    radioOnes.get(i + bracketSize / 2).setText(teams.get(2 * i + bracketSize).getNameOfTeam());
-                    teamTwos.get(i + bracketSize / 2).setText(teams.get(2 * i + 1 + bracketSize).getNameOfTeam());
-                    radioTwos.get(i + bracketSize / 2).setText(teams.get(2 * i + 1 + bracketSize).getNameOfTeam());
-                    if (bracketSize == 8) {
-                        if (i == 1) {n += 4;}
-                    }
-                    //TODO fix it so that proper teams show up upon semi finals and finals
-                    else if (bracketSize == 16){
-                        if (i == 3) {n += 3;}
-                    }
 
-                    }
-                }
-            }
+        for (int i = 0; i < nrOfUnfinishedMatches; i++) {
+             matches.get(i).setVisible(true);
+             matches.get(i).setPrefHeight(100);
+             matches.get(i).setDisable(false);
+             teamOnes.get(i).setText(tournament.getUnfinishedMatches().get(i).getTeam1().getNameOfTeam());
+             radioOnes.get(i).setText(tournament.getUnfinishedMatches().get(i).getTeam1().getNameOfTeam());
+             teamTwos.get(i).setText(tournament.getUnfinishedMatches().get(i).getTeam2().getNameOfTeam());
+             radioTwos.get(i).setText(tournament.getUnfinishedMatches().get(i).getTeam2().getNameOfTeam());
+             timeLabels.get(i).setText(tournament.getUnfinishedMatches().get(i).getTimeOfMatch().toString());
         }
+    }
 
     @FXML
     void onHomeButtonPressed(ActionEvent event) throws IOException {
@@ -389,5 +383,10 @@ public class MatchesController {
         Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class
                 .getResource("scenes/previous-overview.fxml")));
         setNextWindowFromMenuBar(root);
+    }
+
+
+    public static void setNameOfTournament(String nameOfTournament) {
+        MatchesController.nameOfTournament = nameOfTournament;
     }
 }

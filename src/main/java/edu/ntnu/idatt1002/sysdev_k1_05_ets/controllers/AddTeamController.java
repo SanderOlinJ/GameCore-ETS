@@ -3,7 +3,6 @@ import edu.ntnu.idatt1002.sysdev_k1_05_ets.GameCoreETSApplication;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.*;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.NewTournament;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.utilities.Utilities;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -55,6 +54,13 @@ public class AddTeamController {
 
     @FXML
     public void initialize () throws IOException {
+
+        try {
+            TournamentWriterRework.updateTournamentFileLocation();
+        } catch (IOException exception){
+            exception.printStackTrace();
+        }
+
         //setting search box for teams selection
         ArrayList<Team> searchTeamNames = TeamReader.readTeamsFromAllTeamsFile();
         TextFields.bindAutoCompletion(searchTeams,
@@ -101,11 +107,16 @@ public class AddTeamController {
 
     @FXML
     public void setBracketScene(ActionEvent event) throws IOException {
+        if (teamsForTournament.size() < maxTeams){
+            int nrOfRemainingTeams = maxTeams - teamsForTournament.size();
+            warningLabel.setText("Not enough teams set, missing: " + nrOfRemainingTeams + " team(s)");
+            throw new IOException("Not enough teams set, missing: " + nrOfRemainingTeams + " team(s)");
+        }
         Collections.shuffle(teamsForTournament);
-        TournamentWriterRework.writeTeamsToTournamentFile(Utilities
-                .shortenAndReplaceUnnecessarySymbolsInString(tournament.getTournamentName()),teamsForTournament);
+        TournamentWriterRework.writeTeamsToTournamentFile(tournament.getTournamentName(),teamsForTournament);
+        TournamentWriterRework.writeStartMatchesToTournamentFile(tournament.getTournamentName());
         BracketController.setBracketSize(Integer.parseInt(tournament.getNumberOfTeams()));
-        BracketController.setTournamentName(tournament.getTournamentName());
+        BracketController.setNameOfTournament(tournament.getTournamentName());
         String link = "";
         if (maxTeams <= 4) {
             link = "scenes/overview-scene-four.fxml";
@@ -323,10 +334,11 @@ public class AddTeamController {
     }
 
     private void setNextWindowFromMenuBar(Parent root) throws IOException{
-        TournamentWriterRework.writeTeamsToTournamentFile(Utilities.shortenAndReplaceUnnecessarySymbolsInString
-                (tournament.getTournamentName()),teamsForTournament);
-        tournament = new NewTournament("Clean");
-        teamsForTournament = new ArrayList<>();
+        if (hasAllTeamsBeenAdded()){
+            Collections.shuffle(teamsForTournament);
+            TournamentWriterRework.writeTeamsToTournamentFile(tournament.getTournamentName(),teamsForTournament);
+            TournamentWriterRework.writeStartMatchesToTournamentFile(tournament.getTournamentName());
+        }
         Stage stage = (Stage) menuBar.getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
@@ -349,5 +361,9 @@ public class AddTeamController {
         Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class
                 .getResource("scenes/previous-overview.fxml")));
         setNextWindowFromMenuBar(root);
+    }
+
+    private boolean hasAllTeamsBeenAdded(){
+        return enrolledTeamsBox.getChildren().size() == maxTeams;
     }
 }

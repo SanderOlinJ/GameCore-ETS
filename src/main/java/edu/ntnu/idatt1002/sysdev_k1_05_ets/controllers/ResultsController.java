@@ -2,6 +2,7 @@ package edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
 
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.GameCoreETSApplication;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Match;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.NewTournament;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,20 +12,20 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.MenuBar;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
 
 
 public class ResultsController {
+
+    private static NewTournament tournament;
+    private static String nameOfTournament;
 
     @FXML Label tournamentName;
     @FXML HBox match;
@@ -202,17 +203,17 @@ public class ResultsController {
                 team2Winner.get(i).setVisible(true);
             }
         }
-        tournamentName.setText(BracketController.getTournamentName());
+        tournamentName.setText(BracketController.getNameOfTournament());
     }
 
     @FXML
     public void setBracketScene(ActionEvent event) throws IOException {
         String link = "";
-        if (BracketController.bracketSize == 4){
+        if (BracketController.getBracketSize() == 4){
             link = "scenes/overview-scene-four.fxml";
-        } else if (BracketController.bracketSize == 8){
+        } else if (BracketController.getBracketSize() == 8){
             link = "scenes/overview-scene-eight.fxml";
-        } else if (BracketController.bracketSize == 16){
+        } else if (BracketController.getBracketSize() == 16){
             link = "scenes/overview-scene-sixteen.fxml";
         }
         Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource(link)));

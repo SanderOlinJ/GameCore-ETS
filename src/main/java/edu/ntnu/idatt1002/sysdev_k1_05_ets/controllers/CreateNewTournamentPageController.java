@@ -81,6 +81,7 @@ public class CreateNewTournamentPageController{
     @FXML
     public void initialize() {
 
+
         try {
             TournamentWriterRework.updateTournamentFileLocation();
             TextFields.bindAutoCompletion(gameBox, GeneralReader.readFile

@@ -12,7 +12,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
@@ -22,8 +21,6 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -340,7 +337,7 @@ public class TournamentsOverviewController {
                 link = "scenes/overview-scene-sixteen.fxml";
             }
             BracketController.setBracketSize(maxTeams);
-            BracketController.setTournamentName(tournaments.get(0).getTournamentName());
+            BracketController.setNameOfTournament(tournaments.get(0).getTournamentName());
         }
         setNextWindow(event, link);
     }
@@ -362,7 +359,7 @@ public class TournamentsOverviewController {
                 link = "scenes/overview-scene-sixteen.fxml";
             }
             BracketController.setBracketSize(maxTeams);
-            BracketController.setTournamentName(tournaments.get(1).getTournamentName());
+            BracketController.setNameOfTournament(tournaments.get(1).getTournamentName());
         }
         setNextWindow(event, link);
     }
@@ -384,7 +381,7 @@ public class TournamentsOverviewController {
                 link = "scenes/overview-scene-sixteen.fxml";
             }
             BracketController.setBracketSize(maxTeams);
-            BracketController.setTournamentName(tournaments.get(2).getTournamentName());
+            BracketController.setNameOfTournament(tournaments.get(2).getTournamentName());
         }
         setNextWindow(event, link);
     }
@@ -406,7 +403,7 @@ public class TournamentsOverviewController {
                 link = "scenes/overview-scene-sixteen.fxml";
             }
             BracketController.setBracketSize(maxTeams);
-            BracketController.setTournamentName(tournaments.get(3).getTournamentName());
+            BracketController.setNameOfTournament(tournaments.get(3).getTournamentName());
         }
         setNextWindow(event, link);
     }
@@ -428,7 +425,7 @@ public class TournamentsOverviewController {
                 link = "scenes/overview-scene-sixteen.fxml";
             }
             BracketController.setBracketSize(maxTeams);
-            BracketController.setTournamentName(tournaments.get(4).getTournamentName());
+            BracketController.setNameOfTournament(tournaments.get(4).getTournamentName());
         }
         setNextWindow(event, link);
     }
