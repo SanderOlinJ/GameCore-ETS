@@ -254,15 +254,6 @@ public class ResultsController {
         ViewSwitcher.switchTo(View.ONGOING_TOURNAMENTS);
     }
 
-    private void setNextWindowFromMenuBar(Parent root) {
-        Stage stage = (Stage) menuBar.getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setMinWidth(1200);
-        stage.setMinHeight(800);
-        stage.show();
-    }
-
     @FXML
     void onUpcomingTournamentsButtonPressed(ActionEvent event)
             throws IOException{

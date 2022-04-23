@@ -48,6 +48,8 @@ public class Match {
 
     public Match(Team team1){
         this.team1 = team1;
+        this.matchScoreTeam1 = -1;
+        this.matchScoreTeam2 = -1;
     }
 
     /**
@@ -133,6 +135,18 @@ public class Match {
 
     public void setTeam2(Team team2){
         this.team2 = team2;
+    }
+
+    public void setTeam1(Team team1) {
+        this.team1 = team1;
+    }
+
+    public void setTeam(Team team){
+        if (this.team1 == null){
+            setTeam1(team);
+        } else {
+            setTeam2(team);
+        }
     }
 
     /**

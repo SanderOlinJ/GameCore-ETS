@@ -1,18 +1,13 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.GameCoreETSApplication;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.*;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.scenes.View;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.scenes.ViewSwitcher;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.NewTournament;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
-import javafx.stage.Stage;
 import org.controlsfx.control.textfield.TextFields;
 
 import java.io.IOException;
@@ -21,13 +16,9 @@ import java.util.stream.Collectors;
 
 public class AddTeamController {
 
-    private Scene scene;
-    private Stage stage;
     private ArrayList<Team> existingTeams;
-    private Pane p = new Pane();
-    private Pane pC = new Pane();
-    private VBox scrollPaneTeam = new VBox();
     private static NewTournament tournament;
+    private static String nameOfTournament;
 
     private static int maxTeams;
 
@@ -35,18 +26,10 @@ public class AddTeamController {
     @FXML private TextArea playersNameField;
     @FXML private Label warningLabel;
     @FXML private ScrollPane scrollPane;
-    @FXML private ScrollPane currentTeams;
     @FXML private VBox existingTeamsBox;
     @FXML private VBox enrolledTeamsBox;
     @FXML private TextField abbreviationField;
     @FXML private TextField searchTeams;
-    @FXML private MenuItem homeButton;
-    @FXML private MenuItem ongoingTournamentsButton;
-    @FXML private MenuItem upcomingTournamentsButton;
-    @FXML private MenuItem previousTournamentsButton;
-    @FXML private MenuItem aboutButton;
-    @FXML private MenuItem helpButton;
-    @FXML private MenuBar menuBar;
     @FXML private Label nrOfTeams;
     @FXML private Button noButton;
     private boolean overWrite;
@@ -61,7 +44,12 @@ public class AddTeamController {
         } catch (IOException exception){
             exception.printStackTrace();
         }
-
+        try {
+            tournament = TournamentReaderRework.readTournamentFromFile(nameOfTournament);
+        } catch (IOException exception){
+            exception.printStackTrace();
+        }
+        maxTeams = Integer.parseInt(tournament.getNumberOfTeams());
         //setting search box for teams selection
         ArrayList<Team> searchTeamNames = TeamReader.readTeamsFromAllTeamsFile();
         TextFields.bindAutoCompletion(searchTeams,
@@ -98,16 +86,7 @@ public class AddTeamController {
 
 
     @FXML
-    public void setMainScene(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource("scenes/start-screen.fxml")));
-        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    @FXML
-    public void setBracketScene(ActionEvent event) throws IOException {
+    public void setBracketScene() throws IOException {
         if (teamsForTournament.size() < maxTeams){
             int nrOfRemainingTeams = maxTeams - teamsForTournament.size();
             warningLabel.setText("Not enough teams set, missing: " + nrOfRemainingTeams + " team(s)");
@@ -118,20 +97,13 @@ public class AddTeamController {
         TournamentWriterRework.writeStartMatchesToTournamentFile(tournament.getTournamentName());
         BracketController.setBracketSize(Integer.parseInt(tournament.getNumberOfTeams()));
         BracketController.setNameOfTournament(tournament.getTournamentName());
-        String link = "";
-        if (maxTeams <= 4) {
-            link = "scenes/overview-scene-four.fxml";
-        } else if (maxTeams <= 8) {
-            link = "scenes/overview-scene-eight.fxml";
-        } else if (maxTeams <= 16) {
-            link = "scenes/overview-scene-sixteen.fxml";
+        if (BracketController.getBracketSize() == 4){
+            ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_4);
+        } else if (BracketController.getBracketSize() == 8){
+            ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_8);
+        } else if (BracketController.getBracketSize() == 16){
+            ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_16);
         }
-        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource(link)));
-
-        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
     }
     @FXML
     public void addTeamExisting(String teamName){
@@ -148,13 +120,6 @@ public class AddTeamController {
         else {
             for (Team team : existingTeams) {
                 if (team.getNameOfTeam().equals(teamName)) {
-                    /*BracketController.getBracket().addTeam(team);
-                    Label newTeam = new Label(teamName);
-                    newTeam.setPrefWidth(300);
-                    newTeam.setAlignment(Pos.TOP_LEFT);
-                    enrolledTeamsBox.getChildren().add(newTeam);
-                    teamsForTournament.add(team);
-                    nrOfTeams.setText("" + teamsForTournament.size());*/
                     teamNameField.setText(team.getNameOfTeam());
                     abbreviationField.setText(team.getNameAbbr());
                     playersNameField.setText("");
@@ -179,7 +144,7 @@ public class AddTeamController {
     }
 
 
-    public void addTeam(ActionEvent actionEvent) throws IOException {
+    public void addTeam() throws IOException {
         if (teamNameField.getText().strip().equals("")){
             warningLabel.setText("Team name required.");
             throw new IOException("Team name required.");
@@ -207,7 +172,7 @@ public class AddTeamController {
 
 
 
-        //name of each members on new lines
+        //name of each member on new lines
         String[] players = playersNameField.getText().split("\n");
         List<String> returnList = Arrays.asList(players);
         ArrayList<String> teamMembersList = new ArrayList<>(returnList);
@@ -257,13 +222,7 @@ public class AddTeamController {
 
         //add team to tournament bracket
         teamsForTournament.add(addedTeam);
-        /*ArrayList<Team> writeTeamList = new ArrayList<>();
-        writeTeamList.add(addedTeam);
-        //write teams to team file
-        TeamWriter.writeFile(writeTeamList);
-
-         */
-        TeamWriter.removeInstanceOfTeam(addedTeam);
+        TeamWriter.writeTeamsToFileAndOverwriteIfChanges(addedTeam);
         setCurrentTeams();
 
         //info to user
@@ -285,7 +244,7 @@ public class AddTeamController {
         overWrite = true;
     }
     @FXML
-    void onNoButtonClicked(ActionEvent event){
+    void onNoButtonClicked(){
         playersNameField.setText("");
         teamNameField.setText("");
         abbreviationField.setText("");
@@ -301,27 +260,20 @@ public class AddTeamController {
 
 
     public void deleteTeamFromTeams(Label teamLabel){
-        boolean found = false;
         for(int i = 0; i < enrolledTeamsBox.getChildren().size(); i++){
            if(enrolledTeamsBox.getChildren().get(i).equals(teamLabel)){
-               found = true;
+
                Label label = (Label) enrolledTeamsBox.getChildren().get(i);
                enrolledTeamsBox.getChildren().remove(i);
                warningLabel.setText(label.getText() + " has been removed from enrolled teams.");
                teamsForTournament.remove(i);
-           }
-           if(found){
                nrOfTeams.setText(String.valueOf(enrolledTeamsBox.getChildren().size()));
+               break;
            }
         }
-
     }
 
     public void setCurrentTeams(){
-        /*Separator separator = new Separator();
-        separator.setOrientation(Orientation.HORIZONTAL);
-         */
-
         for (int i = 0; i < enrolledTeamsBox.getChildren().size(); i++) {
             Label teamLabel;
             teamLabel = (Label) enrolledTeamsBox.getChildren().get(i);
@@ -336,7 +288,7 @@ public class AddTeamController {
         enrolledTeamsBox.setPrefWidth(339);
     }
 
-    public void onSearchTeamSelect(ActionEvent event) {
+    public void onSearchTeamSelect() {
         String teamName = searchTeams.getText();
         Team selectedTeam = existingTeams.stream().filter(t -> t.getNameOfTeam().equals(teamName))
                 .collect(Collectors.toList()).get(0);
@@ -350,7 +302,7 @@ public class AddTeamController {
 
     /**
      * checks if team is in the enrolled teams box
-     * @param teamName
+     * @param teamName name of team
      * @return true/false, enrolled/not enrolled
      */
     public boolean isTeamAlreadyEnrolled(String teamName){
@@ -362,74 +314,45 @@ public class AddTeamController {
         }
         return false;
     }
-    public static void setMaxTeams(int maxNrOfTeams) {
-        maxTeams = maxNrOfTeams;
-    }
-    public ArrayList<Team> getTeamsForTournament(){
-        return teamsForTournament;
-    }
+
     public static void setTournament(NewTournament newTournament) {
         tournament = newTournament;
     }
-    public static int getMaxTeams(){return maxTeams;}
 
     @FXML
-    void onHomeButtonPressed(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class
-                .getResource("scenes/main-page.fxml")));
-        setNextWindowFromMenuBar(root);
+    void onHomeButtonPressed() throws IOException {
+        ViewSwitcher.switchTo(View.MAIN);
     }
 
     @FXML
-    void onAboutButtonPressed(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource("scenes/about-page.fxml")));
-        setNextWindowFromMenuBar(root);
+    void onAboutButtonPressed() throws IOException {
+        ViewSwitcher.switchTo(View.ABOUT);
     }
 
     @FXML
-    void onHelpButtonPressed(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class.getResource("scenes/help-page.fxml")));
-        setNextWindowFromMenuBar(root);
+    void onHelpButtonPressed() throws IOException {
+        ViewSwitcher.switchTo(View.HELP);
     }
 
     @FXML
-    void onOngoingTournamentsButtonPressed(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class
-                .getResource("scenes/ongoing-overview.fxml")));
-        setNextWindowFromMenuBar(root);
-    }
-
-    private void setNextWindowFromMenuBar(Parent root) throws IOException{
-        if (hasAllTeamsBeenAdded()){
-            Collections.shuffle(teamsForTournament);
-            TournamentWriterRework.writeTeamsToTournamentFile(tournament.getTournamentName(),teamsForTournament);
-            TournamentWriterRework.writeStartMatchesToTournamentFile(tournament.getTournamentName());
-        }
-        Stage stage = (Stage) menuBar.getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setMinWidth(1200);
-        stage.setMinHeight(800);
-        stage.show();
+    void onOngoingTournamentsButtonPressed() throws IOException {
+        ViewSwitcher.switchTo(View.ONGOING_TOURNAMENTS);
     }
 
     @FXML
-    void onUpcomingTournamentsButtonPressed(ActionEvent event)
+    void onUpcomingTournamentsButtonPressed()
             throws IOException{
-        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class
-                .getResource("scenes/upcoming-overview.fxml")));
-        setNextWindowFromMenuBar(root);
+        ViewSwitcher.switchTo(View.UPCOMING_OVERVIEW);
     }
 
     @FXML
-    void onPreviousTournamentsButtonPressed(ActionEvent event)
+    void onPreviousTournamentsButtonPressed()
             throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class
-                .getResource("scenes/previous-overview.fxml")));
-        setNextWindowFromMenuBar(root);
+        ViewSwitcher.switchTo(View.PREVIOUS_TOURNAMENTS);
     }
 
-    private boolean hasAllTeamsBeenAdded(){
-        return enrolledTeamsBox.getChildren().size() == maxTeams;
+
+    public static void setNameOfTournament(String nameOfTournament) {
+        AddTeamController.nameOfTournament = nameOfTournament;
     }
 }

@@ -232,8 +232,9 @@ public class MatchesController {
                 matches.get(i).setVisible(false);
                 matches.get(i).setPrefHeight(0);
                 try {
-                    TournamentWriterRework.writeMatchScoreAndVictorToTournamentFile(tournament.getTournamentName()
-                            ,matchWithResults);
+                    /*TournamentWriterRework.writeMatchScoreAndVictorToTournamentFile(tournament.getTournamentName()
+                            ,matchWithResults);*/
+                    TournamentWriterRework.writeMatchesToTournament(nameOfTournament,matchWithResults);
                 } catch (IOException exception){
                     exception.printStackTrace();
                 }
@@ -271,6 +272,7 @@ public class MatchesController {
 
     @FXML
     public void setTimeScene(ActionEvent event) throws IOException {
+        SetTimeController.setNameOfTournament(nameOfTournament);
         ViewSwitcher.switchTo(View.SET_TIME);
     }
 
@@ -308,14 +310,26 @@ public class MatchesController {
                 ,radio2Match11,radio2Match12,radio2Match13,radio2Match14));
 
         for (int i = 0; i < nrOfUnfinishedMatches; i++) {
-             matches.get(i).setVisible(true);
-             matches.get(i).setPrefHeight(100);
-             matches.get(i).setDisable(false);
-             teamOnes.get(i).setText(tournament.getUnfinishedMatches().get(i).getTeam1().getNameOfTeam());
-             radioOnes.get(i).setText(tournament.getUnfinishedMatches().get(i).getTeam1().getNameOfTeam());
-             teamTwos.get(i).setText(tournament.getUnfinishedMatches().get(i).getTeam2().getNameOfTeam());
-             radioTwos.get(i).setText(tournament.getUnfinishedMatches().get(i).getTeam2().getNameOfTeam());
-             timeLabels.get(i).setText(tournament.getUnfinishedMatches().get(i).getTimeOfMatch().toString());
+            if (tournament.getUnfinishedMatches().get(i).getTeam2() != null) {
+
+                if (tournament.getUnfinishedMatches().get(i).getTimeOfMatch() != null) {
+                    timeLabels.get(i).setText(tournament.getUnfinishedMatches().get(i).getTimeOfMatch().toString());
+                    matches.get(i).setDisable(false);
+                }
+                matches.get(i).setVisible(true);
+                matches.get(i).setPrefHeight(100);
+                teamOnes.get(i).setText(tournament.getUnfinishedMatches().get(i).getTeam1().getNameOfTeam());
+                radioOnes.get(i).setText(tournament.getUnfinishedMatches().get(i).getTeam1().getNameOfTeam());
+                teamTwos.get(i).setText(tournament.getUnfinishedMatches().get(i).getTeam2().getNameOfTeam());
+                radioTwos.get(i).setText(tournament.getUnfinishedMatches().get(i).getTeam2().getNameOfTeam());
+
+            }else {
+                matches.get(i).setVisible(true);
+                matches.get(i).setPrefHeight(100);
+                teamOnes.get(i).setText(tournament.getUnfinishedMatches().get(i).getTeam1().getNameOfTeam());
+                radioOnes.get(i).setText(tournament.getUnfinishedMatches().get(i).getTeam1().getNameOfTeam());
+
+            }
         }
     }
 
@@ -339,14 +353,6 @@ public class MatchesController {
         ViewSwitcher.switchTo(View.ONGOING_TOURNAMENTS);
     }
 
-    private void setNextWindowFromMenuBar(Parent root) {
-        Stage stage = (Stage) menuBar.getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setMinWidth(1200);
-        stage.setMinHeight(800);
-        stage.show();
-    }
 
     @FXML
     void onUpcomingTournamentsButtonPressed(ActionEvent event)

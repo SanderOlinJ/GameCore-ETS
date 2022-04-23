@@ -10,4 +10,10 @@ Brackets
 8
 0,null
 0,null
-LGB Esports,ENCE,Phase,G2 Esports,Ninjas in Pyjamas,Natus Vincere,Fnatic,
+Fnatic,Natus Vincere,Astralis,MOUZ,Ninjas in Pyjamas,G2 Esports,Phase,Team Liquid,
+Fnatic,Natus Vincere,06:00,
+Astralis,MOUZ,10:00,
+Ninjas in Pyjamas,G2 Esports,19:00,
+Phase,Team Liquid,20:00,
+
+

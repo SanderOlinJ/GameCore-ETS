@@ -307,123 +307,96 @@ public class TournamentsOverviewController {
     @FXML
     void onOverviewButton1Clicked(ActionEvent event)
     throws IOException{
-        String link = "";
         int maxTeams = Integer.parseInt(tournaments.get(0).getNumberOfTeams());
         if (teamsLeft1.getText().equals("No / Not all teams set")){
-            link = "scenes/add-team-scene.fxml";
-            AddTeamController.setTournament(tournaments.get(0));
-            AddTeamController.setMaxTeams(maxTeams);
+            AddTeamController.setNameOfTournament(tournaments.get(0).getTournamentName());
+            ViewSwitcher.switchTo(View.ADD_TEAM);
         } else {
-            if (maxTeams <= 4) {
-                link = "scenes/overview-scene-four.fxml";
-            } else if (maxTeams <= 8) {
-                link = "scenes/overview-scene-eight.fxml";
-            } else if (maxTeams <= 16) {
-                link = "scenes/overview-scene-sixteen.fxml";
-            }
             BracketController.setBracketSize(maxTeams);
             BracketController.setNameOfTournament(tournaments.get(0).getTournamentName());
+            if (maxTeams <= 4) {
+                ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_4);
+            } else if (maxTeams <= 8) {
+                ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_8);
+            } else if (maxTeams <= 16) {
+                ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_16);
+            }
         }
-        setNextWindow(event, link);
     }
 
     @FXML
     void onOverviewButton2Clicked(ActionEvent event) throws IOException{
-        String link = "";
         int maxTeams = Integer.parseInt(tournaments.get(1).getNumberOfTeams());
         if (teamsLeft2.getText().equals("No / Not all teams set")){
-            link = "scenes/add-team-scene.fxml";
-            AddTeamController.setTournament(tournaments.get(1));
-            AddTeamController.setMaxTeams(maxTeams);
+            AddTeamController.setNameOfTournament(tournaments.get(1).getTournamentName());
+            ViewSwitcher.switchTo(View.ADD_TEAM);
         } else {
-            if (maxTeams <= 4) {
-                link = "scenes/overview-scene-four.fxml";
-            } else if (maxTeams <= 8) {
-                link = "scenes/overview-scene-eight.fxml";
-            } else if (maxTeams <= 16) {
-                link = "scenes/overview-scene-sixteen.fxml";
-            }
             BracketController.setBracketSize(maxTeams);
             BracketController.setNameOfTournament(tournaments.get(1).getTournamentName());
+            if (maxTeams <= 4) {
+                ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_4);
+            } else if (maxTeams <= 8) {
+                ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_8);
+            } else if (maxTeams <= 16) {
+                ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_16);
+            }
         }
-        setNextWindow(event, link);
     }
 
     @FXML
     void onOverviewButton3Clicked(ActionEvent event) throws IOException{
-        String link = "";
         int maxTeams = Integer.parseInt(tournaments.get(2).getNumberOfTeams());
         if (teamsLeft3.getText().equals("No / Not all teams set")){
-            link = "scenes/add-team-scene.fxml";
-            AddTeamController.setTournament(tournaments.get(2));
-            AddTeamController.setMaxTeams(maxTeams);
+            AddTeamController.setNameOfTournament(tournaments.get(2).getTournamentName());
+            ViewSwitcher.switchTo(View.ADD_TEAM);
         } else {
-            if (maxTeams <= 4) {
-                link = "scenes/overview-scene-four.fxml";
-            } else if (maxTeams <= 8) {
-                link = "scenes/overview-scene-eight.fxml";
-            } else if (maxTeams <= 16) {
-                link = "scenes/overview-scene-sixteen.fxml";
-            }
             BracketController.setBracketSize(maxTeams);
             BracketController.setNameOfTournament(tournaments.get(2).getTournamentName());
+            if (maxTeams <= 4) {
+                ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_4);
+            } else if (maxTeams <= 8) {
+                ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_8);
+            } else if (maxTeams <= 16) {
+                ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_16);
+            }
         }
-        setNextWindow(event, link);
     }
 
     @FXML
     void onOverviewButton4Clicked(ActionEvent event) throws IOException{
-        String link = "";
         int maxTeams = Integer.parseInt(tournaments.get(3).getNumberOfTeams());
         if (teamsLeft4.getText().equals("No / Not all teams set")){
-            link = "scenes/add-team-scene.fxml";
-            AddTeamController.setTournament(tournaments.get(3));
-            AddTeamController.setMaxTeams(maxTeams);
+            AddTeamController.setNameOfTournament(tournaments.get(3).getTournamentName());
+            ViewSwitcher.switchTo(View.ADD_TEAM);
         } else {
-            if (maxTeams <= 4) {
-                link = "scenes/overview-scene-four.fxml";
-            } else if (maxTeams <= 8) {
-                link = "scenes/overview-scene-eight.fxml";
-            } else if (maxTeams <= 16) {
-                link = "scenes/overview-scene-sixteen.fxml";
-            }
             BracketController.setBracketSize(maxTeams);
             BracketController.setNameOfTournament(tournaments.get(3).getTournamentName());
+            if (maxTeams <= 4) {
+                ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_4);
+            } else if (maxTeams <= 8) {
+                ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_8);
+            } else if (maxTeams <= 16) {
+                ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_16);
+            }
         }
-        setNextWindow(event, link);
     }
 
     @FXML
     void onOverviewButton5Clicked(ActionEvent event) throws IOException{
-        String link = "";
         int maxTeams = Integer.parseInt(tournaments.get(4).getNumberOfTeams());
         if (teamsLeft5.getText().equals("No / Not all teams set")){
-            link = "scenes/add-team-scene.fxml";
-            AddTeamController.setTournament(tournaments.get(4));
-            AddTeamController.setMaxTeams(maxTeams);
+            AddTeamController.setNameOfTournament(tournaments.get(4).getTournamentName());
+            ViewSwitcher.switchTo(View.ADD_TEAM);
         } else {
-            if (maxTeams <= 4) {
-                link = "scenes/overview-scene-four.fxml";
-            } else if (maxTeams <= 8) {
-                link = "scenes/overview-scene-eight.fxml";
-            } else if (maxTeams <= 16) {
-                link = "scenes/overview-scene-sixteen.fxml";
-            }
             BracketController.setBracketSize(maxTeams);
             BracketController.setNameOfTournament(tournaments.get(4).getTournamentName());
+            if (maxTeams <= 4) {
+                ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_4);
+            } else if (maxTeams <= 8) {
+                ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_8);
+            } else if (maxTeams <= 16) {
+                ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_16);
+            }
         }
-        setNextWindow(event, link);
     }
-
-    private void setNextWindow(ActionEvent event, String link) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(GameCoreETSApplication.class
-                .getResource(link)));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setMinWidth(1200);
-        stage.setMinHeight(800);
-        stage.show();
-    }
-
 }

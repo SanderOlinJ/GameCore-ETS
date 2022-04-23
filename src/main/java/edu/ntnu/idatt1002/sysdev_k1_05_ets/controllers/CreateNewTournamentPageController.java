@@ -1,41 +1,23 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
-
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.GameCoreETSApplication;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.GeneralReader;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.NewTournamentWriter;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TournamentWriterRework;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.scenes.View;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.scenes.ViewSwitcher;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.utilities.Utilities;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.NewTournament;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-
 import javafx.scene.control.*;
-import javafx.scene.control.MenuBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 import javafx.util.Callback;
-import javafx.util.converter.NumberStringConverter;
 import org.controlsfx.control.textfield.TextFields;
 import javafx.scene.control.TextField;
 
 import java.io.File;
-import java.net.URL;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Objects;
-import java.util.ResourceBundle;
 
 import java.io.IOException;
 
@@ -44,9 +26,6 @@ import java.io.IOException;
 public class CreateNewTournamentPageController{
 
     public Button continueButton;
-    private Scene scene;
-    private Stage stage;
-    private NewTournament tournament;
 
     @FXML private TextField tournamentNameBox;
     @FXML private ComboBox tournamentHostBox;
@@ -71,14 +50,6 @@ public class CreateNewTournamentPageController{
     @FXML private ComboBox entranceFeeCurrencyBox;
     @FXML private CheckBox activatePrizePool;
 
-    @FXML private MenuBar menuBar;
-
-    @FXML private MenuItem homeButton;
-    @FXML private MenuItem ongoingTournamentsButton;
-    @FXML private MenuItem upcomingTournamentsButton;
-    @FXML private MenuItem previousTournamentsButton;
-    @FXML private MenuItem aboutButton;
-    @FXML private MenuItem helpButton;
 
     @FXML
     public void initialize() {
@@ -253,7 +224,7 @@ public class CreateNewTournamentPageController{
     }
 
     @FXML
-    public void onActivatePrizePoolPressed(ActionEvent event){
+    public void onActivatePrizePoolPressed(){
         if (activatePrizePool.isSelected()) {
             prizePoolText.setOpacity(1);
             prizePoolCurrencyText.setOpacity(1);
@@ -278,7 +249,7 @@ public class CreateNewTournamentPageController{
 
 
     @FXML
-    public void addTeamScene(ActionEvent event) throws IOException {
+    public void addTeamScene() throws IOException {
         //------ parse the current information of combobox to addTeamScene -----
         String status = "Not finished";
         String tournamentName = String.valueOf(tournamentNameBox.getText());
@@ -320,17 +291,12 @@ public class CreateNewTournamentPageController{
             throw new IOException(exception.getMessage());
         }
 
-        NewTournament tournament= new NewTournament(status, tournamentName, tournamentHost, date, time,
-                description, game, platform, tournamentType, numberOfTeams, prizePool, prizePoolCurrency,
-                entranceFee, entranceFeeCurrency);
-
         TournamentWriterRework.writeNewTournamentToFileWithBasicInfo(status, tournamentName,
                 tournamentHost, date, time, description, game, platform, tournamentType, numberOfTeams,
                 prizePool, prizePoolCurrency, entranceFee, entranceFeeCurrency);
 
-        int formatNr = Integer.parseInt(numberOfTeams);
-        AddTeamController.setMaxTeams(formatNr);
-        AddTeamController.setTournament(tournament);
+
+        AddTeamController.setNameOfTournament(tournamentName);
 
         ViewSwitcher.switchTo(View.ADD_TEAM);
     }
@@ -356,7 +322,7 @@ public class CreateNewTournamentPageController{
     }
 
     private void checkIfFileAlreadyExists(String tournamentName) throws IOException {
-        String doesFileExist = NewTournamentWriter.doesFileWithSameNameAlreadyExist(Utilities
+        String doesFileExist = TournamentWriterRework.ifFileExistsAndFindLocation(Utilities
                 .shortenAndReplaceUnnecessarySymbolsInString(tournamentName));
 
         if (doesFileExist.equals("Ongoing") || doesFileExist.equals("Upcoming") || doesFileExist.equals("Previous")){
@@ -405,49 +371,34 @@ public class CreateNewTournamentPageController{
         }
     }
 
-    public NewTournament getTournament() {
-        return tournament;
-    }
-
 
     @FXML
-    void onHomeButtonPressed(ActionEvent event) throws IOException {
+    void onHomeButtonPressed() throws IOException {
         ViewSwitcher.switchTo(View.MAIN);
     }
 
     @FXML
-    void onAboutButtonPressed(ActionEvent event) throws IOException {
+    void onAboutButtonPressed() throws IOException {
         ViewSwitcher.switchTo(View.ABOUT);
     }
 
     @FXML
-    void onOngoingTournamentsButtonPressed(ActionEvent event) throws IOException {
+    void onOngoingTournamentsButtonPressed() throws IOException {
         ViewSwitcher.switchTo(View.ONGOING_TOURNAMENTS);
     }
 
-    private void setNextWindowFromMenuBar(Parent root) {
-        Stage stage = (Stage) menuBar.getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setMinWidth(1200);
-        stage.setMinHeight(800);
-        stage.show();
-    }
-
     @FXML
-    void onUpcomingTournamentsButtonPressed(ActionEvent event)
-            throws IOException{
+    void onUpcomingTournamentsButtonPressed() throws IOException{
         ViewSwitcher.switchTo(View.UPCOMING_OVERVIEW);
     }
 
     @FXML
-    void onPreviousTournamentsButtonPressed(ActionEvent event)
-            throws IOException{
+    void onPreviousTournamentsButtonPressed() throws IOException{
         ViewSwitcher.switchTo(View.PREVIOUS_TOURNAMENTS);
     }
 
     @FXML
-    void onHelpButtonPressed(ActionEvent event) throws IOException {
+    void onHelpButtonPressed() throws IOException {
         ViewSwitcher.switchTo(View.HELP);
     }
 }

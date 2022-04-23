@@ -191,8 +191,9 @@ public class SetTimeController {
                        Team team2 = TeamReader.findAndReturnTeamUsingTeamName(teamTwos.get(i).getText());
                        Match match = new Match(team1, team2);
                        LocalTime time = LocalTime.parse(hourBoxes.get(i).getValue() + ":" + minuteBoxes.get(i).getValue());
-                       TournamentWriterRework.writeTimeToMatchInTournamentFile(tournament
-                               .getTournamentName(), match , time);
+                       match.setTimeOfMatch(time);
+                       TournamentWriterRework.writeMatchesToTournament(tournament
+                               .getTournamentName(),match);
                        hourBoxes.get(i).setDisable(true);
                        minuteBoxes.get(i).setDisable(true);
 
@@ -272,11 +273,13 @@ public class SetTimeController {
         teams = tournament.getTeams();
 
         for (int i = 0; i < nrOfMatchesNoTimeSet; i++) {
-            matches.get(i).setVisible(true);
-            matches.get(i).setPrefHeight(100);
-            matches.get(i).setDisable(false);
-            teamOnes.get(i).setText(tournament.getMatchesWithNoTimeSet().get(i).getTeam1().getNameOfTeam());
-            teamTwos.get(i).setText(tournament.getMatchesWithNoTimeSet().get(i).getTeam2().getNameOfTeam());
+            if (tournament.getMatchesWithNoTimeSet().get(i).getTeam2() != null) {
+                matches.get(i).setVisible(true);
+                matches.get(i).setPrefHeight(100);
+                matches.get(i).setDisable(false);
+                teamOnes.get(i).setText(tournament.getMatchesWithNoTimeSet().get(i).getTeam1().getNameOfTeam());
+                teamTwos.get(i).setText(tournament.getMatchesWithNoTimeSet().get(i).getTeam2().getNameOfTeam());
+            }
         }
     }
 
@@ -310,15 +313,6 @@ public class SetTimeController {
     @FXML
     void onOngoingTournamentsButtonPressed(ActionEvent event) throws IOException {
         ViewSwitcher.switchTo(View.ONGOING_TOURNAMENTS);
-    }
-
-    private void setNextWindowFromMenuBar(Parent root) {
-        Stage stage = (Stage) menuBar.getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setMinWidth(1200);
-        stage.setMinHeight(800);
-        stage.show();
     }
 
     @FXML

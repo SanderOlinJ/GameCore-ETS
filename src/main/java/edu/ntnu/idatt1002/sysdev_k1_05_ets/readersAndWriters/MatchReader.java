@@ -23,18 +23,20 @@ public class MatchReader {
             String line = list.get(i);
             String[] values = line.split(COMMA_DELIMITER);
             Team team1 = TeamReader.findAndReturnTeamUsingTeamName(values[0]);
-            Team team2 = TeamReader.findAndReturnTeamUsingTeamName(values[1]);
-            Match match = new Match(team1, team2);
-
-            if (values.length > 2) {
-                LocalTime time = LocalTime.parse(values[2]);
-                match.setTimeOfMatch(time);
-                if (values.length > 3) {
-                    int matchScoreTeam1 = Integer.parseInt(values[3]);
-                    int matchScoreTeam2 = Integer.parseInt(values[4]);
-                    match.setMatchScoreTeam1(matchScoreTeam1);
-                    match.setMatchScoreTeam2(matchScoreTeam2);
-                    match.setFinished(true);
+            Match match = new Match(team1);
+            if (values.length > 1) {
+                Team team2 = TeamReader.findAndReturnTeamUsingTeamName(values[1]);
+                match.setTeam2(team2);
+                if (values.length > 2) {
+                    LocalTime time = LocalTime.parse(values[2]);
+                    match.setTimeOfMatch(time);
+                    if (values.length > 3) {
+                        int matchScoreTeam1 = Integer.parseInt(values[3]);
+                        int matchScoreTeam2 = Integer.parseInt(values[4]);
+                        match.setMatchScoreTeam1(matchScoreTeam1);
+                        match.setMatchScoreTeam2(matchScoreTeam2);
+                        match.setFinished(true);
+                    }
                 }
             }
             matches.add(match);
