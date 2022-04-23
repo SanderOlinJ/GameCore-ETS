@@ -13,12 +13,12 @@ public class TeamWriter {
 
     public TeamWriter(){}
 
-    public static void writeFile(ArrayList<Team> listOfTeams, String fileName) throws IOException {
+    public static void writeFile(ArrayList<Team> listOfTeams) throws IOException {
         if (listOfTeams == null || listOfTeams.isEmpty()){
             throw new IOException("List of teams cannot be empty");
         }
         try (FileWriter fileWriter = new FileWriter("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
-                "teamFiles/" + fileName + ".csv",true)){
+                "teamFiles/all_Teams.csv",true)){
             for (Team team : listOfTeams){
                 try {
                     StringBuilder stringBuilder = new StringBuilder();
@@ -35,5 +35,41 @@ public class TeamWriter {
                 }
             }
         }
+    }
+
+
+    public static boolean removeInstanceOfTeam(Team team)
+    throws IOException{
+        ArrayList<Team> teams = TeamReader.readTeamsFromAllTeamsFile();
+        for (Team teamInFile : teams){
+            int index = teams.indexOf(teamInFile);
+            if (teamInFile.getNameOfTeam().equals(team.getNameOfTeam())){
+                teams.set(index, team);
+                break;
+            }
+            else if (teamInFile.getNameAbbr().equals(team.getNameAbbr())){
+                teams.set(index, team);
+                break;
+            }
+            else if (teamInFile.getMembers().equals(team.getMembers())){
+                teams.set(index, team);
+                break;
+            }
+        }
+
+        try (FileWriter fileWriter = new FileWriter("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
+                "teamFiles/all_Teams.csv")){
+            StringBuilder stringBuilder = new StringBuilder();
+            for (Team teamInFile : teams){
+                stringBuilder.append(teamInFile.getNameOfTeam()).append(DELIMITER).append(teamInFile.getNameAbbr())
+                        .append(DELIMITER);
+                for (String member : teamInFile.getMembers()){
+                    stringBuilder.append(member).append(",");
+                }
+                stringBuilder.append(NEWLINE);
+            }
+            fileWriter.write(stringBuilder.toString());
+        }
+        return false;
     }
 }

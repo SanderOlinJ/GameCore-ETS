@@ -11,6 +11,7 @@ import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.NewTournament;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -24,14 +25,17 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import javafx.util.converter.NumberStringConverter;
 import org.controlsfx.control.textfield.TextFields;
 import javafx.scene.control.TextField;
 
 import java.io.File;
+import java.net.URL;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Objects;
+import java.util.ResourceBundle;
 
 import java.io.IOException;
 

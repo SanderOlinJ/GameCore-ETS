@@ -48,13 +48,14 @@ public class AddTeamController {
     @FXML private MenuItem helpButton;
     @FXML private MenuBar menuBar;
     @FXML private Label nrOfTeams;
-
+    @FXML private Button noButton;
+    private boolean overWrite;
     private ArrayList<Team> teamsForTournament;
 
 
     @FXML
     public void initialize () throws IOException {
-
+        overWrite = false;
         try {
             TournamentWriterRework.updateTournamentFileLocation();
         } catch (IOException exception){
@@ -180,63 +181,128 @@ public class AddTeamController {
 
     public void addTeam(ActionEvent actionEvent) throws IOException {
         if (teamNameField.getText().strip().equals("")){
-            warningLabel.setText("Invalid team name.");
+            warningLabel.setText("Team name required.");
+            throw new IOException("Team name required.");
+        }
+        if (abbreviationField.getText().strip().equals("")){
+            warningLabel.setText("Team name abbreviation required.");
+            throw new IOException("Team name abbreviation required.");
+        }
+        if (playersNameField.getText().isBlank()){
+            warningLabel.setText("Team players required.");
+            throw new IOException("Team players required.");
         }
         //check if max amount of teams has been exceeded
         if(teamsForTournament.size() >= maxTeams){
             warningLabel.setText("You have reached the maximum number of teams for this tournament. \n"
             + "max teams: "+maxTeams);
+            throw new IOException("You have reached the maximum number of teams for this tournament. \n"
+                    + "max teams: "+maxTeams);
         }
 
         if(isTeamAlreadyEnrolled(teamNameField.getText())){
             warningLabel.setText(teamNameField.getText() + " is already enrolled for the tournament");
+            throw new IOException(teamNameField.getText() + " is already enrolled for the tournament");
         }
 
-        // TODO: 19.04.2022: if a team was "selected" from registry and edited, remove previous instance of the team for the all_Teams.csv, and replace with new version
-        else {
-            warningLabel.setText("");
-            if (playersNameField.getText().isBlank()){
-                teamsForTournament.add(new Team(teamNameField.getText()));
-                teamNameField.setText("");
-                Label newTeam = new Label(teamNameField.getText());
-                enrolledTeamsBox.getChildren().add(newTeam);
-            }
-            else {
-                //name of each members on new lines
-                String[] players = playersNameField.getText().split("\n");
-                List<String> returnList = Arrays.asList(players);
-                ArrayList<String> teamMembersList = new ArrayList<>(returnList);
 
-                //Creating team labels
-                Team addedTeam = new Team(teamMembersList, teamNameField.getText(),abbreviationField.getText());
-                Label newTeam = new Label(teamNameField.getText());
-                newTeam.setPrefWidth(300);
-                newTeam.setAlignment(Pos.TOP_LEFT);
-                enrolledTeamsBox.getChildren().add(newTeam);
-                nrOfTeams.setText("" + enrolledTeamsBox.getChildren().size());
 
-                //add team to tournament bracket
-                teamsForTournament.add(addedTeam);
-                ArrayList<Team> writeTeamList = new ArrayList<>();
-                writeTeamList.add(addedTeam);
-                //write teams to team file
-                TeamWriter.writeFile(writeTeamList,"all_Teams");
-                setCurrentTeams();
+        //name of each members on new lines
+        String[] players = playersNameField.getText().split("\n");
+        List<String> returnList = Arrays.asList(players);
+        ArrayList<String> teamMembersList = new ArrayList<>(returnList);
 
-                //info to user
-                warningLabel.setText(addedTeam.getNameOfTeam() + " has been added to your tournament");
-                //reset fields after adding
-                playersNameField.setText("");
-                teamNameField.setText("");
-                abbreviationField.setText("");
+        //Creating team labels
+        Team addedTeam = new Team(teamMembersList, teamNameField.getText(),abbreviationField.getText());
+        if (!TeamReader.isThisANewTeam(addedTeam)){
+
+            if (TeamReader.wasThereChangesMadeToTeam(addedTeam)){
+
+                if (TeamReader.isThereAlreadyATeamWithSameTeamName(addedTeam)){
+                    if (!overWrite){
+                        warningLabel.setText("Already team with same name, want to overwrite?");
+                        ifOverWriteMessage();
+                        throw new IOException("Already team with same name, want to overwrite?");
+                    } else {
+                        overWrite = false;
+                    }
+                }
+                else if (TeamReader.isThereAlreadyATeamWithSameTeamNameAbbreviation(addedTeam)){
+                    if (!overWrite){
+                        warningLabel.setText("Already team with same name abbreviation, want to overwrite?");
+                        ifOverWriteMessage();
+                        throw new IOException("Already team with same name abbreviation, want to overwrite?");
+                    } else {
+                        overWrite = false;
+                    }
+                }
+                else if (TeamReader.isThereAlreadyATeamWithSameTeamMembers(addedTeam)){
+                    if (!overWrite){
+                        warningLabel.setText("Already team with same members, want to overwrite?");
+                        ifOverWriteMessage();
+                        throw new IOException("Already team with same members, want to overwrite?");
+                    } else {
+                        overWrite = false;
+                    }
+                }
+
             }
         }
+
+        Label newTeam = new Label(teamNameField.getText());
+        newTeam.setPrefWidth(300);
+        newTeam.setAlignment(Pos.TOP_LEFT);
+        enrolledTeamsBox.getChildren().add(newTeam);
+        nrOfTeams.setText("" + enrolledTeamsBox.getChildren().size());
+
+        //add team to tournament bracket
+        teamsForTournament.add(addedTeam);
+        /*ArrayList<Team> writeTeamList = new ArrayList<>();
+        writeTeamList.add(addedTeam);
+        //write teams to team file
+        TeamWriter.writeFile(writeTeamList);
+
+         */
+        TeamWriter.removeInstanceOfTeam(addedTeam);
+        setCurrentTeams();
+
+        //info to user
+        warningLabel.setText(addedTeam.getNameOfTeam() + " has been added to your tournament");
+        //reset fields after adding
+        playersNameField.setText("");
+        teamNameField.setText("");
+        abbreviationField.setText("");
+        teamNameField.setDisable(false);
+        abbreviationField.setDisable(false);
+        playersNameField.setDisable(false);
+    }
+    private void ifOverWriteMessage(){
+        noButton.setVisible(true);
+        noButton.setDisable(false);
+        teamNameField.setDisable(true);
+        abbreviationField.setDisable(true);
+        playersNameField.setDisable(true);
+        overWrite = true;
+    }
+    @FXML
+    void onNoButtonClicked(ActionEvent event){
+        playersNameField.setText("");
+        teamNameField.setText("");
+        abbreviationField.setText("");
+        warningLabel.setText("");
+        noButton.setDisable(true);
+        noButton.setVisible(false);
+        overWrite = false;
+        teamNameField.setDisable(false);
+        abbreviationField.setDisable(false);
+        playersNameField.setDisable(false);
     }
 
 
-   public void deleteTeamFromTeams(Label teamLabel){
+
+    public void deleteTeamFromTeams(Label teamLabel){
         boolean found = false;
-       for(int i = 0; i < enrolledTeamsBox.getChildren().size(); i++){
+        for(int i = 0; i < enrolledTeamsBox.getChildren().size(); i++){
            if(enrolledTeamsBox.getChildren().get(i).equals(teamLabel)){
                found = true;
                Label label = (Label) enrolledTeamsBox.getChildren().get(i);
@@ -247,9 +313,9 @@ public class AddTeamController {
            if(found){
                nrOfTeams.setText(String.valueOf(enrolledTeamsBox.getChildren().size()));
            }
-       }
+        }
 
-   }
+    }
 
     public void setCurrentTeams(){
         /*Separator separator = new Separator();

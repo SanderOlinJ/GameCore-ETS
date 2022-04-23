@@ -13,12 +13,12 @@ public class TeamWriterTest {
     @Test
     public void writeFileRun() throws IOException {
         ArrayList<String> members;
-        members = new ArrayList<String>(Arrays.asList("a","a","a"));
+        members = new ArrayList<>(Arrays.asList("a","a","a"));
         Team team1 = new Team(members, "team1","t1");
         Team team2 = new Team(members, "team2","t1");
         ArrayList<Team> listOfTeams = new ArrayList<>();
         listOfTeams.add(team1);
         listOfTeams.add(team2);
-        TeamWriter.writeFile(listOfTeams,"8_team_file");
+        TeamWriter.writeFile(listOfTeams);
     }
 }

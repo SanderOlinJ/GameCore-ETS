@@ -59,4 +59,61 @@ public class TeamReader {
         }
         return teamFound;
     }
+
+    public static boolean isThereAlreadyATeamWithSameTeamName(Team team)
+            throws IOException{
+        ArrayList<Team> teams = TeamReader.readTeamsFromAllTeamsFile();
+        for (Team teamInFile : teams){
+            if (teamInFile.getNameOfTeam().equals(team.getNameOfTeam())){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean isThereAlreadyATeamWithSameTeamNameAbbreviation(Team team)
+            throws IOException{
+        ArrayList<Team> teams = TeamReader.readTeamsFromAllTeamsFile();
+        for (Team teamInFile : teams){
+            if (teamInFile.getNameAbbr().equals(team.getNameAbbr())){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean isThereAlreadyATeamWithSameTeamMembers(Team team)
+            throws IOException{
+        ArrayList<Team> teams = TeamReader.readTeamsFromAllTeamsFile();
+        for (Team teamInFile : teams){
+            if (teamInFile.getMembers().equals(team.getMembers())){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean wasThereChangesMadeToTeam(Team team)
+    throws IOException{
+        ArrayList<Team> teams = TeamReader.readTeamsFromAllTeamsFile();
+        for (Team teamInFile : teams){
+            if (teamInFile.equals(team)){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static boolean isThisANewTeam(Team team)
+    throws IOException{
+        ArrayList<Team> teams = TeamReader.readTeamsFromAllTeamsFile();
+        for (Team teamInFile : teams){
+            if (teamInFile.getNameOfTeam().equals(team.getNameOfTeam()) ||
+                    teamInFile.getNameAbbr().equals(team.getNameAbbr()) ||
+                    teamInFile.getMembers().equals(team.getMembers())){
+                return false;
+            }
+        }
+        return true;
+    }
 }

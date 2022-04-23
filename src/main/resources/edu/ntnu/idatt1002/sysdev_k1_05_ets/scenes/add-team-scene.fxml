@@ -83,12 +83,12 @@
                                     </Text>
                                  </children>
                               </HBox>
-                              <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="589.0" prefWidth="1100.0">
+                              <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="635.0" prefWidth="1100.0">
                                  <VBox.margin>
                                     <Insets left="50.0" right="50.0" top="10.0" />
                                  </VBox.margin>
                                  <children>
-                                    <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="577.0" prefWidth="809.0" style="-fx-background-color: #2e3e4e;">
+                                    <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="636.0" prefWidth="809.0" style="-fx-background-color: #2e3e4e;">
                                        <children>
                                           <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="48.0" prefWidth="809.0" style="-fx-background-color: #282c34;">
                                              <VBox.margin>
@@ -241,17 +241,31 @@
                                                 <Insets top="15.0" />
                                              </VBox.margin>
                                           </HBox>
-                                          <HBox alignment="TOP_CENTER" prefHeight="70.0" prefWidth="809.0">
+                                          <HBox alignment="CENTER" prefHeight="131.0" prefWidth="809.0">
                                              <children>
-                                                <Label fx:id="warningLabel" alignment="CENTER" prefHeight="71.0" prefWidth="644.0" textAlignment="CENTER" textFill="#fa8f31" wrapText="true">
+                                                <Label fx:id="warningLabel" alignment="CENTER" prefHeight="123.0" prefWidth="511.0" textAlignment="CENTER" textFill="#fa8f31" wrapText="true">
                                                    <font>
                                                       <Font name="Arial" size="24.0" />
                                                    </font>
                                                    <HBox.margin>
-                                                      <Insets />
+                                                      <Insets right="15.0" />
                                                    </HBox.margin>
                                                 </Label>
-                                                <Button fx:id="continueButton1" mnemonicParsing="false" onAction="#addTeam" styleClass="jfx-button" stylesheets="@../css/style.css" text="Add team" textFill="WHITE">
+                                                <Button fx:id="noButton" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onNoButtonClicked" prefHeight="33.0" prefWidth="107.0" styleClass="jfx-button" stylesheets="@../css/style.css" text="No" textFill="WHITE" visible="false">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="18.0" />
+                                                   </font>
+                                                   <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                   </cursor>
+                                                   <effect>
+                                                      <DropShadow height="10.0" radius="4.5" width="10.0" />
+                                                   </effect>
+                                                   <HBox.margin>
+                                                      <Insets right="20.0" />
+                                                   </HBox.margin>
+                                                </Button>
+                                                <Button fx:id="continueButton1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addTeam" prefHeight="33.0" prefWidth="107.0" styleClass="jfx-button" stylesheets="@../css/style.css" text="Add team" textFill="WHITE">
                                                    <font>
                                                       <Font name="Arial Bold" size="18.0" />
                                                    </font>
@@ -262,7 +276,7 @@
                                                       <Cursor fx:constant="HAND" />
                                                    </cursor>
                                                    <HBox.margin>
-                                                      <Insets top="15.0" />
+                                                      <Insets />
                                                    </HBox.margin>
                                                 </Button>
                                              </children>
@@ -272,7 +286,7 @@
                                           </HBox>
                                        </children>
                                     </VBox>
-                                    <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="577.0" prefWidth="260.0" style="-fx-background-color: #2e3e4e;">
+                                    <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="635.0" prefWidth="260.0" style="-fx-background-color: #2e3e4e;">
                                        <children>
                                           <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="48.0" prefWidth="260.0" style="-fx-background-color: #282c34;">
                                              <children>
@@ -308,12 +322,12 @@
                                           </HBox>
                                           <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="230.0" style="-fx-background-color: #2e3e4e;">
                                              <children>
-                                                <ScrollPane fx:id="currentTeams" hbarPolicy="NEVER" maxWidth="339.0" prefHeight="279.0" prefWidth="230.0" stylesheets="@../css/style.css">
+                                                <ScrollPane fx:id="currentTeams" hbarPolicy="NEVER" maxWidth="339.0" prefHeight="365.0" prefWidth="230.0" stylesheets="@../css/style.css">
                                                    <VBox.margin>
                                                       <Insets bottom="10.0" top="10.0" />
                                                    </VBox.margin>
                                                    <content>
-                                                      <VBox fx:id="enrolledTeamsBox" prefHeight="277.0" prefWidth="228.0" style="-fx-background-color: #282c34;" stylesheets="@../css/style.css" />
+                                                      <VBox fx:id="enrolledTeamsBox" prefHeight="363.0" prefWidth="228.0" style="-fx-background-color: #282c34;" stylesheets="@../css/style.css" />
                                                    </content>
                                                 </ScrollPane>
                                              </children>
@@ -323,13 +337,16 @@
                                           </VBox>
                                           <HBox prefHeight="63.0" prefWidth="261.0">
                                              <VBox.margin>
-                                                <Insets top="-110.0" />
+                                                <Insets />
                                              </VBox.margin>
                                              <children>
                                                 <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Click on a team name to remove from tournament" textAlignment="CENTER" wrappingWidth="259.0859375">
                                                    <font>
                                                       <Font name="Arial Bold" size="18.0" />
                                                    </font>
+                                                   <HBox.margin>
+                                                      <Insets top="-40.0" />
+                                                   </HBox.margin>
                                                 </Text>
                                              </children>
                                           </HBox>
@@ -362,6 +379,9 @@
                                        </cursor>
                                     </Button>
                                  </children>
+                                 <VBox.margin>
+                                    <Insets top="15.0" />
+                                 </VBox.margin>
                               </HBox>
                            </children>
                         </VBox>

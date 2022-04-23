@@ -10,11 +10,4 @@ Brackets
 8
 0,null
 0,null
-Ninjas in Pyjamas,Astralis,FaZe,LGB Esports,Phase,Natus Vincere,Lords,
-
-
-
-
-
-
-
+LGB Esports,Natus Vincere,Ninjas in Pyjamas,Lords,Phase,FaZe,Astralis,
