@@ -1,0 +1,20 @@
+Finished
+Test 1
+Admin
+2022-04-25
+00:00
+No description
+Counter-Strike: Global Offensive
+Nintendo 64
+Brackets
+8
+0,null
+0,null
+LGB Esports,ENCE,Evil Geniuses,MOUZ,Complexity,Astralis,Team Liquid,G2 Esports,
+7,true,LGB Esports,ENCE,10:00,1,2,ENCE,
+6,true,Evil Geniuses,MOUZ,00:00,0,2,MOUZ,
+5,true,Complexity,Astralis,01:00,1,2,Astralis,
+4,true,Team Liquid,G2 Esports,02:00,1,2,G2 Esports,
+3,true,ENCE,MOUZ,12:00,2,0,ENCE,
+2,true,Astralis,G2 Esports,10:00,1,2,G2 Esports,
+1,true,ENCE,G2 Esports,13:00,2,0,ENCE,

@@ -273,12 +273,24 @@ public class SetTimeController {
         teams = tournament.getTeams();
 
         for (int i = 0; i < nrOfMatchesNoTimeSet; i++) {
-            if (tournament.getMatchesWithNoTimeSet().get(i).getTeam2() != null) {
+            if (tournament.getMatchesWithNoTimeSet().get(i).getTeam1() != null &&
+                    tournament.getMatchesWithNoTimeSet().get(i).getTeam2() != null){
                 matches.get(i).setVisible(true);
                 matches.get(i).setPrefHeight(100);
                 matches.get(i).setDisable(false);
                 teamOnes.get(i).setText(tournament.getMatchesWithNoTimeSet().get(i).getTeam1().getNameOfTeam());
                 teamTwos.get(i).setText(tournament.getMatchesWithNoTimeSet().get(i).getTeam2().getNameOfTeam());
+            }else {
+                if (tournament.getMatchesWithNoTimeSet().get(i).getTeam1() != null){
+                    teamOnes.get(i).setText(tournament.getMatchesWithNoTimeSet().get(i).getTeam1().getNameOfTeam());
+                    matches.get(i).setVisible(true);
+                    matches.get(i).setPrefHeight(100);
+                }
+                if (tournament.getMatchesWithNoTimeSet().get(i).getTeam2() != null) {
+                    teamTwos.get(i).setText(tournament.getMatchesWithNoTimeSet().get(i).getTeam2().getNameOfTeam());
+                    matches.get(i).setVisible(true);
+                    matches.get(i).setPrefHeight(100);
+                }
             }
         }
     }

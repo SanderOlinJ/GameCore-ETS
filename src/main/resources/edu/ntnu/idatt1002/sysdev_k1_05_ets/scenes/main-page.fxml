@@ -101,7 +101,7 @@
                                                 <VBox prefHeight="0.0" prefWidth="1200.0" />
                                                 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="317.0" prefWidth="1021.0" style="-fx-background-color: #282c34;">
                                                     <children>
-                                                        <VBox fx:id="ongoingBox1" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onOngoingBox1Clicked" prefHeight="273.0" prefWidth="350.0" visible="false">
+                                                        <VBox fx:id="ongoingBox1" alignment="CENTER" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onOngoingBox1Clicked" prefHeight="273.0" prefWidth="350.0" visible="false">
                                                             <HBox.margin>
                                                                 <Insets left="120.0" right="81.0" top="22.0" />
                                                             </HBox.margin>
@@ -116,9 +116,14 @@
                                                             <Image url="@../Images/gameImages/LeagueofLegends.png" />
                                                          </image>
                                                       </ImageView>
+                                                      <Text fx:id="warningText" fill="WHITE" layoutX="46.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Not all teams have been added yet. Click to add." textAlignment="CENTER" visible="false" wrappingWidth="257.09765625">
+                                                         <font>
+                                                            <Font name="Arial Bold" size="28.0" />
+                                                         </font>
+                                                      </Text>
                                                    </children>
                                                 </Pane>
-                                                                <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="350.0" style="-fx-background-color: black;">
+                                                                <Pane fx:id="ongoingPane1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="350.0" style="-fx-background-color: black;">
                                                                     <VBox.margin>
                                                                         <Insets />
                                                                     </VBox.margin>
@@ -147,9 +152,14 @@
                                                             <Image url="@../Images/gameImages/LeagueofLegends.png" />
                                                          </image>
                                                       </ImageView>
+                                                      <Text fx:id="warningText1" fill="WHITE" layoutX="56.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Not all teams have been added yet. Click to add." textAlignment="CENTER" visible="false" wrappingWidth="257.09765625">
+                                                         <font>
+                                                            <Font name="Arial Bold" size="28.0" />
+                                                         </font>
+                                                      </Text>
                                                    </children>
                                                 </Pane>
-                                                <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="350.0" style="-fx-background-color: black;">
+                                                <Pane fx:id="ongoingPane2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="350.0" style="-fx-background-color: black;">
                                                    <VBox.margin>
                                                       <Insets />
                                                    </VBox.margin>
@@ -229,9 +239,14 @@
                                                             <Image url="@../Images/gameImages/LeagueofLegends.png" />
                                                          </image>
                                                       </ImageView>
+                                                      <Text fx:id="warningText11" fill="WHITE" layoutX="66.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Not all teams have been added yet. Click to add." textAlignment="CENTER" visible="false" wrappingWidth="257.09765625">
+                                                         <font>
+                                                            <Font name="Arial Bold" size="28.0" />
+                                                         </font>
+                                                      </Text>
                                                    </children>
                                                 </Pane>
-                                                <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="350.0" style="-fx-background-color: black;">
+                                                <Pane fx:id="upcomingPane1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="350.0" style="-fx-background-color: black;">
                                                    <VBox.margin>
                                                       <Insets />
                                                    </VBox.margin>
@@ -260,9 +275,14 @@
                                                             <Image url="@../Images/gameImages/LeagueofLegends.png" />
                                                          </image>
                                                       </ImageView>
+                                                      <Text fx:id="warningText12" fill="WHITE" layoutX="66.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Not all teams have been added yet. Click to add." textAlignment="CENTER" visible="false" wrappingWidth="257.09765625">
+                                                         <font>
+                                                            <Font name="Arial Bold" size="28.0" />
+                                                         </font>
+                                                      </Text>
                                                    </children>
                                                 </Pane>
-                                                <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="350.0" style="-fx-background-color: black;">
+                                                <Pane fx:id="upcomingPane2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="350.0" style="-fx-background-color: black;">
                                                    <VBox.margin>
                                                       <Insets />
                                                    </VBox.margin>
@@ -342,9 +362,14 @@
                                                             <Image url="@../Images/gameImages/LeagueofLegends.png" />
                                                          </image>
                                                       </ImageView>
+                                                      <Text fx:id="warningText13" fill="WHITE" layoutX="66.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Not all teams have been added yet. Click to add." textAlignment="CENTER" visible="false" wrappingWidth="257.09765625">
+                                                         <font>
+                                                            <Font name="Arial Bold" size="28.0" />
+                                                         </font>
+                                                      </Text>
                                                    </children>
                                                 </Pane>
-                                                <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="350.0" style="-fx-background-color: black;">
+                                                <Pane fx:id="previousPane1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="350.0" style="-fx-background-color: black;">
                                                    <VBox.margin>
                                                       <Insets />
                                                    </VBox.margin>
@@ -373,9 +398,14 @@
                                                             <Image url="@../Images/gameImages/LeagueofLegends.png" />
                                                          </image>
                                                       </ImageView>
+                                                      <Text fx:id="warningText14" fill="WHITE" layoutX="66.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Not all teams have been added yet. Click to add." textAlignment="CENTER" visible="false" wrappingWidth="257.09765625">
+                                                         <font>
+                                                            <Font name="Arial Bold" size="28.0" />
+                                                         </font>
+                                                      </Text>
                                                    </children>
                                                 </Pane>
-                                                <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="350.0" style="-fx-background-color: black;">
+                                                <Pane fx:id="previousPane2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="350.0" style="-fx-background-color: black;">
                                                    <VBox.margin>
                                                       <Insets />
                                                    </VBox.margin>

@@ -1,46 +1,21 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
-
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.GameCoreETSApplication;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TournamentReaderRework;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TournamentWriterRework;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.scenes.View;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.scenes.ViewSwitcher;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.NewTournament;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.utilities.Utilities;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class MainPageController {
-
-    @FXML private MenuBar menuBar;
-    @FXML private Button createNewTournamentButton;
-    @FXML private Button viewMoreOngoing;
-    @FXML private Button viewMoreUpcoming;
-    @FXML private Button viewMorePrevious;
-    @FXML Stage stage;
-    @FXML BorderPane startScreenPane;
-
-    @FXML private MenuItem homeButton;
-    @FXML private MenuItem ongoingTournamentsButton;
-    @FXML private MenuItem upcomingTournamentsButton;
-    @FXML private MenuItem previousTournamentsButton;
-    @FXML private MenuItem aboutButton;
-    @FXML private MenuItem helpButton;
 
     @FXML private VBox ongoingBox1;
     @FXML private ImageView ongoingImageView1;
@@ -151,73 +126,62 @@ public class MainPageController {
     }
 
     @FXML
-    void onCreateNewTournamentButtonPressed(ActionEvent event) throws IOException {
+    void onCreateNewTournamentButtonPressed()
+    throws IOException {
         ViewSwitcher.switchTo(View.CREATE_NEW_TOURNAMENT);
     }
 
-    private void setNextWindow(ActionEvent event, Parent root) {
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setMinWidth(1200);
-        stage.setMinHeight(800);
-        stage.show();
+    @FXML
+    void onHomeButtonPressed()
+    throws IOException{
+        ViewSwitcher.switchTo(View.MAIN);
     }
 
     @FXML
-    void onHomeButtonPressed(ActionEvent event) {
-    }
-
-    @FXML
-    void onHelpButtonPressed(ActionEvent event) throws IOException {
+    void onHelpButtonPressed()
+    throws IOException{
         ViewSwitcher.switchTo(View.HELP);
     }
 
     @FXML
-    void onAboutButtonPressed(ActionEvent event) throws IOException{
+    void onAboutButtonPressed()
+    throws IOException{
         ViewSwitcher.switchTo(View.ABOUT);
     }
 
     @FXML
-    void onOngoingTournamentsButtonPressed(ActionEvent event) throws IOException {
+    void onOngoingTournamentsButtonPressed()
+    throws IOException{
         ViewSwitcher.switchTo(View.ONGOING_TOURNAMENTS);
     }
 
-    private void setNextWindowFromMenuBar(Parent root) {
-        Stage stage = (Stage) menuBar.getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setMinWidth(1200);
-        stage.setMinHeight(800);
-        stage.show();
-    }
 
     @FXML
-    void onUpcomingTournamentsButtonPressed(ActionEvent event)
+    void onUpcomingTournamentsButtonPressed()
     throws IOException{
         ViewSwitcher.switchTo(View.UPCOMING_OVERVIEW);
     }
 
     @FXML
-    void onPreviousTournamentsButtonPressed(ActionEvent event)
+    void onPreviousTournamentsButtonPressed()
     throws IOException{
         ViewSwitcher.switchTo(View.PREVIOUS_TOURNAMENTS);
     }
 
     @FXML
-    void onViewMoreOngoingPressed(ActionEvent event)
+    void onViewMoreOngoingPressed()
     throws IOException{
         ViewSwitcher.switchTo(View.ONGOING_TOURNAMENTS);
     }
 
     @FXML
-    void onViewMoreUpcomingPressed(ActionEvent event)
+    void onViewMoreUpcomingPressed()
     throws IOException{
         ViewSwitcher.switchTo(View.UPCOMING_OVERVIEW);
     }
 
     @FXML
-    void onViewMorePreviousPressed(ActionEvent event)
+    void onViewMorePreviousPressed()
     throws IOException{
         ViewSwitcher.switchTo(View.PREVIOUS_TOURNAMENTS);
     }

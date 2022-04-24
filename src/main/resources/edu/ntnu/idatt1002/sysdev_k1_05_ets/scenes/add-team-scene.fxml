@@ -241,7 +241,7 @@
                                                 <Insets top="15.0" />
                                              </VBox.margin>
                                           </HBox>
-                                          <HBox alignment="CENTER" prefHeight="82.0" prefWidth="809.0">
+                                          <HBox alignment="CENTER" prefHeight="96.0" prefWidth="809.0">
                                              <children>
                                                 <Label fx:id="warningLabel" alignment="CENTER" prefHeight="54.0" prefWidth="511.0" textAlignment="CENTER" textFill="#fa8f31" wrapText="true">
                                                    <font>
@@ -276,7 +276,7 @@
                                                       <Cursor fx:constant="HAND" />
                                                    </cursor>
                                                    <HBox.margin>
-                                                      <Insets top="5.0" />
+                                                      <Insets />
                                                    </HBox.margin>
                                                 </Button>
                                              </children>

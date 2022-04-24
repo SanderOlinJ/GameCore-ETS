@@ -310,58 +310,55 @@ public class MatchesController {
                 ,radio2Match11,radio2Match12,radio2Match13,radio2Match14));
 
         for (int i = 0; i < nrOfUnfinishedMatches; i++) {
-            if (tournament.getUnfinishedMatches().get(i).getTeam2() != null) {
-
+            if (tournament.getUnfinishedMatches().get(i).getTeam1() != null
+                    || tournament.getUnfinishedMatches().get(i).getTeam2() != null){
+                matches.get(i).setVisible(true);
+                matches.get(i).setPrefHeight(100);
+                if (tournament.getUnfinishedMatches().get(i).getTeam1() != null){
+                    teamOnes.get(i).setText(tournament.getUnfinishedMatches().get(i).getTeam1().getNameOfTeam());
+                    radioOnes.get(i).setText(tournament.getUnfinishedMatches().get(i).getTeam1().getNameOfTeam());
+                }
+                if (tournament.getUnfinishedMatches().get(i).getTeam2() != null) {
+                    teamTwos.get(i).setText(tournament.getUnfinishedMatches().get(i).getTeam2().getNameOfTeam());
+                    radioTwos.get(i).setText(tournament.getUnfinishedMatches().get(i).getTeam2().getNameOfTeam());
+                }
                 if (tournament.getUnfinishedMatches().get(i).getTimeOfMatch() != null) {
                     timeLabels.get(i).setText(tournament.getUnfinishedMatches().get(i).getTimeOfMatch().toString());
                     matches.get(i).setDisable(false);
                 }
-                matches.get(i).setVisible(true);
-                matches.get(i).setPrefHeight(100);
-                teamOnes.get(i).setText(tournament.getUnfinishedMatches().get(i).getTeam1().getNameOfTeam());
-                radioOnes.get(i).setText(tournament.getUnfinishedMatches().get(i).getTeam1().getNameOfTeam());
-                teamTwos.get(i).setText(tournament.getUnfinishedMatches().get(i).getTeam2().getNameOfTeam());
-                radioTwos.get(i).setText(tournament.getUnfinishedMatches().get(i).getTeam2().getNameOfTeam());
-
-            }else {
-                matches.get(i).setVisible(true);
-                matches.get(i).setPrefHeight(100);
-                teamOnes.get(i).setText(tournament.getUnfinishedMatches().get(i).getTeam1().getNameOfTeam());
-                radioOnes.get(i).setText(tournament.getUnfinishedMatches().get(i).getTeam1().getNameOfTeam());
-
             }
         }
     }
 
     @FXML
-    void onHomeButtonPressed(ActionEvent event) throws IOException {
+    void onHomeButtonPressed() throws IOException {
         ViewSwitcher.switchTo(View.MAIN);
     }
 
     @FXML
-    void onAboutButtonPressed(ActionEvent event) throws IOException {
+    void onAboutButtonPressed() throws IOException {
         ViewSwitcher.switchTo(View.ABOUT);
     }
 
     @FXML
-    void onHelpButtonPressed(ActionEvent event) throws IOException {
+    void onHelpButtonPressed() throws IOException {
         ViewSwitcher.switchTo(View.HELP);
     }
 
     @FXML
-    void onOngoingTournamentsButtonPressed(ActionEvent event) throws IOException {
+    void onOngoingTournamentsButtonPressed() throws IOException {
         ViewSwitcher.switchTo(View.ONGOING_TOURNAMENTS);
     }
 
 
     @FXML
-    void onUpcomingTournamentsButtonPressed(ActionEvent event)
+    void onUpcomingTournamentsButtonPressed()
             throws IOException{
         ViewSwitcher.switchTo(View.UPCOMING_OVERVIEW);
     }
 
     @FXML
-    void onPreviousTournamentsButtonPressed(ActionEvent event)
+    void onPreviousTournamentsButtonPressed()
             throws IOException {
         ViewSwitcher.switchTo(View.PREVIOUS_TOURNAMENTS);
     }

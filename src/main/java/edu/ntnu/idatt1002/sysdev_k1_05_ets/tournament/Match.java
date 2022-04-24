@@ -52,6 +52,11 @@ public class Match {
         this.matchScoreTeam2 = 0;
     }
 
+    public Match(){
+        this.matchScoreTeam1 = 0;
+        this.matchScoreTeam2 = 0;
+    }
+
     /**
      * Returns the first team
      * @return the first team

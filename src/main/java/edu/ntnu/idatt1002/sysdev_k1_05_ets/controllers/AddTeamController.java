@@ -250,7 +250,7 @@ public class AddTeamController {
         abbreviationField.setDisable(true);
         playersNameField.setDisable(true);
         overWrite = true;
-        continueButton1.setText("yes");
+        continueButton1.setText("Yes");
 
     }
     @FXML
@@ -332,33 +332,39 @@ public class AddTeamController {
 
     @FXML
     void onHomeButtonPressed() throws IOException {
+        TournamentWriterRework.writeTeamsToTournamentFile(tournament.getTournamentName(),teamsForTournament);
         ViewSwitcher.switchTo(View.MAIN);
     }
 
     @FXML
     void onAboutButtonPressed() throws IOException {
+        TournamentWriterRework.writeTeamsToTournamentFile(tournament.getTournamentName(),teamsForTournament);
         ViewSwitcher.switchTo(View.ABOUT);
     }
 
     @FXML
     void onHelpButtonPressed() throws IOException {
+        TournamentWriterRework.writeTeamsToTournamentFile(tournament.getTournamentName(),teamsForTournament);
         ViewSwitcher.switchTo(View.HELP);
     }
 
     @FXML
     void onOngoingTournamentsButtonPressed() throws IOException {
+        TournamentWriterRework.writeTeamsToTournamentFile(tournament.getTournamentName(),teamsForTournament);
         ViewSwitcher.switchTo(View.ONGOING_TOURNAMENTS);
     }
 
     @FXML
     void onUpcomingTournamentsButtonPressed()
             throws IOException{
+        TournamentWriterRework.writeTeamsToTournamentFile(tournament.getTournamentName(),teamsForTournament);
         ViewSwitcher.switchTo(View.UPCOMING_OVERVIEW);
     }
 
     @FXML
     void onPreviousTournamentsButtonPressed()
             throws IOException {
+        TournamentWriterRework.writeTeamsToTournamentFile(tournament.getTournamentName(),teamsForTournament);
         ViewSwitcher.switchTo(View.PREVIOUS_TOURNAMENTS);
     }
 

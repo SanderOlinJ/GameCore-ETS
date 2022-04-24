@@ -309,6 +309,13 @@ public class TournamentWriterRework {
         for (String str : fileAsListOfStrings){
             stringBuilder1.append(str).append(DELIMITER);
         }
+        if (teams.size() == Integer.parseInt(fileAsListOfStrings.get(9))){
+            for (int i = (Integer.parseInt(fileAsListOfStrings.get(9))) - 1; i > 0; i--) {
+                stringBuilder1.append(i).append(COMMA_DELIMITER).append("false,?,?,?,?,?,?")
+                        .append(DELIMITER);
+            }
+        }
+
         try (FileWriter fileWriter = new FileWriter(file)){
             fileWriter.write(stringBuilder1.toString());
         } catch (IOException exception){
@@ -436,33 +443,20 @@ public class TournamentWriterRework {
         ArrayList<String> fileAsList = GeneralReader.readFile(file);
         int bracketSize = Integer.parseInt(GeneralReader.readSpecificLineInFile(file,10));
 
-        String[][] MatchesData = new String[bracketSize-1][7];
+        String[][] matchesData = new String[bracketSize-1][7];
 
         for (int i = 0; i < bracketSize - 1; i++) {
-            MatchesData[i] = GeneralReader.readSpecificLineInFile(file, startIndex + i).split(COMMA_DELIMITER);
+            matchesData[i] = GeneralReader.readSpecificLineInFile(file, startIndex + i).split(COMMA_DELIMITER);
         }
 
         String[] teams = GeneralReader.readSpecificLineInFile(file,13).split(",");
 
 
         // Setup
-        if (MatchesData[0][2].equalsIgnoreCase("?")) {
+        if (matchesData[0][2].equalsIgnoreCase("?")) {
             for (int i = 0; i < teams.length; i++) {
-                if (!Boolean.parseBoolean(MatchesData[i / 2][1])) {
-                    MatchesData[i / 2][2 + i % 2] = teams[i];
-                }
-            }
-        }
-
-        //Moves winning teams
-        for(String[] match : MatchesData) {
-            if (Boolean.parseBoolean(match[1])){
-                int firstMatchIndex = Integer.parseInt(match[0]);
-                String winner = match[6];
-                for(String[] secondMatch : MatchesData) {
-                    if (firstMatchIndex/2 == Integer.parseInt(secondMatch[0])){
-                        secondMatch[3 - (firstMatchIndex % 2)] = winner;
-                    }
+                if (!Boolean.parseBoolean(matchesData[i / 2][1])) {
+                    matchesData[i / 2][2 + i % 2] = teams[i];
                 }
             }
         }
@@ -470,15 +464,35 @@ public class TournamentWriterRework {
 
         //Takes the input and uses it
         if (inputMatch != null) {
-            for (String match[] : MatchesData) {
-                if (inputMatch.getTeam1().getNameOfTeam().equals(match[2]) && inputMatch.getTeam2().getNameOfTeam().equals(match[3]) && !Boolean.parseBoolean(match[1])) {
-                    match[1] = Boolean.toString(inputMatch.isFinished());
-                    match[4] = inputMatch.getTimeOfMatch().toString();
-                    match[5] = Integer.toString(inputMatch.getMatchScoreTeam1());
-                    match[6] = Integer.toString(inputMatch.getMatchScoreTeam2());
-                    match[7] = inputMatch.getVictor().getNameOfTeam();
+            for (String[] match : matchesData) {
+                if (inputMatch.getTeam1().getNameOfTeam().equals(match[2]) &&
+                        inputMatch.getTeam2().getNameOfTeam().equals(match[3])){
+                    if (inputMatch.getTimeOfMatch() != null){
+                        match[4] = inputMatch.getTimeOfMatch().toString();
+                        if (inputMatch.isFinished()){
+                            match[1] = Boolean.toString(inputMatch.isFinished());
+                            match[5] = Integer.toString(inputMatch.getMatchScoreTeam1());
+                            match[6] = Integer.toString(inputMatch.getMatchScoreTeam2());
+                            match[7] = inputMatch.getVictor().getNameOfTeam();
+                        }
+                    }
                 }
             }
+        }
+        //Moves winning teams
+        for(String[] match : matchesData) {
+            if (Boolean.parseBoolean(match[1])){
+                int firstMatchIndex = Integer.parseInt(match[0]);
+                String winner = match[7];
+                for(String[] secondMatch : matchesData) {
+                    if (firstMatchIndex/2 == Integer.parseInt(secondMatch[0])){
+                        secondMatch[3 - (firstMatchIndex % 2)] = winner;
+                    }
+                }
+            }
+        }
+        if (Boolean.parseBoolean(matchesData[bracketSize-2][1])){
+            fileAsList.set(0,"Finished");
         }
 
 
@@ -487,7 +501,7 @@ public class TournamentWriterRework {
             stringBuilder.append(fileAsList.get(i)).append(DELIMITER);
         }
 
-        for (String[] Match : MatchesData) {
+        for (String[] Match : matchesData) {
             for (String data : Match) {
                 stringBuilder.append(data).append(COMMA_DELIMITER);
             }
