@@ -1,15 +1,18 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.GameCoreETSApplication;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.GeneralReader;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TournamentReaderRework;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TournamentWriterRework;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.scenes.View;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.scenes.ViewSwitcher;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Match;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.NewTournament;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.utilities.Utilities;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import java.io.File;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,7 +22,7 @@ public class BracketController {
 
     private static String nameOfTournament;
     private NewTournament newTournament;
-    private int bracketSize;
+    private static int bracketSize;
 
 
     @FXML
@@ -92,44 +95,29 @@ public class BracketController {
                     team27,team28,team29,team30,team31));
         }
 
-        for (int i = 0; i < teams.size(); i++){
-            int index = 0;
-            if (bracketSize == 16){
-                if (i > 29){index = 30;}
-                else if (i > 27){index = 27;}
-                else if (i > 23){index = 21;}
-                else if (i > 15){index =  9;}
+        String[][] data = new String[bracketSize-1][2];
+
+        try {
+            String tournamentNameShortened = Utilities.shortenAndReplaceUnnecessarySymbolsInString(nameOfTournament);
+            File file = new File(TournamentWriterRework.getPathToTournamentFileAsString(tournamentNameShortened));
+            for (int i = 0; i < bracketSize - 1; i++) {
+                String str = GeneralReader.readSpecificLineInFile(file,14+i);
+                String[] values = str.split(",");
+                data[i][0] = values[3];
+                data[i][1] = values[2];
             }
-            if (bracketSize == 8) {
-                if (i > 13) {
-                    index = 14;
-                } else if (i > 11) {
-                    index = 11;
-                } else if (i > 7) {
-                    index = 5;
-                }
+
+            String winner = GeneralReader.readSpecificLineInFile(file, 12+bracketSize);
+            labels.get(0).setText(winner.split(",")[7]);
+            for (int i = 1; i < 2*bracketSize - 1; i++) {
+                int index = (i + 1) / 2;
+                labels.get(i).setText(data[data.length-index][(i+1)%2]);
             }
-            else if (bracketSize == 4){
-                if (i > 5){index = 6;}
-                else if (i > 3) {index = 3;}
-            }
-            if (i < bracketSize){
-                labels.get(i + (bracketSize - 1)).setText(teams.get(i).getNameAbbr());
-            }else{
-                if (labels.get(0).getText().equals("?") || labels.get(0).getText().isEmpty()) {
-                    labels.get(i - index).setText(teams.get(i).getNameAbbr());
-                }else {
-                    labels.get(0).setText(teams.get(i).getNameAbbr());
-                }
-            }
+        } catch (IOException exception){
+            exception.printStackTrace();
         }
 
-        for (int i = 0; i < bracketSize - 1; i++){
-            labels.get(i).setText("?");
-        }
-        for (int i = bracketSize-1; i < 2*bracketSize - 1; i++) {
-            labels.get(i).setText(teams.get(i-(bracketSize-1)).getNameAbbr());
-        }
+        tournamentName.setText(nameOfTournament);
     }
 
 
