@@ -261,7 +261,7 @@ public class TournamentWriterRework {
      * @return File path, String
      * @throws IOException
      */
-    private static String getPathToTournamentFileAsString(String tournamentName)
+    public static String getPathToTournamentFileAsString(String tournamentName)
     throws IOException {
         String tournamentNameShortened = Utilities.shortenAndReplaceUnnecessarySymbolsInString(tournamentName);
 
