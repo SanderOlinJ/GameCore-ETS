@@ -93,10 +93,11 @@ public class AddTeamController {
             throw new IOException("Not enough teams set, missing: " + nrOfRemainingTeams + " team(s)");
         }
         Collections.shuffle(teamsForTournament);
-        TournamentWriterRework.writeTeamsToTournamentFile(tournament.getTournamentName(),teamsForTournament);
-        TournamentWriterRework.writeStartMatchesToTournamentFile(tournament.getTournamentName());
         BracketController.setBracketSize(Integer.parseInt(tournament.getNumberOfTeams()));
         BracketController.setNameOfTournament(tournament.getTournamentName());
+        TournamentWriterRework.writeTeamsToTournamentFile(tournament.getTournamentName(),teamsForTournament);
+        TournamentWriterRework.writeMatchesToTournament(tournament.getTournamentName(), null);
+
         if (BracketController.getBracketSize() == 4){
             ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_4);
         } else if (BracketController.getBracketSize() == 8){
