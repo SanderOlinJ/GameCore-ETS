@@ -32,6 +32,7 @@ public class AddTeamController {
     @FXML private TextField searchTeams;
     @FXML private Label nrOfTeams;
     @FXML private Button noButton;
+    @FXML private Button continueButton1;
     private boolean overWrite;
     private ArrayList<Team> teamsForTournament;
 
@@ -145,6 +146,12 @@ public class AddTeamController {
 
 
     public void addTeam() throws IOException {
+        //setting it back to add team from yes
+        continueButton1.setText("Add team");
+        //Disabling no
+        noButton.setVisible(false);
+        noButton.setDisable(true);
+
         if (teamNameField.getText().strip().equals("")){
             warningLabel.setText("Team name required.");
             throw new IOException("Team name required.");
@@ -185,27 +192,27 @@ public class AddTeamController {
 
                 if (TeamReader.isThereAlreadyATeamWithSameTeamName(addedTeam)){
                     if (!overWrite){
-                        warningLabel.setText("Already team with same name, want to overwrite?");
+                        warningLabel.setText("Found a team with the same name, overwrite team?");
                         ifOverWriteMessage();
-                        throw new IOException("Already team with same name, want to overwrite?");
+                        throw new IOException("Found a team with the same name, overwrite team?");
                     } else {
                         overWrite = false;
                     }
                 }
                 else if (TeamReader.isThereAlreadyATeamWithSameTeamNameAbbreviation(addedTeam)){
                     if (!overWrite){
-                        warningLabel.setText("Already team with same name abbreviation, want to overwrite?");
+                        warningLabel.setText("Already team with same name abbreviation, overwrite team?");
                         ifOverWriteMessage();
-                        throw new IOException("Already team with same name abbreviation, want to overwrite?");
+                        throw new IOException("Already team with same name abbreviation, overwrite team?");
                     } else {
                         overWrite = false;
                     }
                 }
                 else if (TeamReader.isThereAlreadyATeamWithSameTeamMembers(addedTeam)){
                     if (!overWrite){
-                        warningLabel.setText("Already team with same members, want to overwrite?");
+                        warningLabel.setText("Already team with same members, overwrite team?");
                         ifOverWriteMessage();
-                        throw new IOException("Already team with same members, want to overwrite?");
+                        throw new IOException("Already team with same members, overwrite team?");
                     } else {
                         overWrite = false;
                     }
@@ -242,6 +249,8 @@ public class AddTeamController {
         abbreviationField.setDisable(true);
         playersNameField.setDisable(true);
         overWrite = true;
+        continueButton1.setText("yes");
+
     }
     @FXML
     void onNoButtonClicked(){
@@ -255,6 +264,7 @@ public class AddTeamController {
         teamNameField.setDisable(false);
         abbreviationField.setDisable(false);
         playersNameField.setDisable(false);
+        continueButton1.setText("Add team");
     }
 
 
