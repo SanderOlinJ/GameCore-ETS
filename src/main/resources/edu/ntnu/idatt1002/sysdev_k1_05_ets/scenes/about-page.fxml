@@ -2,11 +2,13 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -16,7 +18,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.AboutController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.AboutAndHelpController">
     <top>
         <MenuBar fx:id="menuBar" BorderPane.alignment="CENTER">
             <menus>
@@ -42,9 +44,8 @@
     <center>
         <VBox prefHeight="1655.0" prefWidth="1200.0" style="-fx-background-color: #282c34;" BorderPane.alignment="CENTER">
             <children>
-                <VBox maxHeight="200.0" prefHeight="131.0" prefWidth="1200.0" style="-fx-background-color: #2e3e4e;" VBox.vgrow="ALWAYS">
+                <VBox maxHeight="-Infinity" minHeight="-Infinity" prefHeight="136.0" prefWidth="1200.0" style="-fx-background-color: #2e3e4e;" VBox.vgrow="ALWAYS">
                     <children>
-                        <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="130.0" prefWidth="119.0" style="-fx-background-color: #2e3e4e;" VBox.vgrow="NEVER" />
                         <HBox prefHeight="120.0" prefWidth="1200.0" VBox.vgrow="ALWAYS">
                             <children>
                                 <ImageView fitHeight="96.0" fitWidth="611.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
@@ -55,7 +56,21 @@
                                         <Insets bottom="10.0" left="20.0" top="30.0" />
                                     </HBox.margin>
                                 </ImageView>
-                        <Pane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" HBox.hgrow="ALWAYS" />
+                        <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="136.0" prefWidth="140.0" HBox.hgrow="ALWAYS" />
+                        <Button maxHeight="37.0" maxWidth="376.0" mnemonicParsing="false" onAction="#onCreateNewTournamentButtonClicked" prefHeight="37.0" prefWidth="330.0" styleClass="jfx-button" stylesheets="@../css/style.css" text="Create new tournament" textFill="#f5f5f5">
+                           <font>
+                              <Font name="Arial Bold" size="20.0" />
+                           </font>
+                           <effect>
+                              <DropShadow height="10.0" radius="4.5" width="10.0" />
+                           </effect>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <HBox.margin>
+                              <Insets left="50.0" right="50.0" top="60.0" />
+                           </HBox.margin>
+                        </Button>
                             </children>
                         </HBox>
                     </children>
@@ -65,7 +80,7 @@
                         <Pane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: black;" HBox.hgrow="ALWAYS" />
                         <ScrollPane focusTraversable="false" hbarPolicy="NEVER" maxWidth="1200.0" prefHeight="800.0" prefWidth="1200.0" stylesheets="@../css/style.css">
                             <content>
-                                <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #13161d;">
+                                <VBox prefHeight="1145.0" prefWidth="1184.0" style="-fx-background-color: #13161d;">
                                     <children>
                                         <VBox maxHeight="50.0" minHeight="0.0" prefHeight="0.0" prefWidth="1200.0" />
                                         <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="132.0">
@@ -93,7 +108,7 @@
                                         <VBox maxHeight="50.0" prefHeight="0.0" prefWidth="1200.0" />
                                         <VBox>
                                             <children>
-                                    <TextArea editable="false" focusTraversable="false" minHeight="-Infinity" minWidth="-Infinity" mouseTransparent="true" prefHeight="467.0" prefWidth="1063.0" styleClass="text-area" text="CameCore ETS is a local tournament creator application, created by Computer Science students from the &#10;Norwegian University of Science and Technology. &#10;&#10;The idea for this application came through both a project assignment in the Systems Development class, and the team's love for games.&#10;&#10;Creators:&#10;Håkon Bergrem&#10;Beka Bonsa&#10;Daniel Evensen&#10;Joakim Falch&#10;Marcello Fidjestøl&#10;Sander Johansen&#10;&#10;Througout this project, we have gotten help from multiple people, both in admin type of work, but also the practical side of it. On that note, &#10;we would like to thank these people specially:&#10;&#10;Teacher Grethe Sandstrak&#10;Teacher Alexander Holt&#10;Teacher Surya Kathayat&#10;Student Assistant Brage Minge&#10;Customer Jotunheimen E-Sport">
+                                    <TextArea editable="false" focusTraversable="false" minHeight="-Infinity" minWidth="-Infinity" mouseTransparent="true" prefHeight="467.0" prefWidth="1063.0" styleClass="text-area" text="CameCore ETS is a local tournament creator application, created by Computer Science students from the &#10;Norwegian University of Science and Technology. &#10;&#10;The idea for this application came through both a project assignment in the Systems Development class, and the team's love for games.&#10;&#10;Creators:&#10;Håkon Bergrem&#10;Beka Bonsa&#10;Daniel Evensen&#10;Joakim Falch&#10;Marcello Fidjestøl&#10;Sander Johansen&#10;&#10;Througout this project, we have gotten help from multiple people, both in admin type of work, but also the practical side of it. On that note, &#10;we would like to thank these people specially:&#10;&#10;Teacher Grethe Sandstrak&#10;Teacher Alexander Holt&#10;Teacher Surya Kathayat&#10;Student Assistant Brage Minge&#10;Client Jotunheimen E-Sport">
                                        <font>
                                           <Font name="Arial" size="16.0" />
                                        </font>

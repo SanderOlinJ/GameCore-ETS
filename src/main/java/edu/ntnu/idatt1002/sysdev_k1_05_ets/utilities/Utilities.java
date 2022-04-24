@@ -5,12 +5,8 @@ import java.io.File;
 public class Utilities {
 
     public static String shortenAndReplaceUnnecessarySymbolsInString(String str){
-        str = str.replaceAll("\\s","");
-        str = str.replaceAll(":","");
-        str = str.replaceAll("-","");
-        return str;
+        return str.replaceAll("[^A-Za-z0-9]","");
     }
-
 
     public static int getNextPowerOf2(int value){
         int highestOneBit = Integer.highestOneBit(value);

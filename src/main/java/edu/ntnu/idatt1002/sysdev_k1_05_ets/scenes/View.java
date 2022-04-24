@@ -12,8 +12,8 @@ public enum View {
     TOURNAMENT_OVERVIEW_16("overview-scene-sixteen.fxml"),
     TOURNAMENT_MATCHES("matches-scene.fxml"),
     TOURNAMENT_RESULTS("results-scene.fxml"),
-    PREVIOUS_TOURNAMENTS("previous-overview.fxml"),
-    ONGOING_TOURNAMENTS("ongoing-overview.fxml"),
+    PREVIOUS_OVERVIEW("previous-overview.fxml"),
+    ONGOING_OVERVIEW("ongoing-overview.fxml"),
     UPCOMING_OVERVIEW("upcoming-overview.fxml"),
     SET_TIME("set-time-scene.fxml");
 

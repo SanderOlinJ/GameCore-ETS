@@ -21,10 +21,10 @@ public class NewTournament {
     private String game;
     private String platform;
     private String tournamentType;
-    private String numberOfTeams;
-    private String prizePool;
+    private int numberOfTeams;
+    private int prizePool;
     private String prizePoolCurrency;
-    private String entranceFee;
+    private int entranceFee;
     private String entranceFeeCurrency;
     private ArrayList<Team> teams;
     private ArrayList<Match> matches;
@@ -67,9 +67,9 @@ public class NewTournament {
      */
     public NewTournament(String status, String tournamentName, String tournamentHost, LocalDate date,
                          LocalTime time, String description, String game, String platform,
-                         String tournamentType, String numberOfTeams,
-                         String prizePool, String prizePoolCurrency,
-                         String entranceFee, String entranceFeeCurrency) {
+                         String tournamentType, int numberOfTeams,
+                         int prizePool, String prizePoolCurrency,
+                         int entranceFee, String entranceFeeCurrency) {
         if (status == null || status.isEmpty()){
             throw new IllegalArgumentException("Status cannot be empty!");
         }
@@ -91,20 +91,13 @@ public class NewTournament {
         if (tournamentType == null || tournamentType.isEmpty()){
             throw new IllegalArgumentException("Tournament type cannot be empty!");
         }
-        if (numberOfTeams == null || numberOfTeams.isEmpty()){
-            throw new IllegalArgumentException("Number of teams cannot be empty!");
-        }
-        if (prizePool == null || prizePool.isEmpty()){
-            throw new IllegalArgumentException("Prize pool cannot be empty!");
+        if (numberOfTeams != 4 && numberOfTeams != 8 && numberOfTeams != 16){
+            throw new IllegalArgumentException("Number of teams cannot be anything other than 4,8 or 16!");
         }
         if (!prizePoolCurrency.equals("NOK") && !prizePoolCurrency.equals("USD") && !prizePoolCurrency.equals("EUR")
                 && !prizePoolCurrency.equals("GBP") && !prizePoolCurrency.equals("null")){
             throw new IllegalArgumentException("Invalid prize pool-currency!");
         }
-        if (entranceFee == null || entranceFee.isEmpty()){
-            throw new IllegalArgumentException("Entrance fee cannot be empty!");
-        }
-
         if (!entranceFeeCurrency.equals("NOK") && !entranceFeeCurrency.equals("USD")
                 && !entranceFeeCurrency.equals("EUR") && !entranceFeeCurrency.equals("GBP")
                 && !entranceFeeCurrency.equals("null")){
@@ -153,8 +146,8 @@ public class NewTournament {
      */
     public NewTournament(String status, String tournamentName, String tournamentHost, LocalDate date,
                          LocalTime time, String description, String game, String platform,
-                         String tournamentType, String numberOfTeams, String prizePool,
-                         String prizePoolCurrency, String entranceFee, String entranceFeeCurrency,
+                         String tournamentType, int numberOfTeams, int prizePool,
+                         String prizePoolCurrency, int entranceFee, String entranceFeeCurrency,
                          ArrayList<Team> teams) {
         if (status == null || status.isEmpty()){
             throw new IllegalArgumentException("Status cannot be empty!");
@@ -177,20 +170,13 @@ public class NewTournament {
         if (tournamentType == null || tournamentType.isEmpty()){
             throw new IllegalArgumentException("Tournament type cannot be empty!");
         }
-        if (numberOfTeams == null || numberOfTeams.isEmpty()){
-            throw new IllegalArgumentException("Number of teams cannot be empty!");
-        }
-        if (prizePool == null || prizePool.isEmpty()){
-            throw new IllegalArgumentException("Prize pool cannot be empty!");
+        if (numberOfTeams != 4 && numberOfTeams != 8 && numberOfTeams != 16){
+            throw new IllegalArgumentException("Number of teams cannot be anything other than 4,8 or 16!");
         }
         if (!prizePoolCurrency.equals("NOK") && !prizePoolCurrency.equals("USD") && !prizePoolCurrency.equals("EUR")
                 && !prizePoolCurrency.equals("GBP") && !prizePoolCurrency.equals("null")){
             throw new IllegalArgumentException("Invalid prize-pool currency!");
         }
-        if (entranceFee == null || entranceFee.isEmpty()){
-            throw new IllegalArgumentException("Entrance fee cannot be empty!");
-        }
-
         if (!entranceFeeCurrency.equals("NOK") && !entranceFeeCurrency.equals("USD")
                 && !entranceFeeCurrency.equals("EUR") && !entranceFeeCurrency.equals("GBP")
                 && !entranceFeeCurrency.equals("null")){
@@ -224,7 +210,7 @@ public class NewTournament {
      * Returns the prizepool
      * @return prize pool
      */
-    public String getPrizePool() {
+    public int getPrizePool() {
         return prizePool;
     }
 
@@ -232,7 +218,7 @@ public class NewTournament {
      * Sets prize pool
      * @param prizePool
      */
-    public void setPrizePool(String prizePool) {
+    public void setPrizePool(int prizePool) {
         this.prizePool = prizePool;
     }
 
@@ -256,7 +242,7 @@ public class NewTournament {
      * Returns the entrance fee
      * @return entrance fee
      */
-    public String getEntranceFee() {
+    public int getEntranceFee() {
         return entranceFee;
     }
 
@@ -264,7 +250,7 @@ public class NewTournament {
      * Sets the entrance fee
      * @param entranceFee
      */
-    public void setEntranceFee(String entranceFee) {
+    public void setEntranceFee(int entranceFee) {
         this.entranceFee = entranceFee;
     }
 
@@ -448,7 +434,7 @@ public class NewTournament {
      * Returns the number of teams
      * @return number of teams
      */
-    public String getNumberOfTeams() {
+    public int getNumberOfTeams() {
         return numberOfTeams;
     }
 
@@ -456,7 +442,7 @@ public class NewTournament {
      * Sets the number of teams
      * @param numberOfTeams
      */
-    public void setNumberOfTeams(String numberOfTeams) {
+    public void setNumberOfTeams(int numberOfTeams) {
         this.numberOfTeams = numberOfTeams;
     }
 
@@ -571,7 +557,7 @@ public class NewTournament {
      * @return number of unfinished teams left
      */
     public int findNumberOfTeamsLeft(){
-        int numberOfTeamsLeft = Integer.parseInt(getNumberOfTeams());
+        int numberOfTeamsLeft = getNumberOfTeams();
 
         if (this.matches.size() > 0){
             for (Match match : matches){
@@ -642,5 +628,13 @@ public class NewTournament {
             }
         }
         return unfinishedMatches;
+    }
+
+    public Team getFirstPlace(){
+        return this.matches.get(this.numberOfTeams-2).getVictor();
+    }
+
+    public Team getSecondPlace(){
+        return this.matches.get(this.numberOfTeams-2).getLoser();
     }
 }

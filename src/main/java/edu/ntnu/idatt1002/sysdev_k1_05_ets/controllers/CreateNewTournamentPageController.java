@@ -89,10 +89,7 @@ public class CreateNewTournamentPageController{
                         super.updateItem(item, empty);
                         if (item != null) {
                             setText(item);
-                            //This won't work for the first time but will be the one
-                            //used in the next calls
                             getStyleClass().add("my-list-cell");
-                            //size in px
                             setFont(Font.font(16));
                         }
                     }
@@ -109,10 +106,7 @@ public class CreateNewTournamentPageController{
                         super.updateItem(item, empty);
                         if (item != null) {
                             setText(item);
-                            //This won't work for the first time but will be the one
-                            //used in the next calls
                             getStyleClass().add("my-list-cell");
-                            //size in px
                             setFont(Font.font(16));
                         }
                     }
@@ -129,10 +123,7 @@ public class CreateNewTournamentPageController{
                         super.updateItem(item, empty);
                         if (item != null) {
                             setText(item);
-                            //This won't work for the first time but will be the one
-                            //used in the next calls
                             getStyleClass().add("my-list-cell");
-                            //size in px
                             setFont(Font.font(16));
                         }
                     }
@@ -149,10 +140,7 @@ public class CreateNewTournamentPageController{
                         super.updateItem(item, empty);
                         if (item != null) {
                             setText(item);
-                            //This won't work for the first time but will be the one
-                            //used in the next calls
                             getStyleClass().add("my-list-cell");
-                            //size in px
                             setFont(Font.font(16));
                         }
                     }
@@ -169,10 +157,7 @@ public class CreateNewTournamentPageController{
                         super.updateItem(item, empty);
                         if (item != null) {
                             setText(item);
-                            //This won't work for the first time but will be the one
-                            //used in the next calls
                             getStyleClass().add("my-list-cell");
-                            //size in px
                             setFont(Font.font(16));
                         }
                     }
@@ -190,10 +175,7 @@ public class CreateNewTournamentPageController{
                         super.updateItem(item, empty);
                         if (item != null) {
                             setText(item);
-                            //This won't work for the first time but will be the one
-                            //used in the next calls
                             getStyleClass().add("my-list-cell");
-                            //size in px
                             setFont(Font.font(16));
                         }
                     }
@@ -211,10 +193,7 @@ public class CreateNewTournamentPageController{
                         super.updateItem(item, empty);
                         if (item != null) {
                             setText(item);
-                            //This won't work for the first time but will be the one
-                            //used in the next calls
                             getStyleClass().add("my-list-cell");
-                            //size in px
                             setFont(Font.font(16));
                         }
                     }
@@ -250,7 +229,6 @@ public class CreateNewTournamentPageController{
 
     @FXML
     public void addTeamScene() throws IOException {
-        //------ parse the current information of combobox to addTeamScene -----
         String status = "Not finished";
         String tournamentName = String.valueOf(tournamentNameBox.getText());
         String tournamentHost = String.valueOf(tournamentHostBox.getValue());
@@ -266,16 +244,16 @@ public class CreateNewTournamentPageController{
         String game = String.valueOf(gameBox.getText());
         String platform = String.valueOf(platformBox.getText());
         String tournamentType = String.valueOf(tournamentTypeBox.getValue());
-        String numberOfTeams = String.valueOf(totalNumberOfTeamsBox.getValue());
-        String prizePool = "0";
+        int numberOfTeams = Integer.parseInt(String.valueOf(totalNumberOfTeamsBox.getValue()));
+        int prizePool = 0;
         String prizePoolCurrency = "null";
-        String entranceFee = "0";
+        int entranceFee = -1;
         String entranceFeeCurrency = "null";
 
         if (activatePrizePool.isSelected()){
-            prizePool = String.valueOf(prizePoolTextField.getText());
+            prizePool = Integer.parseInt(prizePoolTextField.getText());
             prizePoolCurrency = String.valueOf(prizePoolCurrencyBox.getValue());
-            entranceFee = String.valueOf(entranceFeeTextField.getText());
+            entranceFee = Integer.parseInt(entranceFeeTextField.getText());
             entranceFeeCurrency = String.valueOf(entranceFeeCurrencyBox.getValue());
         }
         try {
@@ -310,12 +288,12 @@ public class CreateNewTournamentPageController{
 
     private void checkIfAllRequiredFieldsAreFilledOut(String tournamentName, String tournamentHost, LocalDate date,
                                                       String game, String platform, String tournamentType,
-                                                      String numberOfTeams)
+                                                      int numberOfTeams)
     throws IOException {
 
         if (tournamentName.isEmpty() || tournamentHost.isEmpty() || date == null ||
                 game.isEmpty() || platform.isEmpty() || tournamentType.isEmpty() ||
-                numberOfTeams.isEmpty()){
+                numberOfTeams != 4 && numberOfTeams != 8 && numberOfTeams != 16){
             warningLabel.setText("You have to fill out all crucial fields (*)");
             throw new IOException("You have to fill out all crucial fields (*)");
         }
@@ -331,18 +309,18 @@ public class CreateNewTournamentPageController{
         }
     }
 
-    private void checkIfPricePoolActivated(String prizePool, String prizePoolCurrency, String entranceFee,
+    private void checkIfPricePoolActivated(int prizePool, String prizePoolCurrency, int entranceFee,
                                                   String entranceFeeCurrency)
     throws IOException{
-        if (prizePool.equals("") || prizePool.equals("0")){
-            warningLabel.setText("Prize pool cannot be 0 or blank");
-            throw new IOException("Prize pool cannot be 0 or blank");
+        if (prizePool == 0){
+            warningLabel.setText("Prize pool cannot be 0 or blank if activated");
+            throw new IOException("Prize pool cannot be 0 or blank if activated");
         }
         if (prizePoolCurrency.equals("null")){
             warningLabel.setText("Prize pool needs to be declared with a currency");
             throw new IOException("Prize pool needs to be declared with a currency");
         }
-        if (entranceFee.equals("")){
+        if (entranceFee == -1){
             warningLabel.setText("Entrance fee cannot be blank. " +
                     "If there are no entrance fee, type '0'");
             throw new IOException("Entrance fee cannot be blank.\n" +
@@ -373,32 +351,38 @@ public class CreateNewTournamentPageController{
 
 
     @FXML
-    void onHomeButtonPressed() throws IOException {
+    void onHomeButtonPressed()
+    throws IOException {
         ViewSwitcher.switchTo(View.MAIN);
     }
 
     @FXML
-    void onAboutButtonPressed() throws IOException {
+    void onAboutButtonPressed()
+    throws IOException {
         ViewSwitcher.switchTo(View.ABOUT);
     }
 
     @FXML
-    void onOngoingTournamentsButtonPressed() throws IOException {
-        ViewSwitcher.switchTo(View.ONGOING_TOURNAMENTS);
+    void onOngoingTournamentsButtonPressed()
+    throws IOException {
+        ViewSwitcher.switchTo(View.ONGOING_OVERVIEW);
     }
 
     @FXML
-    void onUpcomingTournamentsButtonPressed() throws IOException{
+    void onUpcomingTournamentsButtonPressed()
+    throws IOException{
         ViewSwitcher.switchTo(View.UPCOMING_OVERVIEW);
     }
 
     @FXML
-    void onPreviousTournamentsButtonPressed() throws IOException{
-        ViewSwitcher.switchTo(View.PREVIOUS_TOURNAMENTS);
+    void onPreviousTournamentsButtonPressed()
+    throws IOException{
+        ViewSwitcher.switchTo(View.PREVIOUS_OVERVIEW);
     }
 
     @FXML
-    void onHelpButtonPressed() throws IOException {
+    void onHelpButtonPressed()
+    throws IOException {
         ViewSwitcher.switchTo(View.HELP);
     }
 }

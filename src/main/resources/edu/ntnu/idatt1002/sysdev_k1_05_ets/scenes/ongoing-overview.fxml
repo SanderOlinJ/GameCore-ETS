@@ -17,25 +17,25 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.TournamentsOverviewController">
+<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.OngoingTournamentsOverviewController">
     <top>
         <MenuBar fx:id="menuBar" BorderPane.alignment="CENTER">
             <menus>
                 <Menu mnemonicParsing="false" text="Home">
                <items>
-                  <MenuItem fx:id="homeButton" mnemonicParsing="false" onAction="#onHomeButtonPressed" text="Home" />
+                  <MenuItem fx:id="homeButton" mnemonicParsing="false" onAction="#onHomeButtonClicked" text="Home" />
                </items></Menu>
                 <Menu mnemonicParsing="false" text="Tournaments">
                     <items>
-                        <MenuItem fx:id="ongoingTournamentsButton" disable="true" mnemonicParsing="false" onAction="#onOngoingTournamentsButtonPressed" text="Ongoing tournaments" />
-                  <MenuItem fx:id="upcomingTournamentsButton" mnemonicParsing="false" onAction="#onUpcomingTournamentsButtonPressed" text="Upcoming tournaments" />
-                        <MenuItem fx:id="previousTournamentsButton" mnemonicParsing="false" onAction="#onPreviousTournamentsButtonPressed" text="Previous tournaments" />
+                        <MenuItem fx:id="ongoingTournamentsButton" disable="true" mnemonicParsing="false" text="Ongoing tournaments" />
+                  <MenuItem fx:id="upcomingTournamentsButton" mnemonicParsing="false" onAction="#onUpcomingTournamentsButtonClicked" text="Upcoming tournaments" />
+                        <MenuItem fx:id="previousTournamentsButton" mnemonicParsing="false" onAction="#onPreviousTournamentsButtonClicked" text="Previous tournaments" />
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="More">
                <items>
-                  <MenuItem fx:id="aboutButton" mnemonicParsing="false" onAction="#onAboutButtonPressed" text="About" />
-                  <MenuItem mnemonicParsing="false" text="Help" />
+                  <MenuItem fx:id="aboutButton" mnemonicParsing="false" onAction="#onAboutButtonClicked" text="About" />
+                  <MenuItem fx:id="helpButton" mnemonicParsing="false" onAction="#onHelpButtonClicked" text="Help" />
                </items></Menu>
             </menus>
         </MenuBar>
@@ -43,7 +43,7 @@
     <center>
         <VBox prefHeight="1655.0" prefWidth="1200.0" style="-fx-background-color: #282c34;" BorderPane.alignment="CENTER">
             <children>
-                <VBox maxHeight="200.0" prefHeight="131.0" prefWidth="1200.0" style="-fx-background-color: #2e3e4e;" VBox.vgrow="ALWAYS">
+                <VBox maxHeight="-Infinity" prefHeight="136.0" prefWidth="1200.0" style="-fx-background-color: #2e3e4e;" VBox.vgrow="ALWAYS">
                     <children>
                         <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="130.0" prefWidth="119.0" style="-fx-background-color: #2e3e4e;" VBox.vgrow="NEVER" />
                         <HBox prefHeight="120.0" prefWidth="1200.0" VBox.vgrow="ALWAYS">
@@ -53,10 +53,10 @@
                                         <Image url="@../Images/GameCoreETSLogo2.png" />
                                     </image>
                                     <HBox.margin>
-                                        <Insets bottom="10.0" left="20.0" top="30.0" />
+                                        <Insets left="20.0" top="30.0" />
                                     </HBox.margin>
                                 </ImageView>
-                        <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="136.0" prefWidth="140.0" />
+                        <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="136.0" prefWidth="140.0" HBox.hgrow="ALWAYS" />
                         <Button fx:id="createNewTournamentButton" maxHeight="37.0" maxWidth="376.0" mnemonicParsing="false" onAction="#onCreateNewTournamentButtonPressed" prefHeight="37.0" prefWidth="330.0" styleClass="jfx-button" stylesheets="@../css/style.css" text="Create new tournament" textFill="#f5f5f5">
                            <font>
                               <Font name="Arial Bold" size="20.0" />
@@ -96,15 +96,11 @@
                                                         </Text>
                                                     </children>
                                                 </HBox>
-                                    <HBox fx:id="box1" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="1021.0" style="-fx-background-color: #282c34;">
+                                    <HBox fx:id="box1" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="1021.0" style="-fx-background-color: #282c34;" visible="false">
                                        <children>
                                           <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="417.0">
                                              <children>
-                                                <ImageView fx:id="imageView1" fitHeight="230.0" fitWidth="417.0" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@../Images/gameImages/Valorant.png" />
-                                                   </image>
-                                                </ImageView>
+                                                <ImageView fx:id="imageView1" fitHeight="230.0" fitWidth="417.0" pickOnBounds="true" preserveRatio="true" />
                                              </children>
                                           </VBox>
                                           <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="604.0">
@@ -112,7 +108,7 @@
                                                 <Insets />
                                              </HBox.margin>
                                              <children>
-                                                <Text fx:id="name1" fill="#fa8f31" strokeMiterLimit="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Turnering" wrappingWidth="472.13671875">
+                                                <Text fx:id="name1" fill="#fa8f31" strokeMiterLimit="0.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="472.13671875">
                                                    <font>
                                                       <Font name="Arial Bold" size="24.0" />
                                                    </font>
@@ -120,7 +116,7 @@
                                                       <Insets left="15.0" top="10.0" />
                                                    </VBox.margin>
                                                 </Text>
-                                                <Text fx:id="game1" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Valorant" wrappingWidth="548.13671875">
+                                                <Text fx:id="game1" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="548.13671875">
                                                    <font>
                                                       <Font name="Arial" size="18.0" />
                                                    </font>
@@ -260,11 +256,7 @@
                                        <children>
                                           <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="417.0">
                                              <children>
-                                                <ImageView fx:id="imageView2" fitHeight="230.0" fitWidth="417.0" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@../Images/gameImages/Valorant.png" />
-                                                   </image>
-                                                </ImageView>
+                                                <ImageView fx:id="imageView2" fitHeight="230.0" fitWidth="417.0" pickOnBounds="true" preserveRatio="true" />
                                              </children>
                                           </VBox>
                                           <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="604.0">
@@ -272,7 +264,7 @@
                                                 <Insets />
                                              </HBox.margin>
                                              <children>
-                                                <Text fx:id="name2" fill="#fa8f31" strokeType="OUTSIDE" strokeWidth="0.0" text="Turnering" wrappingWidth="472.13671875">
+                                                <Text fx:id="name2" fill="#fa8f31" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="472.13671875">
                                                    <font>
                                                       <Font name="Arial Bold" size="24.0" />
                                                    </font>
@@ -280,7 +272,7 @@
                                                       <Insets left="15.0" top="10.0" />
                                                    </VBox.margin>
                                                 </Text>
-                                                <Text fx:id="game2" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Valorant" wrappingWidth="548.13671875">
+                                                <Text fx:id="game2" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="548.13671875">
                                                    <font>
                                                       <Font name="Arial" size="18.0" />
                                                    </font>
@@ -420,11 +412,7 @@
                                        <children>
                                           <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="417.0">
                                              <children>
-                                                <ImageView fx:id="imageView3" fitHeight="230.0" fitWidth="417.0" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@../Images/gameImages/Valorant.png" />
-                                                   </image>
-                                                </ImageView>
+                                                <ImageView fx:id="imageView3" fitHeight="230.0" fitWidth="417.0" pickOnBounds="true" preserveRatio="true" />
                                              </children>
                                           </VBox>
                                           <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="604.0">
@@ -432,7 +420,7 @@
                                                 <Insets />
                                              </HBox.margin>
                                              <children>
-                                                <Text fx:id="name3" fill="#fa8f31" strokeType="OUTSIDE" strokeWidth="0.0" text="Turnering" wrappingWidth="472.13671875">
+                                                <Text fx:id="name3" fill="#fa8f31" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="472.13671875">
                                                    <font>
                                                       <Font name="Arial Bold" size="24.0" />
                                                    </font>
@@ -440,7 +428,7 @@
                                                       <Insets left="15.0" top="10.0" />
                                                    </VBox.margin>
                                                 </Text>
-                                                <Text fx:id="game3" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Valorant" wrappingWidth="548.13671875">
+                                                <Text fx:id="game3" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="548.13671875">
                                                    <font>
                                                       <Font name="Arial" size="18.0" />
                                                    </font>
@@ -580,11 +568,7 @@
                                        <children>
                                           <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="417.0">
                                              <children>
-                                                <ImageView fx:id="imageView4" fitHeight="230.0" fitWidth="417.0" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@../Images/gameImages/Valorant.png" />
-                                                   </image>
-                                                </ImageView>
+                                                <ImageView fx:id="imageView4" fitHeight="230.0" fitWidth="417.0" pickOnBounds="true" preserveRatio="true" />
                                              </children>
                                           </VBox>
                                           <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="604.0">
@@ -592,7 +576,7 @@
                                                 <Insets />
                                              </HBox.margin>
                                              <children>
-                                                <Text fx:id="name4" fill="#fa8f31" strokeType="OUTSIDE" strokeWidth="0.0" text="Turnering" wrappingWidth="472.13671875">
+                                                <Text fx:id="name4" fill="#fa8f31" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="472.13671875">
                                                    <font>
                                                       <Font name="Arial Bold" size="24.0" />
                                                    </font>
@@ -600,7 +584,7 @@
                                                       <Insets left="15.0" top="10.0" />
                                                    </VBox.margin>
                                                 </Text>
-                                                <Text fx:id="game4" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Valorant" wrappingWidth="548.13671875">
+                                                <Text fx:id="game4" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="548.13671875">
                                                    <font>
                                                       <Font name="Arial" size="18.0" />
                                                    </font>
@@ -740,11 +724,7 @@
                                        <children>
                                           <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="417.0">
                                              <children>
-                                                <ImageView fx:id="imageView5" fitHeight="230.0" fitWidth="417.0" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@../Images/gameImages/Valorant.png" />
-                                                   </image>
-                                                </ImageView>
+                                                <ImageView fx:id="imageView5" fitHeight="230.0" fitWidth="417.0" pickOnBounds="true" preserveRatio="true" />
                                              </children>
                                           </VBox>
                                           <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="604.0">
@@ -752,7 +732,7 @@
                                                 <Insets />
                                              </HBox.margin>
                                              <children>
-                                                <Text fx:id="name5" fill="#fa8f31" strokeType="OUTSIDE" strokeWidth="0.0" text="Turnering" wrappingWidth="472.13671875">
+                                                <Text fx:id="name5" fill="#fa8f31" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="472.13671875">
                                                    <font>
                                                       <Font name="Arial Bold" size="24.0" />
                                                    </font>
@@ -760,7 +740,7 @@
                                                       <Insets left="15.0" top="10.0" />
                                                    </VBox.margin>
                                                 </Text>
-                                                <Text fx:id="game5" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Valorant" wrappingWidth="548.13671875">
+                                                <Text fx:id="game5" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="548.13671875">
                                                    <font>
                                                       <Font name="Arial" size="18.0" />
                                                    </font>

@@ -1,40 +1,20 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
-
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.GameCoreETSApplication;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TournamentReaderRework;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TournamentWriterRework;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.scenes.View;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.scenes.ViewSwitcher;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.NewTournament;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.utilities.Utilities;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Objects;
 
-public class TournamentsOverviewController {
-
-    @FXML private MenuItem homeButton;
-    @FXML private MenuItem ongoingTournamentsButton;
-    @FXML private MenuItem upcomingTournamentsButton;
-    @FXML private MenuItem previousTournamentsButton;
-    @FXML private MenuItem aboutButton;
-    @FXML private MenuItem helpButton;
-    @FXML private MenuBar menuBar;
+public class OngoingTournamentsOverviewController {
     @FXML private HBox box1;
     @FXML private HBox box2;
     @FXML private HBox box3;
@@ -55,11 +35,6 @@ public class TournamentsOverviewController {
     @FXML private Text name3;
     @FXML private Text name4;
     @FXML private Text name5;
-    @FXML private Button overviewButton1;
-    @FXML private Button overviewButton2;
-    @FXML private Button overviewButton3;
-    @FXML private Button overviewButton4;
-    @FXML private Button overviewButton5;
     @FXML private Text team11;
     @FXML private Text team21;
     @FXML private Text team31;
@@ -85,30 +60,21 @@ public class TournamentsOverviewController {
     @FXML private Text totalTeams3;
     @FXML private Text totalTeams4;
     @FXML private Text totalTeams5;
-    @FXML private Text overviewTitle;
     @FXML private Text vs1;
     @FXML private Text vs2;
     @FXML private Text vs3;
     @FXML private Text vs4;
     @FXML private Text vs5;
-    @FXML private Button createNewTournamentButton;
 
     private ArrayList<NewTournament> tournaments;
 
 
     @FXML
-    public void initialize() throws IOException {
+    public void initialize()
+    throws IOException {
         TournamentWriterRework.updateTournamentFileLocation();
-        tournaments = new ArrayList<>();
-        if (overviewTitle.getText().equals("Ongoing tournaments")){
-            tournaments = TournamentReaderRework.readAllOngoingTournamentsToList(0);
-        } else if (overviewTitle.getText().equals("Upcoming tournaments")){
-            tournaments = TournamentReaderRework.readAllUpcomingTournamentsToList(0);
-        } else if (overviewTitle.getText().equals("Previous tournaments")){
-            tournaments = TournamentReaderRework.readAllPreviousTournamentsToList(0);
-        }
+        tournaments = TournamentReaderRework.readAllOngoingTournamentsToList(0);
         setMainPageWithTournaments();
-
     }
 
     private void setMainPageWithTournaments() {
@@ -119,15 +85,15 @@ public class TournamentsOverviewController {
                     (tournaments.get(0).getGame()) + ".png"));
             name1.setText(tournaments.get(0).getTournamentName());
             game1.setText(tournaments.get(0).getGame());
-            totalTeams1.setText(tournaments.get(0).getNumberOfTeams());
-            if (tournaments.get(0).getTeams().size() == Integer.parseInt(tournaments.get(0).getNumberOfTeams())) {
+            totalTeams1.setText(String.valueOf(tournaments.get(0).getNumberOfTeams()));
+            if (tournaments.get(0).getTeams().size() == Integer.parseInt(String.valueOf(tournaments.get(0).getNumberOfTeams()))) {
                 teamsLeft1.setText("" + tournaments.get(0).findNumberOfTeamsLeft());
             } else {
                 teamsLeft1.setText("No / Not all teams set");
             }
             if (tournaments.get(0).doesTournamentHaveAnUnfinishedAndSetMatch()) {
-                String team11Name = tournaments.get(0).findNextMatchToBePlayed().getTeam1().getNameOfTeam();
-                String team12Name = tournaments.get(0).findNextMatchToBePlayed().getTeam2().getNameOfTeam();
+                String team11Name = tournaments.get(0).findNextMatchToBePlayed().getTeam1().getNameAbbr();
+                String team12Name = tournaments.get(0).findNextMatchToBePlayed().getTeam2().getNameAbbr();
 
                 String match1Time = tournaments.get(0).findNextMatchToBePlayed().getTimeOfMatch().toString();
                 team11.setText(team11Name);
@@ -145,15 +111,16 @@ public class TournamentsOverviewController {
                         (tournaments.get(1).getGame()) + ".png"));
                 name2.setText(tournaments.get(1).getTournamentName());
                 game2.setText(tournaments.get(1).getGame());
-                totalTeams2.setText(tournaments.get(1).getNumberOfTeams());
-                if (tournaments.get(1).getTeams().size() == Integer.parseInt(tournaments.get(1).getNumberOfTeams())){
+                totalTeams2.setText(String.valueOf(tournaments.get(1).getNumberOfTeams()));
+                if (tournaments.get(1).getTeams().size() == Integer
+                        .parseInt(String.valueOf(tournaments.get(1).getNumberOfTeams()))){
                     teamsLeft2.setText("" + tournaments.get(1).findNumberOfTeamsLeft());
                 } else {
                     teamsLeft2.setText("No / Not all teams set");
                 }
                 if (tournaments.get(1).doesTournamentHaveAnUnfinishedAndSetMatch()) {
-                    String team21Name = tournaments.get(1).findNextMatchToBePlayed().getTeam1().getNameOfTeam();
-                    String team22Name = tournaments.get(1).findNextMatchToBePlayed().getTeam2().getNameOfTeam();
+                    String team21Name = tournaments.get(1).findNextMatchToBePlayed().getTeam1().getNameAbbr();
+                    String team22Name = tournaments.get(1).findNextMatchToBePlayed().getTeam2().getNameAbbr();
                     String match2Time = tournaments.get(1).findNextMatchToBePlayed().getTimeOfMatch().toString();
                     team21.setText(team21Name);
                     team22.setText(team22Name);
@@ -170,16 +137,16 @@ public class TournamentsOverviewController {
                             (tournaments.get(2).getGame()) + ".png"));
                     name3.setText(tournaments.get(2).getTournamentName());
                     game3.setText(tournaments.get(2).getGame());
-                    totalTeams3.setText(tournaments.get(2).getNumberOfTeams());
-                    if (tournaments.get(2).getTeams().size() == Integer.parseInt(tournaments.get(2)
-                            .getNumberOfTeams())){
+                    totalTeams3.setText(String.valueOf(tournaments.get(2).getNumberOfTeams()));
+                    if (tournaments.get(2).getTeams().size() == Integer.parseInt(String.valueOf(tournaments.get(2)
+                            .getNumberOfTeams()))){
                         teamsLeft3.setText("" + tournaments.get(2).findNumberOfTeamsLeft());
                     } else {
                         teamsLeft3.setText("No / Not all teams set");
                     }
                     if (tournaments.get(2).doesTournamentHaveAnUnfinishedAndSetMatch()) {
-                        String team31Name = tournaments.get(2).findNextMatchToBePlayed().getTeam1().getNameOfTeam();
-                        String team32Name = tournaments.get(2).findNextMatchToBePlayed().getTeam2().getNameOfTeam();
+                        String team31Name = tournaments.get(2).findNextMatchToBePlayed().getTeam1().getNameAbbr();
+                        String team32Name = tournaments.get(2).findNextMatchToBePlayed().getTeam2().getNameAbbr();
                         String match3Time = tournaments.get(2).findNextMatchToBePlayed().getTimeOfMatch().toString();
                         team31.setText(team31Name);
                         team32.setText(team32Name);
@@ -197,18 +164,18 @@ public class TournamentsOverviewController {
                                 (tournaments.get(3).getGame()) + ".png"));
                         name4.setText(tournaments.get(3).getTournamentName());
                         game4.setText(tournaments.get(3).getGame());
-                        totalTeams4.setText(tournaments.get(3).getNumberOfTeams());
-                        if (tournaments.get(3).getTeams().size() == Integer.parseInt(tournaments.get(3)
-                                .getNumberOfTeams())){
+                        totalTeams4.setText(String.valueOf(tournaments.get(3).getNumberOfTeams()));
+                        if (tournaments.get(3).getTeams().size() == Integer.parseInt(String.valueOf(tournaments.get(3)
+                                .getNumberOfTeams()))){
                             teamsLeft4.setText("" + tournaments.get(3).findNumberOfTeamsLeft());
                         } else {
                             teamsLeft4.setText("No / Not all teams set");
                         }
                         if (tournaments.get(3).doesTournamentHaveAnUnfinishedAndSetMatch()) {
                             String team41Name = tournaments.get(3).findNextMatchToBePlayed()
-                                    .getTeam1().getNameOfTeam();
+                                    .getTeam1().getNameAbbr();
                             String team42Name = tournaments.get(3).findNextMatchToBePlayed()
-                                    .getTeam2().getNameOfTeam();
+                                    .getTeam2().getNameAbbr();
                             String match4Time = tournaments.get(3).findNextMatchToBePlayed()
                                     .getTimeOfMatch().toString();
                             team41.setText(team41Name);
@@ -227,18 +194,18 @@ public class TournamentsOverviewController {
                                     (tournaments.get(4).getGame()) + ".png"));
                             name5.setText(tournaments.get(4).getTournamentName());
                             game5.setText(tournaments.get(4).getGame());
-                            totalTeams5.setText(tournaments.get(4).getNumberOfTeams());
-                            if (tournaments.get(4).getTeams().size() == Integer.parseInt(tournaments.get(4)
-                                    .getNumberOfTeams())){
+                            totalTeams5.setText(String.valueOf(tournaments.get(4).getNumberOfTeams()));
+                            if (tournaments.get(4).getTeams().size() == Integer.parseInt(String.valueOf(tournaments.get(4)
+                                    .getNumberOfTeams()))){
                                 teamsLeft5.setText("" + tournaments.get(4).findNumberOfTeamsLeft());
                             } else {
                                 teamsLeft5.setText("No / Not all teams set");
                             }
                             if (tournaments.get(4).doesTournamentHaveAnUnfinishedAndSetMatch()) {
                                 String team51Name = tournaments.get(4).findNextMatchToBePlayed().getTeam1()
-                                        .getNameOfTeam();
+                                        .getNameAbbr();
                                 String team52Name = tournaments.get(4).findNextMatchToBePlayed().getTeam2()
-                                        .getNameOfTeam();
+                                        .getNameAbbr();
                                 String match5Time = tournaments.get(4).findNextMatchToBePlayed().getTimeOfMatch()
                                         .toString();
                                 team51.setText(team51Name);
@@ -257,146 +224,109 @@ public class TournamentsOverviewController {
     }
 
     @FXML
-    void onOngoingTournamentsButtonPressed(ActionEvent event) throws IOException {
-        ViewSwitcher.switchTo(View.ONGOING_TOURNAMENTS);
-    }
-
-    private void onTournamentMenuItemPressed(Parent root) {
-        Stage stage = (Stage) menuBar.getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setMinWidth(1200);
-        stage.setMinHeight(800);
-        stage.show();
-    }
-
-    @FXML
-    void onUpcomingTournamentsButtonPressed(ActionEvent event)
-            throws IOException{
+    void onUpcomingTournamentsButtonClicked()
+    throws IOException{
         ViewSwitcher.switchTo(View.UPCOMING_OVERVIEW);
     }
 
     @FXML
-    void onPreviousTournamentsButtonPressed(ActionEvent event)
-            throws IOException{
-        ViewSwitcher.switchTo(View.PREVIOUS_TOURNAMENTS);
+    void onPreviousTournamentsButtonClicked()
+    throws IOException{
+        ViewSwitcher.switchTo(View.PREVIOUS_OVERVIEW);
     }
 
-
     @FXML
-    void onHomeButtonPressed(ActionEvent event)
+    void onHomeButtonClicked()
     throws IOException{
         ViewSwitcher.switchTo(View.MAIN);
     }
 
     @FXML
-    void onAboutButtonPressed(ActionEvent event) throws IOException{
+    void onAboutButtonClicked()
+    throws IOException{
         ViewSwitcher.switchTo(View.ABOUT);
     }
 
     @FXML
-    void onHelpButtonPressed(ActionEvent event) throws IOException {
+    void onHelpButtonClicked()
+    throws IOException {
         ViewSwitcher.switchTo(View.HELP);
     }
 
     @FXML
-    void onCreateNewTournamentButtonPressed(ActionEvent event) throws IOException{
+    void onCreateNewTournamentButtonPressed()
+    throws IOException{
         ViewSwitcher.switchTo(View.CREATE_NEW_TOURNAMENT);
     }
 
-    @FXML
-    void onOverviewButton1Clicked(ActionEvent event)
-    throws IOException{
-        int maxTeams = Integer.parseInt(tournaments.get(0).getNumberOfTeams());
-        if (teamsLeft1.getText().equals("No / Not all teams set")){
-            AddTeamController.setNameOfTournament(tournaments.get(0).getTournamentName());
-            ViewSwitcher.switchTo(View.ADD_TEAM);
-        } else {
-            BracketController.setBracketSize(maxTeams);
-            BracketController.setNameOfTournament(tournaments.get(0).getTournamentName());
-            if (maxTeams <= 4) {
-                ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_4);
-            } else if (maxTeams <= 8) {
-                ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_8);
-            } else if (maxTeams <= 16) {
-                ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_16);
-            }
+    @FXML void onOverviewButton1Clicked()
+            throws IOException{
+        int numberOfTeams = tournaments.get(0).getTeams().size();
+        switch (numberOfTeams){
+            default -> {AddTeamController.setNameOfTournament(tournaments.get(0).getTournamentName());
+                ViewSwitcher.switchTo(View.ADD_TEAM);}
+            case 4 -> {BracketController.setNameOfTournament(tournaments.get(0).getTournamentName());
+                ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_4);}
+            case 8 -> {BracketController.setNameOfTournament(tournaments.get(0).getTournamentName());
+                ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_8);}
+            case 16 -> {BracketController.setNameOfTournament(tournaments.get(0).getTournamentName());
+                ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_16);}
         }
     }
-
-    @FXML
-    void onOverviewButton2Clicked(ActionEvent event) throws IOException{
-        int maxTeams = Integer.parseInt(tournaments.get(1).getNumberOfTeams());
-        if (teamsLeft2.getText().equals("No / Not all teams set")){
-            AddTeamController.setNameOfTournament(tournaments.get(1).getTournamentName());
-            ViewSwitcher.switchTo(View.ADD_TEAM);
-        } else {
-            BracketController.setBracketSize(maxTeams);
-            BracketController.setNameOfTournament(tournaments.get(1).getTournamentName());
-            if (maxTeams <= 4) {
-                ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_4);
-            } else if (maxTeams <= 8) {
-                ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_8);
-            } else if (maxTeams <= 16) {
-                ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_16);
-            }
+    @FXML void onOverviewButton2Clicked()
+            throws IOException{
+        int numberOfTeams = tournaments.get(1).getTeams().size();
+        switch (numberOfTeams){
+            default -> {AddTeamController.setNameOfTournament(tournaments.get(1).getTournamentName());
+                ViewSwitcher.switchTo(View.ADD_TEAM);}
+            case 4 -> {BracketController.setNameOfTournament(tournaments.get(1).getTournamentName());
+                ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_4);}
+            case 8 -> {BracketController.setNameOfTournament(tournaments.get(1).getTournamentName());
+                ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_8);}
+            case 16 -> {BracketController.setNameOfTournament(tournaments.get(1).getTournamentName());
+                ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_16);}
         }
     }
-
-    @FXML
-    void onOverviewButton3Clicked(ActionEvent event) throws IOException{
-        int maxTeams = Integer.parseInt(tournaments.get(2).getNumberOfTeams());
-        if (teamsLeft3.getText().equals("No / Not all teams set")){
-            AddTeamController.setNameOfTournament(tournaments.get(2).getTournamentName());
-            ViewSwitcher.switchTo(View.ADD_TEAM);
-        } else {
-            BracketController.setBracketSize(maxTeams);
-            BracketController.setNameOfTournament(tournaments.get(2).getTournamentName());
-            if (maxTeams <= 4) {
-                ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_4);
-            } else if (maxTeams <= 8) {
-                ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_8);
-            } else if (maxTeams <= 16) {
-                ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_16);
-            }
+    @FXML void onOverviewButton3Clicked()
+            throws IOException{
+        int numberOfTeams = tournaments.get(2).getTeams().size();
+        switch (numberOfTeams){
+            default -> {AddTeamController.setNameOfTournament(tournaments.get(2).getTournamentName());
+                ViewSwitcher.switchTo(View.ADD_TEAM);}
+            case 4 -> {BracketController.setNameOfTournament(tournaments.get(2).getTournamentName());
+                ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_4);}
+            case 8 -> {BracketController.setNameOfTournament(tournaments.get(2).getTournamentName());
+                ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_8);}
+            case 16 -> {BracketController.setNameOfTournament(tournaments.get(2).getTournamentName());
+                ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_16);}
         }
     }
-
-    @FXML
-    void onOverviewButton4Clicked(ActionEvent event) throws IOException{
-        int maxTeams = Integer.parseInt(tournaments.get(3).getNumberOfTeams());
-        if (teamsLeft4.getText().equals("No / Not all teams set")){
-            AddTeamController.setNameOfTournament(tournaments.get(3).getTournamentName());
-            ViewSwitcher.switchTo(View.ADD_TEAM);
-        } else {
-            BracketController.setBracketSize(maxTeams);
-            BracketController.setNameOfTournament(tournaments.get(3).getTournamentName());
-            if (maxTeams <= 4) {
-                ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_4);
-            } else if (maxTeams <= 8) {
-                ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_8);
-            } else if (maxTeams <= 16) {
-                ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_16);
-            }
+    @FXML void onOverviewButton4Clicked()
+            throws IOException{
+        int numberOfTeams = tournaments.get(3).getTeams().size();
+        switch (numberOfTeams){
+            default -> {AddTeamController.setNameOfTournament(tournaments.get(3).getTournamentName());
+                ViewSwitcher.switchTo(View.ADD_TEAM);}
+            case 4 -> {BracketController.setNameOfTournament(tournaments.get(3).getTournamentName());
+                ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_4);}
+            case 8 -> {BracketController.setNameOfTournament(tournaments.get(3).getTournamentName());
+                ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_8);}
+            case 16 -> {BracketController.setNameOfTournament(tournaments.get(3).getTournamentName());
+                ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_16);}
         }
     }
-
-    @FXML
-    void onOverviewButton5Clicked(ActionEvent event) throws IOException{
-        int maxTeams = Integer.parseInt(tournaments.get(4).getNumberOfTeams());
-        if (teamsLeft5.getText().equals("No / Not all teams set")){
-            AddTeamController.setNameOfTournament(tournaments.get(4).getTournamentName());
-            ViewSwitcher.switchTo(View.ADD_TEAM);
-        } else {
-            BracketController.setBracketSize(maxTeams);
-            BracketController.setNameOfTournament(tournaments.get(4).getTournamentName());
-            if (maxTeams <= 4) {
-                ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_4);
-            } else if (maxTeams <= 8) {
-                ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_8);
-            } else if (maxTeams <= 16) {
-                ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_16);
-            }
+    @FXML void onOverviewButton5Clicked()
+            throws IOException{
+        int numberOfTeams = tournaments.get(4).getTeams().size();
+        switch (numberOfTeams){
+            default -> {AddTeamController.setNameOfTournament(tournaments.get(4).getTournamentName());
+                ViewSwitcher.switchTo(View.ADD_TEAM);}
+            case 4 -> {BracketController.setNameOfTournament(tournaments.get(4).getTournamentName());
+                ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_4);}
+            case 8 -> {BracketController.setNameOfTournament(tournaments.get(4).getTournamentName());
+                ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_8);}
+            case 16 -> {BracketController.setNameOfTournament(tournaments.get(4).getTournamentName());
+                ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_16);}
         }
     }
 }

@@ -45,9 +45,8 @@
     <center>
         <VBox prefHeight="1655.0" prefWidth="1200.0" style="-fx-background-color: #282c34;" BorderPane.alignment="CENTER">
             <children>
-                <VBox maxHeight="200.0" prefHeight="131.0" prefWidth="1200.0" style="-fx-background-color: #2e3e4e;" VBox.vgrow="ALWAYS">
+                <VBox maxHeight="-Infinity" prefHeight="136.0" prefWidth="1200.0" style="-fx-background-color: #2e3e4e;" VBox.vgrow="ALWAYS">
                     <children>
-                        <VBox prefHeight="130.0" prefWidth="119.0" style="-fx-background-color: #2e3e4e;" VBox.vgrow="NEVER" />
                         <HBox prefHeight="120.0" prefWidth="1200.0" VBox.vgrow="ALWAYS">
                             <children>
                                 <ImageView fitHeight="96.0" fitWidth="611.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
@@ -65,30 +64,235 @@
                 </VBox>
                 <HBox prefHeight="795.0" prefWidth="1200.0" VBox.vgrow="ALWAYS">
                     <children>
-                        <Pane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: #13161d;" HBox.hgrow="ALWAYS" />
+                        <Pane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: black;" HBox.hgrow="ALWAYS" />
                         <ScrollPane hbarPolicy="NEVER" maxWidth="1800.0" prefHeight="1000.0" prefWidth="1200.0" style="-fx-background-color: #13161d;" stylesheets="@../css/style.css">
                             <content>
-                                <VBox prefHeight="1081.0" prefWidth="1184.0" style="-fx-background-color: #13161d;">
+                                <VBox prefHeight="1145.0" prefWidth="1184.0" style="-fx-background-color: #13161d;">
                                     <children>
-                                        <HBox maxHeight="137.0" prefHeight="137.0" prefWidth="1200.0" style="-fx-background-color: #13161d;" VBox.vgrow="ALWAYS">
-                                            <children>
-                                                <VBox prefHeight="137.0" prefWidth="1200.0">
-                                                    <children>
-                                                        <Pane prefHeight="100.0" prefWidth="1200.0" />
-                                                        <Label fx:id="tournamentName" alignment="CENTER" prefHeight="36.0" prefWidth="1257.0" text="Tournament Name" textFill="#fa8f31">
-                                                            <font>
-                                                                <Font name="Arial Bold" size="30.0" />
-                                                            </font>
-                                                        </Label>
-                                                        <Pane prefHeight="100.0" prefWidth="1200.0" />
-                                                    </children>
+                              <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="1184.0" style="-fx-background-color: #13161d;">
+                                 <children>
+                                    <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="1184.0">
+                                       <children>
+                                          <HBox alignment="CENTER" prefHeight="65.0" prefWidth="1184.0">
+                                             <children>
+                                                <Label fx:id="tournamentName" alignment="CENTER" prefHeight="73.0" prefWidth="1184.0" text="Tournament name" textFill="#fa8f31">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="30.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <HBox prefHeight="160.0" prefWidth="1184.0">
+                                             <children>
+                                                <ImageView fx:id="imageView" fitHeight="150.0" fitWidth="271.0" pickOnBounds="true" preserveRatio="true">
+                                                   <HBox.margin>
+                                                      <Insets left="43.0" />
+                                                   </HBox.margin>
+                                                </ImageView>
+                                                <VBox prefHeight="150.0" prefWidth="413.0">
+                                                   <HBox.margin>
+                                                      <Insets />
+                                                   </HBox.margin>
+                                                   <children>
+                                                      <HBox alignment="CENTER_LEFT">
+                                                         <children>
+                                                            <Text fill="#fa8f31" strokeType="OUTSIDE" strokeWidth="0.0" text="Game:">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="20.0" />
+                                                               </font>
+                                                               <HBox.margin>
+                                                                  <Insets left="35.0" />
+                                                               </HBox.margin>
+                                                            </Text>
+                                                            <Label fx:id="game" textFill="WHITE">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="18.0" />
+                                                               </font>
+                                                               <HBox.margin>
+                                                                  <Insets left="10.0" />
+                                                               </HBox.margin>
+                                                            </Label>
+                                                         </children>
+                                                         <VBox.margin>
+                                                            <Insets left="15.0" top="15.0" />
+                                                         </VBox.margin>
+                                                      </HBox>
+                                                      <HBox alignment="CENTER_LEFT">
+                                                         <children>
+                                                            <Text fill="#fa8f31" strokeType="OUTSIDE" strokeWidth="0.0" text="Host: ">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="20.0" />
+                                                               </font>
+                                                               <HBox.margin>
+                                                                  <Insets left="47.0" />
+                                                               </HBox.margin>
+                                                            </Text>
+                                                            <Label fx:id="host" textFill="WHITE">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="18.0" />
+                                                               </font>
+                                                               <HBox.margin>
+                                                                  <Insets left="3.0" />
+                                                               </HBox.margin>
+                                                            </Label>
+                                                         </children>
+                                                         <VBox.margin>
+                                                            <Insets left="15.0" top="10.0" />
+                                                         </VBox.margin>
+                                                      </HBox>
+                                                      <HBox alignment="CENTER_LEFT">
+                                                         <children>
+                                                            <Text fill="#fa8f31" strokeType="OUTSIDE" strokeWidth="0.0" text="Start date:">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="20.0" />
+                                                               </font>
+                                                               <HBox.margin>
+                                                                  <Insets />
+                                                               </HBox.margin>
+                                                            </Text>
+                                                            <Label fx:id="startDate" textFill="WHITE">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="18.0" />
+                                                               </font>
+                                                               <HBox.margin>
+                                                                  <Insets left="10.0" />
+                                                               </HBox.margin>
+                                                            </Label>
+                                                         </children>
+                                                         <VBox.margin>
+                                                            <Insets left="15.0" top="10.0" />
+                                                         </VBox.margin>
+                                                      </HBox>
+                                                      <HBox alignment="CENTER_LEFT">
+                                                         <children>
+                                                            <Text fill="#fa8f31" strokeType="OUTSIDE" strokeWidth="0.0" text="Start time:">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="20.0" />
+                                                               </font>
+                                                               <HBox.margin>
+                                                                  <Insets />
+                                                               </HBox.margin>
+                                                            </Text>
+                                                            <Label fx:id="startTime" textFill="WHITE">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="18.0" />
+                                                               </font>
+                                                               <HBox.margin>
+                                                                  <Insets left="10.0" />
+                                                               </HBox.margin>
+                                                            </Label>
+                                                         </children>
+                                                         <VBox.margin>
+                                                            <Insets left="15.0" top="10.0" />
+                                                         </VBox.margin>
+                                                      </HBox>
+                                                   </children>
                                                 </VBox>
-                                            </children>
-                                        </HBox>
+                                                <VBox maxHeight="-Infinity" minHeight="-Infinity" prefHeight="112.0" prefWidth="410.0">
+                                                   <children>
+                                                      <HBox alignment="CENTER_LEFT">
+                                                         <children>
+                                                            <Text fill="#fa8f31" strokeType="OUTSIDE" strokeWidth="0.0" text="Platform:">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="20.0" />
+                                                               </font>
+                                                               <HBox.margin>
+                                                                  <Insets left="40.0" />
+                                                               </HBox.margin>
+                                                            </Text>
+                                                            <Label fx:id="platform" textFill="WHITE">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="18.0" />
+                                                               </font>
+                                                               <HBox.margin>
+                                                                  <Insets left="10.0" />
+                                                               </HBox.margin>
+                                                            </Label>
+                                                         </children>
+                                                         <VBox.margin>
+                                                            <Insets left="15.0" top="15.0" />
+                                                         </VBox.margin>
+                                                      </HBox>
+                                                      <HBox alignment="CENTER_LEFT">
+                                                         <children>
+                                                            <Text fill="#fa8f31" strokeType="OUTSIDE" strokeWidth="0.0" text="Prize pool:">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="20.0" />
+                                                               </font>
+                                                               <HBox.margin>
+                                                                  <Insets left="25.0" />
+                                                               </HBox.margin>
+                                                            </Text>
+                                                            <Label fx:id="prizePool" textFill="WHITE">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="18.0" />
+                                                               </font>
+                                                               <HBox.margin>
+                                                                  <Insets left="10.0" />
+                                                               </HBox.margin>
+                                                            </Label>
+                                                            <Label fx:id="prizePoolCurrency" textFill="WHITE">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="18.0" />
+                                                               </font>
+                                                               <HBox.margin>
+                                                                  <Insets left="10.0" />
+                                                               </HBox.margin>
+                                                            </Label>
+                                                         </children>
+                                                         <VBox.margin>
+                                                            <Insets left="15.0" top="10.0" />
+                                                         </VBox.margin>
+                                                      </HBox>
+                                                      <HBox alignment="CENTER_LEFT">
+                                                         <children>
+                                                            <Text fill="#fa8f31" strokeType="OUTSIDE" strokeWidth="0.0" text="Entrance fee:">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="20.0" />
+                                                               </font>
+                                                               <HBox.margin>
+                                                                  <Insets left="2.0" />
+                                                               </HBox.margin>
+                                                            </Text>
+                                                            <Label fx:id="entranceFee" textFill="WHITE">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="18.0" />
+                                                               </font>
+                                                               <HBox.margin>
+                                                                  <Insets left="10.0" />
+                                                               </HBox.margin>
+                                                            </Label>
+                                                            <Label fx:id="entranceFeeCurrency" textFill="WHITE">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="18.0" />
+                                                               </font>
+                                                               <HBox.margin>
+                                                                  <Insets left="10.0" />
+                                                               </HBox.margin>
+                                                            </Label>
+                                                         </children>
+                                                         <VBox.margin>
+                                                            <Insets left="15.0" top="10.0" />
+                                                         </VBox.margin>
+                                                      </HBox>
+                                                   </children>
+                                                   <HBox.margin>
+                                                      <Insets top="35.0" />
+                                                   </HBox.margin>
+                                                </VBox>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                              </HBox>
                                         <HBox prefHeight="67.0" prefWidth="1200.0">
                                             <children>
-                                                <Pane prefHeight="200.0" prefWidth="50.0" HBox.hgrow="ALWAYS" />
-                                                <Button mnemonicParsing="false" onAction="#setBracketScene" prefHeight="55.0" prefWidth="275.0" style="-fx-background-color: #2e3e4e;" text="Overview" textFill="WHITE">
+                                                <Pane prefHeight="67.0" prefWidth="43.0" HBox.hgrow="ALWAYS" />
+                                                <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#setBracketScene" prefHeight="55.0" prefWidth="273.0" style="-fx-background-color: #2e3e4e;" text="Overview" textFill="WHITE">
                                                     <font>
                                                         <Font name="Arial Bold" size="20.0" />
                                                     </font>
@@ -99,7 +303,7 @@
                                                         <Cursor fx:constant="HAND" />
                                                     </cursor>
                                                 </Button>
-                                    <Button disable="true" mnemonicParsing="false" prefHeight="55.0" prefWidth="275.0" style="-fx-background-color: #2e3e4e;" text="Set time" textFill="WHITE">
+                                    <Button disable="true" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="55.0" prefWidth="273.0" style="-fx-background-color: #2e3e4e;" text="Set time" textFill="WHITE">
                                        <font>
                                           <Font name="Arial Bold" size="20.0" />
                                        </font>
@@ -110,7 +314,7 @@
                                           <Insets right="2.0" />
                                        </HBox.margin>
                                     </Button>
-                                                <Button mnemonicParsing="false" onAction="#setMatchesScene" prefHeight="55.0" prefWidth="275.0" style="-fx-background-color: #2e3e4e;" text="Matches" textFill="WHITE">
+                                                <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#setMatchesScene" prefHeight="55.0" prefWidth="273.0" style="-fx-background-color: #2e3e4e;" text="Matches" textFill="WHITE">
                                                     <font>
                                                         <Font name="Arial Bold" size="20.0" />
                                                     </font>
@@ -118,7 +322,7 @@
                                                         <Cursor fx:constant="HAND" />
                                                     </cursor>
                                                 </Button>
-                                                <Button mnemonicParsing="false" onAction="#setResultsScene" prefHeight="55.0" prefWidth="275.0" style="-fx-background-color: #2e3e4e;" text="Results" textFill="WHITE">
+                                                <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#setResultsScene" prefHeight="55.0" prefWidth="273.0" style="-fx-background-color: #2e3e4e;" text="Results" textFill="WHITE">
                                                     <font>
                                                         <Font name="Arial Bold" size="20.0" />
                                                     </font>
@@ -129,10 +333,10 @@
                                                         <Cursor fx:constant="HAND" />
                                                     </cursor>
                                                 </Button>
-                                                <Pane prefHeight="200.0" prefWidth="50.0" HBox.hgrow="ALWAYS" />
+                                                <Pane prefHeight="67.0" prefWidth="43.0" HBox.hgrow="ALWAYS" />
                                             </children>
                                             <VBox.margin>
-                                                <Insets bottom="5.0" />
+                                                <Insets bottom="5.0" top="15.0" />
                                             </VBox.margin>
                                         </HBox>
                                         <VBox maxHeight="727.0" prefHeight="556.0" prefWidth="1200.0">
@@ -140,11 +344,11 @@
                                                 <HBox prefHeight="100.0" prefWidth="1200.0">
                                                     <children>
                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                        <Pane prefHeight="99.0" prefWidth="1257.0" style="-fx-background-color: #282c34;">
+                                                        <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="99.0" prefWidth="1098.0" style="-fx-background-color: #282c34;">
                                                             <children>
-                                                                <Text fill="WHITE" layoutX="20.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Set time">
+                                                                <Text fill="WHITE" layoutX="473.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Set time">
                                                                     <font>
-                                                                        <Font name="Arial Bold" size="22.0" />
+                                                                        <Font name="Arial Bold" size="39.0" />
                                                                     </font>
                                                                 </Text>
                                                             </children>
@@ -158,7 +362,7 @@
                                                 <HBox prefHeight="199.0" prefWidth="1200.0">
                                                     <children>
                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                        <VBox prefHeight="340.0" prefWidth="1257.0" style="-fx-background-color: #2e3e4e;">
+                                                        <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1098.0" style="-fx-background-color: #2e3e4e;">
                                                             <children>
                                                                 <HBox fx:id="match" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
                                                                     <children>
@@ -973,7 +1177,7 @@
                                                 </VBox>
                                             </content>
                                         </ScrollPane>
-                                  <Pane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: #13161d;" HBox.hgrow="ALWAYS" />
+                                  <Pane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: black;" HBox.hgrow="ALWAYS" />
                                     </children>
                                 </HBox>
                             </children>

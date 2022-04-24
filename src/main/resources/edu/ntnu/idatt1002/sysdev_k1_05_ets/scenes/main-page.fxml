@@ -44,9 +44,8 @@
     <center>
         <VBox prefHeight="1655.0" prefWidth="1200.0" style="-fx-background-color: #282c34;" BorderPane.alignment="CENTER">
             <children>
-                <VBox maxHeight="200.0" prefHeight="131.0" prefWidth="1200.0" style="-fx-background-color: #2e3e4e;" VBox.vgrow="ALWAYS">
+                <VBox maxHeight="-Infinity" prefHeight="136.0" prefWidth="1200.0" style="-fx-background-color: #2e3e4e;" VBox.vgrow="ALWAYS">
                     <children>
-                        <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="130.0" prefWidth="119.0" style="-fx-background-color: #2e3e4e;" VBox.vgrow="NEVER" />
                         <HBox prefHeight="120.0" prefWidth="1200.0" VBox.vgrow="ALWAYS">
                             <children>
                                 <ImageView fitHeight="96.0" fitWidth="611.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
@@ -116,14 +115,14 @@
                                                             <Image url="@../Images/gameImages/LeagueofLegends.png" />
                                                          </image>
                                                       </ImageView>
-                                                      <Text fx:id="warningText" fill="WHITE" layoutX="46.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Not all teams have been added yet. Click to add." textAlignment="CENTER" visible="false" wrappingWidth="257.09765625">
+                                                      <Text fx:id="warningText1" fill="WHITE" layoutX="46.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Not all teams have been added yet. Click to add." textAlignment="CENTER" visible="false" wrappingWidth="257.09765625">
                                                          <font>
                                                             <Font name="Arial Bold" size="28.0" />
                                                          </font>
                                                       </Text>
                                                    </children>
                                                 </Pane>
-                                                                <Pane fx:id="ongoingPane1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="350.0" style="-fx-background-color: black;">
+                                                                <Pane fx:id="ongoingPane1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onOngoingBox1Clicked" prefHeight="80.0" prefWidth="350.0" style="-fx-background-color: black;">
                                                                     <VBox.margin>
                                                                         <Insets />
                                                                     </VBox.margin>
@@ -134,6 +133,9 @@
                                                          </font>
                                                       </TextArea>
                                                                     </children>
+                                                   <cursor>
+                                                      <Cursor fx:constant="DEFAULT" />
+                                                   </cursor>
                                                                 </Pane>
                                                             </children>
                                              <cursor>
@@ -152,7 +154,7 @@
                                                             <Image url="@../Images/gameImages/LeagueofLegends.png" />
                                                          </image>
                                                       </ImageView>
-                                                      <Text fx:id="warningText1" fill="WHITE" layoutX="56.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Not all teams have been added yet. Click to add." textAlignment="CENTER" visible="false" wrappingWidth="257.09765625">
+                                                      <Text fx:id="warningText2" fill="WHITE" layoutX="56.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Not all teams have been added yet. Click to add." textAlignment="CENTER" visible="false" wrappingWidth="257.09765625">
                                                          <font>
                                                             <Font name="Arial Bold" size="28.0" />
                                                          </font>
@@ -239,7 +241,7 @@
                                                             <Image url="@../Images/gameImages/LeagueofLegends.png" />
                                                          </image>
                                                       </ImageView>
-                                                      <Text fx:id="warningText11" fill="WHITE" layoutX="66.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Not all teams have been added yet. Click to add." textAlignment="CENTER" visible="false" wrappingWidth="257.09765625">
+                                                      <Text fx:id="warningText3" fill="WHITE" layoutX="66.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Not all teams have been added yet. Click to add." textAlignment="CENTER" visible="false" wrappingWidth="257.09765625">
                                                          <font>
                                                             <Font name="Arial Bold" size="28.0" />
                                                          </font>
@@ -275,7 +277,7 @@
                                                             <Image url="@../Images/gameImages/LeagueofLegends.png" />
                                                          </image>
                                                       </ImageView>
-                                                      <Text fx:id="warningText12" fill="WHITE" layoutX="66.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Not all teams have been added yet. Click to add." textAlignment="CENTER" visible="false" wrappingWidth="257.09765625">
+                                                      <Text fx:id="warningText4" fill="WHITE" layoutX="66.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Not all teams have been added yet. Click to add." textAlignment="CENTER" visible="false" wrappingWidth="257.09765625">
                                                          <font>
                                                             <Font name="Arial Bold" size="28.0" />
                                                          </font>
@@ -362,7 +364,7 @@
                                                             <Image url="@../Images/gameImages/LeagueofLegends.png" />
                                                          </image>
                                                       </ImageView>
-                                                      <Text fx:id="warningText13" fill="WHITE" layoutX="66.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Not all teams have been added yet. Click to add." textAlignment="CENTER" visible="false" wrappingWidth="257.09765625">
+                                                      <Text fx:id="warningText5" fill="WHITE" layoutX="66.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Not all teams have been added yet. Click to add." textAlignment="CENTER" visible="false" wrappingWidth="257.09765625">
                                                          <font>
                                                             <Font name="Arial Bold" size="28.0" />
                                                          </font>
@@ -398,7 +400,7 @@
                                                             <Image url="@../Images/gameImages/LeagueofLegends.png" />
                                                          </image>
                                                       </ImageView>
-                                                      <Text fx:id="warningText14" fill="WHITE" layoutX="66.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Not all teams have been added yet. Click to add." textAlignment="CENTER" visible="false" wrappingWidth="257.09765625">
+                                                      <Text fx:id="warningText6" fill="WHITE" layoutX="66.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Not all teams have been added yet. Click to add." textAlignment="CENTER" visible="false" wrappingWidth="257.09765625">
                                                          <font>
                                                             <Font name="Arial Bold" size="28.0" />
                                                          </font>

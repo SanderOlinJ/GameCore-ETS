@@ -9,8 +9,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,33 +20,35 @@ public class MainPageController {
     @FXML private VBox ongoingBox1;
     @FXML private ImageView ongoingImageView1;
     @FXML private TextArea ongoingText1;
-
     @FXML private VBox ongoingBox2;
     @FXML private ImageView ongoingImageView2;
     @FXML private TextArea ongoingText2;
-
     @FXML private VBox upcomingBox1;
     @FXML private ImageView upcomingImageView1;
     @FXML private TextArea upcomingText1;
-
     @FXML private VBox upcomingBox2;
     @FXML private ImageView upcomingImageView2;
     @FXML private TextArea upcomingText2;
-
     @FXML private VBox previousBox1;
     @FXML private ImageView previousImageView1;
     @FXML private TextArea previousText1;
-
     @FXML private VBox previousBox2;
     @FXML private ImageView previousImageView2;
     @FXML private TextArea previousText2;
+    @FXML private Text warningText1;
+    @FXML private Text warningText2;
+    @FXML private Text warningText3;
+    @FXML private Text warningText4;
+    @FXML private Text warningText5;
+    @FXML private Text warningText6;
 
     private ArrayList<NewTournament> ongoingTournaments;
     private ArrayList<NewTournament> upcomingTournaments;
     private ArrayList<NewTournament> previousTournaments;
 
     @FXML
-    public void initialize() throws IOException {
+    public void initialize()
+    throws IOException {
         TournamentWriterRework.updateTournamentFileLocation();
         ongoingTournaments = new ArrayList<>();
         upcomingTournaments = new ArrayList<>();
@@ -54,16 +56,8 @@ public class MainPageController {
         showOngoingTournaments();
         showUpcomingTournaments();
         showPreviousTournaments();
-
-        ongoingBox1.setOnMouseClicked(mouseEvent -> onOngoingTournamentOneClicked());
-
     }
 
-    @FXML
-    private void onOngoingTournamentOneClicked(){
-        System.out.println("Yo");
-
-    }
 
     @FXML
     private void showOngoingTournaments()
@@ -79,7 +73,7 @@ public class MainPageController {
 
     @FXML
     private void showUpcomingTournaments()
-            throws IOException{
+    throws IOException{
         try {
             upcomingTournaments = TournamentReaderRework.readAllUpcomingTournamentsToList(2);
             setMainPageWithTournaments(upcomingTournaments, upcomingImageView1, upcomingText1, upcomingBox1,
@@ -91,7 +85,7 @@ public class MainPageController {
 
     @FXML
     private void showPreviousTournaments()
-            throws IOException{
+    throws IOException{
         try {
             previousTournaments = TournamentReaderRework.readAllPreviousTournamentsToList(2);
             setMainPageWithTournaments(previousTournaments, previousImageView1, previousText1, previousBox1,
@@ -111,6 +105,10 @@ public class MainPageController {
             text1.setText(tournaments.get(0).getTournamentName());
             vBox1.setVisible(true);
             vBox1.setDisable(false);
+            if (tournaments.get(0).getTeams().size() > tournaments.get(0).getNumberOfTeams()){
+                warningText1.setVisible(true);
+                vBox1.setOpacity(0.2);
+            }
 
             if (tournaments.size() > 1){
 
@@ -152,7 +150,7 @@ public class MainPageController {
     @FXML
     void onOngoingTournamentsButtonPressed()
     throws IOException{
-        ViewSwitcher.switchTo(View.ONGOING_TOURNAMENTS);
+        ViewSwitcher.switchTo(View.ONGOING_OVERVIEW);
     }
 
 
@@ -165,13 +163,13 @@ public class MainPageController {
     @FXML
     void onPreviousTournamentsButtonPressed()
     throws IOException{
-        ViewSwitcher.switchTo(View.PREVIOUS_TOURNAMENTS);
+        ViewSwitcher.switchTo(View.PREVIOUS_OVERVIEW);
     }
 
     @FXML
     void onViewMoreOngoingPressed()
     throws IOException{
-        ViewSwitcher.switchTo(View.ONGOING_TOURNAMENTS);
+        ViewSwitcher.switchTo(View.ONGOING_OVERVIEW);
     }
 
     @FXML
@@ -183,25 +181,38 @@ public class MainPageController {
     @FXML
     void onViewMorePreviousPressed()
     throws IOException{
-        ViewSwitcher.switchTo(View.PREVIOUS_TOURNAMENTS);
+        ViewSwitcher.switchTo(View.PREVIOUS_OVERVIEW);
     }
 
     @FXML
-    void onOngoingBox1Clicked(MouseEvent event){}
+    void onOngoingBox1Clicked()
+    throws IOException{
+        int numberOfTeams = ongoingTournaments.get(0).getTeams().size();
+        switch (numberOfTeams){
+            default -> {AddTeamController.setNameOfTournament(ongoingTournaments.get(0).getTournamentName());
+                ViewSwitcher.switchTo(View.ADD_TEAM);}
+            case 4 -> {BracketController.setNameOfTournament(ongoingTournaments.get(0).getTournamentName());
+                ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_4);}
+            case 8 -> {BracketController.setNameOfTournament(ongoingTournaments.get(0).getTournamentName());
+                ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_8);}
+            case 16 -> {BracketController.setNameOfTournament(ongoingTournaments.get(0).getTournamentName());
+                ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_16);}
+        }
+    }
 
     @FXML
-    void onOngoingBox2Clicked(MouseEvent event){}
+    void onOngoingBox2Clicked(){}
 
     @FXML
-    void onUpcomingBox1Clicked(MouseEvent event){}
+    void onUpcomingBox1Clicked(){}
 
     @FXML
-    void onUpcomingBox2Clicked(MouseEvent event){}
+    void onUpcomingBox2Clicked(){}
 
     @FXML
-    void onPreviousBox1Clicked(MouseEvent event){}
+    void onPreviousBox1Clicked(){}
 
     @FXML
-    void onPreviousBox2Clicked(MouseEvent event){}
+    void onPreviousBox2Clicked(){}
 
 }

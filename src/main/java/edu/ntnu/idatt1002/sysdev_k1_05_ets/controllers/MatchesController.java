@@ -1,5 +1,4 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
-
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.GameCoreETSApplication;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TournamentReaderRework;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TournamentWriterRework;
@@ -8,33 +7,22 @@ import edu.ntnu.idatt1002.sysdev_k1_05_ets.scenes.ViewSwitcher;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Match;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.NewTournament;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
-import javafx.event.ActionEvent;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.utilities.Utilities;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.AccessibleAction;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.MenuBar;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
-import java.util.Objects;
-import java.util.stream.Collectors;
 
 public class MatchesController {
-    private Scene scene;
-    private Stage stage;
     private NewTournament tournament;
     private static String nameOfTournament;
 
@@ -156,35 +144,35 @@ public class MatchesController {
     @FXML TextField team1ScoreMatch10;
     @FXML TextField team1ScoreMatch11;
     @FXML TextField team1ScoreMatch12;
-    @FXML TextField team1ScoreMatch13;
-    @FXML TextField team1ScoreMatch14;
-    @FXML TextField team2ScoreMatch;
-    @FXML TextField team2ScoreMatch1;
-    @FXML TextField team2ScoreMatch2;
-    @FXML TextField team2ScoreMatch3;
-    @FXML TextField team2ScoreMatch4;
-    @FXML TextField team2ScoreMatch5;
-    @FXML TextField team2ScoreMatch6;
-    @FXML TextField team2ScoreMatch7;
-    @FXML TextField team2ScoreMatch8;
-    @FXML TextField team2ScoreMatch9;
-    @FXML TextField team2ScoreMatch10;
-    @FXML TextField team2ScoreMatch11;
-    @FXML TextField team2ScoreMatch12;
-    @FXML TextField team2ScoreMatch13;
-    @FXML TextField team2ScoreMatch14;
-    @FXML Label tournamentName;
+    @FXML private TextField team1ScoreMatch13;
+    @FXML private TextField team1ScoreMatch14;
+    @FXML private TextField team2ScoreMatch;
+    @FXML private TextField team2ScoreMatch1;
+    @FXML private TextField team2ScoreMatch2;
+    @FXML private TextField team2ScoreMatch3;
+    @FXML private TextField team2ScoreMatch4;
+    @FXML private TextField team2ScoreMatch5;
+    @FXML private TextField team2ScoreMatch6;
+    @FXML private TextField team2ScoreMatch7;
+    @FXML private TextField team2ScoreMatch8;
+    @FXML private TextField team2ScoreMatch9;
+    @FXML private TextField team2ScoreMatch10;
+    @FXML private TextField team2ScoreMatch11;
+    @FXML private TextField team2ScoreMatch12;
+    @FXML private TextField team2ScoreMatch13;
+    @FXML private TextField team2ScoreMatch14;
+    @FXML private Label tournamentName;
+    @FXML private ImageView imageView;
+    @FXML private Label game;
+    @FXML private Label host;
+    @FXML private Label startDate;
+    @FXML private Label startTime;
+    @FXML private Label platform;
+    @FXML private Label prizePool;
+    @FXML private Label prizePoolCurrency;
+    @FXML private Label entranceFee;
+    @FXML private Label entranceFeeCurrency;
 
-    @FXML private MenuItem homeButton;
-    @FXML private MenuItem ongoingTournamentsButton;
-    @FXML private MenuItem upcomingTournamentsButton;
-    @FXML private MenuItem previousTournamentsButton;
-    @FXML private MenuItem aboutButton;
-    @FXML private MenuItem helpButton;
-
-    @FXML private MenuBar menuBar;
-
-    private static int n = 2;
     private ArrayList<HBox> matches;
     private ArrayList<Label> timeLabels;
     private ArrayList<Label> teamOnes;
@@ -193,8 +181,8 @@ public class MatchesController {
     private ArrayList<TextField> teamTwosScore;
     private ArrayList<RadioButton> radioOnes;
     private ArrayList<RadioButton> radioTwos;
-    private static ArrayList<Team> teams = new ArrayList<>();
     private static ArrayList<String> times = new ArrayList<>();
+
 
     @FXML
     protected void initialize(){
@@ -203,6 +191,10 @@ public class MatchesController {
         } catch (IOException exception){
             exception.printStackTrace();
         }
+        GameCoreETSApplication.showGameInfo(tournamentName, nameOfTournament, imageView, tournament, game,
+                        host, startDate, startTime, platform, prizePool, entranceFee,
+                        prizePoolCurrency, entranceFeeCurrency);
+
         timeLabels = new ArrayList<>(Arrays.asList(timematch, timematch1, timematch2, timematch3,
                 timematch4, timematch5, timematch6, timematch7, timematch8, timematch9, timematch10, timematch11, timematch12,
                 timematch13, timematch14));
@@ -232,64 +224,40 @@ public class MatchesController {
                 matches.get(i).setVisible(false);
                 matches.get(i).setPrefHeight(0);
                 try {
-                    /*TournamentWriterRework.writeMatchScoreAndVictorToTournamentFile(tournament.getTournamentName()
-                            ,matchWithResults);*/
                     TournamentWriterRework.writeMatchesToTournament(nameOfTournament,matchWithResults);
                 } catch (IOException exception){
                     exception.printStackTrace();
                 }
-
-
-                /*
-                if (teams.size() > BracketController.bracketSize) {
-                    matches.remove(matches.get(i));
-                    teamOnes.remove(teamOnes.get(i));
-                    teamTwos.remove(teamOnes.get(i));
-                    teamOnesScore.remove(teamOnesScore.get(i));
-                    teamTwosScore.remove(teamTwosScore.get(i));
-                    winners.remove(winners.get(i));
-                    timeLabels.remove(timeLabels.get(i));
-                    times.remove(times.get(i));
-                    radioOnes.remove(radioOnes.get(i));
-                    radioTwos.remove(radioTwos.get(i));
-                }
-                */
-                //advanceTeam(matchWithResults.getVictor());
             }
         }
     }
 
     @FXML
-    public void setResultsScene(ActionEvent event) throws IOException {
+    public void setResultsScene()
+    throws IOException {
+        ResultsController.setNameOfTournament(nameOfTournament);
         ViewSwitcher.switchTo(View.TOURNAMENT_RESULTS);
     }
-    /*
-    private void advanceTeam(Team team) {
-        BracketController.getBracket().addTeam(team);
-    }
 
-     */
 
     @FXML
-    public void setTimeScene(ActionEvent event) throws IOException {
+    public void setTimeScene()
+    throws IOException {
         SetTimeController.setNameOfTournament(nameOfTournament);
         ViewSwitcher.switchTo(View.SET_TIME);
     }
 
     @FXML
-    public void setBracketScene(ActionEvent event) throws IOException {
-        if (BracketController.getBracketSize() == 4){
+    public void setBracketScene()
+    throws IOException {
+        if (tournament.getNumberOfTeams() == 4){
             ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_4);
-        } else if (BracketController.getBracketSize() == 8){
+        } else if (tournament.getNumberOfTeams() == 8){
             ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_8);
-        } else if (BracketController.getBracketSize() == 16){
+        } else if (tournament.getNumberOfTeams() == 16){
             ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_16);
         }
 
-    }
-
-    public static void setTimeLabel(String hour, String minute){
-        times.add(hour + ":" + minute);
     }
 
     public void setVisibleMatches(){
@@ -331,40 +299,46 @@ public class MatchesController {
     }
 
     @FXML
-    void onHomeButtonPressed() throws IOException {
+    void onHomeButtonPressed()
+    throws IOException {
         ViewSwitcher.switchTo(View.MAIN);
     }
 
     @FXML
-    void onAboutButtonPressed() throws IOException {
+    void onAboutButtonPressed()
+    throws IOException {
         ViewSwitcher.switchTo(View.ABOUT);
     }
 
     @FXML
-    void onHelpButtonPressed() throws IOException {
+    void onHelpButtonPressed()
+    throws IOException {
         ViewSwitcher.switchTo(View.HELP);
     }
 
     @FXML
-    void onOngoingTournamentsButtonPressed() throws IOException {
-        ViewSwitcher.switchTo(View.ONGOING_TOURNAMENTS);
+    void onOngoingTournamentsButtonPressed()
+    throws IOException {
+        ViewSwitcher.switchTo(View.ONGOING_OVERVIEW);
     }
 
 
     @FXML
     void onUpcomingTournamentsButtonPressed()
-            throws IOException{
+    throws IOException{
         ViewSwitcher.switchTo(View.UPCOMING_OVERVIEW);
     }
 
     @FXML
     void onPreviousTournamentsButtonPressed()
-            throws IOException {
-        ViewSwitcher.switchTo(View.PREVIOUS_TOURNAMENTS);
+    throws IOException {
+        ViewSwitcher.switchTo(View.PREVIOUS_OVERVIEW);
     }
 
 
     public static void setNameOfTournament(String nameOfTournament) {
         MatchesController.nameOfTournament = nameOfTournament;
     }
+
+
 }

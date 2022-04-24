@@ -1,27 +1,17 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
-
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.GameCoreETSApplication;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TournamentReaderRework;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.scenes.View;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.scenes.ViewSwitcher;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Match;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.NewTournament;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.MenuBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Objects;
 
 
 public class ResultsController {
@@ -29,140 +19,155 @@ public class ResultsController {
     private static NewTournament tournament;
     private static String nameOfTournament;
 
-    @FXML Label tournamentName;
-    @FXML HBox match;
-    @FXML HBox match1;
-    @FXML HBox match2;
-    @FXML HBox match3;
-    @FXML HBox match4;
-    @FXML HBox match5;
-    @FXML HBox match6;
-    @FXML HBox match7;
-    @FXML HBox match8;
-    @FXML HBox match9;
-    @FXML HBox match10;
-    @FXML HBox match11;
-    @FXML HBox match12;
-    @FXML HBox match13;
-    @FXML HBox match14;
-    @FXML Label timematch;
-    @FXML Label timematch1;
-    @FXML Label timematch2;
-    @FXML Label timematch3;
-    @FXML Label timematch4;
-    @FXML Label timematch5;
-    @FXML Label timematch6;
-    @FXML Label timematch7;
-    @FXML Label timematch8;
-    @FXML Label timematch9;
-    @FXML Label timematch10;
-    @FXML Label timematch11;
-    @FXML Label timematch12;
-    @FXML Label timematch13;
-    @FXML Label timematch14;
-    @FXML Label team1match;
-    @FXML Label team1match1;
-    @FXML Label team1match2;
-    @FXML Label team1match3;
-    @FXML Label team1match4;
-    @FXML Label team1match5;
-    @FXML Label team1match6;
-    @FXML Label team1match7;
-    @FXML Label team1match8;
-    @FXML Label team1match9;
-    @FXML Label team1match10;
-    @FXML Label team1match11;
-    @FXML Label team1match12;
-    @FXML Label team1match13;
-    @FXML Label team1match14;
-    @FXML Label team2match;
-    @FXML Label team2match1;
-    @FXML Label team2match2;
-    @FXML Label team2match3;
-    @FXML Label team2match4;
-    @FXML Label team2match5;
-    @FXML Label team2match6;
-    @FXML Label team2match7;
-    @FXML Label team2match8;
-    @FXML Label team2match9;
-    @FXML Label team2match10;
-    @FXML Label team2match11;
-    @FXML Label team2match12;
-    @FXML Label team2match13;
-    @FXML Label team2match14;
-    @FXML Label team1ScoreMatch;
-    @FXML Label team1ScoreMatch1;
-    @FXML Label team1ScoreMatch2;
-    @FXML Label team1ScoreMatch3;
-    @FXML Label team1ScoreMatch4;
-    @FXML Label team1ScoreMatch5;
-    @FXML Label team1ScoreMatch6;
-    @FXML Label team1ScoreMatch7;
-    @FXML Label team1ScoreMatch8;
-    @FXML Label team1ScoreMatch9;
-    @FXML Label team1ScoreMatch10;
-    @FXML Label team1ScoreMatch11;
-    @FXML Label team1ScoreMatch12;
-    @FXML Label team1ScoreMatch13;
-    @FXML Label team1ScoreMatch14;
-    @FXML Label team2ScoreMatch;
-    @FXML Label team2ScoreMatch1;
-    @FXML Label team2ScoreMatch2;
-    @FXML Label team2ScoreMatch3;
-    @FXML Label team2ScoreMatch4;
-    @FXML Label team2ScoreMatch5;
-    @FXML Label team2ScoreMatch6;
-    @FXML Label team2ScoreMatch7;
-    @FXML Label team2ScoreMatch8;
-    @FXML Label team2ScoreMatch9;
-    @FXML Label team2ScoreMatch10;
-    @FXML Label team2ScoreMatch11;
-    @FXML Label team2ScoreMatch12;
-    @FXML Label team2ScoreMatch13;
-    @FXML Label team2ScoreMatch14;
-    @FXML ImageView team1WinnerMatch;
-    @FXML ImageView team1WinnerMatch1;
-    @FXML ImageView team1WinnerMatch2;
-    @FXML ImageView team1WinnerMatch3;
-    @FXML ImageView team1WinnerMatch4;
-    @FXML ImageView team1WinnerMatch5;
-    @FXML ImageView team1WinnerMatch6;
-    @FXML ImageView team1WinnerMatch7;
-    @FXML ImageView team1WinnerMatch8;
-    @FXML ImageView team1WinnerMatch9;
-    @FXML ImageView team1WinnerMatch10;
-    @FXML ImageView team1WinnerMatch11;
-    @FXML ImageView team1WinnerMatch12;
-    @FXML ImageView team1WinnerMatch13;
-    @FXML ImageView team1WinnerMatch14;
-    @FXML ImageView team2WinnerMatch;
-    @FXML ImageView team2WinnerMatch1;
-    @FXML ImageView team2WinnerMatch2;
-    @FXML ImageView team2WinnerMatch3;
-    @FXML ImageView team2WinnerMatch4;
-    @FXML ImageView team2WinnerMatch5;
-    @FXML ImageView team2WinnerMatch6;
-    @FXML ImageView team2WinnerMatch7;
-    @FXML ImageView team2WinnerMatch8;
-    @FXML ImageView team2WinnerMatch9;
-    @FXML ImageView team2WinnerMatch10;
-    @FXML ImageView team2WinnerMatch11;
-    @FXML ImageView team2WinnerMatch12;
-    @FXML ImageView team2WinnerMatch13;
-    @FXML ImageView team2WinnerMatch14;
+    @FXML private Label tournamentName;
+    @FXML private HBox match;
+    @FXML private HBox match1;
+    @FXML private HBox match2;
+    @FXML private HBox match3;
+    @FXML private HBox match4;
+    @FXML private HBox match5;
+    @FXML private HBox match6;
+    @FXML private HBox match7;
+    @FXML private HBox match8;
+    @FXML private HBox match9;
+    @FXML private HBox match10;
+    @FXML private HBox match11;
+    @FXML private HBox match12;
+    @FXML private HBox match13;
+    @FXML private HBox match14;
+    @FXML private Label timeMatch;
+    @FXML private Label timeMatch1;
+    @FXML private Label timeMatch2;
+    @FXML private Label timeMatch3;
+    @FXML private Label timeMatch4;
+    @FXML private Label timeMatch5;
+    @FXML private Label timeMatch6;
+    @FXML private Label timeMatch7;
+    @FXML private Label timeMatch8;
+    @FXML private Label timeMatch9;
+    @FXML private Label timeMatch10;
+    @FXML private Label timeMatch11;
+    @FXML private Label timeMatch12;
+    @FXML private Label timeMatch13;
+    @FXML private Label timeMatch14;
+    @FXML private Label team1match;
+    @FXML private Label team1match1;
+    @FXML private Label team1match2;
+    @FXML private Label team1match3;
+    @FXML private Label team1match4;
+    @FXML private Label team1match5;
+    @FXML private Label team1match6;
+    @FXML private Label team1match7;
+    @FXML private Label team1match8;
+    @FXML private Label team1match9;
+    @FXML private Label team1match10;
+    @FXML private Label team1match11;
+    @FXML private Label team1match12;
+    @FXML private Label team1match13;
+    @FXML private Label team1match14;
+    @FXML private Label team2match;
+    @FXML private Label team2match1;
+    @FXML private Label team2match2;
+    @FXML private Label team2match3;
+    @FXML private Label team2match4;
+    @FXML private Label team2match5;
+    @FXML private Label team2match6;
+    @FXML private Label team2match7;
+    @FXML private Label team2match8;
+    @FXML private Label team2match9;
+    @FXML private Label team2match10;
+    @FXML private Label team2match11;
+    @FXML private Label team2match12;
+    @FXML private Label team2match13;
+    @FXML private Label team2match14;
+    @FXML private Label team1ScoreMatch;
+    @FXML private Label team1ScoreMatch1;
+    @FXML private Label team1ScoreMatch2;
+    @FXML private Label team1ScoreMatch3;
+    @FXML private Label team1ScoreMatch4;
+    @FXML private Label team1ScoreMatch5;
+    @FXML private Label team1ScoreMatch6;
+    @FXML private Label team1ScoreMatch7;
+    @FXML private Label team1ScoreMatch8;
+    @FXML private Label team1ScoreMatch9;
+    @FXML private Label team1ScoreMatch10;
+    @FXML private Label team1ScoreMatch11;
+    @FXML private Label team1ScoreMatch12;
+    @FXML private Label team1ScoreMatch13;
+    @FXML private Label team1ScoreMatch14;
+    @FXML private Label team2ScoreMatch;
+    @FXML private Label team2ScoreMatch1;
+    @FXML private Label team2ScoreMatch2;
+    @FXML private Label team2ScoreMatch3;
+    @FXML private Label team2ScoreMatch4;
+    @FXML private Label team2ScoreMatch5;
+    @FXML private Label team2ScoreMatch6;
+    @FXML private Label team2ScoreMatch7;
+    @FXML private Label team2ScoreMatch8;
+    @FXML private Label team2ScoreMatch9;
+    @FXML private Label team2ScoreMatch10;
+    @FXML private Label team2ScoreMatch11;
+    @FXML private Label team2ScoreMatch12;
+    @FXML private Label team2ScoreMatch13;
+    @FXML private Label team2ScoreMatch14;
+    @FXML private ImageView team1WinnerMatch;
+    @FXML private ImageView team1WinnerMatch1;
+    @FXML private ImageView team1WinnerMatch2;
+    @FXML private ImageView team1WinnerMatch3;
+    @FXML private ImageView team1WinnerMatch4;
+    @FXML private ImageView team1WinnerMatch5;
+    @FXML private ImageView team1WinnerMatch6;
+    @FXML private ImageView team1WinnerMatch7;
+    @FXML private ImageView team1WinnerMatch8;
+    @FXML private ImageView team1WinnerMatch9;
+    @FXML private ImageView team1WinnerMatch10;
+    @FXML private ImageView team1WinnerMatch11;
+    @FXML private ImageView team1WinnerMatch12;
+    @FXML private ImageView team1WinnerMatch13;
+    @FXML private ImageView team1WinnerMatch14;
+    @FXML private ImageView team2WinnerMatch;
+    @FXML private ImageView team2WinnerMatch1;
+    @FXML private ImageView team2WinnerMatch2;
+    @FXML private ImageView team2WinnerMatch3;
+    @FXML private ImageView team2WinnerMatch4;
+    @FXML private ImageView team2WinnerMatch5;
+    @FXML private ImageView team2WinnerMatch6;
+    @FXML private ImageView team2WinnerMatch7;
+    @FXML private ImageView team2WinnerMatch8;
+    @FXML private ImageView team2WinnerMatch9;
+    @FXML private ImageView team2WinnerMatch10;
+    @FXML private ImageView team2WinnerMatch11;
+    @FXML private ImageView team2WinnerMatch12;
+    @FXML private ImageView team2WinnerMatch13;
+    @FXML private ImageView team2WinnerMatch14;
+    @FXML private ImageView imageView;
+    @FXML private Label game;
+    @FXML private Label host;
+    @FXML private Label startDate;
+    @FXML private Label startTime;
+    @FXML private Label platform;
+    @FXML private Label prizePool;
+    @FXML private Label entranceFee;
+    @FXML private Label prizePoolCurrency;
+    @FXML private Label entranceFeeCurrency;
+
+
 
     private static final ArrayList<Match> matches = new ArrayList<>();
 
-    @FXML private MenuItem homeButton;
-    @FXML private MenuItem ongoingTournamentsButton;
-    @FXML private MenuItem upcomingTournamentsButton;
-    @FXML private MenuItem previousTournamentsButton;
-    @FXML private MenuItem aboutButton;
-    @FXML private MenuItem helpButton;
 
-    @FXML private MenuBar menuBar;
 
     public void initialize(){
+        try {
+            tournament = TournamentReaderRework.readTournamentFromFile(nameOfTournament);
+        } catch (IOException exception){
+            exception.printStackTrace();
+        }
+
+        GameCoreETSApplication.showGameInfo(tournamentName, nameOfTournament, imageView, tournament, game,
+                        host, startDate, startTime, platform, prizePool, entranceFee,
+                        prizePoolCurrency, entranceFeeCurrency);
+
         ArrayList<HBox> matchBox = new ArrayList<>(Arrays.asList(match, match1, match2, match3, match4, match5, match6,
                 match7, match8, match9,match10, match11, match12, match13, match14));
         ArrayList<Label> teamOnes = new ArrayList<>(Arrays.asList(team1match, team1match1, team1match2, team1match3,
@@ -171,9 +176,9 @@ public class ResultsController {
         ArrayList<Label> teamTwos = new ArrayList<>(Arrays.asList(team2match, team2match1, team2match2, team2match3,
                 team2match4, team2match5, team2match6, team2match7, team2match8, team2match9, team2match10, team2match11
                 , team2match12, team2match13, team2match14));
-        ArrayList<Label> times = new ArrayList<>(Arrays.asList(timematch, timematch1, timematch2, timematch3, timematch4
-                , timematch5, timematch6, timematch7, timematch8, timematch9, timematch10, timematch11, timematch12,
-                timematch13, timematch14));
+        ArrayList<Label> times = new ArrayList<>(Arrays.asList(timeMatch, timeMatch1, timeMatch2, timeMatch3, timeMatch4
+                , timeMatch5, timeMatch6, timeMatch7, timeMatch8, timeMatch9, timeMatch10, timeMatch11, timeMatch12,
+                timeMatch13, timeMatch14));
         ArrayList<ImageView> team1Winner = new ArrayList<>(Arrays.asList(team1WinnerMatch, team1WinnerMatch1,
                 team1WinnerMatch2, team1WinnerMatch3, team1WinnerMatch4, team1WinnerMatch5, team1WinnerMatch6,
                 team1WinnerMatch7, team1WinnerMatch8, team1WinnerMatch9, team1WinnerMatch10, team1WinnerMatch11,
@@ -209,61 +214,67 @@ public class ResultsController {
     }
 
     @FXML
-    public void setBracketScene(ActionEvent event) throws IOException {
-        if (BracketController.getBracketSize() == 4){
+    public void setBracketScene()
+    throws IOException {
+        if (tournament.getNumberOfTeams() == 4){
             ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_4);
-        } else if (BracketController.getBracketSize() == 8){
+        } else if (tournament.getNumberOfTeams() == 8){
             ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_8);
-        } else if (BracketController.getBracketSize() == 16){
+        } else if (tournament.getNumberOfTeams() == 16){
             ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_16);
         }
     }
 
     @FXML
-    public void setTimeScene(ActionEvent event) throws IOException {
+    public void setTimeScene()
+    throws IOException {
         ViewSwitcher.switchTo(View.SET_TIME);
     }
 
-
     @FXML
-    public void setMatchesScene(ActionEvent event) throws IOException {
+    public void setMatchesScene()
+    throws IOException {
         ViewSwitcher.switchTo(View.TOURNAMENT_MATCHES);
     }
 
-    public static void addMatch(Match match){
-        matches.add(match);
-    }
-
     @FXML
-    void onHomeButtonPressed(ActionEvent event) throws IOException {
+    void onHomeButtonPressed()
+    throws IOException {
         ViewSwitcher.switchTo(View.MAIN);
     }
 
     @FXML
-    void onAboutButtonPressed(ActionEvent event) throws IOException {
+    void onAboutButtonPressed()
+    throws IOException {
         ViewSwitcher.switchTo(View.ABOUT);
     }
 
     @FXML
-    void onHelpButtonPressed(ActionEvent event) throws IOException {
+    void onHelpButtonPressed()
+    throws IOException {
         ViewSwitcher.switchTo(View.HELP);
     }
 
     @FXML
-    void onOngoingTournamentsButtonPressed(ActionEvent event) throws IOException {
-        ViewSwitcher.switchTo(View.ONGOING_TOURNAMENTS);
+    void onOngoingTournamentsButtonPressed()
+    throws IOException {
+        ViewSwitcher.switchTo(View.ONGOING_OVERVIEW);
     }
 
     @FXML
-    void onUpcomingTournamentsButtonPressed(ActionEvent event)
-            throws IOException{
+    void onUpcomingTournamentsButtonPressed()
+    throws IOException{
         ViewSwitcher.switchTo(View.UPCOMING_OVERVIEW);
     }
 
     @FXML
-    void onPreviousTournamentsButtonPressed(ActionEvent event)
-            throws IOException {
-        ViewSwitcher.switchTo(View.PREVIOUS_TOURNAMENTS);
+    void onPreviousTournamentsButtonPressed()
+    throws IOException {
+        ViewSwitcher.switchTo(View.PREVIOUS_OVERVIEW);
+    }
+
+    public static void setNameOfTournament(String nameOfTournament) {
+        ResultsController.nameOfTournament = nameOfTournament;
     }
 
 }

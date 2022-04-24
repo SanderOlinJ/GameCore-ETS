@@ -21,7 +21,7 @@ class NewTournamentTest {
             NewTournament newTournament = new NewTournament("Upcoming", "MadTournament",
                     "Admin",  LocalDate.parse("2022-04-25"),  LocalTime.parse("16:15:12"),
                     "A bloody insane tournament", "Fortnite", "PS5", "Brackets",
-                    "4", "10000", "NOK", "0",
+                    4, 10000, "NOK", 0,
                     "NOK", teams);
         }catch(IllegalArgumentException e){
             assertEquals("Teams cannot be empty!", e.getMessage());
@@ -50,7 +50,7 @@ class NewTournamentTest {
         NewTournament newTournament = new NewTournament("Upcoming", "MadTournament",
                     "Admin",  LocalDate.parse("2022-04-25"),  LocalTime.parse("16:15:12"),
                     "A bloody insane tournament", "Fortnite", "PS5", "Brackets",
-                     "4", "10000", "NOK", "0",
+                     4, 10000, "NOK", 0,
                     "NOK", teams);
         for(Match match : matches){
             match.setFinished(false);
@@ -82,7 +82,7 @@ class NewTournamentTest {
         NewTournament newTournament = new NewTournament("Upcoming", "MadTournament",
                 "Admin",  LocalDate.parse("2022-04-25"),  LocalTime.parse("16:15:12"),
                 "A bloody insane tournament", "Fortnite", "PS5", "Brackets",
-                 "4", "10000", "NOK", "0",
+                 4, 10000, "NOK", 0,
                 "NOK", teams);
         for(Match match : matches){
             match.setFinished(false);

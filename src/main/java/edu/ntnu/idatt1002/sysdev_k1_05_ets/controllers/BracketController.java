@@ -1,11 +1,16 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.GameCoreETSApplication;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TournamentReaderRework;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.scenes.View;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.scenes.ViewSwitcher;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.NewTournament;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.utilities.Utilities;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,7 +19,7 @@ public class BracketController {
 
     private static String nameOfTournament;
     private NewTournament newTournament;
-    private static int bracketSize;
+    private int bracketSize;
 
 
     @FXML
@@ -50,7 +55,17 @@ public class BracketController {
     @FXML private Label team29;
     @FXML private Label team30;
     @FXML private Label team31;
-    @FXML Label tournamentName;
+    @FXML private Label tournamentName;
+    @FXML private ImageView imageView;
+    @FXML private Label game;
+    @FXML private Label host;
+    @FXML private Label startDate;
+    @FXML private Label startTime;
+    @FXML private Label platform;
+    @FXML private Label prizePool;
+    @FXML private Label prizePoolCurrency;
+    @FXML private Label entranceFee;
+    @FXML private Label entranceFeeCurrency;
 
     @FXML
     public void initialize(){
@@ -60,6 +75,10 @@ public class BracketController {
         } catch (IOException exception){
             exception.printStackTrace();
         }
+        GameCoreETSApplication.showGameInfo(tournamentName, nameOfTournament, imageView, newTournament,
+                game, host, startDate, startTime, platform, prizePool,
+                entranceFee, prizePoolCurrency, entranceFeeCurrency);
+        bracketSize = newTournament.getNumberOfTeams();
 
         ArrayList<Team> teams = newTournament.getTeams();
         if (bracketSize >= 4) {
@@ -111,25 +130,27 @@ public class BracketController {
         for (int i = bracketSize-1; i < 2*bracketSize - 1; i++) {
             labels.get(i).setText(teams.get(i-(bracketSize-1)).getNameAbbr());
         }
-
-        tournamentName.setText(nameOfTournament);
     }
 
 
 
     @FXML
-    public void setMatchesScene() throws IOException {
+    public void setMatchesScene()
+    throws IOException {
         MatchesController.setNameOfTournament(nameOfTournament);
         ViewSwitcher.switchTo(View.TOURNAMENT_MATCHES);
     }
 
     @FXML
-    public void setResultsScene() throws IOException {
+    public void setResultsScene()
+    throws IOException {
+        ResultsController.setNameOfTournament(nameOfTournament);
         ViewSwitcher.switchTo(View.TOURNAMENT_RESULTS);
     }
 
     @FXML
-    public void setTimeScene() throws IOException {
+    public void setTimeScene()
+    throws IOException {
         SetTimeController.setNameOfTournament(nameOfTournament);
         ViewSwitcher.switchTo(View.SET_TIME);
     }
@@ -141,45 +162,41 @@ public class BracketController {
 
     public static String getNameOfTournament(){return nameOfTournament;}
 
-    public static int getBracketSize() {
-        return bracketSize;
-    }
-
-    public static void setBracketSize(int n){
-        bracketSize = n;
-    }
-
-
     @FXML
-    void onHomeButtonPressed() throws IOException {
+    void onHomeButtonPressed()
+    throws IOException {
         ViewSwitcher.switchTo(View.MAIN);
     }
 
     @FXML
-    void onAboutButtonPressed() throws IOException {
+    void onAboutButtonPressed()
+    throws IOException {
         ViewSwitcher.switchTo(View.ABOUT);
     }
 
     @FXML
-    void onHelpButtonPressed() throws IOException {
+    void onHelpButtonPressed()
+    throws IOException {
         ViewSwitcher.switchTo(View.HELP);
     }
 
     @FXML
-    void onOngoingTournamentsButtonPressed() throws IOException {
-        ViewSwitcher.switchTo(View.ONGOING_TOURNAMENTS);
+    void onOngoingTournamentsButtonPressed()
+    throws IOException {
+        ViewSwitcher.switchTo(View.ONGOING_OVERVIEW);
     }
 
 
     @FXML
     void onUpcomingTournamentsButtonPressed()
-            throws IOException{
+    throws IOException{
         ViewSwitcher.switchTo(View.UPCOMING_OVERVIEW);
     }
 
     @FXML
     void onPreviousTournamentsButtonPressed()
-            throws IOException {
-        ViewSwitcher.switchTo(View.PREVIOUS_TOURNAMENTS);
+    throws IOException {
+        ViewSwitcher.switchTo(View.PREVIOUS_OVERVIEW);
     }
+
 }

@@ -50,7 +50,7 @@ public class AddTeamController {
         } catch (IOException exception){
             exception.printStackTrace();
         }
-        maxTeams = Integer.parseInt(tournament.getNumberOfTeams());
+        maxTeams = tournament.getNumberOfTeams();
         //setting search box for teams selection
         ArrayList<Team> searchTeamNames = TeamReader.readTeamsFromAllTeamsFile();
         TextFields.bindAutoCompletion(searchTeams,
@@ -94,16 +94,15 @@ public class AddTeamController {
             throw new IOException("Not enough teams set, missing: " + nrOfRemainingTeams + " team(s)");
         }
         Collections.shuffle(teamsForTournament);
-        BracketController.setBracketSize(Integer.parseInt(tournament.getNumberOfTeams()));
         BracketController.setNameOfTournament(tournament.getTournamentName());
         TournamentWriterRework.writeTeamsToTournamentFile(tournament.getTournamentName(),teamsForTournament);
         TournamentWriterRework.writeMatchesToTournament(tournament.getTournamentName(), null);
 
-        if (BracketController.getBracketSize() == 4){
+        if (tournament.getNumberOfTeams() == 4){
             ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_4);
-        } else if (BracketController.getBracketSize() == 8){
+        } else if (tournament.getNumberOfTeams() == 8){
             ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_8);
-        } else if (BracketController.getBracketSize() == 16){
+        } else if (tournament.getNumberOfTeams() == 16){
             ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_16);
         }
     }
@@ -292,7 +291,6 @@ public class AddTeamController {
             Label finalTeamLabel = teamLabel;
             enrolledTeamsBox.getChildren().get(i).setOnMouseClicked
                     (mouseEvent -> deleteTeamFromTeams(finalTeamLabel));
-            //enrolledTeamsBox.getChildren().add(separator);
         }
         //styling of vbox for current teams
         enrolledTeamsBox.setAlignment(Pos.TOP_CENTER);
@@ -326,46 +324,47 @@ public class AddTeamController {
         return false;
     }
 
-    public static void setTournament(NewTournament newTournament) {
-        tournament = newTournament;
-    }
 
     @FXML
-    void onHomeButtonPressed() throws IOException {
+    void onHomeButtonPressed()
+    throws IOException {
         TournamentWriterRework.writeTeamsToTournamentFile(tournament.getTournamentName(),teamsForTournament);
         ViewSwitcher.switchTo(View.MAIN);
     }
 
     @FXML
-    void onAboutButtonPressed() throws IOException {
+    void onAboutButtonPressed()
+    throws IOException {
         TournamentWriterRework.writeTeamsToTournamentFile(tournament.getTournamentName(),teamsForTournament);
         ViewSwitcher.switchTo(View.ABOUT);
     }
 
     @FXML
-    void onHelpButtonPressed() throws IOException {
+    void onHelpButtonPressed()
+    throws IOException {
         TournamentWriterRework.writeTeamsToTournamentFile(tournament.getTournamentName(),teamsForTournament);
         ViewSwitcher.switchTo(View.HELP);
     }
 
     @FXML
-    void onOngoingTournamentsButtonPressed() throws IOException {
+    void onOngoingTournamentsButtonPressed()
+    throws IOException {
         TournamentWriterRework.writeTeamsToTournamentFile(tournament.getTournamentName(),teamsForTournament);
-        ViewSwitcher.switchTo(View.ONGOING_TOURNAMENTS);
+        ViewSwitcher.switchTo(View.ONGOING_OVERVIEW);
     }
 
     @FXML
     void onUpcomingTournamentsButtonPressed()
-            throws IOException{
+    throws IOException{
         TournamentWriterRework.writeTeamsToTournamentFile(tournament.getTournamentName(),teamsForTournament);
         ViewSwitcher.switchTo(View.UPCOMING_OVERVIEW);
     }
 
     @FXML
     void onPreviousTournamentsButtonPressed()
-            throws IOException {
+    throws IOException {
         TournamentWriterRework.writeTeamsToTournamentFile(tournament.getTournamentName(),teamsForTournament);
-        ViewSwitcher.switchTo(View.PREVIOUS_TOURNAMENTS);
+        ViewSwitcher.switchTo(View.PREVIOUS_OVERVIEW);
     }
 
 

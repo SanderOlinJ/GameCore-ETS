@@ -63,16 +63,16 @@ public class TournamentReaderRework {
         String game = tournamentInfo.get(6);
         String platform = tournamentInfo.get(7);
         String tournamentType = tournamentInfo.get(8);
-        String numberOfTeams = tournamentInfo.get(9);
+        int numberOfTeams = Integer.parseInt(tournamentInfo.get(9));
 
         String prizePoolLine = tournamentInfo.get(10);
         String[] prizePoolValues = prizePoolLine.split(COMMA_DELIMITER);
-        String prizePool = prizePoolValues[0];
+        int prizePool = Integer.parseInt(prizePoolValues[0]);
         String prizePoolCurrency = prizePoolValues[1];
 
         String entranceFeeLine = tournamentInfo.get(11);
         String[] entranceFeeValues = entranceFeeLine.split(COMMA_DELIMITER);
-        String entranceFee = entranceFeeValues[0];
+        int entranceFee = Integer.parseInt(entranceFeeValues[0]);
         String entranceFeeCurrency = entranceFeeValues[1];
 
         NewTournament tournament = new NewTournament(status, nameOfTournament,tournamentHost,

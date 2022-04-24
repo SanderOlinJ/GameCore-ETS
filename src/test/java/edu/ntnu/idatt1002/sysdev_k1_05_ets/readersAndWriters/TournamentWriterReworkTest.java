@@ -30,10 +30,10 @@ class TournamentWriterReworkTest {
         String game = "Valorant";
         String platform = "PC / Mac / Linux";
         String tournamentType = "Brackets";
-        String numberOfTeams = "4";
-        String prizePool = "0";
+        int numberOfTeams = 4;
+        int prizePool = 0;
         String prizePoolCurrency = "null";
-        String entranceFee = "0";
+        int entranceFee = 0;
         String entranceFeeCurrency = "null";
 
         try {

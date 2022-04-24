@@ -184,4 +184,14 @@ public class Match {
                 ", finished=" + finished +
                 '}';
     }
+
+    public Team getLoser(){
+        if (finished){
+            if (matchScoreTeam1 < matchScoreTeam2){
+                return team1;
+            }
+            return team2;
+        }
+        return null;
+    }
 }

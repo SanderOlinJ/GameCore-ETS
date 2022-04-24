@@ -68,17 +68,17 @@ public class TournamentWriterRework {
     public static void writeNewTournamentToFileWithBasicInfo(
             String status, String tournamentName, String tournamentHost, LocalDate date, LocalTime time,
             String description, String game, String platform, String tournamentType,
-            String numberOfTeams, String prizePool, String prizePoolCurrency, String entranceFee,
+            int numberOfTeams, int prizePool, String prizePoolCurrency, int entranceFee,
             String entranceFeeCurrency)
             throws IOException {
+
         String tournamentNameShortened = Utilities.shortenAndReplaceUnnecessarySymbolsInString(tournamentName);
 
         description = description.replaceAll("\n", " ");
+        description = description.replaceAll(","," ");
         if (description.equals("")) {
             description += "No description";
         }
-
-        int bracketSize = Integer.parseInt(numberOfTeams);
 
         StringBuilder tournamentStringFormat = new StringBuilder(status + DELIMITER + tournamentName + DELIMITER + tournamentHost + DELIMITER +
                 date + DELIMITER + time + DELIMITER + description + DELIMITER + game + DELIMITER + platform +
@@ -186,6 +186,7 @@ public class TournamentWriterRework {
         }
     }
 
+    // FIXME: 24.04.2022: This method may be removed, I'm the author it and I'm not even sure why I have this
     /**
      Method takes in a shortened tournament name as parameter.
      It then uses the ifFileExistsAndFindLocation()-method

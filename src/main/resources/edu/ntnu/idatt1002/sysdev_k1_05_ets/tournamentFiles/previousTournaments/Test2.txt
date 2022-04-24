@@ -1,0 +1,20 @@
+Finished
+Test 2
+Admin
+2022-05-01
+00:00
+No description
+Counter-Strike: Global Offensive
+Nintendo 64
+Brackets
+8
+0,null
+0,null
+Ninjas in Pyjamas,Fnatic,Natus Vincere,Phase,Lords,FaZe,Team Liquid,G2 Esports,
+7,true,Ninjas in Pyjamas,Fnatic,00:00,2,0,Ninjas in Pyjamas,
+6,true,Natus Vincere,Phase,01:00,1,2,Phase,
+5,true,Lords,FaZe,02:00,1,2,FaZe,
+4,true,Team Liquid,G2 Esports,03:00,2,1,Team Liquid,
+3,true,Ninjas in Pyjamas,Phase,02:00,1,2,Phase,
+2,true,FaZe,Team Liquid,03:00,2,1,FaZe,
+1,true,Phase,FaZe,11:00,1,2,FaZe,

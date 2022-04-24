@@ -1,5 +1,4 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
-
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.GameCoreETSApplication;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.scenes.View;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.scenes.ViewSwitcher;
@@ -11,14 +10,10 @@ import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.NewTournament;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
-import javafx.stage.Stage;
 import javafx.util.Callback;
 
 import java.io.IOException;
@@ -106,23 +101,23 @@ public class SetTimeController {
     @FXML Label team2match12;
     @FXML Label team2match13;
     @FXML Label team2match14;
-    @FXML Label tournamentName;
-
-    @FXML private MenuItem homeButton;
-    @FXML private MenuItem ongoingTournamentsButton;
-    @FXML private MenuItem upcomingTournamentsButton;
-    @FXML private MenuItem previousTournamentsButton;
-    @FXML private MenuItem aboutButton;
-    @FXML private MenuItem helpButton;
-
-    @FXML private MenuBar menuBar;
+    @FXML private Label tournamentName;
+    @FXML private ImageView imageView;
+    @FXML private Label game;
+    @FXML private Label host;
+    @FXML private Label startDate;
+    @FXML private Label startTime;
+    @FXML private Label platform;
+    @FXML private Label prizePool;
+    @FXML private Label prizePoolCurrency;
+    @FXML private Label entranceFee;
+    @FXML private Label entranceFeeCurrency;
 
     private ArrayList<ComboBox> hourBoxes;
     private ArrayList<ComboBox> minuteBoxes;
     ArrayList<Label> teamOnes;
     ArrayList<Label> teamTwos;
     private ArrayList<HBox> matches;
-    private static ArrayList<Team> teams = new ArrayList<>();
 
 
     @FXML
@@ -132,6 +127,9 @@ public class SetTimeController {
         } catch (IOException exception){
             exception.printStackTrace();
         }
+        GameCoreETSApplication.showGameInfo(tournamentName, nameOfTournament, imageView, tournament, game,
+                host, startDate, startTime, platform, prizePool, entranceFee,
+                prizePoolCurrency, entranceFeeCurrency);
 
         hourBoxes = new ArrayList<>(Arrays.asList(hoursMatch, hoursMatch1, hoursMatch2, hoursMatch3, hoursMatch4,
                 hoursMatch5, hoursMatch6, hoursMatch7, hoursMatch8, hoursMatch9, hoursMatch10, hoursMatch11,
@@ -146,30 +144,34 @@ public class SetTimeController {
         for (ComboBox box : minuteBoxes){
             setMinutesToBox(box);
         }
-        setVisibleMatches();
         tournamentName.setText(nameOfTournament);
+        setVisibleMatches();
     }
 
     @FXML
-    public void setResultsScene(ActionEvent event) throws IOException {
+    public void setResultsScene()
+    throws IOException {
+        ResultsController.setNameOfTournament(nameOfTournament);
         ViewSwitcher.switchTo(View.TOURNAMENT_RESULTS);
     }
 
 
     @FXML
-    public void setBracketScene(ActionEvent event) throws IOException {
+    public void setBracketScene()
+    throws IOException {
         BracketController.setNameOfTournament(nameOfTournament);
-        if (BracketController.getBracketSize() == 4){
+        if (tournament.getNumberOfTeams() == 4){
             ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_4);
-        } else if (BracketController.getBracketSize() == 8){
+        } else if (tournament.getNumberOfTeams() == 8){
             ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_8);
-        } else if (BracketController.getBracketSize() == 16){
+        } else if (tournament.getNumberOfTeams() == 16){
             ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_16);
         }
     }
 
     @FXML
-    public void setMatchesScene(ActionEvent event) throws IOException {
+    public void setMatchesScene()
+    throws IOException {
         MatchesController.setNameOfTournament(nameOfTournament);
         ViewSwitcher.switchTo(View.TOURNAMENT_MATCHES);
     }
@@ -200,14 +202,6 @@ public class SetTimeController {
                    } catch (IOException exception){
                        exception.printStackTrace();
                    }
-
-               /*
-               matches.remove(matches.get(i));
-               hourBoxes.remove(hourBoxes.get(i));
-               minuteBoxes.remove(minuteBoxes.get(i));
-               teamOnes.remove(teamOnes.get(i));
-               teamTwos.remove(teamOnes.get(i));
-                */
             }
         }
     }
@@ -223,10 +217,7 @@ public class SetTimeController {
                         super.updateItem(item, empty);
                         if (item != null) {
                             setText(item);
-                            //This won't work for the first time but will be the one
-                            //used in the next calls
                             getStyleClass().add("my-list-cell");
-                            //size in px
                             setFont(Font.font(16));
                         }
                     }
@@ -246,10 +237,7 @@ public class SetTimeController {
                         super.updateItem(item, empty);
                         if (item != null) {
                             setText(item);
-                            //This won't work for the first time but will be the one
-                            //used in the next calls
                             getStyleClass().add("my-list-cell");
-                            //size in px
                             setFont(Font.font(16));
                         }
                     }
@@ -270,7 +258,6 @@ public class SetTimeController {
         teamTwos = new ArrayList<>(Arrays.asList(team2match,team2match1,team2match2,team2match3,
                 team2match4,team2match5,team2match6,team2match7,team2match8,team2match9,team2match10,team2match11,
                 team2match12,team2match13,team2match14));
-        teams = tournament.getTeams();
 
         for (int i = 0; i < nrOfMatchesNoTimeSet; i++) {
             if (tournament.getMatchesWithNoTimeSet().get(i).getTeam1() != null &&
@@ -308,34 +295,38 @@ public class SetTimeController {
     }
 
     @FXML
-    void onHomeButtonPressed(ActionEvent event) throws IOException {
+    void onHomeButtonPressed()
+    throws IOException {
         ViewSwitcher.switchTo(View.MAIN);
     }
 
     @FXML
-    void onAboutButtonPressed(ActionEvent event) throws IOException {
+    void onAboutButtonPressed()
+    throws IOException {
         ViewSwitcher.switchTo(View.ABOUT);
     }
 
     @FXML
-    void onHelpButtonPressed(ActionEvent event) throws IOException {
+    void onHelpButtonPressed()
+    throws IOException {
         ViewSwitcher.switchTo(View.HELP);
     }
 
     @FXML
-    void onOngoingTournamentsButtonPressed(ActionEvent event) throws IOException {
-        ViewSwitcher.switchTo(View.ONGOING_TOURNAMENTS);
+    void onOngoingTournamentsButtonPressed()
+    throws IOException {
+        ViewSwitcher.switchTo(View.ONGOING_OVERVIEW);
     }
 
     @FXML
-    void onUpcomingTournamentsButtonPressed(ActionEvent event)
-            throws IOException{
+    void onUpcomingTournamentsButtonPressed()
+    throws IOException{
         ViewSwitcher.switchTo(View.UPCOMING_OVERVIEW);
     }
 
     @FXML
-    void onPreviousTournamentsButtonPressed(ActionEvent event)
-            throws IOException {
-        ViewSwitcher.switchTo(View.PREVIOUS_TOURNAMENTS);
+    void onPreviousTournamentsButtonPressed()
+    throws IOException {
+        ViewSwitcher.switchTo(View.PREVIOUS_OVERVIEW);
     }
 }
