@@ -1,0 +1,20 @@
+Finished
+Test 4
+Admin
+2022-04-25
+00:25
+No description
+League of Legends
+Nintendo 64
+Brackets
+8
+20000,NOK
+400,NOK
+Phase,Natus Vincere,LGB Esports,G2 Esports,Lords,Ninjas in Pyjamas,ENCE,FaZe,
+7,true,Phase,Natus Vincere,04:00,2,1,Phase,
+6,true,LGB Esports,G2 Esports,02:00,1,2,G2 Esports,
+5,true,Lords,Ninjas in Pyjamas,03:00,2,1,Lords,
+4,true,ENCE,FaZe,04:00,1,2,FaZe,
+3,true,Phase,G2 Esports,08:00,0,2,G2 Esports,
+2,true,Lords,FaZe,03:00,1,2,FaZe,
+1,true,G2 Esports,FaZe,01:30,1,2,FaZe,
