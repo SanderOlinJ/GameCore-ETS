@@ -152,18 +152,13 @@ public class ResultsController {
     @FXML private Label entranceFeeCurrency;
 
 
-
-    private static final ArrayList<Match> matches = new ArrayList<>();
-
-
-
     public void initialize(){
         try {
             tournament = TournamentReaderRework.readTournamentFromFile(nameOfTournament);
         } catch (IOException exception){
             exception.printStackTrace();
         }
-
+        ArrayList<Match> matches = tournament.getFinishedMatches();
         GameCoreETSApplication.showGameInfo(tournamentName, nameOfTournament, imageView, tournament, game,
                         host, startDate, startTime, platform, prizePool, entranceFee,
                         prizePoolCurrency, entranceFeeCurrency);

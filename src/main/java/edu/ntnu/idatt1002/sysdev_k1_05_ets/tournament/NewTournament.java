@@ -630,6 +630,16 @@ public class NewTournament {
         return unfinishedMatches;
     }
 
+    public ArrayList<Match> getFinishedMatches(){
+        ArrayList<Match> finishedMatches = new ArrayList<>();
+        for (Match match : matches){
+            if (match.isFinished()){
+                finishedMatches.add(match);
+            }
+        }
+        return finishedMatches;
+    }
+
     public Team getFirstPlace(){
         return this.matches.get(this.numberOfTeams-2).getVictor();
     }
