@@ -13,7 +13,6 @@ import javafx.scene.text.Text;
 import javafx.util.Callback;
 import org.controlsfx.control.textfield.TextFields;
 import javafx.scene.control.TextField;
-
 import java.io.File;
 import java.time.DateTimeException;
 import java.time.LocalDate;

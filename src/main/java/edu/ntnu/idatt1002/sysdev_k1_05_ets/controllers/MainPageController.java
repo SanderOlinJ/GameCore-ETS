@@ -65,7 +65,7 @@ public class MainPageController {
         try {
             ongoingTournaments = TournamentReaderRework.readAllOngoingTournamentsToList(2);
             setMainPageWithTournaments(ongoingTournaments, ongoingImageView1, ongoingText1, ongoingBox1,
-                    ongoingImageView2, ongoingText2, ongoingBox2);
+                    ongoingImageView2, ongoingText2, ongoingBox2, warningText1, warningText2);
         } catch (IOException exception){
             throw new IOException(exception.getMessage());
         }
@@ -77,7 +77,7 @@ public class MainPageController {
         try {
             upcomingTournaments = TournamentReaderRework.readAllUpcomingTournamentsToList(2);
             setMainPageWithTournaments(upcomingTournaments, upcomingImageView1, upcomingText1, upcomingBox1,
-                    upcomingImageView2, upcomingText2, upcomingBox2);
+                    upcomingImageView2, upcomingText2, upcomingBox2, warningText3, warningText4);
         } catch (IOException exception){
             throw new IOException("Could not show upcoming tournaments: " + exception.getMessage());
         }
@@ -89,7 +89,7 @@ public class MainPageController {
         try {
             previousTournaments = TournamentReaderRework.readAllPreviousTournamentsToList(2);
             setMainPageWithTournaments(previousTournaments, previousImageView1, previousText1, previousBox1,
-                    previousImageView2, previousText2, previousBox2);
+                    previousImageView2, previousText2, previousBox2, warningText5, warningText6);
         } catch (IOException exception){
             throw new IOException("Could not show upcoming tournaments: " + exception.getMessage());
         }
@@ -97,7 +97,7 @@ public class MainPageController {
 
     private void setMainPageWithTournaments(ArrayList<NewTournament> tournaments, ImageView imageView1,
                                             TextArea text1, VBox vBox1, ImageView imageView2,
-                                            TextArea text2, VBox vBox2) {
+                                            TextArea text2, VBox vBox2, Text warningText1, Text warningText2) {
         if (tournaments.size() > 0){
             imageView1.setImage(new Image("file:src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
                     "Images/gameImages/"+ Utilities.shortenAndReplaceUnnecessarySymbolsInString
@@ -105,9 +105,9 @@ public class MainPageController {
             text1.setText(tournaments.get(0).getTournamentName());
             vBox1.setVisible(true);
             vBox1.setDisable(false);
-            if (tournaments.get(0).getTeams().size() > tournaments.get(0).getNumberOfTeams()){
+            if (tournaments.get(0).getTeams().size() < tournaments.get(0).getNumberOfTeams()){
                 warningText1.setVisible(true);
-                vBox1.setOpacity(0.2);
+                imageView1.setOpacity(0.2);
             }
 
             if (tournaments.size() > 1){
@@ -119,6 +119,10 @@ public class MainPageController {
                 text2.setText(tournaments.get(1).getTournamentName());
                 vBox2.setVisible(true);
                 vBox2.setDisable(false);
+                if (tournaments.get(1).getTeams().size() < tournaments.get(1).getNumberOfTeams()){
+                    warningText2.setVisible(true);
+                    imageView2.setOpacity(0.2);
+                }
             }
         }
     }
@@ -187,32 +191,38 @@ public class MainPageController {
     @FXML
     void onOngoingBox1Clicked()
     throws IOException{
-        int numberOfTeams = ongoingTournaments.get(0).getTeams().size();
-        switch (numberOfTeams){
-            default -> {AddTeamController.setNameOfTournament(ongoingTournaments.get(0).getTournamentName());
-                ViewSwitcher.switchTo(View.ADD_TEAM);}
-            case 4 -> {BracketController.setNameOfTournament(ongoingTournaments.get(0).getTournamentName());
-                ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_4);}
-            case 8 -> {BracketController.setNameOfTournament(ongoingTournaments.get(0).getTournamentName());
-                ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_8);}
-            case 16 -> {BracketController.setNameOfTournament(ongoingTournaments.get(0).getTournamentName());
-                ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_16);}
-        }
+        Utilities.onTournamentOverviewButtonClicked(ongoingTournaments.get(0));
     }
 
     @FXML
-    void onOngoingBox2Clicked(){}
+    void onOngoingBox2Clicked()
+    throws IOException{
+        Utilities.onTournamentOverviewButtonClicked(ongoingTournaments.get(1));
+    }
 
     @FXML
-    void onUpcomingBox1Clicked(){}
+    void onUpcomingBox1Clicked()
+    throws IOException{
+        Utilities.onTournamentOverviewButtonClicked(upcomingTournaments.get(0));
+    }
 
     @FXML
-    void onUpcomingBox2Clicked(){}
+    void onUpcomingBox2Clicked()
+    throws IOException{
+        Utilities.onTournamentOverviewButtonClicked(upcomingTournaments.get(1));
+    }
 
     @FXML
-    void onPreviousBox1Clicked(){}
+    void onPreviousBox1Clicked()
+    throws IOException{
+        Utilities.onTournamentOverviewButtonClicked(previousTournaments.get(0));
+    }
 
     @FXML
-    void onPreviousBox2Clicked(){}
+    void onPreviousBox2Clicked()
+    throws IOException{
+        Utilities.onTournamentOverviewButtonClicked(previousTournaments.get(1));
+    }
+
 
 }

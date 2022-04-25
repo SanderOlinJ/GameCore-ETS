@@ -191,7 +191,7 @@ public class MatchesController {
         } catch (IOException exception){
             exception.printStackTrace();
         }
-        GameCoreETSApplication.showGameInfo(tournamentName, nameOfTournament, imageView, tournament, game,
+        Utilities.showGameInfo(tournamentName, nameOfTournament, imageView, tournament, game,
                         host, startDate, startTime, platform, prizePool, entranceFee,
                         prizePoolCurrency, entranceFeeCurrency);
 

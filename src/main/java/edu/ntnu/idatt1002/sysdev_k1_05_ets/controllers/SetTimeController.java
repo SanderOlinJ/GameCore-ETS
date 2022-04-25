@@ -8,6 +8,7 @@ import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TournamentWriterRew
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Match;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.NewTournament;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.utilities.Utilities;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -127,7 +128,7 @@ public class SetTimeController {
         } catch (IOException exception){
             exception.printStackTrace();
         }
-        GameCoreETSApplication.showGameInfo(tournamentName, nameOfTournament, imageView, tournament, game,
+        Utilities.showGameInfo(tournamentName, nameOfTournament, imageView, tournament, game,
                 host, startDate, startTime, platform, prizePool, entranceFee,
                 prizePoolCurrency, entranceFeeCurrency);
 

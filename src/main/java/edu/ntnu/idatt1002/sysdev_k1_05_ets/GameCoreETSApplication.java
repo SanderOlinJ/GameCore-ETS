@@ -34,26 +34,4 @@ public class GameCoreETSApplication extends Application {
         launch();
     }
 
-    public static void showGameInfo(Label tournamentName, String nameOfTournament, ImageView imageView, NewTournament tournament, Label game, Label host, Label startDate, Label startTime, Label platform, Label prizePool, Label entranceFee, Label prizePoolCurrency, Label entranceFeeCurrency) {
-        tournamentName.setText(nameOfTournament);
-        imageView.setImage(new Image("file:src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
-                "Images/gameImages/" + Utilities.shortenAndReplaceUnnecessarySymbolsInString
-                (tournament.getGame()) + ".png"));
-        game.setText(tournament.getGame());
-        host.setText(tournament.getTournamentHost());
-        startDate.setText(tournament.getDate().toString());
-        startTime.setText(tournament.getTime().toString());
-        platform.setText(tournament.getPlatform());
-
-        prizePool.setText(String.valueOf(tournament.getPrizePool()));
-        if (tournament.getEntranceFee() == -1) {
-            entranceFee.setText("0");
-        } else {
-            entranceFee.setText(String.valueOf(tournament.getEntranceFee()));
-        }
-        if (tournament.getPrizePool() != 0) {
-            prizePoolCurrency.setText(tournament.getPrizePoolCurrency());
-            entranceFeeCurrency.setText(tournament.getPrizePoolCurrency());
-        }
-    }
 }

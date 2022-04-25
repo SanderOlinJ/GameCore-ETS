@@ -612,9 +612,9 @@
                                                       <Insets left="882.0" top="415.0" />
                                                    </StackPane.margin>
                                                 </Label>
-                                                <Label fx:id="team1" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="61.0" textFill="WHITE">
+                                                <Label fx:id="team1" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="246.0" textFill="WHITE">
                                                    <font>
-                                                      <Font name="Arial Bold" size="13.0" />
+                                                      <Font name="Arial Bold" size="30.0" />
                                                    </font>
                                                    <StackPane.margin>
                                                       <Insets bottom="150.0" />
