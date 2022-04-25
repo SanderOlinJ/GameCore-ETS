@@ -408,7 +408,8 @@ public class TournamentWriterRework {
         }
     }
 
-    private static void removeTournamentFromOverview(String tournamentName, ArrayList<String> tournaments, File file) throws IOException{
+    private static void removeTournamentFromOverview(String tournamentName, ArrayList<String> tournaments, File file)
+    throws IOException{
         String tournamentNameShortened = Utilities.shortenAndReplaceUnnecessarySymbolsInString(tournamentName);
         tournaments.removeIf(s -> s.equals(tournamentNameShortened));
         StringBuilder stringBuilder = new StringBuilder();
@@ -432,6 +433,18 @@ public class TournamentWriterRework {
 
         } catch (IOException exception){
             throw new IOException("Could not remove tournament from upcoming overview: "+ exception.getMessage());
+        }
+    }
+
+    public static void removeTournamentFromPreviousOverview(String tournamentName) throws IOException{
+        try {
+            String tournamentNameShortened = Utilities.shortenAndReplaceUnnecessarySymbolsInString(tournamentName);
+            ArrayList<String> previousTournaments = TournamentReaderRework.readThroughPreviousTournaments();
+            File file = new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
+                    "tournamentFiles/previousTournaments/previousTournaments.txt");
+            removeTournamentFromOverview(tournamentNameShortened, previousTournaments, file);
+        } catch (IOException exception){
+            throw new IOException("Could not remove tournament from previous overview: "+ exception.getMessage());
         }
     }
 

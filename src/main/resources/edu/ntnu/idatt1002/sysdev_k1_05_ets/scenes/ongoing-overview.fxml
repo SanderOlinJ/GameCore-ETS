@@ -96,6 +96,172 @@
                                                         </Text>
                                                     </children>
                                                 </HBox>
+                                    <HBox fx:id="box" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="1021.0" style="-fx-background-color: #282c34;" visible="false">
+                                       <children>
+                                          <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="417.0">
+                                             <children>
+                                                <ImageView fx:id="imageView" fitHeight="230.0" fitWidth="417.0" pickOnBounds="true" preserveRatio="true" />
+                                             </children>
+                                          </VBox>
+                                          <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="604.0">
+                                             <HBox.margin>
+                                                <Insets />
+                                             </HBox.margin>
+                                             <children>
+                                                <HBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="52.0" prefWidth="604.0">
+                                                   <children>
+                                                      <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="52.0" prefWidth="523.0">
+                                                         <children>
+                                                            <Text fx:id="name" fill="#fa8f31" strokeMiterLimit="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tournament name" wrappingWidth="472.13671875">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="24.0" />
+                                                               </font>
+                                                            </Text>
+                                                            <Text fx:id="game" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Counter-Strike: Global Offensive" wrappingWidth="548.13671875">
+                                                               <font>
+                                                                  <Font name="Arial" size="18.0" />
+                                                               </font>
+                                                            </Text>
+                                                         </children>
+                                                      </VBox>
+                                                      <ImageView fx:id="deleteIcon" fitHeight="41.0" fitWidth="41.0" onMouseClicked="#onDeleteIconClicked" pickOnBounds="true" preserveRatio="true">
+                                                         <cursor>
+                                                            <Cursor fx:constant="HAND" />
+                                                         </cursor>
+                                                      </ImageView>
+                                                   </children>
+                                                   <VBox.margin>
+                                                      <Insets top="10.0" />
+                                                   </VBox.margin>
+                                                </HBox>
+                                                <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="593.0">
+                                                   <children>
+                                                      <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="183.0">
+                                                         <children>
+                                                            <Text fill="#fa8f31" strokeType="OUTSIDE" strokeWidth="0.0" text="Total teams:">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="18.0" />
+                                                               </font>
+                                                               <HBox.margin>
+                                                                  <Insets left="15.0" top="20.0" />
+                                                               </HBox.margin>
+                                                            </Text>
+                                                            <Text fx:id="totalTeams" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="18.0" />
+                                                               </font>
+                                                               <HBox.margin>
+                                                                  <Insets left="15.0" top="20.0" />
+                                                               </HBox.margin>
+                                                            </Text>
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="419.0">
+                                                         <children>
+                                                            <Text fill="#fa8f31" strokeType="OUTSIDE" strokeWidth="0.0" text="Next match:">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="18.0" />
+                                                               </font>
+                                                               <HBox.margin>
+                                                                  <Insets left="75.0" top="20.0" />
+                                                               </HBox.margin>
+                                                            </Text>
+                                                            <Text fx:id="team11" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="18.0" />
+                                                               </font>
+                                                               <HBox.margin>
+                                                                  <Insets left="15.0" top="20.0" />
+                                                               </HBox.margin>
+                                                            </Text>
+                                                            <Text fx:id="vs" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="vs">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="18.0" />
+                                                               </font>
+                                                               <HBox.margin>
+                                                                  <Insets left="10.0" top="20.0" />
+                                                               </HBox.margin>
+                                                            </Text>
+                                                            <Text fx:id="team12" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="18.0" />
+                                                               </font>
+                                                               <HBox.margin>
+                                                                  <Insets left="10.0" top="20.0" />
+                                                               </HBox.margin>
+                                                            </Text>
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                   <VBox.margin>
+                                                      <Insets left="5.0" />
+                                                   </VBox.margin>
+                                                </HBox>
+                                                <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="545.0">
+                                                   <children>
+                                                      <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="183.0">
+                                                         <children>
+                                                            <Text fill="#fa8f31" strokeType="OUTSIDE" strokeWidth="0.0" text="Teams left:">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="18.0" />
+                                                               </font>
+                                                               <HBox.margin>
+                                                                  <Insets left="25.0" top="20.0" />
+                                                               </HBox.margin>
+                                                            </Text>
+                                                            <Text fx:id="teamsLeft" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="115.0">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="18.0" />
+                                                               </font>
+                                                               <HBox.margin>
+                                                                  <Insets left="16.0" top="20.0" />
+                                                               </HBox.margin>
+                                                            </Text>
+                                                         </children>
+                                                      </HBox>
+                                                      <Text fill="#fa8f31" strokeType="OUTSIDE" strokeWidth="0.0" text="Time:">
+                                                         <HBox.margin>
+                                                            <Insets left="130.0" top="20.0" />
+                                                         </HBox.margin>
+                                                         <font>
+                                                            <Font name="Arial Bold" size="18.0" />
+                                                         </font>
+                                                      </Text>
+                                                      <Text fx:id="time" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
+                                                         <font>
+                                                            <Font name="Arial Bold" size="18.0" />
+                                                         </font>
+                                                         <HBox.margin>
+                                                            <Insets left="10.0" top="21.0" />
+                                                         </HBox.margin>
+                                                      </Text>
+                                                   </children>
+                                                   <VBox.margin>
+                                                      <Insets left="5.0" />
+                                                   </VBox.margin>
+                                                </HBox>
+                                                <HBox prefHeight="100.0" prefWidth="200.0" />
+                                                <Button fx:id="overviewButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onOverviewButtonClicked" prefHeight="33.0" prefWidth="119.0" styleClass="jfx-button" stylesheets="@../css/style.css" text="Overview" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="16.0" />
+                                                   </font>
+                                                   <VBox.margin>
+                                                      <Insets bottom="15.0" left="450.0" />
+                                                   </VBox.margin>
+                                                   <effect>
+                                                      <DropShadow height="10.0" radius="4.5" width="10.0" />
+                                                   </effect>
+                                                   <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                   </cursor>
+                                                </Button>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets left="89.5" right="89.5" />
+                                       </VBox.margin>
+                                    </HBox>
                                     <HBox fx:id="box1" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="1021.0" style="-fx-background-color: #282c34;" visible="false">
                                        <children>
                                           <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="417.0">
@@ -108,22 +274,32 @@
                                                 <Insets />
                                              </HBox.margin>
                                              <children>
-                                                <Text fx:id="name1" fill="#fa8f31" strokeMiterLimit="0.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="472.13671875">
-                                                   <font>
-                                                      <Font name="Arial Bold" size="24.0" />
-                                                   </font>
+                                                <HBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="52.0" prefWidth="604.0">
+                                                   <children>
+                                                      <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="52.0" prefWidth="523.0">
+                                                         <children>
+                                                            <Text fx:id="name1" fill="#fa8f31" strokeMiterLimit="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tournament name" wrappingWidth="472.13671875">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="24.0" />
+                                                               </font>
+                                                            </Text>
+                                                            <Text fx:id="game1" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Counter-Strike: Global Offensive" wrappingWidth="548.13671875">
+                                                               <font>
+                                                                  <Font name="Arial" size="18.0" />
+                                                               </font>
+                                                            </Text>
+                                                         </children>
+                                                      </VBox>
+                                                      <ImageView fx:id="deleteIcon1" fitHeight="41.0" fitWidth="41.0" onMouseClicked="#onDeleteIcon1Clicked" pickOnBounds="true" preserveRatio="true">
+                                                         <cursor>
+                                                            <Cursor fx:constant="HAND" />
+                                                         </cursor>
+                                                      </ImageView>
+                                                   </children>
                                                    <VBox.margin>
-                                                      <Insets left="15.0" top="10.0" />
+                                                      <Insets top="10.0" />
                                                    </VBox.margin>
-                                                </Text>
-                                                <Text fx:id="game1" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="548.13671875">
-                                                   <font>
-                                                      <Font name="Arial" size="18.0" />
-                                                   </font>
-                                                   <VBox.margin>
-                                                      <Insets left="18.0" top="5.0" />
-                                                   </VBox.margin>
-                                                </Text>
+                                                </HBox>
                                                 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="593.0">
                                                    <children>
                                                       <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="183.0">
@@ -156,7 +332,7 @@
                                                                   <Insets left="75.0" top="20.0" />
                                                                </HBox.margin>
                                                             </Text>
-                                                            <Text fx:id="team11" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
+                                                            <Text fx:id="team21" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
                                                                <font>
                                                                   <Font name="Arial Bold" size="18.0" />
                                                                </font>
@@ -172,7 +348,7 @@
                                                                   <Insets left="10.0" top="20.0" />
                                                                </HBox.margin>
                                                             </Text>
-                                                            <Text fx:id="team12" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
+                                                            <Text fx:id="team22" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
                                                                <font>
                                                                   <Font name="Arial Bold" size="18.0" />
                                                                </font>
@@ -249,10 +425,10 @@
                                           </VBox>
                                        </children>
                                        <VBox.margin>
-                                          <Insets left="89.5" right="89.5" />
+                                          <Insets left="89.5" right="89.5" top="50.0" />
                                        </VBox.margin>
                                     </HBox>
-                                    <HBox fx:id="box2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="1021.0" style="-fx-background-color: #282c34;" visible="false">
+                                    <HBox fx:id="box2" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="1021.0" style="-fx-background-color: #282c34;" visible="false">
                                        <children>
                                           <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="417.0">
                                              <children>
@@ -264,22 +440,32 @@
                                                 <Insets />
                                              </HBox.margin>
                                              <children>
-                                                <Text fx:id="name2" fill="#fa8f31" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="472.13671875">
-                                                   <font>
-                                                      <Font name="Arial Bold" size="24.0" />
-                                                   </font>
+                                                <HBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="52.0" prefWidth="604.0">
+                                                   <children>
+                                                      <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="52.0" prefWidth="523.0">
+                                                         <children>
+                                                            <Text fx:id="name2" fill="#fa8f31" strokeMiterLimit="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tournament name" wrappingWidth="472.13671875">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="24.0" />
+                                                               </font>
+                                                            </Text>
+                                                            <Text fx:id="game2" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Counter-Strike: Global Offensive" wrappingWidth="548.13671875">
+                                                               <font>
+                                                                  <Font name="Arial" size="18.0" />
+                                                               </font>
+                                                            </Text>
+                                                         </children>
+                                                      </VBox>
+                                                      <ImageView fx:id="deleteIcon2" fitHeight="41.0" fitWidth="41.0" onMouseClicked="#onDeleteIcon2Clicked" pickOnBounds="true" preserveRatio="true">
+                                                         <cursor>
+                                                            <Cursor fx:constant="HAND" />
+                                                         </cursor>
+                                                      </ImageView>
+                                                   </children>
                                                    <VBox.margin>
-                                                      <Insets left="15.0" top="10.0" />
+                                                      <Insets top="10.0" />
                                                    </VBox.margin>
-                                                </Text>
-                                                <Text fx:id="game2" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="548.13671875">
-                                                   <font>
-                                                      <Font name="Arial" size="18.0" />
-                                                   </font>
-                                                   <VBox.margin>
-                                                      <Insets left="18.0" top="5.0" />
-                                                   </VBox.margin>
-                                                </Text>
+                                                </HBox>
                                                 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="593.0">
                                                    <children>
                                                       <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="183.0">
@@ -312,7 +498,7 @@
                                                                   <Insets left="75.0" top="20.0" />
                                                                </HBox.margin>
                                                             </Text>
-                                                            <Text fx:id="team21" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
+                                                            <Text fx:id="team31" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
                                                                <font>
                                                                   <Font name="Arial Bold" size="18.0" />
                                                                </font>
@@ -328,7 +514,7 @@
                                                                   <Insets left="10.0" top="20.0" />
                                                                </HBox.margin>
                                                             </Text>
-                                                            <Text fx:id="team22" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
+                                                            <Text fx:id="team32" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
                                                                <font>
                                                                   <Font name="Arial Bold" size="18.0" />
                                                                </font>
@@ -420,22 +606,32 @@
                                                 <Insets />
                                              </HBox.margin>
                                              <children>
-                                                <Text fx:id="name3" fill="#fa8f31" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="472.13671875">
-                                                   <font>
-                                                      <Font name="Arial Bold" size="24.0" />
-                                                   </font>
+                                                <HBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="52.0" prefWidth="604.0">
+                                                   <children>
+                                                      <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="52.0" prefWidth="523.0">
+                                                         <children>
+                                                            <Text fx:id="name3" fill="#fa8f31" strokeMiterLimit="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tournament name" wrappingWidth="472.13671875">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="24.0" />
+                                                               </font>
+                                                            </Text>
+                                                            <Text fx:id="game3" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Counter-Strike: Global Offensive" wrappingWidth="548.13671875">
+                                                               <font>
+                                                                  <Font name="Arial" size="18.0" />
+                                                               </font>
+                                                            </Text>
+                                                         </children>
+                                                      </VBox>
+                                                      <ImageView fx:id="deleteIcon3" fitHeight="41.0" fitWidth="41.0" onMouseClicked="#onDeleteIcon3Clicked" pickOnBounds="true" preserveRatio="true">
+                                                         <cursor>
+                                                            <Cursor fx:constant="HAND" />
+                                                         </cursor>
+                                                      </ImageView>
+                                                   </children>
                                                    <VBox.margin>
-                                                      <Insets left="15.0" top="10.0" />
+                                                      <Insets top="10.0" />
                                                    </VBox.margin>
-                                                </Text>
-                                                <Text fx:id="game3" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="548.13671875">
-                                                   <font>
-                                                      <Font name="Arial" size="18.0" />
-                                                   </font>
-                                                   <VBox.margin>
-                                                      <Insets left="18.0" top="5.0" />
-                                                   </VBox.margin>
-                                                </Text>
+                                                </HBox>
                                                 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="593.0">
                                                    <children>
                                                       <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="183.0">
@@ -468,7 +664,7 @@
                                                                   <Insets left="75.0" top="20.0" />
                                                                </HBox.margin>
                                                             </Text>
-                                                            <Text fx:id="team31" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
+                                                            <Text fx:id="team41" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
                                                                <font>
                                                                   <Font name="Arial Bold" size="18.0" />
                                                                </font>
@@ -484,7 +680,7 @@
                                                                   <Insets left="10.0" top="20.0" />
                                                                </HBox.margin>
                                                             </Text>
-                                                            <Text fx:id="team32" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
+                                                            <Text fx:id="team42" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
                                                                <font>
                                                                   <Font name="Arial Bold" size="18.0" />
                                                                </font>
@@ -576,22 +772,32 @@
                                                 <Insets />
                                              </HBox.margin>
                                              <children>
-                                                <Text fx:id="name4" fill="#fa8f31" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="472.13671875">
-                                                   <font>
-                                                      <Font name="Arial Bold" size="24.0" />
-                                                   </font>
+                                                <HBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="52.0" prefWidth="604.0">
+                                                   <children>
+                                                      <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="52.0" prefWidth="523.0">
+                                                         <children>
+                                                            <Text fx:id="name4" fill="#fa8f31" strokeMiterLimit="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tournament name" wrappingWidth="472.13671875">
+                                                               <font>
+                                                                  <Font name="Arial Bold" size="24.0" />
+                                                               </font>
+                                                            </Text>
+                                                            <Text fx:id="game4" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Counter-Strike: Global Offensive" wrappingWidth="548.13671875">
+                                                               <font>
+                                                                  <Font name="Arial" size="18.0" />
+                                                               </font>
+                                                            </Text>
+                                                         </children>
+                                                      </VBox>
+                                                      <ImageView fx:id="deleteIcon4" fitHeight="41.0" fitWidth="41.0" onMouseClicked="#onDeleteIcon4Clicked" pickOnBounds="true" preserveRatio="true">
+                                                         <cursor>
+                                                            <Cursor fx:constant="HAND" />
+                                                         </cursor>
+                                                      </ImageView>
+                                                   </children>
                                                    <VBox.margin>
-                                                      <Insets left="15.0" top="10.0" />
+                                                      <Insets top="10.0" />
                                                    </VBox.margin>
-                                                </Text>
-                                                <Text fx:id="game4" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="548.13671875">
-                                                   <font>
-                                                      <Font name="Arial" size="18.0" />
-                                                   </font>
-                                                   <VBox.margin>
-                                                      <Insets left="18.0" top="5.0" />
-                                                   </VBox.margin>
-                                                </Text>
+                                                </HBox>
                                                 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="593.0">
                                                    <children>
                                                       <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="183.0">
@@ -624,7 +830,7 @@
                                                                   <Insets left="75.0" top="20.0" />
                                                                </HBox.margin>
                                                             </Text>
-                                                            <Text fx:id="team41" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
+                                                            <Text fx:id="team51" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
                                                                <font>
                                                                   <Font name="Arial Bold" size="18.0" />
                                                                </font>
@@ -640,7 +846,7 @@
                                                                   <Insets left="10.0" top="20.0" />
                                                                </HBox.margin>
                                                             </Text>
-                                                            <Text fx:id="team42" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
+                                                            <Text fx:id="team52" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
                                                                <font>
                                                                   <Font name="Arial Bold" size="18.0" />
                                                                </font>
@@ -700,162 +906,6 @@
                                                 </HBox>
                                                 <HBox prefHeight="100.0" prefWidth="200.0" />
                                                 <Button fx:id="overviewButton4" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onOverviewButton4Clicked" prefHeight="33.0" prefWidth="119.0" styleClass="jfx-button" stylesheets="@../css/style.css" text="Overview" textFill="WHITE">
-                                                   <font>
-                                                      <Font name="Arial Bold" size="16.0" />
-                                                   </font>
-                                                   <VBox.margin>
-                                                      <Insets bottom="15.0" left="450.0" />
-                                                   </VBox.margin>
-                                                   <effect>
-                                                      <DropShadow height="10.0" radius="4.5" width="10.0" />
-                                                   </effect>
-                                                   <cursor>
-                                                      <Cursor fx:constant="HAND" />
-                                                   </cursor>
-                                                </Button>
-                                             </children>
-                                          </VBox>
-                                       </children>
-                                       <VBox.margin>
-                                          <Insets left="89.5" right="89.5" top="50.0" />
-                                       </VBox.margin>
-                                    </HBox>
-                                    <HBox fx:id="box5" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="1021.0" style="-fx-background-color: #282c34;" visible="false">
-                                       <children>
-                                          <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="417.0">
-                                             <children>
-                                                <ImageView fx:id="imageView5" fitHeight="230.0" fitWidth="417.0" pickOnBounds="true" preserveRatio="true" />
-                                             </children>
-                                          </VBox>
-                                          <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="604.0">
-                                             <HBox.margin>
-                                                <Insets />
-                                             </HBox.margin>
-                                             <children>
-                                                <Text fx:id="name5" fill="#fa8f31" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="472.13671875">
-                                                   <font>
-                                                      <Font name="Arial Bold" size="24.0" />
-                                                   </font>
-                                                   <VBox.margin>
-                                                      <Insets left="15.0" top="10.0" />
-                                                   </VBox.margin>
-                                                </Text>
-                                                <Text fx:id="game5" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="548.13671875">
-                                                   <font>
-                                                      <Font name="Arial" size="18.0" />
-                                                   </font>
-                                                   <VBox.margin>
-                                                      <Insets left="18.0" top="5.0" />
-                                                   </VBox.margin>
-                                                </Text>
-                                                <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="593.0">
-                                                   <children>
-                                                      <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="183.0">
-                                                         <children>
-                                                            <Text fill="#fa8f31" strokeType="OUTSIDE" strokeWidth="0.0" text="Total teams:">
-                                                               <font>
-                                                                  <Font name="Arial Bold" size="18.0" />
-                                                               </font>
-                                                               <HBox.margin>
-                                                                  <Insets left="15.0" top="20.0" />
-                                                               </HBox.margin>
-                                                            </Text>
-                                                            <Text fx:id="totalTeams5" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
-                                                               <font>
-                                                                  <Font name="Arial Bold" size="18.0" />
-                                                               </font>
-                                                               <HBox.margin>
-                                                                  <Insets left="15.0" top="20.0" />
-                                                               </HBox.margin>
-                                                            </Text>
-                                                         </children>
-                                                      </HBox>
-                                                      <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="419.0">
-                                                         <children>
-                                                            <Text fill="#fa8f31" strokeType="OUTSIDE" strokeWidth="0.0" text="Next match:">
-                                                               <font>
-                                                                  <Font name="Arial Bold" size="18.0" />
-                                                               </font>
-                                                               <HBox.margin>
-                                                                  <Insets left="75.0" top="20.0" />
-                                                               </HBox.margin>
-                                                            </Text>
-                                                            <Text fx:id="team51" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
-                                                               <font>
-                                                                  <Font name="Arial Bold" size="18.0" />
-                                                               </font>
-                                                               <HBox.margin>
-                                                                  <Insets left="15.0" top="20.0" />
-                                                               </HBox.margin>
-                                                            </Text>
-                                                            <Text fx:id="vs5" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="vs">
-                                                               <font>
-                                                                  <Font name="Arial Bold" size="18.0" />
-                                                               </font>
-                                                               <HBox.margin>
-                                                                  <Insets left="10.0" top="20.0" />
-                                                               </HBox.margin>
-                                                            </Text>
-                                                            <Text fx:id="team52" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
-                                                               <font>
-                                                                  <Font name="Arial Bold" size="18.0" />
-                                                               </font>
-                                                               <HBox.margin>
-                                                                  <Insets left="10.0" top="20.0" />
-                                                               </HBox.margin>
-                                                            </Text>
-                                                         </children>
-                                                      </HBox>
-                                                   </children>
-                                                   <VBox.margin>
-                                                      <Insets left="5.0" />
-                                                   </VBox.margin>
-                                                </HBox>
-                                                <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="545.0">
-                                                   <children>
-                                                      <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="183.0">
-                                                         <children>
-                                                            <Text fill="#fa8f31" strokeType="OUTSIDE" strokeWidth="0.0" text="Teams left:">
-                                                               <font>
-                                                                  <Font name="Arial Bold" size="18.0" />
-                                                               </font>
-                                                               <HBox.margin>
-                                                                  <Insets left="25.0" top="20.0" />
-                                                               </HBox.margin>
-                                                            </Text>
-                                                            <Text fx:id="teamsLeft5" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="115.0">
-                                                               <font>
-                                                                  <Font name="Arial Bold" size="18.0" />
-                                                               </font>
-                                                               <HBox.margin>
-                                                                  <Insets left="16.0" top="20.0" />
-                                                               </HBox.margin>
-                                                            </Text>
-                                                         </children>
-                                                      </HBox>
-                                                      <Text fill="#fa8f31" strokeType="OUTSIDE" strokeWidth="0.0" text="Time:">
-                                                         <HBox.margin>
-                                                            <Insets left="130.0" top="20.0" />
-                                                         </HBox.margin>
-                                                         <font>
-                                                            <Font name="Arial Bold" size="18.0" />
-                                                         </font>
-                                                      </Text>
-                                                      <Text fx:id="time5" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
-                                                         <font>
-                                                            <Font name="Arial Bold" size="18.0" />
-                                                         </font>
-                                                         <HBox.margin>
-                                                            <Insets left="10.0" top="21.0" />
-                                                         </HBox.margin>
-                                                      </Text>
-                                                   </children>
-                                                   <VBox.margin>
-                                                      <Insets left="5.0" />
-                                                   </VBox.margin>
-                                                </HBox>
-                                                <HBox prefHeight="100.0" prefWidth="200.0" />
-                                                <Button fx:id="overviewButton5" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onOverviewButton5Clicked" prefHeight="33.0" prefWidth="119.0" styleClass="jfx-button" stylesheets="@../css/style.css" text="Overview" textFill="WHITE">
                                                    <font>
                                                       <Font name="Arial Bold" size="16.0" />
                                                    </font>

@@ -7,56 +7,68 @@ import edu.ntnu.idatt1002.sysdev_k1_05_ets.scenes.ViewSwitcher;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.NewTournament;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.utilities.Utilities;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.DialogPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class PreviousTournamentsOverviewController {
 
+    @FXML private HBox box;
     @FXML private HBox box1;
     @FXML private HBox box2;
     @FXML private HBox box3;
     @FXML private HBox box4;
-    @FXML private HBox box5;
+    @FXML private Text game;
     @FXML private Text game1;
     @FXML private Text game2;
     @FXML private Text game3;
     @FXML private Text game4;
-    @FXML private Text game5;
+    @FXML private ImageView imageView;
     @FXML private ImageView imageView1;
     @FXML private ImageView imageView2;
     @FXML private ImageView imageView3;
     @FXML private ImageView imageView4;
-    @FXML private ImageView imageView5;
+    @FXML private Text name;
     @FXML private Text name1;
     @FXML private Text name2;
     @FXML private Text name3;
     @FXML private Text name4;
-    @FXML private Text name5;
+    @FXML private Text date;
     @FXML private Text date1;
     @FXML private Text date2;
     @FXML private Text date3;
     @FXML private Text date4;
-    @FXML private Text date5;
+    @FXML private Text totalTeams;
     @FXML private Text totalTeams1;
     @FXML private Text totalTeams2;
     @FXML private Text totalTeams3;
     @FXML private Text totalTeams4;
-    @FXML private Text totalTeams5;
+    @FXML private Text firstPlace;
     @FXML private Text firstPlace1;
     @FXML private Text firstPlace2;
     @FXML private Text firstPlace3;
     @FXML private Text firstPlace4;
-    @FXML private Text firstPlace5;
+    @FXML private Text secondPlace;
     @FXML private Text secondPlace1;
     @FXML private Text secondPlace2;
     @FXML private Text secondPlace3;
     @FXML private Text secondPlace4;
-    @FXML private Text secondPlace5;
+    @FXML private ImageView deleteIcon;
+    @FXML private ImageView deleteIcon1;
+    @FXML private ImageView deleteIcon2;
+    @FXML private ImageView deleteIcon3;
+    @FXML private ImageView deleteIcon4;
+
+
 
     private ArrayList<NewTournament> tournaments;
 
@@ -71,69 +83,79 @@ public class PreviousTournamentsOverviewController {
     private void setMainPageWithTournaments() {
 
         if (tournaments.size() > 0) {
-            imageView1.setImage(new Image("file:src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
+            imageView.setImage(new Image("file:src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
                     "Images/gameImages/" + Utilities.shortenAndReplaceUnnecessarySymbolsInString
                     (tournaments.get(0).getGame()) + ".png"));
-            name1.setText(tournaments.get(0).getTournamentName());
-            game1.setText(tournaments.get(0).getGame());
-            totalTeams1.setText(String.valueOf(tournaments.get(0).getNumberOfTeams()));
-            date1.setText(tournaments.get(0).getDate().toString());
-            firstPlace1.setText(tournaments.get(0).getFirstPlace().getNameAbbr());
-            secondPlace1.setText(tournaments.get(0).getSecondPlace().getNameAbbr());
-            box1.setDisable(false);
-            box1.setVisible(true);
+            name.setText(tournaments.get(0).getTournamentName());
+            game.setText(tournaments.get(0).getGame());
+            totalTeams.setText(String.valueOf(tournaments.get(0).getNumberOfTeams()));
+            date.setText(tournaments.get(0).getDate().toString());
+            firstPlace.setText(tournaments.get(0).getFirstPlace().getNameAbbr());
+            secondPlace.setText(tournaments.get(0).getSecondPlace().getNameAbbr());
+            deleteIcon.setImage(new Image("file:src/main/resources/edu/ntnu/idatt1002/" +
+                    "sysdev_k1_05_ets/Images/delete_icon.png"));
+            box.setDisable(false);
+            box.setVisible(true);
 
             if (tournaments.size() > 1) {
-                imageView2.setImage(new Image("file:src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
+                imageView1.setImage(new Image("file:src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
                         "Images/gameImages/" + Utilities.shortenAndReplaceUnnecessarySymbolsInString
                         (tournaments.get(1).getGame()) + ".png"));
-                name2.setText(tournaments.get(1).getTournamentName());
-                game2.setText(tournaments.get(1).getGame());
-                totalTeams2.setText(String.valueOf(tournaments.get(1).getNumberOfTeams()));
-                date2.setText(tournaments.get(1).getDate().toString());
-                firstPlace2.setText(tournaments.get(1).getFirstPlace().getNameAbbr());
-                secondPlace2.setText(tournaments.get(1).getSecondPlace().getNameAbbr());
-                box2.setDisable(false);
-                box2.setVisible(true);
+                name1.setText(tournaments.get(1).getTournamentName());
+                game1.setText(tournaments.get(1).getGame());
+                totalTeams1.setText(String.valueOf(tournaments.get(1).getNumberOfTeams()));
+                date1.setText(tournaments.get(1).getDate().toString());
+                firstPlace1.setText(tournaments.get(1).getFirstPlace().getNameAbbr());
+                secondPlace1.setText(tournaments.get(1).getSecondPlace().getNameAbbr());
+                deleteIcon1.setImage(new Image("file:src/main/resources/edu/ntnu/idatt1002/" +
+                        "sysdev_k1_05_ets/Images/delete_icon.png"));
+                box1.setDisable(false);
+                box1.setVisible(true);
 
                 if (tournaments.size() > 2) {
-                    imageView3.setImage(new Image("file:src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
+                    imageView2.setImage(new Image("file:src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
                             "Images/gameImages/" + Utilities.shortenAndReplaceUnnecessarySymbolsInString
                             (tournaments.get(2).getGame()) + ".png"));
-                    name3.setText(tournaments.get(2).getTournamentName());
-                    game3.setText(tournaments.get(2).getGame());
-                    totalTeams3.setText(String.valueOf(tournaments.get(2).getNumberOfTeams()));
-                    date3.setText(tournaments.get(2).getDate().toString());
-                    firstPlace3.setText(tournaments.get(2).getFirstPlace().getNameAbbr());
-                    secondPlace3.setText(tournaments.get(2).getSecondPlace().getNameAbbr());
-                    box3.setDisable(false);
-                    box3.setVisible(true);
+                    name2.setText(tournaments.get(2).getTournamentName());
+                    game2.setText(tournaments.get(2).getGame());
+                    totalTeams2.setText(String.valueOf(tournaments.get(2).getNumberOfTeams()));
+                    date2.setText(tournaments.get(2).getDate().toString());
+                    firstPlace2.setText(tournaments.get(2).getFirstPlace().getNameAbbr());
+                    secondPlace2.setText(tournaments.get(2).getSecondPlace().getNameAbbr());
+                    deleteIcon2.setImage(new Image("file:src/main/resources/edu/ntnu/idatt1002/" +
+                            "sysdev_k1_05_ets/Images/delete_icon.png"));
+                    box2.setDisable(false);
+                    box2.setVisible(true);
 
                     if (tournaments.size() > 3) {
-                        imageView4.setImage(new Image("file:src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
+                        imageView3.setImage(new Image("file:src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
                                 "Images/gameImages/" + Utilities.shortenAndReplaceUnnecessarySymbolsInString
                                 (tournaments.get(3).getGame()) + ".png"));
-                        name4.setText(tournaments.get(3).getTournamentName());
-                        game4.setText(tournaments.get(3).getGame());
-                        totalTeams4.setText(String.valueOf(tournaments.get(3).getNumberOfTeams()));
-                        date4.setText(tournaments.get(3).getDate().toString());
-                        firstPlace4.setText(tournaments.get(3).getFirstPlace().getNameAbbr());
-                        secondPlace4.setText(tournaments.get(3).getSecondPlace().getNameAbbr());
-                        box4.setDisable(false);
-                        box4.setVisible(true);
+                        name3.setText(tournaments.get(3).getTournamentName());
+                        game3.setText(tournaments.get(3).getGame());
+                        totalTeams3.setText(String.valueOf(tournaments.get(3).getNumberOfTeams()));
+                        date3.setText(tournaments.get(3).getDate().toString());
+                        firstPlace3.setText(tournaments.get(3).getFirstPlace().getNameAbbr());
+                        secondPlace3.setText(tournaments.get(3).getSecondPlace().getNameAbbr());
+                        deleteIcon3.setImage(new Image("file:src/main/resources/edu/ntnu/idatt1002/" +
+                                "sysdev_k1_05_ets/Images/delete_icon.png"));
+                        box3.setDisable(false);
+                        box3.setVisible(true);
 
                         if (tournaments.size() > 4) {
-                            imageView5.setImage(new Image("file:src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
+                            imageView4.setImage(new Image("file:src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
                                     "Images/gameImages/" + Utilities.shortenAndReplaceUnnecessarySymbolsInString
                                     (tournaments.get(4).getGame()) + ".png"));
-                            name5.setText(tournaments.get(4).getTournamentName());
-                            game5.setText(tournaments.get(4).getGame());
-                            totalTeams5.setText(String.valueOf(tournaments.get(4).getNumberOfTeams()));
-                            date5.setText(tournaments.get(4).getDate().toString());
-                            firstPlace5.setText(tournaments.get(4).getFirstPlace().getNameAbbr());
-                            secondPlace5.setText(tournaments.get(4).getSecondPlace().getNameOfTeam());
-                            box5.setDisable(false);
-                            box5.setVisible(true);
+                            name4.setText(tournaments.get(4).getTournamentName());
+                            game4.setText(tournaments.get(4).getGame());
+                            totalTeams4.setText(String.valueOf(tournaments.get(4).getNumberOfTeams()));
+                            date4.setText(tournaments.get(4).getDate().toString());
+                            firstPlace4.setText(tournaments.get(4).getFirstPlace().getNameAbbr());
+                            secondPlace4.setText(tournaments.get(4).getSecondPlace().getNameOfTeam());
+                            deleteIcon4.setImage(new Image("file:src/main/resources/edu/ntnu/idatt1002/" +
+                                    "sysdev_k1_05_ets/Images/delete_icon.png"));
+                            box4.setDisable(false);
+                            box4.setVisible(true);
 
                         }
 
@@ -175,24 +197,80 @@ public class PreviousTournamentsOverviewController {
         ViewSwitcher.switchTo(View.HELP);
     }
 
-    @FXML void onOverviewButton1Clicked()
+    @FXML void onOverviewButtonClicked()
     throws IOException{
         Utilities.onTournamentOverviewButtonClicked(tournaments.get(0));
     }
-    @FXML void onOverviewButton2Clicked()
+    @FXML void onOverviewButton1Clicked()
     throws IOException{
         Utilities.onTournamentOverviewButtonClicked(tournaments.get(1));
     }
-    @FXML void onOverviewButton3Clicked()
+    @FXML void onOverviewButton2Clicked()
     throws IOException{
         Utilities.onTournamentOverviewButtonClicked(tournaments.get(2));
     }
-    @FXML void onOverviewButton4Clicked()
+    @FXML void onOverviewButton3Clicked()
     throws IOException{
         Utilities.onTournamentOverviewButtonClicked(tournaments.get(3));
     }
-    @FXML void onOverviewButton5Clicked()
+    @FXML void onOverviewButton4Clicked()
     throws IOException{
         Utilities.onTournamentOverviewButtonClicked(tournaments.get(4));
+    }
+
+    @FXML void onDeleteIconClicked(){
+        try {
+            showAlertBox(tournaments.get(0));
+        }catch (IOException exception){
+            exception.printStackTrace();
+        }
+    }
+    @FXML void onDeleteIcon1Clicked(){
+        try {
+            showAlertBox(tournaments.get(1));
+        }catch (IOException exception){
+            exception.printStackTrace();
+        }
+    }
+    @FXML void onDeleteIcon2Clicked(){
+        try {
+            showAlertBox(tournaments.get(2));
+        }catch (IOException exception){
+            exception.printStackTrace();
+        }
+    }
+    @FXML void onDeleteIcon3Clicked(){
+        try {
+            showAlertBox(tournaments.get(3));
+        }catch (IOException exception){
+            exception.printStackTrace();
+        }
+    }
+    @FXML void onDeleteIcon4Clicked(){
+        try {
+            showAlertBox(tournaments.get(4));
+        }catch (IOException exception){
+            exception.printStackTrace();
+        }
+    }
+    private void showAlertBox(NewTournament newTournament)
+            throws IOException{
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Delete tournament");
+        alert.setHeaderText("Deleting: " + newTournament.getTournamentName());
+        alert.setContentText("Are you sure you want to delete this tournament?");
+        DialogPane dialogPane = alert.getDialogPane();
+        dialogPane.getStylesheets().add(Objects.requireNonNull(getClass()
+                .getResource("/edu/ntnu/idatt1002/sysdev_k1_05_ets/css/style.css")).toString());
+        dialogPane.getStyleClass().add("dialog-pane");
+        alert.showAndWait();
+
+        if (alert.getResult() == ButtonType.OK){
+            TournamentWriterRework.removeTournamentFromPreviousOverview(newTournament.getTournamentName());
+            File file = new File(TournamentWriterRework
+                    .getPathToTournamentFileAsString(newTournament.getTournamentName()));
+            file.delete();
+            ViewSwitcher.switchTo(View.PREVIOUS_OVERVIEW);
+        }
     }
 }
