@@ -99,7 +99,7 @@ public class MatchesController {
         } catch (IOException exception){
             exception.printStackTrace();
         }
-        GameCoreETSApplication.showGameInfo(tournamentName, nameOfTournament, imageView, tournament, game,
+        Utilities.showGameInfo(tournamentName, nameOfTournament, imageView, tournament, game,
                         host, startDate, startTime, platform, prizePool, entranceFee,
                         prizePoolCurrency, entranceFeeCurrency);
         timeLabels = new ArrayList<>(Arrays.asList(timematch,timematch1,timematch2,timematch3,timematch4,timematch5,timematch6,

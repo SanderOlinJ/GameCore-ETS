@@ -12,7 +12,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import java.io.File;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,7 +20,6 @@ public class BracketController {
 
     private static String nameOfTournament;
     private NewTournament newTournament;
-    private static int bracketSize;
 
 
     @FXML
@@ -77,12 +75,11 @@ public class BracketController {
         } catch (IOException exception){
             exception.printStackTrace();
         }
-        GameCoreETSApplication.showGameInfo(tournamentName, nameOfTournament, imageView, newTournament,
+        Utilities.showGameInfo(tournamentName, nameOfTournament, imageView, newTournament,
                 game, host, startDate, startTime, platform, prizePool,
                 entranceFee, prizePoolCurrency, entranceFeeCurrency);
-        bracketSize = newTournament.getNumberOfTeams();
+        int bracketSize = newTournament.getNumberOfTeams();
 
-        ArrayList<Team> teams = newTournament.getTeams();
         if (bracketSize >= 4) {
             labels.addAll(Arrays.asList(team1,team2,team3,team4,team5,team6,team7));
         }
@@ -94,7 +91,7 @@ public class BracketController {
                     team27,team28,team29,team30,team31));
         }
 
-        String[][] data = new String[bracketSize-1][2];
+        String[][] data = new String[bracketSize -1][2];
 
         try {
             String tournamentNameShortened = Utilities.shortenAndReplaceUnnecessarySymbolsInString(nameOfTournament);
@@ -106,9 +103,9 @@ public class BracketController {
                 data[i][1] = values[2];
             }
 
-            String winner = GeneralReader.readSpecificLineInFile(file, 12+bracketSize);
+            String winner = GeneralReader.readSpecificLineInFile(file, 12+ bracketSize);
             labels.get(0).setText(winner.split(",")[7]);
-            for (int i = 1; i < 2*bracketSize - 1; i++) {
+            for (int i = 1; i < 2* bracketSize - 1; i++) {
                 int index = (i + 1) / 2;
                 labels.get(i).setText(data[data.length-index][(i+1)%2]);
             }
@@ -172,7 +169,6 @@ public class BracketController {
     throws IOException {
         ViewSwitcher.switchTo(View.ONGOING_OVERVIEW);
     }
-
 
     @FXML
     void onUpcomingTournamentsButtonPressed()

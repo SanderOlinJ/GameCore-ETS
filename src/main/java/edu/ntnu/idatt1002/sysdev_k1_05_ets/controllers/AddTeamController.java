@@ -9,7 +9,6 @@ import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import org.controlsfx.control.textfield.TextFields;
-
 import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;

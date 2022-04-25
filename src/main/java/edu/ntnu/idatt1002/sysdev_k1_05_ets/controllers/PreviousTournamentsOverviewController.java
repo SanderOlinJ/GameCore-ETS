@@ -177,52 +177,22 @@ public class PreviousTournamentsOverviewController {
 
     @FXML void onOverviewButton1Clicked()
     throws IOException{
-        BracketController.setNameOfTournament(tournaments.get(0).getTournamentName());
-        int numberOfTeams = tournaments.get(0).getNumberOfTeams();
-        switch (numberOfTeams){
-            case 4 -> ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_4);
-            case 8 -> ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_8);
-            case 16 -> ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_16);
-        }
+        Utilities.onTournamentOverviewButtonClicked(tournaments.get(0));
     }
     @FXML void onOverviewButton2Clicked()
     throws IOException{
-        BracketController.setNameOfTournament(tournaments.get(1).getTournamentName());
-        int numberOfTeams = tournaments.get(1).getNumberOfTeams();
-        switch (numberOfTeams){
-            case 4 -> ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_4);
-            case 8 -> ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_8);
-            case 16 -> ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_16);
-        }
+        Utilities.onTournamentOverviewButtonClicked(tournaments.get(1));
     }
     @FXML void onOverviewButton3Clicked()
     throws IOException{
-        BracketController.setNameOfTournament(tournaments.get(2).getTournamentName());
-        int numberOfTeams = tournaments.get(2).getNumberOfTeams();
-        switch (numberOfTeams){
-            case 4 -> ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_4);
-            case 8 -> ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_8);
-            case 16 -> ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_16);
-        }
+        Utilities.onTournamentOverviewButtonClicked(tournaments.get(2));
     }
     @FXML void onOverviewButton4Clicked()
     throws IOException{
-        BracketController.setNameOfTournament(tournaments.get(3).getTournamentName());
-        int numberOfTeams = tournaments.get(3).getNumberOfTeams();
-        switch (numberOfTeams){
-            case 4 -> ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_4);
-            case 8 -> ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_8);
-            case 16 -> ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_16);
-        }
+        Utilities.onTournamentOverviewButtonClicked(tournaments.get(3));
     }
     @FXML void onOverviewButton5Clicked()
     throws IOException{
-        BracketController.setNameOfTournament(tournaments.get(4).getTournamentName());
-        int numberOfTeams = tournaments.get(4).getNumberOfTeams();
-        switch (numberOfTeams){
-            case 4 -> ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_4);
-            case 8 -> ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_8);
-            case 16 -> ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_16);
-        }
+        Utilities.onTournamentOverviewButtonClicked(tournaments.get(4));
     }
 }
