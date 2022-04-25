@@ -17,14 +17,6 @@ public class Utilities {
         return str.replaceAll("[^A-Za-z0-9]","");
     }
 
-    public static int getNextPowerOf2(int value){
-        int highestOneBit = Integer.highestOneBit(value);
-        if (value == highestOneBit) {
-            return value;
-        }
-        return highestOneBit << 1;
-    }
-
     public static boolean areThereAnyOtherCharactersThanNumbers(String str){
         return str.length() > str.replaceAll("[^0-9]", "").length();
     }

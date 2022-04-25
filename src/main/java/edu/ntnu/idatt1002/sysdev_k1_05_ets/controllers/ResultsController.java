@@ -160,7 +160,6 @@ public class ResultsController {
             exception.printStackTrace();
         }
         ArrayList<Match> matches = tournament.getFinishedMatches();
-        GameCoreETSApplication.showGameInfo(tournamentName, nameOfTournament, imageView, tournament, game,
 
         Utilities.showGameInfo(tournamentName, nameOfTournament, imageView, tournament, game,
                         host, startDate, startTime, platform, prizePool, entranceFee,
