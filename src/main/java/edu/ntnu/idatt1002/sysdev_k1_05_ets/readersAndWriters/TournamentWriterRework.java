@@ -3,14 +3,13 @@ package edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Match;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.utilities.Utilities;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.HashMap;
+
 
 public class TournamentWriterRework {
 
@@ -515,144 +514,4 @@ public class TournamentWriterRework {
             throw new IOException("Could not write tournament back to file: " + exception.getMessage());
         }
     }
-
-    private static void appendMatchesFromList(StringBuilder stringBuilder, Match[] matchesInBracket) {
-        for (int i = 0; i < matchesInBracket.length; i++) {
-            if (matchesInBracket[i] != null) {
-                stringBuilder.append(matchesInBracket[i].getTeam1().getNameOfTeam()).append(COMMA_DELIMITER);
-                if (matchesInBracket[i].getTeam2() != null) {
-                    stringBuilder.append(matchesInBracket[i].getTeam2().getNameOfTeam()).append(COMMA_DELIMITER);
-                    if (matchesInBracket[i].getTimeOfMatch() != null) {
-                        stringBuilder.append(matchesInBracket[i].getTimeOfMatch()).append(COMMA_DELIMITER);
-                        if (matchesInBracket[i].getMatchScoreTeam1() != -1) {
-                            stringBuilder.append(matchesInBracket[i].getMatchScoreTeam1()).append(COMMA_DELIMITER)
-                                    .append(matchesInBracket[i].getMatchScoreTeam2()).append(COMMA_DELIMITER)
-                                    .append(matchesInBracket[i].getVictor().getNameOfTeam());
-                        }
-                    }
-                }
-            }
-            stringBuilder.append(DELIMITER);
-        }
-    }
-
-
-    public static void writeStartMatchesToTournamentFile(String tournamentName) throws IOException{
-
-        String tournamentNameShortened = Utilities.shortenAndReplaceUnnecessarySymbolsInString(tournamentName);
-
-        File file = new File(getPathToTournamentFileAsString(tournamentNameShortened));
-        ArrayList<String> fileAsListOfStrings = GeneralReader.readFile(file);
-
-        StringBuilder stringBuilder1 = new StringBuilder();
-        for (String str : fileAsListOfStrings){
-            stringBuilder1.append(str).append(DELIMITER);
-        }
-
-        ArrayList<Team> teams = new ArrayList<>();
-        String line = fileAsListOfStrings.get(12);
-        String[] values = line.split(",");
-        for (String value : values){
-            teams.add(TeamReader.findAndReturnTeamUsingTeamName(value));
-        }
-        for (int i = 0; i < teams.size(); i += 2){
-            stringBuilder1.append(teams.get(i).getNameOfTeam()).append(",")
-                    .append(teams.get(i+1).getNameOfTeam()).append(",").append(DELIMITER);
-        }
-
-
-        try (FileWriter fileWriter = new FileWriter(file)){
-            fileWriter.write(stringBuilder1.toString());
-        } catch (IOException exception){
-            throw new IOException("Could not write tournament back to file: " + exception.getMessage());
-        }
-    }
-
-    public static void writeTimeToMatchInTournamentFile(String tournamentName, Match inputMatch,
-                                                        LocalTime time)
-    throws IOException{
-        String tournamentNameShortened = Utilities.shortenAndReplaceUnnecessarySymbolsInString(tournamentName);
-
-        File file = new File(getPathToTournamentFileAsString(tournamentNameShortened));
-        ArrayList<String> fileAsListOfStrings = GeneralReader.readFile(file);
-
-        StringBuilder stringBuilder = new StringBuilder();
-        ArrayList<Match> matches = MatchReader.readMatchesFromArrayList(fileAsListOfStrings);
-
-        for (int i = 0; i < 13; i++){
-            stringBuilder.append(fileAsListOfStrings.get(i)).append(DELIMITER);
-        }
-
-        for (Match match : matches){
-            stringBuilder.append(match.getTeam1().getNameOfTeam()).append(",")
-                    .append(match.getTeam2().getNameOfTeam()).append(",");
-            if (match.getTimeOfMatch() != null){
-                stringBuilder.append(match.getTimeOfMatch()).append(",");
-            }
-            if (match.getTeam1().equals(inputMatch.getTeam1()) && match.getTeam2().equals(inputMatch.getTeam2())){
-                stringBuilder.append(time).append(",");
-            }
-            stringBuilder.append(DELIMITER);
-        }
-
-        try (FileWriter fileWriter = new FileWriter(file)){
-            fileWriter.write(stringBuilder.toString());
-        } catch (IOException exception){
-            throw new IOException("Could not write tournament back to file: " + exception.getMessage());
-        }
-
-    }
-
-    public static void writeMatchScoreAndVictorToTournamentFile(String tournamentName, Match inputMatch)
-    throws IOException{
-        String tournamentNameShortened = Utilities.shortenAndReplaceUnnecessarySymbolsInString(tournamentName);
-
-        File file = new File(getPathToTournamentFileAsString(tournamentNameShortened));
-        ArrayList<String> fileAsListOfStrings = GeneralReader.readFile(file);
-
-        StringBuilder stringBuilder = new StringBuilder();
-        ArrayList<Match> matches = MatchReader.readMatchesFromArrayList(fileAsListOfStrings);
-
-        for (int i = 0; i < 13; i++){
-            stringBuilder.append(fileAsListOfStrings.get(i)).append(DELIMITER);
-        }
-
-        for (Match match : matches){
-
-            stringBuilder.append(match.getTeam1().getNameOfTeam()).append(",")
-                    .append(match.getTeam2().getNameOfTeam()).append(",").append(match.getTimeOfMatch()).append(",");
-
-            if (match.getMatchScoreTeam1() != -1){
-                stringBuilder.append(match.getMatchScoreTeam1()).append(",");
-                if (match.getMatchScoreTeam2() != -1){
-                    stringBuilder.append(match.getMatchScoreTeam2()).append(",");
-                }
-            }
-            if (match.getVictor() != null){
-                stringBuilder.append(match.getVictor().getNameOfTeam());
-            }
-
-            if (match.getTeam1().equals(inputMatch.getTeam1()) && match.getTeam2().equals(inputMatch.getTeam2())){
-                stringBuilder.append(inputMatch.getMatchScoreTeam1()).append(",")
-                        .append(inputMatch.getMatchScoreTeam2()).append(",");
-                if (inputMatch.getMatchScoreTeam1() > inputMatch.getMatchScoreTeam2()){
-                    stringBuilder.append(match.getTeam1().getNameOfTeam());
-                } else {
-                    stringBuilder.append(match.getTeam2().getNameOfTeam());
-                }
-            }
-            stringBuilder.append(DELIMITER);
-        }
-
-
-
-
-        try (FileWriter fileWriter = new FileWriter(file)){
-            fileWriter.write(stringBuilder.toString());
-        } catch (IOException exception){
-            throw new IOException("Could not write tournament back to file: " + exception.getMessage());
-        }
-    }
-
-
 }

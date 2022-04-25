@@ -65,11 +65,11 @@ public class Utilities {
         switch (numberOfTeams){
             case 4 -> {
                 BracketController.setNameOfTournament(newTournament.getTournamentName());
-                ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_4);}
+                ViewSwitcher.switchTo(View.BRACKET_4);}
             case 8 -> {BracketController.setNameOfTournament(newTournament.getTournamentName());
-                ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_8);}
+                ViewSwitcher.switchTo(View.BRACKET_8);}
             case 16 -> {BracketController.setNameOfTournament(newTournament.getTournamentName());
-                ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_16);}
+                ViewSwitcher.switchTo(View.BRACKET_16);}
         }
     }
 }

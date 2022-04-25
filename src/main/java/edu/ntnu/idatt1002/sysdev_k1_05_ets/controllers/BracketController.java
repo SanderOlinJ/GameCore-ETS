@@ -1,6 +1,6 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.GameCoreETSApplication;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.GeneralReader;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TeamReader;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TournamentReaderRework;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TournamentWriterRework;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.scenes.View;
@@ -19,7 +19,7 @@ import java.util.Arrays;
 public class BracketController {
 
     private static String nameOfTournament;
-    private NewTournament newTournament;
+    private NewTournament tournament;
 
 
     @FXML
@@ -71,14 +71,14 @@ public class BracketController {
     public void initialize(){
 
         try {
-            newTournament = TournamentReaderRework.readTournamentFromFile(nameOfTournament);
+            tournament = TournamentReaderRework.readTournamentFromFile(nameOfTournament);
         } catch (IOException exception){
             exception.printStackTrace();
         }
-        Utilities.showGameInfo(tournamentName, nameOfTournament, imageView, newTournament,
+        Utilities.showGameInfo(tournamentName, nameOfTournament, imageView, tournament,
                 game, host, startDate, startTime, platform, prizePool,
                 entranceFee, prizePoolCurrency, entranceFeeCurrency);
-        int bracketSize = newTournament.getNumberOfTeams();
+        int bracketSize = tournament.getNumberOfTeams();
 
         if (bracketSize >= 4) {
             labels.addAll(Arrays.asList(team1,team2,team3,team4,team5,team6,team7));
@@ -99,8 +99,15 @@ public class BracketController {
             for (int i = 0; i < bracketSize - 1; i++) {
                 String str = GeneralReader.readSpecificLineInFile(file,14+i);
                 String[] values = str.split(",");
-                data[i][0] = values[3];
-                data[i][1] = values[2];
+                if (!values[3].equals("?")){
+                    Team team1 = TeamReader.findAndReturnTeamUsingTeamName(values[3]);
+                    Team team2 = TeamReader.findAndReturnTeamUsingTeamName(values[2]);
+                    data[i][0] = team1.getNameAbbr();
+                    data[i][1] = team2.getNameAbbr();
+                } else {
+                    data[i][0] = values[3];
+                    data[i][1] = values[2];
+                }
             }
 
             String winner = GeneralReader.readSpecificLineInFile(file, 12+ bracketSize);
@@ -122,14 +129,14 @@ public class BracketController {
     public void setMatchesScene()
     throws IOException {
         MatchesController.setNameOfTournament(nameOfTournament);
-        ViewSwitcher.switchTo(View.TOURNAMENT_MATCHES);
+        ViewSwitcher.switchTo(View.MATCHES);
     }
 
     @FXML
     public void setResultsScene()
     throws IOException {
         ResultsController.setNameOfTournament(nameOfTournament);
-        ViewSwitcher.switchTo(View.TOURNAMENT_RESULTS);
+        ViewSwitcher.switchTo(View.RESULTS);
     }
 
     @FXML

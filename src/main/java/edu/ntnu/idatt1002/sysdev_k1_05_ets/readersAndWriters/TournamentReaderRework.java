@@ -4,7 +4,6 @@ import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Match;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.NewTournament;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.utilities.Utilities;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -15,7 +14,6 @@ import java.util.Scanner;
 
 public class TournamentReaderRework {
 
-    private static final String DELIMITER = "\n";
     private static final String COMMA_DELIMITER = ",";
 
     public TournamentReaderRework(){}

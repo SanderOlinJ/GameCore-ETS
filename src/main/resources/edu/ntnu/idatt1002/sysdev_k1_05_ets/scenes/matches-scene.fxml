@@ -9,6 +9,7 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -64,9 +65,9 @@
                 <HBox prefHeight="795.0" prefWidth="1200.0" VBox.vgrow="ALWAYS">
                     <children>
                         <Pane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: black;" HBox.hgrow="ALWAYS" />
-                        <ScrollPane hbarPolicy="NEVER" maxWidth="1800.0" prefHeight="1263.0" prefWidth="1200.0" stylesheets="@../css/style.css">
+                        <ScrollPane hbarPolicy="NEVER" maxWidth="1800.0" prefHeight="1263.0" prefWidth="1200.0" stylesheets="@../css/style.css" HBox.hgrow="NEVER">
                             <content>
-                                <VBox prefHeight="1145.0" prefWidth="1184.0" style="-fx-background-color: #13161d;">
+                                <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="1361.0" prefWidth="1184.0" style="-fx-background-color: #13161d;">
                                     <children>
                               <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="1184.0" style="-fx-background-color: #13161d;">
                                  <children>
@@ -338,14 +339,14 @@
                                                 <Insets bottom="5.0" top="15.0" />
                                             </VBox.margin>
                                         </HBox>
-                                        <VBox prefHeight="565.0" prefWidth="1200.0">
+                                        <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="302.0" prefWidth="1184.0">
                                             <children>
-                                                <HBox prefHeight="114.0" prefWidth="1189.0">
+                                                <HBox prefHeight="100.0" prefWidth="1200.0">
                                                     <children>
                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                         <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="1098.0" style="-fx-background-color: #282c34;">
                                                             <children>
-                                                                <Text fill="WHITE" layoutX="471.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Matches">
+                                                                <Text fill="WHITE" layoutX="471.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Matches">
                                                                     <font>
                                                                         <Font name="Arial Bold" size="39.0" />
                                                                     </font>
@@ -363,10 +364,10 @@
                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                     </children>
                                                 </HBox>
-                                                <HBox prefHeight="199.0" prefWidth="1200.0">
+                                                <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="1184.0" VBox.vgrow="NEVER">
                                                     <children>
                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                        <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1098.0" style="-fx-background-color: #2e3e4e;">
+                                                        <VBox maxHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1098.0" style="-fx-background-color: #2e3e4e;" HBox.hgrow="NEVER">
                                              <children>
                                                 <HBox fx:id="match" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
                                                    <children>
@@ -374,7 +375,7 @@
                                                       <VBox prefHeight="200.0" prefWidth="100.0">
                                                          <children>
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                            <Label fx:id="timematch" text="TBA" textFill="WHITE">
+                                                            <Label fx:id="timeMatch" text="TBA" textFill="WHITE">
                                                                <font>
                                                                   <Font name="Arial" size="20.0" />
                                                                </font>
@@ -387,7 +388,7 @@
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
                                                             <HBox prefHeight="100.0" prefWidth="200.0">
                                                                <children>
-                                                                  <Label fx:id="team1match" prefHeight="23.0" prefWidth="168.0" text="Team 1" textFill="WHITE">
+                                                                  <Label fx:id="team1match" prefHeight="23.0" prefWidth="168.0" text="TBD" textFill="WHITE">
                                                                      <font>
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
@@ -397,7 +398,7 @@
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
                                                                   </Label>
-                                                                  <Label fx:id="team2match" prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
+                                                                  <Label fx:id="team2match" prefHeight="23.0" prefWidth="168.0" text="TBD" textFill="WHITE">
                                                                      <font>
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
@@ -458,10 +459,16 @@
                                                             <VBox prefHeight="98.0" prefWidth="202.0">
                                                                <children>
                                                                   <Pane prefHeight="100.0" prefWidth="100.0" />
-                                                                  <Button layoutX="10.0" layoutY="46.0" mnemonicParsing="false" onAction="#winnerChosen" prefHeight="26.0" prefWidth="156.0" style="-fx-background-color: #fa8f31;" text="Select winner" textFill="WHITESMOKE">
+                                                                  <Button layoutX="10.0" layoutY="46.0" mnemonicParsing="false" onAction="#winnerChosen" prefHeight="26.0" prefWidth="156.0" styleClass="jfx-button" stylesheets="@../css/style.css" text="Select winner" textFill="WHITESMOKE">
                                                                      <font>
-                                                                        <Font name="Arial" size="15.0" />
+                                                                        <Font name="Arial Bold" size="18.0" />
                                                                      </font>
+                                                                     <cursor>
+                                                                        <Cursor fx:constant="HAND" />
+                                                                     </cursor>
+                                                                     <effect>
+                                                                        <DropShadow height="10.0" radius="4.5" width="10.0" />
+                                                                     </effect>
                                                                   </Button>
                                                                   <Pane prefHeight="100.0" prefWidth="200.0" />
                                                                </children>
@@ -476,7 +483,7 @@
                                                       <VBox prefHeight="200.0" prefWidth="100.0">
                                                          <children>
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                            <Label fx:id="timematch1" text="TBA" textFill="WHITE">
+                                                            <Label fx:id="timeMatch1" text="TBA" textFill="WHITE">
                                                                <font>
                                                                   <Font name="Arial" size="20.0" />
                                                                </font>
@@ -489,7 +496,7 @@
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
                                                             <HBox prefHeight="100.0" prefWidth="200.0">
                                                                <children>
-                                                                  <Label fx:id="team1match1" prefHeight="23.0" prefWidth="168.0" text="Team 1" textFill="WHITE">
+                                                                  <Label fx:id="team1match1" prefHeight="23.0" prefWidth="168.0" text="TBD" textFill="WHITE">
                                                                      <font>
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
@@ -499,7 +506,7 @@
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
                                                                   </Label>
-                                                                  <Label fx:id="team2match1" prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
+                                                                  <Label fx:id="team2match1" prefHeight="23.0" prefWidth="168.0" text="TBD" textFill="WHITE">
                                                                      <font>
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
@@ -560,11 +567,17 @@
                                                             <VBox prefHeight="98.0" prefWidth="202.0">
                                                                <children>
                                                                   <Pane prefHeight="100.0" prefWidth="100.0" />
-                                                                  <Button layoutX="10.0" layoutY="46.0" mnemonicParsing="false" onAction="#winnerChosen" prefHeight="26.0" prefWidth="156.0" style="-fx-background-color: #fa8f31;" text="Select winner" textFill="WHITESMOKE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="15.0" />
-                                                                     </font>
-                                                                  </Button>
+                                                                   <Button layoutX="10.0" layoutY="46.0" mnemonicParsing="false" onAction="#winnerChosen" prefHeight="26.0" prefWidth="156.0" styleClass="jfx-button" stylesheets="@../css/style.css" text="Select winner" textFill="WHITESMOKE">
+                                                                       <font>
+                                                                           <Font name="Arial Bold" size="18.0" />
+                                                                       </font>
+                                                                       <cursor>
+                                                                           <Cursor fx:constant="HAND" />
+                                                                       </cursor>
+                                                                       <effect>
+                                                                           <DropShadow height="10.0" radius="4.5" width="10.0" />
+                                                                       </effect>
+                                                                   </Button>
                                                                   <Pane prefHeight="100.0" prefWidth="200.0" />
                                                                </children>
                                                             </VBox>
@@ -578,7 +591,7 @@
                                                       <VBox prefHeight="200.0" prefWidth="100.0">
                                                          <children>
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                            <Label fx:id="timematch2" text="TBA" textFill="WHITE">
+                                                            <Label fx:id="timeMatch2" text="TBA" textFill="WHITE">
                                                                <font>
                                                                   <Font name="Arial" size="20.0" />
                                                                </font>
@@ -591,7 +604,7 @@
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
                                                             <HBox prefHeight="100.0" prefWidth="200.0">
                                                                <children>
-                                                                  <Label fx:id="team1match2" prefHeight="23.0" prefWidth="168.0" text="Team 1" textFill="WHITE">
+                                                                  <Label fx:id="team1match2" prefHeight="23.0" prefWidth="168.0" text="TBD" textFill="WHITE">
                                                                      <font>
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
@@ -601,7 +614,7 @@
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
                                                                   </Label>
-                                                                  <Label fx:id="team2match2" prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
+                                                                  <Label fx:id="team2match2" prefHeight="23.0" prefWidth="168.0" text="TBD" textFill="WHITE">
                                                                      <font>
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
@@ -662,11 +675,17 @@
                                                             <VBox prefHeight="98.0" prefWidth="202.0">
                                                                <children>
                                                                   <Pane prefHeight="100.0" prefWidth="100.0" />
-                                                                  <Button layoutX="10.0" layoutY="46.0" mnemonicParsing="false" onAction="#winnerChosen" prefHeight="26.0" prefWidth="156.0" style="-fx-background-color: #fa8f31;" text="Select winner" textFill="WHITESMOKE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="15.0" />
-                                                                     </font>
-                                                                  </Button>
+                                                                   <Button layoutX="10.0" layoutY="46.0" mnemonicParsing="false" onAction="#winnerChosen" prefHeight="26.0" prefWidth="156.0" styleClass="jfx-button" stylesheets="@../css/style.css" text="Select winner" textFill="WHITESMOKE">
+                                                                       <font>
+                                                                           <Font name="Arial Bold" size="18.0" />
+                                                                       </font>
+                                                                       <cursor>
+                                                                           <Cursor fx:constant="HAND" />
+                                                                       </cursor>
+                                                                       <effect>
+                                                                           <DropShadow height="10.0" radius="4.5" width="10.0" />
+                                                                       </effect>
+                                                                   </Button>
                                                                   <Pane prefHeight="100.0" prefWidth="200.0" />
                                                                </children>
                                                             </VBox>
@@ -680,7 +699,7 @@
                                                       <VBox prefHeight="200.0" prefWidth="100.0">
                                                          <children>
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                            <Label fx:id="timematch3" text="TBA" textFill="WHITE">
+                                                            <Label fx:id="timeMatch3" text="TBA" textFill="WHITE">
                                                                <font>
                                                                   <Font name="Arial" size="20.0" />
                                                                </font>
@@ -693,7 +712,7 @@
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
                                                             <HBox prefHeight="100.0" prefWidth="200.0">
                                                                <children>
-                                                                  <Label fx:id="team1match3" prefHeight="23.0" prefWidth="168.0" text="Team 1" textFill="WHITE">
+                                                                  <Label fx:id="team1match3" prefHeight="23.0" prefWidth="168.0" text="TBD" textFill="WHITE">
                                                                      <font>
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
@@ -703,7 +722,7 @@
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
                                                                   </Label>
-                                                                  <Label fx:id="team2match3" prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
+                                                                  <Label fx:id="team2match3" prefHeight="23.0" prefWidth="168.0" text="TBD" textFill="WHITE">
                                                                      <font>
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
@@ -764,11 +783,17 @@
                                                             <VBox prefHeight="98.0" prefWidth="202.0">
                                                                <children>
                                                                   <Pane prefHeight="100.0" prefWidth="100.0" />
-                                                                  <Button layoutX="10.0" layoutY="46.0" mnemonicParsing="false" onAction="#winnerChosen" prefHeight="26.0" prefWidth="156.0" style="-fx-background-color: #fa8f31;" text="Select winner" textFill="WHITESMOKE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="15.0" />
-                                                                     </font>
-                                                                  </Button>
+                                                                   <Button layoutX="10.0" layoutY="46.0" mnemonicParsing="false" onAction="#winnerChosen" prefHeight="26.0" prefWidth="156.0" styleClass="jfx-button" stylesheets="@../css/style.css" text="Select winner" textFill="WHITESMOKE">
+                                                                       <font>
+                                                                           <Font name="Arial Bold" size="18.0" />
+                                                                       </font>
+                                                                       <cursor>
+                                                                           <Cursor fx:constant="HAND" />
+                                                                       </cursor>
+                                                                       <effect>
+                                                                           <DropShadow height="10.0" radius="4.5" width="10.0" />
+                                                                       </effect>
+                                                                   </Button>
                                                                   <Pane prefHeight="100.0" prefWidth="200.0" />
                                                                </children>
                                                             </VBox>
@@ -782,7 +807,7 @@
                                                       <VBox prefHeight="200.0" prefWidth="100.0">
                                                          <children>
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                            <Label fx:id="timematch4" text="TBA" textFill="WHITE">
+                                                            <Label fx:id="timeMatch4" text="TBA" textFill="WHITE">
                                                                <font>
                                                                   <Font name="Arial" size="20.0" />
                                                                </font>
@@ -795,7 +820,7 @@
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
                                                             <HBox prefHeight="100.0" prefWidth="200.0">
                                                                <children>
-                                                                  <Label fx:id="team1match4" prefHeight="23.0" prefWidth="168.0" text="Team 1" textFill="WHITE">
+                                                                  <Label fx:id="team1match4" prefHeight="23.0" prefWidth="168.0" text="TBD" textFill="WHITE">
                                                                      <font>
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
@@ -805,7 +830,7 @@
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
                                                                   </Label>
-                                                                  <Label fx:id="team2match4" prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
+                                                                  <Label fx:id="team2match4" prefHeight="23.0" prefWidth="168.0" text="TBD" textFill="WHITE">
                                                                      <font>
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
@@ -866,11 +891,17 @@
                                                             <VBox prefHeight="98.0" prefWidth="202.0">
                                                                <children>
                                                                   <Pane prefHeight="100.0" prefWidth="100.0" />
-                                                                  <Button layoutX="10.0" layoutY="46.0" mnemonicParsing="false" onAction="#winnerChosen" prefHeight="26.0" prefWidth="156.0" style="-fx-background-color: #fa8f31;" text="Select winner" textFill="WHITESMOKE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="15.0" />
-                                                                     </font>
-                                                                  </Button>
+                                                                   <Button layoutX="10.0" layoutY="46.0" mnemonicParsing="false" onAction="#winnerChosen" prefHeight="26.0" prefWidth="156.0" styleClass="jfx-button" stylesheets="@../css/style.css" text="Select winner" textFill="WHITESMOKE">
+                                                                       <font>
+                                                                           <Font name="Arial Bold" size="18.0" />
+                                                                       </font>
+                                                                       <cursor>
+                                                                           <Cursor fx:constant="HAND" />
+                                                                       </cursor>
+                                                                       <effect>
+                                                                           <DropShadow height="10.0" radius="4.5" width="10.0" />
+                                                                       </effect>
+                                                                   </Button>
                                                                   <Pane prefHeight="100.0" prefWidth="200.0" />
                                                                </children>
                                                             </VBox>
@@ -884,7 +915,7 @@
                                                       <VBox prefHeight="200.0" prefWidth="100.0">
                                                          <children>
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                            <Label fx:id="timematch5" text="TBA" textFill="WHITE">
+                                                            <Label fx:id="timeMatch5" text="TBA" textFill="WHITE">
                                                                <font>
                                                                   <Font name="Arial" size="20.0" />
                                                                </font>
@@ -897,7 +928,7 @@
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
                                                             <HBox prefHeight="100.0" prefWidth="200.0">
                                                                <children>
-                                                                  <Label fx:id="team1match5" prefHeight="23.0" prefWidth="168.0" text="Team 1" textFill="WHITE">
+                                                                  <Label fx:id="team1match5" prefHeight="23.0" prefWidth="168.0" text="TBD" textFill="WHITE">
                                                                      <font>
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
@@ -907,7 +938,7 @@
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
                                                                   </Label>
-                                                                  <Label fx:id="team2match5" prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
+                                                                  <Label fx:id="team2match5" prefHeight="23.0" prefWidth="168.0" text="TBD" textFill="WHITE">
                                                                      <font>
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
@@ -968,11 +999,17 @@
                                                             <VBox prefHeight="98.0" prefWidth="202.0">
                                                                <children>
                                                                   <Pane prefHeight="100.0" prefWidth="100.0" />
-                                                                  <Button layoutX="10.0" layoutY="46.0" mnemonicParsing="false" onAction="#winnerChosen" prefHeight="26.0" prefWidth="156.0" style="-fx-background-color: #fa8f31;" text="Select winner" textFill="WHITESMOKE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="15.0" />
-                                                                     </font>
-                                                                  </Button>
+                                                                   <Button layoutX="10.0" layoutY="46.0" mnemonicParsing="false" onAction="#winnerChosen" prefHeight="26.0" prefWidth="156.0" styleClass="jfx-button" stylesheets="@../css/style.css" text="Select winner" textFill="WHITESMOKE">
+                                                                       <font>
+                                                                           <Font name="Arial Bold" size="18.0" />
+                                                                       </font>
+                                                                       <cursor>
+                                                                           <Cursor fx:constant="HAND" />
+                                                                       </cursor>
+                                                                       <effect>
+                                                                           <DropShadow height="10.0" radius="4.5" width="10.0" />
+                                                                       </effect>
+                                                                   </Button>
                                                                   <Pane prefHeight="100.0" prefWidth="200.0" />
                                                                </children>
                                                             </VBox>
@@ -986,7 +1023,7 @@
                                                       <VBox prefHeight="200.0" prefWidth="100.0">
                                                          <children>
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                            <Label fx:id="timematch6" text="TBA" textFill="WHITE">
+                                                            <Label fx:id="timeMatch6" text="TBA" textFill="WHITE">
                                                                <font>
                                                                   <Font name="Arial" size="20.0" />
                                                                </font>
@@ -999,7 +1036,7 @@
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
                                                             <HBox prefHeight="100.0" prefWidth="200.0">
                                                                <children>
-                                                                  <Label fx:id="team1match6" prefHeight="23.0" prefWidth="168.0" text="Team 1" textFill="WHITE">
+                                                                  <Label fx:id="team1match6" prefHeight="23.0" prefWidth="168.0" text="TBD" textFill="WHITE">
                                                                      <font>
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
@@ -1009,7 +1046,7 @@
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
                                                                   </Label>
-                                                                  <Label fx:id="team2match6" prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
+                                                                  <Label fx:id="team2match6" prefHeight="23.0" prefWidth="168.0" text="TBD" textFill="WHITE">
                                                                      <font>
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
@@ -1070,11 +1107,17 @@
                                                             <VBox prefHeight="98.0" prefWidth="202.0">
                                                                <children>
                                                                   <Pane prefHeight="100.0" prefWidth="100.0" />
-                                                                  <Button layoutX="10.0" layoutY="46.0" mnemonicParsing="false" onAction="#winnerChosen" prefHeight="26.0" prefWidth="156.0" style="-fx-background-color: #fa8f31;" text="Select winner" textFill="WHITESMOKE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="15.0" />
-                                                                     </font>
-                                                                  </Button>
+                                                                   <Button layoutX="10.0" layoutY="46.0" mnemonicParsing="false" onAction="#winnerChosen" prefHeight="26.0" prefWidth="156.0" styleClass="jfx-button" stylesheets="@../css/style.css" text="Select winner" textFill="WHITESMOKE">
+                                                                       <font>
+                                                                           <Font name="Arial Bold" size="18.0" />
+                                                                       </font>
+                                                                       <cursor>
+                                                                           <Cursor fx:constant="HAND" />
+                                                                       </cursor>
+                                                                       <effect>
+                                                                           <DropShadow height="10.0" radius="4.5" width="10.0" />
+                                                                       </effect>
+                                                                   </Button>
                                                                   <Pane prefHeight="100.0" prefWidth="200.0" />
                                                                </children>
                                                             </VBox>
@@ -1088,7 +1131,7 @@
                                                       <VBox prefHeight="200.0" prefWidth="100.0">
                                                          <children>
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                            <Label fx:id="timematch7" text="TBA" textFill="WHITE">
+                                                            <Label fx:id="timeMatch7" text="TBA" textFill="WHITE">
                                                                <font>
                                                                   <Font name="Arial" size="20.0" />
                                                                </font>
@@ -1101,7 +1144,7 @@
                                                             <Pane prefHeight="200.0" prefWidth="200.0" />
                                                             <HBox prefHeight="100.0" prefWidth="200.0">
                                                                <children>
-                                                                  <Label fx:id="team1match7" prefHeight="23.0" prefWidth="168.0" text="Team 1" textFill="WHITE">
+                                                                  <Label fx:id="team1match7" prefHeight="23.0" prefWidth="168.0" text="TBD" textFill="WHITE">
                                                                      <font>
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
@@ -1111,7 +1154,7 @@
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
                                                                   </Label>
-                                                                  <Label fx:id="team2match7" prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
+                                                                  <Label fx:id="team2match7" prefHeight="23.0" prefWidth="168.0" text="TBD" textFill="WHITE">
                                                                      <font>
                                                                         <Font name="Arial" size="20.0" />
                                                                      </font>
@@ -1172,11 +1215,17 @@
                                                             <VBox prefHeight="98.0" prefWidth="202.0">
                                                                <children>
                                                                   <Pane prefHeight="100.0" prefWidth="100.0" />
-                                                                  <Button layoutX="10.0" layoutY="46.0" mnemonicParsing="false" onAction="#winnerChosen" prefHeight="26.0" prefWidth="156.0" style="-fx-background-color: #fa8f31;" text="Select winner" textFill="WHITESMOKE">
-                                                                     <font>
-                                                                        <Font name="Arial" size="15.0" />
-                                                                     </font>
-                                                                  </Button>
+                                                                   <Button layoutX="10.0" layoutY="46.0" mnemonicParsing="false" onAction="#winnerChosen" prefHeight="26.0" prefWidth="156.0" styleClass="jfx-button" stylesheets="@../css/style.css" text="Select winner" textFill="WHITESMOKE">
+                                                                       <font>
+                                                                           <Font name="Arial Bold" size="18.0" />
+                                                                       </font>
+                                                                       <cursor>
+                                                                           <Cursor fx:constant="HAND" />
+                                                                       </cursor>
+                                                                       <effect>
+                                                                           <DropShadow height="10.0" radius="4.5" width="10.0" />
+                                                                       </effect>
+                                                                   </Button>
                                                                   <Pane prefHeight="100.0" prefWidth="200.0" />
                                                                </children>
                                                             </VBox>

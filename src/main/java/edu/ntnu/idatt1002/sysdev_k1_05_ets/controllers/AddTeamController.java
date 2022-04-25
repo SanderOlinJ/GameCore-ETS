@@ -98,11 +98,11 @@ public class AddTeamController {
         TournamentWriterRework.writeMatchesToTournament(tournament.getTournamentName(), null);
 
         if (tournament.getNumberOfTeams() == 4){
-            ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_4);
+            ViewSwitcher.switchTo(View.BRACKET_4);
         } else if (tournament.getNumberOfTeams() == 8){
-            ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_8);
+            ViewSwitcher.switchTo(View.BRACKET_8);
         } else if (tournament.getNumberOfTeams() == 16){
-            ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_16);
+            ViewSwitcher.switchTo(View.BRACKET_16);
         }
     }
     @FXML
@@ -158,6 +158,10 @@ public class AddTeamController {
         if (abbreviationField.getText().strip().equals("")){
             warningLabel.setText("Team name abbreviation required.");
             throw new IOException("Team name abbreviation required.");
+        }
+        if (abbreviationField.getText().strip().length() > 7){
+            warningLabel.setText("Team name abbreviation cannot be longer than 7 characters");
+            throw new IOException("Team name abbreviation cannot be longer than 7 characters");
         }
         if (playersNameField.getText().isBlank()){
             warningLabel.setText("Team players required.");
@@ -249,14 +253,9 @@ public class AddTeamController {
         playersNameField.setDisable(true);
         overWrite = true;
         continueButton1.setText("Yes");
-
     }
     @FXML
     void onNoButtonClicked(){
-        playersNameField.setText("");
-        teamNameField.setText("");
-        abbreviationField.setText("");
-        warningLabel.setText("");
         noButton.setDisable(true);
         noButton.setVisible(false);
         overWrite = false;

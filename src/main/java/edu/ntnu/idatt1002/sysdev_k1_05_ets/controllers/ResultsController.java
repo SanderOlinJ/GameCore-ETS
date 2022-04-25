@@ -1,5 +1,4 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.GameCoreETSApplication;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TournamentReaderRework;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.scenes.View;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.scenes.ViewSwitcher;
@@ -197,8 +196,8 @@ public class ResultsController {
             matchBox.get(i).setVisible(true);
             matchBox.get(i).setPrefHeight(100);
             times.get(i).setText(String.valueOf(matches.get(i).getTimeOfMatch()));
-            teamOnes.get(i).setText(matches.get(i).getTeam1().getNameOfTeam());
-            teamTwos.get(i).setText(matches.get(i).getTeam2().getNameOfTeam());
+            teamOnes.get(i).setText(matches.get(i).getTeam1().getNameAbbr());
+            teamTwos.get(i).setText(matches.get(i).getTeam2().getNameAbbr());
             teamOnesScore.get(i).setText(String.valueOf(matches.get(i).getMatchScoreTeam1()));
             teamTwosScore.get(i).setText(String.valueOf(matches.get(i).getMatchScoreTeam2()));
             if (matches.get(i).getVictor().getNameOfTeam().equals(teamOnes.get(i).getText())){
@@ -213,25 +212,28 @@ public class ResultsController {
     @FXML
     public void setBracketScene()
     throws IOException {
+        BracketController.setNameOfTournament(nameOfTournament);
         if (tournament.getNumberOfTeams() == 4){
-            ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_4);
+            ViewSwitcher.switchTo(View.BRACKET_4);
         } else if (tournament.getNumberOfTeams() == 8){
-            ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_8);
+            ViewSwitcher.switchTo(View.BRACKET_8);
         } else if (tournament.getNumberOfTeams() == 16){
-            ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_16);
+            ViewSwitcher.switchTo(View.BRACKET_16);
         }
     }
 
     @FXML
     public void setTimeScene()
     throws IOException {
+        SetTimeController.setNameOfTournament(nameOfTournament);
         ViewSwitcher.switchTo(View.SET_TIME);
     }
 
     @FXML
     public void setMatchesScene()
     throws IOException {
-        ViewSwitcher.switchTo(View.TOURNAMENT_MATCHES);
+        MatchesController.setNameOfTournament(nameOfTournament);
+        ViewSwitcher.switchTo(View.MATCHES);
     }
 
     @FXML

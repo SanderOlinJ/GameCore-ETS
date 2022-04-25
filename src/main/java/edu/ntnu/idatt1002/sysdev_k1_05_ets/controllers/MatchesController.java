@@ -1,5 +1,4 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.GameCoreETSApplication;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TournamentReaderRework;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TournamentWriterRework;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.scenes.View;
@@ -10,10 +9,7 @@ import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.utilities.Utilities;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 
@@ -34,14 +30,14 @@ public class MatchesController {
     @FXML HBox match5;
     @FXML HBox match6;
     @FXML HBox match7;
-    @FXML Label timematch;
-    @FXML Label timematch1;
-    @FXML Label timematch2;
-    @FXML Label timematch3;
-    @FXML Label timematch4;
-    @FXML Label timematch5;
-    @FXML Label timematch6;
-    @FXML Label timematch7;
+    @FXML Label timeMatch;
+    @FXML Label timeMatch1;
+    @FXML Label timeMatch2;
+    @FXML Label timeMatch3;
+    @FXML Label timeMatch4;
+    @FXML Label timeMatch5;
+    @FXML Label timeMatch6;
+    @FXML Label timeMatch7;
     @FXML Label team1match;
     @FXML Label team1match1;
     @FXML Label team1match2;
@@ -102,8 +98,8 @@ public class MatchesController {
         Utilities.showGameInfo(tournamentName, nameOfTournament, imageView, tournament, game,
                         host, startDate, startTime, platform, prizePool, entranceFee,
                         prizePoolCurrency, entranceFeeCurrency);
-        timeLabels = new ArrayList<>(Arrays.asList(timematch,timematch1,timematch2,timematch3,timematch4,timematch5,timematch6,
-                timematch7));
+        timeLabels = new ArrayList<>(Arrays.asList(timeMatch, timeMatch1, timeMatch2, timeMatch3, timeMatch4, timeMatch5, timeMatch6,
+                timeMatch7));
 
         tournamentName.setText(nameOfTournament);
         setVisibleMatches();
@@ -119,33 +115,32 @@ public class MatchesController {
                 team2ScoreMatch2, team2ScoreMatch3, team2ScoreMatch4, team2ScoreMatch5, team2ScoreMatch6,
                 team2ScoreMatch7));
 
-        for (int i = 0; i < tournament.getNumberOfUnfinishedMatches(); i++){
-            if (Utilities.areThereAnyOtherCharactersThanNumbers(teamOnesScore.get(i).getText()) ||
-            Utilities.areThereAnyOtherCharactersThanNumbers(teamTwosScore.get(i).getText())){
-                warningLabel.setText("Only numbers allowed in score");
-                throw new IllegalArgumentException("Only numbers allowed in score");
-            }
+        for (int i = 0; i < tournament.getNumberOfUnfinishedMatches(); i++) {
+            if (!teamOnesScore.get(i).getText().isEmpty() || !teamTwosScore.get(i).getText().isEmpty()) {
+                if (Utilities.areThereAnyOtherCharactersThanNumbers(teamOnesScore.get(i).getText()) ||
+                        Utilities.areThereAnyOtherCharactersThanNumbers(teamTwosScore.get(i).getText())) {
+                    warningLabel.setText("Only numbers allowed in score");
+                    throw new IllegalArgumentException("Only numbers allowed in score");
+                } else if (teamOnesScore.get(i).getText().equals(teamTwosScore.get(i).getText())) {
+                    warningLabel.setText("Scores cannot be equal");
+                    throw new IllegalArgumentException("Scores cannot be equal");
+                } else {
+                    tournament.getUnfinishedMatches().remove(i);
+                    Team team1 = tournament.getTeamByName(teamOnes.get(i).getText());
+                    Team team2 = tournament.getTeamByName(teamTwos.get(i).getText());
+                    Match matchWithResults = new Match(team1, team2, Integer.parseInt(teamOnesScore.get(i).getText()),
+                            Integer.parseInt(teamTwosScore.get(i).getText()),
+                            LocalTime.parse(timeLabels.get(i).getText()), true);
 
-            else if (teamOnesScore.get(i).getText().equals(teamTwosScore.get(i).getText())){
-                warningLabel.setText("Scores cannot be equal");
-                throw new IllegalArgumentException("Scores cannot be equal");
-            }
-
-            else if (!(teamOnesScore.get(i).getText().isEmpty()) || !(teamTwosScore.get(i).getText().isEmpty())){
-                Team team1 = tournament.getTeamByName(teamOnes.get(i).getText());
-                Team team2 = tournament.getTeamByName(teamTwos.get(i).getText());
-                Match matchWithResults = new Match(team1, team2, Integer.parseInt(teamOnesScore.get(i).getText()),
-                        Integer.parseInt(teamTwosScore.get(i).getText()),
-                        LocalTime.parse(timeLabels.get(i).getText()), true);
-                matches.get(i).setDisable(true);
-                matches.get(i).setVisible(false);
-                matches.get(i).setPrefHeight(0);
-                try {
-                    TournamentWriterRework.writeMatchesToTournament(nameOfTournament, matchWithResults);
-                } catch (IOException exception) {
-                    exception.printStackTrace();
+                    matches.get(i).setDisable(true);
+                    matches.get(i).setVisible(false);
+                    matches.get(i).setPrefHeight(0);
+                    try {
+                        TournamentWriterRework.writeMatchesToTournament(nameOfTournament, matchWithResults);
+                    } catch (IOException exception) {
+                        exception.printStackTrace();
+                    }
                 }
-                break;
             }
         }
     }
@@ -154,7 +149,7 @@ public class MatchesController {
     public void setResultsScene()
     throws IOException {
         ResultsController.setNameOfTournament(nameOfTournament);
-        ViewSwitcher.switchTo(View.TOURNAMENT_RESULTS);
+        ViewSwitcher.switchTo(View.RESULTS);
     }
 
 
@@ -168,14 +163,14 @@ public class MatchesController {
     @FXML
     public void setBracketScene()
     throws IOException {
+        BracketController.setNameOfTournament(nameOfTournament);
         if (tournament.getNumberOfTeams() == 4){
-            ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_4);
+            ViewSwitcher.switchTo(View.BRACKET_4);
         } else if (tournament.getNumberOfTeams() == 8){
-            ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_8);
+            ViewSwitcher.switchTo(View.BRACKET_8);
         } else if (tournament.getNumberOfTeams() == 16){
-            ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_16);
+            ViewSwitcher.switchTo(View.BRACKET_16);
         }
-
     }
 
     public void setVisibleMatches(){

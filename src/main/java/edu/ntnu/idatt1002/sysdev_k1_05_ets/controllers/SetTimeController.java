@@ -1,5 +1,4 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.GameCoreETSApplication;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.scenes.View;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.scenes.ViewSwitcher;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TeamReader;
@@ -9,7 +8,6 @@ import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Match;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.NewTournament;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.utilities.Utilities;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
@@ -153,20 +151,19 @@ public class SetTimeController {
     public void setResultsScene()
     throws IOException {
         ResultsController.setNameOfTournament(nameOfTournament);
-        ViewSwitcher.switchTo(View.TOURNAMENT_RESULTS);
+        ViewSwitcher.switchTo(View.RESULTS);
     }
-
 
     @FXML
     public void setBracketScene()
     throws IOException {
         BracketController.setNameOfTournament(nameOfTournament);
         if (tournament.getNumberOfTeams() == 4){
-            ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_4);
+            ViewSwitcher.switchTo(View.BRACKET_4);
         } else if (tournament.getNumberOfTeams() == 8){
-            ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_8);
+            ViewSwitcher.switchTo(View.BRACKET_8);
         } else if (tournament.getNumberOfTeams() == 16){
-            ViewSwitcher.switchTo(View.TOURNAMENT_OVERVIEW_16);
+            ViewSwitcher.switchTo(View.BRACKET_16);
         }
     }
 
@@ -174,7 +171,7 @@ public class SetTimeController {
     public void setMatchesScene()
     throws IOException {
         MatchesController.setNameOfTournament(nameOfTournament);
-        ViewSwitcher.switchTo(View.TOURNAMENT_MATCHES);
+        ViewSwitcher.switchTo(View.MATCHES);
     }
 
     @FXML

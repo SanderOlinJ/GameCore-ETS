@@ -28,7 +28,7 @@ public class Team {
         }
         if (nameAbbr == null || nameAbbr.isEmpty()){
             throw new IllegalArgumentException("Team name abbreviation is required");
-        } if (nameAbbr.length() > 6) {
+        } if (nameAbbr.length() > 7) {
             throw new IllegalArgumentException("Team name abbreviation has a max length of 6 characters!");
         }
         this.members = members;
@@ -97,29 +97,6 @@ public class Team {
         return members;
     }
 
-    /**
-     * Returns the members as a string seperated by a comma and a space
-     * @return string of the members
-     */
-    public String getMembersAsText(){
-        return members.toString().replaceAll("\\[|\\]", "").replaceAll(", ",", ");
-    }
-
-    /**
-     * Sets the members
-     * @param members
-     */
-    public void setMembers(ArrayList<String> members) {
-        this.members = members;
-    }
-
-    /**
-     * Adds a list of members to the list of members
-     * @param members list of members
-     */
-    public void addMembers(ArrayList<String> members) {
-        this.members.addAll(members);
-    }
 
     /**
      * Adds a member to the list of members
@@ -137,13 +114,6 @@ public class Team {
         return nameOfTeam;
     }
 
-    /**
-     * Sets the name of the team
-     * @param nameOfTeam team name
-     */
-    public void setNameOfTeam(String nameOfTeam) {
-        this.nameOfTeam = nameOfTeam;
-    }
 
     /**
      * Returns a string with information about the team

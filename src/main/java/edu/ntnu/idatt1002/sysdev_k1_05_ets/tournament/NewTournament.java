@@ -1,7 +1,5 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament;
 
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.utilities.Utilities;
-
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -568,17 +566,6 @@ public class NewTournament {
         }
         return numberOfTeamsLeft;
 
-    }
-
-    /**
-     * Randomly removes a team from teams and returns it
-     * @return team
-     */
-    public Team randomlyRemoveTeam() {
-        Random random = new Random();
-        Team returnTeam = this.getTeams().get(random.nextInt(getTeams().size()));
-        removeTeam(returnTeam);
-        return returnTeam;
     }
 
     /**

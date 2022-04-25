@@ -1,8 +1,7 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament;
 
-import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.ArrayList;
+
 
 /**
  * Class for describing a match between two teams taking part in the tournament

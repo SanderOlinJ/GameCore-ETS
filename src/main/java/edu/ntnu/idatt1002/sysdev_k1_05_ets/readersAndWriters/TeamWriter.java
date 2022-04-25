@@ -1,9 +1,6 @@
-
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters;
 
-
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
-
 import java.io.*;
 import java.util.ArrayList;
 
@@ -12,7 +9,6 @@ public class TeamWriter {
     private static final String DELIMITER = ",";
 
     public TeamWriter(){}
-
 
     public static void writeTeamsToFileAndOverwriteIfChanges(Team team)
     throws IOException{

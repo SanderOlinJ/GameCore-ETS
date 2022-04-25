@@ -1,16 +1,12 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters;
 
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Match;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
-
 import java.io.IOException;
-import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
 public class MatchReader {
     private static final String COMMA_DELIMITER = ",";
-    private static final String SCORE_DELIMITER = "-";
 
     public MatchReader() {
     }

@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class GeneralReader {
-    private final String DELIMITER = "\n";
 
     public static ArrayList<String> readFile(File file) throws IOException {
         ArrayList<String> returnList = new ArrayList<>();

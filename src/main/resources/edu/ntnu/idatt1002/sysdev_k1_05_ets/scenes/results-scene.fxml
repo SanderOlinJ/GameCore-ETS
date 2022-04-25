@@ -65,7 +65,7 @@
                         <Pane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: black;" HBox.hgrow="ALWAYS" />
                         <ScrollPane hbarPolicy="NEVER" maxWidth="1800.0" prefHeight="1263.0" prefWidth="1200.0" stylesheets="@../css/style.css">
                             <content>
-                                <VBox prefHeight="1145.0" prefWidth="1184.0" style="-fx-background-color: #13161d;">
+                                <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="2069.0" prefWidth="1184.0" style="-fx-background-color: #13161d;">
                                     <children>
                               <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="1184.0" style="-fx-background-color: #13161d;">
                                  <children>
@@ -337,7 +337,7 @@
                                                 <Insets bottom="5.0" top="15.0" />
                                             </VBox.margin>
                                         </HBox>
-                                        <VBox maxHeight="727.0" prefHeight="565.0" prefWidth="1200.0">
+                                        <VBox maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="302.0" prefWidth="1184.0">
                                             <children>
                                                 <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="1184.0">
                                                     <children>
@@ -357,10 +357,10 @@
                                                         <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="43.0" />
                                                     </children>
                                                 </HBox>
-                                                <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1098.0">
+                                                <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="1184.0" VBox.vgrow="NEVER">
                                                     <children>
                                                         <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="0.0" prefWidth="43.0" />
-                                                        <VBox fx:id="resultBox" children="" minHeight="-Infinity" minWidth="-Infinity" prefHeight="340.0" prefWidth="1098.0" style="-fx-background-color: #2e3e4e;">
+                                                        <VBox fx:id="resultBox" children="" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="1500.0" prefWidth="1098.0" style="-fx-background-color: #2e3e4e;" HBox.hgrow="NEVER">
                                              <children>
                                                 <HBox fx:id="match" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
                                                    <children>
@@ -385,7 +385,7 @@
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                         <ImageView fx:id="team1WinnerMatch" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                                                            <image>
-                                                                              <Image url="@../Images/winner-pokal.png" />
+                                                                              <Image url="@../Images/trophy.png" />
                                                                            </image></ImageView>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                      </children>
@@ -397,7 +397,7 @@
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                   <HBox prefHeight="46.0" prefWidth="638.0">
                                                                      <children>
-                                                                        <Label fx:id="team1match" prefHeight="23.0" prefWidth="94.0" text="Team 1" textFill="WHITE">
+                                                                        <Label fx:id="team1match" prefHeight="23.0" prefWidth="94.0" text="TBD" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
@@ -417,7 +417,7 @@
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
                                                                         </Label>
-                                                                        <Label fx:id="team2match" prefHeight="23.0" prefWidth="94.0" text="Team 2" textFill="WHITE">
+                                                                        <Label fx:id="team2match" prefHeight="23.0" prefWidth="94.0" text="TBD" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
@@ -435,7 +435,7 @@
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                   <ImageView fx:id="team2WinnerMatch" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                                                      <image>
-                                                                        <Image url="@../Images/winner-pokal.png" />
+                                                                        <Image url="@../Images/trophy.png" />
                                                                      </image></ImageView>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                </children>
@@ -468,7 +468,7 @@
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                         <ImageView fx:id="team1WinnerMatch1" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                                                            <image>
-                                                                              <Image url="@../Images/winner-pokal.png" />
+                                                                              <Image url="@../Images/trophy.png" />
                                                                            </image>
                                                                         </ImageView>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -481,7 +481,7 @@
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                   <HBox prefHeight="46.0" prefWidth="638.0">
                                                                      <children>
-                                                                        <Label fx:id="team1match1" prefHeight="23.0" prefWidth="94.0" text="Team 1" textFill="WHITE">
+                                                                        <Label fx:id="team1match1" prefHeight="23.0" prefWidth="94.0" text="TBD" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
@@ -501,7 +501,7 @@
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
                                                                         </Label>
-                                                                        <Label fx:id="team2match1" prefHeight="23.0" prefWidth="94.0" text="Team 2" textFill="WHITE">
+                                                                        <Label fx:id="team2match1" prefHeight="23.0" prefWidth="94.0" text="TBD" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
@@ -519,7 +519,7 @@
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                   <ImageView fx:id="team2WinnerMatch1" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                                                      <image>
-                                                                        <Image url="@../Images/winner-pokal.png" />
+                                                                        <Image url="@../Images/trophy.png" />
                                                                      </image>
                                                                   </ImageView>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -553,7 +553,7 @@
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                         <ImageView fx:id="team1WinnerMatch2" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                                                            <image>
-                                                                              <Image url="@../Images/winner-pokal.png" />
+                                                                              <Image url="@../Images/trophy.png" />
                                                                            </image>
                                                                         </ImageView>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -566,7 +566,7 @@
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                   <HBox prefHeight="46.0" prefWidth="638.0">
                                                                      <children>
-                                                                        <Label fx:id="team1match2" prefHeight="23.0" prefWidth="94.0" text="Team 1" textFill="WHITE">
+                                                                        <Label fx:id="team1match2" prefHeight="23.0" prefWidth="94.0" text="TBD" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
@@ -586,7 +586,7 @@
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
                                                                         </Label>
-                                                                        <Label fx:id="team2match2" prefHeight="23.0" prefWidth="94.0" text="Team 2" textFill="WHITE">
+                                                                        <Label fx:id="team2match2" prefHeight="23.0" prefWidth="94.0" text="TBD" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
@@ -604,7 +604,7 @@
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                   <ImageView fx:id="team2WinnerMatch2" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                                                      <image>
-                                                                        <Image url="@../Images/winner-pokal.png" />
+                                                                        <Image url="@../Images/trophy.png" />
                                                                      </image>
                                                                   </ImageView>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -638,7 +638,7 @@
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                         <ImageView fx:id="team1WinnerMatch3" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                                                            <image>
-                                                                              <Image url="@../Images/winner-pokal.png" />
+                                                                              <Image url="@../Images/trophy.png" />
                                                                            </image>
                                                                         </ImageView>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -651,7 +651,7 @@
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                   <HBox prefHeight="46.0" prefWidth="638.0">
                                                                      <children>
-                                                                        <Label fx:id="team1match3" prefHeight="23.0" prefWidth="94.0" text="Team 1" textFill="WHITE">
+                                                                        <Label fx:id="team1match3" prefHeight="23.0" prefWidth="94.0" text="TBD" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
@@ -671,7 +671,7 @@
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
                                                                         </Label>
-                                                                        <Label fx:id="team2match3" prefHeight="23.0" prefWidth="94.0" text="Team 2" textFill="WHITE">
+                                                                        <Label fx:id="team2match3" prefHeight="23.0" prefWidth="94.0" text="TBD" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
@@ -689,7 +689,7 @@
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                   <ImageView fx:id="team2WinnerMatch3" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                                                      <image>
-                                                                        <Image url="@../Images/winner-pokal.png" />
+                                                                        <Image url="@../Images/trophy.png" />
                                                                      </image>
                                                                   </ImageView>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -723,7 +723,7 @@
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                         <ImageView fx:id="team1WinnerMatch4" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                                                            <image>
-                                                                              <Image url="@../Images/winner-pokal.png" />
+                                                                              <Image url="@../Images/trophy.png" />
                                                                            </image>
                                                                         </ImageView>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -736,7 +736,7 @@
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                   <HBox prefHeight="46.0" prefWidth="638.0">
                                                                      <children>
-                                                                        <Label fx:id="team1match4" prefHeight="23.0" prefWidth="94.0" text="Team 1" textFill="WHITE">
+                                                                        <Label fx:id="team1match4" prefHeight="23.0" prefWidth="94.0" text="TBD" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
@@ -756,7 +756,7 @@
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
                                                                         </Label>
-                                                                        <Label fx:id="team2match4" prefHeight="23.0" prefWidth="94.0" text="Team 2" textFill="WHITE">
+                                                                        <Label fx:id="team2match4" prefHeight="23.0" prefWidth="94.0" text="TBD" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
@@ -774,7 +774,7 @@
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                   <ImageView fx:id="team2WinnerMatch4" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                                                      <image>
-                                                                        <Image url="@../Images/winner-pokal.png" />
+                                                                        <Image url="@../Images/trophy.png" />
                                                                      </image>
                                                                   </ImageView>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -808,7 +808,7 @@
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                         <ImageView fx:id="team1WinnerMatch5" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                                                            <image>
-                                                                              <Image url="@../Images/winner-pokal.png" />
+                                                                              <Image url="@../Images/trophy.png" />
                                                                            </image>
                                                                         </ImageView>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -821,7 +821,7 @@
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                   <HBox prefHeight="46.0" prefWidth="638.0">
                                                                      <children>
-                                                                        <Label fx:id="team1match5" prefHeight="23.0" prefWidth="94.0" text="Team 1" textFill="WHITE">
+                                                                        <Label fx:id="team1match5" prefHeight="23.0" prefWidth="94.0" text="TBD" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
@@ -841,7 +841,7 @@
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
                                                                         </Label>
-                                                                        <Label fx:id="team2match5" prefHeight="23.0" prefWidth="94.0" text="Team 2" textFill="WHITE">
+                                                                        <Label fx:id="team2match5" prefHeight="23.0" prefWidth="94.0" text="TBD" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
@@ -859,7 +859,7 @@
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                   <ImageView fx:id="team2WinnerMatch5" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                                                      <image>
-                                                                        <Image url="@../Images/winner-pokal.png" />
+                                                                        <Image url="@../Images/trophy.png" />
                                                                      </image>
                                                                   </ImageView>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -893,7 +893,7 @@
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                         <ImageView fx:id="team1WinnerMatch6" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                                                            <image>
-                                                                              <Image url="@../Images/winner-pokal.png" />
+                                                                              <Image url="@../Images/trophy.png" />
                                                                            </image>
                                                                         </ImageView>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -906,7 +906,7 @@
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                   <HBox prefHeight="46.0" prefWidth="638.0">
                                                                      <children>
-                                                                        <Label fx:id="team1match6" prefHeight="23.0" prefWidth="94.0" text="Team 1" textFill="WHITE">
+                                                                        <Label fx:id="team1match6" prefHeight="23.0" prefWidth="94.0" text="TBD" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
@@ -926,7 +926,7 @@
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
                                                                         </Label>
-                                                                        <Label fx:id="team2match6" prefHeight="23.0" prefWidth="94.0" text="Team 2" textFill="WHITE">
+                                                                        <Label fx:id="team2match6" prefHeight="23.0" prefWidth="94.0" text="TBD" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
@@ -944,7 +944,7 @@
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                   <ImageView fx:id="team2WinnerMatch6" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                                                      <image>
-                                                                        <Image url="@../Images/winner-pokal.png" />
+                                                                        <Image url="@../Images/trophy.png" />
                                                                      </image>
                                                                   </ImageView>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -978,7 +978,7 @@
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                         <ImageView fx:id="team1WinnerMatch7" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                                                            <image>
-                                                                              <Image url="@../Images/winner-pokal.png" />
+                                                                              <Image url="@../Images/trophy.png" />
                                                                            </image>
                                                                         </ImageView>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -991,7 +991,7 @@
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                   <HBox prefHeight="46.0" prefWidth="638.0">
                                                                      <children>
-                                                                        <Label fx:id="team1match7" prefHeight="23.0" prefWidth="94.0" text="Team 1" textFill="WHITE">
+                                                                        <Label fx:id="team1match7" prefHeight="23.0" prefWidth="94.0" text="TBD" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
@@ -1011,7 +1011,7 @@
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
                                                                         </Label>
-                                                                        <Label fx:id="team2match7" prefHeight="23.0" prefWidth="94.0" text="Team 2" textFill="WHITE">
+                                                                        <Label fx:id="team2match7" prefHeight="23.0" prefWidth="94.0" text="TBD" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
@@ -1029,7 +1029,7 @@
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                   <ImageView fx:id="team2WinnerMatch7" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                                                      <image>
-                                                                        <Image url="@../Images/winner-pokal.png" />
+                                                                        <Image url="@../Images/trophy.png" />
                                                                      </image>
                                                                   </ImageView>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -1063,7 +1063,7 @@
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                         <ImageView fx:id="team1WinnerMatch8" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                                                            <image>
-                                                                              <Image url="@../Images/winner-pokal.png" />
+                                                                              <Image url="@../Images/trophy.png" />
                                                                            </image>
                                                                         </ImageView>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -1076,7 +1076,7 @@
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                   <HBox prefHeight="46.0" prefWidth="638.0">
                                                                      <children>
-                                                                        <Label fx:id="team1match8" prefHeight="23.0" prefWidth="94.0" text="Team 1" textFill="WHITE">
+                                                                        <Label fx:id="team1match8" prefHeight="23.0" prefWidth="94.0" text="TBD" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
@@ -1096,7 +1096,7 @@
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
                                                                         </Label>
-                                                                        <Label fx:id="team2match8" prefHeight="23.0" prefWidth="94.0" text="Team 2" textFill="WHITE">
+                                                                        <Label fx:id="team2match8" prefHeight="23.0" prefWidth="94.0" text="TBD" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
@@ -1114,7 +1114,7 @@
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                   <ImageView fx:id="team2WinnerMatch8" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                                                      <image>
-                                                                        <Image url="@../Images/winner-pokal.png" />
+                                                                        <Image url="@../Images/trophy.png" />
                                                                      </image>
                                                                   </ImageView>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -1148,7 +1148,7 @@
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                         <ImageView fx:id="team1WinnerMatch9" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                                                            <image>
-                                                                              <Image url="@../Images/winner-pokal.png" />
+                                                                              <Image url="@../Images/trophy.png" />
                                                                            </image>
                                                                         </ImageView>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -1161,7 +1161,7 @@
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                   <HBox prefHeight="46.0" prefWidth="638.0">
                                                                      <children>
-                                                                        <Label fx:id="team1match9" prefHeight="23.0" prefWidth="94.0" text="Team 1" textFill="WHITE">
+                                                                        <Label fx:id="team1match9" prefHeight="23.0" prefWidth="94.0" text="TBD" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
@@ -1181,7 +1181,7 @@
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
                                                                         </Label>
-                                                                        <Label fx:id="team2match9" prefHeight="23.0" prefWidth="94.0" text="Team 2" textFill="WHITE">
+                                                                        <Label fx:id="team2match9" prefHeight="23.0" prefWidth="94.0" text="TBD" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
@@ -1199,7 +1199,7 @@
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                   <ImageView fx:id="team2WinnerMatch9" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                                                      <image>
-                                                                        <Image url="@../Images/winner-pokal.png" />
+                                                                        <Image url="@../Images/trophy.png" />
                                                                      </image>
                                                                   </ImageView>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -1233,7 +1233,7 @@
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                         <ImageView fx:id="team1WinnerMatch10" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                                                            <image>
-                                                                              <Image url="@../Images/winner-pokal.png" />
+                                                                              <Image url="@../Images/trophy.png" />
                                                                            </image>
                                                                         </ImageView>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -1246,7 +1246,7 @@
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                   <HBox prefHeight="46.0" prefWidth="638.0">
                                                                      <children>
-                                                                        <Label fx:id="team1match10" prefHeight="23.0" prefWidth="94.0" text="Team 1" textFill="WHITE">
+                                                                        <Label fx:id="team1match10" prefHeight="23.0" prefWidth="94.0" text="TBD" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
@@ -1266,7 +1266,7 @@
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
                                                                         </Label>
-                                                                        <Label fx:id="team2match10" prefHeight="23.0" prefWidth="94.0" text="Team 2" textFill="WHITE">
+                                                                        <Label fx:id="team2match10" prefHeight="23.0" prefWidth="94.0" text="TBD" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
@@ -1284,7 +1284,7 @@
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                   <ImageView fx:id="team2WinnerMatch10" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                                                      <image>
-                                                                        <Image url="@../Images/winner-pokal.png" />
+                                                                        <Image url="@../Images/trophy.png" />
                                                                      </image>
                                                                   </ImageView>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -1318,7 +1318,7 @@
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                         <ImageView fx:id="team1WinnerMatch11" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                                                            <image>
-                                                                              <Image url="@../Images/winner-pokal.png" />
+                                                                              <Image url="@../Images/trophy.png" />
                                                                            </image>
                                                                         </ImageView>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -1331,7 +1331,7 @@
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                   <HBox prefHeight="46.0" prefWidth="638.0">
                                                                      <children>
-                                                                        <Label fx:id="team1match11" prefHeight="23.0" prefWidth="94.0" text="Team 1" textFill="WHITE">
+                                                                        <Label fx:id="team1match11" prefHeight="23.0" prefWidth="94.0" text="TBD" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
@@ -1351,7 +1351,7 @@
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
                                                                         </Label>
-                                                                        <Label fx:id="team2match11" prefHeight="23.0" prefWidth="94.0" text="Team 2" textFill="WHITE">
+                                                                        <Label fx:id="team2match11" prefHeight="23.0" prefWidth="94.0" text="TBD" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
@@ -1369,7 +1369,7 @@
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                   <ImageView fx:id="team2WinnerMatch11" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                                                      <image>
-                                                                        <Image url="@../Images/winner-pokal.png" />
+                                                                        <Image url="@../Images/trophy.png" />
                                                                      </image>
                                                                   </ImageView>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -1403,7 +1403,7 @@
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                         <ImageView fx:id="team1WinnerMatch12" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                                                            <image>
-                                                                              <Image url="@../Images/winner-pokal.png" />
+                                                                              <Image url="@../Images/trophy.png" />
                                                                            </image>
                                                                         </ImageView>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -1416,7 +1416,7 @@
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                   <HBox prefHeight="46.0" prefWidth="638.0">
                                                                      <children>
-                                                                        <Label fx:id="team1match12" prefHeight="23.0" prefWidth="94.0" text="Team 1" textFill="WHITE">
+                                                                        <Label fx:id="team1match12" prefHeight="23.0" prefWidth="94.0" text="TBD" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
@@ -1436,7 +1436,7 @@
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
                                                                         </Label>
-                                                                        <Label fx:id="team2match12" prefHeight="23.0" prefWidth="94.0" text="Team 2" textFill="WHITE">
+                                                                        <Label fx:id="team2match12" prefHeight="23.0" prefWidth="94.0" text="TBD" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
@@ -1454,7 +1454,7 @@
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                   <ImageView fx:id="team2WinnerMatch12" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                                                      <image>
-                                                                        <Image url="@../Images/winner-pokal.png" />
+                                                                        <Image url="@../Images/trophy.png" />
                                                                      </image>
                                                                   </ImageView>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -1488,7 +1488,7 @@
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                         <ImageView fx:id="team1WinnerMatch13" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                                                            <image>
-                                                                              <Image url="@../Images/winner-pokal.png" />
+                                                                              <Image url="@../Images/trophy.png" />
                                                                            </image>
                                                                         </ImageView>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -1501,7 +1501,7 @@
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                   <HBox prefHeight="46.0" prefWidth="638.0">
                                                                      <children>
-                                                                        <Label fx:id="team1match13" prefHeight="23.0" prefWidth="94.0" text="Team 1" textFill="WHITE">
+                                                                        <Label fx:id="team1match13" prefHeight="23.0" prefWidth="94.0" text="TBD" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
@@ -1521,7 +1521,7 @@
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
                                                                         </Label>
-                                                                        <Label fx:id="team2match13" prefHeight="23.0" prefWidth="94.0" text="Team 2" textFill="WHITE">
+                                                                        <Label fx:id="team2match13" prefHeight="23.0" prefWidth="94.0" text="TBD" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
@@ -1539,7 +1539,7 @@
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                   <ImageView fx:id="team2WinnerMatch13" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                                                      <image>
-                                                                        <Image url="@../Images/winner-pokal.png" />
+                                                                        <Image url="@../Images/trophy.png" />
                                                                      </image>
                                                                   </ImageView>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -1573,7 +1573,7 @@
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                         <ImageView fx:id="team1WinnerMatch14" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                                                            <image>
-                                                                              <Image url="@../Images/winner-pokal.png" />
+                                                                              <Image url="@../Images/trophy.png" />
                                                                            </image>
                                                                         </ImageView>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -1586,7 +1586,7 @@
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                   <HBox prefHeight="46.0" prefWidth="638.0">
                                                                      <children>
-                                                                        <Label fx:id="team1match14" prefHeight="23.0" prefWidth="94.0" text="Team 1" textFill="WHITE">
+                                                                        <Label fx:id="team1match14" prefHeight="23.0" prefWidth="94.0" text="TBD" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
@@ -1606,7 +1606,7 @@
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
                                                                         </Label>
-                                                                        <Label fx:id="team2match14" prefHeight="23.0" prefWidth="94.0" text="Team 2" textFill="WHITE">
+                                                                        <Label fx:id="team2match14" prefHeight="23.0" prefWidth="94.0" text="TBD" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="20.0" />
                                                                            </font>
@@ -1624,7 +1624,7 @@
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                   <ImageView fx:id="team2WinnerMatch14" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                                                      <image>
-                                                                        <Image url="@../Images/winner-pokal.png" />
+                                                                        <Image url="@../Images/trophy.png" />
                                                                      </image>
                                                                   </ImageView>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
