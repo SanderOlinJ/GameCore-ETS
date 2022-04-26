@@ -1,4 +1,5 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
+
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.scenes.View;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.scenes.ViewSwitcher;
 import javafx.fxml.FXML;

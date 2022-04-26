@@ -13,20 +13,23 @@ public class TeamWriter {
     public static void writeTeamsToFileAndOverwriteIfChanges(Team team)
     throws IOException{
         ArrayList<Team> teams = TeamReader.readTeamsFromAllTeamsFile();
-        for (Team teamInFile : teams){
-            int index = teams.indexOf(teamInFile);
-            if (teamInFile.getNameOfTeam().equals(team.getNameOfTeam())){
-                teams.set(index, team);
+        int index = -1;
+        for (int i = 0; i < teams.size(); i++){
+            if (teams.get(i).getNameOfTeam().equals(team.getNameOfTeam())){
+                index = i;
+                break;
+            } else if (teams.get(i).getNameAbbr().equals(team.getNameAbbr())){
+                index = i;
+                break;
+            } else if (teams.get(i).getMembers().equals(team.getMembers())){
+                index = i;
                 break;
             }
-            else if (teamInFile.getNameAbbr().equals(team.getNameAbbr())){
-                teams.set(index, team);
-                break;
-            }
-            else if (teamInFile.getMembers().equals(team.getMembers())){
-                teams.set(index, team);
-                break;
-            }
+        }
+        if (index != -1){
+            teams.set(index, team);
+        } else {
+            teams.add(team);
         }
 
         try (FileWriter fileWriter = new FileWriter("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +

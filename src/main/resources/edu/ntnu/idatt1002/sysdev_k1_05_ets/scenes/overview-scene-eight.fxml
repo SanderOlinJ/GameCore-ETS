@@ -367,14 +367,14 @@
                                                    <children>
                                                       <ImageView fx:id="bracketImage" fitHeight="652.0" fitWidth="1098.0" pickOnBounds="true" preserveRatio="true">
                                                          <image>
-                                                            <Image url="@../Images/bracketFormats/8.png" />
+                                                            <Image url="@../Images/bracketFormats/Eight_Team_Bracket.png" />
                                                          </image>
                                                       </ImageView>
                                                    </children>
                                                 </HBox>
                                                 <Label fx:id="team9" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="86.0" text="Team2" textFill="WHITE">
                                                    <StackPane.margin>
-                                                      <Insets bottom="85.0" left="5.0" right="875.0" />
+                                                      <Insets bottom="110.0" right="867.0" />
                                                    </StackPane.margin>
                                                    <font>
                                                       <Font name="Arial Bold" size="15.0" />
@@ -385,7 +385,7 @@
                                                       <Font name="Arial Bold" size="15.0" />
                                                    </font>
                                                    <StackPane.margin>
-                                                      <Insets right="870.0" top="85.0" />
+                                                      <Insets right="867.0" top="107.0" />
                                                    </StackPane.margin>
                                                 </Label>
                                                 <Label fx:id="team11" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="86.0" text="Team4" textFill="WHITE">
@@ -393,7 +393,7 @@
                                                       <Font name="Arial Bold" size="15.0" />
                                                    </font>
                                                    <StackPane.margin>
-                                                      <Insets right="870.0" top="340.0" />
+                                                      <Insets right="867.0" top="267.0" />
                                                    </StackPane.margin>
                                                 </Label>
                                                 <Label fx:id="team8" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="86.0" text="Team1" textFill="WHITE">
@@ -401,7 +401,7 @@
                                                       <Font name="Arial Bold" size="15.0" />
                                                    </font>
                                                    <StackPane.margin>
-                                                      <Insets bottom="345.0" right="870.0" />
+                                                      <Insets bottom="270.0" right="867.0" />
                                                    </StackPane.margin>
                                                 </Label>
                                                 <Label fx:id="team13" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="86.0" text="Team6" textFill="WHITE">
@@ -409,7 +409,7 @@
                                                       <Font name="Arial Bold" size="15.0" />
                                                    </font>
                                                    <StackPane.margin>
-                                                      <Insets bottom="87.0" left="875.0" />
+                                                      <Insets bottom="110.0" left="863.0" />
                                                    </StackPane.margin>
                                                 </Label>
                                                 <Label fx:id="team14" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="86.0" text="Team7" textFill="WHITE">
@@ -417,7 +417,7 @@
                                                       <Font name="Arial Bold" size="15.0" />
                                                    </font>
                                                    <StackPane.margin>
-                                                      <Insets left="875.0" top="83.0" />
+                                                      <Insets left="863.0" top="108.0" />
                                                    </StackPane.margin>
                                                 </Label>
                                                 <Label fx:id="team15" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="86.0" text="Team8" textFill="WHITE">
@@ -425,7 +425,7 @@
                                                       <Font name="Arial Bold" size="15.0" />
                                                    </font>
                                                    <StackPane.margin>
-                                                      <Insets left="875.0" top="338.0" />
+                                                      <Insets left="863.0" top="268.0" />
                                                    </StackPane.margin>
                                                 </Label>
                                                 <Label fx:id="team12" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="86.0" text="Team5" textFill="WHITE">
@@ -433,7 +433,7 @@
                                                       <Font name="Arial Bold" size="15.0" />
                                                    </font>
                                                    <StackPane.margin>
-                                                      <Insets bottom="345.0" left="875.0" />
+                                                      <Insets bottom="270.0" left="863.0" />
                                                    </StackPane.margin>
                                                 </Label>
                                                 <Label fx:id="team5" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="86.0" text="?" textFill="WHITE">
@@ -441,7 +441,7 @@
                                                       <Font name="Arial Bold" size="15.0" />
                                                    </font>
                                                    <StackPane.margin>
-                                                      <Insets right="603.0" top="208.0" />
+                                                      <Insets right="593.0" top="187.0" />
                                                    </StackPane.margin>
                                                 </Label>
                                                 <Label fx:id="team4" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="86.0" text="?" textFill="WHITE">
@@ -449,7 +449,7 @@
                                                       <Font name="Arial Bold" size="15.0" />
                                                    </font>
                                                    <StackPane.margin>
-                                                      <Insets bottom="215.0" right="603.0" />
+                                                      <Insets bottom="193.0" right="592.0" />
                                                    </StackPane.margin>
                                                 </Label>
                                                 <Label fx:id="team6" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="86.0" text="?" textFill="WHITE">
@@ -457,7 +457,7 @@
                                                       <Font name="Arial Bold" size="15.0" />
                                                    </font>
                                                    <StackPane.margin>
-                                                      <Insets bottom="215.0" left="606.0" />
+                                                      <Insets bottom="192.0" left="593.0" />
                                                    </StackPane.margin>
                                                 </Label>
                                                 <Label fx:id="team7" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="86.0" text="?" textFill="WHITE">
@@ -465,7 +465,7 @@
                                                       <Font name="Arial Bold" size="15.0" />
                                                    </font>
                                                    <StackPane.margin>
-                                                      <Insets left="606.0" top="208.0" />
+                                                      <Insets left="593.0" top="187.0" />
                                                    </StackPane.margin>
                                                 </Label>
                                                 <Label fx:id="team2" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="86.0" text="?" textFill="WHITE">
@@ -473,7 +473,7 @@
                                                       <Font name="Arial Bold" size="15.0" />
                                                    </font>
                                                    <StackPane.margin>
-                                                      <Insets bottom="2.0" right="246.0" />
+                                                      <Insets right="246.0" top="1.0" />
                                                    </StackPane.margin>
                                                 </Label>
                                                 <Label fx:id="team3" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="86.0" text="?" textFill="WHITE">
@@ -481,7 +481,7 @@
                                                       <Font name="Arial Bold" size="15.0" />
                                                    </font>
                                                    <StackPane.margin>
-                                                      <Insets bottom="2.0" left="246.0" />
+                                                      <Insets left="243.0" top="1.0" />
                                                    </StackPane.margin>
                                                 </Label>
                                                 <Label fx:id="team1" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="246.0" textFill="WHITE">
@@ -489,7 +489,7 @@
                                                       <Font name="Arial Bold" size="30.0" />
                                                    </font>
                                                    <StackPane.margin>
-                                                      <Insets bottom="150.0" />
+                                                      <Insets bottom="180.0" />
                                                    </StackPane.margin>
                                                 </Label>
                                              </children>
