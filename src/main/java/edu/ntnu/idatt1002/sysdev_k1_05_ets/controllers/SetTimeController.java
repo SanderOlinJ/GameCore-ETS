@@ -14,7 +14,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 import javafx.util.Callback;
-
 import java.io.IOException;
 import java.time.LocalTime;
 import java.util.*;
@@ -130,12 +129,7 @@ public class SetTimeController {
                 host, startDate, startTime, platform, prizePool, entranceFee,
                 prizePoolCurrency, entranceFeeCurrency);
 
-        hourBoxes = new ArrayList<>(Arrays.asList(hoursMatch, hoursMatch1, hoursMatch2, hoursMatch3, hoursMatch4,
-                hoursMatch5, hoursMatch6, hoursMatch7, hoursMatch8, hoursMatch9, hoursMatch10, hoursMatch11,
-                minutesMatch12, minutesMatch13, minutesMatch14));
-        minuteBoxes = new ArrayList<>(Arrays.asList(minutesMatch,minutesMatch1,minutesMatch2,minutesMatch3,minutesMatch4
-                ,minutesMatch5,minutesMatch6,minutesMatch7,minutesMatch8,minutesMatch9,minutesMatch10,minutesMatch11,
-                minutesMatch12,minutesMatch13,hoursMatch14));
+        initializeLists();
 
         for (ComboBox box : hourBoxes){
             setHoursToBox(box);
@@ -247,16 +241,8 @@ public class SetTimeController {
 
 
     public void setVisibleMatches(){
-        int nrOfMatchesNoTimeSet = tournament.getNumberOfMatchesWithNoTimeSet();
-        matches = new ArrayList<>(Arrays.asList(match,match1,match2,match3,match4,match5,match6,
-                match7,match8,match9,match10,match11,match12,match13,match14));
-        teamOnes = new ArrayList<>(Arrays.asList(team1match,team1match1,team1match2,team1match3,
-                team1match4,team1match5,team1match6,team1match7,team1match8,team1match9,team1match10,team1match11,
-                team1match12,team1match13,team1match14));
-        teamTwos = new ArrayList<>(Arrays.asList(team2match,team2match1,team2match2,team2match3,
-                team2match4,team2match5,team2match6,team2match7,team2match8,team2match9,team2match10,team2match11,
-                team2match12,team2match13,team2match14));
 
+        int nrOfMatchesNoTimeSet = tournament.getNumberOfMatchesWithNoTimeSet();
         for (int i = 0; i < nrOfMatchesNoTimeSet; i++) {
             if (tournament.getMatchesWithNoTimeSet().get(i).getTeam1() != null &&
                     tournament.getMatchesWithNoTimeSet().get(i).getTeam2() != null){
@@ -326,5 +312,23 @@ public class SetTimeController {
     void onPreviousTournamentsButtonPressed()
     throws IOException {
         ViewSwitcher.switchTo(View.PREVIOUS_OVERVIEW);
+    }
+
+    private void initializeLists(){
+
+        hourBoxes = new ArrayList<>(Arrays.asList(hoursMatch, hoursMatch1, hoursMatch2, hoursMatch3, hoursMatch4,
+                hoursMatch5, hoursMatch6, hoursMatch7, hoursMatch8, hoursMatch9, hoursMatch10, hoursMatch11,
+                minutesMatch12, minutesMatch13, minutesMatch14));
+        minuteBoxes = new ArrayList<>(Arrays.asList(minutesMatch,minutesMatch1,minutesMatch2,minutesMatch3,minutesMatch4
+                ,minutesMatch5,minutesMatch6,minutesMatch7,minutesMatch8,minutesMatch9,minutesMatch10,minutesMatch11,
+                minutesMatch12,minutesMatch13,hoursMatch14));
+        matches = new ArrayList<>(Arrays.asList(match,match1,match2,match3,match4,match5,match6,
+                match7,match8,match9,match10,match11,match12,match13,match14));
+        teamOnes = new ArrayList<>(Arrays.asList(team1match,team1match1,team1match2,team1match3,
+                team1match4,team1match5,team1match6,team1match7,team1match8,team1match9,team1match10,team1match11,
+                team1match12,team1match13,team1match14));
+        teamTwos = new ArrayList<>(Arrays.asList(team2match,team2match1,team2match2,team2match3,
+                team2match4,team2match5,team2match6,team2match7,team2match8,team2match9,team2match10,team2match11,
+                team2match12,team2match13,team2match14));
     }
 }

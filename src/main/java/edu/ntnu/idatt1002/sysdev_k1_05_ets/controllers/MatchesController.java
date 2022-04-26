@@ -105,6 +105,8 @@ public class MatchesController {
     private ArrayList<Label> teamTwos;
     private ArrayList<Label> scoreTeam1;
     private ArrayList<Label> scoreTeam2;
+    private ArrayList<TextField> teamOnesScore;
+    private ArrayList<TextField> teamTwosScore;
 
     @FXML
     protected void initialize(){
@@ -116,19 +118,8 @@ public class MatchesController {
         Utilities.showGameInfo(tournamentName, nameOfTournament, imageView, tournament, game,
                         host, startDate, startTime, platform, prizePool, entranceFee,
                         prizePoolCurrency, entranceFeeCurrency);
-        timeLabels = new ArrayList<>(Arrays.asList(timeMatch, timeMatch1, timeMatch2, timeMatch3, timeMatch4, timeMatch5, timeMatch6,
-                timeMatch7));
-        matches = new ArrayList<>(Arrays.asList(match, match1, match2, match3, match4, match5, match6,
-                match7));
-        teamOnes = new ArrayList<>(Arrays.asList(team1match,team1match1,team1match2,team1match3,
-                team1match4,team1match5,team1match6,team1match7));
-        teamTwos = new ArrayList<>(Arrays.asList(team2match,team2match1,team2match2,team2match3,
-                team2match4,team2match5,team2match6,team2match7));
-        scoreTeam1 = new ArrayList<>(Arrays.asList(team1Score,team1Score1,team1Score2,team1Score3,team1Score4,
-                team1Score5,team1Score6,team1Score7));
-        scoreTeam2 = new ArrayList<>(Arrays.asList(team2Score,team2Score1,team2Score2,team2Score3,team2Score4,
-                team2Score5,team2Score6,team2Score7));
 
+        initializeLists();
         tournamentName.setText(nameOfTournament);
         setVisibleMatches();
     }
@@ -136,14 +127,8 @@ public class MatchesController {
     @FXML
     public void winnerChosen(){
         warningLabel.setText("");
-        ArrayList<TextField> teamOnesScore = new ArrayList<>(Arrays.asList(team1ScoreMatch, team1ScoreMatch1,
-                team1ScoreMatch2, team1ScoreMatch3, team1ScoreMatch4, team1ScoreMatch5, team1ScoreMatch6,
-                team1ScoreMatch7));
-        ArrayList<TextField> teamTwosScore = new ArrayList<>(Arrays.asList(team2ScoreMatch, team2ScoreMatch1,
-                team2ScoreMatch2, team2ScoreMatch3, team2ScoreMatch4, team2ScoreMatch5, team2ScoreMatch6,
-                team2ScoreMatch7));
 
-        for (int i = 0; i < tournament.getNumberOfUnfinishedMatches(); i++) {
+        for (int i = 0; i < 8; i++) {
             if (!teamOnesScore.get(i).getText().isEmpty() || !teamTwosScore.get(i).getText().isEmpty()) {
                 if (Utilities.areThereAnyOtherCharactersThanNumbers(teamOnesScore.get(i).getText()) ||
                         Utilities.areThereAnyOtherCharactersThanNumbers(teamTwosScore.get(i).getText())) {
@@ -268,5 +253,25 @@ public class MatchesController {
         MatchesController.nameOfTournament = nameOfTournament;
     }
 
+    private void initializeLists(){
+        timeLabels = new ArrayList<>(Arrays.asList(timeMatch, timeMatch1, timeMatch2, timeMatch3, timeMatch4, timeMatch5, timeMatch6,
+                timeMatch7));
+        matches = new ArrayList<>(Arrays.asList(match, match1, match2, match3, match4, match5, match6,
+                match7));
+        teamOnes = new ArrayList<>(Arrays.asList(team1match,team1match1,team1match2,team1match3,
+                team1match4,team1match5,team1match6,team1match7));
+        teamTwos = new ArrayList<>(Arrays.asList(team2match,team2match1,team2match2,team2match3,
+                team2match4,team2match5,team2match6,team2match7));
+        scoreTeam1 = new ArrayList<>(Arrays.asList(team1Score,team1Score1,team1Score2,team1Score3,team1Score4,
+                team1Score5,team1Score6,team1Score7));
+        scoreTeam2 = new ArrayList<>(Arrays.asList(team2Score,team2Score1,team2Score2,team2Score3,team2Score4,
+                team2Score5,team2Score6,team2Score7));
+        teamOnesScore = new ArrayList<>(Arrays.asList(team1ScoreMatch, team1ScoreMatch1,
+                team1ScoreMatch2, team1ScoreMatch3, team1ScoreMatch4, team1ScoreMatch5, team1ScoreMatch6,
+                team1ScoreMatch7));
+        teamTwosScore = new ArrayList<>(Arrays.asList(team2ScoreMatch, team2ScoreMatch1,
+                team2ScoreMatch2, team2ScoreMatch3, team2ScoreMatch4, team2ScoreMatch5, team2ScoreMatch6,
+                team2ScoreMatch7));
+    }
 
 }

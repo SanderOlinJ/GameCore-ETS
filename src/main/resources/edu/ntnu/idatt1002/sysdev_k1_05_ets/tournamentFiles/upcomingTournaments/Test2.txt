@@ -11,15 +11,15 @@ Brackets
 0,null
 -1,null
 Team Liquid,ENCE,FURIA Esports,Natus Vincere,RegularTeam,Ninjas in Pyjamas,Phase,MOUZ,Fnatic,G2 Esports,GODSENT,LGB Esports,BIG,Team Vitality,Astralis,FaZe,
-15,false,Team Liquid,ENCE,?,?,?,?,
-14,false,FURIA Esports,Natus Vincere,?,?,?,?,
+15,true,Team Liquid,ENCE,00:00,2,1,Team Liquid,
+14,true,FURIA Esports,Natus Vincere,00:00,2,1,FURIA Esports,
 13,false,RegularTeam,Ninjas in Pyjamas,?,?,?,?,
 12,false,Phase,MOUZ,?,?,?,?,
 11,false,Fnatic,G2 Esports,?,?,?,?,
 10,false,GODSENT,LGB Esports,?,?,?,?,
 9,false,BIG,Team Vitality,?,?,?,?,
 8,false,Astralis,FaZe,?,?,?,?,
-7,false,?,?,?,?,?,?,
+7,false,Team Liquid,FURIA Esports,?,?,?,?,
 6,false,?,?,?,?,?,?,
 5,false,?,?,?,?,?,?,
 4,false,?,?,?,?,?,?,
