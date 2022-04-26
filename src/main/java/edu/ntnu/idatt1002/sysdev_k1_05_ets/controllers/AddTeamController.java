@@ -2,7 +2,7 @@ package edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.*;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.scenes.View;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.scenes.ViewSwitcher;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.NewTournament;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Tournament;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 public class AddTeamController {
 
     private ArrayList<Team> existingTeams;
-    private static NewTournament tournament;
+    private static Tournament tournament;
     private static String nameOfTournament;
 
     private static int maxTeams;
@@ -40,12 +40,12 @@ public class AddTeamController {
     public void initialize () throws IOException {
         overWrite = false;
         try {
-            TournamentWriterRework.updateTournamentFileLocation();
+            TournamentWriter.updateTournamentFileLocation();
         } catch (IOException exception){
             exception.printStackTrace();
         }
         try {
-            tournament = TournamentReaderRework.readTournamentFromFile(nameOfTournament);
+            tournament = TournamentReader.readTournamentFromFile(nameOfTournament);
         } catch (IOException exception){
             exception.printStackTrace();
         }
@@ -94,8 +94,8 @@ public class AddTeamController {
         }
         Collections.shuffle(teamsForTournament);
         BracketController.setNameOfTournament(tournament.getTournamentName());
-        TournamentWriterRework.writeTeamsToTournamentFile(tournament.getTournamentName(),teamsForTournament);
-        TournamentWriterRework.writeMatchesToTournament(tournament.getTournamentName(), null);
+        TournamentWriter.writeTeamsToTournamentFile(tournament.getTournamentName(),teamsForTournament);
+        TournamentWriter.writeMatchesToTournament(tournament.getTournamentName(), null);
 
         if (tournament.getNumberOfTeams() == 4){
             ViewSwitcher.switchTo(View.BRACKET_4);
@@ -326,42 +326,42 @@ public class AddTeamController {
     @FXML
     void onHomeButtonPressed()
     throws IOException {
-        TournamentWriterRework.writeTeamsToTournamentFile(tournament.getTournamentName(),teamsForTournament);
+        TournamentWriter.writeTeamsToTournamentFile(tournament.getTournamentName(),teamsForTournament);
         ViewSwitcher.switchTo(View.MAIN);
     }
 
     @FXML
     void onAboutButtonPressed()
     throws IOException {
-        TournamentWriterRework.writeTeamsToTournamentFile(tournament.getTournamentName(),teamsForTournament);
+        TournamentWriter.writeTeamsToTournamentFile(tournament.getTournamentName(),teamsForTournament);
         ViewSwitcher.switchTo(View.ABOUT);
     }
 
     @FXML
     void onHelpButtonPressed()
     throws IOException {
-        TournamentWriterRework.writeTeamsToTournamentFile(tournament.getTournamentName(),teamsForTournament);
+        TournamentWriter.writeTeamsToTournamentFile(tournament.getTournamentName(),teamsForTournament);
         ViewSwitcher.switchTo(View.HELP);
     }
 
     @FXML
     void onOngoingTournamentsButtonPressed()
     throws IOException {
-        TournamentWriterRework.writeTeamsToTournamentFile(tournament.getTournamentName(),teamsForTournament);
+        TournamentWriter.writeTeamsToTournamentFile(tournament.getTournamentName(),teamsForTournament);
         ViewSwitcher.switchTo(View.ONGOING_OVERVIEW);
     }
 
     @FXML
     void onUpcomingTournamentsButtonPressed()
     throws IOException{
-        TournamentWriterRework.writeTeamsToTournamentFile(tournament.getTournamentName(),teamsForTournament);
+        TournamentWriter.writeTeamsToTournamentFile(tournament.getTournamentName(),teamsForTournament);
         ViewSwitcher.switchTo(View.UPCOMING_OVERVIEW);
     }
 
     @FXML
     void onPreviousTournamentsButtonPressed()
     throws IOException {
-        TournamentWriterRework.writeTeamsToTournamentFile(tournament.getTournamentName(),teamsForTournament);
+        TournamentWriter.writeTeamsToTournamentFile(tournament.getTournamentName(),teamsForTournament);
         ViewSwitcher.switchTo(View.PREVIOUS_OVERVIEW);
     }
 

@@ -11,12 +11,12 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 
 
-public class TournamentWriterRework {
+public class TournamentWriter {
 
-    private static final String DELIMITER = "\n";
+    private static final String NEWLINE_DELIMITER = "\n";
     private static final String COMMA_DELIMITER = ",";
 
-    public TournamentWriterRework() {}
+    public TournamentWriter() {}
 
     /**
      * ifFileExistsAndFindLocation()
@@ -73,17 +73,17 @@ public class TournamentWriterRework {
 
         String tournamentNameShortened = Utilities.shortenAndReplaceUnnecessarySymbolsInString(tournamentName);
 
-        description = description.replaceAll("\n", " ");
-        description = description.replaceAll(","," ");
+        description = description.replaceAll(NEWLINE_DELIMITER, " ");
+        description = description.replaceAll(COMMA_DELIMITER," ");
         if (description.equals("")) {
             description += "No description";
         }
 
-        StringBuilder tournamentStringFormat = new StringBuilder(status + DELIMITER + tournamentName + DELIMITER + tournamentHost + DELIMITER +
-                date + DELIMITER + time + DELIMITER + description + DELIMITER + game + DELIMITER + platform +
-                DELIMITER + tournamentType + DELIMITER + numberOfTeams +
-                DELIMITER + prizePool + COMMA_DELIMITER + prizePoolCurrency + DELIMITER +
-                entranceFee + COMMA_DELIMITER + entranceFeeCurrency + DELIMITER);
+        StringBuilder tournamentStringFormat = new StringBuilder(status + NEWLINE_DELIMITER + tournamentName + NEWLINE_DELIMITER + tournamentHost + NEWLINE_DELIMITER +
+                date + NEWLINE_DELIMITER + time + NEWLINE_DELIMITER + description + NEWLINE_DELIMITER + game + NEWLINE_DELIMITER + platform +
+                NEWLINE_DELIMITER + tournamentType + NEWLINE_DELIMITER + numberOfTeams +
+                NEWLINE_DELIMITER + prizePool + COMMA_DELIMITER + prizePoolCurrency + NEWLINE_DELIMITER +
+                entranceFee + COMMA_DELIMITER + entranceFeeCurrency + NEWLINE_DELIMITER);
 
         if (date.isEqual(LocalDate.now()) && time.equals(LocalTime.now()) && status.equals("Not finished") ||
                 date.isEqual(LocalDate.now()) && time.isBefore(LocalTime.now()) && status.equals("Not finished") ||
@@ -135,7 +135,7 @@ public class TournamentWriterRework {
     public static void writeTournamentToOngoingOverview(String tournamentName)
     throws IOException{
         String tournamentNameShortened = Utilities.shortenAndReplaceUnnecessarySymbolsInString(tournamentName);
-        String overviewStringFormat = tournamentNameShortened + DELIMITER;
+        String overviewStringFormat = tournamentNameShortened + NEWLINE_DELIMITER;
         File file = new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
                 "tournamentFiles/ongoingTournaments/ongoingTournaments.txt");
         try (FileWriter fileWriter = new FileWriter(file,true)){
@@ -155,7 +155,7 @@ public class TournamentWriterRework {
     public static void writeTournamentToUpcomingOverview(String tournamentName)
     throws IOException{
         String tournamentNameShortened = Utilities.shortenAndReplaceUnnecessarySymbolsInString(tournamentName);
-        String overviewStringFormat = tournamentNameShortened + DELIMITER;
+        String overviewStringFormat = tournamentNameShortened + NEWLINE_DELIMITER;
         File file = new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
                 "tournamentFiles/upcomingTournaments/upcomingTournaments.txt");
         try(FileWriter fileWriter = new FileWriter(file,true)){
@@ -175,7 +175,7 @@ public class TournamentWriterRework {
     public static void writeTournamentToPreviousOverview(String tournamentName)
             throws IOException{
         String tournamentNameShortened = Utilities.shortenAndReplaceUnnecessarySymbolsInString(tournamentName);
-        String overviewStringFormat = tournamentNameShortened + DELIMITER;
+        String overviewStringFormat = tournamentNameShortened + NEWLINE_DELIMITER;
         File file = new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
                 "tournamentFiles/previousTournaments/previousTournaments.txt");
         try(FileWriter fileWriter = new FileWriter(file,true)){
@@ -199,9 +199,9 @@ public class TournamentWriterRework {
     public static void removeTournamentFromOverviewWhenLocationNotKnown(String tournamentName)
     throws IOException{
         String tournamentNameShortened = Utilities.shortenAndReplaceUnnecessarySymbolsInString(tournamentName);
-        ArrayList<String> ongoingTournaments = TournamentReaderRework.readThroughOngoingTournaments();
-        ArrayList<String> upcomingTournaments = TournamentReaderRework.readThroughUpcomingTournaments();
-        ArrayList<String> previousTournaments = TournamentReaderRework.readThroughPreviousTournaments();
+        ArrayList<String> ongoingTournaments = TournamentReader.readThroughOngoingTournaments();
+        ArrayList<String> upcomingTournaments = TournamentReader.readThroughUpcomingTournaments();
+        ArrayList<String> previousTournaments = TournamentReader.readThroughPreviousTournaments();
         String location = "";
         boolean locationFound = false;
 
@@ -243,7 +243,7 @@ public class TournamentWriterRework {
         overview.removeIf(tournament -> tournament.equals(tournamentNameShortened));
         StringBuilder stringBuilder = new StringBuilder();
         for (String string : overview){
-            stringBuilder.append(string).append(DELIMITER);
+            stringBuilder.append(string).append(NEWLINE_DELIMITER);
         }
 
         try (FileWriter fileWriter = new FileWriter(file)){
@@ -307,12 +307,12 @@ public class TournamentWriterRework {
 
         StringBuilder stringBuilder1 = new StringBuilder();
         for (String str : fileAsListOfStrings){
-            stringBuilder1.append(str).append(DELIMITER);
+            stringBuilder1.append(str).append(NEWLINE_DELIMITER);
         }
         if (teams.size() == Integer.parseInt(fileAsListOfStrings.get(9))){
             for (int i = (Integer.parseInt(fileAsListOfStrings.get(9))) - 1; i > 0; i--) {
                 stringBuilder1.append(i).append(COMMA_DELIMITER).append("false,?,?,?,?,?,?")
-                        .append(DELIMITER);
+                        .append(NEWLINE_DELIMITER);
             }
         }
 
@@ -327,13 +327,13 @@ public class TournamentWriterRework {
     throws IOException{
 
         try {
-            ArrayList<String> upcomingTournament = TournamentReaderRework.readThroughUpcomingTournaments();
+            ArrayList<String> upcomingTournament = TournamentReader.readThroughUpcomingTournaments();
 
             for (String tournamentNameShortened : upcomingTournament){
                 File file = new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
                         "tournamentFiles/upcomingTournaments/" + tournamentNameShortened + ".txt");
                 //If tournament is no longer upcoming
-                if (!TournamentReaderRework.isTournamentStillUpcoming(file)) {
+                if (!TournamentReader.isTournamentStillUpcoming(file)) {
                     ArrayList<String> tournament = GeneralReader.readFile(file);
                     //Remove tournament from upcoming Overview
                     removeTournamentFromUpcomingOverview(tournamentNameShortened);
@@ -346,7 +346,7 @@ public class TournamentWriterRework {
                         try (FileWriter fileWriter = new FileWriter(newFile)){
                             StringBuilder stringBuilder = new StringBuilder();
                             for (String str : tournament){
-                                stringBuilder.append(str).append("\n");
+                                stringBuilder.append(str).append(NEWLINE_DELIMITER);
                             }
                             fileWriter.write(stringBuilder.toString());
                         } catch (IOException exception){
@@ -361,13 +361,13 @@ public class TournamentWriterRework {
                     exception.getMessage());
         }
         try {
-            ArrayList<String> ongoingTournament = TournamentReaderRework.readThroughOngoingTournaments();
+            ArrayList<String> ongoingTournament = TournamentReader.readThroughOngoingTournaments();
 
             for (String tournamentNameShortened : ongoingTournament){
                 File file = new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
                         "tournamentFiles/ongoingTournaments/" + tournamentNameShortened + ".txt");
 
-                if (!TournamentReaderRework.isTournamentStillOngoing(file)){
+                if (!TournamentReader.isTournamentStillOngoing(file)){
                     ArrayList<String> tournament = GeneralReader.readFile(file);
                     removeTournamentFromOngoingOverview(tournamentNameShortened);
                     writeTournamentToPreviousOverview(tournamentNameShortened);
@@ -377,7 +377,7 @@ public class TournamentWriterRework {
                         try (FileWriter fileWriter = new FileWriter(newFile)){
                             StringBuilder stringBuilder = new StringBuilder();
                             for (String str : tournament){
-                                stringBuilder.append(str).append("\n");
+                                stringBuilder.append(str).append(NEWLINE_DELIMITER);
                             }
                             fileWriter.write(stringBuilder.toString());
                         } catch (IOException exception){
@@ -398,7 +398,7 @@ public class TournamentWriterRework {
     throws IOException{
         try {
             String tournamentNameShortened = Utilities.shortenAndReplaceUnnecessarySymbolsInString(tournamentName);
-            ArrayList<String> upcomingTournaments = TournamentReaderRework.readThroughUpcomingTournaments();
+            ArrayList<String> upcomingTournaments = TournamentReader.readThroughUpcomingTournaments();
             File file = new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
                     "tournamentFiles/upcomingTournaments/upcomingTournaments.txt");
             removeTournamentFromOverview(tournamentNameShortened, upcomingTournaments, file);
@@ -414,7 +414,7 @@ public class TournamentWriterRework {
         tournaments.removeIf(s -> s.equals(tournamentNameShortened));
         StringBuilder stringBuilder = new StringBuilder();
         for (String tournament : tournaments){
-            stringBuilder.append(tournament).append(DELIMITER);
+            stringBuilder.append(tournament).append(NEWLINE_DELIMITER);
         }
         try (FileWriter fileWriter = new FileWriter(file)){
             fileWriter.write(stringBuilder.toString());
@@ -426,7 +426,7 @@ public class TournamentWriterRework {
     public static void removeTournamentFromOngoingOverview(String tournamentName) throws IOException{
         try {
             String tournamentNameShortened = Utilities.shortenAndReplaceUnnecessarySymbolsInString(tournamentName);
-            ArrayList<String> ongoingTournaments = TournamentReaderRework.readThroughOngoingTournaments();
+            ArrayList<String> ongoingTournaments = TournamentReader.readThroughOngoingTournaments();
             File file = new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
                     "tournamentFiles/ongoingTournaments/ongoingTournaments.txt");
             removeTournamentFromOverview(tournamentNameShortened, ongoingTournaments, file);
@@ -439,7 +439,7 @@ public class TournamentWriterRework {
     public static void removeTournamentFromPreviousOverview(String tournamentName) throws IOException{
         try {
             String tournamentNameShortened = Utilities.shortenAndReplaceUnnecessarySymbolsInString(tournamentName);
-            ArrayList<String> previousTournaments = TournamentReaderRework.readThroughPreviousTournaments();
+            ArrayList<String> previousTournaments = TournamentReader.readThroughPreviousTournaments();
             File file = new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
                     "tournamentFiles/previousTournaments/previousTournaments.txt");
             removeTournamentFromOverview(tournamentNameShortened, previousTournaments, file);
@@ -462,7 +462,7 @@ public class TournamentWriterRework {
             matchesData[i] = GeneralReader.readSpecificLineInFile(file, startIndex + i).split(COMMA_DELIMITER);
         }
 
-        String[] teams = GeneralReader.readSpecificLineInFile(file,13).split(",");
+        String[] teams = GeneralReader.readSpecificLineInFile(file,13).split(COMMA_DELIMITER);
 
 
         // Setup
@@ -511,14 +511,14 @@ public class TournamentWriterRework {
 
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < 13; i++) {
-            stringBuilder.append(fileAsList.get(i)).append(DELIMITER);
+            stringBuilder.append(fileAsList.get(i)).append(NEWLINE_DELIMITER);
         }
 
         for (String[] Match : matchesData) {
             for (String data : Match) {
                 stringBuilder.append(data).append(COMMA_DELIMITER);
             }
-            stringBuilder.append(DELIMITER);
+            stringBuilder.append(NEWLINE_DELIMITER);
         }
 
         try (FileWriter fileWriter = new FileWriter(file)) {

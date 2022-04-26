@@ -4,11 +4,10 @@ import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 
 public class TeamReader {
-    private static final String DELIMITER = ",";
+    private static final String COMMA_DELIMITER = ",";
 
     public TeamReader(){}
 
@@ -19,7 +18,7 @@ public class TeamReader {
                 "idatt1002/sysdev_k1_05_ets/teamFiles/all_Teams.csv"));
 
         for (String str : fileAsList){
-            String[] values = str.split(DELIMITER);
+            String[] values = str.split(COMMA_DELIMITER);
             Team team = new Team(values[0], values[1]);
             for (int i = 2; i < values.length; i++){
                 team.addMember(values[i]);

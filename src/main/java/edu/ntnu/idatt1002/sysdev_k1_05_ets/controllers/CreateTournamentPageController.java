@@ -1,6 +1,6 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.GeneralReader;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TournamentWriterRework;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TournamentWriter;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.scenes.View;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.scenes.ViewSwitcher;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.utilities.Utilities;
@@ -22,7 +22,7 @@ import java.io.IOException;
 
 
 
-public class CreateNewTournamentPageController{
+public class CreateTournamentPageController {
 
     public Button continueButton;
 
@@ -55,7 +55,7 @@ public class CreateNewTournamentPageController{
 
 
         try {
-            TournamentWriterRework.updateTournamentFileLocation();
+            TournamentWriter.updateTournamentFileLocation();
             TextFields.bindAutoCompletion(gameBox, GeneralReader.readFile
                     (new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/games.txt")));
             TextFields.bindAutoCompletion(platformBox, GeneralReader.readFile
@@ -268,7 +268,7 @@ public class CreateNewTournamentPageController{
             throw new IOException(exception.getMessage());
         }
 
-        TournamentWriterRework.writeNewTournamentToFileWithBasicInfo(status, tournamentName,
+        TournamentWriter.writeNewTournamentToFileWithBasicInfo(status, tournamentName,
                 tournamentHost, date, time, description, game, platform, tournamentType, numberOfTeams,
                 prizePool, prizePoolCurrency, entranceFee, entranceFeeCurrency);
 
@@ -299,7 +299,7 @@ public class CreateNewTournamentPageController{
     }
 
     private void checkIfFileAlreadyExists(String tournamentName) throws IOException {
-        String doesFileExist = TournamentWriterRework.ifFileExistsAndFindLocation(Utilities
+        String doesFileExist = TournamentWriter.ifFileExistsAndFindLocation(Utilities
                 .shortenAndReplaceUnnecessarySymbolsInString(tournamentName));
 
         if (doesFileExist.equals("Ongoing") || doesFileExist.equals("Upcoming") || doesFileExist.equals("Previous")){

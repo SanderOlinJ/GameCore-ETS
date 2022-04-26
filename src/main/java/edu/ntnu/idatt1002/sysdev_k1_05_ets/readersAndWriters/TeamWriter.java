@@ -5,8 +5,8 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class TeamWriter {
-    private static final String NEWLINE = "\n";
-    private static final String DELIMITER = ",";
+    private static final String NEWLINE_DELIMITER = "\n";
+    private static final String COMMA_DELIMITER = ",";
 
     public TeamWriter(){}
 
@@ -33,12 +33,12 @@ public class TeamWriter {
                 "teamFiles/all_Teams.csv")){
             StringBuilder stringBuilder = new StringBuilder();
             for (Team teamInFile : teams){
-                stringBuilder.append(teamInFile.getNameOfTeam()).append(DELIMITER).append(teamInFile.getNameAbbr())
-                        .append(DELIMITER);
+                stringBuilder.append(teamInFile.getNameOfTeam()).append(COMMA_DELIMITER).append(teamInFile.getNameAbbr())
+                        .append(COMMA_DELIMITER);
                 for (String member : teamInFile.getMembers()){
                     stringBuilder.append(member).append(",");
                 }
-                stringBuilder.append(NEWLINE);
+                stringBuilder.append(NEWLINE_DELIMITER);
             }
             fileWriter.write(stringBuilder.toString());
         }

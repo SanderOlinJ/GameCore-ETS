@@ -4,7 +4,7 @@ import edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.AddTeamController;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.BracketController;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.scenes.View;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.scenes.ViewSwitcher;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.NewTournament;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Tournament;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -32,7 +32,7 @@ public class Utilities {
                 bracketFormatAsString) + ".png";
     }
 
-    public static void showGameInfo(Label tournamentName, String nameOfTournament, ImageView imageView, NewTournament tournament, Label game, Label host, Label startDate, Label startTime, Label platform, Label prizePool, Label entranceFee, Label prizePoolCurrency, Label entranceFeeCurrency) {
+    public static void showGameInfo(Label tournamentName, String nameOfTournament, ImageView imageView, Tournament tournament, Label game, Label host, Label startDate, Label startTime, Label platform, Label prizePool, Label entranceFee, Label prizePoolCurrency, Label entranceFeeCurrency) {
         tournamentName.setText(nameOfTournament);
         imageView.setImage(new Image("file:src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
                 "Images/gameImages/" + Utilities.shortenAndReplaceUnnecessarySymbolsInString
@@ -55,20 +55,20 @@ public class Utilities {
         }
     }
 
-    public static void onTournamentOverviewButtonClicked(NewTournament newTournament)
+    public static void onTournamentOverviewButtonClicked(Tournament tournament)
             throws IOException {
-        int numberOfTeams = newTournament.getTeams().size();
-        if (numberOfTeams != newTournament.getNumberOfTeams()){
-            AddTeamController.setNameOfTournament(newTournament.getTournamentName());
+        int numberOfTeams = tournament.getTeams().size();
+        if (numberOfTeams != tournament.getNumberOfTeams()){
+            AddTeamController.setNameOfTournament(tournament.getTournamentName());
             ViewSwitcher.switchTo(View.ADD_TEAM);
         }
         switch (numberOfTeams){
             case 4 -> {
-                BracketController.setNameOfTournament(newTournament.getTournamentName());
+                BracketController.setNameOfTournament(tournament.getTournamentName());
                 ViewSwitcher.switchTo(View.BRACKET_4);}
-            case 8 -> {BracketController.setNameOfTournament(newTournament.getTournamentName());
+            case 8 -> {BracketController.setNameOfTournament(tournament.getTournamentName());
                 ViewSwitcher.switchTo(View.BRACKET_8);}
-            case 16 -> {BracketController.setNameOfTournament(newTournament.getTournamentName());
+            case 16 -> {BracketController.setNameOfTournament(tournament.getTournamentName());
                 ViewSwitcher.switchTo(View.BRACKET_16);}
         }
     }

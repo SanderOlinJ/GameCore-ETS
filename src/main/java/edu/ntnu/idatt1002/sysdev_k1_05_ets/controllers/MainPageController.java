@@ -1,9 +1,9 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TournamentReaderRework;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TournamentWriterRework;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TournamentReader;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TournamentWriter;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.scenes.View;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.scenes.ViewSwitcher;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.NewTournament;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Tournament;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.utilities.Utilities;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -42,14 +42,14 @@ public class MainPageController {
     @FXML private Text warningText5;
     @FXML private Text warningText6;
 
-    private ArrayList<NewTournament> ongoingTournaments;
-    private ArrayList<NewTournament> upcomingTournaments;
-    private ArrayList<NewTournament> previousTournaments;
+    private ArrayList<Tournament> ongoingTournaments;
+    private ArrayList<Tournament> upcomingTournaments;
+    private ArrayList<Tournament> previousTournaments;
 
     @FXML
     public void initialize()
     throws IOException {
-        TournamentWriterRework.updateTournamentFileLocation();
+        TournamentWriter.updateTournamentFileLocation();
         ongoingTournaments = new ArrayList<>();
         upcomingTournaments = new ArrayList<>();
         previousTournaments = new ArrayList<>();
@@ -63,7 +63,7 @@ public class MainPageController {
     private void showOngoingTournaments()
     throws IOException{
         try {
-            ongoingTournaments = TournamentReaderRework.readAllOngoingTournamentsToList(2);
+            ongoingTournaments = TournamentReader.readAllOngoingTournamentsToList(2);
             setMainPageWithTournaments(ongoingTournaments, ongoingImageView1, ongoingText1, ongoingBox1,
                     ongoingImageView2, ongoingText2, ongoingBox2, warningText1, warningText2);
         } catch (IOException exception){
@@ -75,7 +75,7 @@ public class MainPageController {
     private void showUpcomingTournaments()
     throws IOException{
         try {
-            upcomingTournaments = TournamentReaderRework.readAllUpcomingTournamentsToList(2);
+            upcomingTournaments = TournamentReader.readAllUpcomingTournamentsToList(2);
             setMainPageWithTournaments(upcomingTournaments, upcomingImageView1, upcomingText1, upcomingBox1,
                     upcomingImageView2, upcomingText2, upcomingBox2, warningText3, warningText4);
         } catch (IOException exception){
@@ -87,7 +87,7 @@ public class MainPageController {
     private void showPreviousTournaments()
     throws IOException{
         try {
-            previousTournaments = TournamentReaderRework.readAllPreviousTournamentsToList(2);
+            previousTournaments = TournamentReader.readAllPreviousTournamentsToList(2);
             setMainPageWithTournaments(previousTournaments, previousImageView1, previousText1, previousBox1,
                     previousImageView2, previousText2, previousBox2, warningText5, warningText6);
         } catch (IOException exception){
@@ -95,7 +95,7 @@ public class MainPageController {
         }
     }
 
-    private void setMainPageWithTournaments(ArrayList<NewTournament> tournaments, ImageView imageView1,
+    private void setMainPageWithTournaments(ArrayList<Tournament> tournaments, ImageView imageView1,
                                             TextArea text1, VBox vBox1, ImageView imageView2,
                                             TextArea text2, VBox vBox2, Text warningText1, Text warningText2) {
         if (tournaments.size() > 0){

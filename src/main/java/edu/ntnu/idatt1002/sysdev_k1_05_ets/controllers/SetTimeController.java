@@ -2,10 +2,10 @@ package edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.scenes.View;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.scenes.ViewSwitcher;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TeamReader;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TournamentReaderRework;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TournamentWriterRework;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TournamentReader;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TournamentWriter;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Match;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.NewTournament;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Tournament;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.utilities.Utilities;
 import javafx.fxml.FXML;
@@ -22,7 +22,7 @@ import java.util.*;
 public class SetTimeController {
 
     private static String nameOfTournament;
-    private NewTournament tournament;
+    private Tournament tournament;
     @FXML ComboBox hoursMatch;
 
     @FXML Button setTimeButton;
@@ -122,7 +122,7 @@ public class SetTimeController {
     @FXML
     public void initialize(){
         try {
-            tournament = TournamentReaderRework.readTournamentFromFile(nameOfTournament);
+            tournament = TournamentReader.readTournamentFromFile(nameOfTournament);
         } catch (IOException exception){
             exception.printStackTrace();
         }
@@ -192,7 +192,7 @@ public class SetTimeController {
                        Match match = new Match(team1, team2);
                        LocalTime time = LocalTime.parse(hourBoxes.get(i).getValue() + ":" + minuteBoxes.get(i).getValue());
                        match.setTimeOfMatch(time);
-                       TournamentWriterRework.writeMatchesToTournament(tournament
+                       TournamentWriter.writeMatchesToTournament(tournament
                                .getTournamentName(),match);
                        hourBoxes.get(i).setDisable(true);
                        minuteBoxes.get(i).setDisable(true);
@@ -280,11 +280,11 @@ public class SetTimeController {
         }
     }
 
-    public NewTournament getTournament() {
+    public Tournament getTournament() {
         return tournament;
     }
 
-    public void setTournament(NewTournament tournament) {
+    public void setTournament(Tournament tournament) {
         this.tournament = tournament;
     }
 

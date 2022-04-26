@@ -3,13 +3,11 @@ package edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Random;
-
 /**
  * Class for describing a tournament
  */
 
-public class NewTournament {
+public class Tournament {
     private String status;
     private String tournamentName;
     private String tournamentHost;
@@ -33,7 +31,7 @@ public class NewTournament {
      * @param tournamentName the tournament name
      */
 
-    public NewTournament(String tournamentName){
+    public Tournament(String tournamentName){
         if (tournamentName == null || tournamentName.isEmpty()) {
             throw new IllegalArgumentException("Tournament name cannot be empty!");
         }
@@ -63,11 +61,11 @@ public class NewTournament {
      * @param entranceFee entrance fee
      * @param entranceFeeCurrency entrance fee currency
      */
-    public NewTournament(String status, String tournamentName, String tournamentHost, LocalDate date,
-                         LocalTime time, String description, String game, String platform,
-                         String tournamentType, int numberOfTeams,
-                         int prizePool, String prizePoolCurrency,
-                         int entranceFee, String entranceFeeCurrency) {
+    public Tournament(String status, String tournamentName, String tournamentHost, LocalDate date,
+                      LocalTime time, String description, String game, String platform,
+                      String tournamentType, int numberOfTeams,
+                      int prizePool, String prizePoolCurrency,
+                      int entranceFee, String entranceFeeCurrency) {
         if (status == null || status.isEmpty()){
             throw new IllegalArgumentException("Status cannot be empty!");
         }
@@ -142,11 +140,11 @@ public class NewTournament {
      * @param entranceFeeCurrency entrance fee currency
      * @param teams the teams
      */
-    public NewTournament(String status, String tournamentName, String tournamentHost, LocalDate date,
-                         LocalTime time, String description, String game, String platform,
-                         String tournamentType, int numberOfTeams, int prizePool,
-                         String prizePoolCurrency, int entranceFee, String entranceFeeCurrency,
-                         ArrayList<Team> teams) {
+    public Tournament(String status, String tournamentName, String tournamentHost, LocalDate date,
+                      LocalTime time, String description, String game, String platform,
+                      String tournamentType, int numberOfTeams, int prizePool,
+                      String prizePoolCurrency, int entranceFee, String entranceFeeCurrency,
+                      ArrayList<Team> teams) {
         if (status == null || status.isEmpty()){
             throw new IllegalArgumentException("Status cannot be empty!");
         }
@@ -285,22 +283,6 @@ public class NewTournament {
     }
 
     /**
-     * Returns the status of the tournament
-     * @return status
-     */
-    public String getStatus() {
-        return status;
-    }
-
-    /**
-     * Sets the status if the tournament
-     * @param status
-     */
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    /**
      * Returns the matches
      * @return matches
      */
@@ -341,14 +323,6 @@ public class NewTournament {
     }
 
     /**
-     * Sets the tournament host
-     * @param tournamentHost
-     */
-    public void setTournamentHost(String tournamentHost) {
-        this.tournamentHost = tournamentHost;
-    }
-
-    /**
      * Returns thedate of the tournament
      * @return
      */
@@ -362,22 +336,6 @@ public class NewTournament {
      */
     public void setDate(LocalDate date) {
         this.date = date;
-    }
-
-    /**
-     * Returns the description of the tournament
-     * @return description
-     */
-    public String getDescription() {
-        return description;
-    }
-
-    /**
-     * Sets the description of the tournament
-     * @param description
-     */
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     /**
@@ -413,22 +371,6 @@ public class NewTournament {
     }
 
     /**
-     * Returns the tournament type
-     * @return tournament type
-     */
-    public String getTournamentType() {
-        return tournamentType;
-    }
-
-    /**
-     * Sets the tournament type
-     * @param tournamentType
-     */
-    public void setTournamentType(String tournamentType) {
-        this.tournamentType = tournamentType;
-    }
-
-    /**
      * Returns the number of teams
      * @return number of teams
      */
@@ -461,28 +403,6 @@ public class NewTournament {
     }
 
     /**
-     * Returns a string containing information about the tournament
-     * @return status, tournament name, tournament host, date, description, game, platform,
-     * tournament type, number of teams, teams and matches as a string
-     */
-    @Override
-    public String toString() {
-        return "NewTournament{" +
-                "status='" + status + '\'' +
-                ", tournamentName='" + tournamentName + '\'' +
-                ", tournamentHost='" + tournamentHost + '\'' +
-                ", date=" + date +
-                ", description='" + description + '\'' +
-                ", game='" + game + '\'' +
-                ", platform='" + platform + '\'' +
-                ", tournamentType='" + tournamentType + '\'' +
-                ", numberOfTeams='" + numberOfTeams + '\'' +
-                ", teams=" + teams + "\n" +
-                ", matches=" + matches + "\n" +
-                '}';
-    }
-
-    /**
      * Returns the team that corresponds to the team name given
      * @param teamName
      * @return team
@@ -494,14 +414,6 @@ public class NewTournament {
             }
         }
         return null;
-    }
-
-    /**
-     * Adds a team to the list of teams
-     * @param team
-     */
-    public void addTeam(Team team){
-        this.teams.add(team);
     }
 
     /**
@@ -567,15 +479,6 @@ public class NewTournament {
         return numberOfTeamsLeft;
 
     }
-
-    /**
-     * Removes the given team from teams
-     * @param team
-     */
-    public void removeTeam(Team team) {
-        this.teams.remove(team);
-    }
-
 
     public int getNumberOfMatchesWithNoTimeSet(){
         int nr = 0;

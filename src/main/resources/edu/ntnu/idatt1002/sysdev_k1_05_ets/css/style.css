@@ -46,7 +46,6 @@ styling for combobox prompt text and text field
 .my-list-cell {
     -fx-text-fill: white;
     -fx-font: 16px "Arial";
-    /* No alternate highlighting */
     -fx-background-color:  #282c34;
 
 }
@@ -161,7 +160,7 @@ styling for combobox prompt text and text field
 }
 .dialog-pane *.header-panel *.text{
     -fx-fill: white;
-    -fx-font: 22px "Arial";
+    -fx-font: 20px "Arial";
     -fx-font-weight: Bold;
     -fx-alignment: center;
 }
@@ -169,11 +168,11 @@ styling for combobox prompt text and text field
 .dialog-pane > *.content.label {
     -fx-alignment: center;
     -fx-fill: white;
-    -fx-padding: 1.333em 0.833em 0 0.833em; /* 16px 10px 0px 10px */
+    -fx-padding: 1.333em 0.833em 0 0.833em;
 }
 .dialog-pane > .content *.text {
     -fx-fill: white;
-    -fx-font: 18px "Arial";
+    -fx-font: 14px "Arial";
     -fx-alignment: center;
 }
 

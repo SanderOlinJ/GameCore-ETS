@@ -1,10 +1,9 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.GeneralReader;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TournamentReaderRework;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TournamentWriterRework;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TournamentReader;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TournamentWriter;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.scenes.View;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.scenes.ViewSwitcher;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.NewTournament;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Tournament;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.utilities.Utilities;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -84,12 +83,12 @@ public class UpcomingTournamentsOverviewController {
     @FXML private ImageView deleteIcon3;
     @FXML private ImageView deleteIcon4;
 
-    private ArrayList<NewTournament> tournaments;
+    private ArrayList<Tournament> tournaments;
 
     @FXML
     public void initialize() throws IOException {
-        TournamentWriterRework.updateTournamentFileLocation();
-        tournaments = TournamentReaderRework.readAllUpcomingTournamentsToList(0);
+        TournamentWriter.updateTournamentFileLocation();
+        tournaments = TournamentReader.readAllUpcomingTournamentsToList(0);
         setMainPageWithTournaments();
 
     }
@@ -330,11 +329,11 @@ public class UpcomingTournamentsOverviewController {
     }
 
 
-    private void showAlertBox(NewTournament newTournament)
+    private void showAlertBox(Tournament tournament)
     throws IOException{
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Delete tournament");
-        alert.setHeaderText("Deleting: " + newTournament.getTournamentName());
+        alert.setHeaderText("Deleting: " + tournament.getTournamentName());
         alert.setContentText("Are you sure you want to delete this tournament?");
         DialogPane dialogPane = alert.getDialogPane();
         dialogPane.getStylesheets().add(Objects.requireNonNull(getClass()
@@ -343,9 +342,9 @@ public class UpcomingTournamentsOverviewController {
         alert.showAndWait();
 
         if (alert.getResult() == ButtonType.OK){
-            TournamentWriterRework.removeTournamentFromUpcomingOverview(newTournament.getTournamentName());
-            File file = new File(TournamentWriterRework
-                    .getPathToTournamentFileAsString(newTournament.getTournamentName()));
+            TournamentWriter.removeTournamentFromUpcomingOverview(tournament.getTournamentName());
+            File file = new File(TournamentWriter
+                    .getPathToTournamentFileAsString(tournament.getTournamentName()));
             file.delete();
             ViewSwitcher.switchTo(View.UPCOMING_OVERVIEW);
         }

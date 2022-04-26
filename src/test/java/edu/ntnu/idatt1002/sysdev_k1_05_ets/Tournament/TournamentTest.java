@@ -1,7 +1,7 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.Tournament;
 
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Match;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.NewTournament;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Tournament;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
 import org.junit.jupiter.api.Test;
 
@@ -11,13 +11,13 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class NewTournamentTest {
+class TournamentTest {
 
     @Test
     void teamsIsNullInConstructor(){
         ArrayList<Team> teams = new ArrayList<>();
         try{
-            NewTournament newTournament = new NewTournament("Upcoming", "MadTournament",
+            Tournament tournament = new Tournament("Upcoming", "MadTournament",
                     "Admin",  LocalDate.parse("2022-04-25"),  LocalTime.parse("16:15:12"),
                     "A bloody insane tournament", "Fortnite", "PS5", "Brackets",
                     4, 10000, "NOK", 0,
@@ -46,7 +46,7 @@ class NewTournamentTest {
         Match match2 = new Match(team3, team4);
         matches.add(match1);
         matches.add(match2);
-        NewTournament newTournament = new NewTournament("Upcoming", "MadTournament",
+        Tournament tournament = new Tournament("Upcoming", "MadTournament",
                     "Admin",  LocalDate.parse("2022-04-25"),  LocalTime.parse("16:15:12"),
                     "A bloody insane tournament", "Fortnite", "PS5", "Brackets",
                      4, 10000, "NOK", 0,
@@ -56,8 +56,8 @@ class NewTournamentTest {
             match.setTimeOfMatch(LocalTime.parse("00:00:00"));
         }
 
-        newTournament.setMatches(matches);
-        assertEquals(match1, newTournament.findNextMatchToBePlayed());
+        tournament.setMatches(matches);
+        assertEquals(match1, tournament.findNextMatchToBePlayed());
     }
 
     @Test
@@ -78,7 +78,7 @@ class NewTournamentTest {
         Match match2 = new Match(team3, team4);
         matches.add(match1);
         matches.add(match2);
-        NewTournament newTournament = new NewTournament("Upcoming", "MadTournament",
+        Tournament tournament = new Tournament("Upcoming", "MadTournament",
                 "Admin",  LocalDate.parse("2022-04-25"),  LocalTime.parse("16:15:12"),
                 "A bloody insane tournament", "Fortnite", "PS5", "Brackets",
                  4, 10000, "NOK", 0,
@@ -90,7 +90,7 @@ class NewTournamentTest {
 
         match1.setFinished(true);
 
-        newTournament.setMatches(matches);
-        assertEquals(3, newTournament.findNumberOfTeamsLeft());
+        tournament.setMatches(matches);
+        assertEquals(3, tournament.findNumberOfTeamsLeft());
     }
 }

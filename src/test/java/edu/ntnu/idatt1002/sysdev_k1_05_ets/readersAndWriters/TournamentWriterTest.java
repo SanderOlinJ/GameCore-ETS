@@ -10,13 +10,13 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class TournamentWriterReworkTest {
+class TournamentWriterTest {
 
     @Test
     void testThatIfFileExistsAndFindLocationReturnsCorrectLocation(){
         String fileName = "testFile1";
 
-        assertEquals("Previous",TournamentWriterRework.ifFileExistsAndFindLocation(fileName));
+        assertEquals("Previous", TournamentWriter.ifFileExistsAndFindLocation(fileName));
     }
 
     @Test
@@ -37,7 +37,7 @@ class TournamentWriterReworkTest {
         String entranceFeeCurrency = "null";
 
         try {
-            TournamentWriterRework.writeNewTournamentToFileWithBasicInfo(status, tournamentName, tournamentHost,
+            TournamentWriter.writeNewTournamentToFileWithBasicInfo(status, tournamentName, tournamentHost,
                     date, time, description, game, platform, tournamentType, numberOfTeams,
                     prizePool, prizePoolCurrency, entranceFee, entranceFeeCurrency);
         } catch (IOException exception){
@@ -51,9 +51,9 @@ class TournamentWriterReworkTest {
         String fileNameUpcoming = "testFileUpcoming";
         String fileNamePrevious = "testFilePrevious";
         try {
-            TournamentWriterRework.writeTournamentToOngoingOverview(fileNameOngoing);
-            TournamentWriterRework.writeTournamentToUpcomingOverview(fileNameUpcoming);
-            TournamentWriterRework.writeTournamentToPreviousOverview(fileNamePrevious);
+            TournamentWriter.writeTournamentToOngoingOverview(fileNameOngoing);
+            TournamentWriter.writeTournamentToUpcomingOverview(fileNameUpcoming);
+            TournamentWriter.writeTournamentToPreviousOverview(fileNamePrevious);
         } catch (IOException exception){
             System.out.println(exception.getMessage());
         }
@@ -64,7 +64,7 @@ class TournamentWriterReworkTest {
         String fileNameOngoing = "testFileOngoing";
 
         try{
-            TournamentWriterRework.removeTournamentFromOverviewWhenLocationNotKnown(fileNameOngoing);
+            TournamentWriter.removeTournamentFromOverviewWhenLocationNotKnown(fileNameOngoing);
         } catch (IOException exception){
             System.out.println(exception.getMessage());
             fail();
@@ -74,7 +74,7 @@ class TournamentWriterReworkTest {
     @Test
     void testThatUpdateTournamentFileLocationRuns(){
         try {
-            TournamentWriterRework.updateTournamentFileLocation();
+            TournamentWriter.updateTournamentFileLocation();
         } catch (IOException exception){
             System.out.println(exception.getMessage());
         }
@@ -89,7 +89,7 @@ class TournamentWriterReworkTest {
         teams.add(team1);
         teams.add(team2);
         teams.add(team3);
-        TournamentWriterRework.writeTeamsToTournamentFile("Test4",teams);
+        TournamentWriter.writeTeamsToTournamentFile("Test4",teams);
     }
 
 }

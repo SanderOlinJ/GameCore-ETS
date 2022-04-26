@@ -1,11 +1,11 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.GeneralReader;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TeamReader;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TournamentReaderRework;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TournamentWriterRework;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TournamentReader;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TournamentWriter;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.scenes.View;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.scenes.ViewSwitcher;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.NewTournament;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Tournament;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.utilities.Utilities;
 import javafx.fxml.FXML;
@@ -19,7 +19,7 @@ import java.util.Arrays;
 public class BracketController {
 
     private static String nameOfTournament;
-    private NewTournament tournament;
+    private Tournament tournament;
 
 
     @FXML
@@ -71,7 +71,7 @@ public class BracketController {
     public void initialize(){
 
         try {
-            tournament = TournamentReaderRework.readTournamentFromFile(nameOfTournament);
+            tournament = TournamentReader.readTournamentFromFile(nameOfTournament);
         } catch (IOException exception){
             exception.printStackTrace();
         }
@@ -95,7 +95,7 @@ public class BracketController {
 
         try {
             String tournamentNameShortened = Utilities.shortenAndReplaceUnnecessarySymbolsInString(nameOfTournament);
-            File file = new File(TournamentWriterRework.getPathToTournamentFileAsString(tournamentNameShortened));
+            File file = new File(TournamentWriter.getPathToTournamentFileAsString(tournamentNameShortened));
             for (int i = 0; i < bracketSize - 1; i++) {
                 String str = GeneralReader.readSpecificLineInFile(file,14+i);
                 String[] values = str.split(",");

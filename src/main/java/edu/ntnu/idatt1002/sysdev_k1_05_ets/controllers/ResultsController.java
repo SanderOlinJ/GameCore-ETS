@@ -1,9 +1,9 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TournamentReaderRework;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TournamentReader;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.scenes.View;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.scenes.ViewSwitcher;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Match;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.NewTournament;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Tournament;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.utilities.Utilities;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -16,7 +16,7 @@ import java.util.Arrays;
 
 public class ResultsController {
 
-    private static NewTournament tournament;
+    private static Tournament tournament;
     private static String nameOfTournament;
 
     @FXML private Label tournamentName;
@@ -154,7 +154,7 @@ public class ResultsController {
 
     public void initialize(){
         try {
-            tournament = TournamentReaderRework.readTournamentFromFile(nameOfTournament);
+            tournament = TournamentReader.readTournamentFromFile(nameOfTournament);
         } catch (IOException exception){
             exception.printStackTrace();
         }

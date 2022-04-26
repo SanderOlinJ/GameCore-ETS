@@ -1,7 +1,7 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters;
 
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Match;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.NewTournament;
+import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Tournament;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.utilities.Utilities;
 import java.io.File;
@@ -12,11 +12,11 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class TournamentReaderRework {
+public class TournamentReader {
 
     private static final String COMMA_DELIMITER = ",";
 
-    public TournamentReaderRework(){}
+    public TournamentReader(){}
 
     /**
      * Reads all available info from tournament file to tournament
@@ -24,13 +24,13 @@ public class TournamentReaderRework {
      * Method only reads for teams if file size suggests so, and will only read for matches
      * if teams have been added.
      * @param tournamentName name of the tournament, String
-     * @return NewTournament, if the tournament exists.
+     * @return Tournament, if the tournament exists.
      * @throws IOException if tournament file does not exist, or if file could not be read
      */
-    public static NewTournament readTournamentFromFile(String tournamentName)
+    public static Tournament readTournamentFromFile(String tournamentName)
     throws IOException {
         String tournamentNameShortened = Utilities.shortenAndReplaceUnnecessarySymbolsInString(tournamentName);
-        String location = TournamentWriterRework.ifFileExistsAndFindLocation(tournamentNameShortened);
+        String location = TournamentWriter.ifFileExistsAndFindLocation(tournamentNameShortened);
 
         File file = switch (location) {
             case "Ongoing" -> new File("src/main/resources/edu/ntnu/idatt1002/" +
@@ -73,7 +73,7 @@ public class TournamentReaderRework {
         int entranceFee = Integer.parseInt(entranceFeeValues[0]);
         String entranceFeeCurrency = entranceFeeValues[1];
 
-        NewTournament tournament = new NewTournament(status, nameOfTournament,tournamentHost,
+        Tournament tournament = new Tournament(status, nameOfTournament,tournamentHost,
                 date,time,description,game,platform,tournamentType,numberOfTeams,
                 prizePool, prizePoolCurrency, entranceFee, entranceFeeCurrency);
 
@@ -164,10 +164,10 @@ public class TournamentReaderRework {
     }
 
 
-    public static ArrayList<NewTournament> readAllOngoingTournamentsToList(int n)
+    public static ArrayList<Tournament> readAllOngoingTournamentsToList(int n)
     throws IOException{
 
-        ArrayList<NewTournament> ongoingTournaments = new ArrayList<>();
+        ArrayList<Tournament> ongoingTournaments = new ArrayList<>();
         try {
             ArrayList<String> tournaments = readThroughOngoingTournaments();
             if (n == 0){
@@ -183,9 +183,9 @@ public class TournamentReaderRework {
         return ongoingTournaments;
     }
 
-    public static ArrayList<NewTournament> readAllUpcomingTournamentsToList(int n)
+    public static ArrayList<Tournament> readAllUpcomingTournamentsToList(int n)
             throws IOException{
-        ArrayList<NewTournament> upcomingTournaments = new ArrayList<>();
+        ArrayList<Tournament> upcomingTournaments = new ArrayList<>();
         try {
             ArrayList<String> tournaments = readThroughUpcomingTournaments();
             if (n == 0){
@@ -201,9 +201,9 @@ public class TournamentReaderRework {
         return upcomingTournaments;
     }
 
-    public static ArrayList<NewTournament> readAllPreviousTournamentsToList(int n)
+    public static ArrayList<Tournament> readAllPreviousTournamentsToList(int n)
             throws IOException{
-        ArrayList<NewTournament> previousTournaments = new ArrayList<>();
+        ArrayList<Tournament> previousTournaments = new ArrayList<>();
         try {
             ArrayList<String> tournaments = readThroughPreviousTournaments();
             if (n == 0){
