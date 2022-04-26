@@ -10,7 +10,17 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * A class responsible for the first page of the program
+ */
 public class GameCoreETSApplication extends Application {
+
+
+    /**
+     * Displays the first screen the user should see with the ETS GameCore logo
+     * @param stage
+     * @throws IOException
+     */
     @Override
     public void start(Stage stage) throws IOException {
         Scene scene = new Scene(new Pane());
@@ -25,8 +35,14 @@ public class GameCoreETSApplication extends Application {
         stage.show();
     }
 
+    /**
+     * Starts the application with the help of a method called launch() from its parents class Application which
+     * ultimately initiates the program
+     * @param args
+     */
     public static void main(String[] args) {
         launch();
     }
+
 
 }
