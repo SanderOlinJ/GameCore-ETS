@@ -12,5 +12,5 @@ Brackets
 -1,null
 Phase,Fnatic,Ninjas in Pyjamas,FaZe,
 3,true,Phase,Fnatic,00:05,2,1,Phase,
-2,false,Ninjas in Pyjamas,FaZe,?,?,?,?,
-1,false,Phase,?,?,?,?,?,
+2,true,Ninjas in Pyjamas,FaZe,01:00,2,1,Ninjas in Pyjamas,
+1,false,Phase,Ninjas in Pyjamas,?,?,?,?,

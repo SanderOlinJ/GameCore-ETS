@@ -82,11 +82,29 @@ public class MatchesController {
     @FXML private Label entranceFee;
     @FXML private Label entranceFeeCurrency;
     @FXML private Label warningLabel;
+    @FXML private Label team1Score;
+    @FXML private Label team2Score;
+    @FXML private Label team1Score1;
+    @FXML private Label team2Score1;
+    @FXML private Label team1Score2;
+    @FXML private Label team2Score2;
+    @FXML private Label team1Score3;
+    @FXML private Label team2Score3;
+    @FXML private Label team1Score4;
+    @FXML private Label team2Score4;
+    @FXML private Label team1Score5;
+    @FXML private Label team2Score5;
+    @FXML private Label team1Score6;
+    @FXML private Label team2Score6;
+    @FXML private Label team1Score7;
+    @FXML private Label team2Score7;
 
     private ArrayList<HBox> matches;
     private ArrayList<Label> timeLabels;
     private ArrayList<Label> teamOnes;
     private ArrayList<Label> teamTwos;
+    private ArrayList<Label> scoreTeam1;
+    private ArrayList<Label> scoreTeam2;
 
     @FXML
     protected void initialize(){
@@ -100,6 +118,16 @@ public class MatchesController {
                         prizePoolCurrency, entranceFeeCurrency);
         timeLabels = new ArrayList<>(Arrays.asList(timeMatch, timeMatch1, timeMatch2, timeMatch3, timeMatch4, timeMatch5, timeMatch6,
                 timeMatch7));
+        matches = new ArrayList<>(Arrays.asList(match, match1, match2, match3, match4, match5, match6,
+                match7));
+        teamOnes = new ArrayList<>(Arrays.asList(team1match,team1match1,team1match2,team1match3,
+                team1match4,team1match5,team1match6,team1match7));
+        teamTwos = new ArrayList<>(Arrays.asList(team2match,team2match1,team2match2,team2match3,
+                team2match4,team2match5,team2match6,team2match7));
+        scoreTeam1 = new ArrayList<>(Arrays.asList(team1Score,team1Score1,team1Score2,team1Score3,team1Score4,
+                team1Score5,team1Score6,team1Score7));
+        scoreTeam2 = new ArrayList<>(Arrays.asList(team2Score,team2Score1,team2Score2,team2Score3,team2Score4,
+                team2Score5,team2Score6,team2Score7));
 
         tournamentName.setText(nameOfTournament);
         setVisibleMatches();
@@ -174,14 +202,8 @@ public class MatchesController {
     }
 
     public void setVisibleMatches(){
-        int nrOfUnfinishedMatches = tournament.getNumberOfUnfinishedMatches();
-        matches = new ArrayList<>(Arrays.asList(match, match1, match2, match3, match4, match5, match6,
-                match7));
-        teamOnes = new ArrayList<>(Arrays.asList(team1match,team1match1,team1match2,team1match3,
-                team1match4,team1match5,team1match6,team1match7));
-        teamTwos = new ArrayList<>(Arrays.asList(team2match,team2match1,team2match2,team2match3,
-                team2match4,team2match5,team2match6,team2match7));
 
+        int nrOfUnfinishedMatches = tournament.getNumberOfUnfinishedMatches();
         for (int i = 0; i < nrOfUnfinishedMatches; i++) {
             if (tournament.getUnfinishedMatches().get(i).getTeam1() != null
                     || tournament.getUnfinishedMatches().get(i).getTeam2() != null){
@@ -189,9 +211,13 @@ public class MatchesController {
                 matches.get(i).setPrefHeight(100);
                 if (tournament.getUnfinishedMatches().get(i).getTeam1() != null){
                     teamOnes.get(i).setText(tournament.getUnfinishedMatches().get(i).getTeam1().getNameOfTeam());
+                    scoreTeam1.get(i).setText("Score " + tournament.getUnfinishedMatches().get(i).getTeam1()
+                            .getNameAbbr());
                 }
                 if (tournament.getUnfinishedMatches().get(i).getTeam2() != null) {
                     teamTwos.get(i).setText(tournament.getUnfinishedMatches().get(i).getTeam2().getNameOfTeam());
+                    scoreTeam2.get(i).setText("Score " + tournament.getUnfinishedMatches().get(i).getTeam2()
+                            .getNameAbbr());
                 }
                 if (tournament.getUnfinishedMatches().get(i).getTimeOfMatch() != null) {
                     timeLabels.get(i).setText(tournament.getUnfinishedMatches().get(i).getTimeOfMatch().toString());

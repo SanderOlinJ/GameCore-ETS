@@ -416,12 +416,12 @@
                                                                   <VBox prefHeight="98.0" prefWidth="96.0">
                                                                      <children>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                                        <Label text="Score team 1:" textFill="WHITE">
+                                                                        <Label fx:id="team1Score" text="Score TBD:" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="15.0" />
                                                                            </font>
                                                                         </Label>
-                                                                        <Label text="Score team 2:" textFill="WHITE">
+                                                                        <Label fx:id="team2Score" text="Score TBD:" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="15.0" />
                                                                            </font>
@@ -524,12 +524,12 @@
                                                                   <VBox prefHeight="98.0" prefWidth="96.0">
                                                                      <children>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                                        <Label text="Score team 1:" textFill="WHITE">
+                                                                        <Label fx:id="team1Score1" text="Score TBD:" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="15.0" />
                                                                            </font>
                                                                         </Label>
-                                                                        <Label text="Score team 2:" textFill="WHITE">
+                                                                        <Label fx:id="team2Score1" text="Score TBD:" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="15.0" />
                                                                            </font>
@@ -632,12 +632,12 @@
                                                                   <VBox prefHeight="98.0" prefWidth="96.0">
                                                                      <children>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                                        <Label text="Score team 1:" textFill="WHITE">
+                                                                        <Label fx:id="team1Score2" text="Score TBD:" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="15.0" />
                                                                            </font>
                                                                         </Label>
-                                                                        <Label text="Score team 2:" textFill="WHITE">
+                                                                        <Label fx:id="team2Score2" text="Score TBD:" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="15.0" />
                                                                            </font>
@@ -740,12 +740,12 @@
                                                                   <VBox prefHeight="98.0" prefWidth="96.0">
                                                                      <children>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                                        <Label text="Score team 1:" textFill="WHITE">
+                                                                        <Label fx:id="team1Score3" text="Score TBD:" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="15.0" />
                                                                            </font>
                                                                         </Label>
-                                                                        <Label text="Score team 2:" textFill="WHITE">
+                                                                        <Label fx:id="team2Score3" text="Score TBD:" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="15.0" />
                                                                            </font>
@@ -848,12 +848,12 @@
                                                                   <VBox prefHeight="98.0" prefWidth="96.0">
                                                                      <children>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                                        <Label text="Score team 1:" textFill="WHITE">
+                                                                        <Label fx:id="team1Score4" text="Score TBD:" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="15.0" />
                                                                            </font>
                                                                         </Label>
-                                                                        <Label text="Score team 2:" textFill="WHITE">
+                                                                        <Label fx:id="team2Score4" text="Score TBD:" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="15.0" />
                                                                            </font>
@@ -956,12 +956,12 @@
                                                                   <VBox prefHeight="98.0" prefWidth="96.0">
                                                                      <children>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                                        <Label text="Score team 1:" textFill="WHITE">
+                                                                        <Label fx:id="team1Score5" text="Score TBD:" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="15.0" />
                                                                            </font>
                                                                         </Label>
-                                                                        <Label text="Score team 2:" textFill="WHITE">
+                                                                        <Label fx:id="team2Score5" text="Score TBD:" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="15.0" />
                                                                            </font>
@@ -1064,12 +1064,12 @@
                                                                   <VBox prefHeight="98.0" prefWidth="96.0">
                                                                      <children>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                                        <Label text="Score team 1:" textFill="WHITE">
+                                                                        <Label fx:id="team1Score6" text="Score TBD:" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="15.0" />
                                                                            </font>
                                                                         </Label>
-                                                                        <Label text="Score team 2:" textFill="WHITE">
+                                                                        <Label fx:id="team2Score6" text="Score TBD:" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="15.0" />
                                                                            </font>
@@ -1172,12 +1172,12 @@
                                                                   <VBox prefHeight="98.0" prefWidth="96.0">
                                                                      <children>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                                        <Label text="Score team 1:" textFill="WHITE">
+                                                                        <Label fx:id="team1Score7" text="Score TBD:" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="15.0" />
                                                                            </font>
                                                                         </Label>
-                                                                        <Label text="Score team 2:" textFill="WHITE">
+                                                                        <Label fx:id="team2Score7" text="Score TBD:" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="Arial" size="15.0" />
                                                                            </font>

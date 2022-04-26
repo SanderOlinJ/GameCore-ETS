@@ -11,10 +11,10 @@ Brackets
 0,null
 -1,null
 Team Liquid,Ninjas in Pyjamas,Natus Vincere,Phase,LGB Esports,Fnatic,G2 Esports,FaZe,
-7,false,Team Liquid,Ninjas in Pyjamas,?,?,?,?,
-6,false,Natus Vincere,Phase,?,?,?,?,
-5,false,LGB Esports,Fnatic,?,?,?,?,
-4,false,G2 Esports,FaZe,?,?,?,?,
-3,false,?,?,?,?,?,?,
-2,false,?,?,?,?,?,?,
+7,true,Team Liquid,Ninjas in Pyjamas,00:00,2,1,Team Liquid,
+6,false,Natus Vincere,Phase,01:00,?,?,?,
+5,true,LGB Esports,Fnatic,02:00,2,0,LGB Esports,
+4,false,G2 Esports,FaZe,03:00,?,?,?,
+3,false,Team Liquid,?,?,?,?,?,
+2,false,LGB Esports,?,?,?,?,?,
 1,false,?,?,?,?,?,?,
