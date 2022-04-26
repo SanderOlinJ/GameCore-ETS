@@ -1,0 +1,16 @@
+Not finished
+Test 3
+Admin
+2022-04-27
+00:00
+No description
+Counter-Strike: Global Offensive
+PC / Mac / Linux
+Brackets
+4
+0,null
+-1,null
+Phase,Fnatic,Ninjas in Pyjamas,FaZe,
+3,true,Phase,Fnatic,00:05,2,1,Phase,
+2,false,Ninjas in Pyjamas,FaZe,?,?,?,?,
+1,false,Phase,?,?,?,?,?,

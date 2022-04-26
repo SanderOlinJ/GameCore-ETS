@@ -190,7 +190,6 @@ public class AddTeamController {
         //Creating team labels
         Team addedTeam = new Team(teamMembersList, teamNameField.getText(),abbreviationField.getText());
         if (!TeamReader.isThisANewTeam(addedTeam)){
-
             if (TeamReader.wasThereChangesMadeToTeam(addedTeam)){
 
                 if (TeamReader.isThereAlreadyATeamWithSameTeamName(addedTeam)){
@@ -220,10 +219,8 @@ public class AddTeamController {
                         overWrite = false;
                     }
                 }
-
             }
         }
-
         Label newTeam = new Label(teamNameField.getText());
         newTeam.setPrefWidth(300);
         newTeam.setAlignment(Pos.TOP_LEFT);

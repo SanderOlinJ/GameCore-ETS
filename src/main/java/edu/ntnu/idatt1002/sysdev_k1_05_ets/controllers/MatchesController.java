@@ -225,7 +225,6 @@ public class MatchesController {
         ViewSwitcher.switchTo(View.ONGOING_OVERVIEW);
     }
 
-
     @FXML
     void onUpcomingTournamentsButtonPressed()
     throws IOException{

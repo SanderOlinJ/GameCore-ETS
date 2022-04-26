@@ -1,0 +1,20 @@
+Not finished
+Test 4
+Admin
+2022-04-27
+00:00
+No description
+Counter-Strike: Global Offensive
+Nintendo GameCube
+Brackets
+8
+0,null
+-1,null
+Team Liquid,Ninjas in Pyjamas,Natus Vincere,Phase,LGB Esports,Fnatic,G2 Esports,FaZe,
+7,false,Team Liquid,Ninjas in Pyjamas,?,?,?,?,
+6,false,Natus Vincere,Phase,?,?,?,?,
+5,false,LGB Esports,Fnatic,?,?,?,?,
+4,false,G2 Esports,FaZe,?,?,?,?,
+3,false,?,?,?,?,?,?,
+2,false,?,?,?,?,?,?,
+1,false,?,?,?,?,?,?,

@@ -382,7 +382,7 @@
                                                                                                 <Font name="Arial" size="20.0" />
                                                                                             </font>
                                                                                         </Label>
-                                                                                        <Label fx:id="team2match" prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
+                                                                                        <Label fx:id="team2match" prefHeight="23.0" prefWidth="168.0" text="TBD" textFill="WHITE">
                                                                                             <font>
                                                                                                 <Font name="Arial" size="20.0" />
                                                                                             </font>
@@ -434,7 +434,7 @@
                                                                                         <Font name="Arial" size="20.0" />
                                                                                      </font>
                                                                                   </Label>
-                                                                                  <Label fx:id="team2match1" prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
+                                                                                  <Label fx:id="team2match1" prefHeight="23.0" prefWidth="168.0" text="TBD" textFill="WHITE">
                                                                                      <font>
                                                                                         <Font name="Arial" size="20.0" />
                                                                                      </font>
@@ -486,7 +486,7 @@
                                                                                         <Font name="Arial" size="20.0" />
                                                                                      </font>
                                                                                   </Label>
-                                                                                  <Label fx:id="team2match2" prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
+                                                                                  <Label fx:id="team2match2" prefHeight="23.0" prefWidth="168.0" text="TBD" textFill="WHITE">
                                                                                      <font>
                                                                                         <Font name="Arial" size="20.0" />
                                                                                      </font>
@@ -538,7 +538,7 @@
                                                                                         <Font name="Arial" size="20.0" />
                                                                                      </font>
                                                                                   </Label>
-                                                                                  <Label fx:id="team2match3" prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
+                                                                                  <Label fx:id="team2match3" prefHeight="23.0" prefWidth="168.0" text="TBD" textFill="WHITE">
                                                                                      <font>
                                                                                         <Font name="Arial" size="20.0" />
                                                                                      </font>
@@ -590,7 +590,7 @@
                                                                                         <Font name="Arial" size="20.0" />
                                                                                      </font>
                                                                                   </Label>
-                                                                                  <Label fx:id="team2match4" prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
+                                                                                  <Label fx:id="team2match4" prefHeight="23.0" prefWidth="168.0" text="TBD" textFill="WHITE">
                                                                                      <font>
                                                                                         <Font name="Arial" size="20.0" />
                                                                                      </font>
@@ -642,7 +642,7 @@
                                                                                         <Font name="Arial" size="20.0" />
                                                                                      </font>
                                                                                   </Label>
-                                                                                  <Label fx:id="team2match5" prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
+                                                                                  <Label fx:id="team2match5" prefHeight="23.0" prefWidth="168.0" text="TBD" textFill="WHITE">
                                                                                      <font>
                                                                                         <Font name="Arial" size="20.0" />
                                                                                      </font>
@@ -694,7 +694,7 @@
                                                                                         <Font name="Arial" size="20.0" />
                                                                                      </font>
                                                                                   </Label>
-                                                                                  <Label fx:id="team2match6" prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
+                                                                                  <Label fx:id="team2match6" prefHeight="23.0" prefWidth="168.0" text="TBD" textFill="WHITE">
                                                                                      <font>
                                                                                         <Font name="Arial" size="20.0" />
                                                                                      </font>
@@ -746,7 +746,7 @@
                                                                                         <Font name="Arial" size="20.0" />
                                                                                      </font>
                                                                                   </Label>
-                                                                                  <Label fx:id="team2match7" prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
+                                                                                  <Label fx:id="team2match7" prefHeight="23.0" prefWidth="168.0" text="TBD" textFill="WHITE">
                                                                                      <font>
                                                                                         <Font name="Arial" size="20.0" />
                                                                                      </font>
@@ -798,7 +798,7 @@
                                                                                         <Font name="Arial" size="20.0" />
                                                                                      </font>
                                                                                   </Label>
-                                                                                  <Label fx:id="team2match8" prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
+                                                                                  <Label fx:id="team2match8" prefHeight="23.0" prefWidth="168.0" text="TBD" textFill="WHITE">
                                                                                      <font>
                                                                                         <Font name="Arial" size="20.0" />
                                                                                      </font>
@@ -850,7 +850,7 @@
                                                                                         <Font name="Arial" size="20.0" />
                                                                                      </font>
                                                                                   </Label>
-                                                                                  <Label fx:id="team2match9" prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
+                                                                                  <Label fx:id="team2match9" prefHeight="23.0" prefWidth="168.0" text="TBD" textFill="WHITE">
                                                                                      <font>
                                                                                         <Font name="Arial" size="20.0" />
                                                                                      </font>
@@ -902,7 +902,7 @@
                                                                                         <Font name="Arial" size="20.0" />
                                                                                      </font>
                                                                                   </Label>
-                                                                                  <Label fx:id="team2match10" prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
+                                                                                  <Label fx:id="team2match10" prefHeight="23.0" prefWidth="168.0" text="TBD" textFill="WHITE">
                                                                                      <font>
                                                                                         <Font name="Arial" size="20.0" />
                                                                                      </font>
@@ -954,7 +954,7 @@
                                                                                         <Font name="Arial" size="20.0" />
                                                                                      </font>
                                                                                   </Label>
-                                                                                  <Label fx:id="team2match11" prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
+                                                                                  <Label fx:id="team2match11" prefHeight="23.0" prefWidth="168.0" text="TBD" textFill="WHITE">
                                                                                      <font>
                                                                                         <Font name="Arial" size="20.0" />
                                                                                      </font>
@@ -1006,7 +1006,7 @@
                                                                                         <Font name="Arial" size="20.0" />
                                                                                      </font>
                                                                                   </Label>
-                                                                                  <Label fx:id="team2match12" prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
+                                                                                  <Label fx:id="team2match12" prefHeight="23.0" prefWidth="168.0" text="TBD" textFill="WHITE">
                                                                                      <font>
                                                                                         <Font name="Arial" size="20.0" />
                                                                                      </font>
@@ -1058,7 +1058,7 @@
                                                                                         <Font name="Arial" size="20.0" />
                                                                                      </font>
                                                                                   </Label>
-                                                                                  <Label fx:id="team2match13" prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
+                                                                                  <Label fx:id="team2match13" prefHeight="23.0" prefWidth="168.0" text="TBD" textFill="WHITE">
                                                                                      <font>
                                                                                         <Font name="Arial" size="20.0" />
                                                                                      </font>
@@ -1110,7 +1110,7 @@
                                                                                         <Font name="Arial" size="20.0" />
                                                                                      </font>
                                                                                   </Label>
-                                                                                  <Label fx:id="team2match14" prefHeight="23.0" prefWidth="168.0" text="Team 2" textFill="WHITE">
+                                                                                  <Label fx:id="team2match14" prefHeight="23.0" prefWidth="168.0" text="TBD" textFill="WHITE">
                                                                                      <font>
                                                                                         <Font name="Arial" size="20.0" />
                                                                                      </font>
