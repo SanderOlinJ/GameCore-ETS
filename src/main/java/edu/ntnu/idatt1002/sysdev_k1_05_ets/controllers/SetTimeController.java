@@ -1,7 +1,6 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.scenes.View;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.scenes.ViewSwitcher;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TeamReader;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TournamentReader;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TournamentWriter;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Match;
@@ -117,7 +116,6 @@ public class SetTimeController {
     ArrayList<Label> teamTwos;
     private ArrayList<HBox> matches;
 
-
     @FXML
     public void initialize(){
         try {
@@ -181,8 +179,8 @@ public class SetTimeController {
                    matches.get(i).setPrefHeight(0);
 
                    try {
-                       Team team1 = TeamReader.findAndReturnTeamUsingTeamName(teamOnes.get(i).getText());
-                       Team team2 = TeamReader.findAndReturnTeamUsingTeamName(teamTwos.get(i).getText());
+                       Team team1 = tournament.getTeamByName(teamOnes.get(i).getText());
+                       Team team2 = tournament.getTeamByName(teamTwos.get(i).getText());
                        Match match = new Match(team1, team2);
                        LocalTime time = LocalTime.parse(hourBoxes.get(i).getValue() + ":" + minuteBoxes.get(i).getValue());
                        match.setTimeOfMatch(time);
@@ -197,6 +195,7 @@ public class SetTimeController {
             }
         }
     }
+
     public void setHoursToBox(ComboBox box){
         box.getItems().addAll("00","01","02","03","04","05","06","07","08","09","10",
                 "11","12","13","14","15","16","17","18","19","20","21","22","23");
@@ -237,8 +236,6 @@ public class SetTimeController {
             }
         });
     }
-
-
 
     public void setVisibleMatches(){
 

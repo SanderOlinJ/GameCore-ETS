@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class MatchesController {
+
     private Tournament tournament;
     private static String nameOfTournament;
 
@@ -109,7 +110,7 @@ public class MatchesController {
     private ArrayList<TextField> teamTwosScore;
 
     @FXML
-    protected void initialize(){
+    private void initialize(){
         try {
             tournament = TournamentReader.readTournamentFromFile(nameOfTournament);
         } catch (IOException exception){
@@ -118,7 +119,6 @@ public class MatchesController {
         Utilities.showGameInfo(tournamentName, nameOfTournament, imageView, tournament, game,
                         host, startDate, startTime, platform, prizePool, entranceFee,
                         prizePoolCurrency, entranceFeeCurrency);
-
         initializeLists();
         tournamentName.setText(nameOfTournament);
         setVisibleMatches();
@@ -127,7 +127,6 @@ public class MatchesController {
     @FXML
     public void winnerChosen(){
         warningLabel.setText("");
-
         for (int i = 0; i < 8; i++) {
             if (!teamOnesScore.get(i).getText().isEmpty() || !teamTwosScore.get(i).getText().isEmpty()) {
                 if (Utilities.areThereAnyOtherCharactersThanNumbers(teamOnesScore.get(i).getText()) ||
@@ -247,7 +246,6 @@ public class MatchesController {
     throws IOException {
         ViewSwitcher.switchTo(View.PREVIOUS_OVERVIEW);
     }
-
 
     public static void setNameOfTournament(String nameOfTournament) {
         MatchesController.nameOfTournament = nameOfTournament;

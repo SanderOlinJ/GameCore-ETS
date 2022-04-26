@@ -275,18 +275,22 @@ public class UpcomingTournamentsOverviewController {
             throws IOException{
         Utilities.onTournamentOverviewButtonClicked(tournaments.get(0));
     }
+
     @FXML void onOverviewButton1Clicked()
             throws IOException{
         Utilities.onTournamentOverviewButtonClicked(tournaments.get(1));
     }
+
     @FXML void onOverviewButton2Clicked()
             throws IOException{
         Utilities.onTournamentOverviewButtonClicked(tournaments.get(2));
     }
+
     @FXML void onOverviewButton3Clicked()
             throws IOException{
         Utilities.onTournamentOverviewButtonClicked(tournaments.get(3));
     }
+
     @FXML void onOverviewButton4Clicked()
             throws IOException {
         Utilities.onTournamentOverviewButtonClicked(tournaments.get(4));
@@ -299,6 +303,7 @@ public class UpcomingTournamentsOverviewController {
             exception.printStackTrace();
         }
     }
+
     @FXML void onDeleteIcon1Clicked(){
         try {
             showAlertBox(tournaments.get(1));
@@ -306,6 +311,7 @@ public class UpcomingTournamentsOverviewController {
             exception.printStackTrace();
         }
     }
+
     @FXML void onDeleteIcon2Clicked(){
         try {
             showAlertBox(tournaments.get(2));
@@ -313,6 +319,7 @@ public class UpcomingTournamentsOverviewController {
             exception.printStackTrace();
         }
     }
+
     @FXML void onDeleteIcon3Clicked(){
         try {
             showAlertBox(tournaments.get(3));
@@ -320,6 +327,7 @@ public class UpcomingTournamentsOverviewController {
             exception.printStackTrace();
         }
     }
+
     @FXML void onDeleteIcon4Clicked(){
         try {
             showAlertBox(tournaments.get(4));
@@ -327,7 +335,6 @@ public class UpcomingTournamentsOverviewController {
             exception.printStackTrace();
         }
     }
-
 
     private void showAlertBox(Tournament tournament)
     throws IOException{

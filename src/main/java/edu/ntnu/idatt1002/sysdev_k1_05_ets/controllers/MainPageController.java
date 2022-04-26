@@ -58,7 +58,6 @@ public class MainPageController {
         showPreviousTournaments();
     }
 
-
     @FXML
     private void showOngoingTournaments()
     throws IOException{

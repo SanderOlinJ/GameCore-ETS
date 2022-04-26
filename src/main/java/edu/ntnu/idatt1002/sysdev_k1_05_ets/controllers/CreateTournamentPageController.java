@@ -49,10 +49,8 @@ public class CreateTournamentPageController {
     @FXML private ComboBox entranceFeeCurrencyBox;
     @FXML private CheckBox activatePrizePool;
 
-
     @FXML
     public void initialize() {
-
 
         try {
             TournamentWriter.updateTournamentFileLocation();
@@ -75,7 +73,6 @@ public class CreateTournamentPageController {
                 ((observableValue, oldValue, newValue) ->
                         bracketFormatImageView.setImage(new Image(Utilities
                                 .getPathToBracketImageFile(newValue.toString()))));
-
 
         timeBoxHours.getItems().addAll("00","01","02","03","04","05","06","07","08","09","10",
                 "11","12","13","14","15","16","17","18","19","20","21","22","23");
@@ -112,7 +109,6 @@ public class CreateTournamentPageController {
                 };
             }
         });
-
         tournamentTypeBox.getItems().addAll("Brackets");
         tournamentTypeBox.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
             @Override public ListCell<String> call(ListView<String> p) {
@@ -163,7 +159,6 @@ public class CreateTournamentPageController {
                 };
             }
         });
-
         prizePoolCurrencyBox.getItems().addAll("NOK","USD","EUR","GBP");
         prizePoolCurrencyBox.setCellFactory(new Callback<ListView, ListCell>() {
             @Override
@@ -181,7 +176,6 @@ public class CreateTournamentPageController {
                 };
             }
         });
-
         entranceFeeCurrencyBox.getItems().addAll("NOK","USD","EUR","GBP");
         entranceFeeCurrencyBox.setCellFactory(new Callback<ListView, ListCell>() {
             @Override
@@ -223,8 +217,6 @@ public class CreateTournamentPageController {
             entranceFeeCurrencyBox.setDisable(true);
         }
     }
-
-
 
     @FXML
     public void addTeamScene() throws IOException {
@@ -347,7 +339,6 @@ public class CreateTournamentPageController {
             throw new IOException("The platform you chose does not exist, or is not in library");
         }
     }
-
 
     @FXML
     void onHomeButtonPressed()

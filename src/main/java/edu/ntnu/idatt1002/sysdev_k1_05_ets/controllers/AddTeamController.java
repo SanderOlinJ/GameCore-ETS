@@ -18,8 +18,8 @@ public class AddTeamController {
     private ArrayList<Team> existingTeams;
     private static Tournament tournament;
     private static String nameOfTournament;
-
     private static int maxTeams;
+    private ArrayList<Team> teamsForTournament;
 
     @FXML private TextField teamNameField;
     @FXML private TextArea playersNameField;
@@ -33,11 +33,10 @@ public class AddTeamController {
     @FXML private Button noButton;
     @FXML private Button continueButton1;
     private boolean overWrite;
-    private ArrayList<Team> teamsForTournament;
-
 
     @FXML
     public void initialize () throws IOException {
+
         overWrite = false;
         try {
             TournamentWriter.updateTournamentFileLocation();
@@ -263,7 +262,6 @@ public class AddTeamController {
     }
 
 
-
     public void deleteTeamFromTeams(Label teamLabel){
         for(int i = 0; i < enrolledTeamsBox.getChildren().size(); i++){
            if(enrolledTeamsBox.getChildren().get(i).equals(teamLabel)){
@@ -319,7 +317,6 @@ public class AddTeamController {
         return false;
     }
 
-
     @FXML
     void onHomeButtonPressed()
     throws IOException {
@@ -361,7 +358,6 @@ public class AddTeamController {
         TournamentWriter.writeTeamsToTournamentFile(tournament.getTournamentName(),teamsForTournament);
         ViewSwitcher.switchTo(View.PREVIOUS_OVERVIEW);
     }
-
 
     public static void setNameOfTournament(String nameOfTournament) {
         AddTeamController.nameOfTournament = nameOfTournament;

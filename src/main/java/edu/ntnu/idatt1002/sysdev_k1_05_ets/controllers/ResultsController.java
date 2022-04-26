@@ -167,11 +167,9 @@ public class ResultsController {
             exception.printStackTrace();
         }
         ArrayList<Match> matches = tournament.getFinishedMatches();
-
         Utilities.showGameInfo(tournamentName, nameOfTournament, imageView, tournament, game,
                         host, startDate, startTime, platform, prizePool, entranceFee,
                         prizePoolCurrency, entranceFeeCurrency);
-
         initializeLists();
 
         for (int i = 0; i < matches.size(); i++){

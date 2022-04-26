@@ -2,7 +2,6 @@ package edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament;
 
 import java.time.LocalTime;
 
-
 /**
  * Class for describing a match between two teams taking part in the tournament
  */
@@ -155,7 +154,7 @@ public class Match {
 
     /**
      * Returns the team with the highest score
-     * @return team with hightest score
+     * @return team with the highest score
      */
     public Team getVictor(){
         if (finished) {
