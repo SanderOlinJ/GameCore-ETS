@@ -154,6 +154,10 @@ public class SetTimeController {
         ViewSwitcher.switchTo(View.RESULTS);
     }
 
+    /**
+     * Used for redirecting current page to bracket page
+     * @throws IOException
+     */
     @FXML
     public void setBracketScene()
     throws IOException {
@@ -167,6 +171,10 @@ public class SetTimeController {
         }
     }
 
+    /**
+     * Used for redirecting current page to set matches page
+     * @throws IOException
+     */
     @FXML
     public void setMatchesScene()
     throws IOException {
@@ -280,51 +288,85 @@ public class SetTimeController {
         }
     }
 
+    /**
+     * fetches and returns the tournament
+     * @return
+     */
     public Tournament getTournament() {
         return tournament;
     }
 
+    /**
+     * sets the tournament
+     * @param tournament
+     */
     public void setTournament(Tournament tournament) {
         this.tournament = tournament;
     }
 
+    /**
+     * sets name for tournament
+     * @param nameOfTournament
+     */
     public static void setNameOfTournament(String nameOfTournament) {
         SetTimeController.nameOfTournament = nameOfTournament;
     }
 
+    /**
+     * Redirects to home page when clicked on home menu button
+     * @throws IOException
+     */
     @FXML
     void onHomeButtonPressed()
-    throws IOException {
+            throws IOException {
         ViewSwitcher.switchTo(View.MAIN);
     }
 
+    /**
+     * Redirects to about page when clicked on about menu button
+     * @throws IOException
+     */
     @FXML
     void onAboutButtonPressed()
-    throws IOException {
+            throws IOException {
         ViewSwitcher.switchTo(View.ABOUT);
     }
 
+    /**
+     * Redirects to help page when clicked on help menu button
+     * @throws IOException
+     */
     @FXML
     void onHelpButtonPressed()
-    throws IOException {
+            throws IOException {
         ViewSwitcher.switchTo(View.HELP);
     }
 
+    /**
+     * Redirects to ongoing tournaments page when clicked on ongoing tournaments menu button
+     * @throws IOException
+     */
     @FXML
     void onOngoingTournamentsButtonPressed()
-    throws IOException {
+            throws IOException {
         ViewSwitcher.switchTo(View.ONGOING_OVERVIEW);
     }
-
+    /**
+     * Redirects to upcoming tournaments page when clicked on upcoming tournaments menu button
+     * @throws IOException
+     */
     @FXML
     void onUpcomingTournamentsButtonPressed()
-    throws IOException{
+            throws IOException{
         ViewSwitcher.switchTo(View.UPCOMING_OVERVIEW);
     }
-
+    /**
+     * Redirects to previous tournaments page when clicked on previous tournaments menu button
+     * @throws IOException
+     */
     @FXML
     void onPreviousTournamentsButtonPressed()
-    throws IOException {
+            throws IOException {
         ViewSwitcher.switchTo(View.PREVIOUS_OVERVIEW);
     }
 }

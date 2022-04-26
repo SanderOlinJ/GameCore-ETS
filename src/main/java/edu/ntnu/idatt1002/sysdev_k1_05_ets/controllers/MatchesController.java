@@ -145,6 +145,10 @@ public class MatchesController {
         }
     }
 
+    /**
+     * Used for redirecting current page to result page
+     * @throws IOException
+     */
     @FXML
     public void setResultsScene()
     throws IOException {
@@ -152,7 +156,10 @@ public class MatchesController {
         ViewSwitcher.switchTo(View.RESULTS);
     }
 
-
+    /**
+     * Used for redirecting current page to set time page
+     * @throws IOException
+     */
     @FXML
     public void setTimeScene()
     throws IOException {
@@ -160,6 +167,12 @@ public class MatchesController {
         ViewSwitcher.switchTo(View.SET_TIME);
     }
 
+
+
+    /**
+     * Used for redirecting current page to bracket page
+     * @throws IOException
+     */
     @FXML
     public void setBracketScene()
     throws IOException {
@@ -172,6 +185,8 @@ public class MatchesController {
             ViewSwitcher.switchTo(View.BRACKET_16);
         }
     }
+
+
 
     public void setVisibleMatches(){
         int nrOfUnfinishedMatches = tournament.getNumberOfUnfinishedMatches();
@@ -201,43 +216,68 @@ public class MatchesController {
         }
     }
 
+    /**
+     * Redirects to home page when clicked on home menu button
+     * @throws IOException
+     */
     @FXML
     void onHomeButtonPressed()
     throws IOException {
         ViewSwitcher.switchTo(View.MAIN);
     }
 
+    /**
+     * Redirects to about page when clicked on about menu button
+     * @throws IOException
+     */
     @FXML
     void onAboutButtonPressed()
     throws IOException {
         ViewSwitcher.switchTo(View.ABOUT);
     }
 
+    /**
+     * Redirects to help page when clicked on help menu button
+     * @throws IOException
+     */
     @FXML
     void onHelpButtonPressed()
     throws IOException {
         ViewSwitcher.switchTo(View.HELP);
     }
 
+    /**
+     * Redirects to ongoing tournaments page when clicked on ongoing tournaments menu button
+     * @throws IOException
+     */
     @FXML
     void onOngoingTournamentsButtonPressed()
     throws IOException {
         ViewSwitcher.switchTo(View.ONGOING_OVERVIEW);
     }
-
+    /**
+     * Redirects to upcoming tournaments page when clicked on upcoming tournaments menu button
+     * @throws IOException
+     */
     @FXML
     void onUpcomingTournamentsButtonPressed()
     throws IOException{
         ViewSwitcher.switchTo(View.UPCOMING_OVERVIEW);
     }
-
+    /**
+     * Redirects to previous tournaments page when clicked on previous tournaments menu button
+     * @throws IOException
+     */
     @FXML
     void onPreviousTournamentsButtonPressed()
     throws IOException {
         ViewSwitcher.switchTo(View.PREVIOUS_OVERVIEW);
     }
 
-
+    /**
+     * Used for setting the name of a tournament
+     * @param nameOfTournament
+     */
     public static void setNameOfTournament(String nameOfTournament) {
         MatchesController.nameOfTournament = nameOfTournament;
     }
