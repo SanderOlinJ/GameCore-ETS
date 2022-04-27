@@ -29,7 +29,7 @@ class TeamTest {
     }
 
     @Test
-    void initializeTeamWithoutTeamNameOneParamaters(){
+    void initializeTeamWithoutTeamNameOneParameters(){
         try{
             Team team = new Team("");
         }catch (IllegalArgumentException e){

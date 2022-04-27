@@ -200,7 +200,7 @@ public class TournamentWriter {
      Can also be used to edit teams if matches has been set, but this functionality has not been implemented.
      * @param tournamentName name of the tournament, String
      * @param teams teams to be added to tournament, ArrayList
-     * @throws IOException
+     * @throws IOException if file does not exist or if file cannot be written to,
      */
     public static void writeTeamsToTournamentFile(String tournamentName, ArrayList<Team> teams)
     throws IOException{
@@ -249,6 +249,11 @@ public class TournamentWriter {
         }
     }
 
+    /**
+     Method updates location of the tournament files, bases on the tournament's start date,
+     and whether it's finished.
+     * @throws IOException
+     */
     public static void updateTournamentFileLocation()
     throws IOException{
         try {
