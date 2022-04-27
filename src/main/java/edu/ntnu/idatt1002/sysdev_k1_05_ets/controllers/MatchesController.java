@@ -129,6 +129,10 @@ public class MatchesController {
         setVisibleMatches();
     }
 
+    /**
+     * Used for selecting winner, ensures no illegal inputs have been made.
+     * Writes the match to the correct file, and removes the match from the scene
+     */
     @FXML
     public void winnerChosen(){
         warningLabel.setText("");
@@ -213,6 +217,11 @@ public class MatchesController {
         }
     }
 
+    /**
+     * Used for showing correct matches on initialization.
+     * Iterates through the FXML objects, making the matches visible,
+     * setting either team names and time in the correct matches
+     */
     public void setVisibleMatches(){
 
         int nrOfUnfinishedMatches = tournament.getNumberOfUnfinishedMatches();

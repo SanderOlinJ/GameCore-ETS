@@ -10,9 +10,7 @@ public class ViewSwitcher {
 
     private static Scene scene;
 
-    public static void setScene(Scene scene) {
-        ViewSwitcher.scene = scene;
-    }
+    public static void setScene(Scene scene) {ViewSwitcher.scene = scene;}
 
     public static void switchTo(View view) throws IOException {
 
@@ -23,6 +21,5 @@ public class ViewSwitcher {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 }

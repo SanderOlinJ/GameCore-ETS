@@ -69,6 +69,7 @@ public class BracketController {
 
     /**
      Method initializes the page with content.
+     reads the tournament file and sets the position in the bracket
      */
     @FXML
     public void initialize(){

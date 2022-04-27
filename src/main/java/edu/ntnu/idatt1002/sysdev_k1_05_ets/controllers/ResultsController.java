@@ -163,6 +163,11 @@ public class ResultsController {
     private ArrayList<Label> teamOnesScore;
     private ArrayList<Label> teamTwosScore;
 
+    /**
+     * Method called upon initialization of the controller
+     * Gets the finished matches from tournament and displays them with result and winner
+     */
+
     public void initialize(){
         try {
             tournament = TournamentReader.readTournamentFromFile(nameOfTournament);

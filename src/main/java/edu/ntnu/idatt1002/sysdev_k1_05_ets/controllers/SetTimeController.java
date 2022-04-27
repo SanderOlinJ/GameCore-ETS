@@ -197,6 +197,10 @@ public class SetTimeController {
     }
 
 
+    /**
+     * Used for setting time for match
+     * gets the time information the user has set, and writes the time of match(es) to correct tournament
+     */
     @FXML
     public void setTime()  {
         for (int i = 0; i < hourBoxes.size(); i++) {
@@ -276,6 +280,9 @@ public class SetTimeController {
         });
     }
 
+    /**
+     * Sets visible matches, get matches which have no time set, and displays them to user
+     */
     public void setVisibleMatches(){
         int nrOfMatchesNoTimeSet = tournament.getNumberOfMatchesWithNoTimeSet();
         for (int i = 0; i < nrOfMatchesNoTimeSet; i++) {

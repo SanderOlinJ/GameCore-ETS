@@ -286,7 +286,7 @@ public class CreateTournamentPageController {
             checkThatGameExistsInLibrary(game);
             checkThatPlatformExistsInLibrary(platform);
             if (activatePrizePool.isSelected()) {
-                checkIfPricePoolActivated(prizePool, prizePoolCurrency, entranceFee, entranceFeeCurrency);
+                checkIfPrizePoolActivated(prizePool, prizePoolCurrency, entranceFee, entranceFeeCurrency);
             }
         } catch (IOException exception){
             throw new IOException(exception.getMessage());
@@ -363,8 +363,8 @@ public class CreateTournamentPageController {
      * @param entranceFeeCurrency entrance fee currency of the tournament
      * @throws IOException if the fields have values that are invalid.
      */
-    private void checkIfPricePoolActivated(int prizePool, String prizePoolCurrency, int entranceFee,
-                                                  String entranceFeeCurrency)
+    private void checkIfPrizePoolActivated(int prizePool, String prizePoolCurrency, int entranceFee,
+                                           String entranceFeeCurrency)
     throws IOException{
         if (prizePool == 0){
             warningLabel.setText("Prize pool cannot be 0 or blank if activated");

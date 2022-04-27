@@ -26,8 +26,6 @@ public class GameCoreETSApplication extends Application {
         Scene scene = new Scene(new Pane());
         ViewSwitcher.setScene(scene);
         ViewSwitcher.switchTo(View.START);
-        stage.setMinHeight(800);
-        stage.setMinWidth(1200);
         stage.getIcons()
                 .add(new Image("file:src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/Images/ETSicon.png"));
         stage.setTitle("ETS GameCore");
