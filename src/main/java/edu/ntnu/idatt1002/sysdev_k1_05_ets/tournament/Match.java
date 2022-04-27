@@ -16,7 +16,8 @@ public class Match {
     private boolean finished;
 
     /**
-     * First constructor taking two teams, their corresponding scores and the time of the match
+     * First constructor taking two teams, their corresponding scores and the time of the match.
+     * Throws exception if any of the fields have invalid values, i.e. null.
      * @param team1 the first team
      * @param team2 the second team
      * @param scoreTeam1 the score of the first team
@@ -24,6 +25,21 @@ public class Match {
      * @param timeOfMatch the time of the match
      */
     public Match(Team team1, Team team2, int scoreTeam1, int scoreTeam2, LocalTime timeOfMatch, boolean finished) {
+        if (team1 == null){
+            throw new IllegalArgumentException("Team 1 cannot be null");
+        }
+        if (team2 == null){
+            throw new IllegalArgumentException("Team 2 cannot be null");
+        }
+        if (timeOfMatch == null){
+            throw new IllegalArgumentException("Time of match cannot be null");
+        }
+        if (scoreTeam1 < 0){
+            throw new IllegalArgumentException("Team 1's score cannot be less than 0");
+        }
+        if (scoreTeam2 < 0){
+            throw new IllegalArgumentException("Team 2's score cannot be less than 0");
+        }
         this.team1 = team1;
         this.team2 = team2;
         this.matchScoreTeam1 = scoreTeam1;
@@ -34,22 +50,31 @@ public class Match {
 
     /**
      * The second constructor taking two teams
+     * Throws exception if either of the participating teams are null.
      * @param team1 the first team
      * @param team2 the second team
      */
     public Match(Team team1, Team team2){
+        if (team1 == null){
+            throw new IllegalArgumentException("Team 1 cannot be null");
+        }
+        if (team2 == null){
+            throw new IllegalArgumentException("Team 2 cannot be null");
+        }
         this.team1 = team1;
         this.team2 = team2;
         this.matchScoreTeam1 = 0;
         this.matchScoreTeam2 = 0;
     }
 
-    public Match(Team team1){
-        this.team1 = team1;
-        this.matchScoreTeam1 = 0;
-        this.matchScoreTeam2 = 0;
-    }
-
+    /**
+     * The third constructor takes in no teams.
+     * Is used for instantiating matches where
+     * the participating teams have not yet been determined.
+     * Used when reading from tournament file,
+     * where every upcoming match is listed,
+     * even with no teams.
+     */
     public Match(){
         this.matchScoreTeam1 = 0;
         this.matchScoreTeam2 = 0;
@@ -73,10 +98,14 @@ public class Match {
     }
 
     /**
-     * Sets the score of the first team
-     * @param matchScoreTeam1
+     * Sets the score of the first team.
+     * Throws exception if the score is less than 0.
+     * @param matchScoreTeam1 team 1's score
      */
     public void setMatchScoreTeam1(int matchScoreTeam1) {
+        if (matchScoreTeam1 < 0){
+            throw new IllegalArgumentException("Team 1's score cannot be less than 0");
+        }
         this.matchScoreTeam1 = matchScoreTeam1;
     }
 
@@ -89,10 +118,14 @@ public class Match {
     }
 
     /**
-     * Sets the score of the second team
-     * @param matchScoreTeam2
+     * Sets the score of the second team.
+     * Throws exception if the score is less than 0.
+     * @param matchScoreTeam2 team 2's score
      */
     public void setMatchScoreTeam2(int matchScoreTeam2) {
+        if (matchScoreTeam2 < 0){
+            throw new IllegalArgumentException("Team 2's score cannot be less than 0");
+        }
         this.matchScoreTeam2 = matchScoreTeam2;
     }
 
@@ -113,10 +146,14 @@ public class Match {
     }
 
     /**
-     * Sets the time of the match
-     * @param timeOfMatch
+     * Sets the time of the match.
+     * Throws exception if the time is null
+     * @param timeOfMatch time of the match
      */
     public void setTimeOfMatch(LocalTime timeOfMatch) {
+        if (timeOfMatch == null){
+            throw new IllegalArgumentException("Time of match cannot be null");
+        }
         this.timeOfMatch = timeOfMatch;
     }
 
@@ -136,25 +173,35 @@ public class Match {
         this.finished = finished;
     }
 
+    /**
+     * Sets the second team participating in the tournament.
+     * Throws exception if the team is null.
+     * @param team2 second team participating in the match
+     */
     public void setTeam2(Team team2){
+        if (team2 == null){
+            throw new IllegalArgumentException("Team 2 cannot be null");
+        }
         this.team2 = team2;
     }
 
+    /**
+     * Sets the first team participating in the tournament.
+     * Throws exception if the team is null.
+     * @param team1 second team participating in the match
+     */
     public void setTeam1(Team team1) {
+        if (team1 == null){
+            throw new IllegalArgumentException("Team 1 cannot be null");
+        }
         this.team1 = team1;
     }
 
-    public void setTeam(Team team){
-        if (this.team1 == null){
-            setTeam1(team);
-        } else {
-            setTeam2(team);
-        }
-    }
 
     /**
-     * Returns the team with the highest score
-     * @return team with the highest score
+     * Returns the team with the highest score,
+     * only if the match is finished.
+     * @return team with the highest score, the victor
      */
     public Team getVictor(){
         if (finished) {
@@ -183,6 +230,11 @@ public class Match {
                 '}';
     }
 
+    /**
+    * Returns the team with the lowest score,
+    * only if the match is finished.
+    * @return team with the lowest score, the lost
+    */
     public Team getLoser(){
         if (finished){
             if (matchScoreTeam1 < matchScoreTeam2){

@@ -566,7 +566,7 @@ public class Tournament {
     }
 
     /**
-     * Removes the given team from teams
+     * Removes the given team from tournaments list of teams
      * @param team
      */
     public void removeTeam(Team team) {
@@ -574,6 +574,10 @@ public class Tournament {
     }
 
 
+    /**
+     * Method for fetching number of matches that have no time set yet
+     * @return number of matches with no time set
+     */
     public int getNumberOfMatchesWithNoTimeSet(){
         int nr = 0;
         for (Match match : matches){
@@ -584,6 +588,10 @@ public class Tournament {
         return nr;
     }
 
+    /**
+     * Method for fetching matches that have no time set yet
+     * @return matches with no time set
+     */
     public ArrayList<Match> getMatchesWithNoTimeSet(){
         ArrayList<Match> matchesWithNoTimeSet = new ArrayList<>();
         for (Match match : matches){
@@ -594,6 +602,10 @@ public class Tournament {
         return matchesWithNoTimeSet;
     }
 
+    /**
+     * Method for fetching number of matches that are not yet marked finished
+     * @return number of unfinished matches
+     */
     public int getNumberOfUnfinishedMatches(){
         int nr = 0;
         for (Match match : matches){
@@ -604,6 +616,10 @@ public class Tournament {
         return nr;
     }
 
+    /**
+     * Method for fetching matches that are not yet marked finished
+     * @return unfinished matches
+     */
     public ArrayList<Match> getUnfinishedMatches(){
         ArrayList<Match> unfinishedMatches = new ArrayList<>();
         for (Match match : matches){
@@ -614,6 +630,10 @@ public class Tournament {
         return unfinishedMatches;
     }
 
+    /**
+     * Method for fetching matches that are marked finished
+     * @return finished matches
+     */
     public ArrayList<Match> getFinishedMatches(){
         ArrayList<Match> finishedMatches = new ArrayList<>();
         for (Match match : matches){
@@ -624,11 +644,27 @@ public class Tournament {
         return finishedMatches;
     }
 
+    /**
+     * Method for fetching first place of tournament, only if finished
+     * @return winner of the final match, which is the first place of the tournament
+     */
     public Team getFirstPlace(){
-        return this.matches.get(this.numberOfTeams-2).getVictor();
+        if (getStatus().equals("Finished")) {
+            return this.matches.get(this.numberOfTeams - 2).getVictor();
+        } else {
+            return null;
+        }
     }
 
+    /**
+     * Method for fetching second place of a tournament, only if finished
+     * @return loser of the final match, which is the second place of the tournament
+     */
     public Team getSecondPlace(){
-        return this.matches.get(this.numberOfTeams-2).getLoser();
+        if (getStatus().equals("Finished")) {
+            return this.matches.get(this.numberOfTeams - 2).getLoser();
+        } else {
+            return null;
+        }
     }
 }

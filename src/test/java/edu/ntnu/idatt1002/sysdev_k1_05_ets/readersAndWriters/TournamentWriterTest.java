@@ -60,18 +60,6 @@ class TournamentWriterTest {
     }
 
     @Test
-    void testThatRemoveTournamentFromOverview(){
-        String fileNameOngoing = "testFileOngoing";
-
-        try{
-            TournamentWriter.removeTournamentFromOverviewWhenLocationNotKnown(fileNameOngoing);
-        } catch (IOException exception){
-            System.out.println(exception.getMessage());
-            fail();
-        }
-    }
-
-    @Test
     void testThatUpdateTournamentFileLocationRuns(){
         try {
             TournamentWriter.updateTournamentFileLocation();

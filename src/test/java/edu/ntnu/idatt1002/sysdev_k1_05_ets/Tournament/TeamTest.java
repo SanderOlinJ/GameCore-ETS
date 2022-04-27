@@ -12,7 +12,7 @@ class TeamTest {
     @Test
     void initializeTeamWithoutMembersThreeParamaters(){
         try{
-            ArrayList<String> members = new ArrayList<String>();
+            ArrayList<String> members = new ArrayList<>();
             Team team = new Team(members, "CG", "CoolGuys");
         }catch (IllegalArgumentException e){
             assertEquals("Team members are required", e.getMessage());
@@ -39,12 +39,11 @@ class TeamTest {
 
     @Test
     void getNameOfTeam(){
-        ArrayList<String> members = new ArrayList<String>();
+        ArrayList<String> members = new ArrayList<>();
         members.add("Nutperson");
 
         Team team = new Team(members, "Nutpeople", "NP");
 
         assertEquals("Nutpeople", team.getNameOfTeam());
     }
-
 }
