@@ -8,7 +8,7 @@ import javafx.scene.control.CheckBox;
 import java.io.IOException;
 
 /**
- * A controller class for the first page a user sees when launching ETS
+ * Controller class for the start screen
  */
 public class StartScreenController {
 
@@ -19,7 +19,7 @@ public class StartScreenController {
      * If "first time" check box is checked the page gets redirected to the help page of ETS
      * If "first time" checkbox is not checked the page gets redirected to the main page where you see upcoming, ongoing
      * and previous tournaments
-     * @throws IOException
+     * @throws IOException if scene could not be switched
      */
     @FXML
     void onStartButtonPressed()

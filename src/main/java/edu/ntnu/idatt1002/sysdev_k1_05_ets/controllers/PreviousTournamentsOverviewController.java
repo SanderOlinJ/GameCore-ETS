@@ -20,6 +20,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
 
+/**
+ * Controller class for the Previous Tournament Overview page
+ */
+
 public class PreviousTournamentsOverviewController {
 
     @FXML private HBox box;
@@ -70,16 +74,22 @@ public class PreviousTournamentsOverviewController {
 
     private ArrayList<Tournament> tournaments;
 
+    /**
+     Method initializes the page with content.
+     * @throws IOException if tournaments could not be read.
+     */
     @FXML
     public void initialize() throws IOException {
-        TournamentWriter.updateTournamentFileLocation();
+        //Sets the page with upcoming tournaments
         tournaments = TournamentReader.readAllPreviousTournamentsToList(0);
         setMainPageWithTournaments();
-
     }
 
+    /**
+     Method parses through the previous tournaments and displays them on screen
+     Sets each fxml value with data from the tournaments.
+     */
     private void setMainPageWithTournaments() {
-
         if (tournaments.size() > 0) {
             imageView.setImage(new Image("file:src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
                     "Images/gameImages/" + Utilities.shortenAndReplaceUnnecessarySymbolsInString
@@ -164,61 +174,108 @@ public class PreviousTournamentsOverviewController {
         }
     }
 
+    /**
+     Used for redirecting current page to the create new tournament page
+     * @throws IOException if scenes could not be switched
+     */
     @FXML void onCreateNewTournamentButtonClicked()
     throws IOException{
         ViewSwitcher.switchTo(View.CREATE_NEW_TOURNAMENT);
     }
 
+    /**
+     * Redirects to home page when clicked on home menu button
+     * @throws IOException if scenes could not be switched
+     */
     @FXML void onHomeButtonClicked()
     throws IOException{
         ViewSwitcher.switchTo(View.MAIN);
     }
 
+    /**
+     * Redirects to ongoing tournaments page when clicked on ongoing tournaments menu button
+     * @throws IOException if scenes could not be switched
+     */
     @FXML void onOngoingTournamentsButtonClicked()
     throws IOException{
         ViewSwitcher.switchTo(View.ONGOING_OVERVIEW);
     }
 
+    /**
+     * Redirects to upcoming tournaments page when clicked on upcoming tournaments menu button
+     * @throws IOException if scenes could not be switched
+     */
     @FXML void onUpcomingTournamentsButtonClicked()
     throws IOException{
         ViewSwitcher.switchTo(View.UPCOMING_OVERVIEW);
     }
 
+    /**
+     * Redirects to about page when clicked on about menu button
+     * @throws IOException if scenes could not be switched
+     */
     @FXML void onAboutButtonClicked()
     throws IOException{
         ViewSwitcher.switchTo(View.ABOUT);
     }
 
+    /**
+     * Redirects to help page when clicked on help menu button
+     * @throws IOException if scenes could not be switched
+     */
     @FXML void onHelpButtonClicked()
     throws IOException{
         ViewSwitcher.switchTo(View.HELP);
     }
 
+    /**
+     Used for redirecting current page to the overview page the first tournament in the list
+     * @throws IOException if scenes could not be switched
+     */
     @FXML void onOverviewButtonClicked()
     throws IOException{
         Utilities.onTournamentOverviewButtonClicked(tournaments.get(0));
     }
 
+    /**
+     Used for redirecting current page to the overview page the first tournament in the list
+     * @throws IOException if scenes could not be switched
+     */
     @FXML void onOverviewButton1Clicked()
     throws IOException{
         Utilities.onTournamentOverviewButtonClicked(tournaments.get(1));
     }
 
+    /**
+     Used for redirecting current page to the overview page the first tournament in the list
+     * @throws IOException if scenes could not be switched
+     */
     @FXML void onOverviewButton2Clicked()
     throws IOException{
         Utilities.onTournamentOverviewButtonClicked(tournaments.get(2));
     }
 
+    /**
+     Used for redirecting current page to the overview page the first tournament in the list
+     * @throws IOException if scenes could not be switched
+     */
     @FXML void onOverviewButton3Clicked()
     throws IOException{
         Utilities.onTournamentOverviewButtonClicked(tournaments.get(3));
     }
 
+    /**
+     Used for redirecting current page to the overview page the first tournament in the list
+     * @throws IOException if scenes could not be switched
+     */
     @FXML void onOverviewButton4Clicked()
     throws IOException{
         Utilities.onTournamentOverviewButtonClicked(tournaments.get(4));
     }
 
+    /**
+     Used for displaying alert box if the delete icon is clicked
+     */
     @FXML void onDeleteIconClicked(){
         try {
             showAlertBox(tournaments.get(0));
@@ -227,6 +284,9 @@ public class PreviousTournamentsOverviewController {
         }
     }
 
+    /**
+     Used for displaying alert box if the delete icon is clicked
+     */
     @FXML void onDeleteIcon1Clicked(){
         try {
             showAlertBox(tournaments.get(1));
@@ -235,6 +295,9 @@ public class PreviousTournamentsOverviewController {
         }
     }
 
+    /**
+     Used for displaying alert box if the delete icon is clicked
+     */
     @FXML void onDeleteIcon2Clicked(){
         try {
             showAlertBox(tournaments.get(2));
@@ -243,6 +306,9 @@ public class PreviousTournamentsOverviewController {
         }
     }
 
+    /**
+     Used for displaying alert box if the delete icon is clicked
+     */
     @FXML void onDeleteIcon3Clicked(){
         try {
             showAlertBox(tournaments.get(3));
@@ -251,6 +317,9 @@ public class PreviousTournamentsOverviewController {
         }
     }
 
+    /**
+     Used for displaying alert box if the delete icon is clicked
+     */
     @FXML void onDeleteIcon4Clicked(){
         try {
             showAlertBox(tournaments.get(4));
@@ -259,6 +328,12 @@ public class PreviousTournamentsOverviewController {
         }
     }
 
+    /**
+     Method used for displaying the alert box and then deleting the tournament from overview as well as the file.
+     * @param tournament tournament wished deleted
+     * @throws IOException if tournament could not be removed from previous overview,
+     * if path to file could be found or if scenes could not be switched
+     */
     private void showAlertBox(Tournament tournament)
             throws IOException{
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -272,7 +347,8 @@ public class PreviousTournamentsOverviewController {
         alert.showAndWait();
 
         if (alert.getResult() == ButtonType.OK){
-            TournamentWriter.removeTournamentFromPreviousOverview(tournament.getTournamentName());
+            TournamentWriter.removeTournamentFromPreviousOverview(Utilities
+                    .shortenAndReplaceUnnecessarySymbolsInString(tournament.getTournamentName()));
             File file = new File(TournamentWriter
                     .getPathToTournamentFileAsString(tournament.getTournamentName()));
             file.delete();

@@ -367,7 +367,7 @@
                                                                     <children>
                                                                         <ImageView fx:id="bracketImage" fitHeight="652.0" fitWidth="1098.0" pickOnBounds="true" preserveRatio="true">
                                                                             <image>
-                                                                                <Image url="@../Images/bracketFormats/Sixteen_Team_Bracket.png" />
+                                                                                <Image url="@../Images/bracketFormats/16.png" />
                                                                             </image>
                                                                         </ImageView>
                                                                     </children>

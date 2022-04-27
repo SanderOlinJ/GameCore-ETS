@@ -12,6 +12,9 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Class for reading tournament file to tournament objects, as well as managing file location.
+ */
 public class TournamentReader {
 
     private static final String COMMA_DELIMITER = ",";
@@ -23,12 +26,14 @@ public class TournamentReader {
      * Method can read tournament even without teams and matches listed.
      * Method only reads for teams if file size suggests so, and will only read for matches
      * if teams have been added.
-     * @param tournamentName name of the tournament, String
+     * @param tournamentName name of the tournament
      * @return Tournament, if the tournament exists.
      * @throws IOException if tournament file does not exist, or if file could not be read
      */
     public static Tournament readTournamentFromFile(String tournamentName)
     throws IOException {
+
+        //Method first retrieves the tournament file location
         String tournamentNameShortened = Utilities.shortenAndReplaceUnnecessarySymbolsInString(tournamentName);
         String location = TournamentWriter.ifFileExistsAndFindLocation(tournamentNameShortened);
 
@@ -41,6 +46,8 @@ public class TournamentReader {
                     "sysdev_k1_05_ets/tournamentFiles/previousTournaments/" + tournamentNameShortened + ".txt");
             default -> throw new IOException("File doesn't exist");
         };
+
+        //The file is then read to a list
         ArrayList<String> tournamentInfo = new ArrayList<>();
         try {
             try(Scanner scanner = new Scanner(file)){
@@ -52,6 +59,7 @@ public class TournamentReader {
             throw new IOException("Could not read from file");
         }
 
+        //We then assign each of the tournament attributes their respective values.
         String status = tournamentInfo.get(0);
         String nameOfTournament = tournamentInfo.get(1);
         String tournamentHost = tournamentInfo.get(2);
@@ -73,10 +81,16 @@ public class TournamentReader {
         int entranceFee = Integer.parseInt(entranceFeeValues[0]);
         String entranceFeeCurrency = entranceFeeValues[1];
 
+        //The Tournament object is then instantiated with its properties.
         Tournament tournament = new Tournament(status, nameOfTournament,tournamentHost,
                 date,time,description,game,platform,tournamentType,numberOfTeams,
                 prizePool, prizePoolCurrency, entranceFee, entranceFeeCurrency);
 
+        /*
+        If the arraylist is larger than 12, it means that teams have been added to the tournament file
+        Method then splits up the index 12 line in list, and passes the values (the team names)
+        to TeamReader, which in return gives us the fully detailed teams from the all_Teams.csv file.
+        */
         if (tournamentInfo.size() > 12) {
             ArrayList<Team> teams = new ArrayList<>();
             String line = tournamentInfo.get(12);
@@ -87,16 +101,25 @@ public class TournamentReader {
             }
             tournament.setTeams(teams);
 
+            /*
+            If the arraylist is larger than 13, it means that all teams have been added to the tournament
+            and that the matches have been written, even if no matches have been played.
+            We then pass the arraylist to MatchReader, which in return gives us Match objects.
+             */
             if (tournamentInfo.size() > 13){
                 ArrayList<Match> matches = MatchReader.readMatchesFromArrayList(tournamentInfo);
                 tournament.setMatches(matches);
             }
 
         }
-
         return tournament;
     }
 
+    /**
+     * Method for reading through the ongoing overview and returning tournament names in the file.
+     * @return List of tournament names in overview.
+     * @throws FileNotFoundException if file does not exist
+     */
     public static ArrayList<String> readThroughOngoingTournaments() throws FileNotFoundException {
         ArrayList<String> namesOfOngoingTournaments = new ArrayList<>();
 
@@ -110,6 +133,11 @@ public class TournamentReader {
         return namesOfOngoingTournaments;
     }
 
+    /**
+     * Method for reading through the previous overview and returning tournament names in the file.
+     * @return List of tournament names in overview.
+     * @throws FileNotFoundException if file does not exist
+     */
     public static ArrayList<String> readThroughPreviousTournaments() throws FileNotFoundException{
         ArrayList<String> namesOfOngoingTournaments = new ArrayList<>();
 
@@ -123,6 +151,11 @@ public class TournamentReader {
         return namesOfOngoingTournaments;
     }
 
+    /**
+     * Method for reading through the upcoming overview and returning tournament names in the file.
+     * @return List of tournament names in overview.
+     * @throws FileNotFoundException if file does not exist
+     */
     public static ArrayList<String> readThroughUpcomingTournaments() throws FileNotFoundException {
         ArrayList<String> namesOfOngoingTournaments = new ArrayList<>();
 
@@ -136,8 +169,15 @@ public class TournamentReader {
         return namesOfOngoingTournaments;
     }
 
+    /**
+     * Method checks if the given tournament is still an "upcoming" tournament
+     * @param file file of the potentially upcoming tournament
+     * @return true if still upcoming, false if not
+     * @throws IOException if file could not be read
+     */
     public static boolean isTournamentStillUpcoming(File file) throws IOException{
         try {
+            //Retrieves the vital information for what decides an upcoming tournament
             String status = GeneralReader.readSpecificLineInFile(file,1);
             LocalDate date = LocalDate.parse(GeneralReader.readSpecificLineInFile(file,4));
             LocalTime time = LocalTime.parse(GeneralReader.readSpecificLineInFile(file, 5));
@@ -149,8 +189,15 @@ public class TournamentReader {
         }
     }
 
+    /**
+     * Method checks if the given tournament is still an "ongoing" tournament
+     * @param file file of the potentially ongoing tournament
+     * @return true if still ongoing, false if not
+     * @throws IOException if file could not be read
+     */
     public static boolean isTournamentStillOngoing(File file) throws IOException{
         try {
+            //Retrieves the vital information for what decides an ongoing tournament
             String status = GeneralReader.readSpecificLineInFile(file,1);
             LocalDate date = LocalDate.parse(GeneralReader.readSpecificLineInFile(file,4));
             LocalTime time = LocalTime.parse(GeneralReader.readSpecificLineInFile(file,5));
@@ -159,19 +206,31 @@ public class TournamentReader {
                     date.isEqual(LocalDate.now()) && time.isBefore(LocalTime.now()) && status.equals("Not finished") ||
                     date.isBefore(LocalDate.now()) && status.equals("Not finished");
         } catch (IOException exception){
-            throw new IOException("Coudl not read through file: " + exception.getMessage());
+            throw new IOException("Could not read through file: " + exception.getMessage());
         }
     }
 
+    /**
+     * Method for reading all tournaments in the ongoing overview to a list of tournaments
+     * @param n Number of tournaments from the ongoing overview that you want returned,
+     *          if 0, it will return all
+     * @return List of ongoing tournaments
+     * @throws IOException if overview file could not be read.
+     */
     public static ArrayList<Tournament> readAllOngoingTournamentsToList(int n)
     throws IOException{
 
         ArrayList<Tournament> ongoingTournaments = new ArrayList<>();
         try {
+            //Method reads all ongoing tournaments' names
             ArrayList<String> tournaments = readThroughOngoingTournaments();
             if (n == 0){
                 n = tournaments.size();
             }
+            /*
+            Then retrieves each tournament as object.
+            Number based on input value, it will return all if 0.
+            */
             for (int i = 0; i < tournaments.size() && i < n; i++){
                 ongoingTournaments.add(readTournamentFromFile(tournaments.get(i)));
             }
@@ -182,14 +241,27 @@ public class TournamentReader {
         return ongoingTournaments;
     }
 
+    /**
+     * Method for reading all tournaments in the upcoming overview to a list of tournaments
+     * @param n Number of tournaments from the upcoming overview that you want returned,
+     *          if 0, it will return all
+     * @return List of upcoming tournaments
+     * @throws IOException if overview file could not be read.
+     */
     public static ArrayList<Tournament> readAllUpcomingTournamentsToList(int n)
             throws IOException{
+
         ArrayList<Tournament> upcomingTournaments = new ArrayList<>();
         try {
+            //Method reads all upcoming tournaments' names
             ArrayList<String> tournaments = readThroughUpcomingTournaments();
             if (n == 0){
                 n = tournaments.size();
             }
+            /*
+            Then retrieves each tournament as object.
+            Number based on input value, it will return all if 0.
+            */
             for (int i = 0; i < tournaments.size() && i < n; i++){
                 upcomingTournaments.add(readTournamentFromFile(tournaments.get(i)));
             }
@@ -200,14 +272,27 @@ public class TournamentReader {
         return upcomingTournaments;
     }
 
+    /**
+     * Method for reading all tournaments in the previous overview to a list of tournaments
+     * @param n Number of tournaments from the previous overview that you want returned,
+     *          if 0, it will return all
+     * @return List of previous tournaments
+     * @throws IOException if overview file could not be read.
+     */
     public static ArrayList<Tournament> readAllPreviousTournamentsToList(int n)
             throws IOException{
+
         ArrayList<Tournament> previousTournaments = new ArrayList<>();
         try {
+            //Method reads all previous tournaments' names
             ArrayList<String> tournaments = readThroughPreviousTournaments();
             if (n == 0){
                 n = tournaments.size();
             }
+            /*
+            Then retrieves each tournament as object.
+            Number based on input value, it will return all if 0.
+            */
             for (int i = 0; i < tournaments.size() && i < n; i++){
                 previousTournaments.add(readTournamentFromFile(tournaments.get(i)));
             }

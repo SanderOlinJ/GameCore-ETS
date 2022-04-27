@@ -15,6 +15,9 @@ import javafx.scene.text.Text;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * Controller class for the Main Page-page
+ */
 public class MainPageController {
 
     @FXML private VBox ongoingBox1;
@@ -46,6 +49,10 @@ public class MainPageController {
     private ArrayList<Tournament> upcomingTournaments;
     private ArrayList<Tournament> previousTournaments;
 
+    /**
+     Method initializes the page with content.
+     * @throws IOException if tournaments could be updated or shown.
+     */
     @FXML
     public void initialize()
     throws IOException {
@@ -58,6 +65,11 @@ public class MainPageController {
         showPreviousTournaments();
     }
 
+    /**
+     Method reads the first 2 registered ongoing tournaments from overview file, then passes them to
+     setMainPageWithTournaments() to be shown on screen
+     * @throws IOException if tournaments could not be read from file.
+     */
     @FXML
     private void showOngoingTournaments()
     throws IOException{
@@ -70,6 +82,11 @@ public class MainPageController {
         }
     }
 
+    /**
+     Method reads the first 2 registered upcoming tournaments from overview file, then passes them to
+     setMainPageWithTournaments() to be shown on screen
+     * @throws IOException if tournaments could not be read from file.
+     */
     @FXML
     private void showUpcomingTournaments()
     throws IOException{
@@ -82,6 +99,11 @@ public class MainPageController {
         }
     }
 
+    /**
+     Method reads the first 2 registered previous tournaments from overview file, then passes them to
+     setMainPageWithTournaments() to be shown on screen
+     * @throws IOException if tournaments could not be read from file.
+     */
     @FXML
     private void showPreviousTournaments()
     throws IOException{
@@ -94,6 +116,20 @@ public class MainPageController {
         }
     }
 
+    /**
+     * Method used for setting the main page with values dnd data from the tournaments.
+     * @param tournaments the list of 2 tournaments retrieved from an overview file.
+     * @param imageView1 the first imageview where the game image to the first tournament should be displayed.
+     * @param text1 the first text area where the tournament name of the first tournament should be displayed.
+     * @param vBox1 the first vbox containing the objects that should be set to visible
+     *              and enabled if there is a first tournament
+     * @param imageView2 the second imageview where the game image to the second tournament should be displayed.
+     * @param text2 the second text area where the tournament name of the second tournament should be displayed.
+     * @param vBox2 the second vbox containing the objects that should be set to visible
+     *              and enabled if there is a second tournament.
+     * @param warningText1 the first text that warns if the first tournament does not yet have all teams registered.
+     * @param warningText2 the second text that warns if the second tournament does not yet have all teams registered.
+     */
     private void setMainPageWithTournaments(ArrayList<Tournament> tournaments, ImageView imageView1,
                                             TextArea text1, VBox vBox1, ImageView imageView2,
                                             TextArea text2, VBox vBox2, Text warningText1, Text warningText2) {
@@ -126,97 +162,160 @@ public class MainPageController {
         }
     }
 
+    /**
+     Used for redirecting current page to the create new tournament page
+     * @throws IOException if scenes could not be switched
+     */
     @FXML
     void onCreateNewTournamentButtonPressed()
     throws IOException {
         ViewSwitcher.switchTo(View.CREATE_NEW_TOURNAMENT);
     }
 
+    /**
+     * Redirects to home page when clicked on home menu button
+     * @throws IOException if scenes could not be switched
+     */
     @FXML
     void onHomeButtonPressed()
     throws IOException{
         ViewSwitcher.switchTo(View.MAIN);
     }
 
+    /**
+     * Redirects to help page when clicked on help menu button
+     * @throws IOException if scenes could not be switched
+     */
     @FXML
     void onHelpButtonPressed()
     throws IOException{
         ViewSwitcher.switchTo(View.HELP);
     }
 
+    /**
+     * Redirects to about page when clicked on about menu button
+     * @throws IOException if scenes could not be switched
+     */
     @FXML
     void onAboutButtonPressed()
     throws IOException{
         ViewSwitcher.switchTo(View.ABOUT);
     }
 
+    /**
+     * Redirects to ongoing tournaments page when clicked on ongoing tournaments menu button
+     * @throws IOException if scenes could not be switched
+     */
     @FXML
     void onOngoingTournamentsButtonPressed()
     throws IOException{
         ViewSwitcher.switchTo(View.ONGOING_OVERVIEW);
     }
 
-
+    /**
+     * Redirects to upcoming tournaments page when clicked on upcoming tournaments menu button
+     * @throws IOException if scenes could not be switched
+     */
     @FXML
     void onUpcomingTournamentsButtonPressed()
     throws IOException{
         ViewSwitcher.switchTo(View.UPCOMING_OVERVIEW);
     }
 
+    /**
+     * Redirects to previous tournaments page when clicked on previous tournaments menu button
+     * @throws IOException if scenes could not be switched
+     */
     @FXML
     void onPreviousTournamentsButtonPressed()
     throws IOException{
         ViewSwitcher.switchTo(View.PREVIOUS_OVERVIEW);
     }
 
+    /**
+     * Redirects to ongoing tournaments page when clicked on view more button under ongoing tournaments
+     * @throws IOException if scenes could not be switched
+     */
     @FXML
     void onViewMoreOngoingPressed()
     throws IOException{
         ViewSwitcher.switchTo(View.ONGOING_OVERVIEW);
     }
 
+    /**
+     * Redirects to upcoming tournaments page when clicked on view more button under upcoming tournaments
+     * @throws IOException if scenes could not be switched
+     */
     @FXML
     void onViewMoreUpcomingPressed()
     throws IOException{
         ViewSwitcher.switchTo(View.UPCOMING_OVERVIEW);
     }
 
+    /**
+     * Redirects to previous tournaments page when clicked on view more button under previous tournaments
+     * @throws IOException if scenes could not be switched
+     */
     @FXML
     void onViewMorePreviousPressed()
     throws IOException{
         ViewSwitcher.switchTo(View.PREVIOUS_OVERVIEW);
     }
 
+    /**
+     Used for redirecting current page to the overview page the first ongoing tournament
+     * @throws IOException if scenes could not be switched
+     */
     @FXML
     void onOngoingBox1Clicked()
     throws IOException{
         Utilities.onTournamentOverviewButtonClicked(ongoingTournaments.get(0));
     }
 
+    /**
+     Used for redirecting current page to the overview page the second ongoing tournament
+     * @throws IOException if scenes could not be switched
+     */
     @FXML
     void onOngoingBox2Clicked()
     throws IOException{
         Utilities.onTournamentOverviewButtonClicked(ongoingTournaments.get(1));
     }
 
+    /**
+     Used for redirecting current page to the overview page the first upcoming tournament
+     * @throws IOException if scenes could not be switched
+     */
     @FXML
     void onUpcomingBox1Clicked()
     throws IOException{
         Utilities.onTournamentOverviewButtonClicked(upcomingTournaments.get(0));
     }
 
+    /**
+     Used for redirecting current page to the overview page the second upcoming tournament
+     * @throws IOException if scenes could not be switched
+     */
     @FXML
     void onUpcomingBox2Clicked()
     throws IOException{
         Utilities.onTournamentOverviewButtonClicked(upcomingTournaments.get(1));
     }
 
+    /**
+     Used for redirecting current page to the overview page the first previous tournament
+     * @throws IOException if scenes could not be switched
+     */
     @FXML
     void onPreviousBox1Clicked()
     throws IOException{
         Utilities.onTournamentOverviewButtonClicked(previousTournaments.get(0));
     }
 
+    /**
+     Used for redirecting current page to the overview page the second previous tournament
+     * @throws IOException if scenes could not be switched
+     */
     @FXML
     void onPreviousBox2Clicked()
     throws IOException{

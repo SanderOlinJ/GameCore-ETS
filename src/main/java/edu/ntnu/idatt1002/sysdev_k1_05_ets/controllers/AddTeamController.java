@@ -93,7 +93,8 @@ public class AddTeamController {
      * Responsible for changing to next scene
      * Sets the scene to bracket scene if clicked on the continue button from add teams page
      * Checks total number of teams combobox field and redirects to a bracket page of the same size accordingly
-     * @throws IOException
+     * @throws IOException if not enough teams are set, if teams or matches could not be written to file
+     * or if scenes could not be switcehd.
      */
     @FXML
     public void setBracketScene() throws IOException {
@@ -123,7 +124,7 @@ public class AddTeamController {
      * Also makes sure that an already enrolled team for the tournament cannot be added more than once
      * Initiates the process of displaying the newly added team to the stack of enrolled teams if it qualifies the
      * aforementioned restrictions
-     * @param teamName
+     * @param teamName name of team
      */
     @FXML
     public void addTeamExisting(String teamName){
@@ -177,7 +178,7 @@ public class AddTeamController {
      *              1: if team name already exists
      *              2: if team name abbreviation already exists
      *              3: if all members are already registered in a different team
-     * @throws IOException
+     * @throws IOException if any of the fields have values that are invalid.
      */
     public void addTeam() throws IOException {
         //setting it back to add team from yes
@@ -380,7 +381,7 @@ public class AddTeamController {
 
     /**
      * Redirects to home page when clicked on home menu button
-     * @throws IOException
+     * @throws IOException if scenes could not be switched
      */
     @FXML
     void onHomeButtonPressed()
@@ -391,7 +392,7 @@ public class AddTeamController {
 
     /**
      * Redirects to about page when clicked on about menu button
-     * @throws IOException
+     * @throws IOException if scenes could not be switched
      */
     @FXML
     void onAboutButtonPressed()
@@ -402,7 +403,7 @@ public class AddTeamController {
 
     /**
      * Redirects to help page when clicked on help menu button
-     * @throws IOException
+     * @throws IOException if scenes could not be switched
      */
     @FXML
     void onHelpButtonPressed()
@@ -413,9 +414,8 @@ public class AddTeamController {
 
     /**
      * Redirects to ongoing tournaments page when clicked on ongoing tournaments menu button
-     * @throws IOException
+     * @throws IOException if scenes could not be switched
      */
-
     @FXML
     void onOngoingTournamentsButtonPressed()
     throws IOException {
@@ -425,7 +425,7 @@ public class AddTeamController {
 
     /**
      * Redirects to upcoming tournaments page when clicked on upcoming tournaments menu button
-     * @throws IOException
+     * @throws IOException if scenes could not be switched
      */
     @FXML
     void onUpcomingTournamentsButtonPressed()
@@ -435,7 +435,7 @@ public class AddTeamController {
     }
     /**
      * Redirects to previous tournaments page when clicked on previous tournaments menu button
-     * @throws IOException
+     * @throws IOException if scenes could not be switched
      */
     @FXML
     void onPreviousTournamentsButtonPressed()
@@ -446,7 +446,7 @@ public class AddTeamController {
 
     /**
      * Used for setting the name of a tournament
-     * @param nameOfTournament
+     * @param nameOfTournament name of the tournament
      */
     public static void setNameOfTournament(String nameOfTournament) {
         AddTeamController.nameOfTournament = nameOfTournament;

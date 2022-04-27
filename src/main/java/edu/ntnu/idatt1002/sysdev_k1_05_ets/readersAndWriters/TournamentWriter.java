@@ -10,7 +10,9 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
-
+/**
+ Class for writing tournament data to a tournament file, as well as managing file location.
+ */
 public class TournamentWriter {
 
     private static final String NEWLINE_DELIMITER = "\n";
@@ -222,7 +224,7 @@ public class TournamentWriter {
             fileAsListOfStrings.add("");
         }
 
-        //The 12th index is the replaced with the teams.
+        //The line at index 12 is then replaced with the teams.
         //This will also replace the line if teams have already been added to the tournament
         //Which makes this method useful for editing teams as well.
         fileAsListOfStrings.set(12,stringBuilder.toString());
@@ -252,24 +254,33 @@ public class TournamentWriter {
     /**
      Method updates location of the tournament files, bases on the tournament's start date,
      and whether it's finished.
-     * @throws IOException
+     Method only moves upcoming tournaments to ongoing tournaments, and ongoing tournament to previous tournaments.
+     * @throws IOException if file can not be found, if file can not be read through or if file
+     * can not be written to.
      */
     public static void updateTournamentFileLocation()
     throws IOException{
+
         try {
+            //Reads through upcoming overview, and fetches all tournament names in the upcoming overview.
             ArrayList<String> upcomingTournament = TournamentReader.readThroughUpcomingTournaments();
 
             for (String tournamentNameShortened : upcomingTournament){
                 File file = new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
                         "tournamentFiles/upcomingTournaments/" + tournamentNameShortened + ".txt");
-                //If tournament is no longer upcoming
+
+                //Checks if the tournament is still upcoming
                 if (!TournamentReader.isTournamentStillUpcoming(file)) {
                     ArrayList<String> tournament = GeneralReader.readFile(file);
-                    //Remove tournament from upcoming Overview
+
+                    //Removes tournament from upcoming Overview
                     removeTournamentFromUpcomingOverview(tournamentNameShortened);
-                    //Write to ongoing overview
+
+                    //Writes tournament to ongoing overview
                     writeTournamentToOngoingOverview(tournamentNameShortened);
-                    //Move entire tournament file to ongoing directory
+
+                    //Moves entire tournament file to ongoing folder directory.
+                    //*Deletes and writes a new file
                     if (file.delete()){
                         File newFile = new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
                                 "tournamentFiles/ongoingTournaments/" + tournamentNameShortened + ".txt");
@@ -291,16 +302,25 @@ public class TournamentWriter {
                     exception.getMessage());
         }
         try {
+            //Reads through ongoing overview, and fetches all tournament names in the ongoing overview.
             ArrayList<String> ongoingTournament = TournamentReader.readThroughOngoingTournaments();
 
             for (String tournamentNameShortened : ongoingTournament){
                 File file = new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
                         "tournamentFiles/ongoingTournaments/" + tournamentNameShortened + ".txt");
 
+                //Checks if the tournament is still ongoing
                 if (!TournamentReader.isTournamentStillOngoing(file)){
                     ArrayList<String> tournament = GeneralReader.readFile(file);
+
+                    //Removes tournament from ongoing Overview
                     removeTournamentFromOngoingOverview(tournamentNameShortened);
+
+                    //Writes tournament to previous overview
                     writeTournamentToPreviousOverview(tournamentNameShortened);
+
+                    //Moves entire tournament file to previous folder directory.
+                    //*Deletes and writes a new file
                     if (file.delete()){
                         File newFile = new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
                                 "tournamentFiles/previousTournaments/" + tournamentNameShortened + ".txt");
@@ -324,13 +344,20 @@ public class TournamentWriter {
 
     }
 
-    public static void removeTournamentFromUpcomingOverview(String tournamentName)
+    /**
+     Method removes tournament name from upcoming overview
+     * @param tournamentNameShortened name of the tournament
+     * @throws IOException if file could be read or written to.
+     */
+    public static void removeTournamentFromUpcomingOverview(String tournamentNameShortened)
     throws IOException{
         try {
-            String tournamentNameShortened = Utilities.shortenAndReplaceUnnecessarySymbolsInString(tournamentName);
+            //Method reads all tournament names from the upcoming overview
             ArrayList<String> upcomingTournaments = TournamentReader.readThroughUpcomingTournaments();
             File file = new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
                     "tournamentFiles/upcomingTournaments/upcomingTournaments.txt");
+
+            //Then passes the data to removeTournamentFromOverview()
             removeTournamentFromOverview(tournamentNameShortened, upcomingTournaments, file);
 
         } catch (IOException exception){
@@ -338,14 +365,26 @@ public class TournamentWriter {
         }
     }
 
-    private static void removeTournamentFromOverview(String tournamentName, ArrayList<String> tournaments, File file)
+    /**
+     Method removes tournament name from selected overview file.
+     * @param tournamentNameShortened name of the tournament, shortened
+     * @param tournaments list of tournament names from selected overview file
+     * @param file overview file where the updated overview should be written back to.
+     * @throws IOException if file could not be written to.
+     */
+    private static void removeTournamentFromOverview(String tournamentNameShortened,
+                                                     ArrayList<String> tournaments, File file)
     throws IOException{
-        String tournamentNameShortened = Utilities.shortenAndReplaceUnnecessarySymbolsInString(tournamentName);
+        //Removes the tournament from the list of tournament names
         tournaments.removeIf(s -> s.equals(tournamentNameShortened));
+
+        //Writes the tournament to a string builder
         StringBuilder stringBuilder = new StringBuilder();
         for (String tournament : tournaments){
             stringBuilder.append(tournament).append(NEWLINE_DELIMITER);
         }
+
+        //Then writes the string builder containing the updated tournament names, back to the overview file.
         try (FileWriter fileWriter = new FileWriter(file)){
             fileWriter.write(stringBuilder.toString());
         } catch (IOException exception){
@@ -353,12 +392,19 @@ public class TournamentWriter {
         }
     }
 
-    public static void removeTournamentFromOngoingOverview(String tournamentName) throws IOException{
+    /**
+     Method removes tournament name from ongoing overview
+     * @param tournamentNameShortened name of the tournament
+     * @throws IOException if file could be read or written to.
+     */
+    public static void removeTournamentFromOngoingOverview(String tournamentNameShortened) throws IOException{
         try {
-            String tournamentNameShortened = Utilities.shortenAndReplaceUnnecessarySymbolsInString(tournamentName);
+            //Method reads all tournament names from the ongoing overview
             ArrayList<String> ongoingTournaments = TournamentReader.readThroughOngoingTournaments();
             File file = new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
                     "tournamentFiles/ongoingTournaments/ongoingTournaments.txt");
+
+            //Then passes the data to removeTournamentFromOverview()
             removeTournamentFromOverview(tournamentNameShortened, ongoingTournaments, file);
 
         } catch (IOException exception){
@@ -366,12 +412,19 @@ public class TournamentWriter {
         }
     }
 
-    public static void removeTournamentFromPreviousOverview(String tournamentName) throws IOException{
+    /**
+     Method removes tournament name from previous overview
+     * @param tournamentNameShortened name of the tournament
+     * @throws IOException if file could be read or written to.
+     */
+    public static void removeTournamentFromPreviousOverview(String tournamentNameShortened) throws IOException{
         try {
-            String tournamentNameShortened = Utilities.shortenAndReplaceUnnecessarySymbolsInString(tournamentName);
+            //Method reads all tournament names from the previous overview
             ArrayList<String> previousTournaments = TournamentReader.readThroughPreviousTournaments();
             File file = new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
                     "tournamentFiles/previousTournaments/previousTournaments.txt");
+
+            //Then passes the data to removeTournamentFromOverview()
             removeTournamentFromOverview(tournamentNameShortened, previousTournaments, file);
         } catch (IOException exception){
             throw new IOException("Could not remove tournament from previous overview: "+ exception.getMessage());
@@ -379,14 +432,15 @@ public class TournamentWriter {
     }
 
     /**
-     * Parses through the tournament file, and takes the last lines containing the matches information for the tournament
-     * and places them in an array containing all the information. Afterwards it iterates through the teams and places
-     * them in corresponding matches based on position in array. Every time this method is called it will look for winner of
-     * each match, and using the index of the match will place it into the new position. Each power of 2 represents one round further
-     * so the index is simply divided by two.
+     Parses through the tournament file, and takes the last lines containing the match information for the tournament
+     and places them in an array containing all the information.
+     Afterwards it iterates through the teams and places them in corresponding matches based on position in array.
+     Every time this method is called it will look for winner of each match,
+     and using the index of the match will place it into the new position.
+     Each power of 2 represents one round further so the index is simply divided by two.
      * @param tournamentName Takes in tournament name to open the file
      * @param inputMatch Takes in a match that is being modified to tournament
-     * @throws IOException
+     * @throws IOException if tournament file could not be found, read or written to.
      */
     public static void writeMatchesToTournament(String tournamentName, Match inputMatch) throws IOException {
 
@@ -400,7 +454,7 @@ public class TournamentWriter {
         String[][] matchesData = new String[bracketSize-1][7];
 
         //Parses the last number of lines, using bracket size to determine how many
-        //and reads all of the lines
+        //and reads all the lines
         for (int i = 0; i < bracketSize - 1; i++) {
             matchesData[i] = GeneralReader.readSpecificLineInFile(file, startIndex + i).split(COMMA_DELIMITER);
         }

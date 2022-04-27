@@ -12,7 +12,7 @@ public class AboutAndHelpController {
 
     /**
      * Redirects to main page if home menu button is clicked
-     * @throws IOException
+     * @throws IOException if scenes could not be switched
      */
     @FXML
     void onHomeButtonPressed()
@@ -22,7 +22,7 @@ public class AboutAndHelpController {
 
     /**
      * Redirects to about page if clicked on about menu button
-     * @throws IOException
+     * @throws IOException if scenes could not be switched
      */
     @FXML
     void onAboutButtonPressed()
@@ -32,7 +32,7 @@ public class AboutAndHelpController {
 
     /**
      * Redirects to help page if clicked on help menu button
-     * @throws IOException
+     * @throws IOException if scenes could not be switched
      */
     @FXML
     void onHelpButtonPressed()
@@ -42,7 +42,7 @@ public class AboutAndHelpController {
 
     /**
      * Redirects to on going tournament page if clicked on ongoing  menu button
-     * @throws IOException
+     * @throws IOException if scenes could not be switched
      */
     @FXML
     void onOngoingTournamentsButtonPressed()
@@ -52,7 +52,7 @@ public class AboutAndHelpController {
 
     /**
      * Redirects to ongoing tournament page if clicked on ongoing  menu button
-     * @throws IOException
+     * @throws IOException if scenes could not be switched
      */
     @FXML
     void onUpcomingTournamentsButtonPressed()
@@ -62,7 +62,7 @@ public class AboutAndHelpController {
 
     /**
      * Redirects to previous tournament page if clicked on previous tournaments menu button
-     * @throws IOException
+     * @throws IOException if scenes could not be switched
      */
     @FXML
     void onPreviousTournamentsButtonPressed()
@@ -72,7 +72,7 @@ public class AboutAndHelpController {
 
     /**
      * Redirects to create new tournament page if clicked on create new tournament button
-     * @throws IOException
+     * @throws IOException if scenes could not be switched
      */
     @FXML
     void onCreateNewTournamentButtonClicked()

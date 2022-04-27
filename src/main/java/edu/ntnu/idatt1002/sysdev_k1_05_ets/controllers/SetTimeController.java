@@ -17,6 +17,9 @@ import java.io.IOException;
 import java.time.LocalTime;
 import java.util.*;
 
+/**
+ * Controller class for the Set Time page
+ */
 public class SetTimeController {
 
     private static String nameOfTournament;
@@ -116,6 +119,9 @@ public class SetTimeController {
     ArrayList<Label> teamTwos;
     private ArrayList<HBox> matches;
 
+    /**
+     Used for initializing front-end values on set time page
+     */
     @FXML
     public void initialize(){
         try {
@@ -123,7 +129,7 @@ public class SetTimeController {
         } catch (IOException exception){
             exception.printStackTrace();
         }
-        Utilities.showGameInfo(tournamentName, nameOfTournament, imageView, tournament, game,
+        Utilities.showGameInfo(tournamentName, imageView, tournament, game,
                 host, startDate, startTime, platform, prizePool, entranceFee,
                 prizePoolCurrency, entranceFeeCurrency);
 
@@ -139,20 +145,32 @@ public class SetTimeController {
         setVisibleMatches();
     }
 
+    /**
+     * Used for redirecting current page to result page
+     * @throws IOException if scenes could not be switched
+     */
     @FXML
     public void setResultsScene()
     throws IOException {
+        /*
+        Method sends the tournament name to the next Controller,
+        so that the tournament may be read from file there.
+         */
         ResultsController.setNameOfTournament(nameOfTournament);
         ViewSwitcher.switchTo(View.RESULTS);
     }
 
     /**
      * Used for redirecting current page to bracket page
-     * @throws IOException
+     * @throws IOException if scenes could not be switched
      */
     @FXML
     public void setBracketScene()
     throws IOException {
+        /*
+        Method sends the tournament name to the next Controller,
+        so that the tournament may be read from file there.
+         */
         BracketController.setNameOfTournament(nameOfTournament);
         if (tournament.getNumberOfTeams() == 4){
             ViewSwitcher.switchTo(View.BRACKET_4);
@@ -165,14 +183,19 @@ public class SetTimeController {
 
     /**
      * Used for redirecting current page to set matches page
-     * @throws IOException
+     * @throws IOException if scenes could not be switched
      */
     @FXML
     public void setMatchesScene()
     throws IOException {
+        /*
+        Method sends the tournament name to the next Controller,
+        so that the tournament may be read from file there.
+         */
         MatchesController.setNameOfTournament(nameOfTournament);
         ViewSwitcher.switchTo(View.MATCHES);
     }
+
 
     @FXML
     public void setTime()  {
@@ -204,6 +227,10 @@ public class SetTimeController {
         }
     }
 
+    /**
+     Used for setting values to the combo boxes that contains hours.
+     * @param box combobox in which you set hours
+     */
     public void setHoursToBox(ComboBox box){
         box.getItems().addAll("00","01","02","03","04","05","06","07","08","09","10",
                 "11","12","13","14","15","16","17","18","19","20","21","22","23");
@@ -225,6 +252,10 @@ public class SetTimeController {
         });
     }
 
+    /**
+     Used for setting values to the combo boxes that contains minutes.
+     * @param box combobox in which you set minutes
+     */
     public void setMinutesToBox(ComboBox box){
         box.getItems().addAll("00","05","10","15","20","25","30","35","40","45","50","55");
         box.setCellFactory(new Callback<ListView, ListCell>() {
@@ -246,7 +277,6 @@ public class SetTimeController {
     }
 
     public void setVisibleMatches(){
-
         int nrOfMatchesNoTimeSet = tournament.getNumberOfMatchesWithNoTimeSet();
         for (int i = 0; i < nrOfMatchesNoTimeSet; i++) {
             if (tournament.getMatchesWithNoTimeSet().get(i).getTeam1() != null &&
@@ -272,23 +302,7 @@ public class SetTimeController {
     }
 
     /**
-     * fetches and returns the tournament
-     * @return
-     */
-    public Tournament getTournament() {
-        return tournament;
-    }
-
-    /**
-     * sets the tournament
-     * @param tournament
-     */
-    public void setTournament(Tournament tournament) {
-        this.tournament = tournament;
-    }
-
-    /**
-     * sets name for tournament
+     * Sets name for tournament
      * @param nameOfTournament
      */
     public static void setNameOfTournament(String nameOfTournament) {
@@ -297,7 +311,7 @@ public class SetTimeController {
 
     /**
      * Redirects to home page when clicked on home menu button
-     * @throws IOException
+     * @throws IOException if scenes could not be switched
      */
     @FXML
     void onHomeButtonPressed()
@@ -307,7 +321,7 @@ public class SetTimeController {
 
     /**
      * Redirects to about page when clicked on about menu button
-     * @throws IOException
+     * @throws IOException if scenes could not be switched
      */
     @FXML
     void onAboutButtonPressed()
@@ -317,7 +331,7 @@ public class SetTimeController {
 
     /**
      * Redirects to help page when clicked on help menu button
-     * @throws IOException
+     * @throws IOException if scenes could not be switched
      */
     @FXML
     void onHelpButtonPressed()
@@ -327,7 +341,7 @@ public class SetTimeController {
 
     /**
      * Redirects to ongoing tournaments page when clicked on ongoing tournaments menu button
-     * @throws IOException
+     * @throws IOException if scenes could not be switched
      */
     @FXML
     void onOngoingTournamentsButtonPressed()
@@ -336,7 +350,7 @@ public class SetTimeController {
     }
     /**
      * Redirects to upcoming tournaments page when clicked on upcoming tournaments menu button
-     * @throws IOException
+     * @throws IOException if scenes could not be switched
      */
     @FXML
     void onUpcomingTournamentsButtonPressed()
@@ -345,7 +359,7 @@ public class SetTimeController {
     }
     /**
      * Redirects to previous tournaments page when clicked on previous tournaments menu button
-     * @throws IOException
+     * @throws IOException if scenes could not be switched
      */
     @FXML
     void onPreviousTournamentsButtonPressed()
@@ -353,6 +367,9 @@ public class SetTimeController {
         ViewSwitcher.switchTo(View.PREVIOUS_OVERVIEW);
     }
 
+    /**
+     * Used for initializing list containing labels.
+     */
     private void initializeLists(){
 
         hourBoxes = new ArrayList<>(Arrays.asList(hoursMatch, hoursMatch1, hoursMatch2, hoursMatch3, hoursMatch4,
