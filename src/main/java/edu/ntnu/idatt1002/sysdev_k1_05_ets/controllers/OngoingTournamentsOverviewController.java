@@ -82,9 +82,7 @@ public class OngoingTournamentsOverviewController {
     @FXML private ImageView deleteIcon3;
     @FXML private ImageView deleteIcon4;
 
-
     private ArrayList<Tournament> tournaments;
-
 
     @FXML
     public void initialize()
@@ -95,7 +93,6 @@ public class OngoingTournamentsOverviewController {
     }
 
     private void setMainPageWithTournaments() {
-
         if (tournaments.size() > 0) {
             imageView.setImage(new Image("file:src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
                     "Images/gameImages/" + Utilities.shortenAndReplaceUnnecessarySymbolsInString
@@ -296,18 +293,22 @@ public class OngoingTournamentsOverviewController {
             throws IOException{
         Utilities.onTournamentOverviewButtonClicked(tournaments.get(0));
     }
+
     @FXML void onOverviewButton1Clicked()
             throws IOException{
         Utilities.onTournamentOverviewButtonClicked(tournaments.get(1));
     }
+
     @FXML void onOverviewButton2Clicked()
             throws IOException{
         Utilities.onTournamentOverviewButtonClicked(tournaments.get(2));
     }
+
     @FXML void onOverviewButton3Clicked()
             throws IOException{
         Utilities.onTournamentOverviewButtonClicked(tournaments.get(3));
     }
+
     @FXML void onOverviewButton4Clicked()
             throws IOException{
         Utilities.onTournamentOverviewButtonClicked(tournaments.get(4));
@@ -320,6 +321,7 @@ public class OngoingTournamentsOverviewController {
             exception.printStackTrace();
         }
     }
+
     @FXML void onDeleteIcon1Clicked(){
         try {
             showAlertBox(tournaments.get(1));
@@ -327,6 +329,7 @@ public class OngoingTournamentsOverviewController {
             exception.printStackTrace();
         }
     }
+
     @FXML void onDeleteIcon2Clicked(){
         try {
             showAlertBox(tournaments.get(2));
@@ -334,6 +337,7 @@ public class OngoingTournamentsOverviewController {
             exception.printStackTrace();
         }
     }
+
     @FXML void onDeleteIcon3Clicked(){
         try {
             showAlertBox(tournaments.get(3));
@@ -341,6 +345,7 @@ public class OngoingTournamentsOverviewController {
             exception.printStackTrace();
         }
     }
+
     @FXML void onDeleteIcon4Clicked(){
         try {
             showAlertBox(tournaments.get(4));
@@ -348,7 +353,6 @@ public class OngoingTournamentsOverviewController {
             exception.printStackTrace();
         }
     }
-
 
     private void showAlertBox(Tournament tournament)
             throws IOException{

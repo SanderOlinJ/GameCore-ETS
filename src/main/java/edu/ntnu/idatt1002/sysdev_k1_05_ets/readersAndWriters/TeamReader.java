@@ -5,7 +5,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-
 public class TeamReader {
     private static final String COMMA_DELIMITER = ",";
 
@@ -46,7 +45,7 @@ public class TeamReader {
 
     public static boolean isThereAlreadyATeamWithSameTeamName(Team team)
             throws IOException{
-        ArrayList<Team> teams = TeamReader.readTeamsFromAllTeamsFile();
+        ArrayList<Team> teams = readTeamsFromAllTeamsFile();
         for (Team teamInFile : teams){
             if (teamInFile.getNameOfTeam().equals(team.getNameOfTeam())){
                 return true;
@@ -57,7 +56,7 @@ public class TeamReader {
 
     public static boolean isThereAlreadyATeamWithSameTeamNameAbbreviation(Team team)
             throws IOException{
-        ArrayList<Team> teams = TeamReader.readTeamsFromAllTeamsFile();
+        ArrayList<Team> teams = readTeamsFromAllTeamsFile();
         for (Team teamInFile : teams){
             if (teamInFile.getNameAbbr().equals(team.getNameAbbr())){
                 return true;
@@ -68,7 +67,7 @@ public class TeamReader {
 
     public static boolean isThereAlreadyATeamWithSameTeamMembers(Team team)
             throws IOException{
-        ArrayList<Team> teams = TeamReader.readTeamsFromAllTeamsFile();
+        ArrayList<Team> teams = readTeamsFromAllTeamsFile();
         for (Team teamInFile : teams){
             if (teamInFile.getMembers().equals(team.getMembers())){
                 return true;
@@ -79,7 +78,7 @@ public class TeamReader {
 
     public static boolean wasThereChangesMadeToTeam(Team team)
     throws IOException{
-        ArrayList<Team> teams = TeamReader.readTeamsFromAllTeamsFile();
+        ArrayList<Team> teams = readTeamsFromAllTeamsFile();
         for (Team teamInFile : teams){
             if (teamInFile.equals(team)){
                 return false;
@@ -90,7 +89,7 @@ public class TeamReader {
 
     public static boolean isThisANewTeam(Team team)
     throws IOException{
-        ArrayList<Team> teams = TeamReader.readTeamsFromAllTeamsFile();
+        ArrayList<Team> teams = readTeamsFromAllTeamsFile();
         for (Team teamInFile : teams){
             if (teamInFile.getNameOfTeam().equals(team.getNameOfTeam()) ||
                     teamInFile.getNameAbbr().equals(team.getNameAbbr()) ||

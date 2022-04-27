@@ -151,6 +151,14 @@ public class ResultsController {
     @FXML private Label prizePoolCurrency;
     @FXML private Label entranceFeeCurrency;
 
+    private ArrayList<HBox> matchBox;
+    private ArrayList<Label> teamOnes;
+    private ArrayList<Label> teamTwos;
+    private ArrayList<Label> times;
+    private ArrayList<ImageView> team1Winner;
+    private ArrayList<ImageView> team2Winner;
+    private ArrayList<Label> teamOnesScore;
+    private ArrayList<Label> teamTwosScore;
 
     public void initialize(){
         try {
@@ -159,38 +167,11 @@ public class ResultsController {
             exception.printStackTrace();
         }
         ArrayList<Match> matches = tournament.getFinishedMatches();
-
         Utilities.showGameInfo(tournamentName, nameOfTournament, imageView, tournament, game,
                         host, startDate, startTime, platform, prizePool, entranceFee,
                         prizePoolCurrency, entranceFeeCurrency);
+        initializeLists();
 
-        ArrayList<HBox> matchBox = new ArrayList<>(Arrays.asList(match, match1, match2, match3, match4, match5, match6,
-                match7, match8, match9,match10, match11, match12, match13, match14));
-        ArrayList<Label> teamOnes = new ArrayList<>(Arrays.asList(team1match, team1match1, team1match2, team1match3,
-                team1match4, team1match5, team1match6, team1match7, team1match8, team1match9, team1match10, team1match11
-                ,team1match12, team1match13, team1match14));
-        ArrayList<Label> teamTwos = new ArrayList<>(Arrays.asList(team2match, team2match1, team2match2, team2match3,
-                team2match4, team2match5, team2match6, team2match7, team2match8, team2match9, team2match10, team2match11
-                , team2match12, team2match13, team2match14));
-        ArrayList<Label> times = new ArrayList<>(Arrays.asList(timeMatch, timeMatch1, timeMatch2, timeMatch3, timeMatch4
-                , timeMatch5, timeMatch6, timeMatch7, timeMatch8, timeMatch9, timeMatch10, timeMatch11, timeMatch12,
-                timeMatch13, timeMatch14));
-        ArrayList<ImageView> team1Winner = new ArrayList<>(Arrays.asList(team1WinnerMatch, team1WinnerMatch1,
-                team1WinnerMatch2, team1WinnerMatch3, team1WinnerMatch4, team1WinnerMatch5, team1WinnerMatch6,
-                team1WinnerMatch7, team1WinnerMatch8, team1WinnerMatch9, team1WinnerMatch10, team1WinnerMatch11,
-                team1WinnerMatch12, team1WinnerMatch13, team1WinnerMatch14));
-        ArrayList<ImageView> team2Winner = new ArrayList<>(Arrays.asList(team2WinnerMatch, team2WinnerMatch1,
-                team2WinnerMatch2, team2WinnerMatch3, team2WinnerMatch4, team2WinnerMatch5, team2WinnerMatch6,
-                team2WinnerMatch7, team2WinnerMatch8, team2WinnerMatch9, team2WinnerMatch10, team2WinnerMatch11,
-                team2WinnerMatch12, team2WinnerMatch13, team2WinnerMatch14));
-        ArrayList<Label> teamOnesScore = new ArrayList<>(Arrays.asList(team1ScoreMatch, team1ScoreMatch1,
-                team1ScoreMatch2, team1ScoreMatch3, team1ScoreMatch4, team1ScoreMatch5, team1ScoreMatch6,
-                team1ScoreMatch7, team1ScoreMatch8, team1ScoreMatch9, team1ScoreMatch10, team1ScoreMatch11,
-                team1ScoreMatch12, team1ScoreMatch13, team1ScoreMatch14));
-        ArrayList<Label> teamTwosScore = new ArrayList<>(Arrays.asList(team2ScoreMatch, team2ScoreMatch1,
-                team2ScoreMatch2, team2ScoreMatch3, team2ScoreMatch4, team2ScoreMatch5, team2ScoreMatch6,
-                team2ScoreMatch7, team2ScoreMatch8, team2ScoreMatch9, team2ScoreMatch10, team2ScoreMatch11,
-                team2ScoreMatch12, team2ScoreMatch13, team2ScoreMatch14));
         for (int i = 0; i < matches.size(); i++){
             matchBox.get(i).setDisable(false);
             matchBox.get(i).setVisible(true);
@@ -200,9 +181,9 @@ public class ResultsController {
             teamTwos.get(i).setText(matches.get(i).getTeam2().getNameAbbr());
             teamOnesScore.get(i).setText(String.valueOf(matches.get(i).getMatchScoreTeam1()));
             teamTwosScore.get(i).setText(String.valueOf(matches.get(i).getMatchScoreTeam2()));
-            if (matches.get(i).getVictor().getNameOfTeam().equals(teamOnes.get(i).getText())){
+            if (matches.get(i).getVictor().equals(matches.get(i).getTeam1())){
                 team1Winner.get(i).setVisible(true);
-            }else {
+            } else {
                 team2Winner.get(i).setVisible(true);
             }
         }
@@ -311,6 +292,36 @@ public class ResultsController {
      */
     public static void setNameOfTournament(String nameOfTournament) {
         ResultsController.nameOfTournament = nameOfTournament;
+    }
+
+    private void initializeLists(){
+        matchBox = new ArrayList<>(Arrays.asList(match, match1, match2, match3, match4, match5, match6,
+                match7, match8, match9,match10, match11, match12, match13, match14));
+        teamOnes = new ArrayList<>(Arrays.asList(team1match, team1match1, team1match2, team1match3,
+                team1match4, team1match5, team1match6, team1match7, team1match8, team1match9, team1match10, team1match11
+                ,team1match12, team1match13, team1match14));
+        teamTwos = new ArrayList<>(Arrays.asList(team2match, team2match1, team2match2, team2match3,
+                team2match4, team2match5, team2match6, team2match7, team2match8, team2match9, team2match10, team2match11
+                , team2match12, team2match13, team2match14));
+        times = new ArrayList<>(Arrays.asList(timeMatch, timeMatch1, timeMatch2, timeMatch3, timeMatch4
+                , timeMatch5, timeMatch6, timeMatch7, timeMatch8, timeMatch9, timeMatch10, timeMatch11, timeMatch12,
+                timeMatch13, timeMatch14));
+        team1Winner = new ArrayList<>(Arrays.asList(team1WinnerMatch, team1WinnerMatch1,
+                team1WinnerMatch2, team1WinnerMatch3, team1WinnerMatch4, team1WinnerMatch5, team1WinnerMatch6,
+                team1WinnerMatch7, team1WinnerMatch8, team1WinnerMatch9, team1WinnerMatch10, team1WinnerMatch11,
+                team1WinnerMatch12, team1WinnerMatch13, team1WinnerMatch14));
+        team2Winner = new ArrayList<>(Arrays.asList(team2WinnerMatch, team2WinnerMatch1,
+                team2WinnerMatch2, team2WinnerMatch3, team2WinnerMatch4, team2WinnerMatch5, team2WinnerMatch6,
+                team2WinnerMatch7, team2WinnerMatch8, team2WinnerMatch9, team2WinnerMatch10, team2WinnerMatch11,
+                team2WinnerMatch12, team2WinnerMatch13, team2WinnerMatch14));
+        teamOnesScore = new ArrayList<>(Arrays.asList(team1ScoreMatch, team1ScoreMatch1,
+                team1ScoreMatch2, team1ScoreMatch3, team1ScoreMatch4, team1ScoreMatch5, team1ScoreMatch6,
+                team1ScoreMatch7, team1ScoreMatch8, team1ScoreMatch9, team1ScoreMatch10, team1ScoreMatch11,
+                team1ScoreMatch12, team1ScoreMatch13, team1ScoreMatch14));
+        teamTwosScore = new ArrayList<>(Arrays.asList(team2ScoreMatch, team2ScoreMatch1,
+                team2ScoreMatch2, team2ScoreMatch3, team2ScoreMatch4, team2ScoreMatch5, team2ScoreMatch6,
+                team2ScoreMatch7, team2ScoreMatch8, team2ScoreMatch9, team2ScoreMatch10, team2ScoreMatch11,
+                team2ScoreMatch12, team2ScoreMatch13, team2ScoreMatch14));
     }
 
 }

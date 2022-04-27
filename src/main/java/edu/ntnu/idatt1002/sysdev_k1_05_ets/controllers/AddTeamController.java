@@ -22,6 +22,7 @@ public class AddTeamController {
     private static Tournament tournament;
     private static String nameOfTournament;
     private static int maxTeams;
+    private ArrayList<Team> teamsForTournament;
 
     @FXML private TextField teamNameField;
     @FXML private TextArea playersNameField;
@@ -35,7 +36,6 @@ public class AddTeamController {
     @FXML private Button noButton;
     @FXML private Button continueButton1;
     private boolean overWrite;
-    private ArrayList<Team> teamsForTournament;
 
     /**
      * Used for initializing front-end values on add teams page, mainly loading existing teams from files for display

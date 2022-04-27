@@ -24,8 +24,9 @@ class CreateTournamentPageControllerTest {
 
     @Test
     void testThatGetPathToBracketImageFileReturnsExpectedResult(){
-        String bracketFormat = "8";
-        assertEquals("file:src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/Images/bracketFormats/8.png",
+        String bracketFormat = "Eight_Team_Bracket";
+        assertEquals("file:src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/Images/" +
+                        "bracketFormats/Eight_Team_Bracket.png",
                 getPathToBracketImageFile(bracketFormat));
     }
 }

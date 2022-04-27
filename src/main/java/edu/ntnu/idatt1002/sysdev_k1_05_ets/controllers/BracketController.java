@@ -1,6 +1,5 @@
 package edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.GeneralReader;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TeamReader;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TournamentReader;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters.TournamentWriter;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.scenes.View;
@@ -21,9 +20,7 @@ public class BracketController {
     private static String nameOfTournament;
     private Tournament tournament;
 
-
-    @FXML
-    ArrayList<Label> labels = new ArrayList<>();
+    @FXML ArrayList<Label> labels = new ArrayList<>();
     @FXML private Label team1;
     @FXML private Label team2;
     @FXML private Label team3;
@@ -100,8 +97,8 @@ public class BracketController {
                 String str = GeneralReader.readSpecificLineInFile(file,14+i);
                 String[] values = str.split(",");
                 if (!values[3].equals("?")){
-                    Team team1 = TeamReader.findAndReturnTeamUsingTeamName(values[3]);
-                    Team team2 = TeamReader.findAndReturnTeamUsingTeamName(values[2]);
+                    Team team1 = tournament.getTeamByName(values[3]);
+                    Team team2 = tournament.getTeamByName(values[2]);
                     data[i][0] = team1.getNameAbbr();
                     data[i][1] = team2.getNameAbbr();
                 } else {
@@ -109,7 +106,6 @@ public class BracketController {
                     data[i][1] = values[2];
                 }
             }
-
             String winner = GeneralReader.readSpecificLineInFile(file, 12+ bracketSize);
             labels.get(0).setText(winner.split(",")[7]);
             for (int i = 1; i < 2* bracketSize - 1; i++) {
@@ -119,11 +115,8 @@ public class BracketController {
         } catch (IOException exception){
             exception.printStackTrace();
         }
-
         tournamentName.setText(nameOfTournament);
     }
-
-
 
     @FXML
     public void setMatchesScene()
@@ -145,7 +138,6 @@ public class BracketController {
         SetTimeController.setNameOfTournament(nameOfTournament);
         ViewSwitcher.switchTo(View.SET_TIME);
     }
-
 
     public static void setNameOfTournament(String name){
         nameOfTournament = name;

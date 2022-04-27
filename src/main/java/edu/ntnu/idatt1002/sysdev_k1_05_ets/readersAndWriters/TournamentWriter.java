@@ -124,7 +124,6 @@ public class TournamentWriter {
         }
     }
 
-
     /**
      Takes in the shortened tournament name and writes it into
      the ongoing overview file. This makes it easier to later
@@ -253,7 +252,6 @@ public class TournamentWriter {
         }
     }
 
-
     /**
      Handy method to find which folder (ongoing-, upcoming- or previous tournaments)
      the file of a tournament is located in.
@@ -277,7 +275,6 @@ public class TournamentWriter {
             default -> throw new IOException("Could not find tournament file");
         };
     }
-
 
     /**
      Method takes in an arraylist of teams,
@@ -325,7 +322,6 @@ public class TournamentWriter {
 
     public static void updateTournamentFileLocation()
     throws IOException{
-
         try {
             ArrayList<String> upcomingTournament = TournamentReader.readThroughUpcomingTournaments();
 

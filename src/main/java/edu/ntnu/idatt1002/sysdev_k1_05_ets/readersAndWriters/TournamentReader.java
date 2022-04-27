@@ -163,7 +163,6 @@ public class TournamentReader {
         }
     }
 
-
     public static ArrayList<Tournament> readAllOngoingTournamentsToList(int n)
     throws IOException{
 
