@@ -1,0 +1,7 @@
+module:edu.ntnu.idatt1002.sysdev_k1_05_ets
+edu.ntnu.idatt1002.sysdev_k1_05_ets
+edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers
+edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters
+edu.ntnu.idatt1002.sysdev_k1_05_ets.scenes
+edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament
+edu.ntnu.idatt1002.sysdev_k1_05_ets.utilities
