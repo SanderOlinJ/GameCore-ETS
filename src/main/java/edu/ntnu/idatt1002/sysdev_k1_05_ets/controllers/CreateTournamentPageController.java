@@ -52,7 +52,6 @@ public class CreateTournamentPageController {
 
     /**
      Method initializes the page with content.
-     * @throws IOException if tournaments location could not be updated.
      */
     @FXML
     public void initialize() {
