@@ -1,0 +1,20 @@
+Not finished
+Deez
+Admin
+2022-05-03
+01:00
+No description
+Counter-Strike: Global Offensive
+SteamDeck
+Brackets
+8
+0,null
+-1,null
+BIG,GODSENT,RegularTeam,Evil Geniuses,Ninjas in Pyjamas,LGB Esports,FaZe,Astralis,
+7,true,BIG,GODSENT,01:05,2,1,BIG,
+6,true,RegularTeam,Evil Geniuses,01:05,2,1,RegularTeam,
+5,true,Ninjas in Pyjamas,LGB Esports,00:05,1,2,LGB Esports,
+4,true,FaZe,Astralis,00:05,1,2,Astralis,
+3,false,BIG,RegularTeam,?,?,?,?,
+2,false,LGB Esports,Astralis,?,?,?,?,
+1,false,?,?,?,?,?,?,

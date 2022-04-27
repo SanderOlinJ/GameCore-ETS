@@ -13,6 +13,9 @@ import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
+/**
+ * A controller class for adding and modifying teams page.
+ */
 public class AddTeamController {
 
     private ArrayList<Team> existingTeams;
@@ -34,9 +37,12 @@ public class AddTeamController {
     @FXML private Button continueButton1;
     private boolean overWrite;
 
+    /**
+     * Used for initializing front-end values on add teams page, mainly loading existing teams from files for display
+     * @throws IOException Thrown if something goes wrong when reading all_teams.csv file
+     */
     @FXML
     public void initialize () throws IOException {
-
         overWrite = false;
         try {
             TournamentWriter.updateTournamentFileLocation();
@@ -83,7 +89,12 @@ public class AddTeamController {
         }
     }
 
-
+    /**
+     * Responsible for changing to next scene
+     * Sets the scene to bracket scene if clicked on the continue button from add teams page
+     * Checks total number of teams combobox field and redirects to a bracket page of the same size accordingly
+     * @throws IOException
+     */
     @FXML
     public void setBracketScene() throws IOException {
         if (teamsForTournament.size() < maxTeams){
@@ -104,6 +115,16 @@ public class AddTeamController {
             ViewSwitcher.switchTo(View.BRACKET_16);
         }
     }
+
+    /**
+     * A method that gets called if an already existing team is selected for enrollment.
+     * It is also responsible for controlling how many teams are added and that teams added do not exceed the maximum
+     * amount of teams allowed for the given tournament
+     * Also makes sure that an already enrolled team for the tournament cannot be added more than once
+     * Initiates the process of displaying the newly added team to the stack of enrolled teams if it qualifies the
+     * aforementioned restrictions
+     * @param teamName
+     */
     @FXML
     public void addTeamExisting(String teamName){
 
@@ -132,6 +153,11 @@ public class AddTeamController {
         }
     }
 
+    /**
+     * Displays the team members of a chosen team on the team members on each line text field box displayed in add teams
+     * page
+     * @param team  a team that ideally consists of members, team name, and team name abbreviation
+     */
     public void teamMembersToLines(Team team) {
         for (int i = 0; i < team.getMembers().size(); i++) {
             if (i == team.getMembers().size() - 1) {
@@ -142,7 +168,17 @@ public class AddTeamController {
         }
     }
 
-
+    /**
+     * Responds when a user adds a team manually with the input fields
+     * It parses team field inputs and converts them into a single Team object that is then enrolled for a tournament
+     * It checks if the newly registered team already exists and if it does it then asks the user if they want to
+     * overwrite the already existing team with the new one.
+     * It identifies a team as already registered if one of these three criteria are met:
+     *              1: if team name already exists
+     *              2: if team name abbreviation already exists
+     *              3: if all members are already registered in a different team
+     * @throws IOException
+     */
     public void addTeam() throws IOException {
         //setting it back to add team from yes
         continueButton1.setText("Add team");
@@ -241,6 +277,12 @@ public class AddTeamController {
         abbreviationField.setDisable(false);
         playersNameField.setDisable(false);
     }
+
+    /**
+     * Handles the front-end visibility of buttons when a team is already in the register and the user should be asked
+     * if they want to overwrite the team
+     * It makes it possible for the yes and no buttons to pop up and overwrite message to come up
+     */
     private void ifOverWriteMessage(){
         noButton.setVisible(true);
         noButton.setDisable(false);
@@ -250,6 +292,12 @@ public class AddTeamController {
         overWrite = true;
         continueButton1.setText("Yes");
     }
+
+    /**
+     * Handles front-end visibility of what should be shown if the user chooses not to overwrite team
+     * The no button is set to disappear and the normal add team button should return
+     * All the input fields will be returned to enabled state
+     */
     @FXML
     void onNoButtonClicked(){
         noButton.setDisable(true);
@@ -262,6 +310,10 @@ public class AddTeamController {
     }
 
 
+    /**
+     * Deletes team from enrolled teams of the tournament
+     * @param teamLabel  team label displayed in the UI, a visible text with a team name in the enrolled team box
+     */
     public void deleteTeamFromTeams(Label teamLabel){
         for(int i = 0; i < enrolledTeamsBox.getChildren().size(); i++){
            if(enrolledTeamsBox.getChildren().get(i).equals(teamLabel)){
@@ -276,6 +328,10 @@ public class AddTeamController {
         }
     }
 
+    /**
+     * Responsible for displaying enrolled teams inside the enrolled teams box in the UI.
+     * Styles each member element (teams) using javafx styles
+     */
     public void setCurrentTeams(){
         for (int i = 0; i < enrolledTeamsBox.getChildren().size(); i++) {
             Label teamLabel;
@@ -290,6 +346,10 @@ public class AddTeamController {
         enrolledTeamsBox.setPrefWidth(339);
     }
 
+    /**
+     * Responsible for parsing searched team from the search field and setting the teams proper values to the input
+     * fields for the user
+     */
     public void onSearchTeamSelect() {
         String teamName = searchTeams.getText();
         Team selectedTeam = existingTeams.stream().filter(t -> t.getNameOfTeam().equals(teamName))
@@ -315,8 +375,13 @@ public class AddTeamController {
             }
         }
         return false;
+
     }
 
+    /**
+     * Redirects to home page when clicked on home menu button
+     * @throws IOException
+     */
     @FXML
     void onHomeButtonPressed()
     throws IOException {
@@ -324,6 +389,10 @@ public class AddTeamController {
         ViewSwitcher.switchTo(View.MAIN);
     }
 
+    /**
+     * Redirects to about page when clicked on about menu button
+     * @throws IOException
+     */
     @FXML
     void onAboutButtonPressed()
     throws IOException {
@@ -331,12 +400,21 @@ public class AddTeamController {
         ViewSwitcher.switchTo(View.ABOUT);
     }
 
+    /**
+     * Redirects to help page when clicked on help menu button
+     * @throws IOException
+     */
     @FXML
     void onHelpButtonPressed()
     throws IOException {
         TournamentWriter.writeTeamsToTournamentFile(tournament.getTournamentName(),teamsForTournament);
         ViewSwitcher.switchTo(View.HELP);
     }
+
+    /**
+     * Redirects to ongoing tournaments page when clicked on ongoing tournaments menu button
+     * @throws IOException
+     */
 
     @FXML
     void onOngoingTournamentsButtonPressed()
@@ -345,13 +423,20 @@ public class AddTeamController {
         ViewSwitcher.switchTo(View.ONGOING_OVERVIEW);
     }
 
+    /**
+     * Redirects to upcoming tournaments page when clicked on upcoming tournaments menu button
+     * @throws IOException
+     */
     @FXML
     void onUpcomingTournamentsButtonPressed()
     throws IOException{
         TournamentWriter.writeTeamsToTournamentFile(tournament.getTournamentName(),teamsForTournament);
         ViewSwitcher.switchTo(View.UPCOMING_OVERVIEW);
     }
-
+    /**
+     * Redirects to previous tournaments page when clicked on previous tournaments menu button
+     * @throws IOException
+     */
     @FXML
     void onPreviousTournamentsButtonPressed()
     throws IOException {
@@ -359,6 +444,10 @@ public class AddTeamController {
         ViewSwitcher.switchTo(View.PREVIOUS_OVERVIEW);
     }
 
+    /**
+     * Used for setting the name of a tournament
+     * @param nameOfTournament
+     */
     public static void setNameOfTournament(String nameOfTournament) {
         AddTeamController.nameOfTournament = nameOfTournament;
     }

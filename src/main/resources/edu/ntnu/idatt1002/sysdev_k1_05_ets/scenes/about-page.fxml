@@ -18,7 +18,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.AboutAndHelpController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="2000.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ntnu.idatt1002.sysdev_k1_05_ets.controllers.AboutAndHelpController">
     <top>
         <MenuBar fx:id="menuBar" BorderPane.alignment="CENTER">
             <menus>
@@ -77,12 +77,10 @@
                 </VBox>
                 <HBox prefHeight="800.0" prefWidth="1200.0" VBox.vgrow="ALWAYS">
                     <children>
-                        <Pane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: black;" HBox.hgrow="ALWAYS" />
                         <ScrollPane focusTraversable="false" hbarPolicy="NEVER" maxWidth="1200.0" prefHeight="800.0" prefWidth="1200.0" stylesheets="@../css/style.css">
                             <content>
                                 <VBox prefHeight="1145.0" prefWidth="1184.0" style="-fx-background-color: #13161d;">
                                     <children>
-                                        <VBox maxHeight="50.0" minHeight="0.0" prefHeight="0.0" prefWidth="1200.0" />
                                         <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="132.0">
                                             <children>
                                                 <HBox maxHeight="137.0" prefHeight="109.0" prefWidth="1183.0" style="-fx-background-color: #13161d;" VBox.vgrow="ALWAYS">
@@ -105,10 +103,9 @@
                                                 <HBox prefHeight="0.0" prefWidth="1183.0" />
                                             </children>
                                         </VBox>
-                                        <VBox maxHeight="50.0" prefHeight="0.0" prefWidth="1200.0" />
                                         <VBox>
                                             <children>
-                                    <TextArea editable="false" focusTraversable="false" minHeight="-Infinity" minWidth="-Infinity" mouseTransparent="true" prefHeight="467.0" prefWidth="1063.0" styleClass="text-area" text="CameCore ETS is a local tournament creator application, created by Computer Science students from the &#10;Norwegian University of Science and Technology. &#10;&#10;The idea for this application came through both a project assignment in the Systems Development class, and the team's love for games.&#10;&#10;Creators:&#10;Håkon Bergrem&#10;Beka Bonsa&#10;Daniel Evensen&#10;Joakim Falch&#10;Marcello Fidjestøl&#10;Sander Johansen&#10;&#10;Througout this project, we have gotten help from multiple people, both in admin type of work, but also the practical side of it. On that note, &#10;we would like to thank these people specially:&#10;&#10;Teacher Grethe Sandstrak&#10;Teacher Alexander Holt&#10;Teacher Surya Kathayat&#10;Student Assistant Brage Minge&#10;Client Jotunheimen E-Sport">
+                                    <TextArea editable="false" focusTraversable="false" minHeight="-Infinity" minWidth="-Infinity" mouseTransparent="true" prefHeight="467.0" prefWidth="1063.0" styleClass="text-area" text="GameCore ETS is a local tournament creator application, created by Computer Science students from the &#10;Norwegian University of Science and Technology. &#10;&#10;The idea for this application was inspired by both the final project assignment in the Systems Development class, and the team's love for games.&#10;&#10;Creators:&#10;Håkon Bergrem&#10;Beka Bonsa&#10;Daniel Evensen&#10;Joakim Falch&#10;Marcello Fidjestøl&#10;Sander Johansen&#10;&#10;Througout this project, we have gotten help from numerous people, both in administrative support and the practical side of building ETS.&#10;On that note, we would like to give a special thanks to:&#10;&#10;Teacher Grethe Sandstrak&#10;Teacher Alexander Holt&#10;Teacher Surya Kathayat&#10;Student Assistant Brage Minge&#10;Client Jotunheimen E-Sport">
                                        <font>
                                           <Font name="Arial" size="16.0" />
                                        </font>
@@ -119,13 +116,6 @@
                                           <Cursor fx:constant="DISAPPEAR" />
                                        </cursor>
                                     </TextArea>
-                                                <VBox prefHeight="0.0" prefWidth="1200.0" />
-                                                <VBox prefHeight="23.0" prefWidth="1200.0" />
-                                                <HBox prefHeight="34.0" prefWidth="1200.0">
-                                                    <children>
-                                                        <Pane prefHeight="34.0" prefWidth="906.0" />
-                                                    </children>
-                                                </HBox>
                                             </children>
                                         </VBox>
                                     </children>
@@ -135,7 +125,6 @@
                                 </VBox>
                             </content>
                         </ScrollPane>
-                        <Pane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: black;" HBox.hgrow="ALWAYS" />
                     </children>
                 </HBox>
             </children>
