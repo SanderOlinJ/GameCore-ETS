@@ -4,8 +4,6 @@ module edu.ntnu.idatt1002.sysdev_k1_05_ets {
     requires javafx.web;
 
     requires org.controlsfx.controls;
-    requires com.dlsc.formsfx;
-    requires org.kordamp.bootstrapfx.core;
     opens edu.ntnu.idatt1002.sysdev_k1_05_ets to javafx.fxml;
 
     exports edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament;
@@ -17,5 +15,4 @@ module edu.ntnu.idatt1002.sysdev_k1_05_ets {
     opens edu.ntnu.idatt1002.sysdev_k1_05_ets.readersAndWriters to javafx.fxml;
     exports edu.ntnu.idatt1002.sysdev_k1_05_ets.scenes;
     opens edu.ntnu.idatt1002.sysdev_k1_05_ets.scenes to javafx.fxml;
-
 }

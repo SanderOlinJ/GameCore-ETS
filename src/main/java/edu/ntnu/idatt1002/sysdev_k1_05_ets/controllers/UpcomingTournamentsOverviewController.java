@@ -136,7 +136,7 @@ public class UpcomingTournamentsOverviewController {
                 overviewButton.setText("Add teams");
             }
             deleteIcon.setImage(new Image("file:src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
-                    "images/delete_icon.png"));
+                    "images/other/delete_icon.png"));
             box.setDisable(false);
             box.setVisible(true);
 
@@ -162,7 +162,7 @@ public class UpcomingTournamentsOverviewController {
                     overviewButton1.setText("Add teams");
                 }
                 deleteIcon1.setImage(new Image("file:src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
-                        "images/delete_icon.png"));
+                        "images/other/delete_icon.png"));
                 box1.setDisable(false);
                 box1.setVisible(true);
 
@@ -188,7 +188,7 @@ public class UpcomingTournamentsOverviewController {
                         overviewButton2.setText("Add teams");
                     }
                     deleteIcon2.setImage(new Image("file:src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
-                            "images/delete_icon.png"));
+                            "images/other/delete_icon.png"));
                     box2.setDisable(false);
                     box2.setVisible(true);
 
@@ -218,7 +218,7 @@ public class UpcomingTournamentsOverviewController {
                             overviewButton3.setText("Add teams");
                         }
                         deleteIcon3.setImage(new Image("file:src/main/resources/edu/ntnu/idatt1002/" +
-                                "sysdev_k1_05_ets/images/delete_icon.png"));
+                                "sysdev_k1_05_ets/images/other/delete_icon.png"));
                         box3.setDisable(false);
                         box3.setVisible(true);
 
@@ -248,7 +248,7 @@ public class UpcomingTournamentsOverviewController {
                                 overviewButton4.setText("Add teams");
                             }
                             deleteIcon4.setImage(new Image("file:src/main/resources/edu/ntnu/idatt1002/" +
-                                    "sysdev_k1_05_ets/images/delete_icon.png"));
+                                    "sysdev_k1_05_ets/images/other/delete_icon.png"));
                             box4.setDisable(false);
                             box4.setVisible(true);
 

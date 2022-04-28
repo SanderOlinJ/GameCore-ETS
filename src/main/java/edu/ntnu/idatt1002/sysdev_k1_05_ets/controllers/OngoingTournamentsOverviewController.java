@@ -137,7 +137,7 @@ public class OngoingTournamentsOverviewController {
                 overviewButton.setText("Add teams");
             }
             deleteIcon.setImage(new Image("file:src/main/resources/edu/ntnu/idatt1002/" +
-                    "sysdev_k1_05_ets/images/delete_icon.png"));
+                    "sysdev_k1_05_ets/images/other/delete_icon.png"));
             box.setDisable(false);
             box.setVisible(true);
 
@@ -166,7 +166,7 @@ public class OngoingTournamentsOverviewController {
                     vs1.setText("No matches set");
                 }
                 deleteIcon1.setImage(new Image("file:src/main/resources/edu/ntnu/idatt1002/" +
-                        "sysdev_k1_05_ets/images/delete_icon.png"));
+                        "sysdev_k1_05_ets/images/other/delete_icon.png"));
                 box1.setDisable(false);
                 box1.setVisible(true);
 
@@ -195,7 +195,7 @@ public class OngoingTournamentsOverviewController {
                         vs2.setText("No matches set");
                     }
                     deleteIcon2.setImage(new Image("file:src/main/resources/edu/ntnu/idatt1002/" +
-                            "sysdev_k1_05_ets/images/delete_icon.png"));
+                            "sysdev_k1_05_ets/images/other/delete_icon.png"));
                     box2.setDisable(false);
                     box2.setVisible(true);
 
@@ -228,7 +228,7 @@ public class OngoingTournamentsOverviewController {
                             vs3.setText("No matches set");
                         }
                         deleteIcon3.setImage(new Image("file:src/main/resources/edu/ntnu/idatt1002/" +
-                                "sysdev_k1_05_ets/images/delete_icon.png"));
+                                "sysdev_k1_05_ets/images/other/delete_icon.png"));
                         box3.setDisable(false);
                         box3.setVisible(true);
 
@@ -261,7 +261,7 @@ public class OngoingTournamentsOverviewController {
                                 vs4.setText("No matches set");
                             }
                             deleteIcon4.setImage(new Image("file:src/main/resources/edu/ntnu/idatt1002/" +
-                                    "sysdev_k1_05_ets/images/delete_icon.png"));
+                                    "sysdev_k1_05_ets/images/other/delete_icon.png"));
                             box4.setDisable(false);
                             box4.setVisible(true);
                         }
