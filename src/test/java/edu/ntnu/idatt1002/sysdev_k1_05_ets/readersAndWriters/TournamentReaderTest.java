@@ -12,20 +12,17 @@ class TournamentReaderTest {
 
     @Test
 
-    void testThatReadTournamentFromFileRuns(){
-        String tournamentName = "Test4";
-        try {
-            Tournament tournament = TournamentReader.readTournamentFromFile(tournamentName);
-            System.out.println(tournament);
-        } catch (IOException exception){
-            System.out.println(exception.getMessage());
-        }
+    void testThatReadTournamentFromFileRuns() throws IOException{
+        String tournamentName = "Ongoing Tournament";
+        Tournament tournament = TournamentReader.readTournamentFromFile(tournamentName);
+        System.out.println(tournament);
+
     }
 
     @Test
-    void testThatIsTournamentStillUpcoming(){
+    void testThatIsTournamentStillUpcomingRuns(){
         File file = new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
-                "tournamentFiles/upcomingTournaments/testFile4.txt");
+                "tournamentFiles/upcomingTournaments/UpcomingTournament.txt");
 
         try {
             assertTrue(TournamentReader.isTournamentStillUpcoming(file));
@@ -37,7 +34,7 @@ class TournamentReaderTest {
     @Test
     void testThatIsTournamentStillOngoing(){
         File file = new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
-                "tournamentFiles/upcomingTournaments/testFile4.txt");
+                "tournamentFiles/upcomingTournaments/OngoingTournament.txt");
 
         try {
             assertTrue(TournamentReader.isTournamentStillOngoing(file));
@@ -45,14 +42,4 @@ class TournamentReaderTest {
             System.out.println(exception.getMessage());
         }
     }
-
-    @Test
-    void testThat(){
-        try {
-            TournamentReader.readThroughUpcomingTournaments();
-        } catch (IOException exception){
-            System.out.println(exception.getMessage());
-        }
-    }
-
 }

@@ -50,7 +50,7 @@ public class Team {
         if (nameAbbr == null || nameAbbr.isEmpty()){
             throw new IllegalArgumentException("Team name abbreviation is required");
         } if (nameAbbr.length() > 7) {
-            throw new IllegalArgumentException("Team name abbreviation has a max length of 6 characters!");
+            throw new IllegalArgumentException("Team name abbreviation has a max length of 7 characters!");
         }
         this.nameOfTeam = nameOfTeam;
         this.nameAbbr = nameAbbr;

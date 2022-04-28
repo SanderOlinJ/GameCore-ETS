@@ -6,6 +6,7 @@ import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Tournament;
 import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import org.controlsfx.control.textfield.TextFields;
@@ -67,6 +68,7 @@ public class AddTeamController {
             Label teamLabel = new Label();
             teamLabel.setPrefWidth(200);
             teamLabel.setText(existingTeams.get(i).getNameOfTeam());
+            teamLabel.setCursor(Cursor.HAND);
             existingTeamsBox.getChildren().add(teamLabel);
             existingTeamsBox.getChildren().get(i).setOnMouseClicked
                     (mouseEvent -> addTeamExisting(teamLabel.getText()));
@@ -81,6 +83,7 @@ public class AddTeamController {
                 Label alreadyRegisteredTeam = new Label(tournament.getTeams().get(i).getNameOfTeam());
                 alreadyRegisteredTeam.setPrefWidth(300);
                 alreadyRegisteredTeam.setAlignment(Pos.TOP_LEFT);
+                alreadyRegisteredTeam.setCursor(Cursor.HAND);
                 enrolledTeamsBox.getChildren().add(alreadyRegisteredTeam);
                 teamsForTournament.add(tournament.getTeams().get(i));
             }
@@ -261,6 +264,7 @@ public class AddTeamController {
         Label newTeam = new Label(teamNameField.getText());
         newTeam.setPrefWidth(300);
         newTeam.setAlignment(Pos.TOP_LEFT);
+        newTeam.setCursor(Cursor.HAND);
         enrolledTeamsBox.getChildren().add(newTeam);
         nrOfTeams.setText("" + enrolledTeamsBox.getChildren().size());
 

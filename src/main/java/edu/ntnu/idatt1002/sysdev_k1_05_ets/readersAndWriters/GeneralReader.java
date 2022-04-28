@@ -79,30 +79,4 @@ public class GeneralReader {
             throw new IOException("Could not read through game file: " + exception.getMessage());
         }
     }
-
-    /**
-     Method reads through the platforms.txt file and checks if there is a platform
-     there corresponding to the input platform name.
-     * @param platformName name of the platform
-     * @return true if there is a platform in the file with that name, false if not
-     * @throws IOException if file could not be read.
-     */
-    public static boolean isPlatformInLibrary(String platformName)
-    throws IOException{
-        File file = new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/platforms.txt");
-        ArrayList<String> platforms = new ArrayList<>();
-        try (Scanner scanner = new Scanner(file)){
-            while (scanner.hasNext()){
-                platforms.add(scanner.nextLine());
-            }
-            for (String platform : platforms){
-                if (platform.equals(platformName)){
-                    return true;
-                }
-            }
-            return false;
-        } catch (IOException exception){
-            throw new IOException("Could not read through platform file: " + exception.getMessage());
-        }
-    }
 }

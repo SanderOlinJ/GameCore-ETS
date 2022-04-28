@@ -155,9 +155,17 @@
                                                                                 <Insets left="30.0" />
                                                                             </HBox.margin>
                                                                         </Text>
-                                                                        <DatePicker fx:id="datePicker" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="278.0" style="-fx-background-color: #282c34;" stylesheets="@../css/style.css">
+                                                      <TextField fx:id="showDateField" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="278.0" promptText="Pick date ---&gt;">
+                                                         <HBox.margin>
+                                                            <Insets left="123.0" />
+                                                         </HBox.margin>
+                                                         <font>
+                                                            <Font name="Arial" size="18.0" />
+                                                         </font>
+                                                      </TextField>
+                                                                        <DatePicker fx:id="datePicker" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="26.0" promptText="Pick date ---&gt;" style="-fx-background-color: #282c34;" stylesheets="@../css/style.css">
                                                                             <HBox.margin>
-                                                                                <Insets left="123.0" />
+                                                                                <Insets left="-26.0" />
                                                                             </HBox.margin>
                                                                         </DatePicker>
                                                                     </children>
@@ -229,57 +237,65 @@
                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                     </children>
                                                 </HBox>
-                                                <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="275.0" prefWidth="1200.0">
+                                                <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="201.0" prefWidth="1200.0">
                                                     <children>
                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                        <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="278.0" prefWidth="1105.0">
+                                                        <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="205.0" prefWidth="1105.0">
                                                             <children>
-                                                                <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="175.0" prefWidth="1105.0" style="-fx-background-color: #2e3e4e;">
+                                                                <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="206.0" prefWidth="1105.0" style="-fx-background-color: #2e3e4e;">
                                                                     <children>
-                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Game *:">
-                                                                            <font>
-                                                                                <Font name="Arial Bold" size="18.0" />
-                                                                            </font>
-                                                                            <HBox.margin>
-                                                                                <Insets left="30.0" top="35.0" />
-                                                                            </HBox.margin>
-                                                                        </Text>
-                                                                        <TextField fx:id="gameBox" prefHeight="40.0" prefWidth="433.0" promptText="Type and choose" stylesheets="@../css/style.css">
-                                                                            <HBox.margin>
-                                                                                <Insets left="156.0" top="30.0" />
-                                                                            </HBox.margin>
-                                                                            <font>
-                                                                                <Font name="Arial" size="18.0" />
-                                                                            </font>
-                                                                        </TextField>
+                                                      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="205.0" prefWidth="700.0">
+                                                         <children>
+                                                            <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="76.0" prefWidth="696.0">
+                                                               <children>
+                                                                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Game *:">
+                                                                                        <font>
+                                                                                            <Font name="Arial Bold" size="18.0" />
+                                                                                        </font>
+                                                                     <HBox.margin>
+                                                                        <Insets left="30.0" top="37.0" />
+                                                                     </HBox.margin>
+                                                                                    </Text>
+                                                                  <ComboBox fx:id="gameBox" prefHeight="34.0" prefWidth="433.0" style="-fx-background-color: #282c34;" styleClass="jfx-combo-box" stylesheets="@../css/style.css">
+                                                                     <HBox.margin>
+                                                                        <Insets left="156.0" top="30.0" />
+                                                                     </HBox.margin>
+                                                                  </ComboBox>
+                                                               </children>
+                                                            </HBox>
+                                                                            <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="88.0" prefWidth="695.0" style="-fx-background-color: #2e3e4e;">
+                                                                                <children>
+                                                                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Platform *:">
+                                                                                        <font>
+                                                                                            <Font name="Arial Bold" size="18.0" />
+                                                                                        </font>
+                                                                                        <HBox.margin>
+                                                                                            <Insets left="30.0" top="35.0" />
+                                                                                        </HBox.margin>
+                                                                                    </Text>
+                                                                                    <TextField fx:id="platformBox" prefHeight="34.0" prefWidth="434.0">
+                                                                                        <HBox.margin>
+                                                                                            <Insets left="133.0" top="27.0" />
+                                                                                        </HBox.margin>
+                                                                                        <font>
+                                                                                            <Font name="Arial" size="18.0" />
+                                                                                        </font>
+                                                                                    </TextField>
+                                                                                </children>
+                                                               <VBox.margin>
+                                                                  <Insets top="30.0" />
+                                                               </VBox.margin>
+                                                                            </HBox>
+                                                         </children>
+                                                      </VBox>
                                                                         <ImageView fx:id="gameImageView" fitHeight="155.0" fitWidth="296.0" pickOnBounds="true" preserveRatio="true">
                                                                             <HBox.margin>
-                                                                                <Insets left="110.0" top="20.0" />
+                                                                                <Insets left="50.0" top="20.0" />
                                                                             </HBox.margin>
                                                                             <image>
                                                                                 <Image url="@../images/other/placeholder-image.png" />
                                                                             </image>
                                                                         </ImageView>
-                                                                    </children>
-                                                                </HBox>
-                                                                <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="102.0" prefWidth="1105.0" style="-fx-background-color: #2e3e4e;">
-                                                                    <children>
-                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Platform *:">
-                                                                            <font>
-                                                                                <Font name="Arial Bold" size="18.0" />
-                                                                            </font>
-                                                                            <HBox.margin>
-                                                                                <Insets left="30.0" top="35.0" />
-                                                                            </HBox.margin>
-                                                                        </Text>
-                                                                        <TextField fx:id="platformBox" prefHeight="40.0" prefWidth="434.0" promptText="Type and choose">
-                                                                            <HBox.margin>
-                                                                                <Insets left="133.0" top="25.0" />
-                                                                            </HBox.margin>
-                                                                            <font>
-                                                                                <Font name="Arial" size="18.0" />
-                                                                            </font>
-                                                                        </TextField>
                                                                     </children>
                                                                 </HBox>
                                                             </children>
@@ -450,7 +466,7 @@
                                                 </HBox>
                                             </children>
                                         </VBox>
-                                        <VBox alignment="CENTER" prefHeight="54.0" prefWidth="1200.0">
+                                        <VBox alignment="CENTER" prefHeight="25.0" prefWidth="1183.0">
                                             <children>
                                                 <Label fx:id="warningLabel" textFill="#ed944d">
                                                     <font>

@@ -11,9 +11,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.util.Callback;
-import org.controlsfx.control.textfield.TextFields;
 import javafx.scene.control.TextField;
-import java.io.File;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -30,7 +28,7 @@ public class CreateTournamentPageController {
     @FXML private TextField tournamentNameBox;
     @FXML private ComboBox tournamentHostBox;
     @FXML private TextArea descriptionBox;
-    @FXML private TextField gameBox;
+    @FXML private ComboBox gameBox;
     @FXML private TextField platformBox;
     @FXML private ComboBox tournamentTypeBox;
     @FXML private ComboBox totalNumberOfTeamsBox;
@@ -38,6 +36,7 @@ public class CreateTournamentPageController {
     @FXML private ImageView gameImageView;
     @FXML private ImageView bracketFormatImageView;
     @FXML private DatePicker datePicker;
+    @FXML private TextField showDateField;
     @FXML private ComboBox timeBoxHours;
     @FXML private ComboBox timeBoxMinutes;
     @FXML private Text prizePoolText;
@@ -58,17 +57,13 @@ public class CreateTournamentPageController {
         try {
             //Updates the locations of the tournaments
             TournamentWriter.updateTournamentFileLocation();
-            //Sets auto-complete to the "select game" and "select platform" fields.
-            TextFields.bindAutoCompletion(gameBox, GeneralReader.readFile
-                    (new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/games.txt")));
-            TextFields.bindAutoCompletion(platformBox, GeneralReader.readFile
-                    (new File("src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/platforms.txt")));
         } catch (IOException e) {
             e.printStackTrace();
         }
         //Sets listeners to game box, so that an image of the game may be displayed
-        gameBox.textProperty().addListener(((observableValue, oldValue , newValue) ->
-                gameImageView.setImage(new Image(Utilities.getPathToGameImageFile(newValue)))));
+        gameBox.getSelectionModel().selectedItemProperty().addListener
+                ((observableValue, oldValue, newValue) ->
+                        gameImageView.setImage(new Image(Utilities.getPathToGameImageFile(newValue.toString()))));
 
         //Sets listeners to tournament type box, so that the total number of teams box may be enabled.
         tournamentTypeBox.getSelectionModel().selectedItemProperty().addListener
@@ -80,6 +75,28 @@ public class CreateTournamentPageController {
                 ((observableValue, oldValue, newValue) ->
                         bracketFormatImageView.setImage(new Image(Utilities
                                 .getPathToBracketImageFile(newValue.toString()))));
+        datePicker.valueProperty().addListener(
+                (observableValue, oldValue, newValue) ->
+                        showDateField.setText(newValue.toString()));
+
+        //Adds game choices to the game box
+        gameBox.getItems().addAll("Counter-Strike: Global Offensive", "Valorant", "League of Legends");
+        gameBox.setCellFactory(new Callback<ListView, ListCell>() {
+            @Override
+            public ListCell call(ListView listView) {
+                return new ListCell<String>() {
+                    @Override
+                    protected void updateItem(String item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (item != null) {
+                            setText(item);
+                            getStyleClass().add("my-list-cell");
+                            setFont(Font.font(16));
+                        }
+                    }
+                };
+            }
+        });
 
         //Adds items to the hours box
         timeBoxHours.getItems().addAll("00","01","02","03","04","05","06","07","08","09","10",
@@ -247,20 +264,44 @@ public class CreateTournamentPageController {
     @FXML
     public void addTeamScene() throws IOException {
 
-        //The method assigns values from the page to variables
+        //Method runs through checks to see if all values are valid
+
+        //First check if all required fields are filled out
+        checkIfAllRequiredFieldsAreFilledOut(tournamentNameBox.getText(),
+                String.valueOf(tournamentHostBox.getValue()),
+                String.valueOf(datePicker.getValue()),
+                String.valueOf(timeBoxHours.getValue()),
+                String.valueOf(timeBoxMinutes.getValue()),
+                String.valueOf(gameBox.getValue()), platformBox.getText(),
+                String.valueOf(tournamentTypeBox.getValue()),
+                String.valueOf(totalNumberOfTeamsBox.getValue()));
+
+        //Check if file exist under same tournament name.
+        checkIfFileAlreadyExists(tournamentNameBox.getText());
+
+        //Check if date is valid (in future)
+        checkIfDateIsInvalid(datePicker.getValue(),
+                LocalTime.parse(timeBoxHours.getValue()+":"+timeBoxMinutes.getValue()));
+
+        //Check that game chosen, exists in library.
+        checkThatGameExistsInLibrary(gameBox.getValue().toString());
+
+        //Check if prize pool fields are correctly filled out
+        if (activatePrizePool.isSelected()) {
+            checkIfPrizePoolValuesAreValid(prizePoolTextField.getText(),
+                    String.valueOf(prizePoolCurrencyBox.getValue()),
+                    entranceFeeTextField.getText(),
+                    String.valueOf(entranceFeeCurrencyBox.getValue()));
+        }
+
+        //The method assigns values from the page to variables, if the checks went ok.
         String status = "Not finished";
         String tournamentName = String.valueOf(tournamentNameBox.getText());
         String tournamentHost = String.valueOf(tournamentHostBox.getValue());
         LocalDate date = datePicker.getValue();
-        LocalTime time;
-        try {
-            time = LocalTime.parse(timeBoxHours.getValue() + ":" + timeBoxMinutes.getValue());
-        } catch (DateTimeException exception){
-            warningLabel.setText("You must pick a time");
-            throw new IOException("You must pick a time");
-        }
+        LocalTime time = LocalTime.parse(timeBoxHours.getValue() + ":" + timeBoxMinutes.getValue());
         String description = String.valueOf(descriptionBox.getText());
-        String game = String.valueOf(gameBox.getText());
+        String game = String.valueOf(gameBox.getValue());
         String platform = String.valueOf(platformBox.getText());
         String tournamentType = String.valueOf(tournamentTypeBox.getValue());
         int numberOfTeams = Integer.parseInt(String.valueOf(totalNumberOfTeamsBox.getValue()));
@@ -275,21 +316,7 @@ public class CreateTournamentPageController {
             entranceFee = Integer.parseInt(entranceFeeTextField.getText());
             entranceFeeCurrency = String.valueOf(entranceFeeCurrencyBox.getValue());
         }
-        try {
-            //Method then runs through checks to see if all values are valid
-            checkIfAllRequiredFieldsAreFilledOut(tournamentName, tournamentHost, date, game, platform,
-                    tournamentType, numberOfTeams);
-            checkIfFileAlreadyExists(tournamentName);
-            checkIfDateIsInvalid(date, time);
-            checkThatGameExistsInLibrary(game);
-            checkThatPlatformExistsInLibrary(platform);
-            if (activatePrizePool.isSelected()) {
-                checkIfPrizePoolActivated(prizePool, prizePoolCurrency, entranceFee, entranceFeeCurrency);
-            }
-        } catch (IOException exception){
-            throw new IOException(exception.getMessage());
-        }
-        //The tournament values are the written to a file, if all checks were good,
+        //The tournament values are the written to a file-
         TournamentWriter.writeNewTournamentToFileWithBasicInfo(status, tournamentName,
                 tournamentHost, date, time, description, game, platform, tournamentType, numberOfTeams,
                 prizePool, prizePoolCurrency, entranceFee, entranceFeeCurrency);
@@ -319,20 +346,22 @@ public class CreateTournamentPageController {
      * @param tournamentName name of the tournament
      * @param tournamentHost host of the tournament
      * @param date date of the tournament
+     * @param hours time of the tournament in hours
+     * @param minutes time of the tournament in minutes
      * @param game game to be played at tournament
      * @param platform platform game is played on
      * @param tournamentType type of tournament
      * @param numberOfTeams number of teams participating in tournament
      * @throws IOException if values are invalid
      */
-    private void checkIfAllRequiredFieldsAreFilledOut(String tournamentName, String tournamentHost, LocalDate date,
-                                                      String game, String platform, String tournamentType,
-                                                      int numberOfTeams)
+    private void checkIfAllRequiredFieldsAreFilledOut(String tournamentName, String tournamentHost, String date,
+                                                      String hours, String minutes, String game, String platform,
+                                                      String tournamentType, String numberOfTeams)
     throws IOException {
-
-        if (tournamentName.isEmpty() || tournamentHost.isEmpty() || date == null ||
-                game.isEmpty() || platform.isEmpty() || tournamentType.isEmpty() ||
-                numberOfTeams != 4 && numberOfTeams != 8 && numberOfTeams != 16){
+        if (tournamentName.isEmpty() || tournamentHost.isEmpty() || date.isEmpty() ||
+                hours.isEmpty() || minutes.isEmpty() || game.isEmpty() ||
+                platform.isEmpty() || tournamentType.isEmpty() ||
+                !numberOfTeams.equals("4") && !numberOfTeams.equals("8") && !numberOfTeams.equals("16")){
             warningLabel.setText("You have to fill out all crucial fields (*)");
             throw new IOException("You have to fill out all crucial fields (*)");
         }
@@ -355,28 +384,34 @@ public class CreateTournamentPageController {
 
     /**
      * Method checks if prize pool related fields have values that are invalid.
-     * @param prizePool prize pool of the tournament
+     * @param prizePool prize pool of the tournament, has to be a positive integer
      * @param prizePoolCurrency prize pool currency of the tournament
-     * @param entranceFee entrance fee of the tournament
+     * @param entranceFee entrance fee of the tournament, has to be a positive integer
      * @param entranceFeeCurrency entrance fee currency of the tournament
      * @throws IOException if the fields have values that are invalid.
      */
-    private void checkIfPrizePoolActivated(int prizePool, String prizePoolCurrency, int entranceFee,
+    private void checkIfPrizePoolValuesAreValid(String prizePool, String prizePoolCurrency, String entranceFee,
                                            String entranceFeeCurrency)
     throws IOException{
-        if (prizePool == 0){
-            warningLabel.setText("Prize pool cannot be 0 or blank if activated");
-            throw new IOException("Prize pool cannot be 0 or blank if activated");
+        if (Utilities.areThereAnyOtherCharactersThanNumbers(prizePool) || prizePool.isEmpty()){
+            warningLabel.setText("Prize pool has to be a positive integer");
+            throw new IOException("Prize pool has to be a positive integer");
+        }
+        if (Integer.parseInt(prizePool) <= 0){
+            warningLabel.setText("Prize pool has to be a positive integer");
+            throw new IOException("Prize pool has to be a positive integer");
         }
         if (prizePoolCurrency.equals("null")){
             warningLabel.setText("Prize pool needs to be declared with a currency");
             throw new IOException("Prize pool needs to be declared with a currency");
         }
-        if (entranceFee == -1){
-            warningLabel.setText("Entrance fee cannot be blank. " +
-                    "If there are no entrance fee, type '0'");
-            throw new IOException("Entrance fee cannot be blank.\n" +
-                    "If there are no entrance fee, type '0'");
+        if (Utilities.areThereAnyOtherCharactersThanNumbers(entranceFee) || entranceFee.isEmpty()){
+            warningLabel.setText("Entrance fee has to be a positive integer");
+            throw new IOException("Entrance fee has to be a positive integer");
+        }
+        if (Integer.parseInt(entranceFee) <= 0){
+            warningLabel.setText("Entrance fee has to be a positive integer");
+            throw new IOException("Entrance fee has to be a positive integer");
         }
         if (entranceFeeCurrency.equals("null")){
             warningLabel.setText("Entrance fee needs to be declared with a currency");
@@ -397,18 +432,7 @@ public class CreateTournamentPageController {
         }
 
     }
-    /**
-     * Method checks if the requested platform is in the library.
-     * @param platform platform that game is to be played on in tournament
-     * @throws IOException if the requested platform does not exist in the library.
-     */
-    private void checkThatPlatformExistsInLibrary(String platform)
-    throws IOException{
-        if (!GeneralReader.isPlatformInLibrary(platform)){
-            warningLabel.setText("The platform you chose does not exist, or is not in library");
-            throw new IOException("The platform you chose does not exist, or is not in library");
-        }
-    }
+
 
     /**
      * Redirects to home page when clicked on home menu button

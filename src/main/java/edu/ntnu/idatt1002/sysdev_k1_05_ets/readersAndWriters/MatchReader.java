@@ -24,11 +24,10 @@ public class MatchReader {
             throws IOException {
         ArrayList<Match> matches = new ArrayList<>();
 
-        //Method starts from index 13, as that's where the matches begin
-        for (int i = 13; i < list.size(); i++) {
+        //Method starts by iterating through the arraylist, which is index 13 in a tournament file to list.
+        for (String line : list) {
 
             //Each line is the split up into values.
-            String line = list.get(i);
             String[] values = line.split(COMMA_DELIMITER);
 
             /*

@@ -11,11 +11,10 @@ public class TeamWriterTest {
 
 
     @Test
-    public void writeFileRun() throws IOException {
+    public void testThatWriteTeamsToFileAndOverwriteIfChangesMethodRuns() throws IOException {
 
         ArrayList<String> members = new ArrayList<>(Arrays.asList("a","a","a"));
         Team team1 = new Team(members, "team1","t1");
-
 
         TeamWriter.writeTeamsToFileAndOverwriteIfChanges(team1);
     }

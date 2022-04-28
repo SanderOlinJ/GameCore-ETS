@@ -107,7 +107,14 @@ public class TournamentReader {
             We then pass the arraylist to MatchReader, which in return gives us Match objects.
              */
             if (tournamentInfo.size() > 13){
-                ArrayList<Match> matches = MatchReader.readMatchesFromArrayList(tournamentInfo);
+
+                ArrayList<String> listWithMatches = new ArrayList<>();
+
+                for (int i = 13; i < tournamentInfo.size(); i++){
+                    listWithMatches.add(tournamentInfo.get(i));
+                }
+
+                ArrayList<Match> matches = MatchReader.readMatchesFromArrayList(listWithMatches);
                 tournament.setMatches(matches);
             }
 

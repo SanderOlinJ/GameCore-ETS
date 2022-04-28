@@ -14,21 +14,21 @@ class TournamentWriterTest {
 
     @Test
     void testThatIfFileExistsAndFindLocationReturnsCorrectLocation(){
-        String fileName = "testFile1";
+        String fileName = "OngoingTournament";
 
-        assertEquals("Previous", TournamentWriter.ifFileExistsAndFindLocation(fileName));
+        assertEquals("Ongoing", TournamentWriter.ifFileExistsAndFindLocation(fileName));
     }
 
     @Test
-    void testThatWriteNewTournamentToFileWithBasicInfoRuns(){
+    void testThatWriteNewTournamentToFileWithBasicInfoRuns() throws IOException{
         String status = "Not finished";
-        String tournamentName = "Test 4";
+        String tournamentName = "Test";
         String tournamentHost = "Admin";
-        LocalDate date = LocalDate.parse("2022-04-18");
-        LocalTime time = LocalTime.parse("00:05");
+        LocalDate date = LocalDate.parse("2030-04-18");
+        LocalTime time = LocalTime.parse("00:00");
         String description = "";
         String game = "Valorant";
-        String platform = "PC / Mac / Linux";
+        String platform = "PC";
         String tournamentType = "Brackets";
         int numberOfTeams = 4;
         int prizePool = 0;
@@ -36,17 +36,14 @@ class TournamentWriterTest {
         int entranceFee = 0;
         String entranceFeeCurrency = "null";
 
-        try {
-            TournamentWriter.writeNewTournamentToFileWithBasicInfo(status, tournamentName, tournamentHost,
-                    date, time, description, game, platform, tournamentType, numberOfTeams,
-                    prizePool, prizePoolCurrency, entranceFee, entranceFeeCurrency);
-        } catch (IOException exception){
-            exception.printStackTrace();
-        }
+        TournamentWriter.writeNewTournamentToFileWithBasicInfo(status, tournamentName, tournamentHost,
+                date, time, description, game, platform, tournamentType, numberOfTeams,
+                prizePool, prizePoolCurrency, entranceFee, entranceFeeCurrency);
     }
 
     @Test
     void testThatEveryWriteTournamentToOverviewFileRun(){
+
         String fileNameOngoing = "testFileOngoing";
         String fileNameUpcoming = "testFileUpcoming";
         String fileNamePrevious = "testFilePrevious";
@@ -60,12 +57,10 @@ class TournamentWriterTest {
     }
 
     @Test
-    void testThatUpdateTournamentFileLocationRuns(){
-        try {
-            TournamentWriter.updateTournamentFileLocation();
-        } catch (IOException exception){
-            System.out.println(exception.getMessage());
-        }
+    void testThatUpdateTournamentFileLocationRuns() throws IOException{
+
+        TournamentWriter.updateTournamentFileLocation();
+
     }
 
     @Test
