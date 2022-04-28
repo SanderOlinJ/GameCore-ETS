@@ -118,7 +118,8 @@ public class OngoingTournamentsOverviewController {
             name.setText(tournaments.get(0).getTournamentName());
             game.setText(tournaments.get(0).getGame());
             totalTeams.setText(String.valueOf(tournaments.get(0).getNumberOfTeams()));
-            if (tournaments.get(0).getTeams().size() == Integer.parseInt(String.valueOf(tournaments.get(0).getNumberOfTeams()))) {
+            if (tournaments.get(0).getTeams().size() == Integer.parseInt(String
+                    .valueOf(tournaments.get(0).getNumberOfTeams()))) {
                 teamsLeft.setText("" + tournaments.get(0).findNumberOfTeamsLeft());
             } else {
                 teamsLeft.setText("Not all teams set");
@@ -134,7 +135,6 @@ public class OngoingTournamentsOverviewController {
                 time.setText(match1Time);
             }else {
                 vs.setText("No matches set");
-                overviewButton.setText("Add teams");
             }
             deleteIcon.setImage(new Image("file:src/main/resources/edu/ntnu/idatt1002/" +
                     "sysdev_k1_05_ets/images/other/delete_icon.png"));

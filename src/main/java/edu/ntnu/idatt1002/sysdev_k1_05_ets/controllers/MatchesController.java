@@ -12,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.time.LocalTime;
@@ -25,6 +26,7 @@ public class MatchesController {
     private Tournament tournament;
     private static String nameOfTournament;
 
+    @FXML HBox hBoxWarning;
     @FXML HBox match;
     @FXML HBox match1;
     @FXML HBox match2;
@@ -102,6 +104,7 @@ public class MatchesController {
     @FXML private Label team1Score7;
     @FXML private Label team2Score7;
 
+    private int numberOfMatchesWithScoreSet;
     private ArrayList<HBox> matches;
     private ArrayList<Label> timeLabels;
     private ArrayList<Label> teamOnes;
@@ -116,6 +119,7 @@ public class MatchesController {
      */
     @FXML
     private void initialize(){
+        numberOfMatchesWithScoreSet = 0;
         try {
             tournament = TournamentReader.readTournamentFromFile(nameOfTournament);
         } catch (IOException exception){
@@ -142,17 +146,21 @@ public class MatchesController {
                         Utilities.areThereAnyOtherCharactersThanNumbers(teamTwosScore.get(i).getText())) {
                     warningLabel.setText("Only numbers allowed in score");
                     throw new IllegalArgumentException("Only numbers allowed in score");
+
                 } else if (teamOnesScore.get(i).getText().equals(teamTwosScore.get(i).getText())) {
                     warningLabel.setText("Scores cannot be equal");
                     throw new IllegalArgumentException("Scores cannot be equal");
+
                 } else {
-                    tournament.getUnfinishedMatches().remove(i);
+                    tournament.getUnfinishedMatches().remove(tournament.getUnfinishedMatches().get(i));
                     Team team1 = tournament.getTeamByName(teamOnes.get(i).getText());
                     Team team2 = tournament.getTeamByName(teamTwos.get(i).getText());
                     Match matchWithResults = new Match(team1, team2, Integer.parseInt(teamOnesScore.get(i).getText()),
                             Integer.parseInt(teamTwosScore.get(i).getText()),
                             LocalTime.parse(timeLabels.get(i).getText()), true);
-
+                    teamOnesScore.get(i).setText("");
+                    teamTwosScore.get(i).setText("");
+                    numberOfMatchesWithScoreSet++;
                     matches.get(i).setDisable(true);
                     matches.get(i).setVisible(false);
                     matches.get(i).setPrefHeight(0);
@@ -164,6 +172,7 @@ public class MatchesController {
                 }
             }
         }
+        warningLabel.setText("Score was set for " + numberOfMatchesWithScoreSet + " match(es)");
     }
 
     /**
@@ -223,13 +232,14 @@ public class MatchesController {
      * setting either team names and time in the correct matches
      */
     public void setVisibleMatches(){
-
+        int temp = 0;
         int nrOfUnfinishedMatches = tournament.getNumberOfUnfinishedMatches();
         for (int i = 0; i < nrOfUnfinishedMatches; i++) {
             if (tournament.getUnfinishedMatches().get(i).getTeam1() != null
                     || tournament.getUnfinishedMatches().get(i).getTeam2() != null){
                 matches.get(i).setVisible(true);
                 matches.get(i).setPrefHeight(100);
+                temp++;
                 if (tournament.getUnfinishedMatches().get(i).getTeam1() != null){
                     teamOnes.get(i).setText(tournament.getUnfinishedMatches().get(i).getTeam1().getNameOfTeam());
                     scoreTeam1.get(i).setText("Score " + tournament.getUnfinishedMatches().get(i).getTeam1()
@@ -245,6 +255,12 @@ public class MatchesController {
                     matches.get(i).setDisable(false);
                 }
             }
+        }
+        if (temp == 0){
+            Text text = new Text();
+            text.setText("Time has been set for all available matches");
+            hBoxWarning.setVisible(true);
+            hBoxWarning.setDisable(false);
         }
     }
 

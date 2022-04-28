@@ -187,6 +187,14 @@ public class AddTeamController {
         noButton.setVisible(false);
         noButton.setDisable(true);
 
+        //check if max amount of teams has been exceeded
+        if(teamsForTournament.size() >= maxTeams){
+            warningLabel.setText("You have reached the maximum number of teams for this tournament. \n"
+                    + "max teams: "+maxTeams);
+            throw new IOException("You have reached the maximum number of teams for this tournament. \n"
+                    + "max teams: "+maxTeams);
+        }
+
         if (teamNameField.getText().strip().equals("")){
             warningLabel.setText("Team name required.");
             throw new IOException("Team name required.");
@@ -202,13 +210,6 @@ public class AddTeamController {
         if (playersNameField.getText().isBlank()){
             warningLabel.setText("Team players required.");
             throw new IOException("Team players required.");
-        }
-        //check if max amount of teams has been exceeded
-        if(teamsForTournament.size() >= maxTeams){
-            warningLabel.setText("You have reached the maximum number of teams for this tournament. \n"
-            + "max teams: "+maxTeams);
-            throw new IOException("You have reached the maximum number of teams for this tournament. \n"
-                    + "max teams: "+maxTeams);
         }
 
         if(isTeamAlreadyEnrolled(teamNameField.getText())){

@@ -276,7 +276,6 @@ public class CreateTournamentPageController {
             entranceFeeCurrency = String.valueOf(entranceFeeCurrencyBox.getValue());
         }
         try {
-
             //Method then runs through checks to see if all values are valid
             checkIfAllRequiredFieldsAreFilledOut(tournamentName, tournamentHost, date, game, platform,
                     tournamentType, numberOfTeams);

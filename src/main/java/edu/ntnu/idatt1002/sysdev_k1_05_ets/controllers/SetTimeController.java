@@ -12,6 +12,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.util.Callback;
 import java.io.IOException;
 import java.time.LocalTime;
@@ -101,6 +102,8 @@ public class SetTimeController {
     @FXML Label team2match12;
     @FXML Label team2match13;
     @FXML Label team2match14;
+    @FXML Label warningLabel;
+    @FXML HBox hBoxWarning;
     @FXML private Label tournamentName;
     @FXML private ImageView imageView;
     @FXML private Label game;
@@ -113,6 +116,7 @@ public class SetTimeController {
     @FXML private Label entranceFee;
     @FXML private Label entranceFeeCurrency;
 
+    private int numberOfMatchesSet;
     private ArrayList<ComboBox> hourBoxes;
     private ArrayList<ComboBox> minuteBoxes;
     ArrayList<Label> teamOnes;
@@ -124,6 +128,7 @@ public class SetTimeController {
      */
     @FXML
     public void initialize(){
+        numberOfMatchesSet = 0;
         try {
             tournament = TournamentReader.readTournamentFromFile(nameOfTournament);
         } catch (IOException exception){
@@ -202,7 +207,7 @@ public class SetTimeController {
      * gets the time information the user has set, and writes the time of match(es) to correct tournament
      */
     @FXML
-    public void setTime()  {
+    public void setTime(){
         for (int i = 0; i < hourBoxes.size(); i++) {
             if (hourBoxes.get(i).getValue() != null && minuteBoxes.get(i).getValue() != null &&
                 !hourBoxes.get(i).isDisable() && !minuteBoxes.get(i).isDisable()){
@@ -223,12 +228,13 @@ public class SetTimeController {
                                .getTournamentName(),match);
                        hourBoxes.get(i).setDisable(true);
                        minuteBoxes.get(i).setDisable(true);
-
+                       numberOfMatchesSet++;
                    } catch (IOException exception){
                        exception.printStackTrace();
                    }
             }
         }
+        warningLabel.setText("Time was set for " + numberOfMatchesSet + " match(es)");
     }
 
     /**
@@ -285,6 +291,7 @@ public class SetTimeController {
      */
     public void setVisibleMatches(){
         int nrOfMatchesNoTimeSet = tournament.getNumberOfMatchesWithNoTimeSet();
+        int temp = 0;
         for (int i = 0; i < nrOfMatchesNoTimeSet; i++) {
             if (tournament.getMatchesWithNoTimeSet().get(i).getTeam1() != null &&
                     tournament.getMatchesWithNoTimeSet().get(i).getTeam2() != null){
@@ -293,18 +300,27 @@ public class SetTimeController {
                 matches.get(i).setDisable(false);
                 teamOnes.get(i).setText(tournament.getMatchesWithNoTimeSet().get(i).getTeam1().getNameOfTeam());
                 teamTwos.get(i).setText(tournament.getMatchesWithNoTimeSet().get(i).getTeam2().getNameOfTeam());
+                temp++;
             }else {
                 if (tournament.getMatchesWithNoTimeSet().get(i).getTeam1() != null){
                     teamOnes.get(i).setText(tournament.getMatchesWithNoTimeSet().get(i).getTeam1().getNameOfTeam());
                     matches.get(i).setVisible(true);
                     matches.get(i).setPrefHeight(100);
+                    temp++;
                 }
                 if (tournament.getMatchesWithNoTimeSet().get(i).getTeam2() != null) {
                     teamTwos.get(i).setText(tournament.getMatchesWithNoTimeSet().get(i).getTeam2().getNameOfTeam());
                     matches.get(i).setVisible(true);
                     matches.get(i).setPrefHeight(100);
+                    temp++;
                 }
             }
+        }
+        if (temp == 0){
+            Text text = new Text();
+            text.setText("Time has been set for all available matches");
+            hBoxWarning.setVisible(true);
+            hBoxWarning.setDisable(false);
         }
     }
 

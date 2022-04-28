@@ -99,7 +99,7 @@ public class Team {
 
     /**
      * Adds a member to the list of members
-     * @param member
+     * @param member input member
      */
     public void addMember(String member){
         this.members.add(member);

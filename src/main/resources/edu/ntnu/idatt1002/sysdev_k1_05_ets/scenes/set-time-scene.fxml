@@ -351,6 +351,11 @@
                                                                         <Font name="Arial Bold" size="39.0" />
                                                                     </font>
                                                                 </Text>
+                                                <Label fx:id="warningLabel" alignment="CENTER" layoutY="71.0" prefHeight="17.0" prefWidth="1098.0" textFill="#fa8f31">
+                                                   <font>
+                                                      <Font name="Arial" size="21.0" />
+                                                   </font>
+                                                </Label>
                                                             </children>
                                                             <HBox.margin>
                                                                 <Insets />
@@ -1144,6 +1149,15 @@
                                                                       </VBox>
                                                                    </children>
                                                                 </HBox>
+                                                <HBox fx:id="hBoxWarning" disable="true" minHeight="-Infinity" prefHeight="0.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false">
+                                                   <children>
+                                                      <Label alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="90.0" prefWidth="1097.0" text="Time has been set for all available matches" textFill="#fa8f31">
+                                                         <font>
+                                                            <Font name="Arial Bold" size="24.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </HBox>
                                                                             </children>
                                                                         </VBox>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
