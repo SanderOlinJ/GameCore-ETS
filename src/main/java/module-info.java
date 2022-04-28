@@ -6,7 +6,6 @@ module edu.ntnu.idatt1002.sysdev_k1_05_ets {
     requires org.controlsfx.controls;
     requires com.dlsc.formsfx;
     requires org.kordamp.bootstrapfx.core;
-    requires org.junit.jupiter.api;
     opens edu.ntnu.idatt1002.sysdev_k1_05_ets to javafx.fxml;
 
     exports edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament;
