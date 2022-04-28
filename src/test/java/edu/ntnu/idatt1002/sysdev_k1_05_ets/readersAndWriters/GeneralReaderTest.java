@@ -8,6 +8,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import static edu.ntnu.idatt1002.sysdev_k1_05_ets.utilities.Utilities.getPathToBracketImageFile;
+import static edu.ntnu.idatt1002.sysdev_k1_05_ets.utilities.Utilities.getPathToGameImageFile;
 import static org.junit.jupiter.api.Assertions.*;
 
 

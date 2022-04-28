@@ -18,8 +18,8 @@ public class GameCoreETSApplication extends Application {
 
     /**
      * Displays the first screen the user should see with the ETS GameCore logo
-     * @param stage
-     * @throws IOException
+     * @param stage input stage
+     * @throws IOException if scenes cannot be switched
      */
     @Override
     public void start(Stage stage) throws IOException {
@@ -27,7 +27,7 @@ public class GameCoreETSApplication extends Application {
         ViewSwitcher.setScene(scene);
         ViewSwitcher.switchTo(View.START);
         stage.getIcons()
-                .add(new Image("file:src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/Images/ETSicon.png"));
+                .add(new Image("file:src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/images/ETSicon.png"));
         stage.setTitle("ETS GameCore");
         stage.setScene(scene);
         stage.show();

@@ -49,7 +49,7 @@
                             <children>
                                 <ImageView fitHeight="96.0" fitWidth="611.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
                                     <image>
-                                        <Image url="@../Images/GameCoreETSLogo2.png" />
+                                        <Image url="@../images/other/GameCoreETSLogo2.png" />
                                     </image>
                                     <HBox.margin>
                                         <Insets bottom="10.0" left="20.0" top="30.0" />
@@ -385,7 +385,7 @@
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                         <ImageView fx:id="team1WinnerMatch" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                                                            <image>
-                                                                              <Image url="@../Images/trophy.png" />
+                                                                              <Image url="@../images/other/trophy.png" />
                                                                            </image></ImageView>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                      </children>
@@ -435,7 +435,7 @@
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                   <ImageView fx:id="team2WinnerMatch" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                                                      <image>
-                                                                        <Image url="@../Images/trophy.png" />
+                                                                        <Image url="@../images/other/trophy.png" />
                                                                      </image></ImageView>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                </children>
@@ -468,7 +468,7 @@
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                         <ImageView fx:id="team1WinnerMatch1" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                                                            <image>
-                                                                              <Image url="@../Images/trophy.png" />
+                                                                              <Image url="@../images/other/trophy.png" />
                                                                            </image>
                                                                         </ImageView>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -519,7 +519,7 @@
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                   <ImageView fx:id="team2WinnerMatch1" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                                                      <image>
-                                                                        <Image url="@../Images/trophy.png" />
+                                                                        <Image url="@../images/other/trophy.png" />
                                                                      </image>
                                                                   </ImageView>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -553,7 +553,7 @@
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                         <ImageView fx:id="team1WinnerMatch2" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                                                            <image>
-                                                                              <Image url="@../Images/trophy.png" />
+                                                                              <Image url="@../images/other/trophy.png" />
                                                                            </image>
                                                                         </ImageView>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -604,7 +604,7 @@
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                   <ImageView fx:id="team2WinnerMatch2" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                                                      <image>
-                                                                        <Image url="@../Images/trophy.png" />
+                                                                        <Image url="@../images/other/trophy.png" />
                                                                      </image>
                                                                   </ImageView>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -638,7 +638,7 @@
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                         <ImageView fx:id="team1WinnerMatch3" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                                                            <image>
-                                                                              <Image url="@../Images/trophy.png" />
+                                                                              <Image url="@../images/other/trophy.png" />
                                                                            </image>
                                                                         </ImageView>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -689,7 +689,7 @@
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                   <ImageView fx:id="team2WinnerMatch3" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                                                      <image>
-                                                                        <Image url="@../Images/trophy.png" />
+                                                                        <Image url="@../images/other/trophy.png" />
                                                                      </image>
                                                                   </ImageView>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -723,7 +723,7 @@
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                         <ImageView fx:id="team1WinnerMatch4" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                                                            <image>
-                                                                              <Image url="@../Images/trophy.png" />
+                                                                              <Image url="@../images/other/trophy.png" />
                                                                            </image>
                                                                         </ImageView>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -774,7 +774,7 @@
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                   <ImageView fx:id="team2WinnerMatch4" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                                                      <image>
-                                                                        <Image url="@../Images/trophy.png" />
+                                                                        <Image url="@../images/other/trophy.png" />
                                                                      </image>
                                                                   </ImageView>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -808,7 +808,7 @@
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                         <ImageView fx:id="team1WinnerMatch5" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                                                            <image>
-                                                                              <Image url="@../Images/trophy.png" />
+                                                                              <Image url="@../images/other/trophy.png" />
                                                                            </image>
                                                                         </ImageView>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -859,7 +859,7 @@
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                   <ImageView fx:id="team2WinnerMatch5" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                                                      <image>
-                                                                        <Image url="@../Images/trophy.png" />
+                                                                        <Image url="@../images/other/trophy.png" />
                                                                      </image>
                                                                   </ImageView>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -893,7 +893,7 @@
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                         <ImageView fx:id="team1WinnerMatch6" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                                                            <image>
-                                                                              <Image url="@../Images/trophy.png" />
+                                                                              <Image url="@../images/other/trophy.png" />
                                                                            </image>
                                                                         </ImageView>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -944,7 +944,7 @@
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                   <ImageView fx:id="team2WinnerMatch6" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                                                      <image>
-                                                                        <Image url="@../Images/trophy.png" />
+                                                                        <Image url="@../images/other/trophy.png" />
                                                                      </image>
                                                                   </ImageView>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -978,7 +978,7 @@
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                         <ImageView fx:id="team1WinnerMatch7" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                                                            <image>
-                                                                              <Image url="@../Images/trophy.png" />
+                                                                              <Image url="@../images/other/trophy.png" />
                                                                            </image>
                                                                         </ImageView>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -1029,7 +1029,7 @@
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                   <ImageView fx:id="team2WinnerMatch7" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                                                      <image>
-                                                                        <Image url="@../Images/trophy.png" />
+                                                                        <Image url="@../images/other/trophy.png" />
                                                                      </image>
                                                                   </ImageView>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -1063,7 +1063,7 @@
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                         <ImageView fx:id="team1WinnerMatch8" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                                                            <image>
-                                                                              <Image url="@../Images/trophy.png" />
+                                                                              <Image url="@../images/other/trophy.png" />
                                                                            </image>
                                                                         </ImageView>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -1114,7 +1114,7 @@
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                   <ImageView fx:id="team2WinnerMatch8" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                                                      <image>
-                                                                        <Image url="@../Images/trophy.png" />
+                                                                        <Image url="@../images/other/trophy.png" />
                                                                      </image>
                                                                   </ImageView>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -1148,7 +1148,7 @@
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                         <ImageView fx:id="team1WinnerMatch9" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                                                            <image>
-                                                                              <Image url="@../Images/trophy.png" />
+                                                                              <Image url="@../images/other/trophy.png" />
                                                                            </image>
                                                                         </ImageView>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -1199,7 +1199,7 @@
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                   <ImageView fx:id="team2WinnerMatch9" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                                                      <image>
-                                                                        <Image url="@../Images/trophy.png" />
+                                                                        <Image url="@../images/other/trophy.png" />
                                                                      </image>
                                                                   </ImageView>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -1233,7 +1233,7 @@
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                         <ImageView fx:id="team1WinnerMatch10" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                                                            <image>
-                                                                              <Image url="@../Images/trophy.png" />
+                                                                              <Image url="@../images/other/trophy.png" />
                                                                            </image>
                                                                         </ImageView>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -1284,7 +1284,7 @@
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                   <ImageView fx:id="team2WinnerMatch10" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                                                      <image>
-                                                                        <Image url="@../Images/trophy.png" />
+                                                                        <Image url="@../images/other/trophy.png" />
                                                                      </image>
                                                                   </ImageView>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -1318,7 +1318,7 @@
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                         <ImageView fx:id="team1WinnerMatch11" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                                                            <image>
-                                                                              <Image url="@../Images/trophy.png" />
+                                                                              <Image url="@../images/other/trophy.png" />
                                                                            </image>
                                                                         </ImageView>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -1369,7 +1369,7 @@
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                   <ImageView fx:id="team2WinnerMatch11" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                                                      <image>
-                                                                        <Image url="@../Images/trophy.png" />
+                                                                        <Image url="@../images/other/trophy.png" />
                                                                      </image>
                                                                   </ImageView>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -1403,7 +1403,7 @@
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                         <ImageView fx:id="team1WinnerMatch12" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                                                            <image>
-                                                                              <Image url="@../Images/trophy.png" />
+                                                                              <Image url="@../images/other/trophy.png" />
                                                                            </image>
                                                                         </ImageView>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -1454,7 +1454,7 @@
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                   <ImageView fx:id="team2WinnerMatch12" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                                                      <image>
-                                                                        <Image url="@../Images/trophy.png" />
+                                                                        <Image url="@../images/other/trophy.png" />
                                                                      </image>
                                                                   </ImageView>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -1488,7 +1488,7 @@
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                         <ImageView fx:id="team1WinnerMatch13" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                                                            <image>
-                                                                              <Image url="@../Images/trophy.png" />
+                                                                              <Image url="@../images/other/trophy.png" />
                                                                            </image>
                                                                         </ImageView>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -1539,7 +1539,7 @@
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                   <ImageView fx:id="team2WinnerMatch13" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                                                      <image>
-                                                                        <Image url="@../Images/trophy.png" />
+                                                                        <Image url="@../images/other/trophy.png" />
                                                                      </image>
                                                                   </ImageView>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -1573,7 +1573,7 @@
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                         <ImageView fx:id="team1WinnerMatch14" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                                                            <image>
-                                                                              <Image url="@../Images/trophy.png" />
+                                                                              <Image url="@../images/other/trophy.png" />
                                                                            </image>
                                                                         </ImageView>
                                                                         <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -1624,7 +1624,7 @@
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />
                                                                   <ImageView fx:id="team2WinnerMatch14" fitHeight="51.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                                                      <image>
-                                                                        <Image url="@../Images/trophy.png" />
+                                                                        <Image url="@../images/other/trophy.png" />
                                                                      </image>
                                                                   </ImageView>
                                                                   <Pane prefHeight="200.0" prefWidth="200.0" />

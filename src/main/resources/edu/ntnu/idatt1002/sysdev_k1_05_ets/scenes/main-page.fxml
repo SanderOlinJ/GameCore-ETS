@@ -50,7 +50,7 @@
                             <children>
                                 <ImageView fitHeight="96.0" fitWidth="611.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
                                     <image>
-                                        <Image url="@../Images/GameCoreETSLogo2.png" />
+                                        <Image url="@../images/other/GameCoreETSLogo2.png" />
                                     </image>
                                     <HBox.margin>
                                         <Insets bottom="10.0" left="20.0" top="30.0" />
@@ -112,7 +112,7 @@
                                                    <children>
                                                                       <ImageView fx:id="ongoingImageView1" fitHeight="211.0" fitWidth="336.0" layoutX="7.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
                                                          <image>
-                                                            <Image url="@../Images/gameImages/LeagueofLegends.png" />
+                                                            <Image url="@../images/gameImages/LeagueofLegends.png" />
                                                          </image>
                                                       </ImageView>
                                                       <Text fx:id="warningText1" fill="WHITE" layoutX="46.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Not all teams have been added yet. Click to add." textAlignment="CENTER" visible="false" wrappingWidth="257.09765625">
@@ -151,7 +151,7 @@
                                                    <children>
                                                       <ImageView fx:id="ongoingImageView2" fitHeight="211.0" fitWidth="336.0" layoutX="7.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
                                                          <image>
-                                                            <Image url="@../Images/gameImages/LeagueofLegends.png" />
+                                                            <Image url="@../images/gameImages/LeagueofLegends.png" />
                                                          </image>
                                                       </ImageView>
                                                       <Text fx:id="warningText2" fill="WHITE" layoutX="56.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Not all teams have been added yet. Click to add." textAlignment="CENTER" visible="false" wrappingWidth="257.09765625">
@@ -238,7 +238,7 @@
                                                    <children>
                                                       <ImageView fx:id="upcomingImageView1" fitHeight="211.0" fitWidth="336.0" layoutX="7.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
                                                          <image>
-                                                            <Image url="@../Images/gameImages/LeagueofLegends.png" />
+                                                            <Image url="@../images/gameImages/LeagueofLegends.png" />
                                                          </image>
                                                       </ImageView>
                                                       <Text fx:id="warningText3" fill="WHITE" layoutX="66.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Not all teams have been added yet. Click to add." textAlignment="CENTER" visible="false" wrappingWidth="257.09765625">
@@ -274,7 +274,7 @@
                                                    <children>
                                                       <ImageView fx:id="upcomingImageView2" fitHeight="211.0" fitWidth="336.0" layoutX="7.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
                                                          <image>
-                                                            <Image url="@../Images/gameImages/LeagueofLegends.png" />
+                                                            <Image url="@../images/gameImages/LeagueofLegends.png" />
                                                          </image>
                                                       </ImageView>
                                                       <Text fx:id="warningText4" fill="WHITE" layoutX="66.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Not all teams have been added yet. Click to add." textAlignment="CENTER" visible="false" wrappingWidth="257.09765625">
@@ -361,7 +361,7 @@
                                                    <children>
                                                       <ImageView fx:id="previousImageView1" fitHeight="211.0" fitWidth="336.0" layoutX="7.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
                                                          <image>
-                                                            <Image url="@../Images/gameImages/LeagueofLegends.png" />
+                                                            <Image url="@../images/gameImages/LeagueofLegends.png" />
                                                          </image>
                                                       </ImageView>
                                                       <Text fx:id="warningText5" fill="WHITE" layoutX="66.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Not all teams have been added yet. Click to add." textAlignment="CENTER" visible="false" wrappingWidth="257.09765625">
@@ -397,7 +397,7 @@
                                                    <children>
                                                       <ImageView fx:id="previousImageView2" fitHeight="211.0" fitWidth="336.0" layoutX="7.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
                                                          <image>
-                                                            <Image url="@../Images/gameImages/LeagueofLegends.png" />
+                                                            <Image url="@../images/gameImages/LeagueofLegends.png" />
                                                          </image>
                                                       </ImageView>
                                                       <Text fx:id="warningText6" fill="WHITE" layoutX="66.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Not all teams have been added yet. Click to add." textAlignment="CENTER" visible="false" wrappingWidth="257.09765625">

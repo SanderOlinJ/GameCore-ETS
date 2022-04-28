@@ -41,7 +41,7 @@ public class Utilities {
      */
     public static String getPathToGameImageFile(String gameAsString){
         gameAsString = shortenAndReplaceUnnecessarySymbolsInString(gameAsString);
-        return String.format("file:src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/Images/gameImages/%s",
+        return String.format("file:src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/images/gameImages/%s",
                 gameAsString) + ".png";
     }
 
@@ -51,7 +51,7 @@ public class Utilities {
      * @return path to bracket format image as string
      */
     public static String getPathToBracketImageFile(String bracketFormatAsString){
-        return String.format("file:src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/Images/bracketFormats/%s",
+        return String.format("file:src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/images/bracketFormats/%s",
                 bracketFormatAsString) + ".png";
     }
 
@@ -79,7 +79,7 @@ public class Utilities {
         //Method assigns values to the labels and the image view
         tournamentName.setText(tournament.getTournamentName());
         imageView.setImage(new Image("file:src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
-                "Images/gameImages/" + Utilities.shortenAndReplaceUnnecessarySymbolsInString
+                "images/gameImages/" + Utilities.shortenAndReplaceUnnecessarySymbolsInString
                 (tournament.getGame()) + ".png"));
         game.setText(tournament.getGame());
         host.setText(tournament.getTournamentHost());

@@ -27,7 +27,7 @@ public class TournamentReader {
      * Method only reads for teams if file size suggests so, and will only read for matches
      * if teams have been added.
      * @param tournamentName name of the tournament
-     * @return Tournament, if the tournament exists.
+     * @return tournament, if the tournament exists.
      * @throws IOException if tournament file does not exist, or if file could not be read
      */
     public static Tournament readTournamentFromFile(String tournamentName)
@@ -81,7 +81,7 @@ public class TournamentReader {
         int entranceFee = Integer.parseInt(entranceFeeValues[0]);
         String entranceFeeCurrency = entranceFeeValues[1];
 
-        //The Tournament object is then instantiated with its properties.
+        //The tournament object is then instantiated with its properties.
         Tournament tournament = new Tournament(status, nameOfTournament,tournamentHost,
                 date,time,description,game,platform,tournamentType,numberOfTeams,
                 prizePool, prizePoolCurrency, entranceFee, entranceFeeCurrency);

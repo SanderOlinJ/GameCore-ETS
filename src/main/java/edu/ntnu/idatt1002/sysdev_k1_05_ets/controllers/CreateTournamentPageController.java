@@ -21,7 +21,7 @@ import java.time.LocalTime;
 import java.io.IOException;
 
 /**
- * Controller class for the Create New Tournament page
+ * Controller class for the Create New tournament page
  */
 public class CreateTournamentPageController {
 

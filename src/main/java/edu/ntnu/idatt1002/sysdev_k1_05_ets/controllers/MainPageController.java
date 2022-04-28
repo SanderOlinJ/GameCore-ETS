@@ -135,7 +135,7 @@ public class MainPageController {
                                             TextArea text2, VBox vBox2, Text warningText1, Text warningText2) {
         if (tournaments.size() > 0){
             imageView1.setImage(new Image("file:src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
-                    "Images/gameImages/"+ Utilities.shortenAndReplaceUnnecessarySymbolsInString
+                    "images/gameImages/"+ Utilities.shortenAndReplaceUnnecessarySymbolsInString
                     (tournaments.get(0).getGame()) + ".png"));
             text1.setText(tournaments.get(0).getTournamentName());
             vBox1.setVisible(true);
@@ -148,7 +148,7 @@ public class MainPageController {
             if (tournaments.size() > 1){
 
                 imageView2.setImage(new Image("file:src/main/resources/edu/ntnu/idatt1002/" +
-                        "sysdev_k1_05_ets/Images/gameImages/"+
+                        "sysdev_k1_05_ets/images/gameImages/"+
                         Utilities.shortenAndReplaceUnnecessarySymbolsInString
                                 (tournaments.get(1).getGame()) + ".png"));
                 text2.setText(tournaments.get(1).getTournamentName());

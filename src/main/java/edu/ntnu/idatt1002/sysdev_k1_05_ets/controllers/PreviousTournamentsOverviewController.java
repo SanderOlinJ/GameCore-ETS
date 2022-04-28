@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 /**
- * Controller class for the Previous Tournament Overview page
+ * Controller class for the Previous tournament Overview page
  */
 
 public class PreviousTournamentsOverviewController {
@@ -92,7 +92,7 @@ public class PreviousTournamentsOverviewController {
     private void setMainPageWithTournaments() {
         if (tournaments.size() > 0) {
             imageView.setImage(new Image("file:src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
-                    "Images/gameImages/" + Utilities.shortenAndReplaceUnnecessarySymbolsInString
+                    "images/gameImages/" + Utilities.shortenAndReplaceUnnecessarySymbolsInString
                     (tournaments.get(0).getGame()) + ".png"));
             name.setText(tournaments.get(0).getTournamentName());
             game.setText(tournaments.get(0).getGame());
@@ -101,13 +101,13 @@ public class PreviousTournamentsOverviewController {
             firstPlace.setText(tournaments.get(0).getFirstPlace().getNameAbbr());
             secondPlace.setText(tournaments.get(0).getSecondPlace().getNameAbbr());
             deleteIcon.setImage(new Image("file:src/main/resources/edu/ntnu/idatt1002/" +
-                    "sysdev_k1_05_ets/Images/delete_icon.png"));
+                    "sysdev_k1_05_ets/images/delete_icon.png"));
             box.setDisable(false);
             box.setVisible(true);
 
             if (tournaments.size() > 1) {
                 imageView1.setImage(new Image("file:src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
-                        "Images/gameImages/" + Utilities.shortenAndReplaceUnnecessarySymbolsInString
+                        "images/gameImages/" + Utilities.shortenAndReplaceUnnecessarySymbolsInString
                         (tournaments.get(1).getGame()) + ".png"));
                 name1.setText(tournaments.get(1).getTournamentName());
                 game1.setText(tournaments.get(1).getGame());
@@ -116,13 +116,13 @@ public class PreviousTournamentsOverviewController {
                 firstPlace1.setText(tournaments.get(1).getFirstPlace().getNameAbbr());
                 secondPlace1.setText(tournaments.get(1).getSecondPlace().getNameAbbr());
                 deleteIcon1.setImage(new Image("file:src/main/resources/edu/ntnu/idatt1002/" +
-                        "sysdev_k1_05_ets/Images/delete_icon.png"));
+                        "sysdev_k1_05_ets/images/delete_icon.png"));
                 box1.setDisable(false);
                 box1.setVisible(true);
 
                 if (tournaments.size() > 2) {
                     imageView2.setImage(new Image("file:src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
-                            "Images/gameImages/" + Utilities.shortenAndReplaceUnnecessarySymbolsInString
+                            "images/gameImages/" + Utilities.shortenAndReplaceUnnecessarySymbolsInString
                             (tournaments.get(2).getGame()) + ".png"));
                     name2.setText(tournaments.get(2).getTournamentName());
                     game2.setText(tournaments.get(2).getGame());
@@ -131,13 +131,13 @@ public class PreviousTournamentsOverviewController {
                     firstPlace2.setText(tournaments.get(2).getFirstPlace().getNameAbbr());
                     secondPlace2.setText(tournaments.get(2).getSecondPlace().getNameAbbr());
                     deleteIcon2.setImage(new Image("file:src/main/resources/edu/ntnu/idatt1002/" +
-                            "sysdev_k1_05_ets/Images/delete_icon.png"));
+                            "sysdev_k1_05_ets/images/delete_icon.png"));
                     box2.setDisable(false);
                     box2.setVisible(true);
 
                     if (tournaments.size() > 3) {
                         imageView3.setImage(new Image("file:src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
-                                "Images/gameImages/" + Utilities.shortenAndReplaceUnnecessarySymbolsInString
+                                "images/gameImages/" + Utilities.shortenAndReplaceUnnecessarySymbolsInString
                                 (tournaments.get(3).getGame()) + ".png"));
                         name3.setText(tournaments.get(3).getTournamentName());
                         game3.setText(tournaments.get(3).getGame());
@@ -146,13 +146,13 @@ public class PreviousTournamentsOverviewController {
                         firstPlace3.setText(tournaments.get(3).getFirstPlace().getNameAbbr());
                         secondPlace3.setText(tournaments.get(3).getSecondPlace().getNameAbbr());
                         deleteIcon3.setImage(new Image("file:src/main/resources/edu/ntnu/idatt1002/" +
-                                "sysdev_k1_05_ets/Images/delete_icon.png"));
+                                "sysdev_k1_05_ets/images/delete_icon.png"));
                         box3.setDisable(false);
                         box3.setVisible(true);
 
                         if (tournaments.size() > 4) {
                             imageView4.setImage(new Image("file:src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/" +
-                                    "Images/gameImages/" + Utilities.shortenAndReplaceUnnecessarySymbolsInString
+                                    "images/gameImages/" + Utilities.shortenAndReplaceUnnecessarySymbolsInString
                                     (tournaments.get(4).getGame()) + ".png"));
                             name4.setText(tournaments.get(4).getTournamentName());
                             game4.setText(tournaments.get(4).getGame());
@@ -161,7 +161,7 @@ public class PreviousTournamentsOverviewController {
                             firstPlace4.setText(tournaments.get(4).getFirstPlace().getNameAbbr());
                             secondPlace4.setText(tournaments.get(4).getSecondPlace().getNameOfTeam());
                             deleteIcon4.setImage(new Image("file:src/main/resources/edu/ntnu/idatt1002/" +
-                                    "sysdev_k1_05_ets/Images/delete_icon.png"));
+                                    "sysdev_k1_05_ets/images/delete_icon.png"));
                             box4.setDisable(false);
                             box4.setVisible(true);
 

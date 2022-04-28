@@ -5,7 +5,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 
 /**
- * Tournament represents all the attributes and variables that makes up a tournament
+ * tournament represents all the attributes and variables that makes up a tournament
  * It is used to store tournament information in object, after reading for file.
  */
 
@@ -35,7 +35,7 @@ public class Tournament {
 
     public Tournament(String tournamentName){
         if (tournamentName == null || tournamentName.isEmpty()) {
-            throw new IllegalArgumentException("Tournament name cannot be empty!");
+            throw new IllegalArgumentException("tournament name cannot be empty!");
         }
         this.tournamentName = tournamentName;
         this.teams = new ArrayList<>();
@@ -69,10 +69,10 @@ public class Tournament {
             throw new IllegalArgumentException("Status cannot be empty!");
         }
         if (tournamentName == null || tournamentName.isEmpty()) {
-            throw new IllegalArgumentException("Tournament name cannot be empty!");
+            throw new IllegalArgumentException("tournament name cannot be empty!");
         }
         if (tournamentHost == null || tournamentHost.isEmpty()){
-            throw new IllegalArgumentException("Tournament host cannot be empty!");
+            throw new IllegalArgumentException("tournament host cannot be empty!");
         }
         if (description == null || description.isEmpty()){
             description += "No description";
@@ -84,7 +84,7 @@ public class Tournament {
             throw new IllegalArgumentException("Platform cannot be empty!");
         }
         if (tournamentType == null || tournamentType.isEmpty()){
-            throw new IllegalArgumentException("Tournament type cannot be empty!");
+            throw new IllegalArgumentException("tournament type cannot be empty!");
         }
         if (numberOfTeams != 4 && numberOfTeams != 8 && numberOfTeams != 16){
             throw new IllegalArgumentException("Number of teams cannot be anything other than 4,8 or 16!");
@@ -144,10 +144,10 @@ public class Tournament {
             throw new IllegalArgumentException("Status cannot be empty!");
         }
         if (tournamentName == null || tournamentName.isEmpty()) {
-            throw new IllegalArgumentException("Tournament name cannot be empty!");
+            throw new IllegalArgumentException("tournament name cannot be empty!");
         }
         if (tournamentHost == null || tournamentHost.isEmpty()){
-            throw new IllegalArgumentException("Tournament host cannot be empty!");
+            throw new IllegalArgumentException("tournament host cannot be empty!");
         }
         if (description == null || description.isEmpty()){
             description += "No description";
@@ -159,7 +159,7 @@ public class Tournament {
             throw new IllegalArgumentException("Platform cannot be empty!");
         }
         if (tournamentType == null || tournamentType.isEmpty()){
-            throw new IllegalArgumentException("Tournament type cannot be empty!");
+            throw new IllegalArgumentException("tournament type cannot be empty!");
         }
         if (numberOfTeams != 4 && numberOfTeams != 8 && numberOfTeams != 16){
             throw new IllegalArgumentException("Number of teams cannot be anything other than 4,8 or 16!");
@@ -459,7 +459,7 @@ public class Tournament {
      */
     @Override
     public String toString() {
-        return "Tournament{" +
+        return "tournament{" +
                 "status='" + status + '\'' +
                 ", tournamentName='" + tournamentName + '\'' +
                 ", tournamentHost='" + tournamentHost + '\'' +
@@ -495,7 +495,7 @@ public class Tournament {
 
     /**
      * Adds a team to the list of teams
-     * @param team
+     * @param team input team
      */
     public void addTeam(Team team){
         this.teams.add(team);
@@ -567,7 +567,7 @@ public class Tournament {
 
     /**
      * Removes the given team from tournaments list of teams
-     * @param team
+     * @param team input team
      */
     public void removeTeam(Team team) {
         this.teams.remove(team);

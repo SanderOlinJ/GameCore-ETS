@@ -1,8 +1,5 @@
-package edu.ntnu.idatt1002.sysdev_k1_05_ets.Tournament;
+package edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament;
 
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Match;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Tournament;
-import edu.ntnu.idatt1002.sysdev_k1_05_ets.tournament.Team;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
