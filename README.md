@@ -17,4 +17,8 @@ Directions on how to run the file, see [Wiki](https://gitlab.stud.idi.ntnu.no/so
 ## Project status
 
 As of now, the course is finished and the code is done. There is still wanted functionality to be added. However, this did not
-make it as of the time limit set on the project. 
+make it as of the time limit set on the project.
+
+## Project Structure
+
+[Available here.](https://gitlab.stud.idi.ntnu.no/sojohans/sysdev_k1_05_ets/-/wikis/System-Documentation/Project-Structure)
