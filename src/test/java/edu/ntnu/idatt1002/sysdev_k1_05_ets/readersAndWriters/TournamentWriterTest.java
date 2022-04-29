@@ -115,13 +115,39 @@ class TournamentWriterTest {
     @Test
     void testThatWriteTeamsToTournamentRuns() throws IOException{
         ArrayList<Team> teams = new ArrayList<>();
+        String status = "Not finished";
+        String tournamentName = "testFile3";
+        String tournamentHost = "Admin";
+        LocalDate date = LocalDate.parse("2030-04-18");
+        LocalTime time = LocalTime.parse("00:00");
+        String description = "";
+        String game = "Valorant";
+        String platform = "PC";
+        String tournamentType = "Brackets";
+        int numberOfTeams = 4;
+        int prizePool = 0;
+        String prizePoolCurrency = "null";
+        int entranceFee = 0;
+        String entranceFeeCurrency = "null";
+        TournamentWriter.writeNewTournamentToFileWithBasicInfo(status, tournamentName, tournamentHost,
+                date, time, description, game, platform, tournamentType, numberOfTeams,
+                prizePool, prizePoolCurrency, entranceFee, entranceFeeCurrency);
         Team team1 = TeamReader.findAndReturnTeamUsingTeamName("FaZe");
         Team team2 = TeamReader.findAndReturnTeamUsingTeamName("Fnatic");
         Team team3 = TeamReader.findAndReturnTeamUsingTeamName("Phase");
         teams.add(team1);
         teams.add(team2);
         teams.add(team3);
-        TournamentWriter.writeTeamsToTournamentFile("Test4",teams);
+        File testFile = new File("src/main/resources/edu/ntnu/" +
+                "idatt1002/sysdev_k1_05_ets/tournamentFiles/upcomingTournaments/testFile3.txt");
+        TournamentWriter.writeTeamsToTournamentFile("testFile3",teams);
+        ArrayList<String> tournamentRead = GeneralReader.readFile(testFile);
+
+        testFile.delete();
+
+        TournamentWriter.removeTournamentFromUpcomingOverview("testFile3");
+
+        assertEquals(tournamentRead.size(),13);
     }
 
 }
