@@ -12,7 +12,7 @@ is added on the base of feedback from the client.
 * JavaFX for GUI
 
 ## Setup
-Directions on how to run the file, see Wiki.
+Directions on how to run the file, see [Wiki](https://gitlab.stud.idi.ntnu.no/sojohans/sysdev_k1_05_ets/-/wikis/System-Documentation/Installation-Manual).
 
 ## Project status
 
