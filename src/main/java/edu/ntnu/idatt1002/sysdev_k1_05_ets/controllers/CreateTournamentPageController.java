@@ -405,6 +405,10 @@ public class CreateTournamentPageController {
             warningLabel.setText("Prize pool needs to be declared with a currency");
             throw new IOException("Prize pool needs to be declared with a currency");
         }
+        if (prizePool.length() > 9) {
+            warningLabel.setText("Prize pool cannot exceed 9 digits");
+            throw new IOException("Prize pool cannot exceed 9 digits");
+        }
         if (Utilities.areThereAnyOtherCharactersThanNumbers(entranceFee) || entranceFee.isEmpty()){
             warningLabel.setText("Entrance fee has to be a positive integer");
             throw new IOException("Entrance fee has to be a positive integer");
@@ -416,6 +420,10 @@ public class CreateTournamentPageController {
         if (entranceFeeCurrency.equals("null")){
             warningLabel.setText("Entrance fee needs to be declared with a currency");
             throw new IOException("Entrance fee needs to be declared with a currency");
+        }
+        if (entranceFee.length() > 9) {
+            warningLabel.setText("Entrance fee cannot exceed 9 digits");
+            throw new IOException("Entrance fee cannot exceed 9 digits");
         }
     }
 

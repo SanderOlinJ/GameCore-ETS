@@ -151,6 +151,9 @@ public class MatchesController {
                     warningLabel.setText("Scores cannot be equal");
                     throw new IllegalArgumentException("Scores cannot be equal");
 
+                } else if (teamOnesScore.get(i).getText().length() > 2 || teamTwosScore.get(i).getText().length() > 2) {
+                    warningLabel.setText("Scores cannot exceed 2 digits");
+                    throw new IllegalArgumentException("Scores cannot exceed 2 digits");
                 } else {
                     tournament.getUnfinishedMatches().remove(tournament.getUnfinishedMatches().get(i));
                     Team team1 = tournament.getTeamByName(teamOnes.get(i).getText());
