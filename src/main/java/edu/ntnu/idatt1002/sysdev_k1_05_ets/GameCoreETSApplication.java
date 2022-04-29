@@ -27,7 +27,8 @@ public class GameCoreETSApplication extends Application {
         ViewSwitcher.setScene(scene);
         ViewSwitcher.switchTo(View.START);
         stage.getIcons()
-                .add(new Image("file:src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/images/ETSicon.png"));
+                .add(new Image("file:src/main/resources/edu/ntnu/idatt1002/sysdev_k1_05_ets/images/other/" +
+                        "ETSicon.png"));
         stage.setTitle("ETS GameCore");
         stage.setScene(scene);
         stage.show();
@@ -36,7 +37,7 @@ public class GameCoreETSApplication extends Application {
     /**
      * Starts the application with the help of a method called launch() from its parents class Application which
      * ultimately initiates the program
-     * @param args
+     * @param args main
      */
     public static void main(String[] args) {
         launch();

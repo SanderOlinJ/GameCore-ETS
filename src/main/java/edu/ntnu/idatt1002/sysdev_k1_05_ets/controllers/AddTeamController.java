@@ -392,6 +392,9 @@ public class AddTeamController {
     void onHomeButtonPressed()
     throws IOException {
         TournamentWriter.writeTeamsToTournamentFile(tournament.getTournamentName(),teamsForTournament);
+        if (teamsForTournament.size() == tournament.getNumberOfTeams()){
+            TournamentWriter.writeMatchesToTournament(tournament.getTournamentName(),null);
+        }
         ViewSwitcher.switchTo(View.MAIN);
     }
 
@@ -403,6 +406,9 @@ public class AddTeamController {
     void onAboutButtonPressed()
     throws IOException {
         TournamentWriter.writeTeamsToTournamentFile(tournament.getTournamentName(),teamsForTournament);
+        if (teamsForTournament.size() == tournament.getNumberOfTeams()){
+            TournamentWriter.writeMatchesToTournament(tournament.getTournamentName(),null);
+        }
         ViewSwitcher.switchTo(View.ABOUT);
     }
 
@@ -414,6 +420,9 @@ public class AddTeamController {
     void onHelpButtonPressed()
     throws IOException {
         TournamentWriter.writeTeamsToTournamentFile(tournament.getTournamentName(),teamsForTournament);
+        if (teamsForTournament.size() == tournament.getNumberOfTeams()){
+            TournamentWriter.writeMatchesToTournament(tournament.getTournamentName(),null);
+        }
         ViewSwitcher.switchTo(View.HELP);
     }
 
@@ -425,6 +434,9 @@ public class AddTeamController {
     void onOngoingTournamentsButtonPressed()
     throws IOException {
         TournamentWriter.writeTeamsToTournamentFile(tournament.getTournamentName(),teamsForTournament);
+        if (teamsForTournament.size() == tournament.getNumberOfTeams()){
+            TournamentWriter.writeMatchesToTournament(tournament.getTournamentName(),null);
+        }
         ViewSwitcher.switchTo(View.ONGOING_OVERVIEW);
     }
 
@@ -436,6 +448,9 @@ public class AddTeamController {
     void onUpcomingTournamentsButtonPressed()
     throws IOException{
         TournamentWriter.writeTeamsToTournamentFile(tournament.getTournamentName(),teamsForTournament);
+        if (teamsForTournament.size() == tournament.getNumberOfTeams()){
+            TournamentWriter.writeMatchesToTournament(tournament.getTournamentName(),null);
+        }
         ViewSwitcher.switchTo(View.UPCOMING_OVERVIEW);
     }
     /**
@@ -446,6 +461,9 @@ public class AddTeamController {
     void onPreviousTournamentsButtonPressed()
     throws IOException {
         TournamentWriter.writeTeamsToTournamentFile(tournament.getTournamentName(),teamsForTournament);
+        if (teamsForTournament.size() == tournament.getNumberOfTeams()){
+            TournamentWriter.writeMatchesToTournament(tournament.getTournamentName(),null);
+        }
         ViewSwitcher.switchTo(View.PREVIOUS_OVERVIEW);
     }
 
